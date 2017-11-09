@@ -1,0 +1,1289 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .h {
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs,
+.markdown-body .highlight .cp .h {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #000;
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+}
+
+.markdown-body .highlight .pl-coc,
+.markdown-body .highlight .pl-entm,
+.markdown-body .highlight .pl-eoa,
+.markdown-body .highlight .pl-mai .pl-sf,
+.markdown-body .highlight .pl-pdv,
+.markdown-body .highlight .pl-sc,
+.markdown-body .highlight .pl-sr,
+.markdown-body .highlight .pl-v,
+.markdown-body .highlight .pl-vpf {
+  color: #0086b3;
+}
+
+.markdown-body .highlight .pl-eoac,
+.markdown-body .highlight .pl-mdht,
+.markdown-body .highlight .pl-mi1,
+.markdown-body .highlight .pl-mri,
+.markdown-body .highlight .pl-va,
+.markdown-body .highlight .pl-vpu {
+  color: #008080;
+}
+
+.markdown-body .highlight .pl-c,
+.markdown-body .highlight .pl-pdc {
+  color: #b4b7b4;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-k,
+.markdown-body .highlight .pl-ko,
+.markdown-body .highlight .pl-kolp,
+.markdown-body .highlight .pl-mc,
+.markdown-body .highlight .pl-mr,
+.markdown-body .highlight .pl-ms,
+.markdown-body .highlight .pl-s,
+.markdown-body .highlight .pl-sok,
+.markdown-body .highlight .pl-st {
+  color: #6e5494;
+}
+
+.markdown-body .highlight .pl-ef,
+.markdown-body .highlight .pl-enf,
+.markdown-body .highlight .pl-enm,
+.markdown-body .highlight .pl-entc,
+.markdown-body .highlight .pl-eoi,
+.markdown-body .highlight .pl-sf,
+.markdown-body .highlight .pl-smc {
+  color: #d12089;
+}
+
+.markdown-body .highlight .pl-ens,
+.markdown-body .highlight .pl-eoai,
+.markdown-body .highlight .pl-kos,
+.markdown-body .highlight .pl-mh .pl-pdh,
+.markdown-body .highlight .pl-mp,
+.markdown-body .highlight .pl-pde,
+.markdown-body .highlight .pl-stp {
+  color: #458;
+}
+
+.markdown-body .highlight .pl-enti {
+  color: #d12089;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cce,
+.markdown-body .highlight .pl-enc,
+.markdown-body .highlight .pl-kou,
+.markdown-body .highlight .pl-mq {
+  color: #f93;
+}
+
+.markdown-body .highlight .pl-mp1 .pl-sf {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cos,
+.markdown-body .highlight .pl-ent,
+.markdown-body .highlight .pl-md,
+.markdown-body .highlight .pl-mdhf,
+.markdown-body .highlight .pl-ml,
+.markdown-body .highlight .pl-pdc1,
+.markdown-body .highlight .pl-pds,
+.markdown-body .highlight .pl-s1,
+.markdown-body .highlight .pl-scp,
+.markdown-body .highlight .pl-sol {
+  color: #df5000;
+}
+
+.markdown-body .highlight .pl-c1,
+.markdown-body .highlight .pl-cn,
+.markdown-body .highlight .pl-pse,
+.markdown-body .highlight .pl-pse .pl-s2,
+.markdown-body .highlight .pl-vi {
+  color: #a31515;
+}
+
+.markdown-body .highlight .pl-mb,
+.markdown-body .highlight .pl-pdb {
+  color: #df5000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mi,
+.markdown-body .highlight .pl-pdi {
+  color: #6e5494;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-ms1 {
+  background-color: #f5f5f5;
+}
+
+.markdown-body .highlight .pl-mdh,
+.markdown-body .highlight .pl-mdi {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mdr {
+  color: #0086b3;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-s2 {
+  color: #333;
+}
+
+.markdown-body .highlight .pl-ii {
+  background-color: #df5000;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-ib {
+  background-color: #f93;
+}
+
+.markdown-body .highlight .pl-id {
+  background-color: #a31515;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-iu {
+  background-color: #b4b7b4;
+}
+
+.markdown-body .highlight .pl-mo {
+  color: #969896;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}</style><title>01-最简单的聊天室</title></head><body><article class="markdown-body"><h2>
+<a id="user-content-最简单的聊天室" class="anchor" href="#%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E8%81%8A%E5%A4%A9%E5%AE%A4" aria-hidden="true"><span class="octicon octicon-link"></span></a>最简单的聊天室</h2>
+
+<p>我们将使用socket.io和Angular.js从零开始，搭建一个多人的多房间聊天室。将会带着大家使用socket.io和Angular实现一个单页应用（SPA），通过本章的学习，读者将会了解如何把node与前端的开发框架结合起来，体会前端开发流程，快速实现Web应用。</p>
+
+<h3>
+<a id="user-content-socketio简介" class="anchor" href="#socketio%E7%AE%80%E4%BB%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>socket.io简介</h3>
+
+<p>HTML5引入了很多新的特性，WebSocket就是其中之一，它为浏览器端和服务器端提供了一个基于TCP链接的双向通道，这样Web开发人员可以使用WebSocket构建真实的实时Web应用。但是并不是所有的浏览器都支持WebSocket特性，在不支持WebSocket的浏览器中，我们可以使用一些其他的方法来实现实时通信，例如：轮询、长轮询、基于流或者Flash Socket的实现。socket.io出现就是为了磨平浏览器的差异，为开发者提供一个统一的接口，在不支持WebSocket的浏览器中，socket.io可以降级为其他通信方式来实现实时通信。下面是socket.io所使用的实时通信方式列表：</p>
+
+<ul>
+<li>Websocket</li>
+<li>Adobe® Flash® Socket</li>
+<li>AJAX long polling</li>
+<li>AJAX multipart streaming</li>
+<li>Forever Iframe</li>
+<li>JSONP Polling</li>
+</ul>
+
+<p>在开发过程中，我们甚至可以指定使用某种通信方式。</p>
+
+<h3>
+<a id="user-content-angularjs" class="anchor" href="#angularjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Angular.js</h3>
+
+<p>Angular.js是新一代前端MVC框架。与Backbone.js相比，它完全实现了数据层和视图层的双向绑定，开发人员可以专注于功能开发，而无需纠缠在繁琐的DOM操作之中，这也正式选择它的原因。除此之外，Angular.js社区非常活跃，有大量的文档和组件。废话休说，让我开始吧！</p>
+
+<h3>
+<a id="user-content-开始" class="anchor" href="#%E5%BC%80%E5%A7%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>开始</h3>
+
+<p>新建<code>TechNode</code>目录，我们所有的代码都会放在这个目录中。使用命令<code>npm init</code>初始化项目，生成<code>package.json</code>文件：</p>
+
+<pre><code>$ mkdir TechNode &amp;&amp; cd TechNode &amp;&amp; npm init
+</code></pre>
+
+<blockquote>
+<p>Node.js使用package.json来作为模块的描述文件，与模块相关的信息，比如模块名、作者、依赖的模块信息都会放在这个文件当中。有了package.json文件，我们可以非常方便地使用<code>npm</code>来做依赖模块管理。</p>
+</blockquote>
+
+<h3>
+<a id="user-content-expressjs服务器" class="anchor" href="#expressjs%E6%9C%8D%E5%8A%A1%E5%99%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>express.js服务器</h3>
+
+<p>我们可以很轻松地使用express.js搭建一个Node.js服务器。在TechNode目录下新建app.js文件，添加如下代码：</p>
+
+<pre><code>var express = require('express')
+var app = express()
+var port = process.env.PORT || 3000
+
+app.use(express.static(__dirname + '/static'))
+
+app.use(function (req, res) {
+  res.sendfile('./static/index.html')
+})
+
+var io = require('socket.io').listen(app.listen(port))
+
+io.sockets.on('connection', function (socket) {
+  socket.emit('connected')
+})
+
+console.log('TechNode is on port ' + port + '!')
+</code></pre>
+
+<p>虽然这段代码非常简单，但是我需要指出其中的一些约定：</p>
+
+<pre><code>app.use(express.static(__dirname + '/static'))
+
+app.use(function (req, res) {
+  res.sendfile('./static/index.html')
+})
+</code></pre>
+
+<p>与通常的express.js项目一样，我们将静态文件放在<code>static</code>目录下；在<code>static</code>目录下还会放<code>index.html</code>文件，它将会作为整个应用的启动页面。除了静态文件的请求以外，其他所有的HTTP请求，我们都会输出<code>index.html</code>文件，服务端不关心路由，所有的路由逻辑都交给在浏览器端的Angular.js去处理。</p>
+
+<pre><code>var io = require('socket.io').listen(app.listen(port))
+
+io.sockets.on('connection', function (socket) {
+  socket.emit('connected')
+})
+</code></pre>
+
+<p>下一步就是在服务端添加<code>socket</code>服务。<code>socket.io</code>提供的接口是基于事件的，服务器端监听<code>connection</code>事件，如果有客户端链接上来，就会产生一个socket对象，使用这个对象，我们就可以和对应的客户端实时通信了。</p>
+
+<p>在<code>TechNode</code>下新建<code>static</code>目录，添加<code>index.html</code>文件到<code>static</code>目录中：</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;TechNode&lt;/title&gt;
+    &lt;script type="text/javascript" src="/socket.io/socket.io.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script type="text/javascript"&gt;
+      var socket = io.connect('/')
+      socket.on('connected', function () {
+        alert('connected to TechNode!')
+      })
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>为了与服务端的socket服务通信，我们必须在客户端引入<code>socket.io</code>提供的客户端类库<code>socket.io.js</code>。这个文件由<code>socket.io</code>提供服务，我们无需把这个文件添加到<code>static</code>目录中。</p>
+
+<pre><code>var socket = io.connect('/')
+socket.on('connected', function () {
+  alert('connected to TechNode!')
+})
+</code></pre>
+
+<p>调用<code>io</code>的<code>connect</code>方法，传入socket服务的地址，因为在本例中，socket服务器与静态服务器是同一个，可以简写为<code>/</code>（实际上相当于<code>http://localhost:3000</code>），然后我们就获得了一个socket对象，这样就可以和服务端通信了。</p>
+
+<p>别忘了使用<code>npm install express socket.io --save</code>安装<code>express</code>和<code>socket.io</code>，参数<code>--save</code>可以自动更新package.json<code>文件，将</code>express<code>和</code>socket.io<code>作为项目依赖添加到</code>package.json`中。</p>
+
+<p>到这里，最基础的服务端已经搭建完成了，运行：</p>
+
+<pre><code>$ node app.js 
+
+TechNode is on port 3000!
+</code></pre>
+
+<p>访问<code>http://localhost:3000</code>，试试看。</p>
+
+<h3>
+<a id="user-content-最简单的聊天室-1" class="anchor" href="#%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E8%81%8A%E5%A4%A9%E5%AE%A4-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>最简单的聊天室</h3>
+
+<h4>
+<a id="user-content-安装bootstrap和angularjs" class="anchor" href="#%E5%AE%89%E8%A3%85bootstrap%E5%92%8Cangularjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装Bootstrap和Angular.js</h4>
+
+<p>我们使用<code>bower</code>来管理TechNode使用到的前端类库，与<code>npm</code>类似，<code>bower</code>使用名为<code>bower.json</code>的文件来管理项目的依赖。在<code>TechNode</code>目录下运行<code>bower init</code>，生成<code>bower.json</code>文件。</p>
+
+<p><code>bower</code>默认将依赖的模块安装在<code>bower_compoments</code>下，为了便于管理，新建<code>.bowerrc</code>文件，添加如下内容，为bower指定依赖的安装目录：</p>
+
+<pre><code>{
+  "directory" : "static/components"
+}
+</code></pre>
+
+<p>接下来，试用<code>bower</code>安装我们需要的一些前端类库：</p>
+
+<ul>
+<li>Bootstrap：快速构建web项目的前端UI库，依赖jQuery，<code>bower</code>在安装Bootstrap的同时，也会安装jQuery；</li>
+<li>Angular.js：我们的主角，前端MVC框架。</li>
+</ul>
+
+<pre><code>bower install bootstrap angular --save
+</code></pre>
+
+<blockquote>
+<p><code>--save</code>参数使得<code>bower</code>将依赖写入到<code>bower.json</code>中。</p>
+</blockquote>
+
+<p>将这些类库添加到<code>index.html</code>中：</p>
+
+<pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;TechNode&lt;/title&gt;
+  &lt;link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css"&gt;
+  &lt;script type="text/javascript" src="/socket.io/socket.io.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="/components/jquery/jquery.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="/components/bootstrap/dist/js/bootstrap.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="/components/angular/angular.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+
+<h4>
+<a id="user-content-搭建聊天室" class="anchor" href="#%E6%90%AD%E5%BB%BA%E8%81%8A%E5%A4%A9%E5%AE%A4" aria-hidden="true"><span class="octicon octicon-link"></span></a>搭建聊天室</h4>
+
+<p>首先，使用html将TechNode的外观搭建出来：</p>
+
+<pre><code>&lt;head&gt;
+  ...
+  &lt;link rel="stylesheet" href="/styles/room.css"&gt;
+  ...
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="navbar navbar-inverse navbar-fixed-top"&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="navbar-header"&gt;
+        &lt;a class="navbar-brand" href="#"&gt;TechNode&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="container" style="margin-top:100px;"&gt;
+    &lt;div class="col-md-12"&gt;
+      &lt;div class="panel panel-default room"&gt;
+        &lt;div class="panel-heading room-header"&gt;TechNode&lt;/div&gt;
+        &lt;div class="panel-body room-content"&gt;
+          &lt;div class="messages"&gt;
+            &lt;div class="list-group"&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;form class="message-creator"&gt;
+            &lt;div class="form-group"&gt;
+              &lt;textarea required class="form-control message-input" placeholder="Ctrl+Enter to quick send"&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+</code></pre>
+
+<p>在<code>static</code>目录下新建<code>styles</code>目录，新建房间样式文件<code>room.css</code>，下面就是最简版的TechNode：</p>
+
+<p><a href="examples/chapter01/images/simplest-technode.png" target="_blank"><img src="examples/chapter01/images/simplest-technode.png" alt="TechNode" style="max-width:100%;"></a></p>
+
+<p>接下来我们实现聊天室最基本的功能——消息！</p>
+
+<p>打开app.js文件，修改socket服务部分代码：</p>
+
+<pre><code>// ...
+var messages = []
+
+io.sockets.on('connection', function (socket) {
+  socket.on('getAllMessages', function () {
+    socket.emit('allMessages', messages)
+  })
+  socket.on('createMessage', function (message) {
+    messages.push(message)
+    io.sockets.emit('messageAdded', message)
+  })
+})
+// ...
+</code></pre>
+
+<p>我们暂时把消息数据放到<code>messages</code>这个数组对象中。用户连上来后，向服务端发送<code>getAllMessages</code>请求，获取所有消息，服务器就把所有的消息通过<code>allMessages</code>事件推送给客户端；当用户创建消息时，向服务端发送<code>createMessage</code>事件，服务端把消息存放到<code>messages</code>数组中，并向所有的客户端广播<code>messageAdded</code>，有新的消息添加进来。</p>
+
+<p>下一步，使用Angular.js构建聊天室的客户端。</p>
+
+<p>修改index.html，添加Angular绑定：</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html ng-app="techNodeApp"&gt;
+  &lt;head&gt;
+    ...
+  &lt;/head&gt;
+  &lt;body&gt;
+    ...
+    &lt;div class="container" style="margin-top:100px;"&gt;
+      &lt;div class="col-md-12"&gt;
+        &lt;div class="panel panel-default room" ng-controller="RoomCtrl"&gt;
+          &lt;div class="panel-heading room-header"&gt;TechNode&lt;/div&gt;
+          &lt;div class="panel-body room-content"&gt;
+            &lt;div class="list-group messages" auto-scroll-to-bottom&gt;
+              &lt;div class="list-group-item message" ng-repeat="message in messages"&gt;
+                某某: {{message}}
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;form class="message-creator" ng-controller="MessageCreatorCtrl"&gt;
+              &lt;div class="form-group"&gt;
+                &lt;textarea required class="form-control message-input" ng-model="newMessage" ctrl-enter-break-line="createMessage()" placeholder="Ctrl+Enter to quick send"&gt;&lt;/textarea&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script type="text/javascript" src="/technode.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>来看看在<code>index.html</code>中我们添加的绑定；</p>
+
+<ul>
+<li>ng-app="techNodeApp"，绑定一个名为techNodeApp的Angular应用（该应用的所有逻辑都将放到<code>technode.js</code>文件中）；</li>
+<li>ng-controller="RoomCtrl"，绑定一个名为<code>RoomCtrl</code>的房间控制器；</li>
+<li>ng-controller="MessageCreatorCtrl"，绑定一个名为<code>MessageCreatorCtrl</code>的消息创建控制器，；</li>
+<li>ng-repeat="message in messages": 一个repeat绑定，将从服务器端读过来的messages显示在页面中，因为Angluar的数据绑定是双向的，所以当messages中有新消息加入时，消息列表就会自动刷新。</li>
+</ul>
+
+<p>在<code>static</code>目录下新建名为<code>technode.js</code>文件，并引入到<code>index.html</code>中，接下来，逐步在<code>technode.js</code>中实现整个客户端逻辑：</p>
+
+<p>申明名为<code>techNodeApp</code>的模块，与<code>index.html</code>页面中的<code>ng-app</code>绑定对应；</p>
+
+<pre><code>angular.module('techNodeApp', [])
+</code></pre>
+
+<p>将socket.io封装成了一个名为<code>socket</code>的Angular的服务，这样我们就可以在其他组件中使用<code>socket</code>与服务端通信了：</p>
+
+<pre><code>angular.module('techNodeApp').factory('socket', function($rootScope) {
+  var socket = io.connect('/')
+  return {
+    on: function(eventName, callback) {
+      socket.on(eventName, function() {
+        var args = arguments
+        $rootScope.$apply(function() {
+          callback.apply(socket, args)
+        })
+      })
+    },
+    emit: function(eventName, data, callback) {
+      socket.emit(eventName, data, function() {
+        var args = arguments
+        $rootScope.$apply(function() {
+          if (callback) {
+            callback.apply(socket, args)
+          }
+        })
+      })
+    }
+  }
+})
+</code></pre>
+
+<p>仔细阅读上面的代码，socket服务并不是简单的将socket.io分装成了Angular服务，在每个回调函数里，我们调用了<code>$rootScope.$apply</code>。在Angular中，如果调用<code>$scope.$apply(callback)</code>，就是告诉Angular，执行<code>callback</code>，并在执行后，检查$scope（我们用的是$rootScope就是检查整个应用）数据状态，如果有变化就更新<code>index.html</code>中的绑定。通俗地说，就是每次与服务端通信后，根据数据变化，更新视图。</p>
+
+<p>接下来是定义<code>RoomCtrl</code>：</p>
+
+<pre><code>angular.module('techNodeApp').controller('RoomCtrl', function($scope, socket) {
+  $scope.messages = []
+  socket.emit('getAllMessages')
+  socket.on('allMessage', function (messages) {
+    $scope.messages = messages
+  })
+  socket.on('messageAdded', function (message) {
+    $scope.messages.push(message)
+  })
+})
+</code></pre>
+
+<p><code>RoomCtrl</code>控制器可以分为三部分：</p>
+
+<p><code>$scope.messages = []</code>是这个控制器的数据模型；对应视图中的：</p>
+
+<pre><code>&lt;div class="list-group-item message" ng-repeat="message in messages"&gt;
+  某某: {{message}}
+&lt;/div&gt;
+</code></pre>
+
+<p>由于Angular的双向绑定机制，我们无需手动操作DOM元素，数据模型<code>messages</code>的变化能够动态地反映在视图上。</p>
+
+<pre><code>socket.emit('getAllMessages')
+socket.on('allMessage', function (messages) {
+  $scope.messages = messages
+})
+</code></pre>
+
+<p>在techNode启动后，通过socket服务从服务端获取所有消息，更新到数据模型<code>messages</code>中。</p>
+
+<pre><code>socket.on('messageAdded', function (message) {
+  $scope.messages.push(message)
+})
+</code></pre>
+
+<p>监听服务端<code>messageAdded</code>事件，接收新的消息，添加到数据模型中。</p>
+
+<p>MessageCteatorCtrl的定义也非常简单，当用户按下回车时，将消息通过socket发送给服务端；注意着了的newMessage是通过ng-model与textarea直接绑定的；</p>
+
+<p>下面是另一个控制器<code>MessageCteatorCtrl</code>：</p>
+
+<pre><code>angular.module('techNodeApp').controller('MessageCreatorCtrl', function($scope, socket) {
+  $scope.newMessage = ''
+  $scope.createMessage = function () {
+    if ($scope.newMessage == '') {
+      return
+    }
+    socket.emit('createMessage', $scope.newMessage)
+    $scope.newMessage = ''
+  }
+})
+</code></pre>
+
+<p>数据模型<code>$scope.newMessage = ''</code>与视图中的<code>&lt;textarea ng-model="newMessage" ctrl-enter-break-line="createMessage()"&gt;&lt;/textarea&gt;</code>绑定。同时绑定了一个控制器方法<code>createMessage</code>，当用户回车时，调用这个方法，把新消息发送给服务端。</p>
+
+<p>你一定注意到了视图上有两个奇怪的属性<code>ctrl-enter-break-line</code>和<code>auto-scroll-to-bottom</code>，这是我们自定义的两个Angular指令：</p>
+
+<ul>
+<li>autoScrollToBottom：当消息很多出现滚动条时，该组件使得滚动条能随着消息的增加自动滚动到底部；</li>
+<li>ctrlEnterBreakLine: 在textarea回车，默认会换行，使用这个组件，可以通过ctrl+enter来换行，而enter则触发绑定的行为，在这里就是createMessage这个方法。</li>
+</ul>
+
+<pre><code>angular.module('techNodeApp').directive('autoScrollToBottom', function() {
+  return {
+    link: function(scope, element, attrs) {
+      scope.$watch(
+        function() {
+          return element.children().length;
+        },
+        function() {
+          element.animate({
+            scrollTop: element.prop('scrollHeight')
+          }, 1000);
+        }
+      );
+    }
+  };
+});
+
+angular.module('techNodeApp').directive('ctrlEnterBreakLine', function() {
+  return function(scope, element, attrs) {
+    var ctrlDown = false
+    element.bind("keydown", function(evt) {
+      if (evt.which === 17) {
+        ctrlDown = true
+        setTimeout(function() {
+          ctrlDown = false
+        }, 1000)
+      }
+      if (evt.which === 13) {
+        if (ctrlDown) {
+          element.val(element.val() + '\n')
+        } else {
+          scope.$apply(function() {
+            scope.$eval(attrs.ctrlEnterBreakLine);
+          });
+          evt.preventDefault()
+        }
+      }
+    });
+  };
+});
+</code></pre>
+
+<blockquote>
+<p>这是本文中唯一的两个Angular指令，本文并不打算深入探讨<code>Angular指令</code>的机制。读者只需明白其作用，学会使用即可。</p>
+</blockquote>
+
+<h3>
+<a id="user-content-开始与好友聊天" class="anchor" href="#%E5%BC%80%E5%A7%8B%E4%B8%8E%E5%A5%BD%E5%8F%8B%E8%81%8A%E5%A4%A9" aria-hidden="true"><span class="octicon octicon-link"></span></a>开始与好友聊天！</h3>
+
+<p>哦也，一个最简陋的聊天室搭建完成了！说简陋，因为它连用户都没有，消息都是匿名的。不过，通过这个简单的聊天室，想必大家已经了解了TechNode各个基础部分，学会了如何使用Angular和socket.io的快速搭建Web应用。</p>
+
+<p>启动服务器，把地址发给同事或朋友试试看！他们一定会嘲笑你连用户名都没有吧？好了，下一步我们就为TechNode加入用户的功能！</p>
+</article></body></html>

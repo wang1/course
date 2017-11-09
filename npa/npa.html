@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通信网课程设计-网络协议分析</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
+    <link href="../docs-assets/css/docs.css" rel="stylesheet">
+    <link href="../docs-assets/css/github.min.css" rel="stylesheet">
+    <style>
+        body{font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;}
+        h1, .h1, h2, .h2, h3, .h3, h4, .h4, .lead {font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;}
+        pre code { background: transparent; }
+        p{font-size: 18px;}
+    </style>
+
+    <!--[if lt IE 9]><script src="../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
+</head>
+<body>
+<a class="sr-only" href="#content">Skip to main content</a>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-globe"></span> 网络协议分析</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#"><span class="glyphicon glyphicon-list-alt"></span> 课堂教学</a>
+                </li>
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-glass"></span> 实验</a>
+                </li>
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-pencil"></span> 考试</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-info-sign"></span> 关于</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<!-- Docs page layout -->
+<div class="bs-header" id="content">
+    <div class="container">
+        <h1>课堂教学</h1>
+        <p>本课程设计要求理解各通信协议的使用。</p>
+    </div>
+</div>
+
+<!-- Callout for the old docs link -->
+
+
+<div class="container bs-docs-container">
+<div class="row">
+<div class="col-md-1">
+
+</div>
+<div class="col-md-11" role="main">
+    <div class="bs-callout bs-callout-info">
+        <h3>题目说明</h3>
+        <p>假设你当前使用计算机的IP地址为202.202.243.10/25，
+            网关为202.202.243.1，DNS服务器IP地址为202.202.240.33，
+            MAC地址是00-0A-E6-2A-0E-A3，计算机所在的Ethernet为星型拓扑结构，
+            带宽100Mbps，网络及各服务器正常工作。
+        </p>
+        <p>
+            通过Wireshark抓包，请图文并茂详细描述当在浏览器地址栏中输入
+            http://webmail.cquc.edu.cn回车后到整个页面全部显示完毕这个过程。
+            注意：对应所抓的包，仅描述本机的应用层、传输层、网络层、数据链路层、
+            物理层所发生的事情，如果叙述中遇到已经描述的方法可省略
+            （写明参见第X步即可），同时注意条理性。如：
+        </p>
+        <p>
+        <ol>
+            <li>首先，浏览器分析URL，因为是以字母（cn）而非数字结尾，可得知当前使用的是域名，必须首先解析其对应的IP地址</li>
+            <li>在DNS缓存中查找webmail.cquc.edu.cn项，命中则执行下面第X步，否则</li>
+            <li>浏览器构建DNS包，递交给传输层实体同时告知该包为DNS包</li>
+            <li>传输层实体构建UDP包，源端口按主机当前情况选择，目的端口为53，然后将包递交网络层</li>
+            <li>
+                网络层实体以源IP为202.202.243.10，目的IP为DNS服务器的即202.202.240.33等字段封装UDP包以构建IP包。同时，网络层实体通过子网掩码运算得知目的主机不在本子网，则应发给网关。在ARP缓存中查找202.202.243.1项，如果命中则执行第X步，否则
+            </li>
+            <li>
+                ......
+            </li>
+            <br/>
+        </ol>
+
+        </p>
+    </div>
+    <div class="bs-callout bs-callout-info">
+        <h3>选题说明</h3>
+        <p>可以选择其它老师（班级）的题目，也可以自选题目（需得到指导教师认可）；
+            如果选择此题目，则不局限于分析webmail.cqjtu.edu.cn，
+            根据你自己访问网站的情况如www.cqjtu.edu.cn、jw.cqjtu.edu.cn、www.google.com等都可。
+        </p>
+    </div>
+    <div class="bs-callout bs-callout-info">
+        <h3>结题说明</h3>
+        <p>课程设计时间为17-18周，18周五下午2点开始提交设计报告（按学院课程设计报告格式的打印稿以及包文件），
+            并任选同学进行答辩</p>
+        <p>
+            <a href="http://202.202.243.2:3000/npa.html" class="btn btn-danger btn-block">作业提交</a>
+        </p>
+    </div>
+    <div class="bs-callout bs-callout-info">
+        <h3>参考链接</h3>
+        <p><a href="http://blog.sina.com.cn/s/blog_5d527ff00100dwph.html" target="_blank">Wireshark图文教程</a></p>
+        <p><a href="http://www.51cto.com/art/200512/14077.htm" target="_blank">中国协议分析网</a></p>
+    </div>
+
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="bs-footer" role="contentinfo">
+    <div class="container">
+        <p>本网站所列文档全部由棋歌整理及维护，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>协议发布。</p>
+        <p>Powered By <a href="http://nginx.org/" target="_blank" title="">Nginx</a> And<a href="http://www.bootcss.com/"> Bootcss</a></p>
+        <p>
+            <a href="http://www.cqjtu.edu.cn/" target="_blank">重庆交通大学信息学院</a>
+        </p>
+    </div>
+</footer>
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/dist/js/bootstrap.min.js"></script>
+
+
+<script src="../docs-assets/js/holder.min.js"></script>
+<script src="../docs-assets/js/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script>
+
+<script src="../docs-assets/js/application.js"></script>
+
+
+
+<!-- Analytics
+================================================== -->
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F3d8e7fc0de8a2a75f2ca3bfe128e6391' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+</body>
+</html>

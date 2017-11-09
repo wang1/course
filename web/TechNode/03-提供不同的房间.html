@@ -1,0 +1,1610 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .h {
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs,
+.markdown-body .highlight .cp .h {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #000;
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+}
+
+.markdown-body .highlight .pl-coc,
+.markdown-body .highlight .pl-entm,
+.markdown-body .highlight .pl-eoa,
+.markdown-body .highlight .pl-mai .pl-sf,
+.markdown-body .highlight .pl-pdv,
+.markdown-body .highlight .pl-sc,
+.markdown-body .highlight .pl-sr,
+.markdown-body .highlight .pl-v,
+.markdown-body .highlight .pl-vpf {
+  color: #0086b3;
+}
+
+.markdown-body .highlight .pl-eoac,
+.markdown-body .highlight .pl-mdht,
+.markdown-body .highlight .pl-mi1,
+.markdown-body .highlight .pl-mri,
+.markdown-body .highlight .pl-va,
+.markdown-body .highlight .pl-vpu {
+  color: #008080;
+}
+
+.markdown-body .highlight .pl-c,
+.markdown-body .highlight .pl-pdc {
+  color: #b4b7b4;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-k,
+.markdown-body .highlight .pl-ko,
+.markdown-body .highlight .pl-kolp,
+.markdown-body .highlight .pl-mc,
+.markdown-body .highlight .pl-mr,
+.markdown-body .highlight .pl-ms,
+.markdown-body .highlight .pl-s,
+.markdown-body .highlight .pl-sok,
+.markdown-body .highlight .pl-st {
+  color: #6e5494;
+}
+
+.markdown-body .highlight .pl-ef,
+.markdown-body .highlight .pl-enf,
+.markdown-body .highlight .pl-enm,
+.markdown-body .highlight .pl-entc,
+.markdown-body .highlight .pl-eoi,
+.markdown-body .highlight .pl-sf,
+.markdown-body .highlight .pl-smc {
+  color: #d12089;
+}
+
+.markdown-body .highlight .pl-ens,
+.markdown-body .highlight .pl-eoai,
+.markdown-body .highlight .pl-kos,
+.markdown-body .highlight .pl-mh .pl-pdh,
+.markdown-body .highlight .pl-mp,
+.markdown-body .highlight .pl-pde,
+.markdown-body .highlight .pl-stp {
+  color: #458;
+}
+
+.markdown-body .highlight .pl-enti {
+  color: #d12089;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cce,
+.markdown-body .highlight .pl-enc,
+.markdown-body .highlight .pl-kou,
+.markdown-body .highlight .pl-mq {
+  color: #f93;
+}
+
+.markdown-body .highlight .pl-mp1 .pl-sf {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cos,
+.markdown-body .highlight .pl-ent,
+.markdown-body .highlight .pl-md,
+.markdown-body .highlight .pl-mdhf,
+.markdown-body .highlight .pl-ml,
+.markdown-body .highlight .pl-pdc1,
+.markdown-body .highlight .pl-pds,
+.markdown-body .highlight .pl-s1,
+.markdown-body .highlight .pl-scp,
+.markdown-body .highlight .pl-sol {
+  color: #df5000;
+}
+
+.markdown-body .highlight .pl-c1,
+.markdown-body .highlight .pl-cn,
+.markdown-body .highlight .pl-pse,
+.markdown-body .highlight .pl-pse .pl-s2,
+.markdown-body .highlight .pl-vi {
+  color: #a31515;
+}
+
+.markdown-body .highlight .pl-mb,
+.markdown-body .highlight .pl-pdb {
+  color: #df5000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mi,
+.markdown-body .highlight .pl-pdi {
+  color: #6e5494;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-ms1 {
+  background-color: #f5f5f5;
+}
+
+.markdown-body .highlight .pl-mdh,
+.markdown-body .highlight .pl-mdi {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mdr {
+  color: #0086b3;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-s2 {
+  color: #333;
+}
+
+.markdown-body .highlight .pl-ii {
+  background-color: #df5000;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-ib {
+  background-color: #f93;
+}
+
+.markdown-body .highlight .pl-id {
+  background-color: #a31515;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-iu {
+  background-color: #b4b7b4;
+}
+
+.markdown-body .highlight .pl-mo {
+  color: #969896;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}</style><title>03-提供不同的房间</title></head><body><article class="markdown-body"><h2>
+<a id="user-content-提供不同的房间" class="anchor" href="#%E6%8F%90%E4%BE%9B%E4%B8%8D%E5%90%8C%E7%9A%84%E6%88%BF%E9%97%B4" aria-hidden="true"><span class="octicon octicon-link"></span></a>提供不同的房间</h2>
+
+<p>在本章中，我们将为TechNode添加房间的功能，借助socket.io的room功能可以很快地实现，我们开始吧。</p>
+
+<h3>
+<a id="user-content-设计房间列表页面" class="anchor" href="#%E8%AE%BE%E8%AE%A1%E6%88%BF%E9%97%B4%E5%88%97%E8%A1%A8%E9%A1%B5%E9%9D%A2" aria-hidden="true"><span class="octicon octicon-link"></span></a>设计房间列表页面</h3>
+
+<p>我们为用户提供一个房间列表页面，在这个页面上用户可以看到所有的房间，并且可以搜索，如果没有搜索到的话，可以创建新的房间。</p>
+
+<p>新增pages/rooms.html页面：</p>
+
+<pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-md-8 col-md-offset-2"&gt;
+    &lt;form&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label class="sr-only"&gt;房间名&lt;/label&gt;
+        &lt;input type="input" required class="form-control search-room-input" placeholder="搜索房间" /&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+  &lt;ul class="room-list clearfix"&gt;
+    &lt;li class="room-item"&gt;
+      &lt;div class="room-content"&gt;
+        &lt;h3&gt;JavaScript&lt;span class="badge pull-right"&gt;1人&lt;/span&gt;&lt;/h3&gt;
+        &lt;div class="avatar-list"&gt;
+            &lt;span&gt;
+              &lt;img alt="island205@gmail.com" src="http://www.gravatar.com/avatar/dfd8ec3a8b02aea547de1b092557b97c" class="img-rounded"/&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="row no-room"&gt;
+    &lt;form class="form-inline no-room-form"&gt;
+      &lt;div class="form-group"&gt;
+        没找到你想要的房间&lt;strong class="label label-default no-room-label"&gt;Java&lt;/strong&gt;，&lt;button class="btn btn-warning"&gt;点击新建&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>这个页面分成三部分：</p>
+
+<ul>
+<li>主体列出了所有的房间，包括房间人数和人的列表；</li>
+<li>顶部游一个搜索框，可以搜索房间；</li>
+<li>当用户搜索的房间不存在时，让用户点击创建新的房间。</li>
+</ul>
+
+<p><a href="examples/chapter03/images/NewRoom.png" target="_blank"><img src="examples/chapter03/images/NewRoom.png" alt="NewRoom" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-添加房间api" class="anchor" href="#%E6%B7%BB%E5%8A%A0%E6%88%BF%E9%97%B4api" aria-hidden="true"><span class="octicon octicon-link"></span></a>添加房间API</h3>
+
+<h4>
+<a id="user-content-修改数据模型" class="anchor" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>修改数据模型</h4>
+
+<p>因为我们加入了房间的概念，所以我们有必要修改一下数据模型:</p>
+
+<p>首先添加房间的Schema，在models中添加room.js文件，添加如下代码：</p>
+
+<pre><code>var mongoose = require('mongoose')
+var Schema = mongoose.Schema
+
+var Room = new Schema({
+  name: String,
+  createAt:{type: Date, default: Date.now}
+});
+
+module.exports = Room
+</code></pre>
+
+<p>房间的数据模型很简单，只有两个字段，房间名称房间的创建时间；</p>
+
+<p>修改消息的的Schema：</p>
+
+<pre><code>var mongoose = require('mongoose')
+var Schema = mongoose.Schema,
+  ObjectId = Schema.ObjectId
+
+var Message = new Schema({
+  content: String,
+  creator: {
+    _id: ObjectId,
+    email: String,
+    name: String,
+    avatarUrl: String
+  },
+  _roomId: ObjectId,
+  createAt:{type: Date, default: Date.now}
+})
+
+module.exports = Message
+</code></pre>
+
+<p>添加了一个_roomId的作为指向房间的外间，让消息与房间对应起来。</p>
+
+<p>同理为用户模型也添加一个：</p>
+
+<pre><code>var mongoose = require('mongoose')
+var Schema = mongoose.Schema
+
+var User = new Schema({
+  email: String,
+  name: String,
+  avatarUrl: String,
+  _roomId: ObjectId,
+  online: Boolean
+});
+
+module.exports = User
+</code></pre>
+
+<h3>
+<a id="user-content-实现room的controller" class="anchor" href="#%E5%AE%9E%E7%8E%B0room%E7%9A%84controller" aria-hidden="true"><span class="octicon octicon-link"></span></a>实现room的controller</h3>
+
+<p>我们需要两个接口：</p>
+
+<ul>
+<li>查找所有的房间，包括当前在这个房间的用户列表，我们使用房间ID到用户列表中查询属于当前房间的用户；</li>
+<li>创建新的房间。</li>
+</ul>
+
+<pre><code>var db = require('../models')
+var async = require('async')
+
+exports.create = function(room, callback) {
+  var r = new db.Room()
+  r.name = room.name
+  r.save(callback)
+}
+
+exports.read = function(callback) {
+  db.Room.find({}, function(err, rooms) {
+    if (!err) {
+      var roomsData = []
+      async.each(rooms, function(room, done) {
+        var roomData = room.toObject()
+        db.User.find({
+          _roomId: roomData._id,
+          online: true
+        }, function(err, users) {
+          if (err) {
+            done(err)
+          } else {
+            roomData.users = users
+            roomsData.push(roomData)
+            done()
+          }
+        })
+      }, function(err) {
+        callback(err, roomsData)
+      })
+    }
+  })
+}
+</code></pre>
+
+<p>在读取房间信息时，我们使用async.each来并行地查询每个房间的用户列表。</p>
+
+<h3>
+<a id="user-content-提供socket的房间api" class="anchor" href="#%E6%8F%90%E4%BE%9Bsocket%E7%9A%84%E6%88%BF%E9%97%B4api" aria-hidden="true"><span class="octicon octicon-link"></span></a>提供socket的房间API</h3>
+
+<p>修改app.js的socket部分，为客户端提供两个接口——新建房间和读取所有房间列表：</p>
+
+<pre><code>socket.on('createRoom', function (room) {
+  Controllers.Room.create(room, function (err, room) {
+    if (err) {
+      socket.emit('err', {msg: err})
+    } else {
+      io.sockets.emit('roomAdded', room)
+    }
+  })
+})
+
+sockets.on('getAllRooms', function () {
+  Controllers.Room.read(function (err, rooms) {
+    if (err) {
+      socket.emit('err', {msg: err})
+    } else {
+      socket.emit('roomsData', rooms)
+    }
+  })
+})
+</code></pre>
+
+<h3>
+<a id="user-content-登录后跳转至房间列表" class="anchor" href="#%E7%99%BB%E5%BD%95%E5%90%8E%E8%B7%B3%E8%BD%AC%E8%87%B3%E6%88%BF%E9%97%B4%E5%88%97%E8%A1%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>登录后跳转至房间列表</h3>
+
+<p>在上一章中，用户登录成功后，我们直接跳转至聊天室，但是现在我们有了房间的功能，因此当用户登录成功后，首先跳转至聊天室列表。在router.js中添加上房间列表的路由<code>/rooms</code>：</p>
+
+<pre><code>angular.module('techNodeApp').config(function($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode(true);
+  $routeProvider.
+  when('/rooms', {
+    templateUrl: '/pages/rooms.html',
+    controller： 'RoomsCtrl'
+  })
+  when('/rooms/:_roomId', {
+    templateUrl: '/pages/room.html',
+    controller: 'RoomCtrl'
+  }).
+  when('/login', {
+    templateUrl: '/pages/login.html',
+    controller: 'LoginCtrl'
+  }).
+  otherwise({
+    redirectTo: '/login'
+  })
+})
+</code></pre>
+
+<p>在static/controllers下添加rooms.js，实现房间列表控制器RoomsCtrl：</p>
+
+<pre><code>angular.module('techNodeApp').controller('RoomsCtrl', function($scope) {
+  // Nothing
+})
+</code></pre>
+
+<p>目前这个控制器没有任何逻辑，稍后再来实现。</p>
+
+<p>修改technode.js中的启动模块和登录控制器loginCtrl，当用户成功登录后，跳至房间列表：</p>
+
+<pre><code>// controllers/main.js
+// ...
+$http({
+  url: '/ajax/validate',
+  method: 'GET'
+}).success(function (user) {
+  $scope.me = user
+  $location.path('/rooms')
+}).error(function (data) {
+  $location.path('/login')
+})
+// ...
+
+// controllers/login.js
+angular.module('techNodeApp').controller('LoginCtrl', function($scope, $http, $location) {
+  $scope.login = function () {
+    $http({
+      url: '/ajax/login',
+      method: 'POST',
+      data: {
+        email: $scope.email
+      }
+    }).success(function (user) {
+      $scope.$emit('login', user)
+      $location.path('/rooms')
+    }).error(function (data) {
+      $location.path('/login')
+    })
+  }
+})
+</code></pre>
+
+<h3>
+<a id="user-content-房间列表" class="anchor" href="#%E6%88%BF%E9%97%B4%E5%88%97%E8%A1%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>房间列表</h3>
+
+<p>我们的目标就是把房间从服务器端读取过来，显示在房间列表页面上，首先在room.html添加Angular的绑定：</p>
+
+<pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-md-8 col-md-offset-2"&gt;
+    &lt;form&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label class="sr-only"&gt;房间名&lt;/label&gt;
+        &lt;input type="input" required class="form-control search-room-input" ng-change="searchRoom()" ng-model="searchKey" placeholder="搜索房间" /&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+  &lt;ul class="room-list clearfix"&gt;
+    &lt;li  ng-repeat="room in rooms" class="room-item"&gt;
+      &lt;div class="room-content" ng-click="enterRoom(room)"&gt;
+        &lt;h3&gt;{{room.name}}&lt;span class="badge pull-right"&gt;{{room.users.length}}&lt;/span&gt;人&lt;/h3&gt;
+        &lt;div class="avatar-list"&gt;
+            &lt;span ng-repeat="user in room.users" title="{{user.name}}"&gt;
+              &lt;img alt="{{user.email}}" src="{{user.avatarUrl}}" class="img-rounded"/&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="row no-room" ng-show="rooms.length == 0 &amp;&amp; searchKey"&gt;
+    &lt;form class="form-inline no-room-form"&gt;
+      &lt;div class="form-group"&gt;
+        没找到你想要的房间&lt;strong class="label label-default no-room-label"&gt;{{searchKey}}&lt;/strong&gt;，&lt;button class="btn btn-warning" ng-click="createRoom()"&gt;点击新建&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>来看一下在这个模板视图中使用的绑定：</p>
+
+<ul>
+<li>
+<code>ng-change="searchRoom()"</code>，当搜索框的内容有变化时，就调用RoomsCtrl的searchRoom来过滤房间；</li>
+<li>
+<code>ng-show="rooms.length == 0 &amp;&amp; searchKey"</code>，当scope中的房间列表长度为0，且存在搜索关键字存在的情况下，就把创建的提示显示出来，否则隐藏。</li>
+</ul>
+
+<p>接下来实现RoomsCtrl：</p>
+
+<pre><code>angular.module('techNodeApp').controller('RoomsCtrl', function($scope, socket) {
+  socket.emit('getAllRooms')
+  socket.on('roomsData', function (rooms) {
+    $scope.rooms = $scope._rooms = rooms
+  })
+  $scope.searchRoom = function () {
+    if ($scope.searchKey) {
+      $scope.rooms = $scope._rooms.filter(function (room) {
+        return room.name.indexOf($scope.searchKey) &gt; -1
+      })
+    } else {
+      $scope.rooms = $scope._rooms
+    }
+
+  }
+  $scope.createRoom = function () {
+    socket.emit('createRoom', {
+      name: $scope.searchKey
+    })
+  }
+  socket.on('roomAdded', function (room) {
+    $scope._rooms.push(room)
+    $scope.searchRoom()
+  })
+})
+</code></pre>
+
+<p>首先我们通过<code>socket.emit('getAllRooms')</code>向服务端发起读取房间列表的请求，当服务端将房间返回后，我们将原始数据存储在_rooms中，rooms则拷贝一份；</p>
+
+<pre><code>$scope.searchRoom = function () {
+  if ($scope.searchKey) {
+    $scope.rooms = $scope._rooms.filter(function (room) {
+      return room.name.indexOf($scope.searchKey) &gt; -1
+    })
+  } else {
+    $scope.rooms = $scope._rooms
+  }
+}
+</code></pre>
+
+<p><code>$scope.searchRoom</code>则是过滤rooms的实现，我们仅仅做了简单的字符串包含的匹配；这也正式我们把原始数据保存在_rooms中的原因。</p>
+
+<pre><code>$scope.createRoom = function () {
+  socket.emit('createRoom', {
+    name: $scope.searchKey
+  })
+}
+socket.on('roomAdded', function (room) {
+  $scope._rooms.push(room)
+  $scope.searchRoom()
+})
+</code></pre>
+
+<p>createRoom通过调用服务端的接口创建房间，房间创建完成，服务端会触发一个<code>roomAdded</code>的事件，我们将新的房间加入到_rooms中，调用<code>$scope.searchRoom()</code>手动进行一次搜索，将新增的房间同步到rooms中。</p>
+
+<p>由于Angular.js动态绑定的特性，随着rooms的变化，房间列表视图自动更新，我们无需手动操作DOM节点，维护DOM节点的状态，这就是Angular最鲜明的特点之一。</p>
+
+<p><a href="examples/chapter03/images/RoomList.png" target="_blank"><img src="examples/chapter03/images/RoomList.png" alt="RoomList" style="max-width:100%;"></a></p>
+
+<p>接下来我们实现用户进入房间的逻辑。</p>
+
+<h3>
+<a id="user-content-进入单独的房间" class="anchor" href="#%E8%BF%9B%E5%85%A5%E5%8D%95%E7%8B%AC%E7%9A%84%E6%88%BF%E9%97%B4" aria-hidden="true"><span class="octicon octicon-link"></span></a>进入单独的房间</h3>
+
+<p>在房间列表页面，当用户点击房间时，就跳转到对应的房间页面，但是在这之前，我们需要先与服务器通信，将用户的这个加入房间的动作发送到其他客户端。</p>
+
+<pre><code>angular.module('techNodeApp').controller('RoomsCtrl', function($scope, $location, socket) {
+  // ...
+  $scope.enterRoom = function (room) {
+    socket.emit('joinRoom', {
+      user: $scope.me,
+      room: room
+    })
+  }
+  socket.once('joinRoom.' + $scope.me._id, function (join) {
+    $location.path('/rooms/' + join.room._id)
+  })
+  socket.on('joinRoom', function (join) {
+    $scope.rooms.forEach(function (room) {
+      if (room._id == join.room._id) {
+        room.users.push(join.user)
+      }
+    })
+  })
+  // ...
+})
+</code></pre>
+
+<p><code>$scope.enterRoom</code>是与rooms.html中的房间绑定的，<code>&lt;div class="room-content" ng-click="enterRoom(room)"&gt;</code>。当服务端处理完用户进入房间的动作之后，会向客户端发送一个<code>joinRoom.52b380a837a4f24736000001</code>的事件，即对应之前客户端发送的那个加入房间的请求。客户端收到这个事件之后，就跳转到特定的聊天室去了。</p>
+
+<p>在这个控制器中，还监听了一个事件，<code>joinRoom</code>，即当有用户加入到某个房间后，服务端都广播这个事件，便于客户端更新在房间里的用户。</p>
+
+<p>来看看服务端是如何实现的：</p>
+
+<p>user的controller提供一个接口：</p>
+
+<pre><code>exports.joinRoom = function (join, callback) {
+  db.User.findOneAndUpdate({
+    _id: join.user._id
+  }, {
+    $set: {
+      online: true,
+      _roomId: join.room._id
+    }
+  }, callback)
+}
+</code></pre>
+
+<p>修改app.js，用户加入某个房间后，将加入的房间ID保存到用户数据中。</p>
+
+<pre><code>socket.on('joinRoom', function(join) {
+  Controllers.User.joinRoom(join, function(err) {
+    if (err) {
+      socket.emit('err', {
+        msg: err
+      })
+    } else {
+      socket.join(join.room._id)
+      socket.emit('joinRoom.' + join.user._id, join)
+      socket.in(join.room._id).broadcast.emit('messageAdded', {
+        content: join.user.name + '进入了聊天室',
+        creator: SYSTEM,
+        createAt: new Date(),
+        _id: ObjectId()
+      })
+      socket.in(join.room._id).broadcast.emit('joinRoom', join)
+    }
+  })
+})
+</code></pre>
+
+<p>socket层的处理：当将用户加入动作写入数据库之后，首先调用<code>socket.join</code>方法，将当前的socket加入到一个键值为<code>join.room._id</code>的房间中，然后触发了三个事件：</p>
+
+<ul>
+<li>
+<code>'joinRoom.' + join.user._id</code>：通知客户端，这次加入房间成功了，可以跳转至房间了；</li>
+<li>
+<code>socket.in(join.room._id).broadcast.emit('messageAdded'</code>，因为之前加入了一个socket的房间，即对这个房间的其他socket广播，发了一条消息，有一个新的用户进入了聊天室，在其他客户端的聊天室页面，即可以看到这条系统通知；</li>
+<li>
+<code>socket.in(join.room._id).broadcast.emit('joinRoom', join)</code>：这条消息则是通知客户端的有新的用户加入了房间，客户端的房间列表页和房间页则监听这个事件更新对应的用户列表。</li>
+</ul>
+
+<p>接下来就是进入到具体的房间了：</p>
+
+<p>别忘了本章开始对客户端router.js的修改：</p>
+
+<pre><code>angular.module('techNodeApp').config(function($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode(true);
+  $routeProvider.
+  when('/rooms', {
+    templateUrl: '/pages/rooms.html',
+    controller: 'RoomsCtrl'
+  }).
+  when('/rooms/:_roomId', {
+    templateUrl: '/pages/room.html',
+    controller: 'RoomCtrl'
+  }).
+  when('/login', {
+    templateUrl: '/pages/login.html',
+    controller: 'LoginCtrl'
+  }).
+  otherwise({
+    redirectTo: '/login'
+  })
+})
+</code></pre>
+
+<p>聊天室不再是像第二章那样直接指向<code>/</code>，而是<code>/rooms/:_roomId</code>，在RoomCtrl中我们可以通过$routeParams来获得_roomId，根据这个id，我们就可以从服务端读取相关的房间数据，将聊天室渲染出来了。</p>
+
+<pre><code>angular.module('techNodeApp').controller('RoomCtrl', function($scope, $routeParams, $scope, socket) {
+  socket.emit('getAllRooms', {
+    _roomId: $routeParams._roomId
+  })
+  socket.on('roomData.' + $routeParams._roomId, function(room) {
+    $scope.room = room
+  })
+  socket.on('messageAdded', function(message) {
+    $scope.room.messages.push(message)
+  })
+  socket.on('joinRoom', function (join) {
+    $scope.room.users.push(join.user)
+  })
+})
+</code></pre>
+
+<p>首先修改RoomCtrl，通过<code>$routeParams</code>获取route参数，触发<code>getRoom</code>事件，到服务器端读取房间数据；其次是接受新的消息，并当用户加入到房间时，将用户加入到用户列表中。</p>
+
+<pre><code>&lt;div class="col-md-9"&gt;
+  &lt;div class="panel panel-default room"&gt;
+    &lt;div class="panel-heading room-header"&gt;{{room.name}}&lt;/div&gt;
+    &lt;div class="panel-body room-content"&gt;
+      &lt;div class="list-group messages" auto-scroll-to-bottom&gt;
+        &lt;div class="list-group-item message" ng-repeat="message in room.messages"&gt;
+          &lt;img src="{{message.creator.avatarUrl}}" title="{{message.creator.name}}" class="img-rounded"/&gt;{{message.creator.name}}: {{message.content}}&lt;time am-time-ago="message.createAt"&gt;&lt;/time&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;form class="message-creator" ng-controller="MessageCreatorCtrl"&gt;
+        &lt;div class="form-group"&gt;
+          &lt;textarea required class="form-control message-input" ng-model="newMessage" ctrl-enter-break-line="createMessage()" placeholder="Ctrl+Enter 发送"&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-3"&gt;
+  &lt;div class="panel panel-default user-list"&gt;
+    &lt;div class="panel-heading user-list-header"&gt;在线用户&lt;/div&gt;
+    &lt;div class="panel-body user-list-content"&gt;
+      &lt;div class="list-group users"&gt;
+        &lt;div class="list-group-item user" ng-repeat="user in room.users"&gt;
+          &lt;img src="{{user.avatarUrl}}" title="{{user.name}}" class="img-rounded"/&gt;{{user.name}}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>修改room.html页面，与第二章的基本一致，只是绑定的数据不一样了而已。将<code>TechNode</code>绑定为房间名。</p>
+
+<p>接下来实现服务器端：</p>
+
+<pre><code>socket.on('getAllRooms', function(data) {
+  if (data &amp;&amp; data._roomId) {
+    Controllers.Room.getById(data._roomId, function(err, room) {
+      if (err) {
+        socket.emit('err', {
+          msg: err
+        })
+      } else {
+        socket.emit('roomData.' + data._roomId, room)
+      }
+    })
+  } else {
+    Controllers.Room.read(function(err, rooms) {
+      if (err) {
+        socket.emit('err', {
+          msg: err
+        })
+      } else {
+        socket.emit('roomsData', rooms)
+      }
+    })
+  }
+})
+</code></pre>
+
+<p>修改<code>getAllRooms</code>的socket响应，如果客户端的请求数据中包含<code>_roomId</code>的话，就读取单独房间的数据，而不是读取所有的房间。</p>
+
+<p>room的controller则添加需要的getById方法：</p>
+
+<pre><code>exports.getById = function(_roomId, callback) {
+  db.Room.findOne({
+    _id: _roomId
+  }, function(err, room) {
+    if (err) {
+      callback(err)
+    } else {
+      async.parallel([
+
+          function(done) {
+            db.User.find({
+              _roomId: _roomId,
+              online: true
+            }, function(err, users) {
+              done(err, users)
+            })
+          },
+          function(done) {
+            db.Message.find({
+              _roomId: _roomId
+            }, null, {
+              sort: {
+                'createAt': -1
+              },
+              limit: 20
+            }, function(err, messages) {
+              done(err, messages.reverse())
+            })
+          }
+        ],
+        function(err, results) {
+          if (err) {
+            callback(err)
+          } else {
+            room = room.toObject()
+            room.users = results[0]
+            room.messages = results[1]
+            callback(null, room)
+          }
+        });
+      }
+  })
+}
+</code></pre>
+
+<p>使用async并行地把room中的用户和消息都读取出来。注意，只读取最新的20条消息，且按照时间的排序，最新的在最后。这样能够保证在客户端渲染时，最新的消息在最下面。</p>
+
+<p><a href="examples/chapter03/images/OneRoom.png" target="_blank"><img src="examples/chapter03/images/OneRoom.png" alt="OneRoom" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-让消息只在房间内传递" class="anchor" href="#%E8%AE%A9%E6%B6%88%E6%81%AF%E5%8F%AA%E5%9C%A8%E6%88%BF%E9%97%B4%E5%86%85%E4%BC%A0%E9%80%92" aria-hidden="true"><span class="octicon octicon-link"></span></a>让消息只在房间内传递</h3>
+
+<p>还有一点，现在聊天室创建的消息，必须是针对特定房间的，这些消息仅在特定的房间内传递。因此：</p>
+
+<pre><code>angular.module('techNodeApp').controller('MessageCreatorCtrl', function($scope, socket) {
+  $scope.createMessage = function () {
+    socket.emit('messages.create', {
+      content: $scope.newMessage,
+      creator: $scope.me,
+      _roomId: $scope.room._id
+    })
+    $scope.newMessage = ''
+  }
+})
+</code></pre>
+
+<p>修改MessageCreatorCtrl，多传递给服务端一个参数，_roomId。</p>
+
+<p>而服务端，则需要将消息通过房间的形式，将消息广播开来：</p>
+
+<pre><code>socket.on('createMessage', function(message) {
+  Controllers.Message.create(message, function(err, message) {
+    if (err) {
+      socket.emit('err', {
+        msg: err
+      })
+    } else {
+      socket.in(message._roomId).broadcast.emit('messageAdded', message)
+      socket.emit('messageAdded', message)
+    }
+  })
+})
+</code></pre>
+
+<p>到此为止，用户可以进到一个房间，发消息，这些消息只在该房间中传递，我们使用socket.io的room功能实现了这种限制。</p>
+
+<h3>
+<a id="user-content-用户离开房间" class="anchor" href="#%E7%94%A8%E6%88%B7%E7%A6%BB%E5%BC%80%E6%88%BF%E9%97%B4" aria-hidden="true"><span class="octicon octicon-link"></span></a>用户离开房间</h3>
+
+<p>离开房间是一个相对比较复杂的问题，存在很多种情况导致一个用户离开房间：</p>
+
+<ul>
+<li>用户退到了房间列表页；</li>
+<li>用户刷新了页面；</li>
+<li>用户退出；</li>
+<li>用户直接关闭了网页；</li>
+<li>用户断网了等。</li>
+</ul>
+
+<p>我们把这些问题分成两类：</p>
+
+<ul>
+<li>用户断网了，或者是刷新网页， 关闭网页，即socket断开了；</li>
+<li>用户没断网，但去了其他的页面，不管是去到房间列表还是登陆页，导致了页面地址的变化；</li>
+</ul>
+
+<p>于是，我们分两种情况来处理这种问题：</p>
+
+<p>首先socket断开了，修改app.js：</p>
+
+<pre><code>socket.on('disconnect', function() {
+  Controllers.User.offline(_userId, function(err, user) {
+    if (err) {
+      socket.emit('err', {
+        mesg: err
+      })
+    } else {
+      if (user._roomId) {
+        socket.in(user._roomId).broadcast.emit('leaveRoom', user)
+        socket.in(user._roomId).broadcast.emit('messageAdded', {
+          content: user.name + '离开了聊天室',
+          creator: SYSTEM,
+          createAt: new Date(),
+          _id: ObjectId()
+        })
+        Controllers.User.leaveRoom({user: user}, function() {})
+      }
+
+    }
+  })
+})
+</code></pre>
+
+<p>用户断开后，如果他正在某个房间中，通知在该房间的客户端，该用户已经离开了。</p>
+
+<p>另外一种，就是用户到了其他的页面：</p>
+
+<pre><code>angular.module('techNodeApp').controller('RoomCtrl', function($scope, $routeParams, $scope, socket) {
+  // ...
+  $scope.$on('$routeChangeStart', function() {
+    socket.emit('leaveRoom', {
+      user: $scope.me,
+      room: $scope.room
+    })
+  })
+  socket.on('leaveRoom', function(leave) {
+    _userId = leave.user._id
+    $scope.room.users = $scope.room.users.filter(function(user) {
+      return user._id != _userId
+    })
+  })
+  // ...
+})
+</code></pre>
+
+<p>即会导致route的变化，我们添加一个监听器，如果地址开始变化，就通知服务端，该用户已经退出该房间了。除此之外，房间还需要监听其他用户退出的情况，做起来很简单，如果有其他用户退出了，就把他从房间的users列表中过滤掉。</p>
+
+<p>服务端处理用户离开的请求也比较简单：</p>
+
+<pre><code>socket.on('leaveRoom', function(leave) {
+  Controllers.User.leaveRoom(leave, function(err) {
+    if (err) {
+      socket.emit('err', {
+        msg: err
+      })
+    } else {
+      socket.in(leave.room._id).broadcast.emit('messageAdded', {
+        content: leave.user.name + '离开了聊天室',
+        creator: SYSTEM,
+        createAt: new Date(),
+        _id: ObjectId()
+      })
+      socket.leave(leave.room._id)
+      io.sockets.emit('leaveRoom', leave)
+    }
+  })
+})
+</code></pre>
+
+<p>唯一需要注意的就是将socket从它绑定的房间上解开<code>socket.leave(leave.room._id)</code>，这样的话，对应的客户端就不会接收到该房间的消息了。至于leaveRoom的实现，就不细说了。</p>
+
+<p>到此为止，第三章接近尾声，用户已经可以自由进出一个房间，与大家一起交流了。</p>
+
+<h3>
+<a id="user-content-坏代码的味道" class="anchor" href="#%E5%9D%8F%E4%BB%A3%E7%A0%81%E7%9A%84%E5%91%B3%E9%81%93" aria-hidden="true"><span class="octicon octicon-link"></span></a>坏代码的味道</h3>
+
+<p>一个聊天室基本完成了，但是我们的app.js中充斥了大量的代码，有坏代码的味道。下一章我们将重新梳理一下整个TechNode架构，看看能不能在上面做点什么，让它更容易维护扩展，添加新的功能。
+还有，我们还将使用介绍如何使用一些前端工具，做上线的准备，将这个应用发布出去。</p>
+</article></body></html>

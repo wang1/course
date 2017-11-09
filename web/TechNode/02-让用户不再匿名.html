@@ -1,0 +1,1720 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .h {
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs,
+.markdown-body .highlight .cp .h {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #000;
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+}
+
+.markdown-body .highlight .pl-coc,
+.markdown-body .highlight .pl-entm,
+.markdown-body .highlight .pl-eoa,
+.markdown-body .highlight .pl-mai .pl-sf,
+.markdown-body .highlight .pl-pdv,
+.markdown-body .highlight .pl-sc,
+.markdown-body .highlight .pl-sr,
+.markdown-body .highlight .pl-v,
+.markdown-body .highlight .pl-vpf {
+  color: #0086b3;
+}
+
+.markdown-body .highlight .pl-eoac,
+.markdown-body .highlight .pl-mdht,
+.markdown-body .highlight .pl-mi1,
+.markdown-body .highlight .pl-mri,
+.markdown-body .highlight .pl-va,
+.markdown-body .highlight .pl-vpu {
+  color: #008080;
+}
+
+.markdown-body .highlight .pl-c,
+.markdown-body .highlight .pl-pdc {
+  color: #b4b7b4;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-k,
+.markdown-body .highlight .pl-ko,
+.markdown-body .highlight .pl-kolp,
+.markdown-body .highlight .pl-mc,
+.markdown-body .highlight .pl-mr,
+.markdown-body .highlight .pl-ms,
+.markdown-body .highlight .pl-s,
+.markdown-body .highlight .pl-sok,
+.markdown-body .highlight .pl-st {
+  color: #6e5494;
+}
+
+.markdown-body .highlight .pl-ef,
+.markdown-body .highlight .pl-enf,
+.markdown-body .highlight .pl-enm,
+.markdown-body .highlight .pl-entc,
+.markdown-body .highlight .pl-eoi,
+.markdown-body .highlight .pl-sf,
+.markdown-body .highlight .pl-smc {
+  color: #d12089;
+}
+
+.markdown-body .highlight .pl-ens,
+.markdown-body .highlight .pl-eoai,
+.markdown-body .highlight .pl-kos,
+.markdown-body .highlight .pl-mh .pl-pdh,
+.markdown-body .highlight .pl-mp,
+.markdown-body .highlight .pl-pde,
+.markdown-body .highlight .pl-stp {
+  color: #458;
+}
+
+.markdown-body .highlight .pl-enti {
+  color: #d12089;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cce,
+.markdown-body .highlight .pl-enc,
+.markdown-body .highlight .pl-kou,
+.markdown-body .highlight .pl-mq {
+  color: #f93;
+}
+
+.markdown-body .highlight .pl-mp1 .pl-sf {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cos,
+.markdown-body .highlight .pl-ent,
+.markdown-body .highlight .pl-md,
+.markdown-body .highlight .pl-mdhf,
+.markdown-body .highlight .pl-ml,
+.markdown-body .highlight .pl-pdc1,
+.markdown-body .highlight .pl-pds,
+.markdown-body .highlight .pl-s1,
+.markdown-body .highlight .pl-scp,
+.markdown-body .highlight .pl-sol {
+  color: #df5000;
+}
+
+.markdown-body .highlight .pl-c1,
+.markdown-body .highlight .pl-cn,
+.markdown-body .highlight .pl-pse,
+.markdown-body .highlight .pl-pse .pl-s2,
+.markdown-body .highlight .pl-vi {
+  color: #a31515;
+}
+
+.markdown-body .highlight .pl-mb,
+.markdown-body .highlight .pl-pdb {
+  color: #df5000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mi,
+.markdown-body .highlight .pl-pdi {
+  color: #6e5494;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-ms1 {
+  background-color: #f5f5f5;
+}
+
+.markdown-body .highlight .pl-mdh,
+.markdown-body .highlight .pl-mdi {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mdr {
+  color: #0086b3;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-s2 {
+  color: #333;
+}
+
+.markdown-body .highlight .pl-ii {
+  background-color: #df5000;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-ib {
+  background-color: #f93;
+}
+
+.markdown-body .highlight .pl-id {
+  background-color: #a31515;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-iu {
+  background-color: #b4b7b4;
+}
+
+.markdown-body .highlight .pl-mo {
+  color: #969896;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}</style><title>02-让用户不再匿名</title></head><body><article class="markdown-body"><h2>
+<a id="user-content-让用户不在匿名" class="anchor" href="#%E8%AE%A9%E7%94%A8%E6%88%B7%E4%B8%8D%E5%9C%A8%E5%8C%BF%E5%90%8D" aria-hidden="true"><span class="octicon octicon-link"></span></a>让用户不在匿名</h2>
+
+<h3>
+<a id="user-content-添加登录功能" class="anchor" href="#%E6%B7%BB%E5%8A%A0%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a>添加登录功能</h3>
+
+<p>为了简化登录功能，我们要求用户输入邮箱地址即可登录，通过邮箱获取用户的avatar头像，作为用户头像显示在消息中。</p>
+
+<p>在此之前，为了便于维护，我们先简单重构一下前端代码，把technode.js中的各个组件拆分出来，放到对应的文件中。拆了之后<code>static</code>的目录结构如下：</p>
+
+<pre><code>static
+├── components
+│   ├── angular
+│   ├── bootstrap
+│   └── jquery
+├── controllers
+│   ├── message-creator.js
+│   └── room.js
+├── directives
+│   ├── auto-scroll-to-bottom.js
+│   └── ctrl-enter-break-line.js
+├── index.html
+├── services
+│   └── socket.js
+├── styles
+│   └── room.css
+└── technode.js
+</code></pre>
+
+<p>将js文件，按照顺序引入到<code>index.html</code>文件中：</p>
+
+<pre><code>&lt;script type="text/javascript" src="/technode.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/services/socket.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/directives/auto-scroll-to-bottom.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/directives/ctrl-enter-break-line.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/controllers/room.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/controllers/message-creator.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>接下来，使用Angular的router组件，将TechNode分成两个页面：</p>
+
+<ul>
+<li>
+<code>/</code> 聊天室；</li>
+<li>
+<code>/login</code> 登录页，让用户输入邮箱地址登录。</li>
+</ul>
+
+<p>首先，在TechNode目录下使用<code>bower install angular-route --save</code>安装angular-router。安装好之后，修改index.html，引入angular-route：</p>
+
+<pre><code>&lt;script type="text/javascript" src="/components/angular/angular.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/components/angular-route/angular-route.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<blockquote>
+<p>angular-route提供了强大的路由功能，SPA（单页面应用程序）与传统网页的区别点之一就是，SPA将路由从后端服务器移到了客户端，本身只有一个页面，但是使用angular-route之后，可以使得不同的URL地址对应不同的视图，看起来就像切换了页面一样。</p>
+</blockquote>
+
+<p>在technode.js中申明对angular-route的依赖，引入router组件：</p>
+
+<pre><code>angular.module('techNodeApp', ['ngRoute'])
+</code></pre>
+
+<p>在<code>staitc</code>目录下新建router.js，添加如下代码，：</p>
+
+<pre><code>angular.module('techNodeApp').config(function($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode(true)
+  $routeProvider.
+  when('/', {
+    templateUrl: '/pages/room.html',
+    controller: 'RoomCtrl'
+  }).
+  when('/login', {
+    templateUrl: '/pages/login.html',
+    controller: 'LoginCtrl'
+  }).
+  otherwise({
+    redirectTo: '/login'
+  })
+})
+</code></pre>
+
+<p><code>$locationProvider.html5Mode(true)</code>采用HTML5的pushState来实现路由；下一步把room组件对应的视图从index.html拆出来放到room.html中，供angular调用。在<code>static</code>目录下新建pages目录，添加room.html文件：</p>
+
+<pre><code>&lt;div class="col-md-12"&gt;
+  &lt;div class="panel panel-default room"&gt;
+    &lt;div class="panel-heading room-header"&gt;TechNode&lt;/div&gt;
+    &lt;div class="panel-body room-content"&gt;
+      &lt;div class="list-group messages" auto-scroll-to-bottom&gt;
+        &lt;div class="list-group-item message" ng-repeat="message in messages"&gt;
+          某某: {{message}}
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;form class="message-creator" ng-controller="MessageCreatorCtrl"&gt;
+        &lt;div class="form-group"&gt;
+          &lt;textarea required class="form-control message-input" ng-model="newMessage" ctrl-enter-break-line="createMessage()" placeholder="Ctrl+Enter to quick send"&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<blockquote>
+<p>在前一章中，我们使用<code>ng-controller="RoomCtrl"</code>指令为房间视图绑定RoomCtrl控制器，房间组件拆分出来后，无需再为其指定控制器，因为在router.js中已经指定。</p>
+</blockquote>
+
+<pre><code>&lt;div class="container" style="margin-top:100px;"&gt;
+  &lt;div class="row" ng-view&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>在index.html中，使用<code>ng-view</code>指令放一个占位符，Angular可以根据URL地址的不同载入对应的视图和控制器；</p>
+
+<p>最后，在pages目录中加入login.html视图，添加如下代码：</p>
+
+<pre><code>&lt;form class="form-inline"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label class="sr-only"&gt;Gmail&lt;/label&gt;
+    &lt;input type="email" required class="form-control" placeholder="Mail Account" /&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn btn-primary btn-enter"&gt;Enter&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>这个视图很简单，一个简单的表单，用户输入邮箱地址，点击按钮登录。</p>
+
+<p><a href="examples/chapter02/images/login.png" target="_blank"><img src="examples/chapter02/images/login.png" alt="Login" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-用户登录与认证" class="anchor" href="#%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E4%B8%8E%E8%AE%A4%E8%AF%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>用户登录与认证</h3>
+
+<p>单页面的应用程序意味着我们无法像传统的网页那样通过提交表单来实现登录验证，因此我们采用Ajax来实现。</p>
+
+<p>Angular提供了一个名为<code>Run Block</code>的启动模块，即当整个应用启动时第一个执行的块。于是我们把登录验证逻辑写在这里：</p>
+
+<pre><code>angular.module('techNodeApp', ['ngRoute']).
+run(function ($window, $rootScope, $http, $location) {
+  $http({
+    url: '/api/validate',
+    method: 'GET'
+  }).success(function (user) {
+    $rootScope.me = user
+    $location.path('/')
+  }).error(function (data) {
+    $location.path('/login')
+  })
+})
+</code></pre>
+
+<p>在technode.js中添加如上的代码，调用<code>.run()</code>方法，注入我们的启动模块。</p>
+
+<p><code>$http</code>是Angular提供的一个Ajax组件，在应用启动时，通过Ajax调用服务端的验证接口<code>'/api/validate'</code>，获取用户的信息，如果用户已登录，服务端返回用户信息，客户端把用户信息保存到全局作用域中<code>$rootScope.me</code>中，然后通过<code>$location</code>组件跳转到<code>/</code>，即聊天室页面；如果用户未登录，则跳转到登录页。</p>
+
+<h4>
+<a id="user-content-登录验证api" class="anchor" href="#%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81api" aria-hidden="true"><span class="octicon octicon-link"></span></a>登录验证API</h4>
+
+<p>我们使用MongoDB来存储用户信息，借助<code>mongoose</code>操作数据库。首先定义用于存储用户信息的Schema——User。在TechNode目录下新建models文件夹，加入user.js和index.js文件。</p>
+
+<p>user.js:</p>
+
+<pre><code>var mongoose = require('mongoose')
+var Schema = mongoose.Schema
+
+var User = new Schema({
+  email: String,
+  name: String,
+  avatarUrl: String
+});
+
+module.exports = User
+</code></pre>
+
+<blockquote>
+<p>avatarUrl这个字段是根据用户给的邮箱地址计算出来的avatar头像地址；</p>
+</blockquote>
+
+<p>index.js：</p>
+
+<pre><code>var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/technode')
+exports.User = mongoose.model('User', require('./user'))
+</code></pre>
+
+<p>记得使用<code>npm install mongoose --save</code>安装mongoose；</p>
+
+<p>接下来编写登录验证的逻辑，在TechNode目录下新建controllers文件夹，新建user.js文件，为了便于管理代码，我们把与用户相关的业务逻辑都放在controllers/user.js这个文件中；</p>
+
+<pre><code>var db = require('../models')
+var async = require('async')
+var gravatar = require('gravatar')
+
+exports.findUserById = function (_userId, callback) {
+  db.User.findOne({
+    _id: _userId
+  }, callback)
+}
+
+exports.findByEmailOrCreate = function (email, callback) {
+  db.User.findOne({
+    email: email
+  }, function (err, user) {
+    if (user) {
+      callback(null, user)
+    } else {
+      user = new db.User
+      user.name = email.split('@')[0]
+      user.email = email
+      user.avatarUrl = gravatar.url(email)
+      user.save(callback)
+    }
+  })
+}
+</code></pre>
+
+<p>我们提供了两个接口，一是通过用户ID查找用户；二是通过邮箱地址查找用户，如果没找到，就基于邮箱地址创建一个新账户，头像地址使用<code>gravatar</code>这个Node模块来生成。</p>
+
+<p>最后在app.js中将登录验证的接口暴露出来：</p>
+
+<pre><code>// ...
+var Controllers = require('./controllers')
+
+app.use(express.bodyParser())
+app.use(express.cookieParser())
+app.use(express.session({
+  secret: 'technode',
+  cookie:{
+    maxAge: 60 * 1000
+  }
+}))
+
+// ...
+
+app.get('/api/validate', function (req, res) {
+  _userId = req.session._userId
+  if (_userId) {
+    Controllers.User.findUserById(_userId, function (err, user) {
+      if (err) {
+        res.json(401, {msg: err})
+      } else {
+        res.json(user)
+      }
+    })
+  } else {
+    res.json(401, null)
+  }
+})
+
+app.post('/api/login', function (req, res) {
+  email = req.body.email
+  if (email) {
+    Controllers.User.findByEmailOrCreate(email, function(err, user) {
+      if (err) {
+        res.json(500, {msg: err})
+      } else {
+        req.session._userId = user._id
+        res.json(user)
+      }
+    })
+  } else {
+    res.json(403)
+  }
+})
+
+app.get('/api/logout', function (req, res) {
+  req.session._userId = null
+  res.json(401)
+})
+// ...
+</code></pre>
+
+<p>我们使用express提供的session模块来管理用户的认证，整个认证过程如下：</p>
+
+<ul>
+<li>客户端调用<code>api/validate</code>验证用户是否登录，服务端查看在会话（session）中是否包含用户ID，如果是则表示用户已经登录了，从数据库将用户信息读出来；发给客户端；</li>
+<li>如果会话中没有用户ID，即用户未登录，客户端调转到登录页面，则通过<code>api/login</code>接口登录，服务端根根据用户填写的邮箱地址到数据库中查找用户，如果查找不到就创建一个新用户，然后把用户ID保存在session中，返回用户信息给客户端，登录成功；</li>
+<li>还提供了一个<code>api/logout</code>接口，清除会话中的用户ID，用户成功登出；</li>
+</ul>
+
+<p>至此服务端的登录验证已经完成，接下来给客户端加上登录验证的功能。</p>
+
+<p>回到登录页面login.html：</p>
+
+<pre><code>&lt;form class="form-inline" ng-submit="login()"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label class="sr-only"&gt;Gmail&lt;/label&gt;
+    &lt;input type="email" required class="form-control" ng-model="email" placeholder="Mail Account" /&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn btn-primary btn-enter"&gt;Enter&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>添加<code>ng-submit="login()"</code>，为表单提交绑定一个处理函数<code>login</code>，为邮箱地址输入框绑定一个数据模型<code>email</code>。接下来实现登录页面的控制器LoginCtrl，在<code>static/controllers</code>文件夹中添加login.js，添加如下代码：</p>
+
+<pre><code>angular.module('techNodeApp').controller('LoginCtrl', function($scope, $http, $location) {
+  $scope.login = function () {
+    $http({
+      url: '/api/login',
+      method: 'POST',
+      data: {
+        email: $scope.email
+      }
+    }).success(function (user) {
+      $scope.$emit('login', user)
+      $location.path('/')
+    }).error(function (data) {
+      $location.path('/login')
+    })
+  }
+})
+</code></pre>
+
+<p>当用户输入了邮箱地址提交表单时，就调用LoginCtrl的login方法，调用服务端的<code>api/login</code>接口，传入绑定在输入框中的数据绑定<code>email</code>，登录成功就跳转到聊天室<code>/</code>。<code>$scope.$emit('login', user)</code>是干什么用的呢？接下去你就会明白。</p>
+
+<p>首先在页面导航的右上角，显示用户的头像和登出链接：</p>
+
+<pre><code>&lt;nav class="collapse navbar-collapse" role="navigation"&gt;
+  &lt;ul class="nav navbar-nav navbar-right" ng-show="me"&gt;
+    &lt;li&gt;
+      &lt;img ng-src="{{me.avatarUrl}}" title="{{me.name}}" class="img-rounded"/&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="" ng-click="logout()"&gt;Log out&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<p>如果变量<code>me</code>不为空，即存在用户信息就显示用户头像和登出了解，否则什么也不显示；</p>
+
+<p>最后再回过来看看启动模块：</p>
+
+<pre><code>angular.module('techNodeApp', ['ngRoute']).
+run(function ($window, $rootScope, $http, $location) {
+  $http({
+    url: '/ajax/validate',
+    method: 'GET'
+  }).success(function (user) {
+    $rootScope.me = user
+    $location.path('/')
+  }).error(function (data) {
+    $location.path('/login')
+  })
+  $rootScope.logout = function() {
+    $http({
+      url: '/ajax/logout',
+      method: 'GET'
+    }).success(function () {
+      $rootScope.me = null
+      $location.path('/login')
+    })
+  }
+  $rootScope.$on('login', function (evt, me) {
+    $rootScope.me = me
+  })
+})
+</code></pre>
+
+<p>在启动模块中，处理进行用户验证，还提供了提供名为<code>logout</code>的控制器方法，当用户点击登出链接时，通过Ajax调用服务端的<code>api/logout</code>接口，清除会话中的用户ID，同时通过<code>$scope.me = null</code>清除客户端的用户信息，将页面跳转至登录页。除此之外启动模块还通过$rootScope.$on监听着来自子域LoginCtrl的<code>login</code>事件，即当用户通过登录页成功登录后，将用户信息发送给启动模块，更新$rootScope的用户信息；至于为什么需要这样做，这和Angular的Scope机制有关，大家可以查看相关资料了解。</p>
+
+<p><a href="examples/chapter02/images/login-1.png" target="_blank"><img src="examples/chapter02/images/login-1.png" alt="Login-1" style="max-width:100%;"></a></p>
+
+<h4>
+<a id="user-content-socketio验证" class="anchor" href="#socketio%E9%AA%8C%E8%AF%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>socket.io验证</h4>
+
+<p>处理提供HTTP的登录验证之外，我们还需要对socket请求进行登录验证；socket.io提供了认证的接口，只需简单配置一下即可。在app.js下添加以下两段代码：</p>
+
+<pre><code>// ...
+var parseSignedCookie = require('connect').utils.parseSignedCookie
+var MongoStore = require('connect-mongo')(express)
+var Cookie = require('cookie')
+
+var sessionStore = new MongoStore({
+  url: 'mongodb://localhost/technode'
+})
+
+app.use(express.bodyParser())
+app.use(express.cookieParser())
+app.use(express.session({
+  secret: 'technode',
+  cookie: {
+    maxAge: 60 * 1000 * 60
+  },
+  store: sessionStore
+}))
+
+// ...
+
+var io = require('socket.io').listen(app.listen(port))
+
+io.set('authorization', function(handshakeData, accept) {
+  handshakeData.cookie = Cookie.parse(handshakeData.headers.cookie)
+  var connectSid = handshakeData.cookie['connect.sid']
+  connectSid = parseSignedCookie(connectSid, 'technode')
+
+  if (connectSid) {
+    sessionStore.get(connectSid, function(error, session) {
+      if (error) {
+        accept(error.message, false)
+      } else {
+        handshakeData.session = session
+        if (session._userId) {
+          accept(null, true)
+        } else {
+          accept('No login')
+        }
+      }
+    })
+  } else {
+    accept('No session')
+  }
+})
+</code></pre>
+
+<p>使用express自带的session组件会有一个问题，即session数据都是存储在内存中的，服务器重启，这些数据就消失了，会导致需要用户重新登录。所以我们使用MongoStore把session数据存储到MongoDB中，将session数据固化下来：</p>
+
+<pre><code>var parseSignedCookie = require('connect').utils.parseSignedCookie
+var MongoStore = require('connect-mongo')(express)
+var Cookie = require('cookie')
+
+var sessionStore = new MongoStore({
+  url: 'mongodb://localhost/technode'
+})
+
+app.use(express.bodyParser())
+app.use(express.cookieParser())
+app.use(express.session({
+  secret: 'technode',
+  cookie: {
+    maxAge: 60 * 1000 * 60
+  },
+  store: sessionStore
+}))
+</code></pre>
+
+<p>我们通过io.set('authorization',callback)这个接口进行认证，手动解析了客户端的session数据，如果找到session且session中存在用户信息的话，认证成功，否则认证失败；
+在这里引入了connnect和cookie两个类库，别忘了使用<code>npm install connect-mongo cookie --save</code>安装他们；
+还有，我们把session的存储对象暴露了出来，我们才得以在socket认证的过程中手动解析出session。</p>
+
+<p>到此我们用户认证完成了，用户可以通过邮箱地址登录，也可以退出，在用户登录后，我们可以拿到用户的信息，这样在用户发送消息时，我们就可以显示用户名啦！</p>
+
+<h3>
+<a id="user-content-显示用户名和在线用户列表" class="anchor" href="#%E6%98%BE%E7%A4%BA%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%9C%A8%E7%BA%BF%E7%94%A8%E6%88%B7%E5%88%97%E8%A1%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>显示用户名和在线用户列表</h3>
+
+<h4>
+<a id="user-content-显示用户名" class="anchor" href="#%E6%98%BE%E7%A4%BA%E7%94%A8%E6%88%B7%E5%90%8D" aria-hidden="true"><span class="octicon octicon-link"></span></a>显示用户名</h4>
+
+<p>修改room.html中的模板，添加用户名和用户头像：</p>
+
+<pre><code>&lt;div class="col-md-12"&gt;
+  &lt;div class="panel panel-default room"&gt;
+    &lt;div class="panel-heading room-header"&gt;TechNode&lt;/div&gt;
+    &lt;div class="panel-body room-content"&gt;
+      &lt;div class="list-group messages" auto-scroll-to-bottom&gt;
+        &lt;div class="list-group-item message" ng-repeat="message in messages"&gt;
+          &lt;img ng-src="{{message.creator.avatarUrl}}" title="{{message.creator.name}}" class="img-rounded"/&gt;
+          {{message.creator.name}}: {{message.message}}
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;form class="message-creator" ng-controller="MessageCreatorCtrl"&gt;
+        &lt;div class="form-group"&gt;
+          &lt;textarea required class="form-control message-input" ng-model="newMessage" ctrl-enter-break-line="createMessage()" placeholder="Ctrl+Enter to quick send"&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>修改message-creator.js，在用户发送消息时，将用户信息一同发送给服务端：</p>
+
+<pre><code>angular.module('techNodeApp').controller('MessageCreatorCtrl', function($scope, socket) {
+  $scope.createMessage = function () {
+    socket.emit('messages.create', {
+      message: $scope.newMessage,
+      creator: $scope.me
+    })
+    $scope.newMessage = ''
+  }
+})
+</code></pre>
+
+<p>通过socket发送的消息不再是一个字符串，而是一个携带消息内容，和消息发送者信息的json对象；</p>
+
+<p>重启服务器，登录发条消息，终于，TechNode的用户不再是匿名的了！</p>
+
+<p><a href="examples/chapter02/images/DisplayUserName.png" target="_blank"><img src="examples/chapter02/images/DisplayUserName.png" alt="DisplayUserName" style="max-width:100%;"></a></p>
+
+<h4>
+<a id="user-content-显示在线用户" class="anchor" href="#%E6%98%BE%E7%A4%BA%E5%9C%A8%E7%BA%BF%E7%94%A8%E6%88%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>显示在线用户</h4>
+
+<p>如果能够看到哪些用户在聊天室里就好了，让我们实现这个功能吧！</p>
+
+<p>我们将用户是否在线的状态存储在数据库中，因此需要扩展User Schema的字段：</p>
+
+<pre><code>var User = new Schema({
+  email: String,
+  name: String,
+  avatarUrl: String,
+  online: Boolean
+});
+</code></pre>
+
+<p>在用户登录或者登出是修改用户的在线状态：</p>
+
+<pre><code>app.post('/api/login', function(req, res) {
+  email = req.body.email
+  if (email) {
+    Controllers.User.findByEmailOrCreate(email, function(err, user) {
+      if (err) {
+        res.json(500, {
+          msg: err
+        })
+      } else {
+        req.session._userId = user._id
+        Controllers.User.online(user._id, function (err, user) {
+          if (err) {
+            res.json(500, {
+              msg: err
+            })
+          } else {
+            res.json(user)
+          }
+        })
+      }
+    })
+  } else {
+    res.josn(403)
+  }
+})
+
+app.get('/api/logout', function(req, res) {
+  _userId = req.session._userId
+  Controllers.User.offline(_userId, function (err, user) {
+    if (err) {
+      res.json(500, {
+        msg: err
+      })
+    } else {
+      res.json(200)
+      delete req.session._userId
+    }
+  })
+})
+</code></pre>
+
+<p>修改了login和logout这两个接口，在用户登录或者退出时更新用户的状态，online和offline这两个方法就比较简单了，修改controllers/user.js，添加下面两个接口：</p>
+
+<pre><code>exports.online = function(_userId, callback) {
+  db.User.findOneAndUpdate({
+    _id: _userId
+  }, {
+    $set: {
+      online: true
+    }
+  }, callback)
+}
+exports.offline = function(_userId, callback) {
+  db.User.findOneAndUpdate({
+    _id: _userId
+  }, {
+    $set: {
+      online: false
+    }
+  }, callback)
+}
+</code></pre>
+
+<p>既然用户是否在线的状态已经存在数据库中了，那接下来将其读出来显示在聊天室的右侧就行啦！</p>
+
+<p>首先修改房间列表的控制器RoomCtrl，从服务端读取的数据不但包括消息还有在线用户列表：</p>
+
+<pre><code>angular.module('techNodeApp').controller('RoomCtrl', function($scope, socket) {
+  socket.on('roomData', function (room) {
+    $scope.room = room
+  })
+  socket.on('messageAdded', function (message) {
+    $scope.technode.messages.push(message)
+  })
+  socket.emit('getRoom')
+})
+</code></pre>
+
+<p>我们把messages和users都放到room这个对象中，修改socket服务端，将在线用户列表和消息列表一道读出来发送给客户端：</p>
+
+<pre><code>io.sockets.on('connection', function(socket) {
+  socket.on('getRoom', function() {
+    Controllers.User.getOnlineUsers(function (err, users) {
+      if (err) {
+        socket.emit('err', {msg: err})
+      } else {
+        socket.emit('roomData', {users: users, messages: messages})
+      }
+    })
+  })
+  socket.on('createMessage', function(message) {
+    messages.push(message)
+    io.sockets.emit('messageAdded', message)
+  })
+})
+</code></pre>
+
+<p>别忘了在controllers/user.js中添加getOnlineUsers接口：</p>
+
+<pre><code>exports.getOnlineUsers = function(callback) {
+  db.User.find({
+    online: true
+  }, callback)
+}
+</code></pre>
+
+<p>接下来就是把在线用户列表在客户端render出来了，其实只需要修改房间视图room.html即可：</p>
+
+<pre><code>&lt;div class="col-md-9"&gt;
+  &lt;div class="panel panel-default room"&gt;
+    &lt;div class="panel-heading room-header"&gt;TechNode&lt;/div&gt;
+    &lt;div class="panel-body room-content"&gt;
+      &lt;div class="list-group messages" auto-scroll-to-bottom&gt;
+        &lt;div class="list-group-item message" ng-repeat="message in room.messages"&gt;
+          &lt;img src="{{message.creator.avatarUrl}}" title="{{message.creator.name}}" class="img-rounded"/&gt;{{message.creator.name}}: {{message.message}}
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;form class="message-creator" ng-controller="MessageCreatorCtrl"&gt;
+        &lt;div class="form-group"&gt;
+          &lt;textarea required class="form-control message-input" ng-model="newMessage" ctrl-enter-break-line="createMessage()" placeholder="Ctrl+Enter to quick send"&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-3"&gt;
+  &lt;div class="panel panel-default user-list"&gt;
+    &lt;div class="panel-heading user-list-header"&gt;在线用户&lt;/div&gt;
+    &lt;div class="panel-body user-list-content"&gt;
+      &lt;div class="list-group users"&gt;
+        &lt;div class="list-group-item user" ng-repeat="user in room.users"&gt;
+          &lt;img src="{{user.avatarUrl}}" title="{{user.name}}" class="img-rounded"/&gt;{{user.name}}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>没有特别的地方，如消息列表一样渲染即可。</p>
+
+<p>TechNode是基于socket的，用户上下线的概念并不仅限于登录和登出，用户通过socket连上就是上线，用户socket断开就是离线了。我们来看看如何实现基于socket的用户上下线。</p>
+
+<pre><code>io.sockets.on('connection', function(socket) {
+  _userId = socket.handshake.session._userId
+  Controllers.User.online(_userId, function(err, user) {
+    if (err) {
+      socket.emit('err', {
+        mesg: err
+      })
+    } else {
+      socket.broadcast.emit('online', user)
+    }
+  })
+  socket.on('disconnect', function() {
+    Controllers.User.offline(_userId, function(err, user) {
+      if (err) {
+        socket.emit('err', {
+          mesg: err
+        })
+      } else {
+        socket.broadcast.emit('offline', user)
+      }
+    })
+  });
+  // ...
+})
+</code></pre>
+
+<p>我们添加了socket连上和断开的处理，通知客户端有用户连上或者下线了。客户端只需监听这两个事件即可，在房间控制器RoomCtrl添加对这两个事件的处理：</p>
+
+<pre><code>socket.on('online', function (user) {
+  $scope.room.users.push(user)
+})
+socket.on('offline', function (user) {
+  _userId = user._id
+  $scope.room.users = $scope.room.users.filter(function (user) {
+    return user._id != _userId
+  })
+})
+</code></pre>
+
+<p>至此，本章最核心的部分已经完成，现在你可以在聊天室的右侧查看在线的用户的了。</p>
+
+<p><a href="examples/chapter02/images/DisplayUserList.png" target="_blank"><img src="examples/chapter02/images/DisplayUserList.png" alt="DisplayUserList" style="max-width:100%;"></a></p>
+
+<h4>
+<a id="user-content-消息持久化和系统消息" class="anchor" href="#%E6%B6%88%E6%81%AF%E6%8C%81%E4%B9%85%E5%8C%96%E5%92%8C%E7%B3%BB%E7%BB%9F%E6%B6%88%E6%81%AF" aria-hidden="true"><span class="octicon octicon-link"></span></a>消息持久化和系统消息</h4>
+
+<p>到目前为止，聊天室的消息并没有存放在数据库中，而且消息没有创建时间等等，现在我们就来处理这些问题。首先创建一个消息的Schema，在models中添加message.js，添加如下代码：</p>
+
+<pre><code>var mongoose = require('mongoose')
+var Schema = mongoose.Schema,
+  ObjectId = Schema.ObjectId
+
+var Message = new Schema({
+  content: String,
+  creator: {
+    _id: ObjectId,
+    email: String,
+    name: String,
+    avatarUrl: String
+
+  },
+  createAt:{type: Date, default: Date.now}
+})
+
+module.exports = Message
+</code></pre>
+
+<p>在消息中，我们存放了消息的内容和创建时间，还将消息创建人的详细信息也包含在了消息里，这样做的好处是，浪费一点空间，缩短查询时的时间；因为消息中的creator数据并不需要保持绝对的一致性。</p>
+
+<p>在models/index.js中，根据Schema生成Message模型：</p>
+
+<pre><code>// ...
+exports.Message = mongoose.model('Message', require('./message'))
+</code></pre>
+
+<p>在服务端添加一个消息的控制器'controllers/message.js'，实现消息的写入和查询：</p>
+
+<pre><code>var db = require('../models')
+
+exports.create = function(message, callback) {
+  var message = new db.Message()
+  message.content = message.content
+  message.creator = message.creator
+  message.save(callback)
+}
+exports.read = function(callback) {
+  db.Message.findAll({
+  }, null, {
+    sort: {
+      'createAt': -1
+    },
+    limit: 20
+  }, callback)
+}
+</code></pre>
+
+<p>查询时，我们按照消息的创建的时间倒叙排列，而且取最新的20条；</p>
+
+<p>接下来，我们修改与客户端通信的API部分：</p>
+
+<pre><code>socket.on('getRoom', function() {
+  async.parallel([
+    function(done) {
+      Controllers.User.getOnlineUsers(done)
+    },
+    function(done) {
+      Controllers.Messages.read(done)
+    }
+  ],
+  function(err, results) {
+    if (err) {
+      socket.emit('err', {
+        msg: err
+      })
+    } else {
+      socket.emit('roomData', {
+        users: results[0],
+        messages: results[1]
+      })
+    }
+  });
+})
+socket.on('createMessage', function(message) {
+  Controllers.Message.create(function (err, message) {
+    if (err) {
+      socket.emit('err', {msg: err})
+    } else {
+      io.sockets.emit('messageAdded', message)
+    }
+  })
+})
+</code></pre>
+
+<p>在这里我们使用async来并行地对数据库进行读取，别忘记了使用npm安装async包。</p>
+
+<p>简单修改客户端的房间视图，显示消息发出的时间：</p>
+
+<pre><code>&lt;div class="list-group-item message" ng-repeat="message in technode.messages"&gt;
+  &lt;img src="{{message.creator.avatarUrl}}" title="{{message.creator.name}}" class="img-rounded"/&gt;{{message.creator.name}}: {{message.content}}&lt;time am-time-ago="message.createAt"&gt;&lt;/time&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>在这里我们使用了一个名为am-time-ago的Angular指令，这个指令可以动态地更新time标记中的时间显示，开始可能是<code>几秒前</code>，随着时间的推移，能够智能地便成<code>1分钟前</code>、<code>1小时前</code>等等；这个指令是angular-moment这个模块提供的，请使用<code>bower install angular-moment --save</code>安装这个模块，并在将其加入到index.html中：</p>
+
+<pre><code>&lt;script type="text/javascript" src="/components/moment/moment.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/components/angular-moment/angular-moment.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="components/moment/lang/zh-cn.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>我们不但加入了angular-moment.js，还添加了一个中文语言包。需要在technode.js中添加对angular-moment.js的依赖，并将语言设置为中文：</p>
+
+<pre><code>angular.module('techNodeApp', ['ngRoute', 'angularMoment']).
+run(function ($window) {
+  $window.moment.lang('zh-cn')
+  // ...
+})
+</code></pre>
+
+<p>至此，我们将消息保存进了数据库，还保存了消息的创建时间，并在客户端将时间显示出来，我们将消息持久化的任务完成了。</p>
+
+<h4>
+<a id="user-content-系统消息" class="anchor" href="#%E7%B3%BB%E7%BB%9F%E6%B6%88%E6%81%AF" aria-hidden="true"><span class="octicon octicon-link"></span></a>系统消息</h4>
+
+<p>我们为用户提供了一些系统的消息，比如其他用户登录退出的信息等等；这部分消息都是临时的，因此我们不会把它们加入到数据库中，动态生成即可。</p>
+
+<p>比如我们添加有用户登录和登出的消息：</p>
+
+<pre><code>io.sockets.on('connection', function(socket) {
+  _userId = socket.handshake.session._userId
+  Controllers.User.online(_userId, function(err, user) {
+    if (err) {
+      socket.emit('err', {
+        mesg: err
+      })
+    } else {
+      socket.broadcast.emit('online', user)
+      socket.broadcast.emit('messageAdded', {
+        content: user.name + '进入了聊天室',
+        creator: SYSTEM,
+        createAt: new Date()
+      })
+    }
+  })
+  socket.on('disconnect', function() {
+    Controllers.User.offline(_userId, function(err, user) {
+      if (err) {
+        socket.emit('err', {
+          mesg: err
+        })
+      } else {
+        socket.broadcast.emit('offline', user)
+        socket.broadcast.emit('messageAdded', {
+          content: user.name + '离开了聊天室',
+          creator: SYSTEM,
+          createAt: new Date()
+        })
+      }
+    })
+  });
+</code></pre>
+
+<p>其实我们就是伪造了两条临时消息。</p>
+
+<p><a href="./examples/chapter02/images/DisplayTime.png" target="_blank"><img src="./examples/chapter02/images/DisplayTime.png" alt="DisplayUserTime" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-我不喜欢你们" class="anchor" href="#%E6%88%91%E4%B8%8D%E5%96%9C%E6%AC%A2%E4%BD%A0%E4%BB%AC" aria-hidden="true"><span class="octicon octicon-link"></span></a>我不喜欢你们！</h3>
+
+<p>我们的用户使用各种不同的技术，我们都不喜欢异类（使用与自己不同技术的人），他们需要自己的空间。下一章，我们要给TechNode加上房间的功能。这样臭味相投的人就可以聚到一起聊天啦！</p>
+</article></body></html>

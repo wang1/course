@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux实验</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
+    <link href="../docs-assets/css/docs.css" rel="stylesheet">
+    <!--<link href="../docs-assets/css/github.min.css" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="../docs-assets/css/monokai_sublime.min.css"/>-->
+    <link rel="stylesheet" href="../docs-assets/css/hljs-styles/railscasts.min.css" />
+    <style>
+        body {
+            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        h1,
+        .h1,
+        h2,
+        .h2,
+        h3,
+        .h3,
+        h4,
+        .h4,
+        .lead {
+            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        pre code {
+            background: transparent;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .snippet {
+            position: relative;
+        }
+
+        .snippet .btn {
+            -webkit-transition: opacity 0.3s ease-in-out;
+            -o-transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            right: 15px;
+            /*padding: 0 10px;*/
+            position: absolute;
+            top: 16px;
+        }
+
+        .snippet:hover .btn {
+            opacity: 1;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
+</head>
+
+<body>
+    <a class="sr-only" href="#content">Skip to main content</a>
+
+    <!-- Docs master nav -->
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-globe"></span> Linux基础</a>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="./linux.html"><span class="glyphicon glyphicon-list-alt"></span> 课堂教学</a>
+                    </li>
+                    <li class="active">
+                        <a href="#"><span class="glyphicon glyphicon-glass"></span> 实验</a>
+                    </li>
+                    <li>
+                        <a href="http://202.202.243.2:8964/c.html" target="_blank"><span class="glyphicon glyphicon-upload"></span> 实验报告提交</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-info-sign"></span> 关于</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Docs page layout -->
+    <div class="bs-header" id="content">
+        <div class="container">
+            <h1>实验教学</h1>
+
+            <p>实验共16学时，分为8个部分，每部分2学时，请按要求完成。</p>
+        </div>
+    </div>
+
+    <!--<div class="alert alert-info alert-dismissable text-center">-->
+    <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
+    <!--<h2>请按要求自行完成实验四。抱歉。</h2>-->
+    <!--</div>-->
+
+
+    <!-- Callout for the old docs link -->
+
+
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="bs-sidebar hidden-print" role="complementary">
+                    <ul class="nav bs-sidenav">
+                        <li>
+                            <a href="#1">实验一 Linux安装及配置</a>
+                            <ul class="nav">
+                                <li><a href="#1-install">Fedora的安装</a></li>
+                                <li><a href="#1-config">Fedora的初步配置</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#2">实验二 常用Shell命令</a>
+                            <ul class="nav">
+                                <li><a href="#2-format">命令格式</a></li>
+                                <li><a href="#2-man">manual-帮助手册</a></li>
+                                <li><a href="#2-system">常用系统工作命令</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#3">实验三 vim文本编辑器</a>
+                            <ul class="nav">
+                                <li><a href="#3-start">启动</a></li>
+                                <li><a href="#3-mode">模式</a></li>
+                                <li><a href="#3-command">命令模式下常用命令</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#4">实验四 Shell编程初步</a>
+                            <ul class="nav">
+                                <li><a href="#4-basic">Shell Script基础</a></li>
+                                <li><a href="#4-structure">结构化命令</a></li>
+                                <li><a href="#4-input">用户输入</a></li>
+                                <!-- <li><a href="#4-present">呈现数据</a></li> -->
+                                <li><a href="#4-control">Script控制</a></li>
+                                <li><a href="#4-function">函数</a></li>
+                                <li><a href="#4-regular">正则表达式</a></li>
+                                <li><a href="#4-script">实用的Script</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#5">实验五 常用开发工具</a>
+                            <ul class="nav">
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#6">实验六 Linux环境编程</a>
+                            <ul class="nav">
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#7">实验七 系统管理</a>
+                            <ul class="nav">
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#8">实验八 网络管理</a>
+                            <ul class="nav">
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-9" role="main">
+
+                <!--================ 实验一 ================================== -->
+                <div class="bs-docs-section">
+                    <div class="page-header">
+                        <h1 id="1">实验一 Fedora的安装与配置</h1>
+                    </div>
+                    <p class="bs-callout bs-callout-info lead">进行Fedora的安装并对系统进行初步配置</p>
+
+                    <h3 id="1-install">Fedora的安装</h3>
+
+                    <p>Fedora是RedHat公司支持的社区发行版，当前最新为Fedora26，我们使用其workstation版本（适用于PC和笔记本）。</p>
+                    <h4>
+                        <ol>
+
+                            <li>虚拟机安装</li>
+                            <p>安装在虚拟机（<a href="../data/linux/VirtualBox-5.1.26.exe">VirtualBox下载</a>）中只是一个体验或临时方案，因速度问题，不推荐，但由于U盘安装不成功或可能导致数据丢失，也建议初学者使用。</p>
+                            <li>U盘安装（双系统）</li>
+                            <p>使用Linux，最好是独立的安装该系统，能获得最佳体验。</p>
+                            <p>先获取Fedora的ISO文件（请前往<a href="http://10.1.74.132/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Fedora/Fedora-Workstation-Live-x86_64-26-1.5.iso"
+                                    target="_blank">LUNA校内镜像站</a>下载）和U盘引导制作工具<a href="../data/linux/rufus-2.16p.exe">Rufus</a>。</p>
+                            <p>准备一个4G+的U盘，运行Rufus，按提示操作即可将FedoraISO写入U盘（注意，请将U盘中的EFI文件夹删除，以让老旧的计算机也可顺利安装！！！）。</p>
+                            <p>在你的PC或笔记本上预留50G+的空间（请一定记住空间大小，避免出错），使用磁盘管理工具将其删除，成为未分配空间。然后准备安装Fedora。</p>
+                            <p>重启计算机，选择U盘启动即可。</p>
+                            <p>建议：初学者请让系统自动分区；语言支持请选择英文和中文环境，默认英文；新建的用户勾选添加到管理组；
+                                <li>使用已安装好的CentOS</li>
+                                <p>如果上面的方式没有成功，你可以远程使用我们已经安装好的CentOS系统（10.1.74.120）。</p>
+                                <p>下载<a href="../data/linux/Moba.msi" target="_blank">SSH客户端MobaXterm</a>。运行后SSH连接服务器10.1.74.120（一般用户st:ts，根用户root：toor），然后你可做任何事情！</p>
+
+                        </ol>
+                    </h4>
+                    <h3 id="1-config">Fedora的初步配置</h3>
+
+                    <p><label>网络配置</label></p>
+                    <p>如果因某种原因网络没能正常工作，可使用图形界面或命令行方式进行配置。以下为命令行配置方式：</p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-1">复制代码</button><code id="dm-1">
+ifconfig    #查看网卡名称如 enpXXX等（如果是无线，则配置文件为ifcfg-AP名称），下面的命令要使用
+sudo vim /etc/sysconfig/network-scripts/ifcfg-enpXXX     #修改内容，注意ONBOOT需设置为yes
+sudo service network restart    #重启网络</code></pre>
+                    <p><label>配置软件源</label></p>
+                    <p>配置优质的软件源不仅能及时获得上游更新，还能拥有各种各样的软件支持。作为天朝子民，访问外网速度过慢。因此在开始安装工作前，配置国内源几乎是首选的行动。</p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-2">复制代码</button><code id="dm-2">
+#dnf是Fedora新的软件包管理工具，如没有则使用sudo yum install dnf进行安装
+# RPM Fusion Free 源
+sudo dnf install http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-26.noarch.rpm -y
+# RPM Fusion Nonfree 源
+sudo dnf install http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-26.noarch.rpm -y
+#启用 FZUG 源
+sudo dnf config-manager --add-repo=http://repo.fdzh.org/FZUG/FZUG.repo
+#启用阿里源
+sudo dnf config-manager --add-repo=http://mirrors.aliyun.com/repo/fedora.repo
+#更新缓存
+sudo dnf makecache
+#执行更新
+sudo dnf update</code></pre>
+                    <p><label>字体美化</label></p>
+                    <p>下载<a href="../data/linux/msyh.ttc" target="_blank">微软雅黑</a>、<a href="../data/linux/msyhbd.ttc" target="_blank">微软雅黑粗体</a>和
+                        <a href="../data/linux/Monaco.ttf" target="_blank">苹果摩纳哥</a>字体，双击即可安装。然后使用以下命令安装的tweak-tool工具进行字体配置，前面三个使用yahei，终端（等宽字体）使用monaco。（还可以进行主题、开机启动、背景等设置）</p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-3">复制代码</button><code id="dm-3">
+sudo dnf install gnome-tweak-tool</code></pre>
+                    <p><label>中文输入法</label></p>
+                    <p>安装系统时选择了两种语言支持，所以输入法直接在系统设置->地区和语言->输入法添加中文输入即可。默认使用shift进行切换，还可设置拼音更正、模糊音等设置。</p>
+                    <p><label>开源压缩软件7Zip</label></p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-4">复制代码</button><code id="dm-4">
+sudo dnf install p7zip p7zip-plugins
+#使用 “a” 选项就可以创建（添加）一个归档文件，它可以创建 7z、XZ、GZIP、TAR、 ZIP 和 BZIP2 这几种格式的文件。如果指定的归档文件已经存在的话，它会把文件“附加”到存在的归档中，而不是覆盖原有归档文件。
+7z a &lt;archive-filename> &lt;list-of-files> 
+#使用 “x” 选项可以全路径抽取一个归档文件，抽取出的文件会放在当前目录。抽取支持的格式比创建时支持的格式要多的多，包括 7z、XZ、GZIP、TAR、ZIP、BZIP2、LZMA2、CAB、ARJ、CPIO、RPM、ISO 和 DEB 这些格式。
+7z x &lt;archive-filename>
+7z l  &lt;archive-filename>	#查看压缩文件</code></pre>
+                    <p><label>VS Code-微软出品的强大开源编辑开发工具</label></p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-5">复制代码</button><code id="dm-5">
+#install the key and repository
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+
+#Then update the package cache and install the package using dnf (Fedora 22 and above):
+
+sudo dnf check-update
+sudo dnf install code
+
+终端执行code或配置年快捷方式ctrl+alt+C即可
+插件见code，安装yahei, source code pro, monaco等字体后配置如下：
+File->Preferences->Settings->editor font-family, 点击编辑，写入以上字体即可.注意，权限问题，配置只能写到用户setting中。</code></pre>
+                    
+                    <p><label>办公套件</label></p>
+                    <p>卸载Libre Office，安装WPS。WPS Office比Libre更好的兼容MS Office系列。内网下载<a href="../data/linux/wps-office.rpm" target="_blank">WPS安装包</a></p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-6">复制代码</button><code id="dm-6">
+sudo dnf remove libreoffice*
+sudo dnf install wps-office.rpm 或直接双击安装
+#注意：安装完成后如幻灯片不能运行，执行sudo ln -s /lib64/libbz2.so.1 /lib64/libbz2.so.1.0可解决</code></pre>
+                    <p><label>桌面词典-StarDict</label></p>
+                    <p>说起英文都是泪，安装一个翻译工具吧。下载
+                        <a href="../data/linux/stardict-3.0.6-6.fc26.x86_64.rpm">StarDict桌面翻译工具</a>、
+                        <a href="../data/linux/stardict-langdao-ec-gb-2.4.2.tar.bz2">朗道英汉词典、</a>
+                        <a href="../data/linux/stardict-langdao-ce-gb-2.4.2.tar.bz2">朗道汉英词典</a>
+                    </p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-7">复制代码</button><code id="dm-7">
+#双击安装下载的rpm包即可
+tar -xjvf stardict-langdao-ec-gb-2.tar.bz2 -C /usr/share/stardict/dic   #安装朗道英汉词典                        
+tar -xjvf stardict-langdao-ce-gb-2.tar.bz2 -C /usr/share/stardict/dic   #安装朗道汉英词典</code></pre>
+                    <p><label>Guake Terminal</label></p>
+                    <p>终端是我们需要的重要工具，Fedora自带的终端已经比较好了，但你也可以安装一个下拉式终端Guake。安装完毕后可以进行字体、透明度、热键等配置。</p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-8">复制代码</button><code id="dm-8">
+sudo dnf install guake</code></pre>
+                    <p><label>tmux-终端分屏</label></p>
+                    <p>强大的分屏工具，提高效率，且session不会关闭。</p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-t">复制代码</button><code id="dm-t">
+sudo dnf install tmux   #安装tmux
+vim ~/.tmux.conf        #添加如下配置信息
+unbind C-b
+set -g perfix C-a
+set -g default-terminal "screen-256color"
+unbind %
+bind \ split-window -h
+unbind '"'
+bind - split-window -v
+#配置完毕后，tmux运行即可，所有操作皆以Ctrl+a开始。以下为其常用方式
+\       #垂直分隔
+-       #水平分隔
+x       #删除面板
+z       #最大化面板
+d       #暂时退出tmux
+tmux attach     #返回tmux</code></pre>
+                    <p><label>设置程序启动的键盘快捷方式</label></p>
+                    <p>系统中有经常需要使用的程序，我们可以设计键盘快捷方式来快速启动。在系统->设置->键盘中设置即可，如定义Ctrl+Alt+T就可以启动Guake Terminal</p>
+
+                </div>
+                <!-- =============== 实验二 =================== -->
+                <div class="page-header">
+                    <h1 id="2">实验二 常用Shell命令</h1>
+                </div>
+                <p class="bs-callout bs-callout-info lead">Shell命令是使用Linux的强大、灵活以及轻量的工具。本部分实验要求对常用Shell命令进行熟练应用，在终端中完成。</p>
+
+                <h3 id="2-format">格式</h3>
+                <p><code>  命令名称 [命令参数] [命令对象]</code></p>
+                <p>命令名称只能是小写的英文单词或缩写，如date、cp（copy）等。</p>
+                <p>[ ]表明这部分可选。命令对象即操作的对象如文件、目录、用户等，而参数则提供许多的选项（单字母用- 单词用--），初学者可记住一些常见的参数即可。</p>
+                <p>命令成功执行返回0，否则为其它值，可用<code>echo $?</code>查看。</p>
+
+                <h3 id="2-man">man-帮助手册</h3>
+                <p>任何命令都有manual，使用<code>man 命令名称</code>即可得到帮助。</p>
+                <h3 id="2-system">常用系统工作命令</h3>
+                <p>echo-回显</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-9">复制代码</button><code id="dm-9">
+echo fedoraproject.org  #显示字符串
+echo $SHELL             #显示系统变量
+echo $HOSTNAME          #显示系统变量
+echo $PATH              #显示系统变量</code></pre>
+                <p>date-显示/设置系统日期时间</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-10">复制代码</button><code id="dm-10">
+date                        #显示系统日期时间
+date -s "19890604 1:00:00"  #设置系统日期时间
+date "+%j"                  #今天为本年第几天</code></pre>
+                <p>其它简单命令</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-11">复制代码</button><code id="dm-11">
+cal         #显示本月日历（cal 06 1989）
+who         #当前登录用户信息
+w           #当前用户在做what     
+last        #最近登录用户信息
+clear       #清屏
+passwd      #修改当前用户口令
+ifconfig    #查看当前网卡状态
+uname -a    #查看内核版本、处理器类型等
+uptime      #查看系统上线时间/用户/负载（最近1、5、15分钟的平均负载）
+free -h     #查看内存使用
+du -hs /home    #查看某目录空间使用情况（disk used）
+df -h       #查看整个磁盘文件系统使用/映射情况（disk filesystem）
+top         #系统整体信息
+history     #查看历史命令（位于~/.bash_history文件，默认1000条，可修改/etc/profile文件中的HISTSIZE的值）
+sudo reboot/poweroff    #重启/关机</code></pre>
+                <p>下载及网站镜像命令</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-12">复制代码</button><code id="dm-12">
+wget http://10.1.74.132/操作系统/Linux/Fedora/Fedora-Workstation-Live-x86_64-26-1.5.iso         #下载文件
+wget -rpb https://mdbootstrap.com         #递归全站下载，后台运行
+httrack https://mdbootstrap.com &         #全站镜像，后台运行（比wget更好用，如果没有请使用dnf安装）</code></pre>
+                <p>目录及文件相关命令</p>
+                <p>请查看教材P.51(2.5.1)、P.39(2.3)讲述的目录及文件相关概念。</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-13">复制代码</button><code id="dm-13">
+pwd         #Print Work Directory，显示当前目录，可用tree显示目录树
+cd          #Change Directory，注意.、..、~
+ls -alh /   #List，all/list/human，注意？和*
+cat -n /etc/passwd         #catenate（字符串连接），带行号显示文本文件
+tac/more/less/head/tail    #tac逆序；more和less分屏显示，其中less可前后翻；head和tail查看前/后10行
+wc /etc/passwd             #Word Count，统计行、字和字节数
+touch newFile.txt          #修改文件时间或新建空文件
+grep "wang" /etc/passwd    #在文件中查找带指定字符串的行
+mkdir -p test1/test2/test3     #parents,p参数可创建新的3个目录
+cp 源文件/目录 目的文件/目录     #copy，可带路径；参数r可用于递归复制目录
+mv 源文件/目录 目的文件/目录     #move，移动/改名
+rm 文件/目录                         #remove，删除文件/目录，-rf将强制递归删除目录（慎用！）
+tar -czvf doc.tar.gz ./Docment      #压缩Docment目录（gz格式），可用空格分隔多个文件和目录，create/compress/verbose/file
+tar -cjvf doc.tar.bz2 ./Docment     #压缩Docment目录（bzip2格式）
+tar -xzvf doc.tar.tar.gz -C ./test  #解压到指定目录，否则当前目录
+tar -xjvf doc.tar.bz2            #解压到当前目录
+tar -tvf doc.tar.gz              #查看压缩文件
+which ls            #在PATH变量中查找可执行文件位置，通常测试是否有该命令
+locate passwd       #在文件系统查找与passwd相关的文件
+ln -s test.txt sl-test  #新建软链接，类似于快捷方式，但sl-test是个独立的文件（有不同的INode），删除原文件该链接文件仍存在，但链接失效（重建同名文件生效）
+ln test.txt l-test      #新建硬链接，与原文件有相同的INode，增加链接数（如变为2），删除该硬链接或原文件数据都在，除非链接数为0</code></pre>
+                <p>文件用户与文件权限</p>
+                <p>为安全考虑，Linux设定了三种类型的用户（<code>/etc/passwd</code>文件中。<code>/etc/shadow</code>文件是其对应的密码）：
+                    <ol>
+                        <li>超级用户root（UID：0），系统整个系统的管理员</li>
+                        <li>系统用户（UID：1~999），运行系统服务所需要的用户角色（如nginx用户等）</li>
+                        <li>普通用户（UID：1000~）</li>
+                    </ol>
+                </p>
+                <p>针对文件，Linux也设定了三种用户身份：文件主（uer）、同组用户（group）和其它用户（others）。无需说明，超级用户（root）具有所有权限！。</p>
+                <p>三种用户身份对文件都有3种操作权限：读r（read，100-4）、写w（write，010-2）、执行x（execute，001-1）。请使用<kbd>ls -l</kbd>查看。</p>
+                <p>注意：每行第一个字符列出了类型，常见的是：- 文件；d 目录；l 链接。接下来的9个字符表明的owner、group和others的rwx权限。</p>
+                <p>新建文件默认用户和同组用户具有rw，其它用户具有r权限。我们可以使用<code>chmod</code>命令对<code>u/g/o/a</code>的rwx权限进行<code>+/-/=</code>设定。</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-14">复制代码</button><code id="dm-14">
+chmod a+x test.txt              #all，所有用户添加执行权限
+chmod u-x,g-wx,o-x test.txt     #取消用户的执行权限、同组用户的写和执行权限、其它用户的执行权限
+chmod u=rwx,g=rw,o=r test.txt   #字符绝对方式设置
+chmod 760 test.txt              #数字绝对方式设置</code></pre>
+
+                <!-- =========== 实验三 =========== -->
+                <div class="page-header">
+                    <h1 id="3">实验三 vim文本编辑器</h1>
+                </div>
+                <p class="bs-callout bs-callout-info lead">系统配置、程序编写都需要文本编辑器。你可选用GUI方式的编辑器如gedit、vscode等，但远程进行配置时，字符模式下的文本编辑器就是必须掌握的！而vim就是其中的神器。</p>
+
+                <h3 id="3-start">启动</h3>
+                <p><code>vim hello.c &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#有该文件则打开，否则新建</code></p>
+
+                <h3 id="3-mode">模式</h3>
+                <p>vim有两种工作模式：命令模式和插入模式。</p>
+                <p>进入vim时默认进入命令模式，可进行剪切、复制、粘贴、保存、退出等操作；</p>
+                <p>敲<code>i</code>(表示insert)或<code>a</code>(表示append)等进入插入模式，可以输入文字。</p>
+                <p>输入完成，敲<code>esc</code>键回到命令模式。</p>
+
+                <h3 id="3-command">命令模式下常用命令</h3>
+                <ul>
+                    <li>光标移动：<code>方向键，PageDown，PageUp，gg-首行，G-末行</code></li>
+                    <li>文本选择：<code>v键，然后移动光标</code></li>
+                    <li>文本剪切：选择后，使用<code>x或del键</code>，同时删除的内容进入剪贴板</li>
+                    <li>文本复制：选择后，使用<code>y键</code>，内容进入剪贴板</li>
+                    <li>文本粘贴：<code>p键</code>，将当前剪贴板内容插入到光标位置</li>
+                    <li>删除整行：<code>dd</code>，如果先输入数字再敲<code>dd</code>则删除指定行数</li>
+                    <li>查找：<code>/+查找内容，n或N前进后退</code>，高亮显示将一直存在，使用<code>:nohl</code>取消</li>
+                    <li>替换：<code>:%s/old/new/g</code>，将old全部替换为new。g-global，如果加上c参数，则表示需要确认confirm</li>
+                    <li>撤销/重做：<code>u/Ctrl+r</code>，u-undo，Ctrl+r-redo</li>
+                    <li>临时退出：当需要临时退出vim回到shell时，<code>:sh</code>即可，<code>exit</code>返回vim编辑器</li>
+                    <li>保存/退出：<code>:w-保存，:x-保存退出，:q!-强制退出（不保存）</code></li>
+                    <li>显示行号：<code>:set nu</code></li>
+                </ul>
+                <p>vim还有许多插件可用，请根据自己的需求随时Google</p>
+
+                <!-- =========== 实验四 =========== -->
+                <div class="page-header">
+                    <h1 id="4">实验四 Shell编程初步</h1>
+                </div>
+                <p class=" bs-callout bs-callout-info lead">利用强大的Shell进行脚本（Script）编程，进行批处理操作。</p>
+                <p>实验二中，我们在Shell使用了许多命令进行操作，输入一条命令，Shell进行解释并执行，这称为交互式（Interactive）。</p>
+                <p>我们也可以先编写一个Shell脚本（Script），使用结构化（选择、循环等）设计来包含诸多的命令，让Shell一次性执行，这称为批处理（Batch）</p>
+
+                <h3 id="4-basic">Shell Script基础</h3>
+                <p><label>多个命令顺序执行</label></p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-1">复制代码</button><code id="s-1">
+date ; who      # 命令行中多个命令使用;进行分隔即是Shell Script！</code></pre>
+
+                <p><label>生成Script文件</label></p>
+                <p>使用任何文本编辑器，将多个Shell命令写在一个文本文件（一般后缀为.sh）中即为脚本文件。我们可使用vim编辑如下脚本并保存为first.sh文件。</p>    
+                <p>任何脚本文件第一行都需写上#!后面跟上Shell解释器的路径。以下代码表明使用bash进行解释执行（当然也可使用其它shell解释器）</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-2">复制代码</button><code id="s-2">
+#!/bin/bash 
+#这是注释行  
+date
+who</code></pre>
+
+                <p><label>执行Script文件</label></p>
+                <p>运行<code>first.sh</code>，你将会得到<code>command not found</code>的提示。因为Linux将把它当作命令执行，将会在系统路径中查找（<code>echo $PATH</code>），然后，没找到 :(</p>    
+                <p class=" bs-callout bs-callout-danger">思考：那么把该文件放到PATH中又如何？</p>
+                <p>如果我们指定路径<code>./first.sh</code>或把该脚本文件放到系统路径中，你又会得到<code>Permission denied</code>！表明没有权限！</p>
+                <p>使用<code>ls -l</code>查看该文件的权限，你发现了什么？该文件需要执行权限，使用<code>chmod u+x first.sh</code>设置。</p>
+                <p>OK，大功告成！</p>
+                <p class=" bs-callout bs-callout-info">提示：你也可以什么都不设置，直接使用<code>sh test.sh</code>进行运行。</p>
+
+                <p><label>显示信息及系统变量</label></p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-3">复制代码</button><code id="s-3">
+#!/bin/bash
+echo 这是一个显示测试，ha ha ha！     #也可将信息用双/单引号包裹
+echo Let's see if this'll work.     #注意结果，考虑使用转义字符\
+echo -n 现在是:                      #参数n表明不换行
+date
+echo 当前用户信息：
+echo USER: $USER    UID: $UID  HOME: $HOME</code></pre>
+                <p class=" bs-callout bs-callout-danger">思考：<code>echo The cost of the item is $15.</code>结果？</p>
+
+                <p><label>自定义变量</label></p>
+                <p>除了系统变量外，Shell支持脚本中用户自定义变量用于各种目的。</p>
+                <p>用户变量限定20个字符（字母、数字、下划线），大小写敏感！</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-4">复制代码</button><code id="s-4">
+#!/bin/bash
+days=10
+guest="Elon Musk"
+cost1=99
+echo "$guest checked in $days days ago, the cost is \$$cost1."
+days=5
+guest="Tesla"
+cost2=$cost1    #注意cost1前的$表明获取变量cost1的值
+echo "$guest checked in $days days ago, the cost is \$$cost2"</code></pre>
+                <p class=" bs-callout bs-callout-danger">思考：以上代码中，如果改为<code>cost2=cost1</code>会发生什么？</p>
+
+                <p><label>命令替换</label></p>
+                <p>我们如果在脚本中需要获取某命令的输出结果，则使用命令替换。其格式是将命令放在<code>$()</code>或<code>``</code>中（注意是反单引号！）。</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-5">复制代码</button><code id="s-5">
+#!/bin/bash
+now=`date`
+echo "The date and time are: " $now
+today=$(date +%Y%m%d)
+touch mylog-$today.log
+ll</code></pre>
+
+                <p><label>输入/输出重定向</label></p>
+                <p>我们执行命令，结果将输出到屏幕（控制台）。但如果我们需要输出到其它地方如保存到一个文件中，则需要使用重定向。其格式是<code>command > outputfile</code></p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-6">复制代码</button><code id="s-6">
+#!/bin/bash
+ls xxx.txt          #当前没有该文件
+date > xxx.txt      #屏幕将没有输出，结果被重定向到xxx.txt文件中
+ls xxx.txt
+cat xxx.txt
+who >> xxx.txt
+echo ====新的内容被添加了====
+cat xxx.txt
+echo ====下面是输入重定向====
+wc < xxx.txt</code></pre>
+
+                <p><label>管道</label></p>
+                <p>有时，一个命令的输出需要作为另一个命令的输入，我们当然可以使用上面的重定向，但这样很累赘。我们应该使用管道，其格式是<code>command1 | command2</code></p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-7">复制代码</button><code id="s-7">
+#!/bin/bash
+ls /usr/bin | more
+ls /usr/bin | grep zip | wc > zip.count
+cat zip.count</code></pre>
+
+                <p><label><label>数学运算</label></p>
+                <p>任何一门编程语言进行运算都是小case，不幸的是在shell中有点尴尬。我们得使用这样的格式<code>$[ operation ]</code> （特别要注意，运算式的两端必须有一个空格！当然使用后叙的双括号表达式可以简化）</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-8">复制代码</button><code id="s-8">
+#!/bin/bash
+result=6+4
+echo $result        #注意结果
+result=$[ 6+4 ]
+echo $result
+a=89
+b=64
+c=$[ $a/$b ]
+echo $c             #注意结果</code></pre>
+                <p class=" bs-callout bs-callout-info">浮点运算：在shell中进行浮点运算就更不友好了，因为shell脚本毕竟不像C语言之类不是用来进行科学计算而多用于系统管理的。请有需要时查阅相关文档。</p>
+
+                <h3 id="4-structure">结构化命令</h3>
+
+                <p><label>单分支选择</label></p>
+                <p>使用<code>if-then-fi</code>，各关键词单独一行，如果希望把<code>then</code>写到和<code>if</code>同行，则需用<code>;</code>分隔。</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-1">复制代码</button><code id="st-1">
+#!/bin/bash
+if pwd      #该命令成功执行则为TRUE，否则FALSE
+then
+  echo "It worked"
+fi
+echo =====这是分割线=====
+if IamNotaCommand
+then
+  echo "It worked"
+fi
+echo "We are outside the if statement"
+echo =====这是分割线=====
+testuser=wang
+if grep $testuser /etc/passwd
+then
+  echo "This is my first command"
+  echo "This is my second command"
+  echo "I can even put in other commands besides echo:"
+  ls -a /home/$testuser/.b*
+fi</code></pre>
+                <p><label>双分支选择</label></p>
+                <p>使用<code>if-then-else-fi</code>，各关键词单独一行，如果希望把<code>then</code>写到和<code>if</code>同行，则需用<code>;</code>分隔。</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-2">复制代码</button><code id="st-2">
+#!/bin/bash
+testuser=NoSuchUser
+if grep $testuser /etc/passwd
+then
+  echo "The bash files for user $testuser are:"
+  ls -a /home/$testuser/.b*
+  echo
+else
+  echo "The user $testuser does not exist on this system."
+  echo
+fi</code></pre>
+
+                <p><label>多分支选择</label></p>
+                <p>使用<code>if-then-elif-then-...-else-fi</code>，各关键词单独一行，如果希望把<code>then</code>写到上一行，则需用<code>;</code>分隔。</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-3">复制代码</button><code id="st-3">
+#!/bin/bash
+testuser=NoSuchUser
+if grep $testuser /etc/passwd       #是否有该用户
+then
+  echo "The user $testuser exists on this system."
+elif ls -d /home/$testuser          #没有该用户，是否有其home目录
+then
+  echo "The user $testuser does not exist on this system."
+  echo "However, $testuser has a directory."
+else                                #两者都没有
+  echo "The user $testuser does not exist on this system."
+  echo "And, $testuser does not have a directory."
+fi</code></pre>
+                <p class=" bs-callout bs-callout-info">嵌套的<code>if</code>：显然，如果需要，在以上结构中可以进行嵌套。</p>
+                <p class=" bs-callout bs-callout-info"><code>test</code>: 如果你细心点，会发现我们测试的条件都是某个命令是否成功执行，且结果还会输出，在命令请加上<code>test</code>就干净多了。</p>
+
+                <p><label>多分支选择-case</label></p>
+                <p>使用<code>case</code>可以简化某些代码，请看如下例子</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-3-1">复制代码</button><code id="st-3-1">
+#!/bin/bash
+read -p "Please input your score: " score   #从控制台读取数据到变量score中
+grade=$[ $score/10 ]
+case $grade in
+9 | 10)                     #注意后小括号
+  echo "hahaha"
+  echo "Yes, Great!";;    #注意分号
+8)
+  echo "Good!";;
+7)
+  echo "OK!";;
+6)
+  echo "Pass!";;
+5 | 4 | 3 | 2 | 1 | 0)
+  echo "Bad!";;
+*)
+  echo "Wrong score!";;
+esac</code></pre>
+
+                <p><label>数字比较</label></p>
+                <p>使用<code>-eq、-ge、-gt、-le、-lt、-ne</code>进行数字比较。</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-4">复制代码</button><code id="st-4">
+#!/bin/bash
+value1=10
+value2=11
+if [ $value1 -gt 5 ]        #注意该数字比较的写法
+then
+  echo "The test value $value1 is greater than 5"
+fi
+#
+if [ $value1 -eq $value2 ]
+then
+  echo "The values are equal"
+else
+  echo "The values are different"
+fi</code></pre>
+                <p class=" bs-callout bs-callout-danger">浮点数比较：注意，在shell中不能进行浮点数的比较。</p>
+                
+                <p><label>字符串比较</label></p>
+                <p>使用<code>=、!=、<、>、-n、-z</code>进行字符串比较。其中<code>-n、-z</code>表示字符串长度是否不为0或等于0</p>
+                <p>另外，<code> < 和 > 必须要添加 \ 进行转义</code>，因为shell把他们看着重定向的符号！</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-5">复制代码</button><code id="st-5">
+#!/bin/bash
+val1=baseball
+val2=hockey
+if [ $val1 \> $val2 ]       #注意转义
+then
+  echo "$val1 is greater than $val2"
+else
+  echo "$val1 is less than $val2"
+fi
+echo ====这是分割线====
+val1=testing
+val2=''
+if [ -n $val1 ]
+then
+  echo "The string '$val1' is not empty"
+else
+  echo "The string '$val1' is empty"
+fi
+if [ -z $val2 ]
+then
+  echo "The string '$val2' is empty"
+else
+  echo "The string '$val2' is not empty"
+fi</code></pre>
+                
+                <p><label>文件测试</label></p>
+                <p>使用<code>-d、-f、-e</code>等进行文件测试。分别表示<code>存在且是目录、存在且是文件、存在</code>。其它参数如可否执行、写入等请查阅资料。</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-6">复制代码</button><code id="st-6">
+#!/bin/bash
+tempDir=/home/wang/xxx
+if [ -d $tempDir ]
+then
+  echo "The $tempDir directory exists"
+  cd $tempDir
+  pwd
+else
+  echo "The $tempDir directory does not exist, let's make it!"
+  mkdir $tempDir
+  cd $tempDir
+  pwd
+fi</code></pre>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-7">复制代码</button><code id="st-7">
+#!bin/bash
+location=$HOME
+file_name="test.log"
+if [ -e $location ]
+then #Directory does exist
+  echo "OK on the $location directory."
+  echo "Now checking on the file, $file_name."
+
+  if [ -e $location/$file_name ]
+  then #File does exist
+    echo "OK on the filename"
+    echo "Updating Current Date..."
+    date >> $location/$file_name
+  else #File does not exist
+    echo "File does not exist, let's build it and update."
+    date > $location/$file_name
+  fi
+else    #Directory does not exist
+  echo "The $location directory does not exist."
+  echo "Nothing to update"
+fi</code></pre>
+
+                <p><label>组合条件 - 逻辑</label></p>
+                <p>使用<code>&&、||、！</code>进行逻辑测试。</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-8">复制代码</button><code id="st-8">
+#!/bin/bash
+if ! [ -d $HOME/yyy ]
+then
+  echo "Make yyy Directory"
+  mkdir $HOME/yyy
+fi
+if [ -d $HOME ] && [ -w $HOME/testing ]     #-w表示有testing文件且有写权限
+then
+  echo "The file exists and you can write to it"
+else
+  echo "I cannot write to the file"
+fi</code></pre>
+
+                <p><label>双圆括号表达式</label></p>
+                <p>对于各种数学、关系以及逻辑等表达式，我们也可以使用<code>((expression))</code>的形式进行运算，这样比较接近数学表达。但仍注意只针对整数。</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-9">复制代码</button><code id="st-9">
+#!/bin/bash
+val1=10
+if (( val1 ** 2 > 90 ))     #注意：双圆括号中的变量可以不用$
+then
+  (( val1++ ))
+  (( val2 = val1 ** 2 ))
+  echo "The square of $val1 is $val2"
+fi</code></pre>
+
+                <p><label>C语言风格的for循环</label></p>
+                <p>使用传统的<code>for</code>循环，在shell中可以使用<code>for (( variable assignment ; condition ; iteration process ))</code>的形式，如下所示：</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-10">复制代码</button><code id="st-10">
+#!/bin/bash
+for (( i = 1; i <=10; i++ ))
+do
+  echo "The next number is $i"
+done
+#--------Fibonacci Sequence---------
+f1=1
+f2=1
+echo -n "The Fibonacci Sequence is: $f1 $f2"
+for (( i = 3; i <=20; i++ ))
+do
+  ((f3=f1+f2))
+  echo -n " $f3"
+  ((f1=f2))
+  ((f2=f3))
+done</code></pre>
+
+                <p><label>遍历的for循环</label></p>
+                <p>shell可以让我们对一组值（目录、文件以及文件的行等）进行重复操作及迭代或遍历，在shell中可以使用<code>for var in list</code>的形式，如下所示：</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-11">复制代码</button><code id="st-11">
+#!/bin/bash
+for state in Alabama Alaska Arizona Arkansas California Colorado
+do
+  echo The next state is $state
+done
+#---遍历命令输出---
+file="states"
+content=$(cat $file)    #注意：文件中的内容默认以空格、tab和回车为分隔符
+for state in $content
+do
+echo "Visit beautiful $state"
+done
+#---以文件通配符遍历---
+for file in /home/wang/test/*
+do
+  if [ -d "$file" ]
+  then
+    echo "$file is a directory"
+  elif [ -f "$file" ]
+  then
+    echo "$file is a file"
+  fi
+done        #注意：done后如果加上 > out.txt 则输出循环结果到文件</code></pre>
+
+                <p><label>while和until循环</label></p>
+                <p>这两种循环例子如下：</p>
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-12">复制代码</button><code id="st-12">
+#!/bin/bash
+#----while，条件为TRUE执行----
+var1=10
+while [ $var1 -gt 0 ]   #改为((var1>0))也可
+do
+  echo $var1
+  var1=$[ $var1 - 1 ]   #改为((var1--))也可
+done
+#----until，条件为FALSE执行----
+var1=100
+until [ $var1 -eq 0 ]   #改为((var1==0))也可
+do
+  echo $var1
+  var1=$[ $var1 - 25 ]  #改为((var1-=25))也可
+done</code></pre>
+                <p class=" bs-callout bs-callout-info">嵌套循环：显然，如果需要，在以上结构中可以进行循环嵌套。</p>
+                <p class=" bs-callout bs-callout-info">控制循环：使用<code>break [n] 以及 continue [n]</code>也可以对循环进行控制，其中可选的<code>n</code>表示终止循环的层数/次数。</p>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">练习一：列出系统路径目录中的可执行文件</div>
+                    <div class="panel-body">
+                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-13">复制代码</button><code id="st-13">
+#!/bin/bash
+IFS_OLD=$IFS
+IFS=:               #设置新的文件内容分隔符
+for folder in $PATH
+do
+  echo "$folder:"
+  for file in $folder/*
+  do
+    if [ -x $file ]
+    then
+      echo " $file"
+    fi
+  done
+done
+IFS=$IFS_OLD        #还原分隔符为默认</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">练习二：打印用户指定行数的*，第一行1个，第二行2个，依次类推</div>
+                    <div class="panel-body">
+                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#st-14">复制代码</button><code id="st-14">
+#!/bin/bash
+read -p "Please input number of lines: " line
+for (( i=1; i<=line; i++))
+do
+  for (( j=1;j<=i; j++))
+  do
+    echo -n "*"
+  done
+  echo
+done</code></pre>
+                    </div>
+                  </div>
+
+                  <h3 id="4-input">处理输入</h3>
+                  <p>脚本运行时，我们可以给程序传入需要的数据，这一般分为命令行参数以及运行时输入两种情况。</p>
+                  <p><label>命令行参数</label></p>
+                  <p>假设我们的脚本将对两个给定的数进行求和，并使用命令行参数形式即：<code>./add.sh 89 64</code>（注意以空格分隔），则在脚本中我们可以通过<code>$0、$1、$2</code>得到对应的三个值并进行使用，如参数更多则依此类推。代码如下：</p>
+                  <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#in-1">复制代码</button><code id="in-1">
+#!/bin/bash
+#----求和----
+if(($# == 2))   #参数个数，也可写为 if [ $# eq 2 ]
+then
+  echo "The script's name is $0"
+  ((sum=$1+$2))
+  echo "$1 + $2 = $sum"
+else
+  echo "The script need two parameters!"
+fi
+#----阶乘----
+if(($# == 1))
+then
+  factorial=1
+  for (( number = 1; number <= $1 ; number++ ))
+  do
+    ((factorial *= $number))
+  done
+  echo The factorial of $1 is $factorial
+else
+  echo The script need a parameter!
+</code></pre>
+
+                  <p><label>运行时输入</label></p>
+                  <p>在脚本运行过程中要求用户提供数据，我们使用<code>read</code></p>
+                  <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#in-2">复制代码</button><code id="in-2">
+#!/bin/bash
+echo -n "Enter your name: "     #不换行
+read name
+echo "Hello $name, welcome to my program. "
+#----带提示---------
+read -p "Please enter your age: " age 
+days=$[ $age * 365 ]    #((days=age*365))
+echo "That makes you over $days days old! "
+#-----n1表示接受到一个字符后无需回车，自动往下执行----
+read -n1 -p "Do you want to continue [Y/N]? " answer    
+case $answer in
+  Y | y)
+    echo
+    echo "fine, continue on…";;
+  N | n)
+    echo
+    echo OK, goodbye
+    exit;;      #直接退出脚本执行
+esac
+echo "This is the end of the script"
+#----silence----
+read -s -p "Enter your password: " pass
+echo
+echo "Is your password really $pass? "
+#----从文件中接收数据，方法一----
+#The quick brown dog jumps over the lazy fox.
+#This is a test, this is only a test.
+#O Romeo, Romeo! Wherefore art thou Romeo?
+count=1
+cat data.txt | while read line
+do
+  echo "Line $count: $line"
+  ((count++))
+done
+echo "Finished processing the file"
+#----从文件中接收数据，方法二----
+while read line
+do
+  echo $line
+done < data.txt
+#----从文件中接收数据，方法三----
+#注意：while以换行为分隔，for还会以空格为分隔
+for line in `cat data.txt`      
+do
+  echo $line
+done</code></pre>
+
+                    <h3 id="4-control">script控制</h3>
+                    <p>脚本运行时，我们有许多的选项来控制脚本的运行。</p>
+
+                    <p><label>处理信号</label></p>
+                    <p>脚本运行过程中，<code>Ctrl+c</code>将终止运行（<code>SIGINT</code>信号），<code>Ctrl+z</code>将暂停执行（<code>SIGTSTP</code>信号）。</p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#control-1">复制代码</button><code id="control-1">
+sleep 1000       #ctrl+c，可看到被终止
+sleep 1000       #ctrl+z，可看到暂停的信息，如进程job number为1
+sleep 1000       #ctrl+z，可看到暂停的信息，如进程job number为2
+ps -l           #查看当前进程状态，S列中的T表明为STOP状态
+kill -9 PID     #-9表示无条件终止进程
+bg/fg           #在后台/前台恢复被暂停的执行，可加上job number指定</code></pre>
+                    <p>我们也可以在脚本中用<code>trap</code>对这些信号进行捕获，来决定如何处理</p>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#control-2">复制代码</button><code id="control-2">
+#!/bin/bash
+trap "echo 'You can not interrupt me!'" SIGINT
+count=1
+while((count<=10))
+do
+  echo "loop #$count"
+  sleep 1
+  ((count++))
+done</code></pre>
+                    <p><label>运行脚本在后台</label></p>
+                    <p>如果一个脚本运行时间长，则在前台运行就不合适，此时运行脚本的命令加上<code> & </code>即表示要在后台运行，如：<code>./test.sh &</code></p>
+                    <p>这样输出将会前台显示，我们可以用重定向解决。但还有一个问题是shell关闭后，运行的脚本进程也被杀死。对于这种需要长时间运行的情况，我们使用<code>nohup ./test.sh &</code>来执行。</p>
+                    <p class=" bs-callout bs-callout-info">执行这种任务的另一个好方法是tmux</p>
+                    <p><label>自动执行脚本</label></p>
+                    <p>我们可以使用<code>at -f test.sh 时间</code>命令让脚本在指定的时间运行。时间格式有10:10、10:10PM、now、noon、midnight、10:10 + 7 days等</p>
+                    <p><code>atq</code>可列出计划任务，<code>atrm 任务号</code>可取消</p>
+                    
+<!-- <p class=" bs-callout bs-callout-info">浮点运算：在shell中进行浮点运算就更不友好了，请有需要时查阅相关文档。</p> -->
+<!-- <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-">复制代码</button><code id="s-">
+</code></pre> -->
+
+            </div>
+            <!-- 实验四结束 -->
+
+
+        </div>
+    </div>
+
+    <!-- Footer
+================================================== -->
+    <footer class="bs-footer" role="contentinfo">
+        <div class="container">
+            <p>本网站所列文档全部由棋歌整理及维护，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>协议发布。
+            </p>
+
+            <p>Powered By <a href="http://nginx.org/" target="_blank" title="">Nginx</a> And<a href="http://www.bootcss.com/"> Bootcss</a></p>
+
+            <p>
+                <a href="http://www.cqjtu.edu.cn/" target="_blank">重庆交通大学信息学院</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/dist/js/bootstrap.min.js"></script>
+
+
+    <script src="../docs-assets/js/holder.min.js"></script>
+    <script src="../docs-assets/js/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <script src="../docs-assets/js/clipboard.min.js"></script>
+    <script>
+        new Clipboard('.btn');
+    </script>
+
+    <script src="../docs-assets/js/application.js"></script>
+
+
+    <!-- Analytics
+================================================== -->
+    <!--<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F3d8e7fc0de8a2a75f2ca3bfe128e6391' type='text/javascript'%3E%3C/script%3E"));
+</script>-->
+
+
+</body>
+
+</html>

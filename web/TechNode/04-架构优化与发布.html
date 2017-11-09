@@ -1,0 +1,1466 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff');
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .h {
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs,
+.markdown-body .highlight .cp .h {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #000;
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+}
+
+.markdown-body .highlight .pl-coc,
+.markdown-body .highlight .pl-entm,
+.markdown-body .highlight .pl-eoa,
+.markdown-body .highlight .pl-mai .pl-sf,
+.markdown-body .highlight .pl-pdv,
+.markdown-body .highlight .pl-sc,
+.markdown-body .highlight .pl-sr,
+.markdown-body .highlight .pl-v,
+.markdown-body .highlight .pl-vpf {
+  color: #0086b3;
+}
+
+.markdown-body .highlight .pl-eoac,
+.markdown-body .highlight .pl-mdht,
+.markdown-body .highlight .pl-mi1,
+.markdown-body .highlight .pl-mri,
+.markdown-body .highlight .pl-va,
+.markdown-body .highlight .pl-vpu {
+  color: #008080;
+}
+
+.markdown-body .highlight .pl-c,
+.markdown-body .highlight .pl-pdc {
+  color: #b4b7b4;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-k,
+.markdown-body .highlight .pl-ko,
+.markdown-body .highlight .pl-kolp,
+.markdown-body .highlight .pl-mc,
+.markdown-body .highlight .pl-mr,
+.markdown-body .highlight .pl-ms,
+.markdown-body .highlight .pl-s,
+.markdown-body .highlight .pl-sok,
+.markdown-body .highlight .pl-st {
+  color: #6e5494;
+}
+
+.markdown-body .highlight .pl-ef,
+.markdown-body .highlight .pl-enf,
+.markdown-body .highlight .pl-enm,
+.markdown-body .highlight .pl-entc,
+.markdown-body .highlight .pl-eoi,
+.markdown-body .highlight .pl-sf,
+.markdown-body .highlight .pl-smc {
+  color: #d12089;
+}
+
+.markdown-body .highlight .pl-ens,
+.markdown-body .highlight .pl-eoai,
+.markdown-body .highlight .pl-kos,
+.markdown-body .highlight .pl-mh .pl-pdh,
+.markdown-body .highlight .pl-mp,
+.markdown-body .highlight .pl-pde,
+.markdown-body .highlight .pl-stp {
+  color: #458;
+}
+
+.markdown-body .highlight .pl-enti {
+  color: #d12089;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cce,
+.markdown-body .highlight .pl-enc,
+.markdown-body .highlight .pl-kou,
+.markdown-body .highlight .pl-mq {
+  color: #f93;
+}
+
+.markdown-body .highlight .pl-mp1 .pl-sf {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cos,
+.markdown-body .highlight .pl-ent,
+.markdown-body .highlight .pl-md,
+.markdown-body .highlight .pl-mdhf,
+.markdown-body .highlight .pl-ml,
+.markdown-body .highlight .pl-pdc1,
+.markdown-body .highlight .pl-pds,
+.markdown-body .highlight .pl-s1,
+.markdown-body .highlight .pl-scp,
+.markdown-body .highlight .pl-sol {
+  color: #df5000;
+}
+
+.markdown-body .highlight .pl-c1,
+.markdown-body .highlight .pl-cn,
+.markdown-body .highlight .pl-pse,
+.markdown-body .highlight .pl-pse .pl-s2,
+.markdown-body .highlight .pl-vi {
+  color: #a31515;
+}
+
+.markdown-body .highlight .pl-mb,
+.markdown-body .highlight .pl-pdb {
+  color: #df5000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mi,
+.markdown-body .highlight .pl-pdi {
+  color: #6e5494;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-ms1 {
+  background-color: #f5f5f5;
+}
+
+.markdown-body .highlight .pl-mdh,
+.markdown-body .highlight .pl-mdi {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mdr {
+  color: #0086b3;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-s2 {
+  color: #333;
+}
+
+.markdown-body .highlight .pl-ii {
+  background-color: #df5000;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-ib {
+  background-color: #f93;
+}
+
+.markdown-body .highlight .pl-id {
+  background-color: #a31515;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-iu {
+  background-color: #b4b7b4;
+}
+
+.markdown-body .highlight .pl-mo {
+  color: #969896;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}</style><title>04-架构优化与发布</title></head><body><article class="markdown-body"><h2>
+<a id="user-content-架构优化与发布" class="anchor" href="#%E6%9E%B6%E6%9E%84%E4%BC%98%E5%8C%96%E4%B8%8E%E5%8F%91%E5%B8%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>架构优化与发布</h2>
+
+<p>在本章中，我们将对前三章中一步步编写出来聊天室重新做一次梳理，进行一些优化，让整个项目更容易理解和扩展。其次我们还会介绍一些前端流行的工具，帮助我们构建项目，便于发布。</p>
+
+<h3>
+<a id="user-content-项目结构" class="anchor" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>项目结构</h3>
+
+<p>目前整个项目的架构如下图：</p>
+
+<p><a href="examples/chapter04/images/TechNodestructure.png" target="_blank"><img src="examples/chapter04/images/TechNodestructure.png" alt="TechNode Structure" style="max-width:100%;"></a></p>
+
+<p>箭头代表了读取数据的流向，服务端和客户端基本上都分为三层：</p>
+
+<ul>
+<li>服务端：在MongoDB和mongoose之上，我们添加了一层模型的controller，这一层直接处理一些业务相关的逻辑；在这之上，我们直接通过http API或者socket.io将所提供的接口暴露出来；这一块的代码全部写在了app.js中；</li>
+<li>客户端：针对不同的组件或者页面，我们对应了不同的controller，而这些controller都是通过$http或者socket 服务直接于服务端通信的；各个controller之间共享数据很困难。</li>
+</ul>
+
+<p>基于上面的问题，我们做出以下调整：</p>
+
+<ul>
+<li>将服务端逻辑从app.js分拆为http和socket两个服务中；</li>
+<li>在客户端提供一个统一的数据接口层，向上为controller提供数据服务，向下和服务端通信，同步数据。</li>
+</ul>
+
+<p>新的结构应该像下面这样：</p>
+
+<p><a href="examples/chapter04/images/TechNodestructurenew.png" target="_blank"><img src="examples/chapter04/images/TechNodestructurenew.png" alt="TechNode Structure" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-分拆http和socket服务" class="anchor" href="#%E5%88%86%E6%8B%86http%E5%92%8Csocket%E6%9C%8D%E5%8A%A1" aria-hidden="true"><span class="octicon octicon-link"></span></a>分拆http和socket服务</h3>
+
+<p>首先简化app.js：</p>
+
+<pre><code>// ...
+
+var api = require('./services/api')
+var socketApi = require('./services/socketApi')
+
+// ...
+
+app.post('/api/login', api.login)
+app.get('/api/logout', api.logout)
+app.get('/api/validate', api.validate)
+
+// ...
+
+io.sockets.on('connection', function(socket) {
+
+  socketApi.connect(socket)
+
+  socket.on('disconnect', function() {
+    socketApi.disconnect(socket)
+  })
+
+  socket.on('technode', function(request) {
+    socketApi[request.action](request.data, socket, io)
+  })
+})
+
+// ...
+</code></pre>
+
+<p>我们把http和socket的回调分别放到api.js和socketApi.js中，在socket通信方面做了简化，使用<code>technode</code>作为统一的事件名，而需要调用的接口名，则由请求数据中的<code>action</code>来决定。每个socket请求都会变成下面这样：</p>
+
+<p>客户端的请求：</p>
+
+<pre><code>socket.emit('technode', {
+  action: 'getRoom'
+})
+</code></pre>
+
+<p>下面是服务端的返回：</p>
+
+<pre><code>socket.emit('technode', {
+  "action": "getRoom",
+  "data": [{
+    "name": "Socket.IO",
+    "_id": "52b0e5dd0a5e66fa26000001",
+    "__v": 0,
+    "createAt": "2013-12-18T00:01:33.528Z",
+    "users": [],
+    "messages": []
+  }]
+})
+</code></pre>
+
+<p>客户端则根据action，进行不同的处理：</p>
+
+<pre><code>socket.on('technode', function (data) {
+  switch (data.action) {
+      // ...
+  }
+})
+</code></pre>
+
+<p>而本身api.js和socketApi.js内的处理，与第三章的基本无异，不再细说。</p>
+
+<h3>
+<a id="user-content-客户端缓存" class="anchor" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%93%E5%AD%98" aria-hidden="true"><span class="octicon octicon-link"></span></a>客户端缓存</h3>
+
+<p>为什么需要客户端缓存？有两点原因：</p>
+
+<ol>
+<li>在第三章的实现中，在房间列表和房间切换时，controller都会通过socket从服务端重新获取房间列表或房间；</li>
+<li>在第三章的实现中，我们无法在controller之间共享数据，比如在LoginCtrl中，用户登录后，我们需要更新$rootScope的用户信息，采用了scope事件机制来实现。</li>
+</ol>
+
+<p>我们需要一个缓存数据和共享数据的组件，这个组件将服务端请求来的数据缓存下来，避免重复的从服务端请求相同的数据，其次是对所有的controller提供接口，让controller间可以共享（读取、修改）同一份数据。</p>
+
+<p>我们把这个组件命名为server，与服务端通信完全通过这个组件，数据缓存到这个组件之中，controller直接与它通信，不必关心真正的服务器是什么样的。</p>
+
+<pre><code>angular.module('techNodeApp').factory('server', ['$cacheFactory', '$q', '$http', 'socket', function($cacheFactory, $q, $http, socket) {
+  var cache = window.cache = $cacheFactory('technode')
+  socket.on('technode', function(data) {
+    switch (data.action) {
+      case 'getRoom':
+        if (data._roomId) {
+          angular.extend(cache.get(data._roomId), data.data)
+        } else {
+          data.data.forEach(function (room) {
+            cache.get('rooms').push(room)
+          })
+        }
+        break
+      // case something else
+      // handle for socket events
+    }
+  })
+
+  socket.on('err', function (data) {
+    // handle server err
+  })
+
+  return {
+    validate: function() {
+      var deferred = $q.defer()
+      $http({
+        url: '/api/validate',
+        method: 'GET'
+      }).success(function(user) {
+        angular.extend(cache.get('user'), user)
+        deferred.resolve()
+      }).error(function(data) {
+        deferred.reject()
+      })
+      return deferred.promise
+    }
+    // more API
+  }
+}])
+</code></pre>
+
+<p>在server中，我们使用了两个Angular提供的组件，<code>$q</code>和<code>$cacheFactory</code>。</p>
+
+<h4>
+<a id="user-content-q" class="anchor" href="#q" aria-hidden="true"><span class="octicon octicon-link"></span></a>$q</h4>
+
+<p>$q是Angular对JavaScript异步编程模式Promise的实现，参考了<a href="https://github.com/kriskowal/q">https://github.com/kriskowal/q</a> 。在TechNode对它的用法相对比较简单，仅仅是将Ajax请求隐藏起来。以server.validate为例：</p>
+
+<pre><code>validate: function() {
+  var deferred = $q.defer()
+  $http({
+    url: '/api/validate',
+    method: 'GET'
+  }).success(function(user) {
+    angular.extend(cache.get('user'), user)
+    deferred.resolve()
+  }).error(function(data) {
+    deferred.reject()
+  })
+  return deferred.promise
+}
+</code></pre>
+
+<p><code>$q.defer()</code>获取一个differed（推迟）对象，然后<code>return deferred.promise</code>先返回promise（承诺），在服务器端成功返回后，resolve（兑现）承诺，或者遇到问题，reject（拒绝）兑现。</p>
+
+<p>在technode.js中我们可以这样使用：</p>
+
+<pre><code>server.validate().then(function() {
+  if ($location.path() === '/login') {
+    $location.path('/rooms')
+  }
+}, function() {
+  $location.path('/login')
+})
+</code></pre>
+
+<p><code>server.validate()</code>获取promise（承诺）对象，then(resolvedCallback, rejectCallack)（然后）根据承诺的兑现情况进行不同的处理。</p>
+
+<p>换句话说，technode.js中的<code>techNodeApp</code>问server，用户是不是登录了，server必须调用服务端接口进行验证，因此server给<code>techNodeApp</code>许诺，<code>techNodeApp</code>则只需要针对许诺是否兑现进行处理就好了。</p>
+
+<p>所有与http请求相关的接口，我们都做了相似的处理。</p>
+
+<h4>
+<a id="user-content-cachefactory" class="anchor" href="#cachefactory" aria-hidden="true"><span class="octicon octicon-link"></span></a>$cacheFactory</h4>
+
+<p>$cacheFactory是Angular提供的缓存组件，该组件直接将数据存放在内存中。</p>
+
+<pre><code>var cache = window.cache = $cacheFactory('technode')
+
+// ...
+
+cache.put('rooms', [])
+
+// ...
+
+cache.get('rooms') &amp;&amp; cache.get('rooms').forEach(function(room) {
+  if (room._id === _roomId) {
+    room.users = room.users.filter(function(user) {
+      return user._id !== _userId
+    })
+  }
+})
+</code></pre>
+
+<p>直接调用$cacheFactory，传入cacheId，Angular就为我构造出一块缓存区域，我们就可以通过get、put等等方法来存储或者获取缓存数据了。</p>
+
+<p>$cacheFactory还提供了一种TechNode中未使用的特性，即这块缓存可以是LRU的，什么是LRU？即这块缓存是有大小的（避免缓存开销过大，影响网易性能），并且这块缓存使用LRU算法来淘汰长时间未使用的数据。</p>
+
+<h3>
+<a id="user-content-controller与server" class="anchor" href="#controller%E4%B8%8Eserver" aria-hidden="true"><span class="octicon octicon-link"></span></a>controller与server</h3>
+
+<p>有了server，我们来看看controller有什么变化？这是原来的RoomCtrl的代码：</p>
+
+<pre><code>angular.module('techNodeApp').controller('RoomCtrl', function($scope, $routeParams, $scope, socket) {
+  socket.on('rooms.read' + $routeParams._roomId, function(room) {
+    $scope.room = room
+  })
+  socket.emit('rooms.read', {
+    _roomId: $routeParams._roomId
+  })
+  socket.on('messages.add', function(message) {
+    $scope.room.messages.push(message)
+  })
+  // ...
+  socket.on('users.join', function (join) {
+    $scope.room.users.push(join.user)
+  })
+
+  socket.on('users.leave', function(leave) {
+    _userId = leave.user._id
+    $scope.room.users = $scope.room.users.filter(function(user) {
+      return user._id != _userId
+    })
+  })
+})
+</code></pre>
+
+<p>这是基于server组件修改后的RoomCtrl：</p>
+
+<pre><code>angular.module('techNodeApp').controller('RoomCtrl', ['$scope', '$routeParams', '$scope', 'server', function($scope, $routeParams, $scope, server) {
+
+  $scope.room = server.getRoom($routeParams._roomId)
+
+  // ...
+}])
+</code></pre>
+
+<p>我们可以发现如下的变化：</p>
+
+<ul>
+<li>RoomCtrl不再直接与服务端通信读取当前的房间信息；</li>
+<li>无需监听用户进入、离开或者新消息的事件。</li>
+</ul>
+
+<p>RoomCtrl只需调用server.getRoom，传入房间的id即可。那房间信息不是需要到服务端读取么？这是怎么实现的？</p>
+
+<p>这完全得益于Angular数据绑定特性，即数据变化，视图也会跟着变化：</p>
+
+<pre><code>getRoom: function(_roomId) {
+  if (!cache.get(_roomId)) {
+    cache.put(_roomId, {
+      users: [],
+      messages: []
+    })
+    socket.emit('technode', {
+      action: 'getRoom',
+      data: {
+        _roomId: _roomId
+      }
+    })
+  }
+  return cache.get(_roomId)
+}
+</code></pre>
+
+<p>这里的处理方式与<code>promise</code>有异曲同工之妙。<code>getRoom</code>方法，如果在缓存中没有找到房间的数据，就先新建一个房间对象，不过里面的数据都是空的（此时，RoomCtrl渲染出来的是一个空的房间视图），然后通过socket向服务端请求房间数据；如果找到就直接返回从缓存中获取的房间数据，RoomCtrl就可以渲染出来一个正常的房间视图。</p>
+
+<p>而在服务端返回房间信息后，</p>
+
+<pre><code>case 'getRoom':
+  if (data._roomId) {
+    angular.extend(cache.get(data._roomId), data.data)
+  } else {
+    data.data.forEach(function (room) {
+      cache.get('rooms').push(room)
+    })
+  }
+</code></pre>
+
+<p>我们使用服务端的数据填充到空房间即可，Angular即根据数据的变化，渲染出新的房间视图。</p>
+
+<blockquote>
+<p>我们必须保证更新的房间对象必须是视图绑定的对象，因此我们一开始就返回一个房间对象，后面只是修改这个对象的属性。</p>
+</blockquote>
+
+<p>同理，RoomCtrl也无需出来用户进入或者离开房间，有新消息这类事件，因为server组件会自动更新对应的数据，RoomCtrl只需要按照数据渲染即可。</p>
+
+<p>好了，我们利用客户端缓存和Angular数据绑定特性，大大简化了TechNode控制器层。到此，我们的开发之旅已经接近尾声，接下来，我们将学习如何将前端程序打包，发布！</p>
+
+<h3>
+<a id="user-content-使用grunt打包technode" class="anchor" href="#%E4%BD%BF%E7%94%A8grunt%E6%89%93%E5%8C%85technode" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用Grunt打包TechNode</h3>
+
+<p>开发时，为了解耦和便于维护，我们把代码拆成单独的文件，JavaScript代码、CSS代码和HTML都是单独的。在生产环境中，为了提高性能，我们需要把这些分开的文件合并到一起。如果你的网站使用CDN的化，我们还需要给每个版本的文件，添加上唯一的标识，便于维护CDN的缓存。</p>
+
+<p>Grunt是目前JavaScript最流行的项目自动化构建工具。Grunt官方提供了很多插件，也有大量的第三方插件。我们可以轻松地使用Grunt检查、压缩合并代码，甚至发布应用程序。我们将基于grunt-usemin等几个流行的Grunt插件来构建TechNode项目。</p>
+
+<p>首先我们需要做一些准备，安装Grunt命令行和运行时，在TechNode根目录新建Gruntfile.js。</p>
+
+<pre><code>npm install -g grunt-cli &amp;&amp; npm install grunt --save-dev &amp;&amp; touch Gruntfile.js
+</code></pre>
+
+<p>为了使用grunt-usemin来压缩我们的代码，我们需要在index.html添加一些特殊的注释来来帮助grunt-usemin找到需要合并的文件：</p>
+
+<pre><code>&lt;!-- build:css /css/technode.css --&gt;
+&lt;link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css"&gt;
+&lt;link rel="stylesheet" href="/styles/style.css"&gt;
+&lt;link rel="stylesheet" href="/styles/login.css"&gt;
+&lt;link rel="stylesheet" href="/styles/rooms.css"&gt;
+&lt;link rel="stylesheet" href="/styles/room.css"&gt;
+&lt;!-- endbuild --&gt;
+
+&lt;script type="text/javascript" src="/socket.io/socket.io.js"&gt;&lt;/script&gt;
+&lt;!-- build:js /script/technode.js --&gt;
+&lt;script type="text/javascript" src="/components/jquery/jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/components/bootstrap/dist/js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/components/angular/angular.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/components/angular-route/angular-route.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/components/moment/moment.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/components/angular-moment/angular-moment.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/components/moment/lang/zh-cn.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/technode.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/services/socket.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/services/server.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/router.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/directives/auto-scroll-to-bottom.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/directives/ctrl-enter-break-line.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/controllers/login.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/controllers/rooms.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/controllers/room.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/controllers/message-creator.js"&gt;&lt;/script&gt;
+&lt;!-- endbuild --&gt;
+</code></pre>
+
+<p>我们分别在css和javascript的引用周围加上了注释，<code>&lt;!-- build:css /css/technode.css --&gt;</code>标明我们需要把下面这些css都合并到technode.css这个文件中，javascript全都合并到technode.js中。</p>
+
+<blockquote>
+<p>注意，socket.io.js这个文件并没有包含进来，因为它是socket.io自己输出的，并没有在我们的自己的源码中。当然，我们甚至可以把这个文件保存到源码中，自己引用也是可以的。</p>
+</blockquote>
+
+<p>首先使用grunt-contrib-copy将不需要打包压缩的文件拷贝到build目录中，修改Gruntfile.js</p>
+
+<pre><code>module.exports = function (grunt) {
+  grunt.initConfig({
+    copy: {
+      main: {
+        files: [
+          {expand: true, cwd: 'static/components/bootstrap/dist/fonts/', src: ['**'], dest: 'build/fonts'},
+          {'build/index.html': 'static/index.html'},
+          {'build/favicon.ico': 'static/favicon.ico'}
+        ]
+      }
+    }
+  })
+  grunt.loadNpmTasks('grunt-contrib-copy')
+
+  grunt.registerTask('default', [
+    'copy'
+  ])
+}
+</code></pre>
+
+<p>grunt-usemin为我们提供了一个useminPrepare的task，这个task就是基于我们在index.html文件中的配置，自动生成合并和压缩代码的配置：</p>
+
+<pre><code>module.exports = function (grunt) {
+  grunt.initConfig({
+    copy: {
+      main: {
+        files: [
+          {expand: true, cwd: 'static/components/bootstrap/dist/fonts/', src: ['**'], dest: 'build/fonts'},
+          {'build/index.html': 'static/index.html'},
+          {'build/favicon.ico': 'static/favicon.ico'}
+        ]
+      }
+    },
+    useminPrepare: {
+      html: 'static/index.html',
+      options: {
+        dest: 'build'
+      }
+    }
+  })
+  grunt.loadNpmTasks('grunt-usemin')
+  grunt.loadNpmTasks('grunt-contrib-copy')
+
+  grunt.registerTask('default', [
+    'copy',
+    'useminPrepare'
+  ])
+}
+</code></pre>
+
+<p><code>npm install grunt-usemin --save-dev</code>，运行<code>grunt</code>试试看：</p>
+
+<pre><code>Running "useminPrepare:html" (useminPrepare) task
+Going through static/index.html to update the config
+Looking for build script HTML comment blocks
+
+Configuration is now:
+
+  concat:
+  { generated:
+   { files:
+      [ { dest: '.tmp/concat/css/technode.css',
+          src:
+           [ 'static/components/bootstrap/dist/css/bootstrap.min.css',
+             'static/styles/style.css',
+             'static/styles/login.css',
+             'static/styles/rooms.css',
+             'static/styles/room.css' ] },
+        { dest: '.tmp/concat/script/technode.js',
+          src:
+           [ 'static/components/jquery/jquery.js',
+             'static/components/bootstrap/dist/js/bootstrap.min.js',
+             'static/components/angular/angular.js',
+             'static/components/angular-route/angular-route.js',
+             'static/components/moment/moment.js',
+             'static/components/angular-moment/angular-moment.js',
+             'static/components/moment/lang/zh-cn.js',
+             'static/technode.js',
+             'static/services/socket.js',
+             'static/services/server.js',
+             'static/router.js',
+             'static/directives/auto-scroll-to-bottom.js',
+             'static/directives/ctrl-enter-break-line.js',
+             'static/controllers/login.js',
+             'static/controllers/rooms.js',
+             'static/controllers/room.js',
+             'static/controllers/message-creator.js' ] } ] } }
+
+  uglify:
+  { generated:
+   { files:
+      [ { dest: 'build/script/technode.js',
+          src: [ '.tmp/concat/script/technode.js' ] } ] } }
+
+  cssmin:
+  { generated:
+   { files:
+      [ { dest: 'build/css/technode.css',
+          src: [ '.tmp/concat/css/technode.css' ] } ] } }
+</code></pre>
+
+<p>它为我们生成了本来需要手动编写的其他task的配置，接下来，安装其他几个需要的grunt task，继续修改Gruntfile.js：</p>
+
+<pre><code>module.exports = function (grunt) {
+  grunt.initConfig({
+    copy: {
+      main: {
+        files: [
+          {expand: true, cwd: 'static/components/bootstrap/dist/fonts/', src: ['**'], dest: 'build/fonts'},
+          {'build/index.html': 'static/index.html'},
+          {'build/favicon.ico': 'static/favicon.ico'}
+        ]
+      }
+    },
+    useminPrepare: {
+      html: 'static/index.html',
+      options: {
+        dest: 'build'
+      }
+    }
+  })
+  grunt.loadNpmTasks('grunt-usemin')
+  grunt.loadNpmTasks('grunt-contrib-copy')
+  grunt.loadNpmTasks('grunt-contrib-concat')
+  grunt.loadNpmTasks('grunt-contrib-uglify')
+  grunt.loadNpmTasks('grunt-contrib-cssmin')
+
+  grunt.registerTask('default', [
+    'copy',
+    'useminPrepare',
+    'concat',
+    'uglify',
+    'cssmin'
+  ])
+}
+</code></pre>
+
+<p>安装好新的依赖，再运行grunt试试看。首先concat根据useminPrepare生成的配置，将css和js分别合并到.tmp/concat/css/technode.css和.tmp/concat/script/technode.js中；然后uglify和cssmin分别将这两个文件压缩成了build/css/technode.css和build/script/technode.js，我们的css文件和js文件就打包压缩好了。</p>
+
+<p>除此之外我们还需要把pages中的html内联到index.html中。在Angular中，我们既可以将模板文件单独放在不同的html文件中，也可以像下面这样，内联在html中：</p>
+
+<pre><code>&lt;script type="text/ng-template" id="/pages/login.html"&gt;
+&lt;form class="form-inline form-login" ng-submit="login()"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label class="sr-only"&gt;Gmail&lt;/label&gt;
+    &lt;input type="email" required class="form-control" ng-model="email" placeholder="Gmail账号" /&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn btn-primary btn-enter"&gt;进入&lt;/button&gt;
+&lt;/form&gt;
+&lt;/script&gt;
+</code></pre>
+
+<p><code>grunt-inline-angular-templates</code>就可以实现这样的需求：</p>
+
+<pre><code>inline_angular_templates: {
+  dist: {
+      options: {
+          base: 'static/',
+          prefix: '/'
+      },
+      files: {
+          'build/index.html': ['static/pages/*.html']
+      }
+  }
+}
+</code></pre>
+
+<p>使用grunt-rev，为静态文件加上唯一标识，使用grunt-contrib-clean在每次打包开始时，清除.tmp和build里的内容：</p>
+
+<pre><code>rev: {
+  options: {
+    encoding: 'utf8',
+    algorithm: 'md5',
+    length: 8
+  },
+  assets: {
+    files: [{
+      src: [
+        'build/**/*.{jpg,jpeg,gif,png,js,css,eot,svg,ttf,woff}'
+      ]
+    }]
+  }
+},
+clean: {
+  main:['.tmp', 'build']
+}
+</code></pre>
+
+<p>最后，使用grunt-usemin提供的task usemin，将html中标记的合并区块已经css中的字体引用使用build目录中对应的压缩做了唯一标记的文件名替换掉：</p>
+
+<pre><code>grunt.registerTask('default', [
+  'clean',
+  'copy',
+  'useminPrepare',
+  'concat',
+  'uglify',
+  'cssmin',
+  'rev',
+  'usemin',
+  'inline_angular_templates'
+])
+</code></pre>
+
+<p>于是我们整个构建的过程结束了，所有文件都按照我们想要的方式处理好了。</p>
+
+<p>我们再来回顾一下打包的过程，开始那么多的js，首先被concat到了tmp/concat/technode.js中，然后aglify压缩到build/script/tecnhode.js中，接着rev根据文件内容为其生成了唯一的标示<code>7add9650.technode.js</code>，最后，usemin再把build/index.html中的js区块换成了<code>&lt;script src="/script/7add9650.technode.js"&gt;&lt;/script&gt;</code>。这就是我们采用的整个打包压缩过程。同理css也是如此。</p>
+
+<h3>
+<a id="user-content-发布technode" class="anchor" href="#%E5%8F%91%E5%B8%83technode" aria-hidden="true"><span class="octicon octicon-link"></span></a>发布TechNode</h3>
+
+<p>发布之前我们还需要做一些准备工作，我们需要让生产环境中访问的是打包压缩过的静态文件，express为我们提供了一种区分开发环境和生产环境的方式：</p>
+
+<pre><code>app.configure('development', function () {
+  app.set('staticPath', '/static')
+})
+
+app.configure('production', function () {
+  app.set('staticPath', '/build')
+})
+
+app.use(express.static(__dirname + app.get('staticPath')))
+</code></pre>
+
+<p>如果我们运行<code>node app.js</code> express默认采用的是development环境，我们可以使用<code>NODE_ENV=production node app.js</code>来启用生产环境的配置，我们这里的做法很简单，将静态文件的路径指定到编译后的/build目录即可。</p>
+
+<p>至于如何部署到线上，在这里不多做介绍，大家可以参考<a href="https://github.com/nswbmw/N-blog/wiki/%E7%95%AA%E5%A4%96%E7%AF%87%E4%B9%8B%E2%80%94%E2%80%94%E9%83%A8%E7%BD%B2%E5%88%B0-Heroku">《使用 Express + MongoDB 搭建多人博客》番外篇之——部署到 Heroku</a>将TechNode部署到heroku上。注意一下两点即可：</p>
+
+<ul>
+<li>修改config.js中的MongoDB配置，修改成对应的你在MongoHQ的数据库，例如：<code>mongodb://technode:technode@troup.mongohq.com:10046/technode</code>
+</li>
+<li>修改heroku对应的Procfile文件，添加<code>web: NODE_ENV=production node app.js</code>，让TechNode以生产模式启动。</li>
+</ul>
+
+<p>大家可以访问<a href="http://technode.herokuapp.com/%EF%BC%88%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87www.technode.im%E6%9D%A5%E8%AE%BF%E9%97%AE%EF%BC%89%EF%BC%8C%E6%B5%8B%E8%AF%95%E6%88%91%E9%83%A8%E7%BD%B2%E5%9C%A8heroku%E4%B8%8A%E7%9A%84TechNode%E3%80%82">http://technode.herokuapp.com/（也可以通过www.technode.im来访问），测试我部署在heroku上的TechNode。</a></p>
+
+<h3>
+<a id="user-content-聊天室之旅结束啦" class="anchor" href="#%E8%81%8A%E5%A4%A9%E5%AE%A4%E4%B9%8B%E6%97%85%E7%BB%93%E6%9D%9F%E5%95%A6" aria-hidden="true"><span class="octicon octicon-link"></span></a>聊天室之旅结束啦！</h3>
+
+<p>到这里，我们的聊天室之旅告一段落。TechNode虽然还有很多不足之处，但是我希望，你看完这几章之后，能够有所收获。相信你现在一定能够使用Node.js、socket.io、Angular.js等等这些现在炙手可热的框架来快速搭建自己的Web应用吧！赶紧计划自己的下一个项目吧，如果有进展，可别忘了告诉我！</p>
+</article></body></html>

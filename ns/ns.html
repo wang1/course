@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络信息安全</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
+    <link href="../docs-assets/css/docs.css" rel="stylesheet">
+    <link href="../docs-assets/css/github.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        h1, .h1, h2, .h2, h3, .h3, h4, .h4, .lead {
+            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        pre code {
+            background: transparent;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
+</head>
+<body>
+<a class="sr-only" href="#content">Skip to main content</a>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-globe"></span> 网络信息安全</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#"><span class="glyphicon glyphicon-list-alt"></span> 课堂教学</a>
+                </li>
+                <li>
+                    <a href="ns-experiment.html"><span class="glyphicon glyphicon-glass"></span> 实验</a>
+                </li>
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-pencil"></span> 考试</a>
+                </li>
+		<li>
+                    <a href="../data/ns/jteach.zip"><span class="glyphicon glyphicon-user"></span> 屏幕广播教学软件</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-info-sign"></span> 关于</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<!-- Docs page layout -->
+<div class="bs-header" id="content">
+    <div class="container">
+        <h1>课堂教学</h1>
+
+        <p>本课程是通信专业的选修专业课，采用专题的学习方式让学生了解网络安全，提升网络安全方面的能力。</p>
+    </div>
+</div>
+
+<!-- Callout for the old docs link -->
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bs-sidebar hidden-print" role="complementary">
+                <ul class="nav bs-sidenav">
+
+                    <li>
+                        <a href="#1">一 相关知识回顾</a>
+                        <ul class="nav">
+                            <li><a href="#1-"></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#2">二 网络安全概述</a>
+                        <ul class="nav">
+                            <li><a href="#2-"></a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#3">三 密码学基础</a>
+                        <ul class="nav">
+                            <li><a href="#3-"></a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#4">四 加密应用及密钥管理</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#5">五 Web安全与IP安全</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#6">六 Firewall技术</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#7">七 NAT、VPN及VLan技术</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#8">八 无线网络安全</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#9">九 网络攻击与防范</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#10">十 Kali（BackTrack）渗透实践</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9" role="main">
+
+
+        <!-- 一
+        ================================================== -->
+        <div class="bs-docs-section">
+        <div class="page-header">
+            <h1 id="1">相关知识回顾</h1>
+        </div>
+        <p class="lead">本部分将回顾与安全相关的网络及编程方面的基础知识</p>
+        <h3 id="1-vc">课件下载</h3>
+        <p><a href="../data/ns/01-相关知识回顾.pps" class="btn btn-success btn-lg">
+            <i class="glyphicon glyphicon-save"></i> 01-相关知识回顾
+        </a></p>
+        </p>
+        </div>
+
+
+        <!--二
+        ================================================== -->
+        <div class="bs-docs-section">
+            <div class="page-header">
+                <h1 id="2">网络安全概述</h1>
+            </div>
+            <p class="lead">本部分对网络安全问题的发生、预防、体系结构以及要达到的目标等方面进行概述。</p>
+            <h3 id="2-vc">课件下载</h3>
+            <p><a href="../data/ns/02-网络安全概述.pps" class="btn btn-success btn-lg">
+                <i class="glyphicon glyphicon-save"></i> 02-网络安全概述
+            </a></p>
+        </div>
+
+
+        <!-- 三
+        =================================================
+         -->
+        <div class="bs-docs-section">
+        <div class="page-header">
+            <h1 id="3">密码学基础</h1>
+        </div>
+        <p class="lead">本部分对传统加密和现代密钥系统进行简介，要求了解常用加密系统的名称和大致过程。</p>
+        <h3 id="3-vc">课件下载</h3>
+        <p>
+            <a href="../data/ns/03-密码学基础.pps" class="btn btn-success btn-lg">
+                <i class="glyphicon glyphicon-save"></i> 03-密码学基础
+            </a>
+            <a href="../data/ns/03-AES-Funny.rar" class="btn btn-success btn-lg">
+                <i class="glyphicon glyphicon-save"></i> AES-Funny
+            </a>
+            <a href="../data/ns/03-AES加密动画.swf" class="btn btn-success btn-lg">
+                <i class="glyphicon glyphicon-save"></i> AES加密动画
+            </a>
+            <a href="../data/ns/03-DES加密.swf" class="btn btn-success btn-lg">
+                <i class="glyphicon glyphicon-save"></i> DES加密示意
+            </a>
+        </p>
+        </div>
+
+
+        <!-- 四
+        ================================================== -->
+        <div class="bs-docs-section">
+            <div class="page-header">
+                <h1 id="4">加密应用及密钥管理</h1>
+            </div>
+            <p class="lead">本部分对数字信封、数字摘要、数字签名、数字水印以及密钥的分发和管理进行了讲解。</p>
+            <h3 id="4-vc">课件下载</h3>
+            <p>
+                <a href="../data/ns/04-加密应用及密钥管理.pps" class="btn btn-success btn-lg">
+                    <i class="glyphicon glyphicon-save"></i> 04-加密应用及密钥管理
+                </a>
+            </p>
+
+        </div>
+
+        <!-- 五
+    =================================================
+     -->
+        <div class="bs-docs-section">
+            <div class="page-header">
+                <h1 id="5">Web安全与IP安全</h1>
+            </div>
+            <p class="lead">本部分主要介绍应用层的各应用程序及Https、传输层SSL和网络层IPSec的安全措施。</p>
+            <h3 id="5-vc">课件下载</h3>
+            <p>
+                <a href="../data/ns/05-Web安全与IP安全.pps" class="btn btn-success btn-lg">
+                    <i class="glyphicon glyphicon-save"></i> 05-Web安全与IP安全
+                </a>
+            </p>
+        </div>
+
+        <!-- 六
+    =================================================
+     -->
+        <div class="bs-docs-section">
+            <div class="page-header">
+                <h1 id="6">Firewall技术</h1>
+            </div>
+            <p class="lead">本部分介绍防火墙的初步知识和技术以及GFW的所采用的技术及突破。</p>
+            <h3 id="6-vc">课件下载（GFW相关软件见网络课程页面）</h3>
+            <p>
+                <a href="../data/ns/06-Firewall技术.pps" class="btn btn-success btn-lg">
+                    <i class="glyphicon glyphicon-save"></i> 06-Firewall技术
+                </a>
+            </p>
+
+
+        </div>
+
+        <!-- 七
+    =================================================
+     -->
+        <div class="bs-docs-section">
+            <div class="page-header">
+                <h1 id="7">NAT、VPN及VLan技术</h1>
+            </div>
+            <p class="lead">本简单介绍了与网络安全相关的3种重要技术。</p>
+            <h3 id="7-vc">课件下载</h3>
+            <p>
+                <a href="../data/ns/07-NAT、VPN及VLan技术.pps" class="btn btn-success btn-lg">
+                    <i class="glyphicon glyphicon-save"></i> 07-NAT、VPN及VLan技术
+                </a>
+            </p>
+
+        </div>
+
+        <!-- 八
+    =================================================
+     -->
+        <div class="bs-docs-section">
+            <div class="page-header">
+                <h1 id="8">无线网络安全</h1>
+            </div>
+            <p class="lead">本部分对当前广泛使用的WiFi技术的安全性进行了较全面的说明。</p>
+            <h3 id="8-vc">课件下载</h3>
+            <p>
+                <a href="../data/ns/08-无线网络安全.pps" class="btn btn-success btn-lg">
+                    <i class="glyphicon glyphicon-save"></i> 08-无线网络安全
+                </a>
+            </p>
+
+        </div>
+
+        <!-- 九
+            =================================================
+             -->
+        <div class="bs-docs-section">
+            <div class="page-header">
+                <h1 id="9">网络攻击与防范</h1>
+            </div>
+            <p class="lead">本部分介绍了一般性的传统的网络攻防手段和措施。</p>
+            <h3 id="9-vc">课件下载</h3>
+            <p>
+                <a href="../data/ns/09-网络攻击与防范.pps" class="btn btn-success btn-lg">
+                    <i class="glyphicon glyphicon-save"></i> 09-网络攻击与防范
+                </a>
+            </p>
+
+        </div>
+        <!-- 十
+            =================================================
+             -->
+        <div class="bs-docs-section">
+            <div class="page-header">
+                <h1 id="10">Kali（BackTrack）渗透实践</h1>
+            </div>
+            <p class="lead">本部分是本课程的重点。基于前面学习的基础知识，通过Kali平台进行完整和全面的网络渗透。</p>
+            <h3 id="10-vc">课件下载</h3>
+            <p>
+                <a href="../data/ns/10-BackTrack实践.pps" class="btn btn-success btn-lg">
+                    <i class="glyphicon glyphicon-save"></i> 10-Kali（BackTrack）渗透实践
+                </a>
+            </p>
+
+        </div>
+
+
+        <!-- FOOTER -->
+    <footer class="bs-footer" role="contentinfo">
+        <div class="container">
+            <p>本网站所列文档全部由棋歌整理及维护，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY
+                3.0</a>协议发布。</p>
+
+            <p>Powered By <a href="http://nginx.org/" target="_blank" title="">Nginx</a> And<a
+                    href="http://www.bootcss.com/"> Bootcss</a></p>
+
+            <p>
+                <a href="http://www.cqjtu.edu.cn/" target="_blank">重庆交通大学信息学院</a>
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/dist/js/bootstrap.min.js"></script>
+
+
+    <script src="../docs-assets/js/holder.min.js"></script>
+    <script src="../docs-assets/js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="../docs-assets/js/application.js"></script>
+
+</div>
+</body>
+</html>
