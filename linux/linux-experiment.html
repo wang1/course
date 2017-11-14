@@ -1061,7 +1061,7 @@ echo "This 1 is a test of 1 try." | sed 'y/12a/45A/'        #对应的字符改�
                     <p><label>sed其它示例</label></p>
                     <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#sed-2">复制代码</button><code id="sed-2">
 sed '/xxx/{N;s/\n/ /}' data.txt     #N用于组合两行。将含有xxx的行与其下一行组合为一行，将改行的回车替换为空格
-echo "The cat sleeps in his hat." | sed 's/.at/"&"/g'   #将包含at的单词加上""
+echo "The cat sleeps in his hat." | sed 's/.at/"&"/g'   #.表示匹配任意字符除换行外，&表示找到的对象。将含有at的单词加上""，且截至到at
 #将html文件的tag去掉，并删除空行
 &lt;html>
 &lt;head>
