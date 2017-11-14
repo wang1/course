@@ -1074,8 +1074,9 @@ echo "The cat sleeps in his hat." | sed 's/.at/"&"/g'   #.表示匹配任意字�
   information to use in our sed script.
 &lt;/body>
 &lt;/html>
-#命令如下
-sed 's/<[^>]*>//g ; /^$/d' data.txt</code></pre>
+#命令分别如下
+sed 's/<.*>//g' test.html   #以<开始，以>结束，中间任意字符重复0到任意多次。有bug，看看title的内容去哪儿了？
+sed 's/<[^>]*>//g ; /^$/d' test.html   #[^>]为反义，表明<>之间不能有>。然后删除空行：^表示字符串开始，$表示字符串结束</code></pre>
 <p class=" bs-callout bs-callout-info">要进行强大的流编辑，还需要依靠正则表达式，请有需要时查阅相关文档。</p>
 <!-- <p class=" bs-callout bs-callout-info">浮点运算：在shell中进行浮点运算就更不友好了，请有需要时查阅相关文档。</p> -->
 
