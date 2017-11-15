@@ -1529,7 +1529,1062 @@ git config --global credential.helper wincred命令可以缓存github账户和�
 通信专业： https://github.com/wang1/TOH-Comm
 物联专业： https://github.com/wang1/TOH-IoT</code></pre>
 
-                    
+                    <h3 id="angular-hello">从Hello World起步</h3>
+                    <p>请在WebStorm中配置AngularJS插件以加快开发。</p>
+                    <p>开发中所需的库：
+                        <ul>
+                            <li><a href="../data/angularjs/angular-1.3.5.zip">AngularJS-1.3.5下载 </a></li>
+                            <li><a href="../data/bootstrap/bootstrap-3.0.0-dist.zip"> Bootstrap3.3下载</a></li>
+                            <li><a href="../data/bootstrap/jquery-2.0.3.rar"> jQuery-2.0.3下载</a></li>
+                        </ul>
+                    </p>
+                    <p>下面是一个简单的AngularJS控制的Web页面代码，请在WebStorm中测试。</p>
+                    <!--<div class="highlight">-->
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-10">复制代码</button><code id="dm-10">
+&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+&lt;head&gt;
+    &lt;script src="js/angular.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Hello {{'World'}}!
+&lt;/body&gt;
+&lt;/html&gt;
+                    </code></pre>
+                    <!--</div>-->
+                    <div class="bs-callout bs-callout-info">
+                        <h4>当加载该页时，标记<code>ng-app</code>宣告载入的AngularJS库将处理整个HTML页并引导应用。 注意，双大括号标记
+                            <code>{{}}</code>是AngularJS中常用的、重要的一个方面 — 绑定，当然此处绑定的是个不能改变的常量字符串‘World’。
+                        </h4>
+                    </div>
+                    <p>下面我们将代码修改如下：</p>
+                    <!--<div class="highlight">-->
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-11">复制代码</button><code id="dm-11">
+&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+&lt;head&gt;
+    &lt;script src="js/angular.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+姓名： &lt;input type="text" ng-model="name" placeholder="请在此输入你的姓名"&gt;
+&lt;hr&gt;
+你好， {{name || 'World'}}!
+&lt;/body&gt;
+&lt;/html&gt;
+                    </code></pre>
+                    <!--</div>-->
+                    <div class="bs-callout bs-callout-info">
+                        <h4>
+                            <p>该示例有以下几点重要的注意事项：</p>
+                            <ol>
+                                <li>文本输入指令<code>&lt;input ng-model="name" /&gt;</code>绑定到一个叫<code> name 模型变量</code></li><br>
+                                <li>双大括号标记将<code> name 模型变量</code>添加到问候语文本</li><br>
+                                <li>你不需要为该应用另外注册一个事件侦听器或添加事件处理程序</li>
+                            </ol>
+                        </h4>
+                    </div>
+
+                    <h3 id="angular-todo">构建ToDo单页应用程序</h3>
+                    <p>现在我们来构建一个稍微复杂一点的单页Web应用程序——ToDo列表（待办事项）。页面代码如下：</p>
+                    <!--<div class="highlight">-->
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-12">复制代码</button><code id="dm-12">
+&lt;!DOCTYPE html&gt;
+&lt;html ng-app&gt;
+&lt;head&gt;
+    &lt;script src="js/angular.min.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="css/bootstrap.min.css"/&gt;
+    &lt;script src="js/todo.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="css/todo.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="jumbotron" ng-controller="todoCtrl"&gt;
+    &lt;div class="container well"&gt;
+        &lt;h1&gt;共有{{getTotalTodos()}}件事项&lt;/h1&gt;
+        &lt;hr/&gt;
+        &lt;div ng-show="getTodoNotDone()!=0"&gt;
+            &lt;h2&gt;&lt;i class="glyphicon glyphicon-time"&gt;&lt;/i&gt; 待办（{{getTodoNotDone()}}）：&lt;/h2&gt;
+            &lt;table class="table table-striped"&gt;
+                &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th class="col-lg-1"&gt;序号&lt;/th&gt;
+                    &lt;th class="col-lg-7"&gt;事项&lt;/th&gt;
+                    &lt;th class="col-lg-2"&gt;预计完成日期&lt;/th&gt;
+                    &lt;th class="col-lg-1"&gt;&lt;i class="glyphicon glyphicon-question-sign"&gt;&lt;/i&gt;&lt;/th&gt;
+                    &lt;th class="col-lg-1"&gt;&lt;i class="glyphicon glyphicon-edit"&gt;&lt;/i&gt;&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                &lt;tr ng-repeat="todo in todos | filter:{done:false}"&gt;
+                    &lt;td&gt;{{$index+1}}&lt;/td&gt;
+                    &lt;td&gt;&lt;span class="done-{{todo.done}}"&gt;{{todo.text}}&lt;/span&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;span&gt;{{todo.date}}&lt;/span&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;input type="checkbox" title="是否完成？" ng-click="finishTodo(todo)"&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;button class="btn btn-success" title="编辑该事项"  data-toggle="modal" data-target="#myModal" ng-click="editTodo(todo)"&gt;&lt;i class="glyphicon glyphicon-edit"&gt;&lt;/i&gt;&lt;/button&gt; &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+        &lt;form class="form-inline" role="form"&gt;
+            &lt;div class="form-group col-lg-7 input-group-lg"&gt;
+                &lt;label class="sr-only" for="t"&gt;&lt;/label&gt;
+                &lt;input class="form-control" id="t" type="text" ng-model="formTodoText" required placeholder="请输入待办事项..." /&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group col-lg-3 input-group-lg"&gt;
+                &lt;label class="sr-only" for="d"&gt;&lt;/label&gt;
+                &lt;input class="form-control" id="d" type="date" ng-model="formTodoDate" required placeholder="请选择预计完成日期..." /&gt;
+            &lt;/div&gt;
+            &lt;button class="btn btn-lg btn-primary" ng-click="addTodo()"&gt;&lt;i class="glyphicon glyphicon-plus"&gt;&lt;/i&gt; 添加待办事项&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 编辑事项的模式框Modal --&gt;
+    &lt;div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
+        &lt;div class="modal-dialog"&gt;
+            &lt;div class="modal-content"&gt;
+                &lt;div class="modal-header"&gt;
+                    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/button&gt;
+                    &lt;h4 class="modal-title" id="myModalLabel"&gt;请编辑该事项&lt;/h4&gt;
+                &lt;/div&gt;
+                &lt;form class="modal-body" role="form"&gt;
+                    &lt;div class="form-group"&gt;
+                        &lt;label for="sx"&gt;待办事项：&lt;/label&gt;
+                        &lt;input id="sx" class="form-control" type="text" ng-model="editingTodo.text" /&gt;
+                    &lt;/div&gt;
+                    &lt;div class="form-group"&gt;
+                        &lt;label for="rq"&gt;预计完成日期：&lt;/label&gt;
+                        &lt;input id="rq" class="form-control" type="date" ng-model="editingTodo.date" /&gt;
+                    &lt;/div&gt;
+                    &lt;div class="modal-footer"&gt;
+                        &lt;button type="button" class="btn btn-primary" data-dismiss="modal"&gt;&lt;i class="glyphicon glyphicon-ok"&gt;&lt;/i&gt; 确定&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;&lt;!-- /.modal-content --&gt;
+        &lt;/div&gt;&lt;!-- /.modal-dialog --&gt;
+    &lt;/div&gt;&lt;!-- /.modal --&gt;
+
+    &lt;div class="container well" ng-show="getTodoDone()!=0"&gt;
+        &lt;h2&gt;&lt;i class="glyphicon glyphicon-ok"&gt;&lt;/i&gt; 已完成（{{getTodoDone()}}）：&lt;/h2&gt;
+        &lt;table class="table table-striped"&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th class="col-lg-1"&gt;序号&lt;/th&gt;
+                &lt;th class="col-lg-5"&gt;事项&lt;/th&gt;
+                &lt;th class="col-lg-2"&gt;预计完成日期&lt;/th&gt;
+                &lt;th class="col-lg-2"&gt;实际完成日期&lt;/th&gt;
+                &lt;th class="col-lg-1"&gt;&lt;i class="glyphicon glyphicon-repeat"&gt;&lt;/i&gt;&lt;/th&gt;
+                &lt;th class="col-lg-1"&gt;&lt;i class="glyphicon glyphicon-trash"&gt;&lt;/i&gt;&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr ng-repeat="todo in todos | filter:{done:true}"&gt;
+                &lt;td&gt;{{$index+1}}&lt;/td&gt;
+                &lt;td&gt;&lt;span class="done-{{todo.done}}"&gt;{{todo.text}}&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span&gt;{{todo.date}}&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span&gt;{{todo.actDate}}&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;input type="checkbox" ng-model="todo.done" title="重置该事项"&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;button class="btn btn-danger" title="彻底删除该事项" ng-click="deleteTodo(todo)"&gt;&lt;i class="glyphicon glyphicon-trash"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- JS and analytics only. --&gt;
+&lt;!-- Bootstrap core JavaScript
+================================================== --&gt;
+&lt;!-- Placed at the end of the document so the pages load faster --&gt;
+&lt;script src="./js/jquery-2.0.3.js"&gt;&lt;/script&gt;
+&lt;script src="./js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                    </code></pre>
+                    <!--</div>-->
+                </div>
+                <div class="bs-callout bs-callout-info">
+                    <h4>
+                        <p>该程序解释如下：</p>
+                        <ol>
+                            <li>在<code>div</code>标签中加入<code> ng-controller="TodoCtrl"</code>，这是AngularJS的控制器，一般存放业务逻辑。</li><br>
+                            <li>该控制器保存在我们引入的<code>todo.js</code>文件中，代码中使用的方法、模型变量都在此控制器中</li><br>
+                            <li><code>ng-repeat</code>是AngularJS的迭代器，可以带过滤器；<code>ng-click</code>是AngularJS的对象点击事件对应的方法</li>
+                        </ol>
+                    </h4>
+                </div>
+                <p>程序中使用的todo.css样式表代码如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-13">复制代码</button><code id="dm-13">
+/*为完成和未完成的事项设置不同的样式*/
+.done-false{
+    color: red;
+}
+.done-true{
+    color: green;
+}
+                </code></pre>
+                <!--</div>-->
+                <p>程序中使用的todo.js的代码如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-14">复制代码</button><code id="dm-14">
+function todoCtrl($scope, $filter) {
+    //$scope、$filter是AngularJS通过依赖式注入机制内建的一个对象
+    $scope.todos = [
+        {text: "冬天，能穿多少穿多少；夏天，能穿多少穿多少。", date:"2013-11-28", actDate: "", done: false},
+        {text: "剩女的原因：一是谁都看不上，二是谁都看不上。", date:"2013-11-28", actDate: "", done: false},
+        {text: "单身的来由：原来是喜欢一个人，现在是喜欢一个人。", date:"2013-11-28", actDate: "", done: false},
+        {text: "对酒当歌，人生几何", date:"2013-11-28", actDate: "", done: false}
+    ];
+
+    $scope.getTotalTodos = function(){
+        return $scope.todos.length;
+    };
+
+    $scope.getTodoDone = function(){
+        return $filter('filter')($scope.todos, {done:true}).length;
+    };
+
+    $scope.getTodoNotDone = function(){
+        return $filter('filter')($scope.todos, {done:false}).length;
+    };
+
+    $scope.addTodo = function(){
+        if($scope.formTodoText && $scope.formTodoDate){
+            $scope.todos.push({text: $scope.formTodoText, date: $scope.formTodoDate, actDate:"", done:false});
+            $scope.formTodoText = "";
+            $scope.formTodoDate = "";
+        }
+    };
+
+    $scope.finishTodo =function(todo){
+        todo.done = true;
+        todo.actDate = new Date().toLocaleDateString();
+    };
+
+    $scope.editTodo = function(todo){
+        $scope.editingTodo = todo;
+    };
+
+    $scope.deleteTodo = function(todo){
+        $scope.todos.splice($scope.todos.indexOf(todo), 1);
+    };
+}
+                </code></pre>
+                <!--</div>-->
+
+                <!--angularjs运动商店实例=====================-->
+                <h3 id="angular-sportstore">运动商店SportStore实例</h3>
+                <p>本节我们将一步一步构建一个SportStore的Web应用。本实例来自图书<a href="../data/angularjs/Pro%20AngularJS.zip">Pro-AngularJs</a>的第6~8章</p>
+                <p><strong>准备工作</strong></p>
+                <p>在WebStrom中新建一个名为<strong>SportStore</strong>的空project，在其下新建目录<strong>components</strong>文件夹，用于存放AngularJs和BootStrap的必需文件：<strong>angular.js, bootstrap.css, bootstrap-theme.css</strong></p>
+                <p>我们将构建如下所示的Web页面，命名为<strong>index.html</strong>，代码如下：</p>
+                <img src="../assets/img/outline.png">
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-15">复制代码</button><code id="dm-15">
+&lt;!DOCTYPE html>
+&lt;html ng-app="sportsStore">
+&lt;head>
+    &lt;meta charset="UTF-8">
+    &lt;title>SportsStore-运动品商店&lt;/title>
+    &lt;script src="components/angular.js">&lt;/script>
+    &lt;link href="components/bootstrap.css" rel="stylesheet" />
+    &lt;link href="components/bootstrap-theme.css" rel="stylesheet" />
+    &lt;script>
+        angular.module("sportsStore", []);
+    &lt;/script>
+&lt;/head>
+&lt;body>
+&lt;div class="navbar navbar-inverse">
+    &lt;a class="navbar-brand" href="#">SPORTS STORE-运动品商店&lt;/a>
+&lt;/div>
+&lt;div class="panel panel-default row">
+    &lt;div class="col-xs-3">
+        Categories go here
+    &lt;/div>
+    &lt;div class="col-xs-8">
+        Products go here
+    &lt;/div>
+&lt;/div>
+&lt;/body>
+&lt;/html>
+                </code></pre>
+                <!--</div>-->
+                <div class="bs-callout bs-callout-info">
+                    <h4>
+                        <p>请留意代码<code>&lt;html ng-app="sportsStore"></code>，它表明整个HTML文档即<strong>index.html</strong>将由名为
+                            <strong>sportsStore</strong>的AngularJs代码管理。也请注意该模块的生成方式（由JS代码生成）！</p>
+                        <p>还请注意JS文件以及CSS文件的路径。</p>
+                    </h4>
+                </div>
+                <p><strong>使用虚拟数据</strong></p>
+                <p>在项目下新建文件夹<strong>controllers</strong>,用于存放各种控制器文件（业务逻辑），再新建一个名为<strong>sportsStore.js</strong>的JS文件，内容如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-16">复制代码</button><code id="dm-16">
+angular.module("sportsStore", [])
+.controller("sportsStoreCtrl", function ($scope) {
+    $scope.data = {
+        products: [
+            { name: "Product #1-1", description: "A product",category: "Category #1", price: 100 },
+            { name: "Product #1-2", description: "A product",category: "Category #1", price: 110 },
+            { name: "Product #2-1", description: "A product",category: "Category #2", price: 210 },
+            { name: "Product #2-2", description: "A product",category: "Category #2", price: 220 },
+            { name: "Product #2-3", description: "A product",category: "Category #2", price: 230 },
+            { name: "Product #3-1", description: "A product",category: "Category #3", price: 240 },
+            { name: "Product #3-2", description: "A product",category: "Category #3", price: 250 },
+            { name: "Product #3-3", description: "A product",category: "Category #3", price: 260 },
+            { name: "Product #3-4", description: "A product",category: "Category #3", price: 272 }
+        ]
+    };
+});
+                </code></pre>
+                <!--</div>-->
+                <div class="bs-callout bs-callout-info">
+                    <p>注意如下：</p>
+                    <ol>
+                        <li>将<strong>index.html</strong>中的<code>script</code>中的代码取消，放到此文件</li>
+                        <li>在<strong>index.html</strong>中引入该文件，即：<code>&lt;script src="controllers/sportsStore.js">&lt;/script></code></li>
+                        <li>修改<strong>index.html</strong>文件的<strong>body</strong>标签的属性为<code>ng-controller="sportsStoreCtrl"</code>,意思是<strong>body</strong>这部分由该控制器控制</li>
+                        <li><strong>sportsStore.js</strong>文件首先生成了名为<strong>sportsStore</strong>的模块（注意第二个参数为一个空数组，用于表明其可能依赖其它模块，即使当前无依赖也不能缺）</li>
+                        <li>然后使用了JS的链式语法生成了一个名为<strong>sportsStoreCtrl</strong>控制器。该控制器是个函数对象，其依赖注入了AngularJs的内置对象<strong>$scope</strong></li>
+                        <li><strong>$scope</strong>对象是<strong>页面视图（View）</strong>和<strong>数据模型（Model）</strong>之间的桥梁。视图中要用到的数据必须放到<strong>$scope</strong>对象中，所以我们定义了<strong>data</strong>对象。（<strong>MVC模式</strong>）</li>
+                        <li><strong>data</strong>对象只有一个属性<strong>products</strong>,它的值是一个数组，而该数组有4个对象元素</li>
+                    </ol>
+                </div>
+                <p>修改index.html文件的products部分如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-17">复制代码</button><code id="dm-17">
+...
+&lt;div class="col-xs-8">
+&lt;div class="well" ng-repeat="item in data.products">
+    &lt;h3>
+        &lt;strong>{{item.name}}&lt;/strong>
+        &lt;span class="pull-right label label-primary">
+            {{item.price | currency}}
+        &lt;/span>
+    &lt;/h3>
+    &lt;span class="lead">{{item.description}}&lt;/span>
+&lt;/div>
+...
+                </code></pre>
+                <!--</div>-->
+                <p>至此，页面应如下图所示</p>
+                <img src="../assets/img/sportstore-1.png">
+                <div class="bs-callout bs-callout-info">
+                    <p>解释如下：</p>
+                    <ol>
+                        <li><strong>ng-repeat</strong>是AngularJs的循环指令，其表明将在该控制器的<strong>$scope</strong>对象中得到一个名为<strong>data.products</strong>的集合，然后遍历它!</li>
+                        <li><strong>{{}}</strong>是AngularJs的绑定表达式</li>
+                        <li><strong>currency</strong>是AngularJs提供的货币过滤器，我们也可改为<code>currency: '￥'</code>来表示人民币</li>
+                        <li>有关样式请参见BootStrap</li>
+                    </ol>
+                </div>
+                <p><strong>重建产品分类列表</strong></p>
+                <p>如果我们将分类改为如下代码，你会发现有重复的类别，这不是我们所希望的。</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-18">复制代码</button><code id="dm-18">
+...
+&lt;div class="col-xs-3">
+    &lt;a class="btn btn-block btn-default btn-lg">全部类别&lt;/a>
+    &lt;a ng-repeat="item in data.products" class="btn btn-block btn-default btn-lg">
+        {{item.category}}
+    &lt;/a>
+&lt;/div>
+...
+                </code></pre>
+                <!--</div>-->
+                <p>下面我们采用<strong>自定义过滤器模块</strong>的方式将重复的类别去除</p>
+                <p>请在<strong>filters</strong>目录下新建<strong>customFilters.js</strong>文件，代码如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-19">复制代码</button><code id="dm-19">
+angular.module("customFilters", [])
+.filter("unique", function () {
+    return function (data, propertyName) {
+        if (angular.isArray(data) && angular.isString(propertyName)) {
+            var results = [];
+            var keys = {};
+            for (var i = 0; i < data.length; i++) {
+                var val = data[i][propertyName];
+                if (angular.isUndefined(keys[val])) {
+                    keys[val] = true;
+                    results.push(val);
+                }
+            }
+            return results;
+        } else {
+            return data;
+        }
+    }
+});
+                </code></pre>
+                <!--</div>-->
+                <div class="bs-callout bs-callout-info">
+                    <p>解释如下：</p>
+                    <ol>
+                        <li>我们新生成了名为<strong>customFilters</strong>的自定义模块，该模块定义了名为<strong>unique</strong>的过滤器</li>
+                        <li>该过滤器如何完成过滤请暂时不管，总之能将指定属性中重复的数据过滤掉。</li>
+                        <li>要使用该过滤器模块，首先要在<strong>index.html</strong>文件中引入该文件即使用<code>&lt;script> src="filters/customFilters.js">&lt;/script></code></li>
+                        <li>其次，修改<strong>sportsStore.js</strong>文件中的模块依赖，即<code>angular.module("sportsStore", ["customFilters"])</code></li>
+                        <li>接下来修正<strong>index.html</strong>文件的类别部分为以下代码</li>
+                    </ol>
+                </div>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-20">复制代码</button><code id="dm-20">
+...
+&lt;div class="col-xs-3">
+&lt;a class="btn btn-block btn-default btn-lg" ng-click="selectCategory()">全部类别&lt;/a>
+&lt;a ng-repeat="item in data.products | orderBy:'category' | unique:'category'"
+      class="btn btn-block btn-default btn-lg" ng-click="selectCategory(item)">
+{{item}}
+&lt;/a>
+&lt;/div>
+...
+                </code></pre>
+                <!--</div>-->
+                <p>上面代码中，<strong>orderBy</strong>是内置的过滤器（按category的字母顺序排序），而<strong>unique</strong>就是我们自定义的过滤器。 还请注意，category用
+                    <code>单引号'</code>包含了，表明其为一个常量，否则，AngularJs将会在<strong>$scope</strong>中寻找该名字的变量（要出错）</p>
+                <p>刷新页面可见结果如下,重复的分类已经过滤掉了。</p>
+                <img src="../assets/img/sportstore-2.png" width="850px">
+                <p><strong>生成导航</strong></p>
+                <p>我们希望点击全部类别时右边显示所有类别的产品，而点击某个类别时则只显示该类别的产品。</p>
+                <p>注意到<strong>index.html</strong>文件中类别代码中有两个动作，一个是全部类别中的<code>ng-click="selectCategory()"</code>， 一个是分类别中的
+                    <code>ng-click="selectCategory(item)"</code></p>
+                <p>这两个动作点击后没有任何反应，因为控制器中没有对应的方法。我们可以将该方法定义在<strong>sportsStoreCtrl</strong>控制器中， 但这不是一个好的做法，因为该控制器是顶层（全局）的控制器，我们当前的动作只是针对产品列表的。因此，接下来我们单独生成一个控制器文件来演示嵌套的控制器使用
+                </p>
+                <p>在<strong>controllers</strong>文件夹下新建<strong>productsListControllers.js</strong>文件，代码如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-21">复制代码</button><code id="dm-21">
+angular.module("sportsStore")
+.controller("productListCtrl", function ($scope) {
+    //缺省没有选择任何产品类别
+    var selectedCategory = null;
+    //置已选产品类别selectedCategory为传来的类别
+    $scope.selectCategory = function (newCategory) {
+        selectedCategory = newCategory;
+    };
+    //过滤器，如果当前未选择分类或当前产品的分类就是所选择的分类则返回true
+    $scope.categoryFilterFn = function (product) {
+        return selectedCategory == null || product.category == selectedCategory;
+    };
+});
+                </code></pre>
+                <!--</div>-->
+                <div class="bs-callout bs-callout-info">
+                    <p>说明：</p>
+                    <ol>
+                        <li><strong>sportsStore</strong>后没有前面强调过必需的<strong>[]</strong>，表明该模块已经生成过了</li>
+                        <li>我们是在<strong>sportsStore</strong>模块下新建了<strong>productListCtrl</strong>控制器</li>
+                        <li>代码中的<strong>selectedCategory</strong>变量是常规的JS变量，只能在<strong>productListCtrl</strong>中使用，供视图（即index.html）使用的变量必需放在<strong>$scope</strong>对象中！</li>
+                        <li>请注意，虽然<strong>selectCategory</strong>函数接收一个参数，但你不传这个参数也无所谓。</li>
+                        <li><strong>categoryFilterFn</strong>是过滤器函数，后面说明</li>
+                    </ol>
+                </div>
+                <p>下面我们看看如何使用该控制器</p>
+                <p>首先在<strong>index.html</strong>中引入，即：<code>&lt;script src="controllers/productListControllers.js">&lt;/script></code></p>
+                <p>但一定注意要在引入<strong>sportsStore.js</strong>之后，因为要生成<strong>sportsStore</strong>模块。</p>
+                <p>其次找到第二个<strong>div</strong>标签，添加控制器，将其改为<code>&lt;div class="panel panel-default row" ng-controller="productListCtrl"></code></p>
+                <div class="bs-callout bs-callout-info">
+                    <p>此时请留意，嵌套的控制器出现了，各有各的控制范围！</p>
+                </div>
+                <p>接下来找到产品列表<strong>div</strong>标签，添加过滤器即：<code>&lt;div class="well" ng-repeat="item in data.products | filter:categoryFilterFn"></code></p>
+                <div class="bs-callout bs-callout-info">
+                    <p>注意：该过滤器是<strong>categoryFilterFn</strong>函数，其作用是：由该过滤器返回<code>true</code>的那些产品才留下来</p>
+                </div>
+                <p>至此，页面大致如下所示：</p>
+                <img src="../assets/img/sportstore-3.png" width="850px">
+                <p><strong>美化：高亮选中的类别</strong></p>
+                <p>我们希望点击产品类别时，高亮显示该类别。首先在<strong>productListControllers.js</strong>文件中定义一个常量<code>
+                .constant("productListActiveClass", "btn-primary")
+            </code></p>
+                <p>然后再将此常量注入到<strong>productListCtrl</strong>控制器中即<code>.controller("productListCtrl", function ($scope, $filter, productListActiveClass)</code></p>
+                <div class="bs-callout bs-callout-info">
+                    <p>请注意，此处只是演示常量及其如何导入的用法，实际中样式字符串<code>btn-primary</code>可直接用在下面的函数中，无需这样复杂！</p>
+                </div>
+                <p>再在<strong>productListCtrl</strong>控制器中定义<strong>getCategoryClass</strong>函数。</p>
+                <p>现在<strong>productListControllers.js</strong>文件如下</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-22">复制代码</button><code id="dm-22">
+angular.module("sportsStore")
+//定义样式常量字符串
+.constant("productListActiveClass", "btn-primary")
+//注入到控制器中才能使用
+.controller("productListCtrl", function ($scope, productListActiveClass) {
+    ...
+    //category为传来的产品类别，如果就是已经选择的类别这使用该样式，否则无样式
+    $scope.getCategoryClass = function (category) {
+        return selectedCategory == category ? productListActiveClass : "";
+    }
+});
+                </code></pre>
+                <!--</div>-->
+                <p>最后，在<strong>index.html</strong>文件中通过<strong>ng-class="getCategoryClass(item)"</strong>使用该函数如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-23">复制代码</button><code id="dm-23">
+&lt;a ng-repeat="item in data.products | orderBy:'category' | unique:'category'"
+   ng-click="selectCategory(item)" class=" btn btn-block btn-default btn-lg"
+   ng-class="getCategoryClass(item)">
+    {{item}}
+&lt;/a>
+                </code></pre>
+                <!--</div>-->
+                <p>现在点击产品类别试试，你应看到如下效果。</p>
+                <img src="../assets/img/sportstore-4.png" width="850px" />
+                <p><strong>产品分页显示</strong></p>
+                <p>显然，如果产品太多就必须分页显示。该功能可用第三方插件简单的来完成。下面我们自己动手进行编制，了解其过程。</p>
+                <p>将<strong>productsListControllers.js</strong>文件修改成下面的代码（全部复制即可）：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-24">复制代码</button><code id="dm-24">
+angular.module("sportsStore")
+    //定义样式常量字符串
+    .constant("productListActiveClass", "btn-primary")
+    //每页的数量
+    .constant("productListPageCount", 3)
+    //注入到控制器中才能使用
+    .controller("productListCtrl", function ($scope, productListActiveClass, productListPageCount) {
+        //缺省没有选择任何产品类别
+        var selectedCategory = null;
+        //默认选择第1页
+        $scope.selectedPage = 1;
+        $scope.pageSize = productListPageCount;
+        //置已选产品类别selectedCategory为传来的类别，同时置该类别从第1页开始显示
+        $scope.selectCategory = function (newCategory) {
+            selectedCategory = newCategory;
+            $scope.selectedPage = 1;
+        };
+        //置为选择的页码
+        $scope.selectPage = function (newPage) {
+            $scope.selectedPage = newPage;
+        };
+        //过滤器，如果当前未选择分类或当前产品的分类就是所选择的分类则返回true
+        $scope.categoryFilterFn = function (product) {
+            return selectedCategory == null || product.category == selectedCategory;
+        };
+        //category为传来的产品类别，如果就是已经选择的类别这使用该样式，否则无样式
+        $scope.getCategoryClass = function (category) {
+            return selectedCategory == category ? productListActiveClass : "";
+        };
+        //当前选择的页码样式
+        $scope.getPageClass = function (page) {
+            return $scope.selectedPage == page ? productListActiveClass : "";
+        };
+    });
+                </code></pre>
+                <!--</div>-->
+                <p>接下来在<strong>customFilters.js</strong>文件中加入2个过滤器</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-25">复制代码</button><code id="dm-25">
+.filter("range", function () {
+    return function (data, page, size) {
+        //从何处开始，如当前点击的page是2，则startIndex即为第二页开始数据的下标值，相当于跳过了第一页的数据
+        var startIndex = (page - 1) * size;
+        //slice(start, end)是返回从start开始，end结束（不包括该位置）元素的数组，原始数据不变
+        return data.slice(startIndex, startIndex + size);
+        }
+    })
+.filter("pageCount", function () {
+    return function (data, size) {
+        //result数组用来存放所有页码，如有5页，则是[0, 1, 2, 3, 4]
+        var result = [];
+        //Math.ceil是JS的标准函数，向上取整，如Math.ceil(4.7)-->5
+        for (var i = 0; i < Math.ceil(data.length / size) ; i++) {
+            result.push(i);
+        }
+        return result;
+    }
+})
+                </code></pre>
+                <!--</div>-->
+                <p>然后在<strong>index.html</strong>文件中队产品列表添加<strong>range</strong>过滤器和分页的<strong>div</strong>标签</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-26">复制代码</button><code id="dm-26">
+...
+&lt;div class="col-xs-8">
+    &lt;div class="well" ng-repeat="item in data.products | filter:categoryFilterFn | range:selectedPage:pageSize">
+        &lt;h3>
+            &lt;strong>{{item.name}}&lt;/strong>
+            &lt;span class="pull-right label label-primary">
+            {{item.price | currency}}
+            &lt;/span>
+        &lt;/h3>
+        &lt;span class="lead">{{item.description}}&lt;/span>
+    &lt;/div>
+    &lt;div class="pull-right btn-group">
+        &lt;a ng-repeat="page in data.products | filter:categoryFilterFn | pageCount:pageSize"
+           ng-click="selectPage($index + 1)" ng-class="getPageClass($index + 1)" class="btn btn-default">
+            {{$index + 1}}
+        &lt;/a>
+    &lt;/div>
+&lt;/div>
+...
+                </code></pre>
+                <!--</div>-->
+                <p>至此，你应该看到如下的页面：</p>
+                <img src="../assets/img/sportstore-5.png">
+                <div class="bs-callout bs-callout-info">
+                    <p>我们以有4个产品的类别3为例解释如下：</p>
+                    <ol>
+                        <li>点击类别3时，其<strong>ng-click</strong>事件将置选择的类别和默认开始的页码</li>
+                        <li>而产品由<strong>filter:categoryFilterFn</strong>过滤器进行过滤则只有4项</li>
+                        <li>接着使用<strong>range:selectedPage:pageSize</strong>过滤器，传给该过滤器的参数（用<strong>:</strong>分割）有4项产品的数组、选择的页面selectedPage（当前是1）以及pageSize（当前是3）</li>
+                        <li>分析一下，点击第2页发生了什么？</li>
+                        <li>分页的页码的出现与此类似。注意<strong>ng-class</strong>以及<strong>$index</strong>的使用</li>
+                    </ol>
+                    <p>拓展：你能否在页码列表的前后加上前进和后退按钮并生效？</p>
+                </div>
+                <hr/>
+                <p><strong>与真正的服务器进行交互</strong></p>
+                <p>目前为止，我们页面显示的数据来自于一个数组，而在真正的Web应用中，这些数据应该是这样得到的：</p>
+                <p><code>浏览器发出请求，服务器接收、分析请求，按照相关业务逻辑到数据库中读取数据，按一定格式封装后返回给浏览器，然后浏览器进行呈现。</code></p>
+                <p>为专注前端开发，我们暂时不管服务器即后台的各种技术（如应用服务器/数据库等等），采用一种<strong>NoBackend</strong>的整体后台开源软件<strong>Deployd</strong>（
+                    <a href="../data/angularjs/deployd-win-0.6.1.exe">点此下载</a>）</p>
+                <p>安装好<strong>Deployd</strong>后，打开<strong>命令行</strong>窗口，使用命令<code>dpd create sportStoreServer</code>在任意位置如<strong>D盘根目录</strong>下生成名为<strong>sportStoreServer</strong>应用的服务器端</p>
+                <p>进入该目录，运行<code>dpd app.dpd</code>，你将看到服务器已经在<strong>2403</strong>端口启动了，打开浏览器，输入<strong>localhost:2403/dashboard</strong>进行设置</p>
+                <p>新建名为<strong>Products</strong>的collection（就是数据库表，使用的MongoDB），结构如下：</p>
+                <!--<div class="highlight">-->
+                <pre><code>
+-------------------------------
+Name        Type      Required?
+-------------------------------
+name        string    Yes
+description string    Yes
+category    string    Yes
+price       number    Yes
+-------------------------------
+                </code></pre>
+                <!--</div>-->
+                <p>然后加入以下的数据（当然你也可以输入淘宝上的数据）</p>
+                <!--<div class="highlight">-->
+                <pre><code>
+---------------------------------------------------------------------------------
+Name                Description Category                                Price
+---------------------------------------------------------------------------------
+Kayak               A boat for one person Watersports                   275
+Lifejacket          Protective and fashionable Watersports              48.95
+Soccer Ball         FIFA-approved size and weight Soccer                19.5
+Corner Flags        Give your playing field a professional touch Soccer 34.95
+Stadium             Flat-packed 35,000-seat stadium Soccer              79500.00
+Thinking Cap        Improve your brain efficiency by 75% Chess          16
+Unsteady Chair      Secretly give your opponent a disadvantage Chess    29.95
+Human Chess Board   A fun game for the family Chess                     75
+Bling-Bling King    Gold-plated, diamond-studded King Chess             1200
+---------------------------------------------------------------------------------
+                </code></pre>
+                <!--</div>-->
+                <p>在浏览器中输入<strong>localhost:2403/products</strong>，你可看到产品数据以<strong>JSON</strong>的格式返回了。</p>
+                <p>现在把我们在WebStrom中开发的程序复制到Deployd的<strong>public</strong>文件夹下，输入<strong>localhost:2403</strong>试试！</p>
+                <div class="bs-callout bs-callout-info">
+                    <p>注意：现在应用已经部署在服务器上了，从其它计算机也可访问！</p>
+                </div>
+                <p>接下来我们修改数据来源。</p>
+                <p>将<strong>sportsStore.js</strong>修改如下</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-27">复制代码</button><code id="dm-27">
+angular.module("sportsStore", ["customFilters"])
+    .constant("dataUrl", "http://localhost:2403/products")
+    .controller("sportsStoreCtrl", function ($scope, $http, dataUrl) {
+        //空产品对象
+        $scope.data = {};
+        //使用get方法获取
+        $http.get(dataUrl)
+            .success(function (data) {
+                $scope.data.products = data;
+            })
+            .error(function (error) {
+                $scope.data.error = error;
+            });
+    });
+                </code></pre>
+                <!--</div>-->
+                <p>在<strong>index.html</strong>文件中加入错误<strong>div</strong>，添加产品属性<strong>ng-hide</strong>如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-28">复制代码</button><code id="dm-28">
+...
+&lt;div class="alert alert-danger" ng-show="data.error">
+    错误！({{data.error}})。未能获取产品数据。
+    &lt;a href="/index.html" class="alert-link">点此重试&lt;/a>
+&lt;/div>
+&lt;div class="panel panel-default row" ng-controller="productListCtrl" ng-hide="data.error">
+...
+                </code></pre>
+                <!--</div>-->
+                <p>刷新浏览器看看！现在效果如下：</p>
+                <img src="../assets/img/sportstore-6.png">
+                <p>将<strong>sportsStore.js</strong>文件中的<strong>url</strong>改为一个不存在的如<code>productsss</code>则会发生错误，你应该看到如下页面：</p>
+                <img src="../assets/img/sportstore-7.png">
+                <p><strong>生成局部视图</strong></p>
+                <p>文件<strong>index.html</strong>将随着开发变得越来越大和复杂，我们可以生成局部视图</p>
+                <p>将该文件表现产品的如下代码（就是一个<strong>div</strong>）剪切，复制到<strong>views/productList.html</strong>文件中</p>
+                <!--<div class="highlight">-->
+                <pre><code>
+&lt;div class="panel panel-default row" ng-controller="productListCtrl" ng-hide="data.error">
+...
+&lt;/div>
+                </code></pre>
+                <!--</div>-->
+                <p>然后在剪切的位置写上如下代码</p>
+                <!--<div class="highlight">-->
+                <pre><code>
+&lt;ng-include src="'views/productList.html'">&lt;/ng-include>
+                </code></pre>
+                <!--</div>-->
+                <div class="bs-callout bs-callout-info">
+                    请注意：<strong>src</strong>的双引号中还有单引号，表明其为一个字符串常量。如果没有，则AngularJS将会在<strong>$scope</strong>对象中去找！
+                </div>
+                <p>刷新页面可看到无任何改变，那我们这样做的理由是什么？</p>
+                <div class="bs-callout bs-callout-info">
+                    <ol>
+                        <li>将页面分为易管理的模块</li>
+                        <li>按功能分块的页面使HTML一目了然</li>
+                        <li>分块的HTML可以重用</li>
+                    </ol>
+                </div>
+                <p><strong>购物车模块</strong></p>
+                <p>下面我们通过生成一个购物车模块，来演示AngularJS的服务及指令的用法</p>
+                <p>在<strong>components</strong>目录下新建<strong>cart</strong>目录，并在其下新建<strong>cart.js</strong>文件如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-29">复制代码</button><code id="dm-29">
+//新建cart模块
+angular.module("cart", [])
+//新建cart工厂服务
+.factory("cart", function () {
+    //购物车数组
+    var cartData = [];
+    //该服务提供3个方法
+    return {
+        //添加产品到购物车。购物车由此产品则增加数量，否则添加产品
+        addProduct: function (id, name, price) {
+            var addedToExistingItem = false;
+            for (var i = 0; i < cartData.length; i++) {
+                if (cartData[i].id == id) {
+                    cartData[i].count++;
+                    addedToExistingItem = true;
+                    break;
+                }
+            }
+            if (!addedToExistingItem) {
+                cartData.push({count: 1, id: id, price: price, name: name});
+            }
+        },
+        //从购物车移除该产品
+        removeProduct: function (id) {
+            for (var i = 0; i < cartData.length; i++) {
+                if (cartData[i].id == id) {
+                    cartData.splice(i, 1);
+                    break;
+                }
+            }
+        },
+        //获取购物车中的产品
+        getProducts: function () {
+            return cartData;
+        },
+        //得到购物车中的产品总价
+        getTotal: function(){
+            var total = 0;
+            for (var i = 0; i < cartData.length; i++) {
+                total += (cartData[i].price * cartData[i].count);
+            }
+            return total;
+        },
+        //得到购物车中的产品总数
+        getItemCount: function(){
+            var count = 0;
+            for (var i = 0; i < cartData.length; i++) {
+                count += cartData[i].count;
+            }
+            return count;
+        }
+    }
+})
+//新建购物车小计cartSummary指令，注意：该指令使用（注入）了上面cart服务
+.directive("cartSummary", function (cart) {
+    return {
+        restrict: "E",//只能作为Element元素使用，如果是EA则表示还可用作属性Attribute
+        //该指令的HTML代码
+        templateUrl: "components/cart/cartSummary.html",
+        //该指令所使用的控制器
+        controller: function ($scope) {
+            //价格合计函数-供视图使用
+            $scope.getTotal = function () {
+                return cart.getTotal();
+            }
+            //物品数量函数-共视图使用
+            $scope.getItemCount = function () {
+                return cart.getItemCount();
+            }
+        }
+    };
+});
+                </code></pre>
+                <!--</div>-->
+                <p>接下来我们再生成<strong>cartSummary</strong>指令使用的HTML代码在<code>cart/cartSummary.html</code>文件中</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-30">复制代码</button><code id="dm-30">
+&lt;!--对于只针对该页面使用的样式，可直接写在该文件中-->
+&lt;!--！important表示如有重复，以此为准-->
+&lt;style>
+    .navbar-right { float: right !important; margin-right: 5px;}
+    .navbar-text { margin-right: 10px; }
+&lt;/style>
+&lt;div class="navbar-right">
+    &lt;div class="navbar-text">
+        &lt;b>我的购物车：&lt;/b>{{getItemCount()}} 项物品,{{getTotal() | currency: '￥'}}
+    &lt;/div>
+    &lt;a href="#/checkout" class="btn btn-default navbar-btn">结 算&lt;/a>
+&lt;/div>
+                </code></pre>
+                <!--</div>-->
+                <p>要使用该<strong>cart</strong>模块，首先在<strong>index.html</strong>中引入<code>&lt;script src="components/cart/cart.js">&lt;/script></code>，
+                    然后在该文件中使用该指令，也即将指令标签加到导航条位置，代码如下：，最后在
+                    <strong>sportsStore.js</strong>文件中注入即<code>angular.module("sportsStore", ["customFilters", "cart"])</code><strong>index.html</strong></p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-31">复制代码</button><code id="dm-31">
+&lt;a class="navbar-brand" href="#">SPORTS STORE-运动品商店&lt;/a>
+&lt;cart-summary />
+                </code></pre>
+                <!--</div>-->
+                <p>刷新页面，效果如下：</p>
+                <img src="../assets/img/sportstore-8.png">
+                <p><strong>生成“添加到购物车”按钮</strong></p>
+                <p>有了购物车，我们还需要能添加物品的按钮。添加如下代码到<strong>views/productList.html</strong>文件显示产品价格的<strong>h3</strong>标签后</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-32">复制代码</button><code id="dm-32">
+...
+&lt;/h3>
+&lt;button ng-click="addProductToCart(item)" class="btn btn-success pull-right">
+        添加到购物车
+&lt;/button>
+...
+                </code></pre>
+                <!--</div>-->
+                <p>然后添加<code>addProductToCart</code>函数的代码到<strong>productListControllers.js </strong>文件的控制器中。注意要注入cart服务！</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-33">复制代码</button><code id="dm-33">
+.controller("productListCtrl", function ($scope, productListActiveClass, productListPageCount, cart) {
+    ...
+    $scope.addProductToCart = function (product) {
+        cart.addProduct(product.id, product.name, product.price);
+    }
+}
+                </code></pre>
+                <!--</div>-->
+                <p>现在选购一些商品，看看顶部的变化，效果如下，请分析其过程！</p>
+                <img src="../assets/img/sportstore-9.png">
+                <p><strong>让“结算”按钮生效</strong></p>
+                <p>按一般的应用，当点击<strong>结算</strong>按钮时，页面需要发生跳转即显示结算页面。而在AngularJS中，<strong>这是不需要的</strong>！ 这就是
+                    <strong>页面部分刷新</strong>技术，提高了响应速度同时减少了网络通信流量！</p>
+                <p>首先生成结算页面文件<code>views/checkoutSummary.html</code>如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-34">复制代码</button><code id="dm-34">
+&lt;h2>我的购物车&lt;/h2>
+&lt;div ng-controller="cartSummaryController">
+    &lt;div class="alert alert-warning" ng-show="cartData.length == 0">
+        购物车是空的。&lt;a href="#/products" class="alert-link">去购物&lt;/a>
+    &lt;/div>
+    &lt;div ng-hide="cartData.length == 0">
+        &lt;table class="table">
+            &lt;thead>
+            &lt;tr>
+                &lt;th class="text-center">物品&lt;/th>
+                &lt;th class="text-left">价格&lt;/th>
+                &lt;th class="text-right">数量&lt;/th>
+                &lt;th class="text-right">小计&lt;/th>
+                &lt;th>&lt;/th>
+            &lt;/tr>
+            &lt;/thead>
+            &lt;tbody>
+            &lt;tr ng-repeat="item in cartData">
+                &lt;td class="text-center">{{item.name}}&lt;/td>
+                &lt;td class="text-left">{{item.price | currency: '￥'}}&lt;/td>
+                &lt;td class="text-right">{{item.count}}&lt;/td>
+                &lt;td class="text-right">{{ (item.price * item.count) | currency: '￥'}}&lt;/td>
+                &lt;td>&lt;button ng-click="remove(item.id)" class="btn btn-sm btn-danger">移除&lt;/button>
+                &lt;/td>
+            &lt;/tr>
+            &lt;/tbody>
+            &lt;tfoot>
+            &lt;tr>
+                &lt;td colspan="3" class="text-right">&lt;strong>合计&lt;/strong>&lt;/td>
+                &lt;td class="text-right">&lt;strong>{{getTotal() | currency: '￥'}}&lt;/strong>&lt;/td>
+                &lt;td>&lt;/td>
+            &lt;/tr>
+            &lt;/tfoot>
+        &lt;/table>
+        &lt;div class="text-center">
+            &lt;a class="btn btn-primary" href="#/products">继续购物&lt;/a>
+            &lt;a class="btn btn-primary" href="#/placeOrder">马上下单&lt;/a>
+        &lt;/div>
+    &lt;/div>
+&lt;/div>
+                </code></pre>
+                <!--</div>-->
+                <p>在该结算HTML文件中使用了名为<strong>cartSummaryController</strong>控制器，因此我们生成该文件<code>controllers/checkoutContollers.js</code>如下，
+                    并将该文件在
+                    <strong>index.html</strong>中引入<code>&lt;script src="controllers/checkoutController.js">&lt;/script></code></p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-35">复制代码</button><code id="dm-35">
+//在已有的sportsStore模块上新建cartSummaryController控制器
+angular.module("sportsStore")
+//注入了cart服务
+.controller("cartSummaryController", function($scope, cart) {
+    $scope.cartData = cart.getProducts();
+    //总计函数
+    $scope.getTotal = function () {
+        return cart.getTotal();
+    }
+    //移除物品函数
+    $scope.remove = function (id) {
+        cart.removeProduct(id);
+    }
+});
+                </code></pre>
+                <!--</div>-->
+                <p>下面我们设置路由导航。首先复制AngularJS的导航文件<strong>angular-route.js</strong>到<code>components/js</code>目录下，接着在
+                    <strong>index.html</strong>文件中引入<code>&lt;script src="components/js/angular-route.js">&lt;/script></code>该文件，
+                    并将
+                    <strong>index.html</strong>文件中<code>&lt;ng-include ...></code>标签改为<code>&lt;ng-view /></code>标签， 然后在
+                    <strong>sportsStore.js</strong>文件中注入<code>ngRoute</code>模块并进行配置如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-36">复制代码</button><code id="dm-36">
+angular.module("sportsStore", ["customFilters", 'cart', 'ngRoute'])
+    ...
+    .config(function ($routeProvider) {
+        $routeProvider.when("/checkout", {
+            templateUrl: "views/checkoutSummary.html"
+        });
+        $routeProvider.when("/products", {
+            templateUrl: "views/productList.html"
+        });
+        $routeProvider.otherwise({
+            templateUrl: "views/productList.html"
+        });
+    });
+                </code></pre>
+                <!--</div>-->
+                <p>现在你看到的效果应该如下：</p>
+                <img src="../assets/img/sportstore-10.png">
+                <div class="bs-callout bs-callout-info">
+                    <p>拓展：你能否在移除按钮后添加 <button class="btn btn-success"> + </button> 和 <button class="btn btn-warning"> - </button>                        按钮并设置其逻辑？</p>
+                </div>
+                <p><strong>处理订单</strong></p>
+                <p>点击按钮<button class="btn btn-primary">马上下单</button>后因跳转到订单页面，因此我们新建<code>views/placeOrder.html</code>文件如下：</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-37">复制代码</button><code id="dm-37">
+&lt;style>
+    .ng-invalid { border-color: lightpink; }
+    .ng-valid { border-color: lightgreen; }
+&lt;/style>
+&lt;h2 class="text-center">完善订单&lt;/h2>
+&lt;p class="text-center">请输入以下信息，我们将尽快发货！&lt;/p>
+&lt;form name="shippingForm" novalidate>
+    &lt;div class="well">
+        &lt;h3>收件人&lt;/h3>
+        &lt;div class="form-group">
+            &lt;input name="name" class="form-control" placeholder="请输入姓名（必需）"
+                   ng-model="data.shipping.name" required />
+        &lt;/div>
+        &lt;h3>地址&lt;/h3>
+        &lt;div class="form-group">
+            &lt;input name="street" class="form-control" placeholder="请输入详细地址（必需）"
+                   ng-model="data.shipping.street" required />
+        &lt;/div>
+        &lt;h3>电话&lt;/h3>
+        &lt;div class="form-group">
+            &lt;input name="phoneNumber" type="number" class="form-control" placeholder="请输入电话号码（必需）"
+                   ng-model="data.shipping.phoneNumber" required />
+        &lt;/div>
+        &lt;h3>选项&lt;/h3>
+        &lt;div class="checkbox">
+            &lt;label>
+                &lt;input name="giftwrap" type="checkbox" ng-checked="true"
+                       ng-model="data.shipping.giftwrap" />
+                是否使用礼品包装（免费）
+            &lt;/label>
+        &lt;/div>
+        &lt;div class="text-center">
+            &lt;button ng-disabled="shippingForm.$invalid" class="btn btn-primary"
+                    ng-click="sendOrder(data.shipping)">确 定&lt;/button>
+        &lt;/div>
+    &lt;/div>
+&lt;/form>
+                </code></pre>
+                <!--</div>-->
+                <p>然后在<strong>sportsStore.js</strong>文件中添加如下路由导航。</p>
+                <div>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-38">复制代码</button><code id="dm-38">
+$routeProvider.when("/placeOrder", {
+    templateUrl: "views/placeOrder.html"
+});
+                </code></pre>
+                </div>
+                <p>现在你应该看到如下页面：</p>
+                <img src="../assets/img/sportstore-11.png" />
+                <p><strong>将订单传回服务器（后台）</strong></p>
+                <p>点击<button class="btn btn-primary">确 定</button>按钮后，我们应将<strong>用户信息</strong>及其<strong>购物车</strong>的数据传给服务器进行处理。
+                    而到目前为止，我们所有的操作都没与服务器打交道，
+                    <strong>极大的减轻了服务器的压力</strong>！（回想一下我们与服务器通信了几次？）这得益于AngularJS框架！</p>
+                <p>服务器要保持我们的订单，则需要新建名为<code>orders</code>的表。打开<strong>DeployD</strong>服务器的控制台，新建如下结构的collection</p>
+                <!--<div class="highlight">-->
+                <pre><code>
+        注意后3个字段的数据类型
+        ---------------------------------
+        Name        Type        Required
+        ---------------------------------
+        name        string      Yes
+        street      string      Yes
+        phoneNumber number      Yes
+        giftwrap    boolean     No
+        products    array       Yes
+        ---------------------------------
+                </code></pre>
+                <!--</div>-->
+                <p>点击确定按钮后调用将<code>sendOrder</code>函数，我们在<strong>sportsStore.js</strong>文件中添加如下代码</p>
+                <div>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-39">复制代码</button><code id="dm-39">
+...
+//新建orderUrl常量
+.constant("orderUrl", "http://localhost:2403/orders")
+//注意新注入的几个服务
+.controller("sportsStoreCtrl", function ($scope, $http, $location,dataUrl, orderUrl, cart) {
+    ...
+    $scope.sendOrder = function (shippingDetails) {
+        var order = angular.copy(shippingDetails);
+        order.products = cart.getProducts();
+        $http.post(orderUrl, order)
+            .success(function (data) {
+                //得到订单的ID
+                $scope.data.orderId = data.id;
+                //情况购物车
+                cart.getProducts().length = 0;
+            })
+            .error(function (error) {
+                $scope.data.orderError = error;
+            })
+            .finally(function () {
+                //导航
+                $location.path("/complete");
+        });
+    }
+                </code></pre>
+                </div>
+                <p>然后新建<code>views/thankYou.html</code>文件如下：</p>
+                <div>
+                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-40">复制代码</button><code id="dm-40">
+&lt;div class="alert alert-danger" ng-show="data.orderError">
+    Error ({{data.orderError}}). 订单未能完成！
+    &lt;a href="#/placeOrder" class="alert-link">点此重试&lt;/a>
+&lt;/div>
+&lt;div class="well" ng-hide="data.orderError">
+    &lt;h2>Thanks!&lt;/h2>
+    感谢你的购物。我们将尽快处理你的订单。
+&lt;/div>
+                </code></pre>
+                </div>
+                <p>最后添加到此页面片段的路由。在<strong>sportsStore.js</strong>文件中添加如下导航:</p>
+                <!--<div class="highlight">-->
+                <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-41">复制代码</button><code id="dm-41">
+$routeProvider.when("/complete", {
+    templateUrl: "views/thankYou.html"
+});
+                </code></pre>
+                <!--</div>-->
+                <p>此时查看服务器的后台数据库，可见订单OK</p>
                 <hr>
                 <!--angularjs聊天室实例=====================-->
                 <h3 id="angular-technode">基于WebSocket的聊天室实例</h3>
@@ -1571,7 +2626,7 @@ git config --global credential.helper wincred命令可以缓存github账户和�
             <p>本网站所列文档全部由棋歌整理及维护，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>协议发布。
             </p>
 
-            <p>Powered By <a href="https://github.com/" target="_blank" title="">github</a> And<a href="http://www.bootcss.com/"
+            <p>Powered By <a href="http://nginx.org/" target="_blank" title="">Nginx</a> And<a href="http://www.bootcss.com/"
                     target="_blank"> BootCSS</a></p>
 
             <p>
