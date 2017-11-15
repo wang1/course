@@ -1518,9 +1518,16 @@ github是流行和强大的版本控制和代码托管网站，请一定学习�
 在code中打开项目文件夹，如果没有初始化则会有初始化的按钮，点击进行初始化（表明现在项目由github进行版本控制，angular/cli生成的项目已经初始化了），否则先本地暂存和提交（commit）；
 登录github，新建名为xxx项目仓库
 然后在项目文件夹下使用如下命令进行将本地缓存与远程仓库进行关联，origin表明是项目的起始
-git remote add origin https://github.com/wang1/xxx
-然后可以使用push/pull/sync等命令，在vscode左下角有图标可用
-git config --global credential.helper wincred命令可以缓存github账户和密码而不需要每次输入</code></pre>
+git remote add origin https://github.com/wang1/xxx.git
+然后可以使用push/pull/sync/tag/clone等命令，在vscode左下角有图标可用
+git tag tagname可生成本地标签，使用git push origin tagname在远程仓库的项目中添加标签。git clone https://github.com/wang1/xxx tagname可clone对应的版本
+git config --global credential.helper wincred命令可以缓存github账户和密码而不需要每次输入（注意是windows平台下）
+---------------------
+11. 课堂讲授项目
+---------------------
+为方便学习，我们课堂讲授的项目我都放在了github上，以授课时间（如20171115）作为tag标注，请自行clone学习
+通信专业： https://github.com/wang1/TOH-Comm
+物联专业： https://github.com/wang1/TOH-IoT</code></pre>
 
                     <h3 id="angular-hello">从Hello World起步</h3>
                     <p>请在WebStorm中配置AngularJS插件以加快开发。</p>
