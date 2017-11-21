@@ -174,7 +174,8 @@
                         <li>
                             <a href="#5">实验五 常用开发工具</a>
                             <ul class="nav">
-
+                                <li><a href="#5-gcc">GCC</a></li>
+                                <li><a href="#5-make">MAKE</a></li>
                             </ul>
                         </li>
                         <li>
@@ -1081,27 +1082,28 @@ sed 's/<[^>]*>//g ; /^$/d' test.html   #[^>]为反义，表明<>之间不能有>
 
                     <h3 id="4-script">实用的脚本</h3>
                     <p><label>备份压缩文件</label></p>
-                    <p>将指定的课程作业以课程名称+日期为名压缩，并保存在backup目录下对应的课程名称目录中，且删除原始作业</p>
+                    <p>设当前目录homework下有linux、web、c等子目录用于存放学生提交的作业文件，同时还有一个backup目录下也有linux、web、c等子目录用于备份。</p>
+                    <p>现将指定的课程作业以课程名称+日期为名压缩，并保存在backup目录下对应的课程名称目录中，且删除原始作业</p>
                     <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#script-1">复制代码</button><code id="script-1">
 #!/bin/bash
-#将指定的课程作业以课程名称+日期为名压缩，并保存在backup目录下对应的课程名称目录中，且删除原始作业
-if [ $# -eq 1 ]
-then    #指定了课程名称
-  coursename=$1
-  backupDirectory=./backup/$coursename
-  if ! [ -d $backupDirectory ]  #备份目录不存在
+#将指定课程的作业以课程名称+日期为名压缩，并保存在backup目录下对应的课程名称目录中，且删除原始作业
+if [ $# -eq 1 ]   #命令行指定了课程名称
+then    
+  coursename=$1   #得到课程名称
+  backupDirectory=./backup/$coursename  #得到备份路径
+  if ! [ -d $backupDirectory ]  #备份目录不存在则创建
   then
     mkdir -p $backupDirectory
   fi
-  filename=$coursename-$(date +%y%m%d).7z
-  if 7z a $backupDirectory/$filename ./$coursename
+  filename=$coursename-$(date +%y%m%d).7z   #以课程名称-日期.7z作为压缩备份文件名，
+  if 7z a $backupDirectory/$filename ./$coursename    #执行压缩
   then
-    rm -f ./$coursename/*
+    rm -f ./$coursename/*   #压缩备份成功则删除原文件
     echo "Task is completed!"
-  else
+  else                      #压缩不成功
     echo "Error!!!"
   fi
-else    #未指定课程名称
+else    #未指定课程名称，给出用法
   echo "Usage: backup.sh courseName"
 fi</code></pre>
 
@@ -1112,9 +1114,52 @@ fi</code></pre>
 <!-- <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-">复制代码</button><code id="s-">
 </code></pre> -->
 
-            </div>
+            
             <!-- 实验四结束 -->
 
+            <!-- =========== 实验五 =========== -->
+            <div class="page-header">
+                <h1 id="5">实验五 常用开发工具</h1>
+            </div>
+            <p class="bs-callout bs-callout-info lead">在Linux这个自由、开放和免费的平台上，除了提供大量的应用软件外，还有许多的开发工具。本实验将学习使用GCC和make进行C/C++程序的开发。</p>
+
+            <h3 id="5-gcc">GNU Compiler Collection-gcc</h3>
+            <p>GCC原意为GNU project C and C++ compiler，及C/C++编译器。但由于其高效、稳定、易用以及跨平台，现在已扩展为多种语言如Objective-C、Fortran、Java等语言的编译器，即GCC代表GNU Compiler Collection。</p>
+            <p>一个C/C++源程序要能运行，即生成对应的可执行程序，需要经过4个步骤：预处理->编译->汇编->链接，GCC可以对这个过程进行非常灵活的处理。</p>
+            <p>Fedora已经预置了GCC，如果没有，请使用<code>sudo dnf install gcc</code>安装即可。</p>
+            <p>我们使用以下C程序为例进行学习</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#gcc-1">复制代码</button><code id="gcc-1">
+#include "stdio.h"
+#define PI1 3.14
+#define PI2 3.1415926
+int main(){
+  printf("Hello gcc!\n");
+  printf("LiuHui found it: %4.2f, and ZuChongZhi updated it: %9.7f\n", PI1, PI2);
+  return 0;
+}</code></pre>
+            <p><label>预处理</label></p>
+            <p>预处理（Preprocessing）是指对源程序中的文件包含、宏定义等进行处理的过程。使用命令<code>gcc hello.c -o hello.i</code>。可打开hello.i文件查看预处理结果</p>
+            <p><label>编译</label></p>
+            <p>编译（Compiling）是对预处理后的文件进行语法和句法分析，尽可能找到不符合规范的地方，并给出警告或错误，并停止编译。</p>
+            <p>如果没有语法问题，则进一步将该文件生成为汇编（一种接近机器语言的低级语言）代码。</p>
+            <p>使用命令<code>gcc -s hello.c -o hello.s</code>进行，可打开hello.s查看。估计你也看不懂 :) </p>
+            <p class=" bs-callout bs-callout-info">将源程序中的<code>"</code>和<code>;</code>去掉一个试试！</p>
+            <p><label>汇编</label></p>
+            <p>汇编（Assembling）即是将上一步的汇编程序翻译为目标机器代码的过程。目标文件完全由机器代码构成，通常有代码段和数据段两部分。</p>
+            <p>使用命令<code>gcc -c hello.c -o hello.o</code>将得到目标文件。现在用文本编辑工具打开<code>hello.o</code>文件将出现乱码，因为其为二进制代码而非ASCII码。</p>
+            <p><label>链接</label></p>
+            <p>链接（Linking）即生成最后的可执行文件的过程，实际即为将程序中要使用的一些库文件链接起来（想想dll文件）。使用<code>gcc hello.c -o hello</code>则得到<code>hello</code>这个可执行文件，运行<code>./hello</code>试试。</p>
+            <p class=" bs-callout bs-callout-info">实际应用中，我们通常只执行最后一步即可搞定 :)</p>
+            
+            <h3 id="5-make">大型项目构建工具-make</h3>
+            <p>在实际开发中，很少只有一个C/C++源文件，也即作为项目，我们有许多的源文件并且组织在各个目录下。此时，对每个源文件进行上述的步骤就非常繁琐。</p>
+            <p>我们需要自动化的编译工具，这就是<code>make</code>。如何构建大型项目以及生成自动化编译配置文件我们暂时不管，下面我们以<a href="https://github.com/sysstat/sysstat">sysstat</a>这个工具为例进行自动编译</p>
+            
+            <!-- ======================实验五结束================ -->
+<!-- <p class=" bs-callout bs-callout-info">浮点运算：在shell中进行浮点运算就更不友好了，请有需要时查阅相关文档。</p> -->
+
+<!-- <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-">复制代码</button><code id="s-">
+</code></pre> -->
 
         </div>
     </div>
