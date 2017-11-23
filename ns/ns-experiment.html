@@ -922,9 +922,8 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
 <a href="../data/ns/Intermediate Security Testing with Kali Linux 2.pdf" target="_blank"><img src="../assets/img/kali.png" width="500px"></a>
 <a href="../data/ns/daxueba-kali-linux-tutorial.pdf" target="_blank"><img src="../assets/img/dxb.png" width="500px"></a>  
 
-<h3 id="2-vbox">虚拟机下载、安装及配置</h3>
+    <h3 id="2-vbox">虚拟机下载、安装及配置</h3>
 
-<div class="bs-callout bs-callout-info">
     <p>请在你的笔记本中安装虚拟机软件
         <a href="http://10.1.74.132/%E8%BD%AF%E4%BB%B6/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Virtual%20Box/VirtualBox-5.1.22-115126-Win.exe" class="btn btn-primary">
             <i class="glyphicon glyphicon-save"></i> VirtualBox
@@ -944,15 +943,16 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
         基本配置说明：
         <ol>
             <li>启动Kali，以root:kali(或toor)登录</li>
-            <li>网络的启动（虚拟机桥接或NAT皆可）图形方式/命令方式（编辑/etc/network/interfaces文件）</li>
+            <li>网络的启动（虚拟机桥接或NAT皆可，在VBox中设置。但请注意：如果两台虚拟机需要通信，则不能使用NAT模式！），可图形方式/命令方式编辑（/etc/network/interfaces文件）</li>
           
-            <li>(可选)替换更新源：编辑/etc/apt/sources.list文件，注释原有的源，加入阿里云/中科大（mirrors.ustc.edu.cn）等的源如下：
+            <li>(可选)替换更新源（目前Kali自动决定最快的镜像）：编辑/etc/apt/sources.list文件，注释原有的源，加入阿里云/中科大（mirrors.ustc.edu.cn）等的源如下：
                 <div>deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib<br>
                 </div>
             </li>
             <li>(可选，费时)软件更新：运行菜单中“系统工具”-“软件更新”对当前的软件进行更新，或执行命令apt update & apt upgrade -y</li>
-            <li>(可选)安装增强功能可共享剪贴板、调整分配率等(apt install virtualbox-guest-x11 & reboot)</li>
-            <li>(可选)谷歌中文输入法：运行菜单中“系统工具”-“添加/删除软件”，搜索ibus，找到googlepingyin for ibus安装即可</li>
+            <li>(推荐)安装增强功能可共享剪贴板、调整分配率等(<code>apt install virtualbox-guest-x11</code>)，重启生效</li>
+            <li>(可选)中文输入法：<code>apt install ibus-pinyin</code>，重启后在设置->语言和区域中添加即可。默认<code>Super+Space</code>切换</li>
+            <li>(推荐)下拉式终端Guake：<code>apt install guake</code>即可安装，完毕后使用<b>Tweaks</b>将其加到开机自动启动，使用<code>guake -p</code>进行设置如透明度之类。以后使用F12调出，F11全屏。</li>
             <li>(可选)chrome浏览器：同上，在“浏览器”栏目中找到chromium安装即可</li>
             <li>(可选)让Kali共享Windows文件：选中虚拟机，点击“设置”，选择“共享文件夹”，分配数据空间，名称假设为share，选中“自动挂载”。重启虚拟机后在 media目录下可见</li>
             <li>(可选)Apache服务器：Kali内置了Apache服务器（目录在/var/www/html/），使用service apache2 start/stop/restart启动/停止/重启，update-rc.d apache2 enable设置为开机启动。</li>
@@ -961,7 +961,7 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
         </ol>
         至此，基本配置完成。
     </p>
-    <p>自行安装渗透对象（Linux） <a href="../data/ns/vdi/metasploitable-linux-2.0.0.zip" class="btn btn-primary">
+    <p>自行安装渗透对象（Ubuntu） <a href="../data/ns/vdi/metasploitable-linux-2.0.0.zip" class="btn btn-primary">
         <i class="glyphicon glyphicon-save"></i> metasploitable-linux-2
     </a> ，渗透对象（XP） <a href="../data/ns/vdi/xpsp2.rar" class="btn btn-primary">
         <i class="glyphicon glyphicon-save"></i> WindowsXP-sp2
@@ -982,27 +982,25 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
 
 <div class="bs-callout bs-callout-info">
     <p>Kali中已经内置了Web服务器Apache, 对Apache进行ssl配置请Google</p>
-    <p>Nginx是一个优秀的Web服务器，请使用apt install nginx进行安装（.128 ~ .130机器已经安装了），其主目录仍在/var/www/html/。请先停止apache，再输入nginx即可启动Nginx服务器，在浏览器中输入localhost进行访问
-        （如果显示不能连接，则是nginx未启动，在shell中直接执行nginx即可）。
-        <br>下面我们使用OpenSSL为该服务器颁发证书，将其配置为安全的Web服务器即HTTPS：
-    </p>
+    <p>Nginx也是一个优秀的Web服务器，如果没有请使用<code>apt install nginx</code>进行安装（.128 ~ .130机器已经安装了），其主目录仍在<code>/var/www/html/</code>。输入nginx即可启动Nginx服务器，在浏览器中输入localhost进行访问</p>      
+    <p>下面我们使用开源的OpenSSL（目前最流行的 SSL 密码库工具，提供了一个通用、健壮、功能完备的工具套件，用以支持SSL/TLS 协议的实现。2014年曾爆发了Heartbleed漏洞）为该服务器颁发证书，将其配置为安全的Web服务器即HTTPS：    </p>
 
     <p>
     <ol>
-        <li>Nginx的安装目录在/etc/nginx，按以下步骤生成证书</li>
+        <li>Nginx默认安装在/etc/nginx，请按以下步骤生成证书</li>
         <div class="highlight">
 <pre><code class="hljs">
     cd /etc/nginx 
-    mkdir cert #专门生成cert目录进行ssl配置实验
-    cd cert
-    openssl genrsa -des3 -out server.key 1024 #生成1024位的私钥，会让你输入一个口令进行DES3加密保护
+    mkdir cert  #专门生成cert目录进行ssl配置实验
+    cd cert     #进入cert目录
+    openssl genrsa -des3 -out server.key 1024 #生成1024（也可2048）位的私钥，会让你输入一个口令进行DES3（也可使用aes256）加密保护
     openssl req -new -key server.key -out server.csr #生成CSR(Cerificate Signing Request)即证书请求文件（含公钥）
     cp server.key server.key.org
-    openssl rsa -in server.key.org -out server.key #Nginx使用上述私钥时除去必须的口令
+    openssl rsa -in server.key.org -out server.key #使用上述私钥时除去必须的口令
     openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt #CA签发以CSR文件生成有效期为365天且用私钥签名的证书
 </code></pre>
         </div>
-        <li>编辑Nginx配置文件/etc/nginx/sites-available/default，将 HTTPS server 小节的内容改为如下（实际上#是注释）</li>
+        <li>编辑Nginx配置文件/etc/nginx/sites-available/default，将如下内容添加在文件末（使得80和443的location不同）</li>
         <div class="highlight">
 <pre><code class="hljs">
     server {
@@ -1024,29 +1022,28 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
         </li>
         <div class="highlight">
 <pre><code class="hljs">
-    cd /etc/nginx/cert
-    mkdir html
-    cp 自己的首页文件 html #将前面下载的网站文件解压
+    mkdir /etc/nginx/cert/html
+    cp 自己的首页文件 /etc/nginx/cert/html #将前面下载的网站文件解压
 </code></pre>
         </div>
-        <li>重启Nginx（如不能启动，可只输入nginx）</li>
+        <li>重启Nginx</li>
         <div class="highlight">
 <pre><code class="hljs">
-    nginx -t
-    nginx -s reload
+    nginx -t    #测试Nginx的配置是否正确
+    nginx -s reload     #重启Nginx（start/stop)
 </code></pre>
         </div>
 
     </ol>
     </p>
     <p>
-        打开浏览器，输入https://localhost进行访问，此时会有安全问题，因为我们的这个服务器证书是自己颁发的，浏览器不能验证，玩玩而已（但我们也可以到相关证书中心进行申请）。
+        打开浏览器，输入https://localhost进行访问，此时会有安全问题，因为我们的这个服务器证书是自己颁发的，不能通过浏览器的验证，玩玩而已（但我们也可以到相关证书中心进行申请）。
     </p>
     <p>友情提供：<a href="../data/ns/OpenSSL-64.exe" class="btn btn-success"><i class=" glyphicon glyphicon-save"></i> Windows平台的OpenSSL</a></p>
 </div>
 
 <h3>信息收集-侦察什么
-    <div class="bs-callout ba-callout-info">
+    <div class="bs-callout bs-callout-info">
         <p>侦察是容易被忽视但其实非常重要的工作。“知己知彼，百战不殆”。对你的目标了解越多，则也可能成功。
         <p>可以从对象的网站、<a class="btn btn-danger" href="http://archive.org" target="_blank"><i class="glyphicon glyphicon-globe"></i> 历史归档网站</a>、社交媒体、信任伙伴、招聘信息等着手。
     </div>
@@ -1109,10 +1106,10 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
     </p>
     <ol>
         <li>
-            <p>DMitry (Deepmagic Information Gathering Tool)：一个all-in-one信息搜集工具，运行dmitry www.baidu.com</p>
+            <p>DMitry (Deepmagic Information Gathering Tool)：一个all-in-one信息搜集工具，运行<code>dmitry www.baidu.com</code></p>
         </li>
     <li><p>
-        whatweb工具：快速得到Web站点的相关信息（运行whatweb www.cqjtu.edu.cn）
+        whatweb工具：快速得到Web站点的相关信息（运行<code>whatweb www.cqjtu.edu.cn</code>）
     </p>
     </li>
     <!--<li>
@@ -1121,11 +1118,11 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
     </p>
     </li>-->
     <li>
-        <p>Httrack: 强大的克隆网站工具，可离线对网站进行分析。运行httrack angular.cn即可。</p>
+        <p>Httrack: 强大的克隆网站工具，可离线对网站进行分析。运行<code>httrack angular.cn</code>，默认即镜像全站。</p>
     </li>
     <li>
     <p>
-        maltego工具：是社会工程学必备的一个强大的信息收集工具，可得到非常详细的网站、域、个人等方面的信息（<code> 信息搜集 </code>菜单中maltegoce（需免费注册才能使用, user：wang@cqjtu.edu.cn, password：kali2017）
+        maltego工具：是社会工程学必备的一个强大的信息收集工具，可得到非常详细的网站、域、个人等方面的信息（<code> 信息搜集 </code>菜单中maltego（需免费注册才能使用, user：wang@cqjtu.edu.cn, password：kali2017）
     </p>
     </li>
     
@@ -1157,33 +1154,33 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
     <ol>
     <li>
     <p>
-      arping: 在同一网段中使用arp进行探测, 避免ICMP过滤。arping X.X.X.X -c1 (c1表示探测一次)  
+      arping: 在同一网段中使用arp进行探测, 避免ICMP过滤。<code>arping 10.0.2.2 -c1</code> (c1表示探测一次)  
     </p>
     </li>
     <li><p>
-        fping：扫描指定范围内的活动主机（运行fping -s -r 1 -g 202.202.240.0/24）（s显示统计，r为retry，g为范围）
+        fping：扫描指定范围内的活动主机（运行<code>fping -s -r 1 -g 202.202.240.0/24</code>）（s显示统计，r为retry，g为范围）
     </p></li>
     
     <li>
     <p>
         nping：自由构建各种协议的包（TCP，UDP，ICMP， ARP等），如对防火墙过滤ICMP或主机不对ICMP响应的情况，直接定制TCP包进行探测, 如：<br>
-        nping -c1 --tcp -p 80 --flags syn 202.202.240.6 或 
+        <code>nping -c1 --tcp -p 80 --flags syn 202.202.240.6</code> 或 
         <br>
-        nping -c1 --tcp -p 80 --flags ack 202.202.240.6
+        <code>nping -c1 --tcp -p 80 --flags ack 202.202.240.6</code>
     </p>
     </li>
     <li>
     <p>
-        netenum：速度超快的活动主机扫描器（运行netenum 202.202.240.0/24 10）（10代表超时时间，越长越准确）
+        netenum：速度超快的活动主机扫描器（运行<code>netenum 202.202.240.0/24 10</code>）（10代表扫描时间为10s，越长越准确）
     </p>
     </li>
     <li>
     <p>
-        netdiscover：获取本LAN中活动主机及其MAC等信息（netdiscover -r 10.1.74.0/24，如不指定扫描范围，则为被动模式）
+        netdiscover：获取本网段中活动主机及其MAC等信息（<code>netdiscover -r 10.1.74.0/24</code>，如不指定扫描范围，则为被动模式）
     </p>
     </li>
     <li><p>
-        nbtscan: 使用NetBIOS协议，专门查找Windows系统的主机(有NetBIOS主机名)。（nbtscan 202.202.240.0/24）
+        nbtscan: 使用NetBIOS协议，专门查找Windows系统:)的主机(有NetBIOS主机名)。（<code>nbtscan 202.202.240.0/24</code>）
     </p></li>
 </div>
 <a href="../data/ns/Kali Linux Network Scanning Cookbook.pdf" target="_blank"><img src="../assets/img/scan.png" width="500px"></a>
@@ -2055,7 +2052,7 @@ cp webshell.php webshell.jpg                                   </code></pre>
 </div>
 
 
-</div>
+
 </div>
 
 </div>
@@ -2091,7 +2088,7 @@ cp webshell.php webshell.jpg                                   </code></pre>
 <script src="../docs-assets/js/application.js"></script>
 
 
-<!--<!-- Analytics-->
+<!-- Analytics-->
 <!--================================================== -->
 <!--<script type="text/javascript">-->
 <!--var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");-->
