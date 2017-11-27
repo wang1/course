@@ -1191,6 +1191,8 @@ DNS1=8.8.8.8 #DNS服务器1配置，可添加多个DNS服务器</code></pre>
             <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#network-command">复制代码</button><code id="network-command">
 sudo ifconfig wlp2s0 down/up      #网卡禁用/启用
 sudo ip link set down/up wlp2s0   #网卡禁用/启用
+route -n  #显示路由（网关）信息
+cat /etc/resolv.conf  #显示DNS服务器信息
 ping www.baidu.com    #测试网络联通性，可学习其选项
 mtr www.baidu.com     #路由追踪
 netstat -natp   #查看活动的端口，ss -natp与之类似，且ss（Socket Statistics）为其替代
