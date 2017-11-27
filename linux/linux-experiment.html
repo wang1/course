@@ -179,12 +179,16 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#6">实验六 Linux环境编程</a>
+                            <a href="#6">实验六 Linux管理</a>
                             <ul class="nav">
+                              <li><a href="#6-network">网络管理</a></li>
+                              <li><a href="#6-service">服务管理</a></li>
+                              <li><a href="#6-security">安全管理</a></li>
+                              <li><a href="#6-system">系统管理</a></li>
 
                             </ul>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#7">实验七 系统管理</a>
                             <ul class="nav">
 
@@ -195,7 +199,7 @@
                             <ul class="nav">
 
                             </ul>
-                        </li>
+                        </li> -->
 
                     </ul>
                 </div>
@@ -1156,6 +1160,57 @@ int main(){
             <p>我们需要自动化的编译工具，这就是<code>make</code>。如何构建大型项目以及生成自动化编译配置文件我们暂时不管，下面我们以<a href="https://github.com/sysstat/sysstat">sysstat</a>这个工具为例进行自动编译</p>
             
             <!-- ======================实验五结束================ -->
+
+            <!-- =========== 实验六 Linux管理 =========== -->
+            <div class="page-header">
+                <h1 id="6">实验六 Linux管理</h1>
+            </div>
+            <p class="bs-callout bs-callout-info lead">Linux是一个自由、开放和免费的平台和系统。本实验将对网络、服务、安全、系统等方面的管理进行学习。</p>
+
+            <h3 id="6-network">网络管理</h3>
+            <p>接入Internet的设备必须有至少一块网络接口设备（有线或无线，无线又分为WiFi或4G等）。使用<code>ip address</code>或<code>ifconfig</code>可以得到所有网络接口的信息。</p>
+            <p class=" bs-callout bs-callout-info">一般地，RedHat系列的Linux中，有线以太网卡以en开头，无线网卡以wl开头，本地回路（loopback）以lo开头，虚拟网卡以vir开头</p>
+            <p>该设备又必须有一些基本的网络配置如：IP地址、子网掩码、网关、DNS服务器等等。</p>
+            <p>Linux可以让我们以图形、文本和文件配置的方式对这些网络信息进行配置。</p>
+            <p><label>图形方式</label></p>
+            <p>点击<code>网络图标</code>，或进入<code>系统设置->网络配置</code>即可进行相应配置</p>
+            <p><label>文本方式</label></p>
+            <p>在某些情况下，如远程登录、Linux作为服务器等，你所在的Linux环境没有图形界面，此时可使用文本方式即TUI（Text User Interface）</p>
+            <p>输入<code>nmtui</code>即可打开该程序，如果没有则可以安装。</p>
+            <p><label>文件配置方式</label></p>
+            <p>所有的网络配置文件都在<code>/etc/sysconfig/network-scripts</code>目录下（以ifcfg开头，然后是网卡名称），因此我们可以对该文件进行编辑。</p>
+            <p>动态配置则参见该文件即可，注意<code>BOOTPROTO=dhcp</code>以及<code>ONBOOT=yes</code>两项。静态配置一般如下：</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#static-ip">复制代码</button><code id="static-ip">
+BOOTPROTO="static" #静态配置   
+ONBOOT="yes" #开机启用本配置
+IPADDR=192.168.89.64 #静态IP  
+GATEWAY=192.168.89.1 #默认网关  
+NETMASK=255.255.255.0 #子网掩码  
+DNS1=8.8.8.8 #DNS服务器1配置，可添加多个DNS服务器</code></pre>
+            <p><label>常用网络管理命令</label></p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#network-command">复制代码</button><code id="network-command">
+sudo ifconfig wlp2s0 down/up      #网卡禁用/启用
+sudo ip link set down/up wlp2s0   #网卡禁用/启用
+ping www.baidu.com    #测试网络联通性，可学习其选项
+mtr www.baidu.com     #路由追踪
+netstat -natp   #查看活动的端口，ss -natp与之类似，且ss（Socket Statistics）为其替代
+sudo iftop -i wlp2s0    #网络传输监视，该软件需额外安装，h为其帮助
+cat /etc/hosts文件      #查看DNS本地解析文件
+nslookup www.baidu.com  #DNS解析，dig www.baidu.com更详尽
+rsync -a --delete ~/test/ ~/test-backup/    #将test目录全部同步到test-backup目录，首次运行将全部复制，以后只同步更改的内容。delete选项将删除发送端已没有而接收端还存在的文件
+rdesktop 10.1.230.122   #使用RDP协议连接远程桌面            </code></pre>            
+            
+            
+            <h3 id="6-service">服务管理</h3>
+            <!-- ss服务器搭建、nginx、ssh服务器配置及scp、samba -->
+            <h3 id="6-security">安全管理</h3>
+            <h3 id="6-system">系统管理</h3>
+            <!-- 自动重启进程/cron安排周期性任务 -->
+
+
+
+            <!-- ======================实验六结束================ -->
+
 <!-- <p class=" bs-callout bs-callout-info">浮点运算：在shell中进行浮点运算就更不友好了，请有需要时查阅相关文档。</p> -->
 
 <!-- <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#s-">复制代码</button><code id="s-">
