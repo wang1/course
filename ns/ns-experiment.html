@@ -963,9 +963,9 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
     </p>
     <p>自行安装渗透对象（Ubuntu） <a href="../data/ns/vdi/metasploitable-linux-2.0.0.zip" class="btn btn-primary">
         <i class="glyphicon glyphicon-save"></i> metasploitable-linux-2
-    </a> ，渗透对象（XP） <a href="../data/ns/vdi/xpsp2.rar" class="btn btn-primary">
+    </a> ，渗透对象（XP） <a href="../data/ns/vdi/xpsp2.zip" class="btn btn-primary">
         <i class="glyphicon glyphicon-save"></i> WindowsXP-sp2
-    </a>，或者
+    </a>（请设置administrator的口令为123，启用远程桌面），或者
     <h3 id="2-nginx">使用已经配置好的环境进行练习</h3>
 
 <div class="bs-callout bs-callout-info">
@@ -1250,14 +1250,14 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
     <p>
         Nessus可以说是目前全世界最多人使用的系统漏洞扫描与分析软件。其不是开源、免费的软件（也许这才有资金能提供持续的支持），但提供免费使用的个人版，以下为安装及配置步骤：
     <ol>
-        <li>下载6.10.7版本的64位
-            <a href="../data/ns/Nessus-6.10.7-debian6_amd64.deb" class="btn btn-primary btn-sm">
+        <li><a href="https://www.tenable.com/products/nessus/select-your-operating-system#tos" class="btn btn-primary btn-sm">官网下载6.10.7版本的64位</a>
+            或内网下载<a href="../data/ns/Nessus-6.11.2-debian6_amd64.deb" class="btn btn-primary btn-sm">
                 <i class="glyphicon glyphicon-save"></i> Nessus安装包
             </a>
         </li>
         <li>
             进行 <a class="btn btn-danger btn-sm" href="http://www.nessus.org/register/" target="_blank"><i
-                class="glyphicon glyphicon-globe"></i> 注册 </a>，选择家庭版，注册号将发送到邮箱。
+                class="glyphicon glyphicon-globe"></i> 注册 </a>，选择家庭版，一次性注册号将发送到邮箱（可多次注册）。
         </li>
         <li>使用命令<code> dpkg -i Nessus-6.10.7-debian6_amd64.deb </code>命令进行安装。
         </li>
@@ -1265,11 +1265,14 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
         </li>
         <li>运行命令 /opt/nessus/sbin/nessus-adduser 添加用户并设为管理员（需记住，后面登录要使用）
         </li>-->
-        <li>运行命令<code> /etc/init.d/nessusd start </code>启动nessus服务(stop停止)</li>
+        <li>运行命令<code> /etc/init.d/nessusd start </code>启动Nessus服务(stop停止)</li>
         <li>由于国内网络的原因，Nessus在线更新基本不成功，请下载 <a href="../data/ns/all-2.0.tar.gz" class="btn btn-primary btn-sm">
                 <i class="glyphicon glyphicon-save"></i> 离线插件包</a> , 运行<code>/opt/nessus/sbin/nessuscli update all-2.0.tar.gz</code>进行离线安装。
-        <li>打开浏览器，输入https://安装Nessus计算机的IP:8834 登录Nessus即可（user：kali，passwd：kali）
-        </li>
+        <li>打开浏览器，输入<code>https://安装Nessus计算机的IP:8834</code>(注意是https) 将得到不安全的提示，加入例外即可 </li>
+        <li>首次运行将生成Nessus的用户（user：kali，passwd：kali），然后输入激活码，接下来是Coffee Time</li>
+        <li>由于国内网络的原因，如果Nessus在线更新基本不成功，可下载 <a href="../data/ns/all-2.0.tar.gz" class="btn btn-primary btn-sm">
+            <i class="glyphicon glyphicon-save"></i> 离线插件包</a> , 然后运行<code>/opt/nessus/sbin/nessuscli update all-2.0.tar.gz</code>进行离线安装，
+            或者运行<code>/opt/nessus/sbin/nessuscli update</code>多次试试  :(  成功后重启Nessus</li>
     </ol>
     </p>
     <p>Nessus扫描出的漏洞我们会在后面的实践中进行利用。</p>
@@ -1299,17 +1302,17 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
 
 <div class="bs-callout bs-callout-info">
     <p>
-        OpenVAS是开源、开放式漏洞评估系统，也可以说它是一个包含着相关工具的网络扫描器，其与Nessus齐名，由于太大，Kali没有内置，需用apt intall openvas安装。以下为配置步骤：
+       OpenVAS是开源、开放式漏洞评估系统，也可以说它是一个包含着相关工具的网络扫描器，其与Nessus齐名。</p>
+    <p>由于太大，Kali没有内置，请用<code>apt intall openvas</code>安装（只能在线安装，依据网络情况约需10分钟左右，注意请先运行<code>apt update & apt upgrade</code>更新系统利于成功）。</p>
+    <p>安装完成后，进行以下配置：</p>
     <ol>
-        <li> 选择<code>漏洞分析菜单 - openvas initial setup </code>菜单运行（或命令<code>openvas-setup</code>） ，进行初始配置及更新（有点耗时，期间自动生成用户admin和复杂的密码）
-
-        </li>
+        <li> 选择<code>漏洞分析菜单 - openvas initial setup </code>菜单运行（或命令<code>openvas-setup</code>） ，进行初始配置及更新（有点耗时，期间自动生成用户admin和复杂的密码）</li>
         <li>（可选）执行<code> openvasmd --user=admin --new-password=kali</code> 更改密码为kali
         <li>（可选）执行<code> openvas-check-setup </code> 检测是否安装成功
         <li>（可选）默认配置下，仅允许127.0.0.1连接该服务。如果用户想要其它IP登录，需要修改配置文件<code>/lib/systemd/system/greenbone-security-assistant.service</code>中的listen配置项改为0.0.0.0。
-        <li> 选择<code>漏洞分析菜单 - openvas start/stop </code>菜单运行/停止（或命令<code>openvas-start</code>） ，启动OpenVAS。
+        <li> 选择<code>漏洞分析菜单 - openvas start/stop </code>菜单运行/停止（或命令<code>openvas-start</code>） ，启动OpenVAS（可使用<code>netstat -antp</code>查看9392端口是否打开以确认OpenVAS是否运行）。
         </li>
-        <li>打开浏览器，输入https://安装Openvas计算机的IP:9392，以admin和你上面设置的密码登录
+        <li>打开浏览器，输入<code>https://安装Openvas计算机的IP:9392</code>，以admin和你上面设置的密码登录
         </li>
 
     </ol>
@@ -1325,7 +1328,7 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
 <div class="bs-callout bs-callout-info">
     <p><code>crunch 1 3 -o pass.list</code>将生成1~3位的字符组合到pass.list文件中。</p>
     <p><code>crunch 3 3 -f /usr/share/crunch/charset.lst lalpha-numeric -o pass.list</code>将生成3位的小写字母数字组合到pass.list文件中。</p>
-    <p>cewl（Custom Word List）工具可爬取跟某站点相关的一些关键字，命令<code>cewl -w test.list http://202.202.243.2</code>将相关关键字写到pass.list文件中。</p>
+    <p>cewl（Custom Word List）工具可爬取某站点，获取相关的一些关键字从而生成一个字典文件，命令<code>cewl www.cqjtu.edu.cn -m 3 d 3 -e -c -v -w pass.txt</code>将相关关键字写到pass.txt文件中（m-最短3个字符，d-爬网深度，e-包含Email信息，c-出现的次数，v-显示实时信息）。</p>
     <p>猜测到某密码可能为cqjtu、12、$组成后，生成一个文件word.list包含这三个词（各占一行），再用命令<code>john --stdout --wordlist=word.list --rules > pass.list</code>
        进行随机组合（大小写、前后缀、字母替换为数字、反转、重复等）到pass.list文件中。
 </div>
