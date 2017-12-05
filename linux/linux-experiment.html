@@ -1157,7 +1157,7 @@ int main(){
             
             <h3 id="5-make">大型项目构建工具-make</h3>
             <p>在实际开发中，很少只有一个C/C++源文件，也即作为项目，我们有许多的源文件并且组织在各个目录下。此时，对每个源文件进行上述的步骤就非常繁琐。</p>
-            <p>我们需要自动化的编译工具，这就是<code>make</code>。如何构建大型项目以及生成自动化编译配置文件我们暂时不管，下面我们以<a href="https://github.com/sysstat/sysstat">sysstat</a>这个工具为例进行自动编译</p>
+            <p>我们需要自动化的编译工具，这就是<code>make</code>。如何构建大型项目以及生成自动化编译配置文件我们暂时不管，下面我们以 <a href="https://github.com/sysstat/sysstat" target="_blank" class="btn btn-success"><i class="glyphicon glyphicon-globe"></i> sysstat</a> 这个工具为例进行自动编译</p>
             
             <!-- ======================实验五结束================ -->
 
@@ -1168,25 +1168,26 @@ int main(){
             <p class="bs-callout bs-callout-info lead">Linux是一个自由、开放和免费的平台和系统。本实验将对网络、服务、安全、系统等方面的管理进行学习。</p>
 
             <h3 id="6-network">网络管理</h3>
-            <p>接入Internet的设备必须有至少一块网络接口设备（有线或无线，无线又分为WiFi或4G等）。使用<code>ip address</code>或<code>ifconfig</code>可以得到所有网络接口的信息。</p>
-            <p class=" bs-callout bs-callout-info">一般地，RedHat系列的Linux中，有线以太网卡以en开头，无线网卡以wl开头，本地回路（loopback）以lo开头，虚拟网卡以vir开头</p>
+            <p>接入Internet的设备必须有至少一块网络接口设备（有线或无线，无线又分为WiFi或4G等）。使用<code>nmcli d</code>或<code>ip address</code>或<code>ifconfig</code>可以得到所有网络接口的信息。</p>
+            <p class=" bs-callout bs-callout-info">一般地，RedHat系列的Linux中，有线以太网卡以en（EtherNet）开头，无线网卡以wl（Wireless Lan）开头，本地回路（loopback）以lo开头，虚拟网卡以vir开头</p>
             <p>该设备又必须有一些基本的网络配置如：IP地址、子网掩码、网关、DNS服务器等等。</p>
-            <p>Linux可以让我们以图形、文本和文件配置的方式对这些网络信息进行配置。</p>
+            <p>Linux可以让我们以图形、文本交互和文件配置的方式对这些网络信息进行配置（另外，我们也可以使用命令行交互方式即<code>nmcli</code>命令进行，因内容较多，请自行参考学习）。</p>
             <p><label>图形方式</label></p>
             <p>点击<code>网络图标</code>，或进入<code>系统设置->网络配置</code>即可进行相应配置</p>
-            <p><label>文本方式</label></p>
+            <p><label>文本交互方式</label></p>
             <p>在某些情况下，如远程登录、Linux作为服务器等，你所在的Linux环境没有图形界面，此时可使用文本方式即TUI（Text User Interface）</p>
             <p>输入<code>nmtui</code>即可打开该程序，如果没有则可以安装。</p>
             <p><label>文件配置方式</label></p>
-            <p>所有的网络配置文件都在<code>/etc/sysconfig/network-scripts</code>目录下（以ifcfg开头，然后是网卡名称），因此我们可以对该文件进行编辑。</p>
+            <p>所有的网络配置文件都在<code>/etc/sysconfig/network-scripts</code>目录下（以ifcfg-开头，然后是网卡名称），因此我们可以对该文件进行编辑。</p>
             <p>动态配置则参见该文件即可，注意<code>BOOTPROTO=dhcp</code>以及<code>ONBOOT=yes</code>两项。静态配置一般如下：</p>
             <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#static-ip">复制代码</button><code id="static-ip">
-BOOTPROTO="static" #静态配置   
-ONBOOT="yes" #开机启用本配置
-IPADDR=192.168.89.64 #静态IP  
-GATEWAY=192.168.89.1 #默认网关  
-NETMASK=255.255.255.0 #子网掩码  
+BOOTPROTO="static" #静态配置 
+ONBOOT="yes" #开机启用该设备
+IPADDR=192.168.89.64 #静态IP地址
+NETMASK=255.255.255.0 #子网掩码
+GATEWAY=192.168.89.1 #默认网关
 DNS1=8.8.8.8 #DNS服务器1配置，可添加多个DNS服务器</code></pre>
+            <p class="bs-callout bs-callout-info">配置文件修改后请使用<code>nmcli c reload</code>重新加载连接配置</p>
             <p><label>常用网络管理命令</label></p>
             <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#network-command">复制代码</button><code id="network-command">
 sudo ifconfig wlp2s0 down/up      #网卡禁用/启用
@@ -1199,12 +1200,70 @@ netstat -natp   #查看活动的端口，ss -natp与之类似，且ss（Socket S
 sudo iftop -i wlp2s0    #网络传输监视，该软件需额外安装，h为其帮助
 cat /etc/hosts文件      #查看DNS本地解析文件
 nslookup www.baidu.com  #DNS解析，dig www.baidu.com更详尽
-rsync -a --delete ~/test/ ~/test-backup/    #将test目录全部同步到test-backup目录，首次运行将全部复制，以后只同步更改的内容。delete选项将删除发送端已没有而接收端还存在的文件
+rsync -a --delete ~/test/ ~/test-backup/    #将test目录全部同步到test-backup目录，首次运行将全部复制，以后只同步更改的内容。delete选项将删除发送端已没有而接收端还存在的文件。本地目录或远程目录可使用root@8.8.8.8:/home/test这种格式。
 rdesktop 10.1.230.122   #使用RDP协议连接远程桌面            </code></pre>            
             
             
             <h3 id="6-service">服务管理</h3>
-            <!-- ss服务器搭建、nginx、ssh服务器配置及scp、samba -->
+            <p>Linux服务器的主要任务就是为本地或远程用户提供各种服务，如Web、SSH、EMail、Ftp、Database等等。</p>
+            <p>这些服务由运行在后台的守护进程（daemon）来执行，一般在系统启动后就已经运行且准备好为响应用户的请求。</p>
+            <p>最特殊的守护进程是PID为1的系统初始化进程，它是其它守护进程的父进程。</p>
+            <p>当前的Linux系统一般使用先进的<b>Systemd</b>来初始化系统，也提供了对服务的控制和管理。</p>
+            <p><label>服务的显示、启动、停止</label></p>
+            <p>常用服务管理命令为：<code>systemctl start/stop/restart/staus service-name</code>，下面我们以周期性的计划任务服务<b>crond</b>这个系统服务为例：</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#service-1">复制代码</button><code id="service-1">
+systemctl status crond  #显示该服务的状态
+systemctl stop crond    #停止该服务，可用systemctl status/is-active查看
+systemctl start crond   #启动该服务
+systemctl restart crond #重启服务，一般用于配置修改后</code></pre>
+            <p class="bs-callout bs-callout-info">可使用<code>systemctl -at service</code>查看所有服务</p>
+            <p><label>服务的持久化</label></p>
+            <p>服务的持久化是指服务是否在系统启动时自动运行。我们仍以<b>crond</b>服务为例，常用的命令如下：</p>  
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#service-2">复制代码</button><code id="service-2">
+systemctl is-enabled crond  #显示该服务是否自启动
+systemctl disable crond    #禁止该服务的自启动
+systemctl enable crond   #启动该服务的自启动</code></pre>
+            <p class="bs-callout bs-callout-info">可使用<code>systemctl list-unit-files -t service</code>查看所有服务的持久化情况</p>
+            <p><label>SSH服务</label></p>
+            <p>无论用户是使用还是管理Linux，远程操作是常见的，也是方便的。Linux提供SSH（Secure SHell）这个系统服务来安全的传输远程数据。</p>
+            <p>当前一般都使用<b>Open SSH Server</b>这个开源的SSH服务软件，其守护进程名称为<b>sshd</b>（如果没有请使用<code>sudo dnf install openssh-server</code>安装即可），启动后即可使用SSH客户端软件如<b>MobaXterm</b>等进行远程连接。</p>
+            <p>SSH服务的配置文件是<code>/etc/ssh/sshd_config</code>。注意：修改后需重启该服务。以下是一些简介：</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#service-3">复制代码</button><code id="service-3">
+Port 22   #默认22号端口为服务端口
+ListenAddress 0.0.0.0 #默认任何IP都可连接，如设为127.0.0.1则只能本机登录
+PermitRootLogin yes   #从安全角度考虑因设置为no
+PasswordAuthentication yes  #是否允许口令登录。</code></pre>
+            <p class="bs-callout bs-callout-info">
+              SSH的安全认证可基于口令（一般）和基于密钥（更安全）。有关基于密钥的认证方式请查阅资料
+              <br>
+              我们还可以使用scp命令在本机和远程计算机之间进行文件复制 
+            </p>
+            <p><label>Web服务</label></p>
+            <p>Web应用离不开Web服务器，Apache和Nginx是两种采用最多的开源Web服务器。下面我们以Nginx为例介绍Linux上Web服务的搭建和配置。
+              
+            </p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#service-4">复制代码</button><code id="service-4">
+sudo dnf install nginx  #安装nginx
+nginx -v                #查看nginx的信息如根目录、配置文件位置等。也可打开127.0.0.1得到相关页面。
+#当前，Web服务只能本机访问，需要配置防火墙
+sudo firewall-cmd --add-service=http --permanent   #配置防火墙允许http的流量并成为持久性规则
+sudo firewall-cmd --reload   #重启防火墙使规则生效。此时其它计算机可访问。
+systemctl enable nginx  #可选，设置为开机启动</code></pre>
+            <p class="bs-callout bs-callout-info">
+              查看<code>/etc/nginx/nginx.conf</code>配置文件，注意<code>server</code>小节的内容。
+              <br>
+              将自己的 <a href="../data/ns/Kali-Nginx-SSL.zip" class="btn btn-primary"><i class="glyphicon glyphicon-save"></i> 网页文件</a> 复制到根目录，访问看看。
+            </p>
+            <p><label>ShadowSocks服务</label></p>
+            <p>作为IT学生，科学上网是必须的！姿势有很多，推荐SS。相关介绍请前往 <a href="https://zh.wikipedia.org/wiki/Shadowsocks" target="_blank" class="btn btn-success"><i class="glyphicon glyphicon-globe"></i> SS WiKi</a> 以及 <a href="http://bingtaoli.github.io/2016/11/23/shadowsocks%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" target="_blank" class="btn btn-success"><i class="glyphicon glyphicon-globe"></i> shadowsocks实现原理</a></p>
+            <p>简单的说，SS分为服务器端和客户端，服务器端在海外，客户端在本机。本机有了，那海外的服务器在哪儿？</p>
+            <p><a href="https://github.com/kaiye/kaiye.github.com/issues/9" target="_blank" class="btn btn-success"><i class="glyphicon glyphicon-globe"></i> 拥有一架 Google 的小飞机是一种怎样的体验</a> 或 <a href="https://suiyuanjian.com/124.html" target="_blank" class="btn btn-success"><i class="glyphicon glyphicon-globe"></i> 使用Google Cloud Platform(GCP)安装SSR+BBR教程</a></p>
+            <p class="bs-callout bs-callout-info">
+              SSR是后来人添加了流量混淆功能，能增强GFW拦截我们科学上网的难度；
+              <br>
+              BBR是来自Google的拥塞控制算法，能增强我们科学上网的速度
+            </p>
+            
             <h3 id="6-security">安全管理</h3>
             <h3 id="6-system">系统管理</h3>
             <!-- 自动重启进程/cron安排周期性任务 -->
