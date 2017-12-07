@@ -124,6 +124,7 @@
                     <li><a href="#2-scan-port">扫描-活动端口</a></li>
                     <li><a href="#2-scan-nessus">扫描-漏洞（Nessus）</a></li>
                     <li><a href="#2-scan-openvas">扫描-漏洞（OpenVAS）</a></li>
+                    <li><a href="#3-force-pass">密码工具-随机字典</a></li>
                     <li><a href="#3-force-hydra">暴力破解-Hydra</a></li>
                     <li><a href="#3-force-route">暴力破解-Router</a></li>
                     <li><a href="#3-force-wifi">暴力破解-WiFi</a></li>
@@ -134,7 +135,7 @@
                     <li><a href="#4-exploit-metasploit">漏洞利用-Metasploit</a></li>
                     <li><a href="#4-exploit-armitage">漏洞利用-Armitage</a></li>
                     <li><a href="#5-exploit-set">社会工程学-SET</a></li>
-                    <li><a href="#6-web-w3af">Web漏洞-Nikto</a></li>
+                    <li><a href="#6-web-Nikto">Web漏洞-Nikto</a></li>
                     <li><a href="#6-web-owasp-zap">Web漏洞-OWASP-ZAP</a></li>
                     <li><a href="#6-web-scarab">Web漏洞-WebScarab</a></li>
                     <li><a href="#6-web-bs">Web漏洞-Burp Suite</a></li>
@@ -987,16 +988,17 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
 
     <p>
     <ol>
-        <li>Nginx默认安装在/etc/nginx，请按以下步骤生成证书</li>
+        <li>Nginx默认安装在/etc/nginx，请按以下步骤，以自建的CA为某网站生成及签发证书</li>
         <div class="highlight">
 <pre><code class="hljs">
     cd /etc/nginx 
     mkdir cert  #专门生成cert目录进行ssl配置实验
     cd cert     #进入cert目录
     openssl genrsa -des3 -out server.key 1024 #生成1024（也可2048）位的私钥，会让你输入一个口令进行DES3（也可使用aes256）加密保护
+    #若私钥设置了口令保护，用于支持SSL的某项服务启动时该服务的守护进程将提示输入口令。为方便，以下2步用于去掉口令保护
+    cp server.key server.key.org    #复制一份私钥
+    openssl rsa -in server.key.org -out server.key #输出没有口令保护的私钥文件
     openssl req -new -key server.key -out server.csr #生成CSR(Cerificate Signing Request)即证书请求文件（含公钥）
-    cp server.key server.key.org
-    openssl rsa -in server.key.org -out server.key #使用上述私钥时除去必须的口令
     openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt #CA签发以CSR文件生成有效期为365天且用私钥签名的证书
 </code></pre>
         </div>
@@ -1040,6 +1042,15 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
         打开浏览器，输入https://localhost进行访问，此时会有安全问题，因为我们的这个服务器证书是自己颁发的，不能通过浏览器的验证，玩玩而已（但我们也可以到相关证书中心进行申请）。
     </p>
     <p>友情提供：<a href="../data/ns/OpenSSL-64.exe" class="btn btn-success"><i class=" glyphicon glyphicon-save"></i> Windows平台的OpenSSL</a></p>
+    
+</div>
+<div class="bs-callout bs-callout-info">
+    <p>openssl还可进行对称加解密以及生成摘要</p>
+    <pre><code class="hljs">
+openssl enc -des3/aes128/aes256 -k yourKey -e -in test.txt -out test.txt.aes   #以des3或aes256进行加密 
+openssl enc -des3/aes128/aes256 -k yourKey -d -in test.txt.aes -out test.txt   #以des3或aes256进行解密
+openssl dgst -md5/sha1/sha256/sha384/sha512 test.txt    #执行各种摘要 
+        </code></pre>
 </div>
 
 <h3>信息收集-侦察什么
@@ -1257,9 +1268,9 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
         </li>
         <li>
             进行 <a class="btn btn-danger btn-sm" href="http://www.nessus.org/register/" target="_blank"><i
-                class="glyphicon glyphicon-globe"></i> 注册 </a>，选择家庭版，一次性注册号将发送到邮箱（可多次注册）。
+                class="glyphicon glyphicon-globe"></i> 注册 </a>，选择家庭版，一次性使用的注册号将发送到邮箱（可多次注册）。
         </li>
-        <li>使用命令<code> dpkg -i Nessus-6.10.7-debian6_amd64.deb </code>命令进行安装。
+        <li>使用命令<code> dpkg -i Nessus-6.11.2-debian6_amd64.deb </code>命令进行安装。
         </li>
         <!--<li>运行命令 /opt/nessus/bin/nessus-fetch --register （你得到的注册号）进行注册及更新模块
         </li>
@@ -1272,7 +1283,7 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
         <li>首次运行将生成Nessus的用户（user：kali，passwd：kali），然后输入激活码，接下来是Coffee Time</li>
         <li>由于国内网络的原因，如果Nessus在线更新基本不成功，可下载 <a href="../data/ns/all-2.0.tar.gz" class="btn btn-primary btn-sm">
             <i class="glyphicon glyphicon-save"></i> 离线插件包</a> , 然后运行<code>/opt/nessus/sbin/nessuscli update all-2.0.tar.gz</code>进行离线安装，
-            或者运行<code>/opt/nessus/sbin/nessuscli update</code>多次试试  :(  成功后重启Nessus</li>
+            或者运行<code>/opt/nessus/sbin/nessuscli update</code>多次试试  :(  。成功后需重启Nessus</li>
     </ol>
     </p>
     <p>Nessus扫描出的漏洞我们会在后面的实践中进行利用。</p>
@@ -1307,8 +1318,8 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
     <p>安装完成后，进行以下配置：</p>
     <ol>
         <li> 选择<code>漏洞分析菜单 - openvas initial setup </code>菜单运行（或命令<code>openvas-setup</code>） ，进行初始配置及更新（有点耗时，期间自动生成用户admin和复杂的密码）</li>
-        <li>（可选）执行<code> openvasmd --user=admin --new-password=kali</code> 更改密码为kali
-        <li>（可选）执行<code> openvas-check-setup </code> 检测是否安装成功
+        <li>（可选，建议执行）执行<code> openvasmd --user=admin --new-password=kali</code> 更改密码为kali
+        <li>（可选，建议执行）执行<code> openvas-check-setup </code> 检测是否安装成功。如果不成功请按给出的建议执行。
         <li>（可选）默认配置下，仅允许127.0.0.1连接该服务。如果用户想要其它IP登录，需要修改配置文件<code>/lib/systemd/system/greenbone-security-assistant.service</code>中的listen配置项改为0.0.0.0。
         <li> 选择<code>漏洞分析菜单 - openvas start/stop </code>菜单运行/停止（或命令<code>openvas-start</code>） ，启动OpenVAS（可使用<code>netstat -antp</code>查看9392端口是否打开以确认OpenVAS是否运行）。
         </li>
@@ -1419,7 +1430,7 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
 
 <div class="bs-callout bs-callout-info">
     <p>
-        如果能破解网络中路由器的登录密码，则可拥有极大的网络控制权。可用的路由器破解命令在<code> 漏洞分析–Cisco工具集 </code>菜单中。当然，我们需要使用<code>traceroute</code>或<code>tcptraceroute</code>列出关键路由器的IP。
+        如果能破解网络中路由器的登录密码，则可拥有极大的网络控制权。可用的路由器破解命令在<code> 漏洞分析–Cisco工具集 </code>菜单中。当然，我们需要使用<code>mtr</code>、<code>traceroute</code>或<code>tcptraceroute</code>列出关键路由器的IP。
         <br>另外，某些路由器不仅提供23号端口，为方便也提供Web方式管理，也即80端口也是打开的:)
         以下我们介绍两个，直接在shell窗口中运行。
     <ol>
@@ -1456,7 +1467,7 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
     </p>
     <ol>
             <li>Access Point发送一个一次性使用的随机数（称为ANonce）给client</li>
-            <li>client收到，生成另一个一次性使用的随机数（称为SNonce），将ANonce、SNonce和wifimima进行hash，然后将该hash值与SNonce发回access point</li>
+            <li>client收到，生成另一个一次性使用的随机数（称为SNonce），将ANonce、SNonce和wifi密码进行hash，然后将该hash值与SNonce发回access point</li>
             <li>access point进行验证，通过后发送一把以wifi密码加密的密钥给client</li>
             <li>client确认该密钥，通信开始</li>
         </ol>
@@ -1763,7 +1774,7 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
     
 </div>
 <hr>
-<h3 id="6-web-w3af">当前，Web应用是非常普通和常用的，因此，围绕Web应用程序的各种漏洞层出不穷，我们单独列出以示重视。</h3>
+<h3 class="bs-callout bs-callout-danger">当前，Web应用是非常普通和常用的，因此，围绕Web应用程序的各种漏洞层出不穷，我们单独列出以示重视。</h3>
     
 <h3 id="6-web-Nikto">Web漏洞-Nikto</h3>
 <div class="bs-callout bs-callout-info">
@@ -1850,7 +1861,7 @@ memset(datapart,'E', datasize - sizeof(IcmpHeader));
     <p>无论使用哪种，我们都可以打开浏览器，输入<code> http://ip/dvwa </code>即可看到页面。需要注意的是：先在<code>Security</code>中设置难度级别为低，随着深入调整为中高；使用过程中可查看相关提示和信息；无需担心网站被搞垮，随时可进入<code>Setup</code>重置数据库进行恢复。</p>
     <p>DVWA演示的漏洞简介如下（请参考教程）：
     <ol>
-        <li>暴力破解(Brute Force)：除前面讲述的Hydra暴破教程外，BurpSuite也进行破解 </li>
+        <li>暴力破解(Brute Force)：除前面讲述的Hydra暴破教程外，BurpSuite也可以进行破解 </li>
         <li>命令执行(Command Execution：如填入10.1.74.1 && /sbin/ifconfig，看看发生了什么。注意区分后台的操作系统（Windows用;分割命令，Linux用&&分割命令） </li>
         <li>跨站请求伪装(CSRF, Cross Site Request Forgery)：将admin的密码由原来的password修改为123后，注意此时的URL以及cookie。复制该URL，打开新浏览器窗口，粘贴到地址栏，修改密码为456，也能成功执行，原因是通过验证后，验证保存在PHPSESSID中。
             <br>现实中，以上做法当然没什么。但设想一下，如果你登录了ICBC没有登出，然后引导你访问一个包含如下内容的网页可能发生什么？
