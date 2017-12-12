@@ -1226,7 +1226,7 @@ systemctl enable crond   #启动该服务的自启动</code></pre>
             <p class="bs-callout bs-callout-info">可使用<code>systemctl list-unit-files -t service</code>查看所有服务的持久化情况</p>
             <p><label>SSH服务</label></p>
             <p>无论用户是使用还是管理Linux，远程操作是常见的，也是方便的。Linux提供SSH（Secure SHell）这个系统服务来安全的传输远程数据。</p>
-            <p>当前一般都使用<b>Open SSH Server</b>这个开源的SSH服务软件，其守护进程名称为<b>sshd</b>（如果没有请使用<code>sudo dnf install openssh-server</code>安装即可），启动后即可使用SSH客户端软件如<b>MobaXterm</b>等进行远程连接。</p>
+            <p>当前一般都使用<b>Open SSH Server</b>这个开源的SSH服务软件，其守护进程名称为<b>sshd</b>（如果没有请使用<code>sudo dnf install openssh-server</code>安装即可），启动后即可使用<a href="../data/linux/Moba.msi" target="_blank">SSH客户端MobaXterm</a>等进行远程连接。</p>
             <p>SSH服务的配置文件是<code>/etc/ssh/sshd_config</code>。注意：修改后需重启该服务。以下是一些简介：</p>
             <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#service-3">复制代码</button><code id="service-3">
 Port 22   #默认22号端口为服务端口
@@ -1261,14 +1261,74 @@ systemctl enable nginx  #可选，设置为开机启动</code></pre>
             <p class="bs-callout bs-callout-info">
               SSR是后来人添加了流量混淆功能，能增强GFW拦截我们科学上网的难度；
               <br>
-              BBR是来自Google的拥塞控制算法，能增强我们科学上网的速度
+              BBR是来自Google的拥塞控制算法，能提高我们科学上网的速度
             </p>
             
             <h3 id="6-security">安全管理</h3>
+            <p>由于不同的体系结构、组成方式以及维护方式等，Linux系统在大多数情况下都比Windows系统安全，但这不意味着Linux就固若金汤。</p>
+            <p>我们可以通过以下配置来进一步提升Linux系统的安全性。</p>
+            <p><label>BIOS保护</label></p>
+            <p>在服务器 BIOS 中禁用光驱、软驱、U盘等可引导的外部设备，并启用 BIOS 密码及 GRUB 密码来限制对系统的物理访问。</p>
+            <p><label>硬盘加密</label></p>
+            <p>大多数Linux发行版允许您在安装过程中使用加密磁盘技术（一般采用加密的LVM逻辑卷管理器），这保证了Linux启动时输入密码才能读取硬盘数据。</p>
+            <p><label>文件加密</label></p>
+            <p>对于重要的个人文件，还可使用Linux内置的开源加密软件<code>OenSSL</code>进行保护</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#service-s">复制代码</button><code id="service-s">
+openssl enc -des3/aes128/aes256 -k yourKey -e -in test.txt -out test.txt.aes   #以des3或aes256进行加密 
+openssl enc -des3/aes128/aes256 -k yourKey -d -in test.txt.aes -out test.txt   #以des3或aes256进行解密
+openssl dgst -md5/sha1/sha256/sha384/sha512 test.txt    #执行各种摘要 </code></pre>
+            <p><label>分区/卷保护</label></p>
+            <p>一般地，我们安装Linux时没有进行手动分区，则系统只有两个挂载点及<code>/</code>（根分区）和<code>swap</code>（交换分区），这导致出现问题时我们的系统和数据都将受到影响。</p>
+            <p>为了稳定、性能以及安全考虑，建议进行以下分区：</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#service-5">复制代码</button><code id="service-5">
+/     #根分区，10G左右，是每个Linux系统必须要有的分区，是主文件系统挂载和其他文件系统挂靠的地方（/bin,/sbin, /lib, /etc, /dev 这五个目录不可与/所在的分区分开）。
+/swap #交换分区，与内存大小一致即可
+/boot #引导分区，1G，包含内核等文件，在日常系统运行中并不需要，只在启动和内核升级时候用到。独立后，即使主要的根分区出现了问题，计算机依然能够启动。
+/var  #可变目录，50G，通常被用作缓存或者日志记录，读写频繁
+/usr  #Unix system resource分区， Linux系统安装软件的地方，100G，除了系统的基本程序外，其它所有的应用程序多放在这个目录当中，最好划分的大一些
+/home #用户目录，100G，个人数据或软件的所在地。独立出来可使得重新安装系统时选择不要格式化这个分区，重新挂载为/home就不会丢失数据
+/tmp  #临时分区，10G，临时文件存放处，可定时清理</code></pre>
+            <p><label>系统/软件更新</label></p>
+            <p>尽量始终保持系统内核、应用补丁及安全修复处在最新状态。目前的Linux系统基本已启动了自动更新机制，也可使用<code>sudo dnf update/upgrade</code>手动进行。</p>
+            <p><label>禁用不必要的软件/服务</label></p>
+            <p>请记住：非必要的软件就不安装，非必要的服务就不开启！</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#service-6">复制代码</button><code id="service-6">
+dnf list installed    #列出已安装的软件包
+sudo remove xxx       #删除xxx软件
+ss -antp              #查看打开的端口以确定那些网络服务不需要运行
+systemctl list-unit-files –type=service | grep enabled  #查看开机运行的服务
+systemctl disable service_name  #禁止某服务开机启动</code></pre>
+            <p><label>加固SSH服务</label></p>
+            <p>SSH是Linux最常见的服务，以下的设置可考虑：</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#service-ssh">复制代码</button><code id="service-ssh">
+port 8964               #更改默认的SSH端口
+PermitRootLogin no      #不允许root用户登录
+AllowUsers [username]   #只允许特定用户登录
+ClientAliveInterval 60 #登录时间间隔60秒
+PasswordAuthentication no #不使用密码而使用密钥认证（相关设置请查询资料）</code></pre>
+            
+            <p><label>配置好Firewall</label></p>
+            <p>Firewall防火墙是位于不同信任级别之间的控制和检测的硬软件，进出的数据必须进行Firewall，根据策略来决定允许还是禁止。</p>
+            <p>Linux提供了异常强大的防火墙设置。我们可以使用命令行配置工具<code>firewall-cmd</code>和图形界面工具<code>firewall-config</code>（需要安装）进行。</p>
+            <p class="bs-callout bs-callout-info">
+              Firewall的配置涉及了较多方面，请自行查询相关资料学习。
+            </p>
+            <p><label>启用SELinux</label></p>
+            <p>SELinux（Security Enhanced Linux，安全强化Linux）是由美国国家安全局NSA发布并2002年正式集成到Linux内核中的强制访问控制的安全机制。</p>
+            <p>强制访问控制系统的用途在于增强系统抵御 0-Day 攻击(利用尚未公开的漏洞实现的攻击行为)的能力。所以它不是网络防火墙或 ACL 的替代品，在用途上也不重复。</p> 
+            <p>举例来说，系统上的 Nginx 被发现存在一个漏洞，使得某远程用户可以访问系统上的敏感文件(比如 /etc/passwd 来获得系统已存在用户)，而修复该安全漏洞的 Nginx 更新补丁尚未释出。此时 SELinux 可以起到弥补该漏洞的缓和方案。因为 /etc/passwd 不具有 Nginx 的访问标签，所以 Nginx 对于 /etc/passwd 的访问会被 SELinux 阻止。</p>
+            <p>该机制又让Linux的安全等级得到提高。安全性与便利性从来都是矛盾的，为了方便配置有人建议禁用 SELinux 功能，我强烈建议三思。</p>
+            <p>SELinux有三种运行模式：Enforcing（强制，默认配置）、Permissive（宽容，只会产生相应日志和警告）以及Disabled（禁用，不推荐）。</p>
+            <p>使用<code>sestatus</code>或<code>getenforce</code>可查看当前的状态模式。<code>sudo setenforce enforcing/permissive</code>可临时改变SELinux的运行状态。永久改变可编辑<code>/etc/selinux/config</code>文件进行模式修改（注意当从 Disabled 切换到 permissive 或者 enforcing 模式后需重启计算机生效）。</p>
+            <p class="bs-callout bs-callout-info">
+              有关SELinux的使用和配置等请查阅<a href="https://linuxtoy.org/archives/selinux-introduction.html" target="_blank">SELinux 入门</a>等相关资料！
+            </p>
+            <p><label>定期审查日志</label></p>
+            <p>审查日志能让自己对系统的状态和问题有全面的了解，一般位于<code>/var/log</code>目录下。需留意系统启动、验证、Web服务、数据库服务、SSH服务等日志文件。</p>
             <!-- openssl的加解密 -->
             <h3 id="6-system">系统管理</h3>
             <!-- 自动重启进程/cron安排周期性任务/
-            systemd-analyze time, systemd-analyze blame -->
+            systemd-analyze time, systemd-analyze blame，dnf使用 -->
 
 
 
