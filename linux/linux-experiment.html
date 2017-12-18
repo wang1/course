@@ -256,7 +256,7 @@ sudo dnf install http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree
 sudo dnf config-manager --add-repo=http://repo.fdzh.org/FZUG/FZUG.repo
 #启用阿里源
 sudo dnf config-manager --add-repo=http://mirrors.aliyun.com/repo/fedora.repo
-#更新缓存
+#更新缓存（添加源后需要进行缓存更新）
 sudo dnf makecache
 #执行更新
 sudo dnf update</code></pre>
@@ -1301,7 +1301,7 @@ systemctl disable service_name  #禁止某服务开机启动</code></pre>
             <p><label>加固SSH服务</label></p>
             <p>SSH是Linux最常见的服务，以下的设置可考虑：</p>
             <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#service-ssh">复制代码</button><code id="service-ssh">
-port 8964               #更改默认的SSH端口
+Port 8964               #更改默认的SSH端口
 PermitRootLogin no      #不允许root用户登录
 AllowUsers [username]   #只允许特定用户登录
 ClientAliveInterval 60 #登录时间间隔60秒
@@ -1325,8 +1325,50 @@ PasswordAuthentication no #不使用密码而使用密钥认证（相关设置�
             </p>
             <p><label>定期审查日志</label></p>
             <p>审查日志能让自己对系统的状态和问题有全面的了解，一般位于<code>/var/log</code>目录下。需留意系统启动、验证、Web服务、数据库服务、SSH服务等日志文件。</p>
-            <!-- openssl的加解密 -->
+            
             <h3 id="6-system">系统管理</h3>
+            <p><label>软件包管理</label></p>
+            <p>Linux系统有大量的开源、免费的软件可供使用，Red Hat系列（CentOS、Fedora等）使用RPM（Red Hat Package Manager）格式，另一个流行的发行版Debian使用deb格式。</p>
+            <p>我们要安装某软件，可能还需要其它软件的支持，以及存在依赖性。在RedHat系列中以前使用YUM进行管理，现在推荐使用DNF。</p>
+            <p>DNF包管理器对用户友好，内存占用低，依赖分析速度快。如果没有安装请使用<code>yum install dnf</code>进行安装。</p>
+            <p>常见dnf命令如下（常见软件仓库/更新源请参见<a href="#1-config"> Linux配置小节</a>）：</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dnf">复制代码</button><code id="dnf">
+dnf repolist all    #列出当前系统软件仓库（repository）。
+dnf list installed  #列出已经安装的RPM包
+dnf search shadowsocks  #在软件仓库中搜索某软件（可用于不知道具体软件名称时）
+dnf install shadowsocks-qt5     #安装某软件
+dnf reinstall shadowsocks-qt5   #重新安装某软件
+dnf update yarn   #升级某软件
+dnf remove yarn   #卸载某软件
+dnf update    #升级所有系统软件包
+dnf autoremove    #自动卸载孤立（不再使用）软件包
+dnf clean all     #清理垃圾文件</code></pre>
+            <p><label>用户管理</label></p>
+            <p>作为一个强大的多用户OS，Linux允许多个用户登录系统并使用。为保证系统的安全和稳定，这些用户应该有不同的权限。</p>
+            <p>账户分为超级用户和普通用户，<b>root</b>用户即超级用户，具有绝对的权限。因此，即使只用一个用户，也建议再建一个普通用户使用系统，需要权限时使用<code>sudo</code>即可（临时提权，有限制和活动记录，具体配置在<code>/etc/sudoers</code>中）。</p>
+            <p>用户文件<code>/etc/passwd</code>对所有用户可读，包含用户名、口令（X）、用户ID（root固定为0，1-999为系统标准用户，1000即以上为普通用户）、组ID、Home目录等信息。</p>
+            <p>口令文件<code>/etc/shadow</code>只对root用户可读，且口令用SHA512进行了哈希（即使两个用户口令相同，也会因盐值不同而Hash不同）</p>
+            <p>常见用户管理命令（root权限）：</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#pass">复制代码</button><code id="pass">
+sudo useradd haha  #生成haha用户，同时生成home目录（-M不生成home目录）
+sudo passwd haha   #普通用户只能更改自己的口令
+su haha            #切换到haha用户
+exit               #返回到当前用户
+sudo userdel -r haha  #删除haha用户，同时删除home目录、邮箱等</code></pre>
+              <p><label>性能监视</label></p>
+              <p>Linux系统的启动以及程序的运行是一个严谨、有序和复杂的过程。我们需要对系统的状态进行监控以便于优化。</p>
+              <p>以下是一些常见的命令（如没有请安装即可，还可参见一些基于Web的集成监控工具）</p>
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#pass">复制代码</button><code id="pass">
+uptime    #系统运行时间及评级负载
+htop      #top工具的升级版，系统总体信息
+iostat -d 3    #磁盘I/O统计。磁盘性能需要注意，建议使用SSD
+nload/iftop -i wlp2s0   #网络流量统计
+systemd-analyze time    #系统启动时间统计
+systemd-analyze blame   #列出是各服务占用的时间（blame-责任）</code></pre>
+              
+
+                          
+
             <!-- 自动重启进程/cron安排周期性任务/
             systemd-analyze time, systemd-analyze blame，dnf使用 -->
 
