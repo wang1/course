@@ -2,131 +2,134 @@
 <html lang="zh-CN">
 
 <head>
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web技术基础</title>
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web技术基础</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
 
-    <!-- Documentation extras -->
-    <link href="../docs-assets/css/docs.css" rel="stylesheet">
-    <link href="../docs-assets/css/hljs-styles/railscasts.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
-        }
+  <!-- Documentation extras -->
+  <link href="../docs-assets/css/docs.css" rel="stylesheet">
+  <link href="../docs-assets/css/hljs-styles/railscasts.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+    }
 
-        h1,
-        .h1,
-        h2,
-        .h2,
-        h3,
-        .h3,
-        h4,
-        .h4,
-        .lead {
-            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-        }
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    .lead {
+      font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    }
 
-        p {
-            font-size: 18px;
-        }
+    p {
+      font-size: 18px;
+    }
 
-        pre code {
-            background: transparent;
-        }
+    pre code {
+      background: transparent;
+    }
 
-        .snippet {
-            position: relative;
-        }
+    .snippet {
+      position: relative;
+    }
 
-        .snippet .btn {
-            -webkit-transition: opacity 0.3s ease-in-out;
-            -o-transition: opacity 0.3s ease-in-out;
-            transition: opacity 0.3s ease-in-out;
-            opacity: 0;
-            right: 15px;
-            /*padding: 0 10px;*/
-            position: absolute;
-            top: 16px;
-        }
+    .snippet .btn {
+      -webkit-transition: opacity 0.3s ease-in-out;
+      -o-transition: opacity 0.3s ease-in-out;
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+      right: 15px;
+      /*padding: 0 10px;*/
+      position: absolute;
+      top: 16px;
+    }
 
-        .snippet:hover .btn {
-            opacity: 1;
-        }
-    </style>
+    .snippet:hover .btn {
+      opacity: 1;
+    }
+  </style>
 
-    <!--[if lt IE 9]>
+  <!--[if lt IE 9]>
     <script src="../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
     <script src="../assets/js/html5shiv.js"></script>
     <script src="../assets/js/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="../assets/ico/favicon.png">
 
 </head>
 
 <body>
-    <a class="sr-only" href="#content">Skip to main content</a>
+  <a class="sr-only" href="#content">Skip to main content</a>
 
-    <!-- Docs master nav -->
-    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
-        <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-                <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-fullscreen"></span> Web技术基础</a>
-            </div>
-            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                <ul class="nav navbar-nav">
-                    <!--<li class="active">
+  <!-- Docs master nav -->
+  <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">
+          <span class="glyphicon glyphicon-fullscreen"></span> Web技术基础</a>
+      </div>
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+          <!--<li class="active">
                         <a href="#"><span class="glyphicon glyphicon-list-alt"></span> 课堂教学</a>
                     </li>
                     <li>
                         <a href="#"><span class="glyphicon glyphicon-glass"></span> 实验</a>
                     </li>-->
-                    <li>
-                        <a href="http://202.202.243.2:8964/web.html"><span class="glyphicon glyphicon-upload"></span> 结业报告提交</a>
-                    </li>
-                    <li>
-                        <!--<a href="http://202.202.243.2:3000/Communication.html" class="btn btn-danger"><span class="glyphicon glyphicon-pencil"></span> 结业报告提交</a>-->
-                        <!--<a href="#"><span class="glyphicon glyphicon-pencil"></span> 考试</a>-->
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#"><span class="glyphicon glyphicon-info-sign"></span> 关于</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-
-    <!-- Docs page layout -->
-    <div class="bs-header" id="content">
-        <div class="container">
-            <h1>课堂教学</h1>
-
-            <p>本课程采用自学+实验的方式，你应该了解和掌握如何利用HTML5来构建Web页面（网页），用CSS（bootstrap库）来美化Web页面（网页），以及利用JavaScript来进行简单的客户端交互等方面的基础知识。 通过该课程的学习，你应该能够对一个较复杂页面（如重庆交通大学首页）进行分析，
-                也能自己建设一个中等复杂程度的静态页面，同时为今后使用服务器端的动态网页技术构建网站打下基础,以致能进行现代Web应用的开发。
-            </p>
-        </div>
+          <li>
+            <a href="http://202.202.243.2:8964/web.html">
+              <span class="glyphicon glyphicon-upload"></span> 结业报告提交</a>
+          </li>
+          <li>
+            <!--<a href="http://202.202.243.2:3000/Communication.html" class="btn btn-danger"><span class="glyphicon glyphicon-pencil"></span> 结业报告提交</a>-->
+            <!--<a href="#"><span class="glyphicon glyphicon-pencil"></span> 考试</a>-->
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#">
+              <span class="glyphicon glyphicon-info-sign"></span> 关于</a>
+          </li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- Callout for the old docs link -->
-    <!--<div>
+
+  <!-- Docs page layout -->
+  <div class="bs-header" id="content">
+    <div class="container">
+      <h1>课堂教学</h1>
+
+      <p>本课程采用自学+实验的方式，你应该了解和掌握如何利用HTML5来构建Web页面（网页），用CSS（bootstrap库）来美化Web页面（网页），以及利用JavaScript来进行简单的客户端交互等方面的基础知识。 通过该课程的学习，你应该能够对一个较复杂页面（如重庆交通大学首页）进行分析，
+        也能自己建设一个中等复杂程度的静态页面，同时为今后使用服务器端的动态网页技术构建网站打下基础,以致能进行现代Web应用的开发。
+      </p>
+    </div>
+  </div>
+
+  <!-- Callout for the old docs link -->
+  <!--<div>
 
     <div class="alert alert-warning alert-dismissable">
 
@@ -146,7 +149,7 @@
             </h4>
     </div>
     </div>-->
-    <!-- <div>
+  <!-- <div>
 
         <div class="alert alert-warning alert-dismissable">
 
@@ -258,173 +261,258 @@
             </h4>
         </div>
     </div> -->
-    <div class="container bs-docs-container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="bs-sidebar hidden-print" role="complementary">
-                    <ul class="nav bs-sidenav">
-                        <li>
-                            <a href="#ws">开发工具Webstorm/VS Code</a>
-                            <ul class="nav">
-                                <li><a href="#ws-down">下载软件及注册机</a></li>
-                                <li><a href="#ws-config">配置</a></li>
-                                <li><a href="#ws-basic">使用初步</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#html">HTML5&CSS初步</a>
-                            <ul class="nav">
-                                <li><a href="#html-basic">HTML的标签</a></li>
-                                <li><a href="#html-5">HTML5的标签</a></li>
-                                <li><a href="#html-example1">HTML5网页示例一</a></li>
-                                <li><a href="#html-css">CSS示例</a></li>
-                                <li><a href="#html-example2">HTML5网页示例二</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#bs">BootStrap初步</a>
-                            <ul class="nav">
-                                <li><a href="#bs-example">以Bootstrap构建的网站案例</a></li>
-                                <li><a href="#bs-learn">学习Bootstrap</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#js">JavaScript初步</a>
-                            <ul class=" nav">
-                                <li><a href="#js-basic">基本语法</a></li>
-                                <li><a href="#js-opreator">操作符</a></li>
-                                <li><a href="#js-statement">语句</a></li>
-                                <li><a href="#js-function">函数</a></li>
-                                <li><a href="#js-object">对象</a></li>
-                                <li><a href="#js-array">数组</a></li>
-                                <li><a href="#js-chain">链式语法</a></li>
-                                <li><a href="#js-closure">闭包</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#canvas">Canvas</a>
-                            <ul class="nav">
-                                <li><a href="#canvas-example">Canvas案例</a></li>
-                                <li><a href="#canvas-canvas">Canvas实例</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#svg">矢量图形SVG初步</a>
-                            <ul class="nav">
-                                <li><a href="#svg-example">SVG实例</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#av">HTML5音频视频初步</a>
-                            <ul class="nav">
-                                <li><a href="#av-a">Audio实例</a></li>
-                                <li><a href="#av-v">Video实例</a></li>
-                                <li><a href="#av-3">第三方播放工具</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#geo">地理定位及地图</a>
-                            <ul class="nav">
-                                <li><a href="#geo-basic">地理定位及地图基本原理</a></li>
-                                <li><a href="#geo-example">Google、Sogou地图代码及效果</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#angular">AngularJS</a>
-                            <ul class="nav">
-                                <li><a href="#angular-what">AngularJS是什么</a></li>
-                                <li><a href="#angular-hello">从Hello World起步</a></li>
-                                <li><a href="#angular-todo">构建ToDo单页应用程序</a></li>
-                                <li><a href="#angular-sportstore">运动商店SportStore实例</a></li>
-                                <li><a href="#angular-technode">基于WebSocket的聊天室实例</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#MEAN-data">MEAN全堆栈资料</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+  <div class="container bs-docs-container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="bs-sidebar hidden-print" role="complementary">
+          <ul class="nav bs-sidenav">
+            <li>
+              <a href="#ws">开发工具Webstorm/VS Code</a>
+              <ul class="nav">
+                <li>
+                  <a href="#ws-down">下载软件及注册机</a>
+                </li>
+                <li>
+                  <a href="#ws-config">配置</a>
+                </li>
+                <li>
+                  <a href="#ws-basic">使用初步</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#html">HTML5&CSS初步</a>
+              <ul class="nav">
+                <li>
+                  <a href="#html-basic">HTML的标签</a>
+                </li>
+                <li>
+                  <a href="#html-5">HTML5的标签</a>
+                </li>
+                <li>
+                  <a href="#html-example1">HTML5网页示例一</a>
+                </li>
+                <li>
+                  <a href="#html-css">CSS示例</a>
+                </li>
+                <li>
+                  <a href="#html-example2">HTML5网页示例二</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#bs">BootStrap初步</a>
+              <ul class="nav">
+                <li>
+                  <a href="#bs-example">以Bootstrap构建的网站案例</a>
+                </li>
+                <li>
+                  <a href="#bs-learn">学习Bootstrap</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#js">JavaScript初步</a>
+              <ul class=" nav">
+                <li>
+                  <a href="#js-basic">基本语法</a>
+                </li>
+                <li>
+                  <a href="#js-opreator">操作符</a>
+                </li>
+                <li>
+                  <a href="#js-statement">语句</a>
+                </li>
+                <li>
+                  <a href="#js-function">函数</a>
+                </li>
+                <li>
+                  <a href="#js-object">对象</a>
+                </li>
+                <li>
+                  <a href="#js-array">数组</a>
+                </li>
+                <li>
+                  <a href="#js-chain">链式语法</a>
+                </li>
+                <li>
+                  <a href="#js-closure">闭包</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#canvas">Canvas</a>
+              <ul class="nav">
+                <li>
+                  <a href="#canvas-example">Canvas案例</a>
+                </li>
+                <li>
+                  <a href="#canvas-canvas">Canvas实例</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#svg">矢量图形SVG初步</a>
+              <ul class="nav">
+                <li>
+                  <a href="#svg-example">SVG实例</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#av">HTML5音频视频初步</a>
+              <ul class="nav">
+                <li>
+                  <a href="#av-a">Audio实例</a>
+                </li>
+                <li>
+                  <a href="#av-v">Video实例</a>
+                </li>
+                <li>
+                  <a href="#av-3">第三方播放工具</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#geo">地理定位及地图</a>
+              <ul class="nav">
+                <li>
+                  <a href="#geo-basic">地理定位及地图基本原理</a>
+                </li>
+                <li>
+                  <a href="#geo-example">Google、Sogou地图代码及效果</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#angular">AngularJS</a>
+              <ul class="nav">
+                <li>
+                  <a href="#angular-what">AngularJS是什么</a>
+                </li>
+                <li>
+                  <a href="#angular-config">Angular配置</a>
+                </li>
+                <li>
+                  <a href="#angular-TOH">Tour Of Heroes in Angular</a>
+                </li>
+                <li>
+                  <a href="#angular-TOH-v2">TOH-version 2</a>
+                </li>
+                <li>
+                  <a href="#angular-sportstore">运动商店SportStore实例</a>
+                </li>
+                <li>
+                  <a href="#angular-technode">基于WebSocket的聊天室实例</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#MEAN-data">MEAN全堆栈资料</a>
+            </li>
+          </ul>
+        </div>
+      </div>
 
 
-            <div class="col-md-9" role="main">
-                <!-- 开发工具webstorm================================================== -->
-                <div class="bs-docs-section">
-                    <div class="page-header">
-                        <h1 id="ws">开发工具Webstorm/VS Code</h1>
-                    </div>
-                    <p class="lead">
-                        工欲善其事，必先利其器。
-                    </p>
+      <div class="col-md-9" role="main">
+        <!-- 开发工具webstorm================================================== -->
+        <div class="bs-docs-section">
+          <div class="page-header">
+            <h1 id="ws">开发工具Webstorm/VS Code</h1>
+          </div>
+          <p class="lead">
+            工欲善其事，必先利其器。
+          </p>
 
-                    <h3 id="ws-down">下载软件及注册</h3>
+          <h3 id="ws-down">下载软件及注册</h3>
 
-                    <p>下载<a href="../data/webstorm/WebStorm-2017.2.3.exe"><code>Webstorm2017.2.3</code></a>以及<a href="http://idea.lanyus.com/"
-                            target="_blank"><code>获得注册码</code></a>并安装。</p>
+          <p>下载
+            <a href="../data/webstorm/WebStorm-2017.2.3.exe">
+              <code>Webstorm2017.2.3</code>
+            </a>以及
+            <a href="http://idea.lanyus.com/" target="_blank">
+              <code>获得注册码</code>
+            </a>并安装。</p>
 
-                    <h3 id="ws-config">注册及配置</h3>
+          <h3 id="ws-config">注册及配置</h3>
 
-                    <p>也可使用如下注册信息（License Key）。</p>
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-0">复制代码</button><code id="dm-0">
+          <p>也可使用如下注册信息（License Key）。</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-0">复制代码</button><code id="dm-0">
 BIG3CLIK6F-eyJsaWNlbnNlSWQiOiJCSUczQ0xJSzZGIiwibGljZW5zZWVOYW1lIjoibGFuIHl1IiwiYXNzaWduZWVOYW1lIjoiIiwiYXNzaWduZWVFbWFpbCI6IiIsImxpY2Vuc2VSZXN0cmljdGlvbiI6IkZvciBlZHVjYXRpb25hbCB1c2Ugb25seSIsImNoZWNrQ29uY3VycmVudFVzZSI6ZmFsc2UsInByb2R1Y3RzIjpbeyJjb2RlIjoiQUMiLCJwYWlkVXBUbyI6IjIwMTctMTEtMjMifSx7ImNvZGUiOiJETSIsInBhaWRVcFRvIjoiMjAxNy0xMS0yMyJ9LHsiY29kZSI6IklJIiwicGFpZFVwVG8iOiIyMDE3LTExLTIzIn0seyJjb2RlIjoiUlMwIiwicGFpZFVwVG8iOiIyMDE3LTExLTIzIn0seyJjb2RlIjoiV1MiLCJwYWlkVXBUbyI6IjIwMTctMTEtMjMifSx7ImNvZGUiOiJEUE4iLCJwYWlkVXBUbyI6IjIwMTctMTEtMjMifSx7ImNvZGUiOiJSQyIsInBhaWRVcFRvIjoiMjAxNy0xMS0yMyJ9LHsiY29kZSI6IlBTIiwicGFpZFVwVG8iOiIyMDE3LTExLTIzIn0seyJjb2RlIjoiREMiLCJwYWlkVXBUbyI6IjIwMTctMTEtMjMifSx7ImNvZGUiOiJEQiIsInBhaWRVcFRvIjoiMjAxNy0xMS0yMyJ9LHsiY29kZSI6IlJNIiwicGFpZFVwVG8iOiIyMDE3LTExLTIzIn0seyJjb2RlIjoiUEMiLCJwYWlkVXBUbyI6IjIwMTctMTEtMjMifSx7ImNvZGUiOiJDTCIsInBhaWRVcFRvIjoiMjAxNy0xMS0yMyJ9XSwiaGFzaCI6IjQ3NzU1MTcvMCIsImdyYWNlUGVyaW9kRGF5cyI6MCwiYXV0b1Byb2xvbmdhdGVkIjpmYWxzZSwiaXNBdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlfQ==-iygsIMXTVeSyYkUxAqpHmymrgwN5InkOfeRhhPIPa88FO9FRuZosIBTY18tflChACznk3qferT7iMGKm7pumDTR4FbVVlK/3n1ER0eMKu2NcaXb7m10xT6kLW1Xb3LtuZEnuis5pYuEwT1zR7GskeNWdYZ0dAJpNDLFrqPyAPo5s1KLDHKpw+VfVd4uf7RMjOIzuJhAAYAG+amyivQt61I9aYiwpHQvUphvTwi0X0qL/oDJHAQbIv4Qwscyo4aYZJBKutYioZH9rgOP6Yw/sCltpoPWlJtDOcw/iEWYiCVG1pH9AWjCYXZ9AbbEBOWV71IQr5VWrsqFZ7cg7hLEJ3A==-MIIEPjCCAiagAwIBAgIBBTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE1MTEwMjA4MjE0OFoXDTE4MTEwMTA4MjE0OFowETEPMA0GA1UEAwwGcHJvZDN5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxcQkq+zdxlR2mmRYBPzGbUNdMN6OaXiXzxIWtMEkrJMO/5oUfQJbLLuMSMK0QHFmaI37WShyxZcfRCidwXjot4zmNBKnlyHodDij/78TmVqFl8nOeD5+07B8VEaIu7c3E1N+e1doC6wht4I4+IEmtsPAdoaj5WCQVQbrI8KeT8M9VcBIWX7fD0fhexfg3ZRt0xqwMcXGNp3DdJHiO0rCdU+Itv7EmtnSVq9jBG1usMSFvMowR25mju2JcPFp1+I4ZI+FqgR8gyG8oiNDyNEoAbsR3lOpI7grUYSvkB/xVy/VoklPCK2h0f0GJxFjnye8NT1PAywoyl7RmiAVRE/EKwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQC9WZuYgQedSuOc5TOUSrRigMw4/+wuC5EtZBfvdl4HT/8vzMW/oUlIP4YCvA0XKyBaCJ2iX+ZCDKoPfiYXiaSiH+HxAPV6J79vvouxKrWg2XV6ShFtPLP+0gPdGq3x9R3+kJbmAm8w+FOdlWqAfJrLvpzMGNeDU14YGXiZ9bVzmIQbwrBA+c/F4tlK/DV07dsNExihqFoibnqDiVNTGombaU2dDup2gwKdL81ua8EIcGNExHe82kjF4zwfadHk3bQVvbfdAwxcDy4xBjs3L4raPLU3yenSzr/OEur1+jfOxnQSmEcMXKXgrAQ9U55gwjcOFKrgOxEdek/Sk1VfOjvS+nuM4eyEruFMfaZHzoQiuw4IqgGc45ohFH0UUyjYcuFxxDSU9lMCv8qdHKm+wnPRb0l9l5vXsCBDuhAGYD6ss+Ga+aDY6f/qXZuUCEUOH3QUNbbCUlviSz6+GiRnt1kA9N2Qachl+2yBfaqUqr8h7Z2gsx5LcIf5kYNsqJ0GavXTVyWh7PYiKX4bs354ZQLUwwa/cG++2+wNWP+HtBhVxMRNTdVhSm38AknZlD+PTAsWGu9GyLmhti2EnVwGybSD2Dxmhxk3IPCkhKAK+pl0eWYGZWG3tJ9mZ7SowcXLWDFAk0lRJnKGFMTggrWjV8GYpw5bq23VmIqqDLgkNzuoog==BIG3CLIK6F-eyJsaWNlbnNlSWQiOiJCSUczQ0xJSzZGIiwibGljZW5zZWVOYW1lIjoibGFuIHl1IiwiYXNzaWduZWVOYW1lIjoiIiwiYXNzaWduZWVFbWFpbCI6IiIsImxpY2Vuc2VSZXN0cmljdGlvbiI6IkZvciBlZHVjYXRpb25hbCB1c2Ugb25seSIsImNoZWNrQ29uY3VycmVudFVzZSI6ZmFsc2UsInByb2R1Y3RzIjpbeyJjb2RlIjoiQUMiLCJwYWlkVXBUbyI6IjIwMTctMTEtMjMifSx7ImNvZGUiOiJETSIsInBhaWRVcFRvIjoiMjAxNy0xMS0yMyJ9LHsiY29kZSI6IklJIiwicGFpZFVwVG8iOiIyMDE3LTExLTIzIn0seyJjb2RlIjoiUlMwIiwicGFpZFVwVG8iOiIyMDE3LTExLTIzIn0seyJjb2RlIjoiV1MiLCJwYWlkVXBUbyI6IjIwMTctMTEtMjMifSx7ImNvZGUiOiJEUE4iLCJwYWlkVXBUbyI6IjIwMTctMTEtMjMifSx7ImNvZGUiOiJSQyIsInBhaWRVcFRvIjoiMjAxNy0xMS0yMyJ9LHsiY29kZSI6IlBTIiwicGFpZFVwVG8iOiIyMDE3LTExLTIzIn0seyJjb2RlIjoiREMiLCJwYWlkVXBUbyI6IjIwMTctMTEtMjMifSx7ImNvZGUiOiJEQiIsInBhaWRVcFRvIjoiMjAxNy0xMS0yMyJ9LHsiY29kZSI6IlJNIiwicGFpZFVwVG8iOiIyMDE3LTExLTIzIn0seyJjb2RlIjoiUEMiLCJwYWlkVXBUbyI6IjIwMTctMTEtMjMifSx7ImNvZGUiOiJDTCIsInBhaWRVcFRvIjoiMjAxNy0xMS0yMyJ9XSwiaGFzaCI6IjQ3NzU1MTcvMCIsImdyYWNlUGVyaW9kRGF5cyI6MCwiYXV0b1Byb2xvbmdhdGVkIjpmYWxzZSwiaXNBdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlfQ==-iygsIMXTVeSyYkUxAqpHmymrgwN5InkOfeRhhPIPa88FO9FRuZosIBTY18tflChACznk3qferT7iMGKm7pumDTR4FbVVlK/3n1ER0eMKu2NcaXb7m10xT6kLW1Xb3LtuZEnuis5pYuEwT1zR7GskeNWdYZ0dAJpNDLFrqPyAPo5s1KLDHKpw+VfVd4uf7RMjOIzuJhAAYAG+amyivQt61I9aYiwpHQvUphvTwi0X0qL/oDJHAQbIv4Qwscyo4aYZJBKutYioZH9rgOP6Yw/sCltpoPWlJtDOcw/iEWYiCVG1pH9AWjCYXZ9AbbEBOWV71IQr5VWrsqFZ7cg7hLEJ3A==-MIIEPjCCAiagAwIBAgIBBTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE1MTEwMjA4MjE0OFoXDTE4MTEwMTA4MjE0OFowETEPMA0GA1UEAwwGcHJvZDN5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxcQkq+zdxlR2mmRYBPzGbUNdMN6OaXiXzxIWtMEkrJMO/5oUfQJbLLuMSMK0QHFmaI37WShyxZcfRCidwXjot4zmNBKnlyHodDij/78TmVqFl8nOeD5+07B8VEaIu7c3E1N+e1doC6wht4I4+IEmtsPAdoaj5WCQVQbrI8KeT8M9VcBIWX7fD0fhexfg3ZRt0xqwMcXGNp3DdJHiO0rCdU+Itv7EmtnSVq9jBG1usMSFvMowR25mju2JcPFp1+I4ZI+FqgR8gyG8oiNDyNEoAbsR3lOpI7grUYSvkB/xVy/VoklPCK2h0f0GJxFjnye8NT1PAywoyl7RmiAVRE/EKwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQC9WZuYgQedSuOc5TOUSrRigMw4/+wuC5EtZBfvdl4HT/8vzMW/oUlIP4YCvA0XKyBaCJ2iX+ZCDKoPfiYXiaSiH+HxAPV6J79vvouxKrWg2XV6ShFtPLP+0gPdGq3x9R3+kJbmAm8w+FOdlWqAfJrLvpzMGNeDU14YGXiZ9bVzmIQbwrBA+c/F4tlK/DV07dsNExihqFoibnqDiVNTGombaU2dDup2gwKdL81ua8EIcGNExHe82kjF4zwfadHk3bQVvbfdAwxcDy4xBjs3L4raPLU3yenSzr/OEur1+jfOxnQSmEcMXKXgrAQ9U55gwjcOFKrgOxEdek/Sk1VfOjvS+nuM4eyEruFMfaZHzoQiuw4IqgGc45ohFH0UUyjYcuFxxDSU9lMCv8qdHKm+wnPRb0l9l5vXsCBDuhAGYD6ss+Ga+aDY6f/qXZuUCEUOH3QUNbbCUlviSz6+GiRnt1kA9N2Qachl+2yBfaqUqr8h7Z2gsx5LcIf5kYNsqJ0GavXTVyWh7PYiKX4bs354ZQLUwwa/cG++2+wNWP+HtBhVxMRNTdVhSm38AknZlD+PTAsWGu9GyLmhti2EnVwGybSD2Dxmhxk3IPCkhKAK+pl0eWYGZWG3tJ9mZ7SowcXLWDFAk0lRJnKGFMTggrWjV8GYpw5bq23VmIqqDLgkNzuoog==</code></pre>
 
-                    <p>运行Webstorm，在<code>File->Setting</code>菜单中，在其左面选项中选择<code>Appearance&Behavior->Appearance->Theme</code>中选择其推荐的黑色<code>Darcula</code>主题，并勾选<code>Override
-                    default fonts by (not recommended) name</code>，选择<code>微软雅黑</code>作为界面字体。</p>
+          <p>运行Webstorm，在
+            <code>File->Setting</code>菜单中，在其左面选项中选择
+            <code>Appearance&Behavior->Appearance->Theme</code>中选择其推荐的黑色
+            <code>Darcula</code>主题，并勾选
+            <code>Override
+                    default fonts by (not recommended) name</code>，选择
+            <code>微软雅黑</code>作为界面字体。</p>
 
-                    <p>
-                        仍在Setting界面中，选择左面<code>Editor->colors&fonts</code>选项，另存<code>Darcula</code>主题为其它任意名称，然后选择<code>colors&fonts</code>下的<code>fonts</code>菜单，选择<code>
+          <p>
+            仍在Setting界面中，选择左面
+            <code>Editor->colors&fonts</code>选项，另存
+            <code>Darcula</code>主题为其它任意名称，然后选择
+            <code>colors&fonts</code>下的
+            <code>fonts</code>菜单，选择
+            <code>
                     source code pro</code>作为编辑界面字体字体。</p>
 
-                    <h3 id="ws-basic">使用初步</h3>
+          <h3 id="ws-basic">使用初步</h3>
 
-                    <p>Webstorm是以Project的方式进行网站的管理的，因此必须New Project。</p>
+          <p>Webstorm是以Project的方式进行网站的管理的，因此必须New Project。</p>
 
-                    <p>然后右键点击项目名称建立所需要的文件及目录即可。常见网站目录结构如下：</p>
-                    <img src="../assets/img/html-dic.png">
+          <p>然后右键点击项目名称建立所需要的文件及目录即可。常见网站目录结构如下：</p>
+          <img src="../assets/img/html-dic.png">
 
-                    <h3>VS Code</h3>
-                    <p>你也可以使用VS Code，微软推出的开源文本编辑器，也是异常的强大，请自行下载（<a href="../data/webstorm/VSCode-x64-1.15.1.exe">VS Code 1.15-64位</a>）安装并网络安装相应插件（推荐：Auto
-                        Close Tag、Auto Rename Tag、Code Runner、IntelliSense for CSS、Material Icon、Open HTML in Browser、Path
-                        Intelligence等）。
-                    </p>
-
-
-                </div>
+          <h3>VS Code</h3>
+          <p>你也可以使用VS Code，微软推出的开源文本编辑器，也是异常的强大，请自行下载（
+            <a href="../data/webstorm/VSCode-x64-1.15.1.exe">VS Code 1.15-64位</a>）安装并网络安装相应插件（推荐：Auto Close Tag、Auto Rename Tag、Code Runner、IntelliSense for CSS、Material
+            Icon、Open HTML in Browser、Path Intelligence等）。
+          </p>
 
 
-                <!--HTML5&CSS初步
+        </div>
+
+
+        <!--HTML5&CSS初步
             ================================================== -->
-                <div class="bs-docs-section">
-                    <div class="page-header">
-                        <h1 id="html">HTML5&CSS初步</h1>
-                    </div>
-                    <p class="lead">一个网页就好像一幢房子，HTML结构就是钢筋混泥土的墙，一幢房子如果没有钢筋混泥土的墙那就是一堆废砖头，也就称不上是房子了。 CSS是装饰材料，是油漆，是用来装饰房子的。CSS如果没有HTML结构那也就什么都不是了，没有了实际使用价值。
-                        而JavaScript就是房屋的开关，用来进行互动，产生动态效果。下图说明了这种关系。
-                    </p>
+        <div class="bs-docs-section">
+          <div class="page-header">
+            <h1 id="html">HTML5&CSS初步</h1>
+          </div>
+          <p class="lead">一个网页就好像一幢房子，HTML结构就是钢筋混泥土的墙，一幢房子如果没有钢筋混泥土的墙那就是一堆废砖头，也就称不上是房子了。 CSS是装饰材料，是油漆，是用来装饰房子的。CSS如果没有HTML结构那也就什么都不是了，没有了实际使用价值。
+            而JavaScript就是房屋的开关，用来进行互动，产生动态效果。下图说明了这种关系。
+          </p>
 
-                    <p class="container"><img src="../assets/img/html-css-script.png" class="img-responsive"></p>
+          <p class="container">
+            <img src="../assets/img/html-css-script.png" class="img-responsive">
+          </p>
 
-                    <h3 id="html-basic ">HTML的标签</h3>
+          <h3 id="html-basic ">HTML的标签</h3>
 
-                    <p>HTML是超文本标记语言（HyperText Markup Language）的缩写，是为“网页创建和其它可在网页浏览器中看到的信息”设计的一种标记语言。 通常我们需要掌握的标记/标签不多，如常见的
-                        <code>body、head、title、p、img、a、div、span、ol、table</code>等。请注意如<code>font、big、center</code>等标签是不推荐使用的。
-                    </p>
+          <p>HTML是超文本标记语言（HyperText Markup Language）的缩写，是为“网页创建和其它可在网页浏览器中看到的信息”设计的一种标记语言。 通常我们需要掌握的标记/标签不多，如常见的
+            <code>body、head、title、p、img、a、div、span、ol、table</code>等。请注意如
+            <code>font、big、center</code>等标签是不推荐使用的。
+          </p>
 
-                    <p>学习基本的HTML请访问<a href="http://www.w3school.com.cn/‎" target="_blank">W3school-领先的Web技术教程</a>，或者直接下载其
-                        <a href="../data/web/w3school.chm">chm格式学习文档</a>
-                    </p>
+          <p>学习基本的HTML请访问
+            <a href="http://www.w3school.com.cn/‎" target="_blank">W3school-领先的Web技术教程</a>，或者直接下载其
+            <a href="../data/web/w3school.chm">chm格式学习文档</a>
+          </p>
 
-                    <h3 id="html-5">HTML5的标签</h3>
+          <h3 id="html-5">HTML5的标签</h3>
 
-                    <p>HTML5规范摒弃了一些不合适的标签，同时引入了一些有效率、表达明确的标签如：
-                        <code>header、footer、section、article、aside、nav</code>等。相关内容请查看网络资料。
-                    </p>
+          <p>HTML5规范摒弃了一些不合适的标签，同时引入了一些有效率、表达明确的标签如：
+            <code>header、footer、section、article、aside、nav</code>等。相关内容请查看网络资料。
+          </p>
 
-                    <h3 id="html-example1">HTML5网页示例一</h3>
+          <h3 id="html-example1">HTML5网页示例一</h3>
 
-                    <p>在WebStorm中输入或复制如下HTML代码，我们稍作探究并在无CSS的情况下看看效果，并学习<code>Chrome开发者工具</code>的使用。</p>
-                    <!--<div class="highlight">-->
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-1">复制代码</button><code id="dm-1">
+          <p>在WebStorm中输入或复制如下HTML代码，我们稍作探究并在无CSS的情况下看看效果，并学习
+            <code>Chrome开发者工具</code>的使用。</p>
+          <!--<div class="highlight">-->
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-1">复制代码</button><code id="dm-1">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -491,13 +579,13 @@ BIG3CLIK6F-eyJsaWNlbnNlSWQiOiJCSUczQ0xJSzZGIiwibGljZW5zZWVOYW1lIjoibGFuIHl1IiwiY
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;                    </code></pre>
-                    <!--</div>-->
+          <!--</div>-->
 
-                    <h3 id="html-css">CSS示例</h3>
+          <h3 id="html-css">CSS示例</h3>
 
-                    <p>CSS即层叠样式表（Cascading Style Sheets）。用于修饰Web页面。如上，没有用CSS样式表的HTML惨不忍睹，我们添加如下代码后后探究一下</p>
-                    <!--<div class="highlight">-->
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-2">复制代码</button><code id="dm-2">
+          <p>CSS即层叠样式表（Cascading Style Sheets）。用于修饰Web页面。如上，没有用CSS样式表的HTML惨不忍睹，我们添加如下代码后后探究一下</p>
+          <!--<div class="highlight">-->
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-2">复制代码</button><code id="dm-2">
 body{
     background-color: #cccccc;
     font-family: "Microsoft Yahei","SimHei";
@@ -628,146 +716,182 @@ footer h2{
     font: 14px;
     color: white;
 }</code></pre>
-                    <!--</div>-->
-                    <p>你看到的效果应如下所示</p>
-                    <img src="../assets/img/html5.png" alt="html5" class="img-responsive" />
+          <!--</div>-->
+          <p>你看到的效果应如下所示</p>
+          <img src="../assets/img/html5.png" alt="html5" class="img-responsive" />
 
-                    <h3 id="html-example2">HTML5网页示例二</h3>
+          <h3 id="html-example2">HTML5网页示例二</h3>
 
-                    <p>请跟随<a href="http://net.tutsplus.com/tutorials/html-css-techniques/html-5-and-css-3-the-techniques-youll-soon-be-using/"><code>HTML 5 and CSS 3: The Techniques You’ll Soon Be Using</code></a>的指南构建另一个应用HTML5技术的网站，效果如下:</p>
-                    <img src="../assets/img/html2.jpg" alt="html2" class="img-responsive" />
-                </div>
+          <p>请跟随
+            <a href="http://net.tutsplus.com/tutorials/html-css-techniques/html-5-and-css-3-the-techniques-youll-soon-be-using/">
+              <code>HTML 5 and CSS 3: The Techniques You’ll Soon Be Using</code>
+            </a>的指南构建另一个应用HTML5技术的网站，效果如下:</p>
+          <img src="../assets/img/html2.jpg" alt="html2" class="img-responsive" />
+        </div>
 
 
-                <!-- Bootstrap初步
+        <!-- Bootstrap初步
             ================================================== -->
-                <div class="bs-docs-section">
-                    <div class="page-header">
-                        <h1 id="bs">Bootstrap初步</h1>
-                    </div>
-                    <p class="lead">简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。漂亮的Web页面不仅要求掌握CSS，同时还需要有足够的美感，对我等没有艺术细胞的开发者而言，2011年8月20日Bootstrap的出现以及开源就迎来了春天！</p>
+        <div class="bs-docs-section">
+          <div class="page-header">
+            <h1 id="bs">Bootstrap初步</h1>
+          </div>
+          <p class="lead">简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。漂亮的Web页面不仅要求掌握CSS，同时还需要有足够的美感，对我等没有艺术细胞的开发者而言，2011年8月20日Bootstrap的出现以及开源就迎来了春天！</p>
 
-                    <h3 id="bs-example">以Bootstrap构建的网站案例</h3>
-                    <p>如果你以为上面的两个页面还可以的话，请移步<a href="http://www.dandyweng.com/" target="_blank"><code>翁天信</code></a>看看效果。 更多的案例请看
-                        <a href="http://expo.bootcss.com/" target="_blank"><code>Bootstrap优秀网站Show</code></a> </p>
+          <h3 id="bs-example">以Bootstrap构建的网站案例</h3>
+          <p>如果你以为上面的两个页面还可以的话，请移步
+            <a href="http://www.dandyweng.com/" target="_blank">
+              <code>翁天信</code>
+            </a>看看效果。 更多的案例请看
+            <a href="http://expo.bootcss.com/" target="_blank">
+              <code>Bootstrap优秀网站Show</code>
+            </a>
+          </p>
 
-                    <h3 id="bs-learn">学习Bootstrap</h3>
-                    <p>我们如何能做到？请移步<a href="http://www.bootcss.com/" target="_blank"><code>Bootstrap中文网</code></a>或<a href="http://202.202.243.2/course/bootstrap/index.html"
-                            target="_blank">Bootstrap校内镜像</a>学习。该网站紧跟英文文档，提供最新信息。</p>
-                    <p><a href="../data/web/bootstrap-3.3.7-dist.zip">Bootstrap3.3.7下载</a>。下面介绍其起步文档中需要注意的基础知识。</p>
+          <h3 id="bs-learn">学习Bootstrap</h3>
+          <p>我们如何能做到？请移步
+            <a href="http://www.bootcss.com/" target="_blank">
+              <code>Bootstrap中文网</code>
+            </a>或
+            <a href="http://202.202.243.2/course/bootstrap/index.html" target="_blank">Bootstrap校内镜像</a>学习。该网站紧跟英文文档，提供最新信息。</p>
+          <p>
+            <a href="../data/web/bootstrap-3.3.7-dist.zip">Bootstrap3.3.7下载</a>。下面介绍其起步文档中需要注意的基础知识。</p>
 
 
-                </div>
+        </div>
 
-                <!-- MDBootstrap初步
+        <!-- MDBootstrap初步
             ================================================== -->
-                <div class="bs-docs-section">
+        <div class="bs-docs-section">
 
-                    <div class="page-header">
-                        <h1 id="bs">MDBootstrap初步</h1>
-                    </div>
-                    <p class="lead">Material Design是谷歌于2014年推出用于媲美苹果的视觉设计规范。请访问其官网了解。</p>
-                    <p>Bootstrap也使用了MD的规范，构建了许多靓丽的组件，其中，以MDBootstrap为最佳</p>
-                    <p>请下载<a href="../data/web/MDB-pro.zip">MDB种子项目</a>，然后访问<a href="https://mdbootstrap.com" target="_blank">MDB官网</a>或访问
-                        <a href="http://202.202.243.2/course/mdbootstrap.com/index.html" target="_blank">MDB校内镜像</a>进行学习，并使用其教程（Tutorial）进行网站建设！
+          <div class="page-header">
+            <h1 id="bs">MDBootstrap初步</h1>
+          </div>
+          <p class="lead">Material Design是谷歌于2014年推出用于媲美苹果的视觉设计规范。请访问其官网了解。</p>
+          <p>Bootstrap也使用了MD的规范，构建了许多靓丽的组件，其中，以MDBootstrap为最佳</p>
+          <p>请下载
+            <a href="../data/web/MDB-pro.zip">MDB种子项目</a>，然后访问
+            <a href="https://mdbootstrap.com" target="_blank">MDB官网</a>或访问
+            <a href="http://202.202.243.2/course/mdbootstrap.com/index.html" target="_blank">MDB校内镜像</a>进行学习，并使用其教程（Tutorial）进行网站建设！
 
 
-                </div>
+        </div>
 
-                <!--========== JavaScript初步===============-->
-                <div class="bs-docs-section">
-                    <div class="page-header">
-                        <h1 id="js">JavaScript初步</h1>
-                    </div>
-                    <div class="bs-callout bs-callout-info">
-                        <h4>现在JavaScript再也不是简单的脚本语言了，无论前端还是后台，可以毫不夸张的说，JavaScript都有良好的表现！</h4>
-                        <p>基础的JavaScript学习请参见<code><a href="http://www.w3school.com.cn" target="_blank">W3school-领先的Web技术教程</a></code>或<code><a href="http://www.w3cschool.cc" target="_blank">W3C菜鸟教程（每个人都有菜的时候）</a></code>                            ，或者直接下载其<code>
+        <!--========== JavaScript初步===============-->
+        <div class="bs-docs-section">
+          <div class="page-header">
+            <h1 id="js">JavaScript初步</h1>
+          </div>
+          <div class="bs-callout bs-callout-info">
+            <h4>现在JavaScript再也不是简单的脚本语言了，无论前端还是后台，可以毫不夸张的说，JavaScript都有良好的表现！</h4>
+            <p>基础的JavaScript学习请参见
+              <code><a href="http://www.w3school.com.cn" target="_blank">W3school-领先的Web技术教程</a></code>或
+              <code><a href="http://www.w3cschool.cc" target="_blank">W3C菜鸟教程（每个人都有菜的时候）</a></code> ，或者直接下载其
+              <code>
                         <a href="../data/web/w3school.chm">chm格式学习文档</a></code>，更进一步的学习请下载
-                            <code><a href="../data/web/JavaScript高级程序设计（第3版）.zip">JavaScript高级程序设计</a></code>、
-                            <code><a href="../data/web/JavaScript权威指南(第6版)(中文版).rar">JavaScript权威指南(第6版)(中文版)</a></code>以及
-                            <code><a href="../data/web/JavaScript语言精粹_修订版.rar">JavaScript语言精粹_修订版</a></code>这3本书，网上其它的这方面书都有滥竽充数的嫌疑。
-                        </p>
-                        <p>运行JavaScript有多种方式，可以直接在浏览器的控制台编写运行；也可以编写一个独立的js文件，然后在Html文件中引入，（这两种方法由浏览器解释执行，是以前唯一的方式）。也可以用编辑软件如Webstrom或VSCode编写独立的js文件，由安装好的Node.js解释执行运行（
-                            <a href="../data/web/node-v8.6.0-x64.msi">node-v8.6.0-64位下载</a>）。</p>
-                        <p>因为JavaScript是我们前后端编程的基础，所以下面对JavaScript进行概要介绍</p>
-                    </div>
-                    <h3 id="js-basic">基本语法</h3>
+              <code><a href="../data/web/JavaScript高级程序设计（第3版）.zip">JavaScript高级程序设计</a></code>、
+              <code><a href="../data/web/JavaScript权威指南(第6版)(中文版).rar">JavaScript权威指南(第6版)(中文版)</a></code>以及
+              <code><a href="../data/web/JavaScript语言精粹_修订版.rar">JavaScript语言精粹_修订版</a></code>这3本书，网上其它的这方面书都有滥竽充数的嫌疑。
+            </p>
+            <p>运行JavaScript有多种方式，可以直接在浏览器的控制台编写运行；也可以编写一个独立的js文件，然后在Html文件中引入，（这两种方法由浏览器解释执行，是以前唯一的方式）。也可以用编辑软件如Webstrom或VSCode编写独立的js文件，由安装好的Node.js解释执行运行（
+              <a href="../data/web/node-v8.6.0-x64.msi">node-v8.6.0-64位下载</a>）。</p>
+            <p>因为JavaScript是我们前后端编程的基础，所以下面对JavaScript进行概要介绍</p>
+          </div>
+          <h3 id="js-basic">基本语法</h3>
 
-                    <ul>
-                        <li>
-                            <p>大小写敏感</p>
-                        </li>
-                        <li>
-                            <p>标识符</p>
-                        </li>
-                        <div class="bs-callout bs-callout-danger">
-                            所谓标识符，就是指变量、函数、属性的名字，或者函数的参数。标识符可以是按照下列格式规则组合起来的一或多个字符:<br> 第一个字符必须是一个字母、下划线（ _ ）或一个美元符号（ $ ）；
-                            <br>其他字符可以是字母、下划线、美元符号或数字。<br> 按照惯例，ECMAScript 标识符采用<b>驼峰</b>大小写格式，也就是第一个字母小写，剩下的每个单词的首字母大写
-                        </div>
-                        <li>
-                            <p>注释</p>
-                        </li>
-                        <li>
-                            <p>语句</p>
-                        </li>
-                        <div class="bs-callout bs-callout-danger">
-                            语句后的分号建议添加，但不必须。
-                        </div>
-                        <li>
-                            <p>关键字/保留字</p>
-                        </li>
-                        <div class="bs-callout bs-callout-danger">
-                            <h3>
-                                break do instanceof typeof case else new var catch finally return void continue for switch while debugger function this with
-                                default if throw delete in try</h3>
-                        </div>
-                        <li>
-                            <p>变量</p>
-                        </li>
-                        <div class="bs-callout bs-callout-danger">
-                            ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型（如：<code>String、Number、Boolean以及Object</code>等）的数据。换句话说，每个变量仅仅是一个用于保存值的占位符而已。
-                            <br>定义变量时要使用 <code>var</code> 操作符（注意 <code>var</code> 是一个关键字），后跟变量名（即一个标识符），如下所示：
-                            <code>var message;</code> 这行代码定义了一个名为 <code>message</code> 的变量，该变量可以用来保存任何值。下示代码合法但不推荐：
-                            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-210">复制代码</button><code id="dm-210">
+          <ul>
+            <li>
+              <p>大小写敏感</p>
+            </li>
+            <li>
+              <p>标识符</p>
+            </li>
+            <div class="bs-callout bs-callout-danger">
+              所谓标识符，就是指变量、函数、属性的名字，或者函数的参数。标识符可以是按照下列格式规则组合起来的一或多个字符:
+              <br> 第一个字符必须是一个字母、下划线（ _ ）或一个美元符号（ $ ）；
+              <br>其他字符可以是字母、下划线、美元符号或数字。
+              <br> 按照惯例，ECMAScript 标识符采用
+              <b>驼峰</b>大小写格式，也就是第一个字母小写，剩下的每个单词的首字母大写
+            </div>
+            <li>
+              <p>注释</p>
+            </li>
+            <li>
+              <p>语句</p>
+            </li>
+            <div class="bs-callout bs-callout-danger">
+              语句后的分号建议添加，但不必须。
+            </div>
+            <li>
+              <p>关键字/保留字</p>
+            </li>
+            <div class="bs-callout bs-callout-danger">
+              <h3>
+                break do instanceof typeof case else new var catch finally return void continue for switch while debugger function this with
+                default if throw delete in try</h3>
+            </div>
+            <li>
+              <p>变量</p>
+            </li>
+            <div class="bs-callout bs-callout-danger">
+              ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型（如：
+              <code>String、Number、Boolean以及Object</code>等）的数据。换句话说，每个变量仅仅是一个用于保存值的占位符而已。
+              <br>定义变量时要使用
+              <code>var</code> 操作符（注意
+              <code>var</code> 是一个关键字），后跟变量名（即一个标识符），如下所示：
+              <code>var message;</code> 这行代码定义了一个名为
+              <code>message</code> 的变量，该变量可以用来保存任何值。下示代码合法但不推荐：
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-210">复制代码</button><code id="dm-210">
 var message = 'Hi, JavaScript';
 console.log(message);
 message = 100;
 console.log(message);</code></pre>
-                        </div>
-                        <div class="bs-callout bs-callout-danger">
-                            有一点必须注意，即用 <code>var</code> 操作符定义的变量将成为定义该变量的作用域中的局部变量。也就是说，如果在函数中使用 <code>var</code> 定义一个变量，那么这个变量在函数退出后就会被销毁，例如：
-                            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-212">复制代码</button><code id="dm-212">
+            </div>
+            <div class="bs-callout bs-callout-danger">
+              有一点必须注意，即用
+              <code>var</code> 操作符定义的变量将成为定义该变量的作用域中的局部变量。也就是说，如果在函数中使用
+              <code>var</code> 定义一个变量，那么这个变量在函数退出后就会被销毁，例如：
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-212">复制代码</button><code id="dm-212">
 function test(){
     var message = "hi"; // 局部变量，去掉var即为全局变量
 }
 test();
 alert(message); // 错误！</code></pre>
-                        </div>
-                        <div class="bs-callout bs-callout-danger">
-                            虽然省略 <code>var</code> 操作符可以定义全局变量，但这也不是我们推荐的做法。因为在局部作用域中定义的全局变量很难维护。那么正确的做法是什么？
-                        </div>
-                    </ul>
+            </div>
+            <div class="bs-callout bs-callout-danger">
+              虽然省略
+              <code>var</code> 操作符可以定义全局变量，但这也不是我们推荐的做法。因为在局部作用域中定义的全局变量很难维护。那么正确的做法是什么？
+            </div>
+          </ul>
 
-                    <h3 id="js-opreator">操作符</h3>
-                    <ul>
-                        <li>
-                            <p>一元操作符<code> ++ --</code></p>
-                        </li>
-                        <li>
-                            <p>布尔操作符 <code>&& || ！</code></p>
-                        </li>
-                        <div class="bs-callout bs-callout-danger">
-                            除下列值为假外其余皆为真：<b>false、null、undefined、''、0、NaN</b>
-                        </div>
-                        <div class="bs-callout bs-callout-danger">
-                            <code>&&和||</code>都属于<b>短路</b>操作！
-                        </div>
-                        <li>
-                            <p>算术操作符<code> + - * / %</code></p>
-                        </li>
-                        <div class="bs-callout bs-callout-danger">
-                            注意以下代码：
-                            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-213">复制代码</button><code id="dm-213">
+          <h3 id="js-opreator">操作符</h3>
+          <ul>
+            <li>
+              <p>一元操作符
+                <code> ++ --</code>
+              </p>
+            </li>
+            <li>
+              <p>布尔操作符
+                <code>&& || ！</code>
+              </p>
+            </li>
+            <div class="bs-callout bs-callout-danger">
+              除下列值为假外其余皆为真：
+              <b>false、null、undefined、''、0、NaN</b>
+            </div>
+            <div class="bs-callout bs-callout-danger">
+              <code>&&和||</code>都属于
+              <b>短路</b>操作！
+            </div>
+            <li>
+              <p>算术操作符
+                <code> + - * / %</code>
+              </p>
+            </li>
+            <div class="bs-callout bs-callout-danger">
+              注意以下代码：
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-213">复制代码</button><code id="dm-213">
 var result = 5 + '5'; // 一个数值和一个字符串相加
 console.log(result); // '55'
 //============================================
@@ -775,79 +899,91 @@ var num1 = 5;
 var num2 = 10;
 var message = "The sum of 5 and 10 is " + num1 + num2;// (num1 + num2)
 console.log(message); // "The sum of 5 and 10 is 510"</code></pre>
-                        </div>
-                        <li>
-                            <p>关系操作符<code> < > <= >= == === != !==</code></p>
-                        </li>
-                        <div class="bs-callout bs-callout-danger">
-                            注意:<b>===</b>称为全等（值和类型）。
-                            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-214">复制代码</button><code id="dm-214">
+            </div>
+            <li>
+              <p>关系操作符
+                <code> < > <= >= == === != !==</code>
+              </p>
+            </li>
+            <div class="bs-callout bs-callout-danger">
+              注意:
+              <b>===</b>称为全等（值和类型）。
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-214">复制代码</button><code id="dm-214">
 var x = 5;
 console.log(x == 5);
 console.log(x == '5');
 console.log(x === 5);
 console.log(x === '5');</code></pre>
-                        </div>
-                        <li>
-                            <p>条件（问号）操作符<code> ? : </code></p>
-                        </li>
-                        <div class="bs-callout bs-callout-danger">
-                            能有效的简洁代码
-                            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-215">复制代码</button><code id="dm-215">
+            </div>
+            <li>
+              <p>条件（问号）操作符
+                <code> ? : </code>
+              </p>
+            </li>
+            <div class="bs-callout bs-callout-danger">
+              能有效的简洁代码
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-215">复制代码</button><code id="dm-215">
 var max = (num1 > num2) ? num1 : num2;</code></pre>
-                        </div>
-                        <li>
-                            <p>赋值操作符<code> = += -+ *= /= %= </code></p>
-                        </li>
-                    </ul>
+            </div>
+            <li>
+              <p>赋值操作符
+                <code> = += -+ *= /= %= </code>
+              </p>
+            </li>
+          </ul>
 
-                    <h3 id="js-statement">语句</h3>
-                    <ul>
-                        <li>
-                            <p><code> if do-while while for for-in break continue switch</code></p>
-                        </li>
+          <h3 id="js-statement">语句</h3>
+          <ul>
+            <li>
+              <p>
+                <code> if do-while while for for-in break continue switch</code>
+              </p>
+            </li>
 
-                        <div class="bs-callout bs-callout-danger">
-                            注意，请为语句块添加<code>{}</code>，不要吝啬<br>
-                           另外， <code>for-in</code>能简洁的遍历集合中的元素，如下代码：
-                        </div>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-216">复制代码</button><code id="dm-216">
+            <div class="bs-callout bs-callout-danger">
+              注意，请为语句块添加
+              <code>{}</code>，不要吝啬
+              <br> 另外，
+              <code>for-in</code>能简洁的遍历集合中的元素，如下代码：
+            </div>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-216">复制代码</button><code id="dm-216">
 var colors = ['red', 'green', 'blue', 'brown'];	//colors是一个数组
 for(var c in colors){
     console.log(colors[c]);
 }</code></pre>
 
-                    </ul>
-                    <h3 id="js-function">函数</h3>
-                    <p>函数（<code>function</code>）对任何语言来说都是一个核心的概念。通过函数可以封装任意多条语句，而且可以在任何地方、任何时候调用执行。以下是一个函数示例：
-                    </p>
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-217">复制代码</button><code id="dm-217">
+          </ul>
+          <h3 id="js-function">函数</h3>
+          <p>函数（
+            <code>function</code>）对任何语言来说都是一个核心的概念。通过函数可以封装任意多条语句，而且可以在任何地方、任何时候调用执行。以下是一个函数示例：
+          </p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-217">复制代码</button><code id="dm-217">
 function sayHi(name, message) {
     console.log('Hello ' + name + ',' + message);
 }
 sayHi('Gridwang', '你好。');</code></pre>
-                    <p>
-                        ECMAScript 中的函数在定义时不必指定是否返回值。实际上，任何函数在任何时候都可以通过
-                        <code>return</code> 语句后跟要返回的值来实现返回值。请看下面的例子：
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-218">复制代码</button><code id="dm-218">
+          <p>
+            ECMAScript 中的函数在定义时不必指定是否返回值。实际上，任何函数在任何时候都可以通过
+            <code>return</code> 语句后跟要返回的值来实现返回值。请看下面的例子：
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-218">复制代码</button><code id="dm-218">
 function sum(num1, num2) {
     return num1 + num2;
 }
 var result = sum(3, 2);
 console.log(result);</code></pre>
-                    </p>
-                    <p>
-                        ECMAScript 函数不介意传递进来多少个参数，也不在乎传进来参数是什么数据类型。
-                    </p>
-                    <p>
-                        也就是说，即便你定义的函数只接收两个参数，在调用这个函数时也未必一定要传递两个参数。可以传递一个、三个甚至不传递参数，而解析器永远不会有什么怨言。
-                    </p>
-                    <p>
-                        之所以会这样，原因是 ECMAScript 中的参数在内部是用一个数组来表示的。函数接收到的始终都是这个数组，而不关心数组中包含哪些参数（如果有参数的话）。如果这个数组中不包含任何元素，无所谓；如果包含多个元素，也没有问题。
-                    </p>
-                    <p>
-                        如果在 ECMAScript中定义了两个名字相同的函数，则该名字只属于后定义的函数。请看下面的例子：
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-219">复制代码</button><code id="dm-219">
+          </p>
+          <p>
+            ECMAScript 函数不介意传递进来多少个参数，也不在乎传进来参数是什么数据类型。
+          </p>
+          <p>
+            也就是说，即便你定义的函数只接收两个参数，在调用这个函数时也未必一定要传递两个参数。可以传递一个、三个甚至不传递参数，而解析器永远不会有什么怨言。
+          </p>
+          <p>
+            之所以会这样，原因是 ECMAScript 中的参数在内部是用一个数组来表示的。函数接收到的始终都是这个数组，而不关心数组中包含哪些参数（如果有参数的话）。如果这个数组中不包含任何元素，无所谓；如果包含多个元素，也没有问题。
+          </p>
+          <p>
+            如果在 ECMAScript中定义了两个名字相同的函数，则该名字只属于后定义的函数。请看下面的例子：
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-219">复制代码</button><code id="dm-219">
 function addSomeNumber(num){
     return num + 100;
 }
@@ -855,11 +991,12 @@ function addSomeNumber(num) {
     return num + 200;
 }
 var result = addSomeNumber(100); //300</code></pre>
-                    </p>
-                    <h3 id="js-object">对象Object</h3>
-                    <p> 对象<code>Object</code> 是ECMAScript 中使用最多的一个类型。我们常将数据和方法封装在对象中。</p>
-                    <p>创建对象有如下两种方式，我们常用第二种。</p>
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-220">复制代码</button><code id="dm-220">
+          </p>
+          <h3 id="js-object">对象Object</h3>
+          <p> 对象
+            <code>Object</code> 是ECMAScript 中使用最多的一个类型。我们常将数据和方法封装在对象中。</p>
+          <p>创建对象有如下两种方式，我们常用第二种。</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-220">复制代码</button><code id="dm-220">
 //方式一new
 var person = new Object();
 person.name = 'Elon Musk';
@@ -879,9 +1016,10 @@ var person = {
 };
 console.log(person.job);
 person.sayName();</code></pre>
-                    <p>
-                        虽然<code> Object </code>构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用工厂模式的一种变体。代码如下：</p>
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-221">复制代码</button><code id="dm-221">
+          <p>
+            虽然
+            <code> Object </code>构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用工厂模式的一种变体。代码如下：</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-221">复制代码</button><code id="dm-221">
 function createPerson(name, age, job){
     var o = new Object();
     o.name = name;
@@ -894,12 +1032,16 @@ function createPerson(name, age, job){
 }
 var person1 = createPerson('Steve Jobs',56 , 'Inventor');
 var person2 = createPerson('Linus Torvalds', 48, 'Software Engineer');</code></pre>
-                    <h3 id="js-array">数组Array</h3>
-                    <p>除了 <code>Object</code> 之外， <code>Array</code> 类型恐怕是 ECMAScript 中最常用的类型了。</p>
-                    <p>ECMAScript 中的数组与其他多数语言中的数组有着相当大的区别。虽然 ECMAScript 数组与其他语言中的数组都是数据的有序列表，但与其他语言不同的是，ECMAScript 数组的每一项<b>可以保存任何类型的数据</b>。</p>
-                    <p>也就是说，可以用数组的第一个位置来保存字符串，用第二位置来保存数值，用第三个位置来保存对象，以此类推。而且，ECMAScript <b>数组的大小是可以动态调整的</b>，即可以随着数据的添加自动增长以容纳新增数据。</p>
-                    <p>创建数组有以下两种方法，我们常用第二种。</p>
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-222">复制代码</button><code id="dm-222">
+          <h3 id="js-array">数组Array</h3>
+          <p>除了
+            <code>Object</code> 之外，
+            <code>Array</code> 类型恐怕是 ECMAScript 中最常用的类型了。</p>
+          <p>ECMAScript 中的数组与其他多数语言中的数组有着相当大的区别。虽然 ECMAScript 数组与其他语言中的数组都是数据的有序列表，但与其他语言不同的是，ECMAScript 数组的每一项
+            <b>可以保存任何类型的数据</b>。</p>
+          <p>也就是说，可以用数组的第一个位置来保存字符串，用第二位置来保存数值，用第三个位置来保存对象，以此类推。而且，ECMAScript
+            <b>数组的大小是可以动态调整的</b>，即可以随着数据的添加自动增长以容纳新增数据。</p>
+          <p>创建数组有以下两种方法，我们常用第二种。</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-222">复制代码</button><code id="dm-222">
 //方式一new
 var colors = new Array('red', 'blue', 'green');
 //方式二字面量
@@ -910,21 +1052,24 @@ console.log(colors.length);
 var names = []; // 创建一个空数组
 var hyBird = [1, 2, 'haha', {firstName: 'Yong', lastName: 'Wang'}];
 console.log(hyBird[3].firstName);</code></pre>
-                    <p>常用的数组方法如下：</p>
-                    <ul>
-                        <li>
-                            <p>元素联合</p>
-                        </li>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-223">复制代码</button><code id="dm-223">
+          <p>常用的数组方法如下：</p>
+          <ul>
+            <li>
+              <p>元素联合</p>
+            </li>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-223">复制代码</button><code id="dm-223">
 var colors = ['red', 'green', 'blue'];
 console.log(colors.join(',')); //red,green,blue
 console.log(colors.join('||')); //red||green||blue</code></pre>
-                        <li>
-                            <p>堆栈方法</p>
-                        </li>
-                        <p>栈是一种 <b>LIFO（Last-In-First-Out，后进先出</b>）的数据结构，也就是最新添加的项最早被移除。而栈中项的插入（叫做推入）和移除（叫做弹出），只发生在一个位置——栈的顶部。</p>
-                        <p>ECMAScript 为数组专门提供了<code>push()</code> 和 <code>pop()</code> 方法，以便实现类似栈的行为。</p>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-224">复制代码</button><code id="dm-224">
+            <li>
+              <p>堆栈方法</p>
+            </li>
+            <p>栈是一种
+              <b>LIFO（Last-In-First-Out，后进先出</b>）的数据结构，也就是最新添加的项最早被移除。而栈中项的插入（叫做推入）和移除（叫做弹出），只发生在一个位置——栈的顶部。</p>
+            <p>ECMAScript 为数组专门提供了
+              <code>push()</code> 和
+              <code>pop()</code> 方法，以便实现类似栈的行为。</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-224">复制代码</button><code id="dm-224">
 var colors = []; // 创建一个数组
 var count = colors.push('red', 'green'); // 末尾推入两项
 console.log(count); //2
@@ -933,13 +1078,16 @@ console.log(colors); //3
 var item = colors.pop(); // 末尾弹出最后一项
 console.log(item); //'black'
 console.log(colors); //2</code></pre>
-                        <li>
-                            <p>队列方法</p>
-                        </li>
-                        <p>栈数据结构的访问规则是 LIFO（后进先出），而队列数据结构的访问规则是 <b>FIFO（First-In-First-Out，先进先出）</b>。队列在列表的末端添加项，从列表的前端移除项。</p>
-                        <p>由于 <code>push()</code> 是向数组末端添加项的方法，因此要模拟队列只需一个从数组前端取得项的方法。实现这一操作的数组方法就是 <code>shift()</code> ，它能够移除数组中的第一个项并返回该项，同时将数组长度减1。
-                        </p>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-225">复制代码</button><code id="dm-225">
+            <li>
+              <p>队列方法</p>
+            </li>
+            <p>栈数据结构的访问规则是 LIFO（后进先出），而队列数据结构的访问规则是
+              <b>FIFO（First-In-First-Out，先进先出）</b>。队列在列表的末端添加项，从列表的前端移除项。</p>
+            <p>由于
+              <code>push()</code> 是向数组末端添加项的方法，因此要模拟队列只需一个从数组前端取得项的方法。实现这一操作的数组方法就是
+              <code>shift()</code> ，它能够移除数组中的第一个项并返回该项，同时将数组长度减1。
+            </p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-225">复制代码</button><code id="dm-225">
 var colors = new Array(); //创建一个数组
 colors.push('red', 'green'); //推入两项
 console.log(colors); //2
@@ -948,8 +1096,9 @@ console.log(colors); //3
 var item = colors.shift(); // 前端弹出第一项
 console.log(item); //'red'
 console.log(colors);</code></pre>
-                        <p>ECMAScript 还为数组提供了一个 <code>unshift()</code> 方法。它能在数组前端添加任意个项并返回新数组的长度。</p>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-226">复制代码</button><code id="dm-226">
+            <p>ECMAScript 还为数组提供了一个
+              <code>unshift()</code> 方法。它能在数组前端添加任意个项并返回新数组的长度。</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-226">复制代码</button><code id="dm-226">
 var colors = new Array(); //创建一个数组
 var count = colors.unshift('red', 'green'); // 推入两项
 console.log(colors);
@@ -958,34 +1107,40 @@ console.log(colors);
 var item = colors.pop(); // 取得最后一项
 console.log(item); //'green'
 console.log(colors);</code></pre>
-                        <div class="bs-callout bs-callout-info">
-                            <p>总结：由上可知，<code>push、pop</code>操作在数组末，而<code>unshift、shift</code>操作在数组头，对应压入和弹出。</p>
-                        </div>
-                        <li>
-                            <p>反转数组项</p>
-                        </li>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-227">复制代码</button><code id="dm-227">
+            <div class="bs-callout bs-callout-info">
+              <p>总结：由上可知，
+                <code>push、pop</code>操作在数组末，而
+                <code>unshift、shift</code>操作在数组头，对应压入和弹出。</p>
+            </div>
+            <li>
+              <p>反转数组项</p>
+            </li>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-227">复制代码</button><code id="dm-227">
 var values = [1, 2, 3, 4, 5];
 values.reverse();
 console.log(values); //5,4,3,2,1</code></pre>
-                        <li>
-                            <p>链接方法</p>
-                        </li>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-228">复制代码</button><code id="dm-228">
+            <li>
+              <p>链接方法</p>
+            </li>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-228">复制代码</button><code id="dm-228">
 var colors1 = ['red', 'green', 'blue'];
 var colors2 = ['yellow', 'black'];
 console.log(colors1.concat(colors2));
 console.log(colors2.concat(colors1));
 console.log(colors2.concat('brown'));//注意：原数组没改变</code></pre>
-                        <li>
-                            <p>分片方法</p>
-                        </li>
-                        <p> <code>slice() </code>，它能够基于当前数组中的一或多个项创建一个新数组。 <code>slice() </code> 方法可以接受一或两个参数，即要返回项的起始和结束位置。</p>
-                        <p>在只有一个参数的情况下， <code>slice() </code>方法返回从该参数指定位置开始到当前数组末尾的所有项。如果有两个参数，该方法返回起始和结束位置之间的项——但不包括结束位置的项。</p>
-                        <div class="bs-callout bs-callout-info">
-                            <p>注意， <code>slice() </code>方法不会影响原始数组。</p>
-                        </div>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-229">复制代码</button><code id="dm-229">
+            <li>
+              <p>分片方法</p>
+            </li>
+            <p>
+              <code>slice() </code>，它能够基于当前数组中的一或多个项创建一个新数组。
+              <code>slice() </code> 方法可以接受一或两个参数，即要返回项的起始和结束位置。</p>
+            <p>在只有一个参数的情况下，
+              <code>slice() </code>方法返回从该参数指定位置开始到当前数组末尾的所有项。如果有两个参数，该方法返回起始和结束位置之间的项——但不包括结束位置的项。</p>
+            <div class="bs-callout bs-callout-info">
+              <p>注意，
+                <code>slice() </code>方法不会影响原始数组。</p>
+            </div>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-229">复制代码</button><code id="dm-229">
 var colors1 = ['red', 'green', 'blue', 'yellow', 'purple'];
 var colors2 = colors1.slice(1);
 var colors3 = colors1.slice(2, 4);
@@ -993,27 +1148,35 @@ var colors4 = colors1.slice(2, 2);//结果是什么？
 console.log(colors1);
 console.log(colors2);
 console.log(colors3);</code></pre>
-                        <li>
-                            <p>splice方法</p>
-                        </li>
-                        <p> <code>splice()</code> 方法恐怕要算是最强大的数组方法了，它可对数组如下3种操作。</p>
-                        <div class="bs-callout bs-callout-info">
-                            <p>注意， <code>splice() </code>方法直接更改原始数组。</p>
-                        </div>
-                        <ul>
-                            <li>
-                                <p><b>删除</b>：可以删除任意数量的项，只需指定 2 个参数：要删除的第一项的位置和要删除的项数。 例如， <code>splice(0,2)</code> 会删除数组中的前两项。</p>
-                            </li>
-                            <li>
-                                <p><b>插入</b>：可以向指定位置插入任意数量的项，只需提供 3 个参数：起始位置、0（要删除的项数） 和要插入的项。如果要插入多个项，可以再传入第四、第五，以至任意多个项。例如，<code>splice(2,0,'red','green') </code>会从当前数组的位置 2 开始插入字符串 'red' 和 'green' 。
-                                </p>
-                            </li>
-                            <li>
-                                <p><b>替换</b>：可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定 3 个参数：起 始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等。例如，<code>splice (2,1,'red','green')</code> 会删除当前数组位置 2 的项，然后再从位置 2 开始插入字符串 'red' 和 'green' 。
-                                </p>
-                            </li>
-                        </ul>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-230">复制代码</button><code id="dm-230">
+            <li>
+              <p>splice方法</p>
+            </li>
+            <p>
+              <code>splice()</code> 方法恐怕要算是最强大的数组方法了，它可对数组如下3种操作。</p>
+            <div class="bs-callout bs-callout-info">
+              <p>注意，
+                <code>splice() </code>方法直接更改原始数组。</p>
+            </div>
+            <ul>
+              <li>
+                <p>
+                  <b>删除</b>：可以删除任意数量的项，只需指定 2 个参数：要删除的第一项的位置和要删除的项数。 例如，
+                  <code>splice(0,2)</code> 会删除数组中的前两项。</p>
+              </li>
+              <li>
+                <p>
+                  <b>插入</b>：可以向指定位置插入任意数量的项，只需提供 3 个参数：起始位置、0（要删除的项数） 和要插入的项。如果要插入多个项，可以再传入第四、第五，以至任意多个项。例如，
+                  <code>splice(2,0,'red','green') </code>会从当前数组的位置 2 开始插入字符串 'red' 和 'green' 。
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>替换</b>：可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定 3 个参数：起 始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等。例如，
+                  <code>splice (2,1,'red','green')</code> 会删除当前数组位置 2 的项，然后再从位置 2 开始插入字符串 'red' 和 'green' 。
+                </p>
+              </li>
+            </ul>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-230">复制代码</button><code id="dm-230">
 var colors = ['red', 'green', 'blue'];
 var removed = colors.splice(0,1); // 删除第一项
 console.log(colors); // green,blue
@@ -1024,10 +1187,11 @@ console.log(removed); // 返回的是一个空数组
 removed = colors.splice(1, 1, 'red', 'purple'); // 插入两项，删除一项
 console.log(colors); // green,red,purple,orange,blue
 console.log(removed); // yellow，返回的数组中只包含一项</code></pre>
-                    </ul>
-                    <h3 id="js-chain">链式语法</h3>
-                    <p>链式语法已变得非常流行。实际上这是一种非常容易实现的模式。基本上，你只需要让每个函数返回 <code>this</code>代表包含该函数的对象，这样其他函数就可以立即被调用。看看下面的例子。</p>
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-231">复制代码</button><code id="dm-231">
+          </ul>
+          <h3 id="js-chain">链式语法</h3>
+          <p>链式语法已变得非常流行。实际上这是一种非常容易实现的模式。基本上，你只需要让每个函数返回
+            <code>this</code>代表包含该函数的对象，这样其他函数就可以立即被调用。看看下面的例子。</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-231">复制代码</button><code id="dm-231">
 var bird = {
     catapult: function() {
         console.log( 'Yippeeeeee!' );
@@ -1039,12 +1203,12 @@ var bird = {
     }
 };
 bird.catapult().destroy();//链式语法</code></pre>
-                    <h3 id="js-closure">闭包</h3>
-                    <p>闭包是什么?闭包是Closure，这是静态语言所不具有的一个新特性。但是闭包也不是什么复杂到不可理解的东西，简而言之，闭包就是：
-                        <p>函数的局部变量集合，只是这些局部变量在函数返回后会继续存在。</p>
-                        <p>闭包就是就是函数的“堆栈”在函数返回后并不释放，我们也可以理解为这些函数堆栈并不在栈上分配而是在堆上分配</p>
-                        <p>当在一个函数内定义另外一个函数就会产生闭包。如下代码：</p>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-232">复制代码</button><code id="dm-232">
+          <h3 id="js-closure">闭包</h3>
+          <p>闭包是什么?闭包是Closure，这是静态语言所不具有的一个新特性。但是闭包也不是什么复杂到不可理解的东西，简而言之，闭包就是：
+            <p>函数的局部变量集合，只是这些局部变量在函数返回后会继续存在。</p>
+            <p>闭包就是就是函数的“堆栈”在函数返回后并不释放，我们也可以理解为这些函数堆栈并不在栈上分配而是在堆上分配</p>
+            <p>当在一个函数内定义另外一个函数就会产生闭包。如下代码：</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-232">复制代码</button><code id="dm-232">
 function greeting(name) {
     var text = 'Hello ' + name; // local variable
     // 每次调用时，产生闭包，并返回内部函数对象给调用者
@@ -1052,8 +1216,8 @@ function greeting(name) {
 }
 var sayHello = greeting('Closure');//调用greeting()返回了什么？
 sayHello();  // 注意此处的使用方法。通过闭包访问到了局部变量text</code></pre>
-                        <p>上述代码的执行结果是：Hello Closure，因为sayHello指向了greeting函数对象，sayHello()则对其进行调用，greeting函数执行完毕后将返回greeting函数内定义的匿名函数对象，而该匿名函数仍然可以访问到了定义在greeting之内的局部变量text，注意此时我们已从greeting函数中退出了（但请留意，也只有该内部匿名函数能访问，其它任何代码都不能访问）。以下是另外一个例子：</p>
-                        <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-233">复制代码</button><code id="dm-233">
+            <p>上述代码的执行结果是：Hello Closure，因为sayHello指向了greeting函数对象，sayHello()则对其进行调用，greeting函数执行完毕后将返回greeting函数内定义的匿名函数对象，而该匿名函数仍然可以访问到了定义在greeting之内的局部变量text，注意此时我们已从greeting函数中退出了（但请留意，也只有该内部匿名函数能访问，其它任何代码都不能访问）。以下是另外一个例子：</p>
+            <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-233">复制代码</button><code id="dm-233">
 var scope = 'global scope';	//全局变量
 function checkScope(){
     var scope = 'local scope';	//局部变量
@@ -1063,22 +1227,24 @@ function checkScope(){
     return f;
 }
 checkScope()();		//注意此处的使用方法。返回值为local scope而非global scope</code></pre>
-                </div>
+        </div>
 
-                <!-- Canvas================================================== -->
-                <div class="bs-docs-section">
-                    <div class="page-header">
-                        <h1 id="canvas">Canvas</h1>
-                    </div>
-                    <p class="lead">HTML5提供的Canvas（画布）API可用于很容易的创建2D/3D的图形、图像以及动画，当然这需要JavaScript的支持。</p>
+        <!-- Canvas================================================== -->
+        <div class="bs-docs-section">
+          <div class="page-header">
+            <h1 id="canvas">Canvas</h1>
+          </div>
+          <p class="lead">HTML5提供的Canvas（画布）API可用于很容易的创建2D/3D的图形、图像以及动画，当然这需要JavaScript的支持。</p>
 
-                    <h3 id="canvas-example">Canvas案例</h3>
-                    <p>HTML5技术（注意非flash）的<a href="../data/web/zwdzjs.rar">2D植物大战僵尸</a>和<a href="../data/web/tetris-3D.rar">3D俄罗斯方块</a>游戏以及
-                        <a href="../data/web/canvas-clock.html" target="_blank">Canvas时钟</a> 。</p>
-                    <h3 id="canvas-canvas">Canvas实例</h3>
-                    <p>我们以画一条线开始，代码如下：</p>
-                    <!--<div class="highlight">-->
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-3">复制代码</button><code id="dm-3">
+          <h3 id="canvas-example">Canvas案例</h3>
+          <p>HTML5技术（注意非flash）的
+            <a href="../data/web/zwdzjs.rar">2D植物大战僵尸</a>和
+            <a href="../data/web/tetris-3D.rar">3D俄罗斯方块</a>游戏以及
+            <a href="../data/web/canvas-clock.html" target="_blank">Canvas时钟</a> 。</p>
+          <h3 id="canvas-canvas">Canvas实例</h3>
+          <p>我们以画一条线开始，代码如下：</p>
+          <!--<div class="highlight">-->
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-3">复制代码</button><code id="dm-3">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -1102,16 +1268,16 @@ checkScope()();		//注意此处的使用方法。返回值为local scope而非gl
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-                    <!--</div>-->
-                    <p>效果如下：</p>
-                    <canvas id="diagonal" style="border: 1px solid;" width="200px" height="200px">Opps!</canvas>
-                    <div class="bs-callout bs-callout-info">
-                        <h4>请注意代码中Canvas的使用以及JavaScript的调用方式！</h4>
-                    </div>
-                    <p>下面再看一个较复杂的实例，效果如下，请阅读以下代码：</p>
-                    <canvas id="trails" style="border: 1px solid;" width="400px" height="400px">Opps!</canvas>
-                    <!--<div class="highlight">-->
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-4">复制代码</button><code id="dm-4">
+          <!--</div>-->
+          <p>效果如下：</p>
+          <canvas id="diagonal" style="border: 1px solid;" width="200px" height="200px">Opps!</canvas>
+          <div class="bs-callout bs-callout-info">
+            <h4>请注意代码中Canvas的使用以及JavaScript的调用方式！</h4>
+          </div>
+          <p>下面再看一个较复杂的实例，效果如下，请阅读以下代码：</p>
+          <canvas id="trails" style="border: 1px solid;" width="400px" height="400px">Opps!</canvas>
+          <!--<div class="highlight">-->
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-4">复制代码</button><code id="dm-4">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -1197,25 +1363,25 @@ checkScope()();		//注意此处的使用方法。返回值为local scope而非gl
 &lt;/body&gt;
 &lt;/html&gt;</code> </pre>
 
-                </div>
+        </div>
 
-                <!-- 矢量图形SVG初步===================== -->
-                <div class="bs-docs-section">
-                    <div class="page-header">
-                        <h1 id="svg">矢量图形SVG初步</h1>
-                    </div>
-                    <p class="lead">Canvas（画布）是基于像素（栅格）的图形、图像以及动画，而SVG（Scalable Vector Graphics，可缩放矢量图形）是基于矢量的，两者的区别你放大图形即可知晓。</p>
+        <!-- 矢量图形SVG初步===================== -->
+        <div class="bs-docs-section">
+          <div class="page-header">
+            <h1 id="svg">矢量图形SVG初步</h1>
+          </div>
+          <p class="lead">Canvas（画布）是基于像素（栅格）的图形、图像以及动画，而SVG（Scalable Vector Graphics，可缩放矢量图形）是基于矢量的，两者的区别你放大图形即可知晓。</p>
 
-                    <h3 id="svg-example">SVG实例</h3>
-                    <p>SVG实例一，效果和代码如下：</p>
-                    <svg width="200px" height="150px">
-                        <g transform="translate(60,0) rotate(30) scale(0.75)" id="shapeGroup1">
-                            <rect x=10 y=20 width=100 height=80 stroke=red fill=#ccc />
-                            <circle cx=120 cy=80 r=40 stroke=#00f fill=none stroke-width=8 />
-                        </g>
-                    </svg>
-                    <!--<div class="highlight">-->
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-5">复制代码</button><code id="dm-5">
+          <h3 id="svg-example">SVG实例</h3>
+          <p>SVG实例一，效果和代码如下：</p>
+          <svg width="200px" height="150px">
+            <g transform="translate(60,0) rotate(30) scale(0.75)" id="shapeGroup1">
+              <rect x=10 y=20 width=100 height=80 stroke=red fill=#ccc />
+              <circle cx=120 cy=80 r=40 stroke=#00f fill=none stroke-width=8 />
+            </g>
+          </svg>
+          <!--<div class="highlight">-->
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-5">复制代码</button><code id="dm-5">
 &lt;!--设置SCG画布--&gt;
 &lt;svg width=200 height=200&gt;
 &lt;!--//g标签将以下图形组合为Group进行变换，以下分别是移动、旋转和缩放--&gt;
@@ -1227,21 +1393,21 @@ checkScope()();		//注意此处的使用方法。返回值为local scope而非gl
 &lt;/svg&gt;
 </code>
                     </pre>
-                    <!--</div>-->
-                    <p>SVG实例二，效果和代码如下：</p>
-                    <svg width="400px" height="200px">
-                        <defs>
-                            <g id="shapeGroup2">
-                                <rect x="10" y="20" width="100" height="80" stroke="red" fill="#ccc" />
-                                <circle cx="120" cy="80" r="40" stroke="#00f" fill="none" stroke-width="8" />
-                            </g>
-                        </defs>
-                        <use xlink:href="#shapeGroup2" transform="translate(60,0) scale(1.5)" />
-                        <use xlink:href="#shapeGroup2" transform="translate(120,80) scale(0.4)" />
-                        <use xlink:href="#shapeGroup2" transform="translate(20,60) scale(0.25)" />
-                    </svg>
-                    <!--<div class="highlight">-->
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-6">复制代码</button><code id="dm-6">
+          <!--</div>-->
+          <p>SVG实例二，效果和代码如下：</p>
+          <svg width="400px" height="200px">
+            <defs>
+              <g id="shapeGroup2">
+                <rect x="10" y="20" width="100" height="80" stroke="red" fill="#ccc" />
+                <circle cx="120" cy="80" r="40" stroke="#00f" fill="none" stroke-width="8" />
+              </g>
+            </defs>
+            <use xlink:href="#shapeGroup2" transform="translate(60,0) scale(1.5)" />
+            <use xlink:href="#shapeGroup2" transform="translate(120,80) scale(0.4)" />
+            <use xlink:href="#shapeGroup2" transform="translate(20,60) scale(0.25)" />
+          </svg>
+          <!--<div class="highlight">-->
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-6">复制代码</button><code id="dm-6">
 &lt;svg width="200" height="200"&gt;
     &lt;!--预定义，准备重复使用--&gt;
     &lt;defs&gt;
@@ -1256,88 +1422,89 @@ checkScope()();		//注意此处的使用方法。返回值为local scope而非gl
     &lt;use xlink:href="#shapeGroup2" transform="translate(20,60) scale(0.25)" /&gt;
 &lt;/svg&gt;
 </code></pre>
-                    <!--</div>-->
-                    <p><a href="https://developer.mozilla.org/zh-CN/demos/" target="_blank">在Mozilla开发者网络中有大量示例请自行研究。</a> 以下是一个以SVG等技术做出的
-                        <a href="../data/web/SVG-demo.zip">演示太阳系</a>的漂亮示例，截图效果如下：</p>
-                    <img src="../assets/img/SVG-demo.png" alt="SVG-demo" width="850px" />
-                </div>
+          <!--</div>-->
+          <p>
+            <a href="https://developer.mozilla.org/zh-CN/demos/" target="_blank">在Mozilla开发者网络中有大量示例请自行研究。</a> 以下是一个以SVG等技术做出的
+            <a href="../data/web/SVG-demo.zip">演示太阳系</a>的漂亮示例，截图效果如下：</p>
+          <img src="../assets/img/SVG-demo.png" alt="SVG-demo" width="850px" />
+        </div>
 
-                <!-- HTML5音频视频===================== -->
-                <div class="bs-docs-section">
-                    <div class="page-header">
-                        <h1 id="av">HTML5音频视频初步</h1>
-                    </div>
-                    <p class="lead">在Web页面中播放音视频的典型方式为：Flash、QuickTime、Windows Media插件，而HTML5是直接提供的 原生支持，无需这些插件，同时提供了通用、集成以及可JavaScript控制的API，开发人员尤其钟情。
-                    </p>
+        <!-- HTML5音频视频===================== -->
+        <div class="bs-docs-section">
+          <div class="page-header">
+            <h1 id="av">HTML5音频视频初步</h1>
+          </div>
+          <p class="lead">在Web页面中播放音视频的典型方式为：Flash、QuickTime、Windows Media插件，而HTML5是直接提供的 原生支持，无需这些插件，同时提供了通用、集成以及可JavaScript控制的API，开发人员尤其钟情。
+          </p>
 
-                    <h3 id="av-a">Audio实例</h3>
-                    <p>下面是一个音频播放的效果及代码，请参阅教材了解更多：</p>
-                    <audio controls>
-                        <source src="../assets/av/johann_sebastian_bach_air.mp3">
-                        <source src="../assets/av/johann_sebastian_bach_air.ogg"> 巴赫的舒缓音乐
-                    </audio>
-                    <!--<div class="highlight">-->
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-7">复制代码</button><code id="dm-7">
+          <h3 id="av-a">Audio实例</h3>
+          <p>下面是一个音频播放的效果及代码，请参阅教材了解更多：</p>
+          <audio controls>
+            <source src="../assets/av/johann_sebastian_bach_air.mp3">
+            <source src="../assets/av/johann_sebastian_bach_air.ogg"> 巴赫的舒缓音乐
+          </audio>
+          <!--<div class="highlight">-->
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-7">复制代码</button><code id="dm-7">
 &lt;audio controls&gt;
     &lt;source src="../assets/av/johann_sebastian_bach_air.mp3"&gt;
     &lt;source src="../assets/av/johann_sebastian_bach_air.ogg"&gt;
     巴赫的舒缓音乐
 &lt;/audio&gt;</code></pre>
-                    <!--</div>-->
-                    <h3 id="av-v">Video实例</h3>
-                    <p>下面是一个视频播放的效果及代码，请参阅教材了解更多：</p>
-                    <video controls autobuffer="true" width="850px" poster="../assets/img/poster.jpg">
-                        <source src="../assets/av/oceans.mp4"> 不支持的浏览器
-                    </video>
-                    <!--<div class="highlight">-->
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-8">复制代码</button><code id="dm-8">
+          <!--</div>-->
+          <h3 id="av-v">Video实例</h3>
+          <p>下面是一个视频播放的效果及代码，请参阅教材了解更多：</p>
+          <video controls autobuffer="true" width="850px" poster="../assets/img/poster.jpg">
+            <source src="../assets/av/oceans.mp4"> 不支持的浏览器
+          </video>
+          <!--<div class="highlight">-->
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-8">复制代码</button><code id="dm-8">
 &lt;video controls autobuffer="true" width="850px" poster="../assets/img/poster.jpg"&gt;
     &lt;source src="../assets/av/oceans.mp4"&gt;
     不支持的浏览器
 &lt;/video&gt;
 </code></pre>
-                    <!--</div>-->
-                    <h3 id="av-3">第三方播放工具</h3>
-                    <p>以上原生的音视频播放如不能满足要求（如时间轴不能拖动，加入时刻点预览小窗口等）则可以用JavaScript对事件进行控制或使用大量的第三方工具（开源免费），以利于获得更多的控制</p>
-                </div>
+          <!--</div>-->
+          <h3 id="av-3">第三方播放工具</h3>
+          <p>以上原生的音视频播放如不能满足要求（如时间轴不能拖动，加入时刻点预览小窗口等）则可以用JavaScript对事件进行控制或使用大量的第三方工具（开源免费），以利于获得更多的控制</p>
+        </div>
 
 
-                <!--地理定位及地图=====================-->
-                <div class="bs-docs-section">
-                    <div class="page-header">
-                        <h1 id="geo">地理定位及地图</h1>
-                    </div>
-                    <p class="lead">HTML5提供了全新的Geolocation API，当请求一个位置信息时， 如果用户同意，则浏览器通过支持HTML5地理定位功能的底层设备（如手机的 GPS等）得到该信息。位置信息一般由纬度、经度及其它数据构成，我们则可以此
-                        构建位置感知类应用程序如地图查看、导航、租房指南等。
-                    </p>
+        <!--地理定位及地图=====================-->
+        <div class="bs-docs-section">
+          <div class="page-header">
+            <h1 id="geo">地理定位及地图</h1>
+          </div>
+          <p class="lead">HTML5提供了全新的Geolocation API，当请求一个位置信息时， 如果用户同意，则浏览器通过支持HTML5地理定位功能的底层设备（如手机的 GPS等）得到该信息。位置信息一般由纬度、经度及其它数据构成，我们则可以此
+            构建位置感知类应用程序如地图查看、导航、租房指南等。
+          </p>
 
-                    <h3 id="geo-basic">地理定位及地图基本原理</h3>
-                    <h4>底层设备及其数据来源：</h4>
-                    <ol>
-                        <li>带GPS功能的设备，通过GPS卫星直接得到数据，高精度</li>
-                        <li>以无线基站通信的设备，通过信号基站来大致确定位置，低精度</li>
-                        <li>带IP地址的通信设备，以注册的IP的物理位置来大致确定位置，低精度</li>
-                    </ol>
-                    <h4>完整过程如下：</h4>
-                    <ol>
-                        <li>用户从浏览器打开位置感知应用页面</li>
-                        <li>页面加载后将调用Geolocation函数请求位置</li>
-                        <li>浏览器拦截该调用，向用户发出许可请求。如用户拒绝则什么都不会发生，否则</li>
-                        <li>浏览器将从上述的底层（宿主）设备检索位置信息如IP、GPS等</li>
-                        <li>浏览器将该位置信息发给它预设的、受信任的外部定位服务器，以期得到更详细的位置信息</li>
-                        <li>浏览器将该详细位置信息返回给页面应用</li>
-                    </ol>
+          <h3 id="geo-basic">地理定位及地图基本原理</h3>
+          <h4>底层设备及其数据来源：</h4>
+          <ol>
+            <li>带GPS功能的设备，通过GPS卫星直接得到数据，高精度</li>
+            <li>以无线基站通信的设备，通过信号基站来大致确定位置，低精度</li>
+            <li>带IP地址的通信设备，以注册的IP的物理位置来大致确定位置，低精度</li>
+          </ol>
+          <h4>完整过程如下：</h4>
+          <ol>
+            <li>用户从浏览器打开位置感知应用页面</li>
+            <li>页面加载后将调用Geolocation函数请求位置</li>
+            <li>浏览器拦截该调用，向用户发出许可请求。如用户拒绝则什么都不会发生，否则</li>
+            <li>浏览器将从上述的底层（宿主）设备检索位置信息如IP、GPS等</li>
+            <li>浏览器将该位置信息发给它预设的、受信任的外部定位服务器，以期得到更详细的位置信息</li>
+            <li>浏览器将该详细位置信息返回给页面应用</li>
+          </ol>
 
-                    <p>目前，大多数现代浏览器都支持该功能，但位置信息将触发隐私保护机制，也即需得到用户许可！</p>
-                    <p>另外，位置感知的应用程序不能从本地文件系统运行，意即需要运行在某Web服务器如在Webstorm中。</p>
-                    <h3 id="geo-example">Google、Sogou地图代码及效果</h3>
-                    <div class="bs-callout bs-callout-info">
-                        <h4 id="status"></h4>
-                    </div>
-                    <div id="mapholder" style="width: 850px;height: 500px"></div>
-                    <p></p>
-                    <!--<div class="highlight">-->
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-9">复制代码</button><code id="dm-9">
+          <p>目前，大多数现代浏览器都支持该功能，但位置信息将触发隐私保护机制，也即需得到用户许可！</p>
+          <p>另外，位置感知的应用程序不能从本地文件系统运行，意即需要运行在某Web服务器如在Webstorm中。</p>
+          <h3 id="geo-example">Google、Sogou地图代码及效果</h3>
+          <div class="bs-callout bs-callout-info">
+            <h4 id="status"></h4>
+          </div>
+          <div id="mapholder" style="width: 850px;height: 500px"></div>
+          <p></p>
+          <!--<div class="highlight">-->
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-9">复制代码</button><code id="dm-9">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -1427,28 +1594,31 @@ checkScope()();		//注意此处的使用方法。返回值为local scope而非gl
 &lt;/body&gt;
 &lt;/html&gt;
                     </code></pre>
-                    <!--</div>-->
-                </div>
+          <!--</div>-->
+        </div>
 
-                <!--AngularJS=====================-->
-                <div class="bs-docs-section">
-                    <div class="page-header">
-                        <h1 id="angular"><img src="../assets/img/AngularJS-large.png" alt="angularjs" /></h1>
-                    </div>
-                    <p class="lead">使用超动感HTML & JS开发WEB应用！</p>
-                    <h4></h4>
-                    <p>Why AngularJS?<br> HTML is great for declaring static documents, but it falters when we try to use it
-                        for declaring dynamic views in web-applications. AngularJS lets you extend HTML vocabulary for your
-                        application. The resulting environment is extraordinarily expressive, readable, and quick to develop.</p>
-                    <h3 id="angular-what">AngularJS是什么</h3>
-                    <p>AngularJS是一款由Google维护的开源JavaScript库，为开发单一页面Web应用（CRUD）而生的。它的目标是增强基于浏览器的应用，并带有MVC模式功能，这为了使得开发和测试变得更加容易。
-                        函式库读取包含附加自定义的HTML， 遵从这些自定义属性中的指令，并将页面中的输入或输出与由JavaScript变量表示的模型绑定起来。这些JavaScript变量的值可以手工设置，或者从静态或动态JSON资源中获取。
-                        请访问其
-                        <a href="http://angularjs.org/">英文站点</a>及<a href="http://www.angularjs.cn/">中文社区</a>。
-                    </p>
-                    <p>如果没完全明白以上的意思，那就看下面的例子。</p>
-                    <h3 id="angular-config">Angular配置</h3>
-                    <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#an-c">复制代码</button><code id="an-c">
+        <!--AngularJS=====================-->
+        <div class="bs-docs-section">
+          <div class="page-header">
+            <h1 id="angular">
+              <img src="../assets/img/AngularJS-large.png" alt="angularjs" />
+            </h1>
+          </div>
+          <p class="lead">使用超动感HTML & JS开发WEB应用！</p>
+          <h4></h4>
+          <p>Why AngularJS?
+            <br> HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views
+            in web-applications. AngularJS lets you extend HTML vocabulary for your application. The resulting environment
+            is extraordinarily expressive, readable, and quick to develop.</p>
+          <h3 id="angular-what">AngularJS是什么</h3>
+          <p>AngularJS是一款由Google维护的开源JavaScript库，为开发单一页面Web应用（CRUD）而生的。它的目标是增强基于浏览器的应用，并带有MVC模式功能，这为了使得开发和测试变得更加容易。 函式库读取包含附加自定义的HTML，
+            遵从这些自定义属性中的指令，并将页面中的输入或输出与由JavaScript变量表示的模型绑定起来。这些JavaScript变量的值可以手工设置，或者从静态或动态JSON资源中获取。 请访问其
+            <a href="http://angularjs.org/">英文站点</a>及
+            <a href="http://www.angularjs.cn/">中文社区</a>。
+          </p>
+          <p>如果没完全明白以上的意思，那就看下面的例子。</p>
+          <h3 id="angular-config">Angular配置</h3>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#an-c">复制代码</button><code id="an-c">
 ------------
 1. node安装
 ------------
@@ -1529,55 +1699,762 @@ git config --global credential.helper wincred命令可以缓存github账户和�
 通信专业： https://github.com/wang1/TOH-Comm
 物联专业： https://github.com/wang1/TOH-IoT</code></pre>
 
-                    
-                <hr>
-                <!--angularjs聊天室实例=====================-->
-                <h3 id="angular-technode">基于WebSocket的聊天室实例</h3>
-                <p>本节我们将一步一步构建一个聊天室，该实例是一个综合例子，涉及AngularJS 、NodeJS、WebSocket、MondoDB等知识。本实例来自
-                    <a href="https://github.com/island205" target="_blank">isLand</a>在GitHub的分享</p>
-                <div class="bs-callout bs-callout-info">
-                    <h3>
-                        <ul>
-                            <li><a href="TechNode/01-最简单的聊天室.html" target="_blank">01-最简单的聊天室</a></li>
-                            <li><a href="TechNode/02-让用户不再匿名.html" target="_blank">02-让用户不再匿名</a></li>
-                            <li><a href="TechNode/03-提供不同的房间.html" target="_blank">03-提供不同的房间</a> </li>
-                            <li><a href="TechNode/04-架构优化与发布.html" target="_blank">04-架构优化与发布</a> </li>
-                        </ul>
-                    </h3>
-                </div>
+          <hr>
+          <h3 id="angular-TOH">Tour Of Heroes in Angular</h3>
+          <p>请参照
+            <a href="https://angular.cn/tutorial">Angular教程</a>进行英雄之旅的学习，掌握基本的Angular前端开发技术。</p>
+          <hr>
+          <h3 id="angular-TOH-v2">TOH-Version 2</h3>
+          <p>在上节的基础上，我们进行Tour Of Heroes的升级版开发。本版本仍以TOH为例，当模拟一个生产环境进行开发。</p>
+          <p>
+            <label>用户需求</label>
+          </p>
+          <p>用户有许多的英雄需要展示，目前打算：</p>
+          <ol>
+            <li>采用列表显示全部英雄</li>
+            <li>采用仪表板方式展示顶级英雄</li>
+            <li>能添加、删除、修改英雄</li>
+            <li>响应迅速、性能稳定、界面简洁美观</li>
+          </ol>
+          <p>
+            <label>需求分析</label>
+          </p>
+          <p>根据用户的需求，我们做出了以下分析：</p>
+          <ol>
+            <li>无用户角色，即不设置权限，所有用户都能进行CRUD操作；</li>
+            <li>响应迅速、性能稳定前端由
+              <code>Angular</code>支持，后台由Node和MongoDB支持（拟采用合成框架
+              <code>Deployd</code>）；</li>
+            <li>界面简洁美观由
+              <code>MDBootstrap</code>保证；</li>
+          </ol>
+          <div class="bs-callout bs-callout-info">
+            <p>项目Demo大致如此：---------------------</p>
+          </div>
 
-                <!-- MEAN资料-->
-                <h3 id="MEAN-data">MEAN全堆栈资料</h3>
-                <p>学习MEAN之前请先对HTML、BootStrap、Javascript有一定了解，特别是JS，是前后台的开发语言！</p>
-                <div class="bs-callout bs-callout-info">
-                    <ol>
-                        <li><a href="../data/communication/JS.zip">JavaScript相关书籍</a></li>
-                        <li><a href="../data/communication/AngularJS.zip">AngularJS相关书籍</a></li>
-                        <li><a href="../data/communication/Node.zip">Node相关书籍</a></li>
-                        <li><a href="../data/communication/MEAN.zip">MEAN相关书籍</a></li>
-                        <li><a href="http://www.bossable.com/555/mean-app-challenge/">The 30 Day MEAN Stack Honolulu Challenge（外网）</a></li>
-                        <li><a href="http://www.hubwiz.com/coursecenter">汇智网课程（外网）</a></li>
-                    </ol>
-                </div>
+          <p>
+            <label>数据模型</label>
+          </p>
+          <p>鉴于目前只展示英雄，我们给出如下的英雄数据模型（后期可考虑图片）：</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#toh-model">复制代码</button><code id="toh-model">
+------------------------------------------------------
+#属性名称       数据类型         允许为空    说明
+------------------------------------------------------              
+id            string           no         系统设定
+no            string           no         编号
+name          string           no         姓名
+description   string           yes        简介
+isTop         boolean          yes        是否顶级英雄  
+------------------------------------------------------ </code></pre>
 
+          <p>
+            <label>项目初始化及MDB配置</label>
+          </p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#toh-config">复制代码</button><code id="toh-config">
+--------------
+#前端项目初始化
+--------------
+ng new TOH-V2-Frontend --style=scss   #新建Angular项目，注意，更改为scss（新的css语法，MDB使用）
+----------------------------------------------------------
+#配置Angular项目使用MDB框架（注意，以下步骤在项目目录下进行）
+----------------------------------------------------------
+Step 1：yarn add angular-bootstrap-md    #本地项目（注意没有global参数）添加MDB模块
+
+Step 2：在app.module.ts文件导入NO_ERRORS_SCHEMA、MDBBootstrapModule，如下所示：
+    import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+    import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
+    @NgModule({
+        imports: [
+            MDBBootstrapModule.forRoot()
+        ],
+        schemas: [ NO_ERRORS_SCHEMA ]
+    });
+
+Step 3：在项目根目录下angular-cli.json文件中添加如下配置:
+    "styles": [
+        "../node_modules/font-awesome/scss/font-awesome.scss",
+        "../node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
+        "../node_modules/angular-bootstrap-md/scss/mdb-free.scss",
+        "./styles.scss"
+    ],
+    "scripts": [
+    "../node_modules/chart.js/dist/Chart.js",
+    "../node_modules/hammerjs/hammer.min.js"
+    ],
+
+Step 4：在项目根目录下tsconfig.json文件中的"compileOnSave": false行前添加如下配置：
+    "include": ["node_modules/angular-bootstrap-md/**/*.ts",  "src/**/*.ts"],
+
+Step 5：安装额外的库
+    yarn add chart.js@2.5.0 font-awesome hammerjs 
+
+Step 6：ng serve -o  #至此，MDB配置完毕，测试是否成功运行
+--------------
+#后台项目初始化
+--------------
+dpd create TOH-V2-Backend   #生成后台项目
+打开控制台（localhost:2403/dashboard），按以上数据模型新建heroes-v2表
+                     </code></pre>
+          <p>
+            <label>Hero类</label>
+          </p>
+          <p>为保持数据的一致性，我们在
+            <code>app</code>目录中新建
+            <code>hero.ts</code>文件如下：</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#toh-hero">复制代码</button><code id="toh-hero">
+export class Hero {
+  id: string;
+  no: string;
+  name: string;
+  description: string;
+  isTop: boolean;
+} </code></pre>
+
+          <p>
+            <label>Hero服务</label>
+          </p>
+          <p>根据分析和经验，我们需提供一个HeroService类与后台服务器通信并提供/接收组件要求的数据，以此屏蔽细节，进行解耦。</p>
+          <p>该服务可提供所有英雄、指定id的英雄、顶级英雄，可更新、新建、删除英雄等。</p>
+          <p>我们使用
+            <code>ng g s hero --module=app</code>命令新建
+            <code>hero.service.ts</code>文件</p>
+          <div class="bs-callout bs-callout-info">
+            <p>
+              <code>--module=app</code>参数将自动在
+              <code>AppModule</code>根模块文件中标明该服务提供商</p>
+            <p>该服务需要使用
+              <code>HttpClient</code>模块，所以请先在
+              <code>AppModule</code>文件中的
+              <code>@NgModule.imports</code>数组中添加
+              <code>HttpClientModule</code>（模块文件位于
+              <code>@angular/common/http</code>路径）</p>
+          </div>
+
+          <p>参考代码如下：</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#toh-service">复制代码</button><code id="toh-service">
+import { Hero } from './hero';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+@Injectable()
+export class HeroService {
+    private heroesUrl = 'http://localhost:2403/heroes-v2';
+
+    constructor(private httpClient: HttpClient) { }
+
+    getHeroes(): Observable&lt;Hero[]> {
+      return this.httpClient.get&lt;Hero[]>(this.heroesUrl);
+    }
+
+    getHeroById(id: string): Observable&lt;Hero> {
+      return this.httpClient.get&lt;Hero>(`${this.heroesUrl}/${id}`);
+    }
+
+    getTopHeroes(): Observable&lt;Hero[]> {
+      // 请参考Deployd的API文档
+      return this.httpClient.get&lt;Hero[]>(`${this.heroesUrl}?isTop=true`);
+    }
+
+    addHero(hero: Hero): Observable&lt;Hero> {
+      return this.httpClient.post&lt;Hero>(this.heroesUrl, hero);
+    }
+
+    deleteHero(id: string): Observable&lt;any> {
+      return this.httpClient.delete(`${this.heroesUrl}/${id}`);
+    }
+
+    updateHero(hero: Hero): Observable&lt;Hero> {
+      return this.httpClient.put&lt;Hero>(this.heroesUrl, hero);
+    }
+}</code></pre>
+          <p>
+            <label>AppComponent根组件</label>
+          </p>
+          <p>一个Angular应用必须有一个根组件，该组件一般作为其它组件的容器，且提供导航。</p>
+          <p>该组件在新建项目时已经自动生成，参考代码如下：</p>
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#app-1" data-toggle="tab">.TS</a>
+            </li>
+            <li>
+              <a href="#app-2" data-toggle="tab">.HTML</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="app-1">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#app-ts">复制代码</button><code id="app-ts">
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'TOH-英雄之旅';
+}</code></pre>
             </div>
+            <div class="tab-pane fade" id="app-2">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#app-html">复制代码</button><code id="app-html">
+&lt;mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark bg-default scrolling-navbar" [containerInside]="false">
+  &lt;logo>
+    &lt;a class="logo navbar-brand" href="#">
+      &lt;i class="fa fa-child">&lt;/i>
+      &lt;strong>{{title}}&lt;/strong>
+    &lt;/a>
+  &lt;/logo>
+  &lt;links>
+    &lt;ul class="navbar-nav mr-auto">
+      &lt;li class="nav-item waves-light" mdbRippleRadius>
+        &lt;a class="nav-link" routerLink="/hero-list">所有英雄&lt;/a>
+      &lt;/li>
+      &lt;li class="nav-item waves-light" mdbRippleRadius>
+        &lt;a class="nav-link" routerLink="/hero-top">顶级英雄&lt;/a>
+      &lt;/li>
+      &lt;li class="nav-item waves-light" mdbRippleRadius>
+        &lt;a class="nav-link" routerLink="/hero-add">添加一个英雄？&lt;/a>
+      &lt;/li>
+    &lt;/ul>
+    &lt;ul class="navbar-nav nav-flex-icons">
+    &lt;li class="nav-item waves-light" mdbRippleRadius>
+      &lt;a class="nav-link">
+        &lt;i class="fa fa-facebook">&lt;/i>
+      &lt;/a>
+    &lt;/li>
+    &lt;li class="nav-item waves-light" mdbRippleRadius>
+      &lt;a class="nav-link">
+        &lt;i class="fa fa-twitter">&lt;/i>
+      &lt;/a>
+    &lt;/li>
+    &lt;li class="nav-item waves-light" mdbRippleRadius>
+      &lt;a class="nav-link">
+        &lt;i class="fa fa-instagram">&lt;/i>
+      &lt;/a>
+    &lt;/li>
+    &lt;/ul>
+  &lt;/links>
+&lt;/mdb-navbar>
+&lt;main>
+  &lt;div class="container">
+    &lt;router-outlet>&lt;/router-outlet>
+  &lt;/div>
+&lt;/main>
+                      </code></pre>
+            </div>
+          </div>
+
+          <div class="bs-callout bs-callout-info">
+            <p>除根组件外，我们拟构建list、top、detail及add四个组件，请用
+              <code>ng g c component-name</code>命令自动生成</p>
+          </div>
+          <p>
+            <label>HeroList组件</label>
+          </p>
+          <p>以列表方式显示所有英雄，参考代码如下：</p>
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#list-1" data-toggle="tab">.TS</a>
+            </li>
+            <li>
+              <a href="#list-2" data-toggle="tab">.HTML</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="list-1">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#list-ts">复制代码</button><code id="list-ts">
+import { Component, OnInit } from '@angular/core';
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
+import { Subject } from 'rxjs/Subject';
+
+@Component({
+  selector: 'app-hero-list',
+  templateUrl: './hero-list.component.html',
+  styleUrls: ['./hero-list.component.scss']
+})
+export class HeroListComponent implements OnInit {
+  heroes: Hero[];
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit() {
+    this.getAllHeroes();
+  }
+
+  getAllHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
+  }
+
+  delete(id: string): void {
+    this.heroService.deleteHero(id)
+      .subscribe(() => this.heroes = this.heroes.filter(h => h.id !== id));
+  }
+}
+</code></pre>
+            </div>
+            <div class="tab-pane fade active" id="list-2">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#list-html">复制代码</button><code id="list-html">
+&lt;div class="row mt-5 pt-5 animated fadeInLeft" data-wow-delay="0.5s">
+  &lt;table class="table table-hover">
+    &lt;thead class="bg-default">
+      &lt;tr class="text-white">
+        &lt;th>#&lt;/th>
+        &lt;th>姓 名&lt;/th>
+        &lt;th>删 除&lt;/th>
+        &lt;th>查 看&lt;/th>
+      &lt;/tr>
+    &lt;/thead>
+    &lt;tbody>
+      &lt;tr *ngFor="let hero of heroes" >
+        &lt;th scope="row">{{hero.no}}&lt;/th>
+        &lt;td>{{hero.name}}&lt;/td>
+        &lt;td>
+          &lt;button type="button" class="btn btn-sm btn-danger my-0 waves-light" (click)="delete(hero.id)">
+            &lt;i class="fa fa-trash">&lt;/i>
+          &lt;/button>
+        &lt;/td>
+        &lt;td>
+            &lt;a class="btn btn-sm btn-danger my-0 waves-light" routerLink="/hero-detail/{{hero.id}}">
+              &lt;i class="fa fa-eye">&lt;/i>
+            &lt;/a>
+        &lt;/td>
+      &lt;/tr>
+    &lt;/tbody>
+  &lt;/table>
+&lt;/div>  
+</code></pre>
+            </div>
+          </div>
+
+          <p>
+            <label>HeroTop组件</label>
+          </p>
+          <p>以卡片方式显示顶级英雄，参考代码如下：</p>
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#top-1" data-toggle="tab">.TS</a>
+            </li>
+            <li>
+              <a href="#top-2" data-toggle="tab">.HTML</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="top-1">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#top-ts">复制代码</button><code id="top-ts">
+import { HeroService } from '../hero.service';
+import { Component, OnInit } from '@angular/core';
+import { Hero } from '../hero';
+
+@Component({
+  selector: 'app-hero-top',
+  templateUrl: './hero-top.component.html',
+  styleUrls: ['./hero-top.component.scss']
+})
+export class HeroTopComponent implements OnInit {
+  topHeroes: Hero[];
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit() {
+    this.getTopHeroes();
+  }
+
+  getTopHeroes(): void {
+    this.heroService.getTopHeroes()
+      .subscribe(heroes => this.topHeroes = heroes);
+  }
+}   </code></pre>
+            </div>
+            <div class="tab-pane fade active" id="top-2">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#top-html">复制代码</button><code id="top-html">
+&lt;div class="row mt-5 pt-5 animated fadeInRight" data-wow-delay="0.5s">
+  &lt;div class="card col-5 mt-2 pt-2 mr-2 hoverable" *ngFor="let topHero of topHeroes">
+    &lt;div class="card-header bg-default lighten-1 white-text text-center">
+      顶级英雄-{{topHero.no}}
+    &lt;/div>
+    &lt;div class="card-body">
+      &lt;h4 class="card-title">{{topHero.name}}&lt;/h4>
+      &lt;p class="card-text text-truncate">{{topHero.description}}&lt;/p>
+      &lt;div class="text-center">
+        &lt;a class="btn btn-deep-orange waves-light" routerLink="/hero-detail/{{topHero.id}}" mdbRippleRadius>查看详情&lt;/a>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/div>     
+     </code></pre>
+            </div>
+          </div>
+          <p>
+            <label>HeroDetail组件</label>
+          </p>
+          <p>以卡片方式显示顶级英雄，参考代码如下：</p>
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#Detail-1" data-toggle="tab">.TS</a>
+            </li>
+            <li>
+              <a href="#Detail-2" data-toggle="tab">.HTML</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="Detail-1">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#Detail-ts">复制代码</button><code id="Detail-ts">
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HeroService } from '../hero.service';
+import { Hero } from '../hero';
+import { Location } from '@angular/common';
+
+@Component({
+  selector: 'app-hero-detail',
+  templateUrl: './hero-detail.component.html',
+  styleUrls: ['./hero-detail.component.scss']
+})
+export class HeroDetailComponent implements OnInit {
+  hero: Hero;
+  constructor(private route: ActivatedRoute,
+    private heroService: HeroService,
+    private location: Location) { }
+
+  ngOnInit() {
+    this.getHero();
+  }
+
+  getHero(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.heroService.getHeroById(id)
+      .subscribe(hero => this.hero = hero);
+  }
+
+  save(): void {
+    this.heroService.updateHero(this.hero)
+      .subscribe(() => this.goBack());
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+}                                     
+     </code></pre>
+            </div>
+            <div class="tab-pane fade active" id="Detail-2">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#Detail-html">复制代码</button><code id="Detail-html">
+&lt;div class="row mt-5 pt-5 animated zoomIn" data-wow-delay="0.5s">
+  &lt;div class="col-3">&lt;/div>
+  &lt;div class="card col-6">
+    &lt;div class="card-body">
+      &lt;!--Header-->
+      &lt;div class="text-center">
+        &lt;h3>英雄详情&lt;/h3>
+      &lt;/div>
+
+      &lt;!--Body-->
+      &lt;div class="md-form form-sm">
+        &lt;i class="fa fa-sort-numeric-desc prefix">&lt;/i>
+        &lt;input mdbActive type="text" id="formNo" class="form-control" [(ngModel)]="hero.no">
+        &lt;label for="formNo">编号&lt;/label>
+      &lt;/div>
+
+      &lt;div class="md-form form-sm">
+        &lt;i class="fa fa-address-card prefix">&lt;/i>
+        &lt;input mdbActive type="text" id="formName" class="form-control" [(ngModel)]="hero.name">
+        &lt;label for="formName">姓名&lt;/label>
+      &lt;/div>
+
+      &lt;div class="md-form form-sm">
+        &lt;i class="fa fa-pencil prefix">&lt;/i>
+        &lt;textarea mdbActive type="text" id="formdesc" class="md-textarea mb-0"  [(ngModel)]="hero.description">&lt;/textarea>
+        &lt;label for="formdesc">简介&lt;/label>
+      &lt;/div>
+
+      &lt;div class="input-group md-form form-sm">
+        &lt;i class="fa fa-tag prefix">&lt;/i>
+        &lt;input type="text" class="form-control text-center" disabled placeholder="顶级英雄？">
+        &lt;span class="input-group-addon">
+          &lt;input type="checkbox" id="checkbox1"  [(ngModel)]="hero.isTop">
+          &lt;label for="checkbox1">&lt;/label>
+        &lt;/span>
+
+      &lt;/div>
+
+      &lt;div class="text-center mt-1-half">
+        &lt;button class="btn btn-deep-orange mb-2 waves-light" mdbRippleRadius (click)="save()">
+          保存
+        &lt;/button>
+        &lt;button class="btn btn-deep-orange mb-2 waves-light" mdbRippleRadius (click)="goBack()">
+            返回
+        &lt;/button>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/div>       
+     </code></pre>
+            </div>
+          </div>
+
+          <p>
+            <label>HeroAdd组件</label>
+          </p>
+          <p>以卡片方式显示顶级英雄，参考代码如下：</p>
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#Add-1" data-toggle="tab">.TS</a>
+            </li>
+            <li>
+              <a href="#Add-2" data-toggle="tab">.HTML</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="Add-1">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#Add-ts">复制代码</button><code id="Add-ts">
+import { HeroService } from '../hero.service';
+import { Hero } from '../hero';
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+
+@Component({
+  selector: 'app-hero-add',
+  templateUrl: './hero-add.component.html',
+  styleUrls: ['./hero-add.component.scss']
+})
+export class HeroAddComponent implements OnInit {
+
+  constructor(private heroService: HeroService, private location: Location) {}
+
+  ngOnInit() {}
+
+  add(no: string, name: string, description: string, isTop: boolean): void {
+    if (!no || !name) { return; }
+    this.heroService.addHero({no, name, description, isTop} as Hero)
+      .subscribe();
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+}                                     
+     </code></pre>
+            </div>
+            <div class="tab-pane fade active" id="Add-2">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#Add-html">复制代码</button><code id="Add-html">
+<!--Modal: Add Hero form-->
+&lt;div [config]="{ show: true }" mdbModal #addHeroModal="mdb-modal" class="modal fade" (onHidden)="goBack()" tabindex="-1" role="dialog">
+  &lt;div class="modal-dialog cascading-modal" role="document">    
+    &lt;div class="modal-content">
+      &lt;div class="modal-header bg-default darken-3 white-text">
+        &lt;h4 class="title">
+          &lt;i class="fa fa-user-plus">&lt;/i> 请填写英雄信息&lt;/h4>
+        &lt;button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="goBack()">
+          &lt;span aria-hidden="true">×&lt;/span>
+        &lt;/button>
+      &lt;/div>
+      &lt;div class="modal-body mb-0">
+        &lt;form role="form">
+          &lt;div class="md-form form-sm">
+            &lt;i class="fa fa-sort-numeric-desc prefix">&lt;/i>
+            &lt;input mdbActive type="text" id="formNo" class="form-control" #no required>
+            &lt;label for="formNo">编号&lt;/label>
+          &lt;/div>
+
+          &lt;div class="md-form form-sm">
+            &lt;i class="fa fa-address-card prefix">&lt;/i>
+            &lt;input mdbActive type="text" id="formName" class="form-control" #name required>
+            &lt;label for="formName">姓名&lt;/label>
+          &lt;/div>
+
+          &lt;div class="md-form form-sm">
+            &lt;i class="fa fa-pencil prefix">&lt;/i>
+            &lt;textarea mdbActive type="text" id="formdesc" class="md-textarea mb-0" #desc>&lt;/textarea>
+            &lt;label for="formdesc">简介&lt;/label>
+          &lt;/div>
+
+          &lt;div class="input-group md-form form-sm">
+            &lt;i class="fa fa-tag prefix">&lt;/i>
+            &lt;input type="text" class="form-control text-center" disabled placeholder="顶级英雄？">
+            &lt;span class="input-group-addon">
+              &lt;input type="checkbox" id="checkbox1" #isTop>
+              &lt;label for="checkbox1">&lt;/label>
+            &lt;/span>
+          &lt;/div>
+          &lt;div class="text-center mt-1-half">
+            &lt;button type="submit" class="btn btn-deep-orange mb-2 waves-light" mdbRippleRadius (click)="add(no.value,name.value,desc.value,isTop.checked);addHeroModal.hide();no.value='';name.value='';desc.value='';isTop.checked=false">
+              添 加
+              &lt;i class="fa fa-send ml-1">&lt;/i>
+            &lt;/button>
+          &lt;/div>
+        &lt;/form>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+&lt;!--Modal: Add Hero form-->       
+     </code></pre>
+            </div>
+          </div>
+
+          <p>
+            <label>导航模块</label>
+          </p>
+          <p>有了多个组件，我们需在组件视图之间切换即导航，利用Angular的导航模块可迅速的进行前端页面部分刷新。</p>
+          <p>我们使用
+            <code>ng g m app-routing --flat --module=app</code>命令新建
+            <code>app-routing.module.ts</code>导航模块文件</p>
+          <div class="bs-callout bs-callout-info">
+            <p>
+              <code>--flat</code>参数将在
+              <code>app</code>根目录中而不是在新文件夹中建该模块文件</p>
+            <p>该服务需要使用
+              <code>HttpClient</code>模块，所以请先在
+              <code>AppModule</code>文件中的
+              <code>@NgModule.imports</code>数组中添加
+              <code>HttpClientModule</code>（模块文件位于
+              <code>@angular/common/http</code>路径）</p>
+          </div>
+          <p>参考代码如下：</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#routing">复制代码</button><code id="routing">
+import { HeroAddComponent } from './hero-add/hero-add.component';
+import { HeroTopComponent } from './hero-top/hero-top.component';
+import { HeroListComponent } from './hero-list/hero-list.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'hero-top', pathMatch: 'full' },
+  { path: 'hero-list', component: HeroListComponent },
+  { path: 'hero-top', component: HeroTopComponent},
+  { path: 'hero-detail/:id', component: HeroDetailComponent},
+  { path: 'hero-add', component: HeroAddComponent}
+];
+
+@NgModule({
+  imports: [ RouterModule.forRoot(routes)],
+  exports: [ RouterModule  ]
+})
+export class AppRoutingModule { }                        
+                    </code></pre>
+
+          <p>
+            <label>根模块</label>
+          </p>
+          <p>Angular应用程序是以模块进行构建的。当前我们有一个根模块即
+            <code>app.module.ts</code>文件</p>
+          <p>任何组件、服务、自定义模块如路由模块以及第三方发模块如MDB、表单模块等都需要在根模块中导入或声明</p>
+          <p>目前该模块参考代码如下：</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#root">复制代码</button><code id="root">
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
+
+import { AppComponent } from './app.component';
+import { HeroService } from './hero.service';
+import { HeroListComponent } from './hero-list/hero-list.component';
+import { HeroTopComponent } from './hero-top/hero-top.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HeroAddComponent } from './hero-add/hero-add.component';
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeroListComponent,
+    HeroTopComponent,
+    HeroDetailComponent,
+    HeroAddComponent
+  ],
+  imports: [
+    BrowserModule,
+    MDBBootstrapModule.forRoot(),
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
+  ],
+  schemas: [ NO_ERRORS_SCHEMA ],
+  providers: [HeroService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+                   </code></pre>
+
+          <div class="bs-callout bs-callout-info">
+            <p>现在运行程序试试！</p>
+          </div>
+          <hr>
+          <!--angularjs聊天室实例=====================-->
+          <h3 id="angular-technode">基于WebSocket的聊天室实例</h3>
+          <p>本节我们将一步一步构建一个聊天室，该实例是一个综合例子，涉及AngularJS 、NodeJS、WebSocket、MondoDB等知识。本实例来自
+            <a href="https://github.com/island205" target="_blank">isLand</a>在GitHub的分享</p>
+          <div class="bs-callout bs-callout-info">
+            <h3>
+              <ul>
+                <li>
+                  <a href="TechNode/01-最简单的聊天室.html" target="_blank">01-最简单的聊天室</a>
+                </li>
+                <li>
+                  <a href="TechNode/02-让用户不再匿名.html" target="_blank">02-让用户不再匿名</a>
+                </li>
+                <li>
+                  <a href="TechNode/03-提供不同的房间.html" target="_blank">03-提供不同的房间</a>
+                </li>
+                <li>
+                  <a href="TechNode/04-架构优化与发布.html" target="_blank">04-架构优化与发布</a>
+                </li>
+              </ul>
+            </h3>
+          </div>
+
+          <!-- MEAN资料-->
+          <h3 id="MEAN-data">MEAN全堆栈资料</h3>
+          <p>学习MEAN之前请先对HTML、BootStrap、Javascript有一定了解，特别是JS，是前后台的开发语言！</p>
+          <div class="bs-callout bs-callout-info">
+            <ol>
+              <li>
+                <a href="../data/communication/JS.zip">JavaScript相关书籍</a>
+              </li>
+              <li>
+                <a href="../data/communication/AngularJS.zip">AngularJS相关书籍</a>
+              </li>
+              <li>
+                <a href="../data/communication/Node.zip">Node相关书籍</a>
+              </li>
+              <li>
+                <a href="../data/communication/MEAN.zip">MEAN相关书籍</a>
+              </li>
+              <li>
+                <a href="http://www.bossable.com/555/mean-app-challenge/">The 30 Day MEAN Stack Honolulu Challenge（外网）</a>
+              </li>
+              <li>
+                <a href="http://www.hubwiz.com/coursecenter">汇智网课程（外网）</a>
+              </li>
+            </ol>
+          </div>
+
         </div>
+      </div>
 
     </div>
 
     <!-- FOOTER -->
     <footer class="bs-footer" role="contentinfo">
-        <div class="container">
-            <p>本网站所列文档全部由棋歌整理及维护，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>协议发布。
-            </p>
+      <div class="container">
+        <p>本网站所列文档全部由棋歌整理及维护，并全部遵循
+          <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>协议发布。
+        </p>
 
-            <p>Powered By <a href="https://github.com/" target="_blank" title="">github</a> And<a href="http://www.bootcss.com/"
-                    target="_blank"> BootCSS</a></p>
+        <p>Powered By
+          <a href="https://github.com/" target="_blank" title="">github</a> And
+          <a href="http://www.bootcss.com/" target="_blank"> BootCSS</a>
+        </p>
 
-            <p>
-                <a href="http://www.cqjtu.edu.cn/" target="_blank">重庆交通大学信息学院</a>
-            </p>
-        </div>
+        <p>
+          <a href="http://www.cqjtu.edu.cn/" target="_blank">重庆交通大学信息学院</a>
+        </p>
+      </div>
     </footer>
 
 
@@ -1590,108 +2467,108 @@ git config --global credential.helper wincred命令可以缓存github账户和�
     <script src="../docs-assets/js/holder.min.js"></script>
     <script src="../docs-assets/js/highlight.min.js"></script>
     <script>
-        hljs.initHighlightingOnLoad();
+      hljs.initHighlightingOnLoad();
     </script>
 
     <script src="../docs-assets/js/clipboard.min.js"></script>
     <!--<script src="../docs-assets/js/snippets.js"></script>-->
     <!--<script src="../docs-assets/js/tooltips.js"></script>-->
     <script>
-        new Clipboard('.btn');
+      new Clipboard('.btn');
     </script>
 
     <script src="../docs-assets/js/application.js"></script>
 
     <script>
-        //Canvas实例
-        function drawDiagonal() {
-            //取得Canvas元素及其绘图上下文
-            var canvas = document.getElementById('diagonal');
-            var context = canvas.getContext('2d');
-            //用绝对坐标创建一条路径
-            context.beginPath();
-            context.moveTo(70, 140);
-            context.lineTo(140, 70);
-            //正式绘制
-            context.stroke();
-        }
-        function createCanopyPath(context) {
-            context.beginPath();
-            //树冠
-            context.moveTo(-25, -50);
-            context.lineTo(-10, -80);
-            context.lineTo(-20, -80);
-            context.lineTo(-5, -110);
-            context.lineTo(-15, -110);
-            //树顶点
-            context.lineTo(0, -140);
-            context.lineTo(15, -110);
-            context.lineTo(5, -110);
-            context.lineTo(20, -80);
-            context.lineTo(10, -80);
-            context.lineTo(25, -50);
-            //连接起点，闭合路径
-            context.closePath();
-        }
-        function drawTrails() {
-            var canvas = document.getElementById('trails');
-            var context = canvas.getContext('2d');
+      //Canvas实例
+      function drawDiagonal() {
+        //取得Canvas元素及其绘图上下文
+        var canvas = document.getElementById('diagonal');
+        var context = canvas.getContext('2d');
+        //用绝对坐标创建一条路径
+        context.beginPath();
+        context.moveTo(70, 140);
+        context.lineTo(140, 70);
+        //正式绘制
+        context.stroke();
+      }
+      function createCanopyPath(context) {
+        context.beginPath();
+        //树冠
+        context.moveTo(-25, -50);
+        context.lineTo(-10, -80);
+        context.lineTo(-20, -80);
+        context.lineTo(-5, -110);
+        context.lineTo(-15, -110);
+        //树顶点
+        context.lineTo(0, -140);
+        context.lineTo(15, -110);
+        context.lineTo(5, -110);
+        context.lineTo(20, -80);
+        context.lineTo(10, -80);
+        context.lineTo(25, -50);
+        //连接起点，闭合路径
+        context.closePath();
+      }
+      function drawTrails() {
+        var canvas = document.getElementById('trails');
+        var context = canvas.getContext('2d');
 
-            context.save();
-            context.translate(130, 250);
-            //调用，绘制树冠
-            createCanopyPath(context);
+        context.save();
+        context.translate(130, 250);
+        //调用，绘制树冠
+        createCanopyPath(context);
 
-            context.lineWidth = 4;
-            context.lineJoin = 'round';
-            context.strokeStyle = '#663300';
-            context.stroke();
+        context.lineWidth = 4;
+        context.lineJoin = 'round';
+        context.strokeStyle = '#663300';
+        context.stroke();
 
-            context.fillStyle = '#339900';
-            context.fill();
+        context.fillStyle = '#339900';
+        context.fill();
 
-            context.fillStyle = '#663300';
-            context.fillRect(-5, -50, 10, 50);
+        context.fillStyle = '#663300';
+        context.fillRect(-5, -50, 10, 50);
 
-            context.restore();
+        context.restore();
 
-            //绘制小路
-            context.save();
+        //绘制小路
+        context.save();
 
-            context.translate(-10, 350);
-            context.beginPath();
+        context.translate(-10, 350);
+        context.beginPath();
 
-            context.moveTo(0, 0);
-            context.quadraticCurveTo(170, -50, 260, -190);
-            context.quadraticCurveTo(310, -250, 410, -250);
+        context.moveTo(0, 0);
+        context.quadraticCurveTo(170, -50, 260, -190);
+        context.quadraticCurveTo(310, -250, 410, -250);
 
-            context.strokeStyle = '#663300';
-            context.lineWidth = 20;
-            context.stroke();
+        context.strokeStyle = '#663300';
+        context.lineWidth = 20;
+        context.stroke();
 
-            context.restore();
-            //文字
-            context.save();
+        context.restore();
+        //文字
+        context.save();
 
-            context.font = "60px 'Microsoft Yahei'";
-            context.fillStyle = '#996600';
-            context.textAlign = 'center';
-            context.shadowColor = 'rgba(0,0,0,0.2)';
-            context.shadowOffsetX = 15;
-            context.shadowOffsetY = -10;
-            context.shadowBlur = 2;
-            context.fillText('快乐马拉松', 200, 60, 400);
+        context.font = "60px 'Microsoft Yahei'";
+        context.fillStyle = '#996600';
+        context.textAlign = 'center';
+        context.shadowColor = 'rgba(0,0,0,0.2)';
+        context.shadowOffsetX = 15;
+        context.shadowOffsetY = -10;
+        context.shadowBlur = 2;
+        context.fillText('快乐马拉松', 200, 60, 400);
 
-            context.restore();
-        }
+        context.restore();
+      }
 //    window.addEventListener("load", drawTrails, true);
 //    window.addEventListener("load", drawDiagonal, true);
     </script>
     <script>
-        drawDiagonal()
+      drawDiagonal()
     </script>
     <script>
-        drawTrails()
+      drawTrails()
     </script>
 
     <!--===========地图实例==========-->
@@ -1699,81 +2576,81 @@ git config --global credential.helper wincred命令可以缓存github账户和�
     <!--<script src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
     <script type="text/javascript" src="http://api.go2map.com/maps/js/api_v2.5.1.js"></script>
     <script>
-        function loadMap() {
-            if (navigator.geolocation) {
-                document.getElementById("status").innerHTML = "获取数据中...";
-                navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 5000 });
-            } else {
-                document.getElementById("status").innerHTML = "浏览器不支持！"
-            }
+      function loadMap() {
+        if (navigator.geolocation) {
+          document.getElementById("status").innerHTML = "获取数据中...";
+          navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 5000 });
+        } else {
+          document.getElementById("status").innerHTML = "浏览器不支持！"
         }
-        //        执行成功的回调方法
-        function onSuccess(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            //            生成经纬度组合数据
-            //            var latlon=new google.maps.LatLng(latitude,longitude);
-            var latlon = new sogou.maps.LatLng(latitude, longitude);
-            //            选择元素
-            var mapholder = document.getElementById('mapholder');
+      }
+      //        执行成功的回调方法
+      function onSuccess(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        //            生成经纬度组合数据
+        //            var latlon=new google.maps.LatLng(latitude,longitude);
+        var latlon = new sogou.maps.LatLng(latitude, longitude);
+        //            选择元素
+        var mapholder = document.getElementById('mapholder');
 
-            //选项：中心、放大、地图类型、控制按钮
-            var myOptions = {
-                center: latlon,
-                zoom: 14,
-                //                mapTypeId:google.maps.MapTypeId.ROADMAP,
-                mapTypeId: sogou.maps.MapTypeId.ROADMAP,
-                mapTypeControl: true
-            };
-            //            以选项在页面指定位置生成地图
-            //            var map=new google.maps.Map(mapholder,myOptions);
-            var map = new sogou.maps.Map(mapholder, myOptions);
-            document.getElementById("status").innerHTML = "Sogou地图";
-            //            生成标注
-            //            var marker=new google.maps.Marker({position:latlon,map:map, title:"您在这儿"});
-            var marker = new sogou.maps.Marker({ position: latlon, map: map, title: "您在这儿" });
-            //创建标注窗口
-            //            var infowindow = new google.maps.InfoWindow({
-            //                content:"您在这里<br/>纬度："+ latitude + "<br/>经度：" + longitude
-            //            });
-            var infoWindow = new sogou.maps.InfoWindow({
-                content: "您在这里<br/>纬度：" + latitude + "<br/>经度：" + longitude
-            });
-            //显示标注窗口
-            infoWindow.open(map, marker);
+        //选项：中心、放大、地图类型、控制按钮
+        var myOptions = {
+          center: latlon,
+          zoom: 14,
+          //                mapTypeId:google.maps.MapTypeId.ROADMAP,
+          mapTypeId: sogou.maps.MapTypeId.ROADMAP,
+          mapTypeControl: true
+        };
+        //            以选项在页面指定位置生成地图
+        //            var map=new google.maps.Map(mapholder,myOptions);
+        var map = new sogou.maps.Map(mapholder, myOptions);
+        document.getElementById("status").innerHTML = "Sogou地图";
+        //            生成标注
+        //            var marker=new google.maps.Marker({position:latlon,map:map, title:"您在这儿"});
+        var marker = new sogou.maps.Marker({ position: latlon, map: map, title: "您在这儿" });
+        //创建标注窗口
+        //            var infowindow = new google.maps.InfoWindow({
+        //                content:"您在这里<br/>纬度："+ latitude + "<br/>经度：" + longitude
+        //            });
+        var infoWindow = new sogou.maps.InfoWindow({
+          content: "您在这里<br/>纬度：" + latitude + "<br/>经度：" + longitude
+        });
+        //显示标注窗口
+        infoWindow.open(map, marker);
+      }
+      //        失败时的回调方法
+      function onError(error) {
+        var status = document.getElementById("status");
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            status.innerHTML = "用户不允许！"; break;
+          case error.TIMEOUT:
+            status.innerHTML = "获取地理信息数据超时！使用我家的固定坐标数据。";
+            display();
+            break;
+          case error.POSITION_UNAVAILABLE:
+            status.innerHTML = "地理信息数据不可用！使用我家的固定坐标数据。";
+            display();
+            break;
+          default:
+            status.innerHTML = "发生未知错误！"; break;
         }
-        //        失败时的回调方法
-        function onError(error) {
-            var status = document.getElementById("status");
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    status.innerHTML = "用户不允许！"; break;
-                case error.TIMEOUT:
-                    status.innerHTML = "获取地理信息数据超时！使用我家的固定坐标数据。";
-                    display();
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    status.innerHTML = "地理信息数据不可用！使用我家的固定坐标数据。";
-                    display();
-                    break;
-                default:
-                    status.innerHTML = "发生未知错误！"; break;
-            }
-            function display() {
-                var myLatlng = new sogou.maps.LatLng(29.502782699999997, 106.57155259999999);
-                var myOptions = {
-                    zoom: 14,
-                    center: myLatlng,
-                    mapTypeId: sogou.maps.MapTypeId.ROADMAP
-                };
-                map = new sogou.maps.Map(document.getElementById("mapholder"), myOptions);
-                marker = new sogou.maps.Marker({ position: myLatlng, map: map, title: "我的家" });
-            }
-            //        window.addEventListener("load", loadMap, true);
+        function display() {
+          var myLatlng = new sogou.maps.LatLng(29.502782699999997, 106.57155259999999);
+          var myOptions = {
+            zoom: 14,
+            center: myLatlng,
+            mapTypeId: sogou.maps.MapTypeId.ROADMAP
+          };
+          map = new sogou.maps.Map(document.getElementById("mapholder"), myOptions);
+          marker = new sogou.maps.Marker({ position: myLatlng, map: map, title: "我的家" });
         }
+        //        window.addEventListener("load", loadMap, true);
+      }
     </script>
     <script>
-        loadMap()
+      loadMap()
     </script>
 
 </body>
