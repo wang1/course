@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C语言程序设计</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
+    <link href="../docs-assets/css/docs.css" rel="stylesheet">
+    <link href="../docs-assets/css/github.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        h1, .h1, h2, .h2, h3, .h3, h4, .h4, .lead {
+            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        pre code {
+            background: transparent;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
+</head>
+<body>
+<a class="sr-only" href="#content">Skip to main content</a>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-globe"></span> C语言程序设计</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#"><span class="glyphicon glyphicon-list-alt"></span> 课堂教学</a>
+                </li>
+                <li>
+                    <a href="c-experiment.html"><span class="glyphicon glyphicon-glass"></span> 实验</a>
+                </li>
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-pencil"></span> 考试</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-info-sign"></span> 关于</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<!-- Docs page layout -->
+<div class="bs-header" id="content">
+    <div class="container">
+        <h1>课堂教学</h1>
+
+        <p>本课程是理工科非计算机本科专业的必修公共基础课，是学习计算机高级语言与程序设计基本方法的课程。</p>
+    </div>
+</div>
+
+<!-- Callout for the old docs link -->
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bs-sidebar hidden-print" role="complementary">
+                <ul class="nav bs-sidenav">
+
+                    <li>
+                        <a href="#1">第一章 C语言概述</a>
+                        <ul class="nav">
+                            <li><a href="#1-"></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#2">第二章 C语言基础</a>
+                        <ul class="nav">
+                            <li><a href="#2-"></a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#3">第三章 结构化程序设计</a>
+                        <ul class="nav">
+                            <li><a href="#3-"></a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#4">第四章 函数</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#5">第五章 数组</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#6">第六章 指针</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#7">第七章 构造数据类型及文件</a>
+                        <ul class="nav">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#data">相关资料及软件下载</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="bs-callout bs-callout-info">
+                <div class="page-header">
+                    <h1 id="data">相关资料及软件下载</h1>
+                </div>
+                <h4>
+                    <ol>
+			<p>
+			<li><a href="../data/c/VSCode4C.7z">VSCode便携版（集成C/C++编译环境）</a>（注意：A. 查看.NET Framework4.5是否安装，如果没有安装请
+            <a href="../data/c/NDP451.exe">下载</a>；B. 解压到非C盘，运行Code.portable.bat即可；C. 可Ctrl+Shift+p调出控制面板使用configuie language配置为简体中文zh-cn）
+                D. 安装Code Runner插件；E. 在文件->首选项->设置菜单中搜索code-runner.runInTerminal，将其设置为true，使运行时可以交互输入   
+            </li>
+			</p>
+                        <p>
+                        <li><a href="../data/c/vc6_cn_full.exe">visual C++6安装包</a></li>
+                        </p>
+                        <p>
+                        <li><a href="../data/c/VC6.0FontSet字体更改.rar">visual C++6字体设置</a></li>
+                        </p>
+                        <p>
+                        <li><a href="../data/c/VC6.0在Win7中打开文件崩溃解决.zip">VC6.0在Win7中打开文件崩溃解决</a></li>
+                        </p>
+                        <p>
+                        <li><a href="../data/c/sublime.rar">Sublime编辑器</a></li>
+                        </p>
+                        <p>
+                        <li><a href="../data/c/C-books.rar">经典C语言教材</a></li>
+                        </p>
+                        <p>
+                        <li><a href="../data/c/试题.rar">计算机二级考试C语言试题</a></li>
+                        </p>
+                        <p>
+                    <li>2014年4月重庆市计算机等级考试笔试和上机试卷</li><br>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#b-1-1"></i> 1 </button>
+                        <!-- 程序Modal -->
+                        <div id="b-1-1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-1-1" aria-hidden="true">
+                        <div class="modal-dialog" style="width: 1000px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title text-center" id="myModalLabel-1-1">笔试第1页</h4>
+                                </div>
+                                <div>
+<img src="../assets/img/c/1.jpg" width="980px;">
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#b-1-2"></i> 2 </button>
+                        <!-- 程序Modal -->
+                        <div id="b-1-2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-1-2" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel-1-2">笔试第2页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/2.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#b-1-3"></i> 3 </button>
+                        <!-- 程序Modal -->
+                        <div id="b-1-3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-1-3" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel-1-3">笔试第3页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/3.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#b-1-4"></i> 4 </button>
+                        <!-- 程序Modal -->
+                        <div id="b-1-4" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-1-4" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel-1-4">笔试第4页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/4.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#b-1-5"></i> 5 </button>
+                        <!-- 程序Modal -->
+                        <div id="b-1-5" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-1-5" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel-1-5">笔试第5页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/5.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#b-1-6"></i> 6 </button>
+                        <!-- 程序Modal -->
+                        <div id="b-1-6" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-1-6" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel-1-6">笔试第6页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/6.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#b-1-7"></i> 7 </button>
+                        <!-- 程序Modal -->
+                        <div id="b-1-7" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-1-7" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel-1-7">笔试第7页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/7.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#b-1-8"></i> 8 </button>
+                        <!-- 程序Modal -->
+                        <div id="b-1-8" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-1-8" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel-1-8">笔试第8页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/8.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        <button class="btn btn-success" data-toggle="modal" data-target="#j-1-1"></i> 上机第一套 </button>
+                        <!-- 程序Modal -->
+                        <div id="j-1-1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-1-9" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel-1-9">上机-第一套</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/j1.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        <button class="btn btn-success" data-toggle="modal" data-target="#j-1-2"></i> 上机第二套 </button>
+                        <!-- 程序Modal -->
+                        <div id="j-1-2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-1-10" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel-1-10">上机第二套</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/j2.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                    </p>
+                        <p>
+                        <li>2009级期末考试试卷</li><br>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#09-1-1"></i> 1 </button>
+                        <!-- 程序Modal -->
+                        <div id="09-1-1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel09-1-1" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel09-1-1">笔试第1页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/09-1.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#09-1-2"></i> 2 </button>
+                        <!-- 程序Modal -->
+                        <div id="09-1-2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel09-1-2" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel09-1-2">笔试第2页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/09-2.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#09-1-3"></i> 3 </button>
+                        <!-- 程序Modal -->
+                        <div id="09-1-3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel09-1-3" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel09-1-3">笔试第3页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/09-3.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#09-1-4"></i> 4 </button>
+                        <!-- 程序Modal -->
+                        <div id="09-1-4" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel09-1-4" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel09-1-4">笔试第4页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/09-4.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#09-1-5"></i> 5 </button>
+                        <!-- 程序Modal -->
+                        <div id="09-1-5" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel09-1-5" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel09-1-5">笔试第5页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/09-5.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#09-1-6"></i> 6 </button>
+                        <!-- 程序Modal -->
+                        <div id="09-1-6" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel09-1-6" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel09-1-6">笔试第6页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/09-6.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#09-1-7"></i> 7 </button>
+                        <!-- 程序Modal -->
+                        <div id="09-1-7" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel09-1-7" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel09-1-7">笔试第7页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/09-7.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#09-1-8"></i> 8 </button>
+                        <!-- 程序Modal -->
+                        <div id="09-1-8" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel09-1-8" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel09-1-8">笔试第8页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/09-8.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#09-1-9"></i> 9 </button>
+                        <!-- 程序Modal -->
+                        <div id="09-1-9" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel09-1-9" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel09-1-9"> 笔试第9页 </h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/09-9.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#09-1-10"></i> 10 </button>
+                        <!-- 程序Modal -->
+                        <div id="09-1-10" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel09-1-10" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel09-1-10"> 笔试第10页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/09-10.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        </p>
+                        <p>
+                        <li>2010级期末考试试卷</li><br>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#10-1-1"></i> 1 </button>
+                        <!-- 程序Modal -->
+                        <div id="10-1-1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10-1-1" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel10-1-1">笔试第1页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/10-1.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#10-1-2"></i> 2 </button>
+                        <!-- 程序Modal -->
+                        <div id="10-1-2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10-1-2" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel10-1-2">笔试第2页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/10-2.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#10-1-3"></i> 3 </button>
+                        <!-- 程序Modal -->
+                        <div id="10-1-3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10-1-3" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel10-1-3">笔试第3页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/10-3.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#10-1-4"></i> 4 </button>
+                        <!-- 程序Modal -->
+                        <div id="10-1-4" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10-1-4" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel10-1-4">笔试第4页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/10-4.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#10-1-5"></i> 5 </button>
+                        <!-- 程序Modal -->
+                        <div id="10-1-5" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10-1-5" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel10-1-5">笔试第5页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/10-5.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#10-1-6"></i> 6 </button>
+                        <!-- 程序Modal -->
+                        <div id="10-1-6" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10-1-6" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel10-1-6">笔试第6页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/10-6.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#10-1-7"></i> 7 </button>
+                        <!-- 程序Modal -->
+                        <div id="10-1-7" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10-1-7" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel10-1-7">笔试第7页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/10-7.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#10-1-8"></i> 8 </button>
+                        <!-- 程序Modal -->
+                        <div id="10-1-8" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10-1-8" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel10-1-8">笔试第8页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/10-8.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#10-1-9"></i> 9 </button>
+                        <!-- 程序Modal -->
+                        <div id="10-1-9" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10-1-9" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel10-1-9"> 笔试第9页 </h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/10-9.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#10-1-10"></i> 10 </button>
+                        <!-- 程序Modal -->
+                        <div id="10-1-10" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10-1-10" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel10-1-10"> 笔试第10页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/10-10.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        </p>
+                        <p>
+                        <li>2011级期末考试试卷</li><br>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#11-1-1"></i> 1 </button>
+                        <!-- 程序Modal -->
+                        <div id="11-1-1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11-1-1" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel11-1-1">笔试第1页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/11-1.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#11-1-2"></i> 2 </button>
+                        <!-- 程序Modal -->
+                        <div id="11-1-2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11-1-2" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel11-1-2">笔试第2页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/11-2.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#11-1-3"></i> 3 </button>
+                        <!-- 程序Modal -->
+                        <div id="11-1-3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11-1-3" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel11-1-3">笔试第3页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/11-3.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#11-1-4"></i> 4 </button>
+                        <!-- 程序Modal -->
+                        <div id="11-1-4" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11-1-4" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel11-1-4">笔试第4页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/11-4.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#11-1-5"></i> 5 </button>
+                        <!-- 程序Modal -->
+                        <div id="11-1-5" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11-1-5" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel11-1-5">笔试第5页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/11-5.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#11-1-6"></i> 6 </button>
+                        <!-- 程序Modal -->
+                        <div id="11-1-6" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11-1-6" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel11-1-6">笔试第6页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/11-6.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#11-1-7"></i> 7 </button>
+                        <!-- 程序Modal -->
+                        <div id="11-1-7" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11-1-7" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel11-1-7">笔试第7页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/11-7.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#11-1-8"></i> 8 </button>
+                        <!-- 程序Modal -->
+                        <div id="11-1-8" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11-1-8" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel11-1-8">笔试第8页</h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/11-8.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#11-1-9"></i> 9 </button>
+                        <!-- 程序Modal -->
+                        <div id="11-1-9" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11-1-9" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 1000px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title text-center" id="myModalLabel11-1-9"> 笔试第9页 </h4>
+                                    </div>
+                                    <div>
+                                        <img src="../assets/img/c/11-9.jpg" width="980px;">
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        </p>
+                    </ol>
+                </h4>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-2">
+            <!--<a href="http://202.202.243.2:3000/computer.html" class="btn btn-danger btn-block">作业提交</a>-->
+        </div>
+
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bs-footer" role="contentinfo">
+        <div class="container">
+            <p>本网站所列文档全部由棋歌整理及维护，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY
+                3.0</a>协议发布。</p>
+
+            <p>Powered By <a href="http://nginx.org/" target="_blank" title="">Nginx</a> And<a
+                    href="http://www.bootcss.com/"> Bootcss</a></p>
+
+            <p>
+                <a href="http://www.cqjtu.edu.cn/" target="_blank">重庆交通大学信息学院</a>
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/dist/js/bootstrap.min.js"></script>
+
+
+    <script src="../docs-assets/js/holder.min.js"></script>
+    <script src="../docs-assets/js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="../docs-assets/js/application.js"></script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C语言程序设计实验</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
+    <link href="../docs-assets/css/docs.css" rel="stylesheet">
+    <!--<link href="../docs-assets/css/github.min.css" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="../docs-assets/css/monokai_sublime.min.css"/>-->
+    <link rel="stylesheet" href="../docs-assets/css/hljs-styles/railscasts.min.css"/>
+    <style>
+        body {
+            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        h1, .h1, h2, .h2, h3, .h3, h4, .h4, .lead {
+            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        pre code {
+            background: transparent;
+        }
+
+        p {
+            font-size: 18px;
+        }
+        .snippet {
+            position: relative;
+        }
+        .snippet .btn {
+            -webkit-transition: opacity 0.3s ease-in-out;
+            -o-transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            right: 15px;
+            /*padding: 0 10px;*/
+            position: absolute;
+            top:16px;
+        }        
+        .snippet:hover .btn {
+            opacity: 1;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
+</head>
+<body>
+<a class="sr-only" href="#content">Skip to main content</a>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-globe"></span> C语言程序设计</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="c.html"><span class="glyphicon glyphicon-list-alt"></span> 课堂教学</a>
+                </li>
+                <li class="active">
+                    <a href="#"><span class="glyphicon glyphicon-glass"></span> 实验</a>
+                </li>
+                <li>
+                    <a href="http://202.202.243.2:8964/c.html" target="_blank"><span class="glyphicon glyphicon-upload"></span> 实验报告提交</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-info-sign"></span> 关于</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<!-- Docs page layout -->
+<div class="bs-header" id="content">
+    <div class="container">
+        <h1>实验教学</h1>
+
+        <p>实验共16学时，分为8个部分，每部分2学时，请按要求完成。</p>
+    </div>
+</div>
+
+<!--<div class="alert alert-info alert-dismissable text-center">-->
+    <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
+    <!--<h2>各位同学请注意，因有急事，今天晚上不能到机房辅导上机，请按要求自行完成实验四。抱歉。</h2>-->
+<!--</div>-->
+
+
+<!-- Callout for the old docs link -->
+
+
+<div class="container bs-docs-container">
+<div class="row">
+<div class="col-md-3">
+    <div class="bs-sidebar hidden-print" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li>
+                <a href="#1">实验一</a>
+                <ul class="nav">
+                    <li><a href="#1-vc">熟悉C语言开发环境 - VC++6</a></li>
+                    <li><a href="#1-p">编写如下程序</a></li>
+                    <li><a href="#1-t">课后思考及练习</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#2">实验二</a>
+                <ul class="nav">
+                    <li><a href="#2-p">编写如下程序</a></li>
+                    <li><a href="#2-t">课后思考及练习</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#3">实验三</a>
+                <ul class="nav">
+                    <li><a href="#3-p">编写如下程序</a></li>
+                    <li><a href="#3-t">课后思考及练习</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#4">实验四</a>
+                <ul class="nav">
+                    <li><a href="#4-p">编写如下程序</a></li>
+                    <li><a href="#4-t">课后思考及练习</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#5">实验五</a>
+                <ul class="nav">
+                    <li><a href="#5-p">编写如下程序</a></li>
+                    <li><a href="#5-t">课后思考及练习</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#6">实验六</a>
+                <ul class="nav">
+                    <li><a href="#6-p">编写如下程序</a></li>
+                    <li><a href="#6-t">课后思考及练习</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#7">实验七</a>
+                <ul class="nav">
+                    <li><a href="#7-p">编写如下程序</a></li>
+                    <li><a href="#7-t">课后思考及练习</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#8">实验八</a>
+                <ul class="nav">
+                    <li><a href="#8-p">编写如下程序</a></li>
+                    <li><a href="#8-t">课后思考及练习</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="col-md-9" role="main">
+
+
+    <!-- 实验一
+    ================================================== -->
+    <div class="bs-docs-section">
+        <div class="page-header">
+            <h1 id="1">实验一</h1>
+        </div>
+        <p class="lead">本次实验要求熟悉开发环境，掌握选择和循环结构</p>
+
+        <h3 id="1-vc">熟悉C语言开发环境 - VC++6</h3>
+
+        <p>启动visual C++6软件，使用菜单 <code>文件-新建-文件-C++ source file</code> 新建C语言源程序。</p>
+
+        <p>输入完毕程序后，点击工具栏上的<code> 编译 </code>图标按钮进行编译，如果有错，根据提示的行数进行修改，直至无错（可不理会警告），然后点击工具栏上的<code> 运行 </code>图标按钮（感叹号）运行该程序。
+        </p>
+
+        <h3 id="1-p">编写如下程序</h3>
+
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>输入2个整数，将大者输出。</li>
+                    </p>
+                    <p>
+                    <li>使用switch语句，输入一个数字，输出对应的星期几（如5则输出Friday）。</li>
+                    </p>
+                    <p>
+                    <li>使用switch语句编写一个简单的计算器（+-*/）。如当用户输入2+3时输出结果。</li>
+                    </p>
+                    <p>
+                    <li>使用while语句，依次输出1~100中的偶数，每行五个，每个数字占5个字符宽度。</li>
+                    </p>
+                    <p>
+                    <li>使用for语句，输出1+2+3+...+99+100的结果。</li>
+                    </p>
+                    <p>
+                    <li>求 1!+2!+...+9!+10!的结果。</li>
+                    </p>
+                    <p>
+                    <li>输出一个用*组成的倒三角形图案。</li>
+                    </p>
+                    <p>
+                    <li>求1.5元钱兑换成1、2、5分硬币的方案。</li>
+                    </p>
+                    <p>
+                        <button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#1-1" title="点击查看/隐藏参考程序"><i class="glyphicon glyphicon-edit"></i> 参考程序 </button>
+                    </p>
+                    <!-- 参考程序tab -->
+                    <div id="1-1" class="collapse">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#1-1-1" data-toggle="tab">第一题</a></li>
+                            <li><a href="#1-1-2" data-toggle="tab">第二题</a></li>
+                            <li><a href="#1-1-3" data-toggle="tab">第三题</a></li>
+                            <li><a href="#1-1-4" data-toggle="tab">第四题</a></li>
+                            <li><a href="#1-1-5" data-toggle="tab">第五题</a></li>
+                            <li><a href="#1-1-6" data-toggle="tab">第六题</a></li>
+                            <li><a href="#1-1-7" data-toggle="tab">第七题</a></li>
+                            <li><a href="#1-1-8" data-toggle="tab">第八题</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="1-1-1">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-1">复制代码</button><code id="dm-1">
+/*输入2个整数，将大者输出。*/
+#include &lt;stdio.h&gt;
+void main(){
+    int a,b,max;
+    printf("Please input 2 number:");
+    scanf("%d%d",&a,&b);
+    if(a &gt; b){
+        max = a;
+    }else{
+        max = b;
+    }
+    printf("Max:%d\n", max);
+}</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="1-1-2">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-2">复制代码</button><code id="dm-2">
+/*使用switch语句，输入一个数字，输出对应的星期几（如5则输出Friday）。*/
+#include "stdio.h"
+void main(){
+    int n;
+    printf("Please input a integer number:");
+    scanf("%d", &n);
+    switch(n){
+        case 1: printf("MON\n");break;
+        case 2: printf("TUE\n");break;
+        case 3: printf("WED\n");break;
+        case 4: printf("THE\n");break;
+        case 5: printf("FRI\n");break;
+        case 6: printf("SAT\n");break;
+        case 7: printf("SUN\n");break;
+        default: printf("Error!\n");break;
+    }
+}</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="1-1-3">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-3">复制代码</button><code id="dm-3">
+/*使用switch语句编写一个简单的计算器（+-×÷）。如当用户输入2+3时输出结果。*/
+#include "stdio.h"
+void main(){
+    float a,b;
+    char c;
+    printf("Please input(like 1+2):");
+    scanf("%f%c%f", &a, &c, &b);
+    switch(c){
+        case '+': printf("%.2f%c%.2f=%.2f\n", a, c, b, a + b);break;
+        case '-': printf("%.2f%c%.2f=%.2f\n", a, c, b, a - b);break;
+        case '*': printf("%.2f%c%.2f=%.2f\n", a, c, b, a * b);break;
+        case '/': printf("%.2f%c%.2f=%.2f\n", a, c, b, a / b);break;
+        default: printf("Error!\n");break;
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="1-1-4">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-4">复制代码</button><code id="dm-4">
+/*使用while语句，依次输出1~100中的偶数，每行五个，每个数字占5个字符宽度。*/
+#include "stdio.h"
+void main(){
+    int i, n=1;
+    for(i = 2; i <= 100; i+=2){
+        printf("%5d", i);
+        if(n % 5 == 0){
+            putchar('\n');
+        }
+        n++;
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="1-1-5">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-5">复制代码</button><code id="dm-5">
+/*使用for语句，输出1+2+3+...+99+100的结果。*/
+#include "stdio.h"
+void main(){
+    int i, sum = 0;
+    for(i = 1; i <= 100; i++){
+        sum += i;
+    }
+    printf("1+2+3+...+99+100 = %d\n", sum);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="1-1-6">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-6">复制代码</button><code id="dm-6">
+/*求 1!+2!+...+9!+10!的结果。*/
+#include "stdio.h"
+void main(){
+    int i, jc = 1, sum = 0;
+    for(i = 1; i <= 10; i++){
+        jc = jc * i;
+        sum += jc;
+    }
+    printf("1!+2!+3!+...+9!+10! = %d\n", sum);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="1-1-7">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-7">复制代码</button><code id="dm-7">
+/*输出一个用*组成的倒三角形图案。*/
+#include "stdio.h"
+void main(){
+    int i, j;
+    for(i = 10; i >= 1; i--){
+        printf("          ");
+        for(j = 1; j <= 10 - i + 1; j++){
+            printf(" ");
+        }
+        for(j = 2 * i - 1; j >= 1; j--){
+            printf("*");
+        }
+        printf("\n");
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="1-1-8">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-8">复制代码</button><code id="dm-8">
+/*求1.5元钱兑换成1、2、5分硬币的方案*/
+#include "stdio.h"
+void main(){
+    int i, j, k, n=0;
+    for(i = 0; i <= 150; i++){
+        for(j = 0; j <= 75; j++){
+            for(k = 0; k <= 30; k++){
+                if(i + j *2 + k * 5 == 150){
+                    n++;
+                    printf("No.%d: %d %d %d\n", n, i, j, k);
+                }
+            }
+        }
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                        </div>
+                    </div>
+                </ol>
+            </h4>
+        </div>
+
+        <h3 id="1-t">课后思考及练习</h3>
+
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>输出3-1000内的素数。</li>
+                    </p>
+                    <p>
+                    <li>输出Fibonacci（1，1，2，3，5，8，13，21...）数列的前20项。</li>
+                    </p>
+                    <p>
+                    <li>一个三位整数的各位数字的立方之和等于其本身，该数则称为“水仙花数”，输出全部的水仙花数。</li>
+                    </p>
+                    <p>
+                    <li>任意输入一个正整数，倒序输出（如输入12345，则输出54321）。</li>
+                    </p>
+                    <p>
+                    <li>12个苹果，除有1个重量与其它11个不同外，其余都相同，现用无砝码的天枰称3次，找出该苹果且说出其是比其它轻还是重。</li>
+                    </p>
+                    <p>
+                        <button class="btn btn-danger btn-lg btn-block" data-toggle="collapse" data-target="#1-2" title="点击查看/隐藏参考程序"><i class="glyphicon glyphicon-edit"></i> 参考程序 </button>
+                    </p>
+                    <!-- 参考程序tab -->
+                    <div id="1-2" class="collapse">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#1-2-1" data-toggle="tab">第一题</a></li>
+                            <li><a href="#1-2-2" data-toggle="tab">第二题</a></li>
+                            <li><a href="#1-2-3" data-toggle="tab">第三题</a></li>
+                            <li><a href="#1-2-4" data-toggle="tab">第四题</a></li>
+                            <li><a href="#1-2-5" data-toggle="tab">第五题</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="1-2-1">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-9">复制代码</button><code id="dm-9">
+/*输出3-1000内的素数。*/
+#include "stdio.h"
+#include "math.h"
+void main(){
+    int n, i, flag;
+    for(n = 3; n <= 1000; n++){
+        flag = 1;
+        for(i = 2; i <= sqrt(n); i++){
+            if(n % i == 0){
+                flag = 0;
+                break;
+            }
+        }
+        if(flag == 1){
+            printf("%5d", n);
+        }
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="1-2-2">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-10">复制代码</button><code id="dm-10">
+/*输出Fibonacci（1，1，2，3，5，8，13，21...）数列的前20项。*/
+#include &lt;stdio.h&gt;
+void main(){
+    int f1,f2,f3,i;
+    f1 = f2 = 1;
+    printf("Fibonacci:\n%5d%5d", f1,f2);
+    for(i = 1;i &lt;= 18;i++){
+        f3 = f1 + f2;
+        printf("%5d", f3);
+        f1 = f2;
+        f2 = f3;
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="1-2-3">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-11">复制代码</button><code id="dm-11">
+/*一个三位整数的各位数字的立方之和等于其本身，该数则称为“水仙花数”，输出全部的水仙花数。*/
+#include "stdio.h"
+void main(){
+    int i,gw,sw,bw;
+    for(i = 100;i &lt; 1000;i++){
+        gw = i % 10;
+        sw = (i / 10) % 10;
+        bw = i / 100;
+        if(i == gw * gw * gw + sw * sw * sw + bw * bw * bw){
+            printf("%5d", i);
+        }
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="1-2-4">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-12">复制代码</button><code id="dm-12">
+/*任意输入一个正整数，倒序输出（如输入12345，则输出54321）。*/
+#include "stdio.h"
+void main(){
+    int n, num;
+    printf("Please input a integer number (&gt;0):");
+    scanf("%d", &n);
+    while(n &gt; 0){
+        num = n % 10;
+        printf("%d", num);
+        n = n / 10;
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="1-2-5">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-13">复制代码</button><code id="dm-13">
+/*参考程序*/
+#include &lt;stdio.h&gt;
+void main(){
+    int a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12;
+    printf("Please input 12 apple's weight:");
+    scanf("%d%d%d%d%d%d%d%d%d%d%d%d",&a1,&a2,&a3,&a4,&a5,&a6,&a7,&a8,&a9,&a10,&a11,&a12);
+    if(a1+a2+a3+a4&gt;a5+a6+a7+a8){
+    //第一次，不同的苹果在1~8中,当前左重右轻
+        if(a1+a2+a3+a5&gt;a4+a9+a10+a11){
+        //第二次，因为9~11号苹果是标准的，我们又交换了a4和a5，还维持左边重，
+        //说明不同的苹果在1~3中，且重一些
+            if(a1&gt;a2){//第三次
+                printf("No.1,Weighter\n");
+            }else if(a1&lt;a2){//第三次
+                printf("No.2,Weighter\n");
+            }else{//第三次
+                printf("No.3,Weighter\n");
+            }
+        }else if(a1+a2+a3+a5&lt;a4+a9+a10+a11){
+        //第二次，因为9~11号苹果是标准的，我们又交换了a4和a5，但现在右边重，
+        //说明不同的苹果在4~5中，现在不知道轻重
+            if(a4&gt;a1){//第三次，a1是标准的，故4重
+                printf("No.4,Weighter\n");
+            }else if(a4&lt;a1){//第三次，a1是标准的，故4轻
+                printf("No.4,lighter\n");
+            }else{//第三次，a1是标准的，故5轻
+                printf("No.5,lighter\n");
+            }
+        }else{//第二次，天平相等，说明不同的苹果在6~8中，且轻
+            if(a6&gt;a7){
+                printf("No.7,lighter\n");
+            }else if(a6&lt;a7){
+                printf("No.6,lighter\n");
+            }else{
+                printf("No.8.lighter\n");
+            }
+        }
+    }else if(a1+a2+a3+a4==a5+a6+a7+a8){
+    //第一次，，不同的苹果在9~12中
+        if(a1+a2+a3+a4&gt;a5+a9+a10+a11){
+        //第二次，不同的苹果在9~11中，且轻一些
+            if(a9&gt;a10){//第三次，10轻
+                printf("No.10,lighter\n");
+            }else if(a9&lt;a10){//第三次，9轻
+                printf("No.9,lighter\n");
+            }else{//第三次，11轻
+                printf("No.11,lighter\n");
+            }
+        }else if(a1+a2+a3+a4&lt;a5+a9+a10+a11){
+        //第二次，不同的苹果在9~11中，且重一些
+            if(a9&gt;a10){//第三次，9重
+                printf("No.9,Weighter\n");
+            }else if(a9&lt;a10){//第三次，10重
+                printf("No.10,Weighter\n");
+            }else{//第三次，11重
+                printf("No.11,Weighter\n");
+            }
+        }else{//第二次，不同的苹果是12
+            if(a1&gt;a12){//第三次，12轻
+                printf("No.12,lighter\n");
+            }else if(a1&lt;a12){//第三次，12重
+                printf("No.12,Weighter\n");
+            }else{//第三次，输入错误
+                printf("Input Error!\n");
+            }
+        }
+    }else{
+    //第一次，不同的苹果在1~8中,当前左轻右重
+        if(a1+a2+a3+a5&lt;a4+a9+a10+a11){
+        //第二次，因为9~11号苹果是标准的，我们又交换了a4和a5，还维持左边轻，
+        //说明不同的苹果在1~3中，且轻一些
+            if(a1&gt;a2){//第三次
+                printf("No.2,lighter\n");
+            }else if(a1&lt;a2){//第三次
+                printf("No.1,lighter\n");
+            }else{//第三次
+                printf("No.3,lighter\n");
+            }
+        }else if(a1+a2+a3+a5&gt;a4+a9+a10+a11){
+        //第二次，因为9~11号苹果是标准的，我们又交换了a4和a5，但现在右边轻，
+        //说明不同的苹果在4~5中，现在不知道轻重
+            if(a4&gt;a1){//第三次，a1是标准的，故4重
+                printf("No.4,Weighter\n");
+            }else if(a4&lt;a1){//第三次，a1是标准的，故4轻
+                printf("No.4,lighter\n");
+            }else{//第三次，a1是标准的，故5重
+                printf("No.5,Weighter\n");
+            }
+        }else{
+        //第二次，天平相等，说明不同的苹果在6~8中，且重
+            if(a6&gt;a7){//第三次
+                printf("No.6,Weighter\n");
+            }else if(a6&lt;a7){//第三次
+                printf("No.7,Weighter\n");
+            }else{//第三次
+                printf("No.8.Weighter\n");
+            }
+        }
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                        </div>
+                    </div>
+                </ol>
+            </h4>
+        </div>
+
+    </div>
+
+
+    <!--实验二
+    ================================================== -->
+    <div class="bs-docs-section">
+        <div class="page-header">
+            <h1 id="2">实验二</h1>
+        </div>
+        <p class="lead">本次实验要求了解C语言程序由函数构成，能熟练掌握自定义函数。</p>
+
+        <h3 id="2-p">编写如下程序</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                        <li>由用户给出次数后，main函数调用welcome函数能打印该次数的欢迎词。</li>
+                    </p>
+                    <p><li>用户任意输入2个整数，main函数调用getMin函数后得到小的数并输出。</li></p>
+                    <p><li>用户输入要打印的字符和次数，main函数调用myPrint函数后打印指定次数的该字符。</li></p>
+                    <p><li>输出3~100之间的素数，判断是否素数用isPrime函数完成。</li></p>
+                    <p>
+                        <button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#2-1" title="点击查看/隐藏参考程序"><i class="glyphicon glyphicon-edit"></i> 参考程序 </button>
+                    </p>
+                    <!-- 参考程序tab -->
+                    <div id="2-1" class="collapse">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#2-1-1" data-toggle="tab">第一题</a></li>
+                            <li><a href="#2-1-2" data-toggle="tab">第二题</a></li>
+                            <li><a href="#2-1-3" data-toggle="tab">第三题</a></li>
+                            <li><a href="#2-1-4" data-toggle="tab">第四题</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="2-1-1">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-14">复制代码</button><code id="dm-14">
+/*由用户给出次数后，main函数调用welcome函数能打印该次数的欢迎词。*/
+#include "stdio.h"
+void welcome(int n){
+    int i;
+    for(i=1;i<=n;i++){
+        printf("Welcome to CQ!\n");
+    }
+}
+void main(){
+    int a;
+    printf("Please input a integer number:");
+    scanf("%d", &a);
+    welcome(a);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="2-1-2">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-15">复制代码</button><code id="dm-15">
+/*用户任意输入2个整数，main函数调用getMin函数后得到小的数并输出。*/
+#include "stdio.h"
+int getMin(int a, int b){
+    int min;
+    min = a;
+    if(min &gt; b){
+        min = b;
+    }
+    return min;
+}
+void main(){
+    int a, b;
+    printf("Please input two integer number:");
+    scanf("%d%d", &a, &b);
+    printf("MIN:%d\n", getMin(a, b));
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="2-1-3">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-16">复制代码</button><code id="dm-16">
+/*用户输入要打印的字符和次数，main函数调用myPrint函数后打印指定次数的该字符。*/
+#include "stdio.h"
+void myPrint(char a, int n){
+    int i;
+    for(i = 1; i <= n; i++){
+        printf("%c", a);
+    }
+}
+void main(){
+    char a;
+    int n;
+    printf("Please input a character and a integer number:");
+    scanf("%c%d", &a, &n);
+    myPrint(a, n);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="2-1-4">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-17">复制代码</button><code id="dm-17">
+/*输出3~100之间的素数，判断是否素数用isPrime函数完成。*/
+#include "stdio.h"
+#include "math.h"
+int isPrime(int n){
+    int i;
+    for(i = 2; i <= sqrt(n); i++){
+        if(n % i == 0){
+            return 0;
+        }
+    }
+    return 1;
+}
+void main(){
+    int i;
+    for(i = 3; i <= 100; i++){
+        if(isPrime(i)){
+            printf("%5d", i);
+        }
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </ol>
+            </h4>
+        </div>
+        <h3 id="2-t">课后思考和练习</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li><button class="btn btn-primary" data-toggle="modal" data-target="#2-t-1"><i class="glyphicon glyphicon-edit"></i> 查看并运行该程序，分析结果 </button></li>
+                    <!-- 程序Modal -->
+                    <div id="2-t-1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-2-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title text-center" id="myModalLabel-2-1">变量的作用域</h4>
+                                </div>
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-18">复制代码</button><code id="dm-18">
+#include "stdio.h"
+void fun(int x, int y){
+    x = x * x;
+    y = y * y;
+    printf("%d %d\n" , x, y);
+}
+void main(){
+    int x = 2, y = 3;
+    fun(x, y);
+    printf("%d %d\n" , x, y);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    </p>
+                </ol>
+            </h4>
+        </div>
+    </div>
+
+
+    <!-- 实验三
+    =================================================
+     -->
+    <div class="bs-docs-section">
+        <div class="page-header">
+            <h1 id="3">实验三</h1>
+        </div>
+        <p class="lead">本次实验要求掌握普通自定义函数、递归函数的编写，掌握全局变量及其用法，掌握变量存储类型中的自动、静态变量及其用法，了解编译预处理。</p>
+
+        <h3 id="3-p">编写如下程序</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>在main函数中输入一个年份，由isLeap函数判断是否为闰年并在main函数中输出结果。（闰年的条件：能被4整除但不能被100整除，或者能被400整除）</li>
+                    </p>
+                    <p>
+                    <li>哥德巴赫猜想是：6及其以上的所以偶数都可分解为2个素数之和。请在main函数中对6~100直接的偶数进行判断并输出结果，是否为素数由函数isPrime完成。</li>
+                    </p>
+                    <p>
+                    <li>在main函数中输入一个正整数，由fact函数使用递归的方式求出该正整数的阶乘并在main函数中输出结果。</li>
+                    </p>
+                    <p>
+                    <li>由fibonacci函数采用递归的方式求出斐波那契数列某项，在main函数中调用该函数并输出其前20项的值。</li>
+                    </p>
+                    <p>
+                    <li>在main函数中输入3个数，函数noReturn（无返回值）计算出这3个数的平均值、最大值和最小值，由main函数输出结果。（注意：请使用全局变量）</li>
+                    </p>
+
+                    <p>
+                        <button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#3-1" title="点击查看/隐藏参考程序"><i class="glyphicon glyphicon-edit"></i> 参考程序 </button>
+                    </p>
+                    <!-- 参考程序tab -->
+                    <div id="3-1" class="collapse">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#3-1-1" data-toggle="tab">第一题</a></li>
+                            <li><a href="#3-1-2" data-toggle="tab">第二题</a></li>
+                            <li><a href="#3-1-3" data-toggle="tab">第三题</a></li>
+                            <li><a href="#3-1-4" data-toggle="tab">第四题</a></li>
+                            <li><a href="#3-1-5" data-toggle="tab">第五题</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="3-1-1">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-19">复制代码</button><code id="dm-19">
+/*在main函数中输入一个年份，由isLeap函数判断是否为闰年并在main函数中输出结果。（闰年的条件：能被4整除但不能被100整除，或者能被400整除）*/
+#include "stdio.h"
+int isLeap(int year){
+    int result = 0;
+    if((year % 4 == 0 && year % 100 != 0) || (year % 400 ==0)){
+        result = 1;
+    }
+    return result;
+}
+void main(){
+    int year;
+    printf("Please input a year:");
+    scanf("%d", &year);
+    if(isLeap(year)){
+        printf("%d is leap year!\n", year);
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="3-1-2">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-20">复制代码</button><code id="dm-20">
+/*哥德巴赫猜想是：6及其以上的所以偶数都可分解为2个素数之和。请在main函数中对6~100直接的偶数进行判断并输出结果，是否为素数由函数isPrime完成。*/
+#include "stdio.h"
+#include "math.h"
+int isPrime(int n){
+    int i;
+    for(i = 2; i &lt;= sqrt(n); i++){
+        if(n % i == 0){
+            return 0;
+        }
+    }
+    return 1;
+}
+void main(){
+    int i,j;
+    for(i = 6; i &lt;= 100; i+=2){
+        for(j = 2;j &lt;= i/2;j++){
+            if(isPrime(j)&&isPrime(i-j)){
+                printf("%d=%d+%d\n", i, j, i-j);
+            }
+        }
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="3-1-3">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-21">复制代码</button><code id="dm-21">
+/*在main函数中输入一个正整数，由fact函数使用递归的方式求出该正整数的阶乘并在main函数中输出结果。*/
+#include "stdio.h"
+int fact(int n){
+    if(n == 0){
+        return 1;
+    }else{
+        return n * fact(n - 1);
+    }
+}
+void main(){
+    int n;
+    do{
+        printf("Please input a integer number(>=0):");
+        scanf("%d", &n);
+    }while(n < 0);
+    printf("%d!=%d\n", n, fact(n));
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="3-1-4">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-22">复制代码</button><code id="dm-22">
+/*由fibonacci函数采用递归的方式求出斐波那契数列某项，在main函数中调用该函数并输出其前20项的值。*/
+#include "stdio.h"
+int fibonacci(int n){
+    if(n == 1 || n == 2){
+        return 1;
+    }else{
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
+void main(){
+    int i;
+    for(i = 1; i <=20; i++){
+        printf("%5d", fibonacci(i));
+        if(i % 5 == 0){
+            printf("\n");
+        }
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="3-1-5">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-23">复制代码</button><code id="dm-23">
+/*在main函数中输入3个数，函数noReturn（无返回值）计算出这3个数的平均值、最大值和最小值，由main函数输出结果。（注意：请使用全局变量）*/
+#include "stdio.h"
+float average;
+int min, max;
+void noReturn(int a, int b, int c){
+    average = (a + b + c) / 3.0;
+    min = a;
+    if(min > b){
+        min = b;
+    }
+    if(min > c){
+        min = c;
+    }
+    max = a;
+    if(max < b){
+        max = b;
+    }
+    if(max < c){
+        max = c;
+    }
+}
+void main(){
+    int a, b, c;
+    printf("Please input 3 integer number:");
+    scanf("%d%d%d", &a, &b, &c);
+    noReturn(a, b, c);
+    printf("Average:%.2f, Min:%d, Max:%d\n", average, min, max);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </ol>
+            </h4>
+        </div>
+        <h3 id="3-t">课后思考和练习</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li><button class="btn btn-primary" data-toggle="modal" data-target="#3-t-1"><i class="glyphicon glyphicon-edit"></i> 查看并运行该程序，分析结果 </button></li>
+                    <!-- 程序Modal -->
+                    <div id="3-t-1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-3-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title text-center" id="myModalLabel-3-1">变量的作用域及屏蔽</h4>
+                                </div>
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-24">复制代码</button><code id="dm-24">
+#include "stdio.h"
+int a=1, b=2;
+void xxx(){
+    int a=10, b=20;
+    printf("In xxx: a=%d b=%d\n", a, b);
+}
+void yyy(){
+    int a=100;
+    printf("In yyy: a=%d b=%d\n", a, b);
+}
+void zzz(){
+    printf("In zzz: a=%d b=%d\n", a, b);
+}
+void main(){
+    int a=1000, b=2000;
+    xxx();
+    yyy();
+    zzz();
+    printf("In main: a=%d b=%d\n", a, b);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    </p>
+
+                    <p>
+                    <li><button class="btn btn-primary" data-toggle="modal" data-target="#3-t-2"><i class="glyphicon glyphicon-edit"></i> 查看并运行该程序，分析结果 </button></li>
+                    <!-- 程序Modal -->
+                    <div id="3-t-2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-3-2" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title text-center" id="myModalLabel-3-2">静态变量</h4>
+                                </div>
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-25">复制代码</button><code id="dm-25">
+#include "stdio.h"
+int func(int x){
+    int y=0;
+    static int z=2;
+    y++;
+    z++;
+    return x+y+z;
+}
+void main(){
+    int a = 1,b;
+    for(b = 0; b &lt; 3; b++){
+        printf("%d", func(a));
+}
+}
+</code></pre>
+                                <!--</div>-->
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    </p>
+                    <p>
+                    <li><button class="btn btn-primary" data-toggle="modal" data-target="#3-t-3"><i class="glyphicon glyphicon-edit"></i> 查看并运行该程序，分析结果 </button></li>
+                    <!-- 程序Modal -->
+                    <div id="3-t-3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-3-3" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title text-center" id="myModalLabel-3-3">编译预处理 - 宏替换</h4>
+                                </div>
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-">复制代码</button><code id="dm-"> class="C">
+#include "stdio.h"
+#define PF(x) x*x
+void main(){
+    int a, pf;
+    printf("Please input a integer number:");
+    scanf("%d", &a);
+    pf = PF(a+1);
+    printf("PF(a+1)=%d\n", pf);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    </p>
+
+                    <p>
+                    <li><button class="btn btn-primary" data-toggle="modal" data-target="#3-t-4"><i class="glyphicon glyphicon-edit"></i> 查看并运行该程序，分析结果 </button></li>
+                    <!-- 程序Modal -->
+                    <div id="3-t-4" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-3-3" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title text-center" id="myModalLabel-3-4">多函数定义、辗转相除法求最大公约数</h4>
+                                </div>
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-3t">复制代码</button><code id="dm-3t"> class="C">
+#include "stdio.h"
+//最大公约数函数
+int zdgys(int m, int n){
+    int r, temp;
+    if(n > m){
+        temp = n; n = m; m = temp;
+    }
+    while((r = m % n) != 0){
+        m = n;
+        n = r;
+    }
+    return n;
+}
+//最小公倍数函数
+int zxgbs(int m, int n, int h){
+    return (m * n) / h;
+}
+void main(){
+    int m, n, h, l;
+    printf("Please input two integer number:");
+    scanf("%d%d", &m, &n);
+    h = zdgys(m, n);
+    l = zxgbs(m, n, h);
+    printf("%d and %d: %d, %d\n", m, n, h, l);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    </p>
+
+                </ol>
+            </h4>
+        </div>
+
+    </div>
+
+
+    <!-- 实验四
+    ================================================== -->
+    <div class="bs-docs-section">
+        <div class="page-header">
+            <h1 id="4">实验四</h1>
+        </div>
+        <p class="lead">本次实验要求掌握数值型一维数组、二维数组以及字符数组的使用。</p>
+
+        <h3 id="4-p">编写如下程序</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>输入10个数到数组，输出比平均值小的数。</li>
+                    </p>
+                    <p>
+                    <li>利用数组求Fibonacci数列的前20项并按每行5个输出。</li>
+                    </p>
+                    <p>
+                    <li>输入10个数到数组，从小到大排序后输出。</li>
+                    </p>
+                    <p>
+                    <li>一个3×4的矩阵已经有数据（也即已经初始化），请输出其转置矩阵。</li>
+                    </p>
+                    <p>
+                    <li>一个3×4的矩阵已经有数据（也即已经初始化），请输出最大的数及其所在的行和列。</li>
+                    </p>
+                    <p>
+                    <li>某班有4个同学，学习了3门课程，求各课程和各同学的平均分。</li>
+                    </p>
+                    <p>
+                    <li>有字符串“I love you”，请分别使用scanf函数的%s格式控制符以及gets函数进行输入，用puts函数输出，了解这两个输入函数的区别。</li>
+                    </p>
+                    <p>
+                    <li>编程练习strcpy()、strcat()、strcmp()以及strlen()函数的用法。</li>
+                    </p>
+                    <p>
+                    <li>编写自定义函数myStrcat()和myStrlen()完成系统函数strcat()和strlen()的功能。</li>
+                    </p>
+                    <p>
+                    <li>从键盘上输入一行文字，分别统计出大写字母、小写字母、数字字符、空格以及其它字符的个数。</li>
+                    </p>
+                    <p>
+                        <button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#4-1" title="点击查看/隐藏参考程序"><i class="glyphicon glyphicon-edit"></i> 参考程序 </button>
+                    </p>
+                    <!-- 参考程序tab -->
+                    <div id="4-1" class="collapse">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#4-1-1" data-toggle="tab">1题</a></li>
+                            <li><a href="#4-1-2" data-toggle="tab">2题</a></li>
+                            <li><a href="#4-1-3" data-toggle="tab">3题</a></li>
+                            <li><a href="#4-1-4" data-toggle="tab">4题</a></li>
+                            <li><a href="#4-1-5" data-toggle="tab">5题</a></li>
+                            <li><a href="#4-1-6" data-toggle="tab">6题</a></li>
+                            <li><a href="#4-1-7" data-toggle="tab">7题</a></li>
+                            <li><a href="#4-1-8" data-toggle="tab">8题</a></li>
+                            <li><a href="#4-1-9" data-toggle="tab">9题</a></li>
+                            <li><a href="#4-1-10" data-toggle="tab">10题</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="4-1-1">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-26">复制代码</button><code id="dm-26">
+/*输入10个数到数组，输出比平均值小的数。*/
+#include "stdio.h"
+void main(){
+    int a[10], sum = 0, average, i;
+    for(i = 0; i < 10; i++){
+        printf("Please input No.%d:", i + 1);
+        scanf("%d", &a[i]);
+    }
+    for(i = 0; i < 10; i++){
+        sum += a[i];
+    }
+    average = sum / 10;
+    for(i = 0; i < 10; i++){
+        if(a[i] < average){
+            printf("%5d", a[i]);
+        }
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="4-1-2">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-27">复制代码</button><code id="dm-27">
+/*利用数组求Fibonacci数列的前20项并按每行5个输出。*/
+#include "stdio.h"
+void main(){
+    int a[20], i;
+    a[0] = a[1] = 1;
+    for(i = 2; i < 20; i++){
+        a[i] = a[i-1] + a[i-2];
+    }
+    for(i = 0; i < 20; i++){
+        printf("%5d", a[i]);
+        if((i + 1) % 5 == 0){
+            printf("\n");
+        }
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="4-1-3">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-28">复制代码</button><code id="dm-28">
+/*输入10个数到数组，从小到大排序后输出。*/
+#include "stdio.h"
+void main(){
+    int a[10], i, j, temp;
+    for(i = 0; i < 10; i++){
+        printf("Please input No.%d:", i + 1);
+        scanf("%d", &a[i]);
+    }
+    for(i = 0; i < 9; i++){
+        for(j = i + 1; j < 10; j++){
+            if(a[i] > a[j]){
+                temp = a[i]; a[i] = a[j]; a[j] = temp;
+            }
+        }
+    }
+    for(i = 0; i < 10; i++){
+        printf("%d  ", a[i]);
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="4-1-4">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-29">复制代码</button><code id="dm-29">
+/*一个3×4的矩阵已经有数据（也即已经初始化），请输出其转置矩阵。*/
+#include "stdio.h"
+void main(){
+    int a[3][4] = {1,2,3,4,5,6,7,8,9,10,11,12}, b[4][3], i, j;
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 3; j++){
+            b[i][j] = a[j][i];
+        }
+    }
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 3; j++){
+            printf("%5d", b[i][j]);;
+        }
+        putchar('\n');
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="4-1-5">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-30">复制代码</button><code id="dm-30">
+/*一个3×4的矩阵已经有数据（也即已经初始化），请输出最大的数及其所在的行和列。*/
+#include "stdio.h"
+void main(){
+    int a[3][4] = {1,2,3,4,5,6,7,8,9,10,11,12}, max, hang, lie, i, j;
+    max = a[0][0]; hang = 0; lie = 0;
+    for(i = 0; i < 3; i++){
+        for(j = 0; j < 4; j++){
+            if(max < a[i][j]){
+                max = a[i][j];
+                hang = i;
+                lie = j;
+            }
+        }
+    }
+    printf("Max is %d ( %d, %d )\n", max, hang + 1, lie + 1);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="4-1-6">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-31">复制代码</button><code id="dm-31">
+/*某班有4个同学，学习了3门课程，求各课程和各同学的平均分。*/
+#include "stdio.h"
+void main(){
+    int i, j;
+    float a[3][4], course[3], student[4];
+    for(i = 0; i < 3; i++){
+        for(j = 0; j < 4; j++){
+            printf("Please input No.%d course No.%d student's score:", i + 1, j + 1);
+            scanf("%f", &a[i][j]);
+        }
+    }
+    for(i = 0; i < 3; i++){
+        for(j = 0; j < 4; j++){
+            course[i] += a[i][j];
+        }
+        course[i] /= 3;
+    }
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 3; j++){
+            student[i] += a[j][i];
+        }
+        student[i] /= 4;
+    }
+    for(i = 0; i < 3; i++){
+        printf("No.%d course's average score is %5.2f", i + 1, course[i]);
+    }
+    for(i = 0; i < 4; i++){
+        printf("No.%d student's average score is %5.2f", i + 1, student[i]);
+    }
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="4-1-7">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-32">复制代码</button><code id="dm-32">
+/*有字符串“I love you”，请分别使用scanf函数的%s格式控制符以及gets函数进行输入，用puts函数输出，了解这两个输入函数的区别。*/
+#include "stdio.h"
+void main(){
+    char str1[100], str2[100];
+    scanf("%s", str1);//请输入“I love you”字符串
+    gets(str2);
+    printf("No.1 string:");
+    puts(str1);
+    printf("No.2 string:");
+    puts(str2);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                            <div class="tab-pane fade" id="4-1-8">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-33">复制代码</button><code id="dm-33">
+/*编程练习strcpy()、strcat()、strcmp()以及strlen()函数的用法。*/
+#include "stdio.h"
+#include "string.h"
+void main(){
+    char str1[100] = "25th Anniversary for ", str2[] = "8 * 8";
+    if(strcmp(str1, str2) > 0){
+        printf("String one > string two.\n");
+    }else if(strcmp(str1, str2) == 0){
+        printf("String one is equal string two.\n");
+    }else{
+        printf("String one < string two.\n");
+    }
+    puts(strcat(str1, str2));
+    printf("length is %d\n", strlen(str1));
+    puts(strcpy(str1, str2));
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="4-1-9">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-34">复制代码</button><code id="dm-34">
+/*编写自定义函数myStrcat()和myStrlen()完成系统函数strcat()和strlen()的功能。*/
+#include "stdio.h"
+void myStrcat(char s1[], char s2[]){
+    int i = 0, j = 0;
+    while(s1[i] != '\0'){
+        i++;
+    }
+    while(s2[j] != '\0'){
+        s1[i] = s2[j];
+        i++; j++;
+    }
+    s1[i] = '\0';
+}
+int myStrlen(char s[]){
+    int i = 0;
+    while(s[i] != '\0'){
+        i++;
+    }
+    return i;
+}
+void main(){
+    char str1[100] = "25th Anniversary for ", str2[] = "8 * 8";
+    myStrcat(str1, str2);
+    puts(str1);
+    printf("length is %d\n", myStrlen(str1));
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+                            <div class="tab-pane fade" id="4-1-10">
+                                <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-35">复制代码</button><code id="dm-35">
+/*从键盘上输入一行文字，分别统计出大写字母、小写字母、数字字符、空格以及其它字符的个数。*/
+#include "stdio.h"
+void main(){
+    char str[100];
+    int i = 0, daXie = 0, xiaoXie = 0, shuZhi = 0, kongGe = 0, qiTa = 0;
+    printf("Please input a string:\n");
+    gets(str);
+    while(str[i] != '\0'){
+        if(str[i] >= 'A' && str[i] <= 'Z'){
+            daXie++;
+        }else if(str[i] >= 'a' && str[i] <= 'z'){
+            xiaoXie++;
+        }else if(str[i] >= '0' && str[i] <= '9'){
+            shuZhi++;
+        }else if(str[i] == ' '){
+            kongGe++;
+        }else{
+            qiTa++;
+        }
+        i++;
+    }
+    printf("daxie:%d\n", daXie);
+    printf("xiaoxie:%d\n", xiaoXie);
+    printf("shuzhi:%d\n", shuZhi);
+    printf("kongge:%d\n", kongGe);
+    printf("qita:%d\n", qiTa);
+}
+</code></pre>
+                                <!--</div>-->
+                            </div>
+
+                        </div>
+                    </div>
+                </ol>
+            </h4>
+        </div>
+        <!--<h3 id="4-t">课后思考和练习</h3>-->
+        <!--<div class="bs-callout bs-callout-info">-->
+            <!--<h4>-->
+                <!--<ol>-->
+                    <!--<p>-->
+                    <!--<li>。</li>-->
+                    <!--</p>-->
+                <!--</ol>-->
+            <!--</h4>-->
+        <!--</div>-->
+    </div>
+
+    <!-- 实验五
+=================================================
+ -->
+    <div class="bs-docs-section">
+        <div class="page-header">
+            <h1 id="5">实验五</h1>
+        </div>
+        <p class="lead">本次实验要求掌握指针的用法，是课程的重点和难点。</p>
+
+        <h3 id="5-p">编写如下程序</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>有两个整型变量a，b，请用指针操作a和b，完成a和b的 + - * / 运算并输出结果。</li>
+                    </p>
+                    <p>
+                    <li>有10个元素的整型数组a，请用指针操作数组a，输出最大的元素并指出其所在位置。</li>
+                    </p>
+                    <p>
+                    <li>用指针实现：生成Fibonacci数列的前20项。</li>
+                    </p>
+                    <p>
+                    <li>用指针实现：将数组元素逆序存放。</li>
+                    </p>
+                    <p>
+                    <li>请用指针操作字符串，输出该字符串中的大写字母的个数。</li>
+                    </p>
+                    <p>
+                    <li>请用指针操作字符串，删除该字符串中指定的字母后输出更改后的字符串。</li>
+                    </p>
+                    <p>
+                    <li>用字符指针数组存放8个字符串（“非法日期，周一 ~ 周日”），根据输入的数字，输出对应的星期。</li>
+                    </p>
+                    <p>
+                    <li>main函数中输入两个整数，调用swap函数后交换变量的值（用指针完成），在main函数中输出。</li>
+                    </p>
+                    <p>
+                    <li>将字符串中的第m个字符开始的全部字符复制生成一个新的字符串。要求main函数中输入该字符串和m，调用myCopy函数完成复制，然后在main函数中输出新字符串（注意：myCopy函数返回指针）。</li>
+                    </p>
+                    <p>
+                        <button class="btn btn-success btn-lg btn-block" data-toggle="collapse" data-target="#5-1" title="点击查看/隐藏参考程序"><i class="glyphicon glyphicon-edit"></i> 参考程序 </button>
+                    </p>
+                    <!-- 参考程序tab -->
+                    <div id="5-1" class="collapse">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#5-1-1" data-toggle="tab">1题</a></li>
+                        <li><a href="#5-1-2" data-toggle="tab">2题</a></li>
+                        <li><a href="#5-1-3" data-toggle="tab">3题</a></li>
+                        <li><a href="#5-1-4" data-toggle="tab">4题</a></li>
+                        <li><a href="#5-1-5" data-toggle="tab">5题</a></li>
+                        <li><a href="#5-1-6" data-toggle="tab">6题</a></li>
+                        <li><a href="#5-1-7" data-toggle="tab">7题</a></li>
+                        <li><a href="#5-1-8" data-toggle="tab">8题</a></li>
+                        <li><a href="#5-1-9" data-toggle="tab">9题</a></li>
+                    </ul>
+                    <div class="tab-content">
+                    <div class="tab-pane fade in active" id="5-1-1">
+                        <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-36">复制代码</button><code id="dm-36">
+/*有两个整型变量a，b，请用指针操作a和b，完成a和b的+-*÷运算并输出结果。*/
+#include "stdio.h"
+void main(){
+    int a, b, *pa, *pb, he, ca, ji, shang;
+    pa = &amp;a;
+    pb = &amp;b;
+    scanf("%d", pa);
+    scanf("%d", pb);
+    he = *pa + *pb;
+    ca = *pa - *pb;
+    ji = *pa * *pb;
+    shang = *pa / *pb;
+    printf("%d+%d=%d\n", a, b, he);
+    printf("%d-%d=%d\n", a, b, ca);
+    printf("%d*%d=%d\n", a, b, ji);
+    printf("%d/%d=%d\n", a, b, shang);
+}
+</code></pre>
+                        <!--</div>-->
+                    </div>
+
+                    <div class="tab-pane fade" id="5-1-2">
+                        <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-37">复制代码</button><code id="dm-37">
+/*有10个元素的整型数组a，请用指针操作数组a，输出最大的元素并指出其所在位置。*/
+#include "stdio.h"
+void main(){
+    int a[10] = {1,2,3,4,5,66,7,8,9,28}, *p = a, max, wz, i;
+    max = *p;
+    wz = 0;
+    for(i = 1; i < 10; i++){
+        if(max < *(p + i)){
+            max = *(p + i);
+            wz = i;
+        }
+    }
+    printf("Max is %d, at %d\n", max, wz + 1);
+}
+</code></pre>
+                        <!--</div>-->
+                    </div>
+                    <div class="tab-pane fade" id="5-1-3">
+                        <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-38">复制代码</button><code id="dm-38">
+/*用指针实现：生成Fibonacci数列的前20项。*/
+#include "stdio.h"
+void main(){
+    int fibo[20], *p, i;
+    p = fibo;
+    *p = *(p + 1) = 1;
+    for(i = 2; i < 20; i++){
+        *(p + i) = *(p + i - 1) + *(p + i - 2);
+    }
+    for(i = 0; i < 20; i++){
+        printf("%5d", *p++);
+        if((i + 1) % 5 == 0){
+            putchar('\n');
+        }
+    }
+}
+</code></pre>
+                        <!--</div>-->
+                    </div>
+                    <div class="tab-pane fade" id="5-1-4">
+                        <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-39">复制代码</button><code id="dm-39">
+/*用指针实现：将数组元素逆序存放。*/
+#include "stdio.h"
+void main(){
+    int a[10] = {1,2,3,4,5,6,7,8,9,10}, *p1, *p2, temp, i;
+    p1 = &a[0];
+    p2 = &a[9];
+    while(p1 < p2){
+        temp = *p1;
+        *p1 = *p2;
+        *p2 = temp;
+        p1++;
+        p2--;
+    }
+    for(i = 0; i < 10; i++){
+        printf("%d ", a[i]);
+    }
+}
+</code></pre>
+                        <!--</div>-->
+                    </div>
+
+                    <div class="tab-pane fade" id="5-1-5">
+                        <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-40">复制代码</button><code id="dm-40">
+/*请用指针操作字符串，输出该字符串中的大写字母的个数。*/
+#include "stdio.h"
+void main(){
+    char str[100], *p = str, dx = 0;
+    printf("Please input a string:");
+    gets(p);
+    while(*p != '\0'){
+        if(*p >= 'A' && *p <= 'Z'){
+            dx++;
+        }
+        p++;
+    }
+    printf("Daxie: %d\n", dx);
+}
+</code></pre>
+                        <!--</div>-->
+                    </div>
+
+                    <div class="tab-pane fade" id="5-1-6">
+                        <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-41">复制代码</button><code id="dm-41">
+/*请用指针操作字符串，删除该字符串中指定的字母后输出更改后的字符串。*/
+#include "stdio.h"
+void main(){
+    char str[] = "delete one character", *p, ch;
+    int i, j;
+    printf("Please a character:");
+    ch = getchar(); //scanf("%c", &ch);
+    p = str;
+    for(i = j =0; *(p + i) != '\0'; i++){
+        if(*(p + i) != ch){
+            *(p + j) = *(p + i);
+            j++;
+        }
+    }
+    *(p + j) = '\0';
+    puts(str);
+}
+</code></pre>
+                        <!--</div>-->
+                    </div>
+
+                    <div class="tab-pane fade" id="5-1-7">
+                        <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-42">复制代码</button><code id="dm-42">
+/*用字符指针数组存放8个字符串（“非法日期，周一 ~ 周日”），根据输入的数字，输出对应的星期。*/
+#include "stdio.h"
+void main(){
+    char *day[] = {"Illegal day", "Monday", "Tuesday", "Wednesday", "Tursday", "Friday", "Saturday", "Sunday"};
+    int n;
+    printf("Please input a number:");
+    scanf("%d", &n);
+    if(n >= 1 && n <= 7){
+        printf("%s", day[n]);
+    }else{
+        printf("%s\n", day[0]);
+    }
+}
+</code></pre>
+                        <!--</div>-->
+                    </div>
+
+                    <div class="tab-pane fade" id="5-1-8">
+                        <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-43">复制代码</button><code id="dm-43">
+/*main函数中输入两个整数，调用swap函数后交换变量的值（用指针完成），在main函数中输出。*/
+#include "stdio.h"
+void swap(int *p1, int *p2){
+    int temp;
+    temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+void main(){
+    int a = 1, b = 2;
+    swap(&a, &b);
+    printf("%d,%d\n", a, b);
+}
+</code></pre>
+                        <!--</div>-->
+                    </div>
+                    <div class="tab-pane fade" id="5-1-9">
+                        <!--<div class="highlight">-->
+<pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-44">复制代码</button><code id="dm-44">
+/*将字符串中的第m个字符开始的全部字符复制生成一个新的字符串。要求main函数中输入该字符串和m，调用myCopy函数完成复制，然后在main函数中输出新字符串（注意：myCopy函数返回指针）。*/
+#include "stdio.h"
+char *myCopy(char *p, int m){
+    static char newString[100];//注意：此处需定义为static，否则返回该数组的首地址后，该数组的所占用的空间即刻被系统收回，则main函数中就得不到新的字符串。（编译警告：returning address of local variable or temporary）
+    int i = 0;
+    while(*(p + m) != '\0'){
+        newString[i] = *(p + m);
+        m++;
+        i++;
+    }
+    newString[i] = '\0';
+    return newString;
+}
+void main(){
+    char str[] = "copy string from somewhere", *p;
+    int m;
+    printf("Please input a number: ");
+    scanf("%d", &m);
+    p = myCopy(str, m);
+    puts(p);
+}
+</code></pre>
+                        <!--</div>-->
+                    </div>
+
+
+                    </div>
+                    </div>
+                </ol>
+            </h4>
+        </div>
+        <!--<h3 id="5-t">课后思考和练习</h3>-->
+        <!--<div class="bs-callout bs-callout-info">-->
+            <!--<h4>-->
+                <!--<ol>-->
+                    <!--<p>-->
+                    <!--<li>。</li>-->
+                    <!--</p>-->
+                <!--</ol>-->
+            <!--</h4>-->
+        <!--</div>-->
+
+    </div>
+
+    <!-- 实验六
+=================================================
+ -->
+    <!--<div class="bs-docs-section">
+        <div class="page-header">
+            <h1 id="6">实验六</h1>
+        </div>
+        <p class="lead">本次实验要求了解C语言程序。</p>
+
+        <h3 id="6-p">编写如下程序</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>。</li>
+                    </p>
+                </ol>
+            </h4>
+        </div>
+        <h3 id="6-t">课后思考和练习</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>。</li>
+                    </p>
+                </ol>
+            </h4>
+        </div>
+
+    </div>-->
+
+    <!-- 实验七
+=================================================
+ -->
+    <!--<div class="bs-docs-section">
+        <div class="page-header">
+            <h1 id="7">实验七</h1>
+        </div>
+        <p class="lead">本次实验要求了解C语言程序。</p>
+
+        <h3 id="7-p">编写如下程序</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>。</li>
+                    </p>
+                </ol>
+            </h4>
+        </div>
+        <h3 id="7-t">课后思考和练习</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>。</li>
+                    </p>
+                </ol>
+            </h4>
+        </div>
+
+    </div>-->
+
+    <!-- 实验八
+=================================================
+ -->
+    <!--<div class="bs-docs-section">
+        <div class="page-header">
+            <h1 id="8">实验八</h1>
+        </div>
+        <p class="lead">本次实验要求了解C语言程序。</p>
+
+        <h3 id="8-p">编写如下程序</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>。</li>
+                    </p>
+                </ol>
+            </h4>
+        </div>
+        <h3 id="8-t">课后思考和练习</h3>
+        <div class="bs-callout bs-callout-info">
+            <h4>
+                <ol>
+                    <p>
+                    <li>。</li>
+                    </p>
+                </ol>
+            </h4>
+        </div>
+
+    </div>-->
+
+</div>
+</div>
+
+</div>
+
+<!-- Footer
+================================================== -->
+<footer class="bs-footer" role="contentinfo">
+    <div class="container">
+        <p>本网站所列文档全部由棋歌整理及维护，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>协议发布。
+        </p>
+
+        <p>Powered By <a href="http://nginx.org/" target="_blank" title="">Nginx</a> And<a
+                href="http://www.bootcss.com/"> Bootcss</a></p>
+
+        <p>
+            <a href="http://www.cqjtu.edu.cn/" target="_blank">重庆交通大学信息学院</a>
+        </p>
+    </div>
+</footer>
+
+<!-- JS and analytics only. -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/dist/js/bootstrap.min.js"></script>
+
+
+<script src="../docs-assets/js/holder.min.js"></script>
+<script src="../docs-assets/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="../docs-assets/js/clipboard.min.js"></script>
+<script>new Clipboard('.btn');</script>
+
+<script src="../docs-assets/js/application.js"></script>
+
+
+<!-- Analytics
+================================================== -->
+<!--<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F3d8e7fc0de8a2a75f2ca3bfe128e6391' type='text/javascript'%3E%3C/script%3E"));
+</script>-->
+
+
+</body>
+</html>
