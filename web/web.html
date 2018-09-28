@@ -800,7 +800,7 @@ footer h2{
               <code><a href="../data/web/JavaScript语言精粹_修订版.rar">JavaScript语言精粹_修订版</a></code>这3本书，网上其它的这方面书都有滥竽充数的嫌疑。
             </p>
             <p>运行JavaScript有多种方式，可以直接在浏览器的控制台编写运行；也可以编写一个独立的js文件，然后在Html文件中引入，（这两种方法由浏览器解释执行，是以前唯一的方式）。也可以用编辑软件如Webstrom或VSCode编写独立的js文件，由安装好的Node.js解释执行运行（
-              <a href="../data/web/node-v8.6.0-x64.msi">node-v8.6.0-64位下载</a>）。</p>
+              <a href="../data/web/node-v10.11.0-x64.msi">node-v10.11.0-64位下载</a>）。</p>
             <p>因为JavaScript是我们前后端编程的基础，所以下面对JavaScript进行概要介绍</p>
           </div>
           <h3 id="js-basic">基本语法</h3>
@@ -814,10 +814,10 @@ footer h2{
             </li>
             <div class="bs-callout bs-callout-danger">
               所谓标识符，就是指变量、函数、属性的名字，或者函数的参数。标识符可以是按照下列格式规则组合起来的一或多个字符:
-              <br> 第一个字符必须是一个字母、下划线（ _ ）或一个美元符号（ $ ）；
+              <br> 第一个字符只能是字母、下划线（ _ ）或美元符号（ $ ）之一；
               <br>其他字符可以是字母、下划线、美元符号或数字。
-              <br> 按照惯例，ECMAScript 标识符采用
-              <b>驼峰</b>大小写格式，也就是第一个字母小写，剩下的每个单词的首字母大写
+              <br> 按照惯例，ECMAScript（European Computer Manufacturers Association） 标识符采用
+              <b>驼峰</b>大小写格式，也就是第一个字母小写，剩下的每个单词的首字母大写，如<code>getNameById</code>
             </div>
             <li>
               <p>注释</p>
@@ -840,11 +840,10 @@ footer h2{
               <p>变量</p>
             </li>
             <div class="bs-callout bs-callout-danger">
-              ECMAScript 的变量是松散类型的，所谓松散类型就是可以用来保存任何类型（如：
+              ECMAScript 的变量是松散类型的（<strong><code>坑！</code></strong>），所谓松散类型就是可以用来保存任何类型（如：
               <code>String、Number、Boolean以及Object</code>等）的数据。换句话说，每个变量仅仅是一个用于保存值的占位符而已。
               <br>定义变量时要使用
-              <code>var</code> 操作符（注意
-              <code>var</code> 是一个关键字），后跟变量名（即一个标识符），如下所示：
+              <code>var</code> 操作符（<strong><code>坑！</code></strong>），后跟变量名（即一个标识符），如下所示：
               <code>var message;</code> 这行代码定义了一个名为
               <code>message</code> 的变量，该变量可以用来保存任何值。下示代码合法但不推荐：
               <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-210">复制代码</button><code id="dm-210">
@@ -903,7 +902,7 @@ console.log(result); // '55'
 //============================================
 var num1 = 5;
 var num2 = 10;
-var message = "The sum of 5 and 10 is " + num1 + num2;// (num1 + num2)
+var message = "The sum of 5 and 10 is " + num1 + num2;// (num1 + num2)，还可使用模板字符串``
 console.log(message); // "The sum of 5 and 10 is 510"</code></pre>
             </div>
             <li>
@@ -942,7 +941,7 @@ var max = (num1 > num2) ? num1 : num2;</code></pre>
           <ul>
             <li>
               <p>
-                <code> if do-while while for for-in break continue switch</code>
+                <code> if do-while while for for-in for-of break continue switch</code>
               </p>
             </li>
 
@@ -950,13 +949,24 @@ var max = (num1 > num2) ? num1 : num2;</code></pre>
               注意，请为语句块添加
               <code>{}</code>，不要吝啬
               <br> 另外，
-              <code>for-in</code>能简洁的遍历集合中的元素，如下代码：
+              <code>for-of</code>能简洁的遍历集合中的元素，如下代码：
             </div>
             <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-216">复制代码</button><code id="dm-216">
 var colors = ['red', 'green', 'blue', 'brown'];	//colors是一个数组
+//传统遍历（基本不用了）
+for(var i=0;i&lt;colors.length;i++){
+  console.log(colors[i]);
+}
+//for-in，专注下标
 for(var c in colors){
-    console.log(colors[c]);
-}</code></pre>
+  console.log(colors[c]);
+}
+//for-of，专注元素
+for(var c of colors){
+  console.log(c);
+}
+//高级遍历
+colors.map(c => console.log(c));</code></pre>
 
           </ul>
           <h3 id="js-function">函数</h3>
@@ -982,7 +992,7 @@ console.log(result);</code></pre>
             ECMAScript 函数不介意传递进来多少个参数，也不在乎传进来参数是什么数据类型。
           </p>
           <p>
-            也就是说，即便你定义的函数只接收两个参数，在调用这个函数时也未必一定要传递两个参数。可以传递一个、三个甚至不传递参数，而解析器永远不会有什么怨言。
+            也就是说，即便你定义的函数只接收两个参数，在调用这个函数时也未必一定要传递两个参数。可以传递一个、三个甚至不传递参数，而解析器永远不会有什么怨言（<strong><code>坑！</code></strong>）。
           </p>
           <p>
             之所以会这样，原因是 ECMAScript 中的参数在内部是用一个数组来表示的。函数接收到的始终都是这个数组，而不关心数组中包含哪些参数（如果有参数的话）。如果这个数组中不包含任何元素，无所谓；如果包含多个元素，也没有问题。
@@ -996,7 +1006,7 @@ function addSomeNumber(num){
 function addSomeNumber(num) {
     return num + 200;
 }
-var result = addSomeNumber(100); //300</code></pre>
+console.log(addSomeNumber(100)); //300</code></pre>
           </p>
           <h3 id="js-object">对象Object</h3>
           <p> 对象
@@ -1004,17 +1014,17 @@ var result = addSomeNumber(100); //300</code></pre>
           <p>创建对象有如下两种方式，我们常用第二种。</p>
           <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-220">复制代码</button><code id="dm-220">
 //方式一new
-var person = new Object();
-person.name = 'Elon Musk';
-person.age = 45;
+var person = new Object();//生成空对象
+person.name = 'Elon Musk';//设置对象的属性
+person.age = 46;
 person.job = 'SpaceX Rocket';
-person.sayName = function(){    //注意此处
+person.sayName = function(){    //设置对象的方法/函数，注意此处
     console.log(this.name);
 };
 //方式二字面量
 var person = {
     name: 'Lary Page',
-    age: 46,
+    age: 47,
     job: 'Software Engineer',
     sayName: function(){        //注意此处
         console.log(this.name);
@@ -1037,13 +1047,14 @@ function createPerson(name, age, job){
     return o;
 }
 var person1 = createPerson('Steve Jobs',56 , 'Inventor');
-var person2 = createPerson('Linus Torvalds', 48, 'Software Engineer');</code></pre>
+var person2 = createPerson('Linus Torvalds', 49, 'Software Engineer');
+var person2 = createPerson('Julian Assange', 47, 'Ethical Hacker');</code></pre>
           <h3 id="js-array">数组Array</h3>
           <p>除了
             <code>Object</code> 之外，
             <code>Array</code> 类型恐怕是 ECMAScript 中最常用的类型了。</p>
           <p>ECMAScript 中的数组与其他多数语言中的数组有着相当大的区别。虽然 ECMAScript 数组与其他语言中的数组都是数据的有序列表，但与其他语言不同的是，ECMAScript 数组的每一项
-            <b>可以保存任何类型的数据</b>。</p>
+            <b>可以保存任何类型的数据（不建议！）</b>。</p>
           <p>也就是说，可以用数组的第一个位置来保存字符串，用第二位置来保存数值，用第三个位置来保存对象，以此类推。而且，ECMAScript
             <b>数组的大小是可以动态调整的</b>，即可以随着数据的添加自动增长以容纳新增数据。</p>
           <p>创建数组有以下两种方法，我们常用第二种。</p>
@@ -1116,7 +1127,7 @@ console.log(colors);</code></pre>
             <div class="bs-callout bs-callout-info">
               <p>总结：由上可知，
                 <code>push、pop</code>操作在数组末，而
-                <code>unshift、shift</code>操作在数组头，对应压入和弹出。</p>
+                <code>unshift、shift</code>操作在数组头；<code>push、unshift</code>压入而<code>pop、shift</code>弹出。</p>
             </div>
             <li>
               <p>反转数组项</p>
@@ -1133,7 +1144,8 @@ var colors1 = ['red', 'green', 'blue'];
 var colors2 = ['yellow', 'black'];
 console.log(colors1.concat(colors2));
 console.log(colors2.concat(colors1));
-console.log(colors2.concat('brown'));//注意：原数组没改变</code></pre>
+console.log(colors2.concat('brown'));
+console.log(color2)//注意：concat返回一个新数组，原数组没改变</code></pre>
             <li>
               <p>分片方法</p>
             </li>
@@ -1198,17 +1210,18 @@ console.log(removed); // yellow，返回的数组中只包含一项</code></pre>
           <p>链式语法已变得非常流行。实际上这是一种非常容易实现的模式。基本上，你只需要让每个函数返回
             <code>this</code>代表包含该函数的对象，这样其他函数就可以立即被调用。看看下面的例子。</p>
           <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-231">复制代码</button><code id="dm-231">
-var bird = {
-    catapult: function() {
-        console.log( 'Yippeeeeee!' );
-        return this;
-    },
-    destroy: function() {
-        console.log( 'That'll teach you... you dirty pig!' );
-        return this;
-    }
+//链式语法
+var bird = {//定义对象字面量
+  catapult: function() {
+    console.log( 'Yippeeeeee!' );
+    return this;//返回bird对象自身
+  },
+  destroy: function() {
+    console.log( "That'll teach you... you dirty pig!" );
+    return this;
+  }
 };
-bird.catapult().destroy();//链式语法</code></pre>
+bird.catapult().destroy();//destroy()后还可以再链接吗？</code></pre>
           <h3 id="js-closure">闭包</h3>
           <p>闭包是什么?闭包是Closure，这是静态语言所不具有的一个新特性。但是闭包也不是什么复杂到不可理解的东西，简而言之，闭包就是：
             <p>函数的局部变量集合，只是这些局部变量在函数返回后会继续存在。</p>
