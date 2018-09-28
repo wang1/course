@@ -949,7 +949,7 @@ var max = (num1 > num2) ? num1 : num2;</code></pre>
               注意，请为语句块添加
               <code>{}</code>，不要吝啬
               <br> 另外，
-              <code>for-of</code>能简洁的遍历集合中的元素，如下代码：
+              <code>for-of、forEach</code>能简洁的遍历集合中的元素，如下代码：
             </div>
             <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-216">复制代码</button><code id="dm-216">
 var colors = ['red', 'green', 'blue', 'brown'];	//colors是一个数组
@@ -966,7 +966,9 @@ for(var c of colors){
   console.log(c);
 }
 //高级遍历
-colors.map(c => console.log(c));</code></pre>
+colors.forEach(c => console.log(c));
+var other = colors.map(c => c + 'X');//map不仅遍历，还返回另一个数组
+console.log(other);</code></pre>
 
           </ul>
           <h3 id="js-function">函数</h3>
