@@ -392,12 +392,38 @@
                   <a href="#geo-example">Google、Sogou地图代码及效果</a>
                 </li>
               </ul>
-            </li>
+            </li>            
             <li>
-              <a href="#angular">AngularJS</a>
+              <a href="#ts">TypeScript初步</a>
               <ul class="nav">
                 <li>
-                  <a href="#angular-what">AngularJS是什么</a>
+                  <a href="#ts-what">Typescript是什么</a>
+                </li>  
+                <li>
+                    <a href="#ts-config">Typescript配置</a>
+                </li>
+                <li>
+                    <a href="#ts-let">let和const</a>
+                </li>
+                <li>
+                    <a href="#ts-jg">解构</a>
+                </li> 
+                <li>
+                    <a href="#ts-function">函数function</a>
+                </li>  
+                <li>
+                    <a href="#ts-class">类class</a>
+                </li>
+                <li>
+                    <a href="#ts-module">模块module</a>
+                </li>            
+              </ul>
+            </li>
+            <li>
+              <a href="#angular">Angular</a>
+              <ul class="nav">
+                <li>
+                  <a href="#angular-what">Angular是什么</a>
                 </li>
                 <li>
                   <a href="#angular-config">Angular配置</a>
@@ -1520,7 +1546,7 @@ checkScope()();		//注意此处的使用方法。返回值为local scope而非gl
           </ol>
 
           <p>目前，大多数现代浏览器都支持该功能，但位置信息将触发隐私保护机制，也即需得到用户许可！</p>
-          <p>另外，位置感知的应用程序不能从本地文件系统运行，意即需要运行在某Web服务器如在Webstorm中。</p>
+          <!-- <p>另外，位置感知的应用程序不能从本地文件系统运行，意即需要运行在某Web服务器如在Webstorm中。</p> -->
           <h3 id="geo-example">Google、Sogou地图代码及效果</h3>
           <div class="bs-callout bs-callout-info">
             <h4 id="status"></h4>
@@ -1535,8 +1561,8 @@ checkScope()();		//注意此处的使用方法。返回值为local scope而非gl
     &lt;meta charset="utf-8" /&gt;
     &lt;title&gt;HTML5地理位置定位&lt;/title&gt;
     &lt;!--引入Google或Sougo地图库--&gt;
-    &lt;!--&lt;script src="http://maps.google.com/maps/api/js?sensor=false"&gt;&lt;/script&gt;--&gt;
-    &lt;script src="http://api.go2map.com/maps/js/api_v2.5.1.js"&gt;&lt;/script&gt;
+    &lt;!--&lt;script src="https://maps.google.com/maps/api/js?sensor=false"&gt;&lt;/script&gt;--&gt;
+    &lt;script src="https://api.go2map.com/maps/js/api_v2.5.1.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript"&gt;
         function loadMap(){
             if(navigator.geolocation){
@@ -1621,11 +1647,329 @@ checkScope()();		//注意此处的使用方法。返回值为local scope而非gl
           <!--</div>-->
         </div>
 
+        <!--TypeScript=====================-->
+        <div class="bs-docs-section">
+          <div class="page-header">
+            <h1 id="ts">
+              TypeScript
+            </h1>
+          </div>
+          <div class="row">
+              <img src="../assets/img/ts/ts.png" alt="ts" />
+              <img src="../assets/img/ts/ts1.jpeg" alt="ts" />
+          </div>
+
+          <h3 id="ts-what">Typescript是什么</h3>
+          <p>TypeScript是JavaScript类型的超集（当前我们处于ES5），它可以编译成纯JavaScript。</p>
+          <p>TypeScript给JavaScript加上可选的类型系统，给JavaScript加上静态类型后，就能将调试从运行期提前到编码期，诸如类型检查、越界检查这样的功能才能真正发挥作用。
+            TypeScript的开发体验远远超过以往纯JavaScript的开发体验，无需运行程序即可修复潜在bug。</p>
+          <p>TypeScript支持未来的ES6甚至ES7。在TypeScript中，可以直接使用ES6的最新特性，在编译时它会自动编译到ES3或ES5。</p>
+          <p>TypeScript可以构建大型程序，并在任何浏览器、任何计算机和任何操作系统上运行，且是开源的。</p>
+
+          <h3 id="ts-config">TS配置</h3>
+          <p>安装好<strong>NodeJS</strong>后，以管理员身份运行终端，使用<code>npm -g install ts-node typescript</code>命令进行全局安装</p>
+          <p>如在<strong>VS Code</strong>中开发，请安装<code>TSLint、TypeScript Hero、Bracket Pair Colorizer</code>等插件</p>
+          <p>新建一个<string>.ts</string>后缀的文件，任意写一段JS代码，点击运行试试是否配置成功</p>
+          <hr>
+          <p>TypeScript的学习请前往其<a href="https://www.typescriptlang.org" target="_blank">官网</a>或<a href="https://www.tslang.cn" target="_blank">中文网站</a></p>
+          <p id="ts-basic">以下我们就Typescript涉及前端框架Angular和相关特性的一些知识点进行介绍</p>
+
+          <h3 id="ts-let">let 和 const</h3>
+          <p>不使用var，使用let或const申明变量，并加上类型说明，且作用域为块级即以{}为界</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-let">复制代码</button><code id="ts-let">
+let lang: string = 'TypeScript';//如果省略类型说明，TS也可进行自动推断
+lang = 1010;//error! 如果需要可以使用联合类型：let lang: number | string = 'TS';
+let age: number = 89;
+let age = 64;//error!
+
+const pi: number = 3.14159;//pi以后不可改变，类似常量
+pi = 3.14;//error!
+</code></pre>
+          <h3 id="ts-jg">解构</h3>
+          <p>将对象、数组中的元素拆分到指定变量中，以方便使用</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-jg">复制代码</button><code id="ts-jg">
+//解构数组
+let input = [89, 64, 2018, 10];
+let [first, second] = input;//注意使用[]
+console.log(first); // 89
+console.log(second); // 64
+let [one, ...others] = input; //剩余变量
+console.log(...others);
+//展开
+let newArr = [89, ...others, 18];
+console.log(newArr);
+//解构对象
+let o = {
+  a: "foo",
+  b: 12,
+  c: "bar"
+};
+let {a, b} = o;//注意使用{}，且变量名需与对象中道属性名一致
+console.log(a, b);
+          </code></pre>
+          <h3 id="ts-function">函数</h3>
+          <p>使用完整函数类型定义</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-f1">复制代码</button><code id="ts-f1">
+//命名函数，有完整的参数和返回类型。可以不用，TS将自动进行类型推断但推荐使用！
+function add(x: number, y: number): number {
+  return x + y;
+}
+//匿名函数
+let myAdd = function(x: number, y: number): number { return x + y; };
+console.log(myAdd(1, '2');//error
+console.log(myAdd(1));//error
+console.log(typeof myAdd(1, 2));//number 
+</code></pre>
+          <p>可选参数</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-f2">复制代码</button><code id="ts-f2">
+//可选参数，必须放在必要参数后
+function greeting(firstName: string, lastName?: string) {
+  if(lastName) {
+      return `Hello ${firstName} ${lastName}!`;
+  }
+  return `Hello ${firstName}!`;
+}
+console.log(greeting('QiGe'));
+console.log(greeting('QiGe', 'Wang'));
+console.log(greeting('QiGe', 'Wang', 'Yong'));//error!
+          </code></pre>
+          <p>默认参数</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-f3">复制代码</button><code id="ts-f3">
+//默认参数，不必在必要参数后
+function greeting(firstName: string, lastName = 'Wang') {
+  return `Hello ${firstName} ${lastName}!`;
+}
+console.log(greeting('QiGe'));
+console.log(greeting('QiGe', 'HaHaHa'));
+console.log(greeting('QiGe', 'HaHaHa', 'Yong'));//error!
+          </code></pre>
+          <p>剩余参数</p>
+          <p>必要参数，默认参数和可选参数有个共同点：它们表示某一个参数。 有时，你想同时操作多个参数，或者你并不知道会有多少参数传递进来，
+             在TypeScript里，你可以把所有参数收集到一个变量里
+          </p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-f4">复制代码</button><code id="ts-f4">
+//剩余参数，会被当做个数不限的可选参数。可以一个都没有，也可以有任意个
+function greeting(firstName: string, ...restName: string[]) {
+  return `Hello ${firstName} ${restName.join(' ')}!`;
+}
+console.log(greeting('Osama', 'bin', 'Muhammad', 'bin', 'Awad', 'bin', 'Laden'));
+console.log(greeting('Laden'));
+          </code></pre>
+          <p>箭头函数</p>
+          <p>特点：简化函数定义、解决this问题（如需进一步了解可查看文档）</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-f5">复制代码</button><code id="ts-f5">
+//无参数，函数体代码只有一行，则该行结果即为函数返回值
+let greeting1 = () => `Hello TS!`;
+console.log(greeting1());
+//一个参数，函数体代码只有一行，则该行结果即为函数返回值
+let greeting2 = (name: string) => `Hello ${name}`;
+console.log(greeting2('QiGe'));
+//两个及以上的参数，函数体代码只有一行，则该行结果即为函数返回值
+let add1 = (n1: number, n2: number) => n1 + n2;
+console.log(add1(1, 2));
+//两个及以上的参数，函数体代码多于一行,则必须用{}包裹，且显式给出return
+let add2 = (n1: number, n2: number) => {
+  let sum = n1 + n2;
+  return sum;//改为sum++结果如何？
+}
+console.log(add2(1, 2));
+          </code></pre>
+          <h3 id="ts-class">类class</h3>
+          <p>类是属性（有些什么）和函数（能干什么）的集合，是生成对象（Object）或类实例的模板。（请注意，我们要用的Angular框架大量使用类）</p>
+          <p>类的定义和使用</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-f6">复制代码</button><code id="ts-f6">
+//类的定义和使用
+class MyInfo { //class是关键字，类名默认全部大写首字母
+  name: string; //属性
+  weather: string; //属性
+  
+  constructor(name: string, weather: string){ //构造函数，一般用于初始化。如果没有，TS会自动生成一个，以备用new创建类实例时调用。
+    this.name = name;
+    this.weather = weather;
+  }
+  printInfo(): void { //其它函数，无返回值
+    console.log(`Hello, ${this.name}.`);
+    console.log(`Today is ${this.weather}.`);
+  }
+}
+
+let myData = new MyInfo('QiGe', 'raining'); //使用new关键字生成对象，即该类的实例
+myData.printInfo();
+          </code></pre>
+          <p>类的属性和函数的访问权限</p>
+          <p>类中的属性和函数都有访问权限，默认为public即全局可访问，其次为protected即可在类的内部和其子类的内部可访问，最后为private，只能在该类内部可访问。</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-f7">复制代码</button><code id="ts-f7">
+//访问权限
+class MyInfo { //class是关键字，类名默认全部大写首字母
+  public name: string; //public属性，可省略
+  private _weather: string; //私有属性，习惯以_开头进行命名
+  
+  constructor(name: string, weather: string){ //构造函数，一般用于初始化
+    this.name = name;
+    this._weather = weather;
+  }
+  printInfo(): void { //其它函数
+    this._test();
+    console.log(`Hello, ${this.name}.`);
+    console.log(`Today is ${this._weather}.`);
+  }
+  private _test(): void {
+    console.log('You can not call me outside!');
+  }
+}
+
+let myData = new MyInfo('QiGe', 'raining'); //使用new关键字生成对象
+console.log(myData._weather); //error!
+myData._test(); //error
+myData.printInfo();
+          </code></pre>
+          <p>存取器-getter、setter</p>
+          <p>当在类外部时，建议设置getter和setter操作其private属性，即使public属性也如此。</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-f8">复制代码</button><code id="ts-f8">
+//getter和setter
+class MyInfo { //class是关键字，类名默认全部大写首字母
+  private readonly _name: string; //私有属性，外部不可访问。readonly使其只能在初始化时赋值，以后不可更改。    
+  private _weather: string; //私有属性，习惯以_开头进行命名
+
+  constructor(name: string, weather: string){ //构造函数，一般用于初始化
+    this._name = name;
+    this._weather = weather;
+  }
+  get name(): string {
+    return this._name;
+  }
+  set name(value: string) {  //error！ _name有readonly属性
+    this._name = value;
+  }
+  get weather(): string {
+    return this._weather;
+  }
+  set weather(value: string) {
+    this._weather = value;
+  } 
+}
+  
+let myData = new MyInfo('QiGe', 'raining'); //使用new关键字生成对象
+console.log(myData.name, myData.weather);
+myData.weather = 'sunny'; //OK
+myData.name = 'Wang'; //error!
+console.log(myData);
+          </code></pre>
+          <p>静态属性</p>
+          <p>类中的属性或函数有static修饰，则可直接使用而不需要实例化</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-f9">复制代码</button><code id="ts-f9">
+//静态属性，内建或自定义，无需new即可使用
+console.log(Math.round(89.64)); //90
+console.log(Math.pow(2, 8)); //256
+class MyStaticClass {
+  static place = 'Earth';
+  static printInfo() {
+    console.log('We have only one Earth!');
+  }
+}
+console.log(MyStaticClass.place);
+MyStaticClass.printInfo();
+          </code></pre>
+          <p>继承</p>
+          <p>可以通过extends关键字继承其它类，从而成为其子类</p>
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-f10">复制代码</button><code id="ts-f10">
+class Animal {
+  // 当构造函数传入的参数加上了“访问权限控制符”，则同时会声明同名类属性，并赋值
+  constructor(public name: string) { }
+  protected log(message: string) {
+    console.log(message);
+  }
+  move(distanceInMeters: number = 0) {        
+    this.log(`${this.name} moved ${distanceInMeters}m.`);//请注意name来自何处
+    this.log('==============');
+  }
+}
+
+class Horse extends Animal {
+  constructor(name: string) { 
+    super(name); // 通过super调用父类构造器
+  }
+  run(distanceInMeters = 50) { //自己独有的函数
+    this.log("Clop, clop..."); 
+    super.move(distanceInMeters); // 通过super调用父类方法
+  }
+}
+
+class Eagle extends Animal {
+  constructor(name: string) { super(name); }
+  reborn() { //自己独有的函数
+    console.log('Reborn？ It is a joke, hahaha!');
+  }
+
+}
+
+let tom: Horse = new Horse("Tommy the Palomino");
+tom.run(8964);
+let sam: Eagle = new Eagle("Sammy the Hawk");
+sam.move(1024);//sam的move函数来自何处？
+sam.reborn();
+          </code></pre>
+          <h3 id="ts-module">模块Module</h3>
+          <p>对于大型的项目，我们需要使用模块进行管理。每个 .ts 文件就是一个模块，通过 export 来对外部模块暴露元素，通过 import 来引入模块。</p>
+          <p>在项目文件夹下新建目录modules和文件main.ts，并在modules下新建name.ts和weather.ts文件，如下：</p>
+          <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#ts-m-1" data-toggle="tab">modules/name.ts</a>
+              </li>
+              <li>
+                <a href="#ts-m-2" data-toggle="tab">module/weather.ts</a>
+              </li>
+              <li>
+                  <a href="#ts-m-3" data-toggle="tab">main.ts</a>
+              </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="ts-m-1">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-name">复制代码</button><code id="ts-name">
+export class Name { //用export对外部暴露该类
+  constructor(private first: string, private second: string) {}
+  get nameMessage() {
+    return `Hello ${this.first} ${this.second}`;
+  }
+}             </code></pre>
+            </div>
+            <div class="tab-pane fade" id="ts-m-2">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-weather">复制代码</button><code id="ts-weather">
+export class WeatherLocation { //用export对外部暴露该类
+  constructor(private weather: string, private city:string) {}
+  get weatherMessage() {
+    return `It is ${this.weather} in ${this.city}`;
+  }
+}                      </code></pre>
+            </div>
+            <div class="tab-pane fade in" id="ts-m-3">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-main">复制代码</button><code id="ts-main">
+//用import从外部模块文件导入，默认后缀.ts去掉
+import { Name } from "./test";
+import { WeatherLocation } from "./w";
+
+let name = new Name('Wang', 'Yong');
+let loc = new WeatherLocation('raining', 'ChongQing');
+
+console.log(name.nameMessage);
+console.log(loc.weatherMessage);            </code></pre>
+            </div>
+          </div>
+
+          <div class="bs-callout bs-callout-info">
+            <h4>另外，有关范型、装饰器、依赖注入、RxJS等内容可以后再进行学习。</h4>
+          </div>
+        </div>
+
         <!--AngularJS=====================-->
+        <!-- angular中文站点克隆和更新
+          git clone https://github.com/ng-docs/ng-docs.github.io.git
+          git pull
+        -->
         <div class="bs-docs-section">
           <div class="page-header">
             <h1 id="angular">
-              <img src="../assets/img/AngularJS-large.png" alt="angularjs" />
+                Angular<img src="../assets/img/js/angular.png" alt="angular" />
             </h1>
           </div>
           <p class="lead">使用超动感HTML & JS开发WEB应用！</p>
@@ -1726,7 +2070,7 @@ git config --global credential.helper wincred命令可以缓存github账户和�
           <hr>
           <h3 id="angular-TOH">Tour Of Heroes in Angular</h3>
           <p>请参照
-            <a href="https://angular.cn/tutorial">Angular教程</a>进行英雄之旅的学习，掌握基本的Angular前端开发技术。</p>
+            <a href="https://angular.cn/tutorial" target="_blank">Angular教程</a>进行英雄之旅的学习，掌握基本的Angular前端开发技术。</p>
           <hr>
           <h3 id="angular-TOH-v2">TOH-Version 2</h3>
           <p>在上节的基础上，我们进行Tour Of Heroes的升级版开发。本版本仍以TOH为例，当模拟一个生产环境进行开发。</p>
