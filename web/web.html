@@ -2001,13 +2001,13 @@ console.log(loc.weatherMessage);            </code></pre>
           <p>如果没完全明白以上的意思，那就看下面的例子。</p>
           <h3 id="angular-config">Angular配置</h3>
           <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#an-c">复制代码</button><code id="an-c">
-------------
-1. node安装
-------------
-下载安装即可，重复安装即可更新，node -v查看node是否安装成功
-------------
-2. yarn安装
-------------
+--------------------------------
+1. JS运行环境node和版本控器git安装
+--------------------------------
+下载安装即可，重复安装即可更新，node -v和git --version可查看node和git是否安装成功
+------------------
+2. 包管理器yarn安装
+------------------
 node默认的包管理器为npm，我们推荐使用yarn作为包管理器
 方法A：npm install -g yarn     #注意使用管理员权限
 方法B：下载yarn安装包
@@ -2015,11 +2015,13 @@ node默认的包管理器为npm，我们推荐使用yarn作为包管理器
 ------------
 3. yarn配置
 ------------
-配置yarn使用淘宝的包源，WTF GFW！
+配置yarn使用淘宝的包源，另外一个包node-sass也是头疼的地方。WTF GFW！
 yarn config set registry https://registry.npm.taobao.org --global #注意使用管理员权限
----------------------
-4. angular/cli
----------------------
+yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass --global #注意使用管理员权限
+
+---------------------------------
+4. Angular开发工具angular/cli安装
+---------------------------------
 我们使用angular/cli即Angular命令行工具进行开发
 方法A：yarn global add @angular/cli    #使用yarn安装，#注意使用管理员权限	
 方法B：npm install -g @angular/cli     #使用npm安装，#注意使用管理员权限
