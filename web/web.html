@@ -1676,7 +1676,7 @@ checkScope()();		//注意此处的使用方法。返回值为local scope而非gl
 
           <h3 id="ts-let">let 和 const</h3>
           <p>不使用var，使用let或const申明变量，并加上类型说明，且作用域为块级即以{}为界</p>
-          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-let">复制代码</button><code id="ts-let">
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-letc">复制代码</button><code id="ts-letc">
 let lang: string = 'TypeScript';//如果省略类型说明，TS也可进行自动推断
 lang = 1010;//error! 如果需要可以使用联合类型：let lang: number | string = 'TS';
 let age: number = 89;
@@ -1687,7 +1687,7 @@ pi = 3.14;//error!
 </code></pre>
           <h3 id="ts-jg">解构</h3>
           <p>将对象、数组中的元素拆分到指定变量中，以方便使用</p>
-          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-jg">复制代码</button><code id="ts-jg">
+          <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-jgp">复制代码</button><code id="ts-jgp">
 //解构数组
 let input = [89, 64, 2018, 10];
 let [first, second] = input;//注意使用[]
@@ -1716,7 +1716,7 @@ function add(x: number, y: number): number {
 }
 //匿名函数
 let myAdd = function(x: number, y: number): number { return x + y; };
-console.log(myAdd(1, '2');//error
+console.log(myAdd(1, '2'));//error
 console.log(myAdd(1));//error
 console.log(typeof myAdd(1, 2));//number 
 </code></pre>
@@ -1917,7 +1917,7 @@ sam.reborn();
                 <a href="#ts-m-1" data-toggle="tab">modules/name.ts</a>
               </li>
               <li>
-                <a href="#ts-m-2" data-toggle="tab">module/weather.ts</a>
+                <a href="#ts-m-2" data-toggle="tab">modules/weather.ts</a>
               </li>
               <li>
                   <a href="#ts-m-3" data-toggle="tab">main.ts</a>
@@ -1945,8 +1945,8 @@ export class WeatherLocation { //用export对外部暴露该类
             <div class="tab-pane fade in" id="ts-m-3">
               <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#ts-main">复制代码</button><code id="ts-main">
 //用import从外部模块文件导入，默认后缀.ts去掉
-import { Name } from "./test";
-import { WeatherLocation } from "./w";
+import { Name } from "./modules/name";
+import { WeatherLocation } from "./modules/weather";
 
 let name = new Name('Wang', 'Yong');
 let loc = new WeatherLocation('raining', 'ChongQing');
@@ -1957,11 +1957,11 @@ console.log(loc.weatherMessage);            </code></pre>
           </div>
 
           <div class="bs-callout bs-callout-info">
-            <h4>另外，有关范型、装饰器、依赖注入、RxJS等内容可以后再进行学习。</h4>
+            <h4>另外，有关泛型、装饰器、依赖注入、RxJS等重要内容可以后再进行学习。</h4>
           </div>
         </div>
 
-        <!--AngularJS=====================-->
+        <!--Angular=====================-->
         <!-- angular中文站点克隆和更新
           git clone https://github.com/ng-docs/ng-docs.github.io.git
           git pull
@@ -1971,18 +1971,32 @@ console.log(loc.weatherMessage);            </code></pre>
             <h1 id="angular">
                 Angular<img src="../assets/img/js/angular.png" alt="angular" />
             </h1>
+            <p class="lead">使用超动感HTML & TS开发现代Web应用！</p>
           </div>
-          <p class="lead">使用超动感HTML & JS开发WEB应用！</p>
-          <h4></h4>
-          <p>Why AngularJS?
-            <br> HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views
-            in web-applications. AngularJS lets you extend HTML vocabulary for your application. The resulting environment
-            is extraordinarily expressive, readable, and quick to develop.</p>
-          <h3 id="angular-what">AngularJS是什么</h3>
-          <p>AngularJS是一款由Google维护的开源JavaScript库，为开发单一页面Web应用（CRUD）而生的。它的目标是增强基于浏览器的应用，并带有MVC模式功能，这为了使得开发和测试变得更加容易。 函式库读取包含附加自定义的HTML，
-            遵从这些自定义属性中的指令，并将页面中的输入或输出与由JavaScript变量表示的模型绑定起来。这些JavaScript变量的值可以手工设置，或者从静态或动态JSON资源中获取。 请访问其
-            <a href="http://angularjs.org/">英文站点</a>及
-            <a href="http://www.angularjs.cn/">中文社区</a>。
+          
+          
+          <h3 id="angular-what">Angular是什么</h3>
+          <p>Angular是一个由Google开发维护的开源前端开发框架和平台（其它两个流行的是React和Vue）。
+            <br>框架提供了大量高效的结构或者良好的模式，我们根据框架提供的结构或者模式去书写代码，由框架帮助我们去执行相应的操作。
+          <div class="bs-callout bs-callout-info">
+            <h4>Angular集声明式模板、依赖注入、端到端工具和一些最佳实践于一身，为你解决开发方面的各种挑战。
+            <br>Angular为开发者提升构建 Web、手机或桌面应用的能力，无论哪种应用尺度。</h4>
+          </div>
+          <div class="bs-callout bs-callout-info">
+              <h4>前端发展历史</h4>
+              <ul>
+                <li>之前时代--是桌面应用的天下，客户服务器（CS）的天下，没有前端（网站设计师）这样的职位</li>
+                <li>石器时代--互联网开始发展网站设计师（静态）-不过是html、css、js、flash，页面设计师</li>
+                <li>青铜时代--yui、prototype、extjs、dojo等等框架的时代，美工、页面设计师</li>
+                <li>黑铁时代--jQuery和jQuery的一堆衍生品jqueryui、easyui、ligerui等 ui设计,出现前端攻城狮</li>
+                <li>白银时代--Angular、React、Vue等前端开发框架出现，真正意义的前端攻城狮</li>
+                <li>黄金时代--现在前端技术和后端平起平坐的时代，跨平台、全栈开发</li>
+              </ul>
+          </div> 
+          <p>请访问其
+            <a href="https://angular.io/" target="_blank">英文站点</a>及
+            <a href="https://angular.cn/" target="_blank">中文社区</a> 或
+            <a href="http://10.1.230.73/" target="_blank">校内镜像</a>进行学习。
           </p>
           <p>如果没完全明白以上的意思，那就看下面的例子。</p>
           <h3 id="angular-config">Angular配置</h3>
@@ -2002,21 +2016,21 @@ node默认的包管理器为npm，我们推荐使用yarn作为包管理器
 3. yarn配置
 ------------
 配置yarn使用淘宝的包源，WTF GFW！
-yarn config set registry https://registry.npm.taobao.org --global
+yarn config set registry https://registry.npm.taobao.org --global #注意使用管理员权限
 ---------------------
 4. angular/cli
 ---------------------
 我们使用angular/cli即Angular命令行工具进行开发
-方法A：yarn global add @angular/cli    #使用yarn安装	
-方法B：npm install -g @angular/cli     #使用npm安装
-方法C：npm install -g cnpm             #使用cnpm安装
+方法A：yarn global add @angular/cli    #使用yarn安装，#注意使用管理员权限	
+方法B：npm install -g @angular/cli     #使用npm安装，#注意使用管理员权限
+方法C：npm install -g cnpm             #使用cnpm安装，#注意使用管理员权限
       cnpm install -g @angular/cli
 重新安装即可更新，运行ng -v查看angular/cli是否安装成功
 ---------------------
 5. angular/cli配置
 ---------------------
 配置angular/cli使用yarn作为包管理器，如果有问题随时可转换回npm或者cnpm
-ng config cli.packageManager yarn --global	
+ng config cli.packageManager yarn --global #注意使用管理员权限	
 ---------------------
 6. angular/cli基本使用
 ---------------------
@@ -2033,11 +2047,8 @@ ng g m my-new-module        #新建模块
 ---------------------
 8. 推荐vs code插件
 ---------------------
-Angular 5 Snippets
-angular2-switcher 
-Bracket Pair Colorizer
-TsLint
-TypeScript Hero 
+在前面的HTML以及TS部分我们已经推荐了以下插件：Auto Close Tag、Auto Rename Tag、Code Runner、IntelliSense for CSS、Material Icon、Open HTML in Browser、Path Intelligence、TSLint、TypeScript Hero、Bracket Pair Colorizer等，使用Angular再请安装Angular language service和Angular 7 Snippets等
+
 ---------------------
 9. 后台服务器Deployd
 ---------------------
