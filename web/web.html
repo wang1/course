@@ -2027,7 +2027,7 @@ yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass --glob
 方法B：npm install -g @angular/cli     #使用npm安装，#注意使用管理员权限
 方法C：npm install -g cnpm             #使用cnpm安装，#注意使用管理员权限
       cnpm install -g @angular/cli
-重新安装即可更新，运行ng -v查看angular/cli是否安装成功
+重新安装即可更新，运行ng version查看angular/cli是否安装成功
 ---------------------
 5. angular/cli配置
 ---------------------
@@ -2036,7 +2036,7 @@ ng config cli.packageManager yarn --global #注意使用管理员权限
 ---------------------
 6. angular/cli基本使用
 ---------------------
-ng new PROJECT_NAME     #新建项目
+ng new PROJECT_NAME     #在合适的位置新建Angular项目，且已经自动初始化了本地仓库
 cd PROJECT_NAME         #进入项目文件夹
 ng serve -o	            #启动开发服务器并自动打开浏览器访问http://localhost:4200/，同时监听文件变化，并在文件更改时重新构建此应用并自动刷新页面
 ---------------------
@@ -2076,14 +2076,16 @@ git config --global credential.helper wincred命令可以缓存github账户和�
 ---------------------
 11. 课堂讲授项目
 ---------------------
-为方便学习，我们课堂讲授的项目我都放在了github上，以授课时间（如20171115）作为tag标注，请自行clone学习
-通信专业： https://github.com/wang1/TOH-Comm
-物联专业： https://github.com/wang1/TOH-IoT</code></pre>
+为方便学习，我们课堂讲授的项目我都放在了github上，以授课时间（如20181108）作为tag标注，请按上面的方法自行clone学习
+通信专业： https://github.com/wang1/TOH-Comm</code></pre>
 
           <hr>
           <h3 id="angular-TOH">Tour Of Heroes in Angular</h3>
           <p>请参照
-            <a href="https://angular.cn/tutorial" target="_blank">Angular教程</a>进行英雄之旅的学习，掌握基本的Angular前端开发技术。</p>
+            <a href="https://angular.cn/tutorial/" target="_blank">Angular教程</a>或
+            <a href="http://10.1.230.73/" target="_blank">校内镜像</a>进行英雄之旅的学习，掌握基本但重要的Angular前端开发技术。
+          </p>
+
           <hr>
           <h3 id="angular-TOH-v2">TOH-Version 2</h3>
           <p>在上节的基础上，我们进行Tour Of Heroes的升级版开发。本版本仍以TOH为例，当模拟一个生产环境进行开发。</p>
