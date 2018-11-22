@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+
+<head>
+    <meta charset="utf8">
+    <title>
+        网络攻防云平台
+    </title>
+    <link href="libs/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="libs/css/mdb-p.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="libs/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="libs/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-toggleable-md navbar-dark scrolling-navbar fixed-top">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand wow fadeIn" href="#">
+                <i id="icon" class="fa"> 7 </i>
+                <!--<p id="icon"> 7 </p> -->
+                <strong> 棋歌教学网网络攻防云平台</strong>
+            </a>            
+        </div>
+    </nav>
+    <!--/.Navbar-->
+
+    <!--Mask-->
+    <div class="view hm-black-strong">
+        <div class="full-bg-img flex-center">
+            <div class="container">
+                <div class="row" id="home">
+                    <!--First column-->
+                    <div class="col-lg-6">
+                        <div class="description">
+                            <!--要修正的地方-->
+                            <h2 class="h2-responsive wow fadeInLeft">网络攻防云平台配置信息</h2>
+                            <hr class="hr-dark wow fadeInLeft">
+                            <ol>
+                                <li class="wow fadeInLeft" data-wow-delay="0.1s"> 10.1.74.128---Kali，用户名和密码是root:kali</li>
+                                <li class="wow fadeInLeft" data-wow-delay="0.2s"> 10.1.74.129---Kali，用户名和密码是root:kali</li>
+                                <li class="wow fadeInLeft" data-wow-delay="0.3s"> 10.1.74.130---Kali，用户名和密码是root:kali</li>
+                                <li class="wow fadeInLeft" data-wow-delay="0.4s"> 10.1.74.113---Metasploitable2 Win7，渗透对象，admin:123</li>
+                                <li class="wow fadeInLeft" data-wow-delay="0.5s"> 10.1.74.114---Metasploitable2 Linux，渗透对象，msfadmin:msfadmin</li>
+                                <li class="wow fadeInLeft" data-wow-delay="0.6s"> <strong>请注意：严禁使用该平台对生产环境进行渗透！！！</strong></li>
+                            </ol>
+
+                        </div>
+                    </div>
+                    <!--/.First column-->
+
+                    <!--Second column-->
+                    <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.1s">
+                        <!--Form-->
+                        <form role="form" name="fileForm">
+                            <div class="card">
+                                <div class="card-block">
+                                    <!--Header-->
+                                    <div class="form-header danger-color-dark wow fadeInRight" data-wow-delay="0.2s">
+                                        <h3><i class="fa fa-lock"></i> 请登录</h3>
+                                    </div>
+
+                                    <!--Body-->
+                                    <div class="md-form wow fadeInRight form-group" data-wow-delay="0.3s">
+                                        <i class="fa fa-sort-numeric-asc prefix"></i>
+                                        <input type="number" name="number" id="form2" class="form-control validate" required>
+                                        <label for="form2">你的学号（必填）</label>
+                                    </div>
+
+                                    <div class="md-form wow fadeInRight form-group" data-wow-delay="0.4s">
+                                        <i class="fa fa-user prefix"></i>
+                                        <input type="text" name="name" id="form4" class="form-control validate" required>
+                                        <label for="form4">你的姓名（必填）</label>
+                                    </div>                                 
+                                    
+                                    <div class="text-center wow fadeInRight form-group" data-wow-delay="0.6s">
+                                        <a class="btn info-color-dark btn-block" href="./../ns/ns-experiment.html"> 
+                                            <h4><i class="fa fa-dashboard"></i> 进入网站</h4>
+                                        </a> 
+                                        <a class="btn info-color-dark btn-block" href="https://yunload.org/"> 
+                                            <h4><i class="fa fa-pencil-square"></i> 撰写报告</h4>
+                                        </a>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--/.Form-->
+                    </div>
+                    <!--/Second column-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.Mask--> 
+   
+    <script src="libs/js/jquery-3.1.1.min.js"></script>
+    <script src="libs/js/tether.min.js"></script>
+    <script src="libs/js/bootstrap.min.js"></script>
+    <script src="libs/js/mdb-p.min.js"></script>    
+    <script>
+        new WOW().init();
+    </script>
+    
+</body>
+</html>
