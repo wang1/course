@@ -1,0 +1,332 @@
+<html lang="zh-cn">
+
+<head>
+  <link rel="stylesheet" href="./jquery.fullPage.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <header>
+    <div class="header-top clearfix">
+      <h1 class="l-left">
+        <a href="#firstSection">《网络攻防实验云平台研究与实现》结题答辩</a>
+      </h1>
+      <a class="l-right toggle-menu" href="#">
+        <i></i>
+        <i></i>
+        <i></i>
+      </a>
+    </div>
+
+    <nav class="hide">
+      <ul id="menu">
+        <li data-menuanchor="firstSection">
+          <a href="#firstSection" title="First Section">要解决什么</a>
+        </li>
+        <!-- <li data-menuanchor="firstSection/1">
+            <a href="#firstSection/1" title="First Section">要解决什么</a>
+          </li> -->
+        <li data-menuanchor="secondSection">
+          <a href="#secondSection" title="Second Section">要做些什么</a>
+        </li>
+        <!-- <li data-menuanchor="secondSection/1">
+          <a href="#secondSection/1" title="Second Section">要完成什么</a>
+        </li> -->
+        <li data-menuanchor="thirdSection">
+          <a href="#thirdSection" title="Second Section">完成情况</a>
+        </li>
+        <li data-menuanchor="fourthSection">
+          <a href="#fourthSection" title="Fourth Section">总结</a>
+        </li>
+        <li data-menuanchor="fifthSection">
+          <a href="#fifthSection" title="First Slide">致谢</a>
+        </li>
+        <!-- <li data-menuanchor="fifthSection/1">
+          <a href="#fifthSection/1" title="Second Slide">Second Slide</a>
+        </li> -->
+      </ul>
+    </nav>
+  </header>
+  <!-- <div class="scroll-icon">
+      <p>Jump into the last slide</p>
+      <a href="#fifthSection/1" class="icon-up-open-big"></a>
+    </div> -->
+  <div id="fullpage">
+    <section class="vertical-scrolling">
+      <div class="horizontal-scrolling">
+        <!-- style.css中进行修改不能生效！！！ -->
+        <h2 style="font-size: 6em">要解决什么</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 4em;margin-left: 30%;text-align: left;">
+          <ol>
+            <li>1. 为网络攻防提供实验云平台</li>
+            <li>2. 有详尽的实验指导文档</li>
+            <li>3. 随时随地使用</li>
+            <li>4. 无法律风险</li>
+            <li>5. 无其它开销</li>
+          </ol>
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">要解决什么</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 4em;margin-left: 30%; margin-right: 20%; text-align: left;">
+          即：搭建一个网络攻防云平台，让对网络安全有兴趣的所有同学能随时随地、不增加开销、无法律风险地进行网络攻防方面的学习
+        </h3>
+      </div>
+    </section>
+    <section class="vertical-scrolling">
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">要做些什么-攻击平台</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/kali.png" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          <ol>
+            <li>a. 研究Kali Linux及其渗透工具（nmap、burpsuite、httrack、macof、metasploit、hyday、SET等）</li>
+            <li>b. 研究第三方渗透工具（Nessus、OpenVAS、Nginx、Maltego、shodan等）</li>
+            <li>c. 研究云平台资源分配、管理、安装、配置等</li>
+          </ol>
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">要做些什么-受攻平台</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/metaspoitable.jpeg" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          一个基于Ubuntu Linux的操作系统，它存在大量未打补丁漏洞，并且开放了无数高危端口。该Linux系统用来作为攻击用的靶机。
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">要做些什么-受攻平台</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/mutillidae.png" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          一个开源免费的安全渗透测试PHP程序框架。安装Mutillidae在未打补丁的Linux和windows7系统上作为攻击用的靶机。
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">要做些什么-受攻平台</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/dojo.png" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          一个开源免费的通用hack训练环境，包括渗透工具和多种漏洞环境。安装dojo在未打补丁的Linux和windows7系统上，作为攻击用的靶机。
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">要做些什么-受攻平台</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/webgoat.png" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          一个开源免费的基于JavaEE架构的Web应用，设计了大量的缺陷来指导用户进行攻击。安装webgoat在未打补丁的Linux和windows7系统上，作为攻击用的靶机。
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">要做些什么-受攻平台</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/dvwa.png" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          一个用PHP和Mysql编写的一套用于常规Web漏洞教学和检测Web脆弱性测试程序。安装DVWA在未打补丁的Linux和windows7系统上，作为攻击用的靶机。
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">要做些什么-远程登录服务SSHD</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/sshd.jpeg" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          <li>A. 为保证安全，可靠的远程登录攻击平台，在Kali Linux上安装、配置openssh服务器</li>
+          <li>B. SSH客户端可使用系统自带的或使用MobaXterm，保证session的连续性</li>
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">要做些什么-网络拓扑结构</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/topology.png" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          <ol>
+            <li>A. 学生在校内任何可联网的计算机上运行ssh客户端登录攻击平台服务器即可。</li>
+            <li>B. 为保证安全以及不干扰学校服务器的正常教学和工作，攻击和受攻平台都规划在不同的VLAN中，隔离及授权访问。</li>
+          </ol>
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">要做些什么-实验网站及报告撰写</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/site.png" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          <ol>
+            <li>A. 为更好的使用以及指导学生，项目组进行了实验网站的开发与搭建并在校内校外部署。</li>
+            <li>B. 为方便学生撰写和提交实验报告方便，我们还设计和搭建了实验报告撰写和提交网站。</li>
+          </ol>
+        </h3>
+      </div>
+    </section>
+    <section class="vertical-scrolling">
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">完成情况-攻击平台</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/k1.png" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          <ol>
+            <li>A. 共构建了3个Kali平台，软硬件配置如上表。</li>
+            <li>B. 每个平台安装了大量渗透工具，且配置了SSHD供远程登录，具有快照恢复功能。</li>
+          </ol>
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">完成情况-受攻平台</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/ml.png" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          <ol>
+            <li>A. 构建了1个Linux平台，未安装补丁，软硬件配置如上表。</li>
+            <li>B. 该平台安装了Mutillidae、Dojo、WebGoat和DVWA渗透框架，具有快照恢复功能，某些框架可调节难易程度。</li>
+          </ol>
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">完成情况-受攻平台</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <img src="./imgs/mw.png" width="600" alt="">
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 2.5em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          <ol>
+            <li>A. 构建了1个Windows 7平台，未安装补丁，软硬件配置如上表。</li>
+            <li>B. 该平台安装了Dojo、WebGoat和DVWA渗透框架，具有快照恢复功能，某些框架可调节难易程度。</li>
+          </ol>
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">完成情况-实验网站</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 4em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          <ol>
+            <li>A. 实验文档、报告撰写、提交校内网站：10.1.230.73/ns/<a href="http://10.1.230.73/course/nad/nad.html" class="icon-up-open-big"
+                target="_blank"></a></li>
+            <li>B. 实验文档、报告撰写、提交校外网站：qige.io/ns/<a href="https://qige.io/nad/nad.html" class="icon-up-open-big" target="_blank"></a></li>
+            <!-- <li>c. 实验报告撰写提交：yunload.org/<a href="https://yunload.org" class="icon-up-open-big" target="_blank"></a></li> -->
+          </ol>
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">完成情况-其它</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 4em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          <ol>
+            <li>A. 随时随地用：可行。只要连接我校网络</li>
+            <li>B. 无法律风险：达到。基于校内云环境上</li>
+            <li>c. 不增加成本：达到。无需购买其它设备</li>
+          </ol>
+        </h3>
+      </div>
+    </section>
+    <section class="vertical-scrolling">
+      <div class="horizontal-scrolling">
+        <h2 style="font-size: 6em">总结-概况</h2>
+        <hr>
+        <h3>&nbsp;</h3>
+        <h3 style="font-size: 4em;margin-left: 25%; margin-right: 20%; text-align: left;">
+          <ol>
+            <li>A. 近2年的调研、学习、开发、测试</li>
+            <li>B. 研究了云计算平台、虚拟机、多用户机制、恢复机制、难易等级调控等方面的技术</li>
+            <li>c. 搭建了网络攻防云平台</li>
+            <li>d. 解决了实验教学难题，提高了实验教学质量</li>
+          </ol>
+          为全校师生提供了一个学习和掌握网络安全技术的动手实验环境！
+        </h3>
+      </div>
+      <div class="horizontal-scrolling">
+          <h2 style="font-size: 6em">总结-使用</h2>
+          <hr>
+          <h3>&nbsp;</h3>
+          <h3 style="font-size: 4em;margin-left: 25%; margin-right: 20%; text-align: left;">
+            <ol>
+              <li>A. 专业：计算机、通信、物联网等</li>
+              <li>B. 学生：2015级8个班约262人，2016级4个班约129人</li>
+              <li>c. 教师：王勇、米波、刘洋等</li>
+            </ol>
+          </h3>
+        </div>
+        <div class="horizontal-scrolling">
+            <h2 style="font-size: 6em">总结-问题</h2>
+            <hr>
+            <h3>&nbsp;</h3>
+            <h3 style="font-size: 4em;margin-left: 25%; margin-right: 20%; text-align: left;">
+              <ol>
+                <li>A. 每个攻击平台同时登录约40位学生使得资源紧张</li>
+                <li>B. 受攻平台容易崩溃</li>
+                <li>c. 不能自主恢复受攻平台</li>
+                <li>d. 防御方面资料有限</li>
+                <li>e. 缺乏移动环境渗透</li>
+              </ol>
+            </h3>
+          </div>
+          <div class="horizontal-scrolling">
+              <h2 style="font-size: 6em">总结-反馈</h2>
+              <hr>
+              <h3>&nbsp;</h3>
+              <h3 style="font-size: 4em;margin-left: 25%; margin-right: 20%; text-align: left;">
+                <ol>
+                  <li>A. 桥梁工程精品课程网站&nbsp;&nbsp;&nbsp;&nbsp;B. 教学评估网站</li>
+                  <li>c. 外语学院阅卷系统网站&nbsp;&nbsp;&nbsp;&nbsp;d. 学工系统网站</li>
+                  <li>E. 教务处课表查询网站&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f. 网络中心服务器</li>
+                  <li>g. 思政课程网站 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; h. 后勤公司水卡</li>
+                  <li>i. 远程摄像头查看与控制&nbsp;&nbsp;j. 三门峡外语学校</li>
+                </ol>
+              </h3>
+            </div>
+    </section>
+    <section class="vertical-scrolling">
+        <div class="horizontal-scrolling">
+            <h2 style="font-size: 6em">致谢</h2>
+            <hr>
+            <h3>&nbsp;</h3>
+            <h3 style="font-size: 4em;margin-left: 25%; margin-right: 20%; text-align: left;">
+              <ol>
+                <li>A. 感谢信息科学与工程学院提供云计算环境供系统运行！</li>
+                <li>b. 感谢实践教学管理中心提供资金支持，使项目得以顺利开展！</li>
+                <li>c. 感谢辛苦参与测试的教师和学生！</li>
+                <li>d. 感谢项目组成员的付出！</li>
+              </ol>
+            </h3>
+          </div>
+      <div class="horizontal-scrolling">
+        <h2>项目汇报完毕</h2>
+        <h2>感谢各位评审专家</h2>
+        <p class="end">Thank you!</p>
+      </div>
+    </section>
+  </div>
+
+  <script src="./jquery.js"></script>
+  <script src="./jquery.fullPage.min.js"></script>
+  <script src="./myScript.js"></script>
+</body>
+
+</html>
