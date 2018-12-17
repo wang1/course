@@ -2137,40 +2137,36 @@ isTop         boolean          yes        是否顶级英雄
 --------------
 #前端项目初始化
 --------------
-ng new TOH-V2-Frontend --style=scss   #新建Angular项目，注意，更改为scss（新的css语法，MDB使用）
+ng new TOH-V2-Frontend --style=scss   #新建Angular项目，注意，更改为scss（新的css语法，MDB使用，暂不用理会）
 ----------------------------------------------------------
 #配置Angular项目使用MDB框架（注意，以下步骤在项目目录下进行）
 ----------------------------------------------------------
 Step 1：yarn add angular-bootstrap-md    #本地项目（注意没有global参数）添加MDB模块
 
-Step 2：在app.module.ts文件导入NO_ERRORS_SCHEMA、MDBBootstrapModule，如下所示：
-    import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+Step 2：在app.module.ts文件导入MDBBootstrapModule模块文件，如下所示：
+    import { NgModule } from '@angular/core';
     import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
     @NgModule({
         imports: [
             MDBBootstrapModule.forRoot()
-        ],
-        schemas: [ NO_ERRORS_SCHEMA ]
+        ]
     });
 
 Step 3：在项目根目录下angular-cli.json文件中添加如下配置:
     "styles": [
-        "../node_modules/font-awesome/scss/font-awesome.scss",
-        "../node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
-        "../node_modules/angular-bootstrap-md/scss/mdb-free.scss",
-        "./styles.scss"
+        "node_modules/font-awesome/scss/font-awesome.scss",
+        "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
+        "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
+        "src/styles.scss"
     ],
     "scripts": [
-    "../node_modules/chart.js/dist/Chart.js",
-    "../node_modules/hammerjs/hammer.min.js"
+    "node_modules/chart.js/dist/Chart.js",
+    "node_modules/hammerjs/hammer.min.js"
     ],
 
-Step 4：在项目根目录下tsconfig.json文件中的"compileOnSave": false行前添加如下配置：
-    "include": ["node_modules/angular-bootstrap-md/**/*.ts",  "src/**/*.ts"],
-
-Step 5：安装额外的库
-    yarn add chart.js@2.5.0 font-awesome hammerjs 
+Step 4：安装额外的库
+    yarn add chart.js@2.5.0 @types/chart.js @types/chart.js font-awesome hammerjs angular5-csv 
 
 Step 6：ng serve -o  #至此，MDB配置完毕，测试是否成功运行
 --------------
