@@ -2112,7 +2112,9 @@ git config --global credential.helper wincred命令可以缓存github账户和�
               <code>MDBootstrap</code>保证；</li>
           </ol>
           <div class="bs-callout bs-callout-info">
-            <p>项目Demo大致如此：---------------------</p>
+            <p><a href="http://10.1.230.73/course/TOH-MDB/" target="_blank">在线Demo</a></p>
+            <p>项目界面大致如此：</p>
+            <img src="../assets/img/hero-v2-md.png"  width="100%">
           </div>
 
           <p>
@@ -2137,13 +2139,21 @@ isTop         boolean          yes        是否顶级英雄
 --------------
 #前端项目初始化
 --------------
-ng new TOH-V2-Frontend --style=scss   #新建Angular项目，注意，更改为scss（新的css语法，MDB使用，暂不用理会）
+ng new TOH-V2-MDB   #新建Angular项目。在新建过程中请注意: 1. 自动添加路由；2. 更改样式表为scss（新的css语法，MDB使用，暂不用理会）
 ----------------------------------------------------------
-#配置Angular项目使用MDB框架（注意，以下步骤在项目目录下进行）
+#配置Angular项目使用MDB框架（请一定注意，以下步骤在项目目录下进行）
 ----------------------------------------------------------
-Step 1：yarn add angular-bootstrap-md    #本地项目（注意没有global参数）添加MDB模块
+Step 1：#本地项目（注意没有global参数）添加MDB模块
+        yarn add angular-bootstrap-md    
 
-Step 2：在app.module.ts文件导入MDBBootstrapModule模块文件，如下所示：
+Step 2：#安装额外的库
+        yarn add chart.js@2.5.0 @types/chart.js font-awesome hammerjs angular5-csv 
+
+Step 3: #自动修改配置文件，实际就是执行后面的Step A 和 B两个步骤
+        ng add angular-bootstrap-md
+================================================================
+注意：以下两个步骤已经由Step 3自动完成了，无需手动完成。以下列出是为明白其做了什么。
+Step A：在app.module.ts文件导入MDBBootstrapModule模块文件，如下所示：
     import { NgModule } from '@angular/core';
     import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
@@ -2153,7 +2163,7 @@ Step 2：在app.module.ts文件导入MDBBootstrapModule模块文件，如下所�
         ]
     });
 
-Step 3：在项目根目录下angular-cli.json文件中添加如下配置:
+Step B：在项目根目录下angular.json文件中添加如下配置:
     "styles": [
         "node_modules/font-awesome/scss/font-awesome.scss",
         "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
@@ -2164,11 +2174,10 @@ Step 3：在项目根目录下angular-cli.json文件中添加如下配置:
     "node_modules/chart.js/dist/Chart.js",
     "node_modules/hammerjs/hammer.min.js"
     ],
+==================================================================
 
-Step 4：安装额外的库
-    yarn add chart.js@2.5.0 @types/chart.js @types/chart.js font-awesome hammerjs angular5-csv 
-
-Step 6：ng serve -o  #至此，MDB配置完毕，测试是否成功运行
+Step 4：#至此，MDB配置完毕，测试是否成功运行
+        ng serve -o  
 --------------
 #后台项目初始化
 --------------
@@ -2183,12 +2192,16 @@ dpd create TOH-V2-Backend   #生成后台项目
             <code>hero.ts</code>文件如下：</p>
           <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#toh-hero">复制代码</button><code id="toh-hero">
 export class Hero {
-  id: string;
-  no: string;
-  name: string;
-  description: string;
-  isTop: boolean;
-} </code></pre>
+  constructor(
+    public id: string,
+    public no: string,
+    public name: string,
+    public description?: string,
+    public isTop?: boolean
+  ) {}
+}
+
+</code></pre>
 
           <p>
             <label>Hero服务</label>
@@ -2196,12 +2209,11 @@ export class Hero {
           <p>根据分析和经验，我们需提供一个HeroService类与后台服务器通信并提供/接收组件要求的数据，以此屏蔽细节，进行解耦。</p>
           <p>该服务可提供所有英雄、指定id的英雄、顶级英雄，可更新、新建、删除英雄等。</p>
           <p>我们使用
-            <code>ng g s hero --module=app</code>命令新建
+            <code>ng g s hero</code>命令在项目根目录下新建
             <code>hero.service.ts</code>文件</p>
           <div class="bs-callout bs-callout-info">
             <p>
-              <code>--module=app</code>参数将自动在
-              <code>AppModule</code>根模块文件中标明该服务提供商</p>
+              默认情况下，命令<code> ng generate service </code>会通过给 <code>@Injectable</code> 装饰器添加元数据的形式，为该服务把提供商注册到根注入器上。也即，该服务可在整个项目可用。
             <p>该服务需要使用
               <code>HttpClient</code>模块，所以请先在
               <code>AppModule</code>文件中的
@@ -2212,42 +2224,47 @@ export class Hero {
 
           <p>参考代码如下：</p>
           <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#toh-service">复制代码</button><code id="toh-service">
-import { Hero } from './hero';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Hero } from './hero';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HeroService {
-    private heroesUrl = 'http://localhost:2403/heroes-v2';
+// 请留意修改为你自己的URL
+  private heroesUrl = 'http://10.1.230.73:2403/heroes-v2';
+// 注入了HttpClient服务
+  constructor(private httpClient: HttpClient) { }
+// 获取所有英雄
+  getHeroes(): Observable&lt;Hero[]> {
+    return this.httpClient.get&lt;Hero[]>(this.heroesUrl);
+  }
+// 获取指定id的英雄
+  getHeroById(id: string): Observable&lt;Hero> {
+    return this.httpClient.get&lt;Hero>(`${this.heroesUrl}/${id}`);
+  }
+// 获取所有的顶级英雄
+  getTopHeroes(): Observable&lt;Hero[]> {
+    // 请参考Deployd的API文档
+    return this.httpClient.get&lt;Hero[]>(`${this.heroesUrl}?isTop=true`);
+  }
+// 添加一个英雄
+  addHero(hero: Hero): Observable&lt;Hero> {
+    return this.httpClient.post&lt;Hero>(this.heroesUrl, hero);
+  }
+// 删除一个英雄
+  deleteHero(id: string): Observable&lt;any> {
+    return this.httpClient.delete(`${this.heroesUrl}/${id}`);
+  }
+// 更新一个英雄
+  updateHero(hero: Hero): Observable&lt;Hero> {
+    return this.httpClient.put&lt;Hero>(this.heroesUrl, hero);
+  }
+}
 
-    constructor(private httpClient: HttpClient) { }
-
-    getHeroes(): Observable&lt;Hero[]> {
-      return this.httpClient.get&lt;Hero[]>(this.heroesUrl);
-    }
-
-    getHeroById(id: string): Observable&lt;Hero> {
-      return this.httpClient.get&lt;Hero>(`${this.heroesUrl}/${id}`);
-    }
-
-    getTopHeroes(): Observable&lt;Hero[]> {
-      // 请参考Deployd的API文档
-      return this.httpClient.get&lt;Hero[]>(`${this.heroesUrl}?isTop=true`);
-    }
-
-    addHero(hero: Hero): Observable&lt;Hero> {
-      return this.httpClient.post&lt;Hero>(this.heroesUrl, hero);
-    }
-
-    deleteHero(id: string): Observable&lt;any> {
-      return this.httpClient.delete(`${this.heroesUrl}/${id}`);
-    }
-
-    updateHero(hero: Hero): Observable&lt;Hero> {
-      return this.httpClient.put&lt;Hero>(this.heroesUrl, hero);
-    }
-}</code></pre>
+</code></pre>
           <p>
             <label>AppComponent根组件</label>
           </p>
@@ -2272,8 +2289,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'TOH-英雄之旅';
-}</code></pre>
+  title = 'TOH-MD-英雄之旅';
+}
+
+</code></pre>
             </div>
             <div class="tab-pane fade" id="app-2">
               <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#app-html">复制代码</button><code id="app-html">
@@ -2309,7 +2328,7 @@ export class AppComponent {
     &lt;/li>
     &lt;li class="nav-item waves-light" mdbRippleRadius>
       &lt;a class="nav-link">
-        &lt;i class="fa fa-instagram">&lt;/i>
+        &lt;i class="fa fa-github">&lt;/i>
       &lt;/a>
     &lt;/li>
     &lt;/ul>
@@ -2320,18 +2339,20 @@ export class AppComponent {
     &lt;router-outlet>&lt;/router-outlet>
   &lt;/div>
 &lt;/main>
-                      </code></pre>
+
+</code></pre>
             </div>
           </div>
 
           <div class="bs-callout bs-callout-info">
             <p>除根组件外，我们拟构建list、top、detail及add四个组件，请用
-              <code>ng g c component-name</code>命令自动生成</p>
+              <code>ng g c components/heroList</code>等命令自动生成。</p>
+              <p>注意： 为清晰起见，我们将这4个组件放在了<code>components</code>目录中</p>
           </div>
           <p>
             <label>HeroList组件</label>
           </p>
-          <p>以列表方式显示所有英雄，参考代码如下：</p>
+          <p>以列表方式显示所有英雄(<code>ng g c components/heroList</code>)，参考代码如下：</p>
           <ul class="nav nav-tabs">
             <li class="active">
               <a href="#list-1" data-toggle="tab">.TS</a>
@@ -2344,9 +2365,8 @@ export class AppComponent {
             <div class="tab-pane fade in active" id="list-1">
               <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#list-ts">复制代码</button><code id="list-ts">
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
-import { Subject } from 'rxjs/Subject';
+import { Hero } from '../../hero';
+import { HeroService } from '../../hero.service';
 
 @Component({
   selector: 'app-hero-list',
@@ -2371,6 +2391,7 @@ export class HeroListComponent implements OnInit {
       .subscribe(() => this.heroes = this.heroes.filter(h => h.id !== id));
   }
 }
+
 </code></pre>
             </div>
             <div class="tab-pane fade active" id="list-2">
@@ -2381,6 +2402,7 @@ export class HeroListComponent implements OnInit {
       &lt;tr class="text-white">
         &lt;th>#&lt;/th>
         &lt;th>姓 名&lt;/th>
+        &lt;th>顶级英雄&lt;/th>
         &lt;th>删 除&lt;/th>
         &lt;th>查 看&lt;/th>
       &lt;/tr>
@@ -2389,20 +2411,22 @@ export class HeroListComponent implements OnInit {
       &lt;tr *ngFor="let hero of heroes" >
         &lt;th scope="row">{{hero.no}}&lt;/th>
         &lt;td>{{hero.name}}&lt;/td>
+        &lt;td>{{hero.isTop?'是':'否'}}&lt;/td>
         &lt;td>
           &lt;button type="button" class="btn btn-sm btn-danger my-0 waves-light" (click)="delete(hero.id)">
             &lt;i class="fa fa-trash">&lt;/i>
           &lt;/button>
         &lt;/td>
         &lt;td>
-            &lt;a class="btn btn-sm btn-danger my-0 waves-light" routerLink="/hero-detail/{{hero.id}}">
+            &lt;a class="btn btn-sm btn-info my-0 waves-light" routerLink="/hero-detail/{{hero.id}}">
               &lt;i class="fa fa-eye">&lt;/i>
             &lt;/a>
         &lt;/td>
       &lt;/tr>
     &lt;/tbody>
   &lt;/table>
-&lt;/div>  
+&lt;/div>
+
 </code></pre>
             </div>
           </div>
@@ -2410,7 +2434,7 @@ export class HeroListComponent implements OnInit {
           <p>
             <label>HeroTop组件</label>
           </p>
-          <p>以卡片方式显示顶级英雄，参考代码如下：</p>
+          <p>以卡片方式显示顶级英雄(<code>ng g c components/heroTop</code>)，参考代码如下：</p>
           <ul class="nav nav-tabs">
             <li class="active">
               <a href="#top-1" data-toggle="tab">.TS</a>
@@ -2422,9 +2446,9 @@ export class HeroListComponent implements OnInit {
           <div class="tab-content">
             <div class="tab-pane fade in active" id="top-1">
               <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#top-ts">复制代码</button><code id="top-ts">
-import { HeroService } from '../hero.service';
+import { HeroService } from '../../hero.service';
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
+import { Hero } from '../../hero';
 
 @Component({
   selector: 'app-hero-top',
@@ -2443,7 +2467,9 @@ export class HeroTopComponent implements OnInit {
     this.heroService.getTopHeroes()
       .subscribe(heroes => this.topHeroes = heroes);
   }
-}   </code></pre>
+}
+
+</code></pre>
             </div>
             <div class="tab-pane fade active" id="top-2">
               <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#top-html">复制代码</button><code id="top-html">
@@ -2460,14 +2486,15 @@ export class HeroTopComponent implements OnInit {
       &lt;/div>
     &lt;/div>
   &lt;/div>
-&lt;/div>     
-     </code></pre>
+&lt;/div>
+
+</code></pre>
             </div>
           </div>
           <p>
             <label>HeroDetail组件</label>
           </p>
-          <p>以卡片方式显示顶级英雄，参考代码如下：</p>
+          <p>显示某个英雄的详情(<code>ng g c components/heroDetail</code>)，参考代码如下：</p>
           <ul class="nav nav-tabs">
             <li class="active">
               <a href="#Detail-1" data-toggle="tab">.TS</a>
@@ -2481,8 +2508,8 @@ export class HeroTopComponent implements OnInit {
               <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#Detail-ts">复制代码</button><code id="Detail-ts">
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HeroService } from '../hero.service';
-import { Hero } from '../hero';
+import { HeroService } from '../../hero.service';
+import { Hero } from '../../hero';
 import { Location } from '@angular/common';
 
 @Component({
@@ -2515,49 +2542,46 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
-}                                     
-     </code></pre>
+}
+
+</code></pre>
             </div>
             <div class="tab-pane fade active" id="Detail-2">
               <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#Detail-html">复制代码</button><code id="Detail-html">
 &lt;div class="row mt-5 pt-5 animated zoomIn" data-wow-delay="0.5s">
   &lt;div class="col-3">&lt;/div>
-  &lt;div class="card col-6">
+  &lt;div class="card col-6 z-depth-2">
     &lt;div class="card-body">
       &lt;!--Header-->
-      &lt;div class="text-center">
+      &lt;div class="text-center text-default">
         &lt;h3>英雄详情&lt;/h3>
       &lt;/div>
 
       &lt;!--Body-->
       &lt;div class="md-form form-sm">
-        &lt;i class="fa fa-sort-numeric-desc prefix">&lt;/i>
-        &lt;input mdbActive type="text" id="formNo" class="form-control" [(ngModel)]="hero.no">
-        &lt;label for="formNo">编号&lt;/label>
+        &lt;i class="fa fa-sort-numeric-desc prefix text-default">&lt;/i>
+        &lt;input mdbActive type="text" id="formNo" class="form-control text-center" [(ngModel)]="hero.no" placeholder="编号">
+        &lt;label class="text-default" for="formNo">编号&lt;/label>
       &lt;/div>
 
       &lt;div class="md-form form-sm">
-        &lt;i class="fa fa-address-card prefix">&lt;/i>
-        &lt;input mdbActive type="text" id="formName" class="form-control" [(ngModel)]="hero.name">
-        &lt;label for="formName">姓名&lt;/label>
+        &lt;i class="fa fa-address-card prefix text-default">&lt;/i>
+        &lt;input mdbActive type="text" id="formName" class="form-control text-center" [(ngModel)]="hero.name" placeholder="姓名">
+        &lt;label class="text-default" for="formName">姓名&lt;/label>
       &lt;/div>
 
       &lt;div class="md-form form-sm">
-        &lt;i class="fa fa-pencil prefix">&lt;/i>
+        &lt;i class="fa fa-pencil prefix text-default">&lt;/i>
         &lt;textarea mdbActive type="text" id="formdesc" class="md-textarea mb-0"  [(ngModel)]="hero.description">&lt;/textarea>
-        &lt;label for="formdesc">简介&lt;/label>
+        &lt;label class="text-default" for="formdesc">简介&lt;/label>
       &lt;/div>
 
       &lt;div class="input-group md-form form-sm">
-        &lt;i class="fa fa-tag prefix">&lt;/i>
-        &lt;input type="text" class="form-control text-center" disabled placeholder="顶级英雄？">
-        &lt;span class="input-group-addon">
-          &lt;input type="checkbox" id="checkbox1"  [(ngModel)]="hero.isTop">
-          &lt;label for="checkbox1">&lt;/label>
-        &lt;/span>
-
+        &lt;i class="fa fa-diamond prefix text-default">&lt;/i>        
+        &lt;label class="text-default" for="checkbox1">顶级英雄？&lt;/label>
+        &lt;input type="checkbox" id="checkbox1"  [(ngModel)]="hero.isTop">
       &lt;/div>
-
+      &lt;hr>
       &lt;div class="text-center mt-1-half">
         &lt;button class="btn btn-deep-orange mb-2 waves-light" mdbRippleRadius (click)="save()">
           保存
@@ -2569,14 +2593,15 @@ export class HeroDetailComponent implements OnInit {
     &lt;/div>
   &lt;/div>
 &lt;/div>       
-     </code></pre>
+
+</code></pre>
             </div>
           </div>
 
           <p>
             <label>HeroAdd组件</label>
           </p>
-          <p>以卡片方式显示顶级英雄，参考代码如下：</p>
+          <p>让用户新建一个英雄(<code>ng g c components/heroAdd</code>)，参考代码如下：</p>
           <ul class="nav nav-tabs">
             <li class="active">
               <a href="#Add-1" data-toggle="tab">.TS</a>
@@ -2588,8 +2613,8 @@ export class HeroDetailComponent implements OnInit {
           <div class="tab-content">
             <div class="tab-pane fade in active" id="Add-1">
               <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#Add-ts">复制代码</button><code id="Add-ts">
-import { HeroService } from '../hero.service';
-import { Hero } from '../hero';
+import { HeroService } from '../../hero.service';
+import { Hero } from '../../hero';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
@@ -2613,8 +2638,9 @@ export class HeroAddComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-}                                     
-     </code></pre>
+}
+
+</code></pre>
             </div>
             <div class="tab-pane fade active" id="Add-2">
               <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#Add-html">复制代码</button><code id="Add-html">
@@ -2632,31 +2658,29 @@ export class HeroAddComponent implements OnInit {
       &lt;div class="modal-body mb-0">
         &lt;form role="form">
           &lt;div class="md-form form-sm">
-            &lt;i class="fa fa-sort-numeric-desc prefix">&lt;/i>
-            &lt;input mdbActive type="text" id="formNo" class="form-control" #no required>
-            &lt;label for="formNo">编号&lt;/label>
+            &lt;i class="fa fa-sort-numeric-desc prefix text-deault">&lt;/i>
+            &lt;input mdbActive type="text" id="formNo" class="form-control text-center" #no required>
+            &lt;label class="text-default" for="formNo">编号&lt;/label>
           &lt;/div>
 
           &lt;div class="md-form form-sm">
-            &lt;i class="fa fa-address-card prefix">&lt;/i>
-            &lt;input mdbActive type="text" id="formName" class="form-control" #name required>
-            &lt;label for="formName">姓名&lt;/label>
+            &lt;i class="fa fa-address-card prefix text-default">&lt;/i>
+            &lt;input mdbActive type="text" id="formName" class="form-control text-center" #name required>
+            &lt;label class="text-default" for="formName">姓名&lt;/label>
           &lt;/div>
 
           &lt;div class="md-form form-sm">
-            &lt;i class="fa fa-pencil prefix">&lt;/i>
+            &lt;i class="fa fa-pencil prefix text-default">&lt;/i>
             &lt;textarea mdbActive type="text" id="formdesc" class="md-textarea mb-0" #desc>&lt;/textarea>
-            &lt;label for="formdesc">简介&lt;/label>
+            &lt;label class="text-default" for="formdesc">简介&lt;/label>
           &lt;/div>
 
-          &lt;div class="input-group md-form form-sm">
-            &lt;i class="fa fa-tag prefix">&lt;/i>
-            &lt;input type="text" class="form-control text-center" disabled placeholder="顶级英雄？">
-            &lt;span class="input-group-addon">
-              &lt;input type="checkbox" id="checkbox1" #isTop>
-              &lt;label for="checkbox1">&lt;/label>
-            &lt;/span>
+          &lt;div class="md-form form-sm">
+            &lt;i class="fa fa-diamond prefix text-default">&lt;/i>
+            &lt;label for="checkbox1">顶级英雄？&lt;/label>
+            &lt;input type="checkbox" id="checkbox1" #isTop>
           &lt;/div>
+          &lt;hr>
           &lt;div class="text-center mt-1-half">
             &lt;button type="submit" class="btn btn-deep-orange mb-2 waves-light" mdbRippleRadius (click)="add(no.value,name.value,desc.value,isTop.checked);addHeroModal.hide();no.value='';name.value='';desc.value='';isTop.checked=false">
               添 加
@@ -2668,35 +2692,26 @@ export class HeroAddComponent implements OnInit {
     &lt;/div>
   &lt;/div>
 &lt;/div>
-&lt;!--Modal: Add Hero form-->       
-     </code></pre>
+&lt;!--Modal: Add Hero form-->
+
+</code></pre>
             </div>
           </div>
 
           <p>
-            <label>导航模块</label>
+            <label>导航(路由)模块</label>
           </p>
           <p>有了多个组件，我们需在组件视图之间切换即导航，利用Angular的导航模块可迅速的进行前端页面部分刷新。</p>
-          <p>我们使用
+          <p>在新建项目时我们已经自动生成了路由即导航模块. 如果没有,则可使用
             <code>ng g m app-routing --flat --module=app</code>命令新建
             <code>app-routing.module.ts</code>导航模块文件</p>
-          <div class="bs-callout bs-callout-info">
-            <p>
-              <code>--flat</code>参数将在
-              <code>app</code>根目录中而不是在新文件夹中建该模块文件</p>
-            <p>该服务需要使用
-              <code>HttpClient</code>模块，所以请先在
-              <code>AppModule</code>文件中的
-              <code>@NgModule.imports</code>数组中添加
-              <code>HttpClientModule</code>（模块文件位于
-              <code>@angular/common/http</code>路径）</p>
-          </div>
+          
           <p>参考代码如下：</p>
           <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#routing">复制代码</button><code id="routing">
-import { HeroAddComponent } from './hero-add/hero-add.component';
-import { HeroTopComponent } from './hero-top/hero-top.component';
-import { HeroListComponent } from './hero-list/hero-list.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroAddComponent } from './components/hero-add/hero-add.component';
+import { HeroTopComponent } from './components/hero-top/hero-top.component';
+import { HeroListComponent } from './components/hero-list/hero-list.component';
+import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -2712,8 +2727,9 @@ const routes: Routes = [
   imports: [ RouterModule.forRoot(routes)],
   exports: [ RouterModule  ]
 })
-export class AppRoutingModule { }                        
-                    </code></pre>
+export class AppRoutingModule { }
+
+</code></pre>
 
           <p>
             <label>根模块</label>
@@ -2723,19 +2739,16 @@ export class AppRoutingModule { }
           <p>任何组件、服务、自定义模块如路由模块以及第三方发模块如MDB、表单模块等都需要在根模块中导入或声明</p>
           <p>目前该模块参考代码如下：</p>
           <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#root">复制代码</button><code id="root">
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
-
-import { AppComponent } from './app.component';
-import { HeroService } from './hero.service';
-import { HeroListComponent } from './hero-list/hero-list.component';
-import { HeroTopComponent } from './hero-top/hero-top.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { HeroAddComponent } from './hero-add/hero-add.component';
+import { AppComponent } from './app.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { HttpClientModule } from '@angular/common/http';
+import { HeroListComponent } from './components/hero-list/hero-list.component';
+import { HeroTopComponent } from './components/hero-top/hero-top.component';
+import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
+import { HeroAddComponent } from './components/hero-add/hero-add.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -2748,24 +2761,51 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    FormsModule
   ],
-  schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [HeroService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-                   </code></pre>
+
+</code></pre>
 
           <div class="bs-callout bs-callout-info">
             <p>现在运行程序试试！</p>
           </div>
+          <p><label>总结</label></p>
+          <div class="bs-callout bs-callout-info">
+              <p>程序基本满足需求, 但目前有以下问题:</p>
+              <ol>
+                <li>功能性方面: 无日志处理服务；无错误处理服务；不能处理图片；无分页功能等</li>
+                <li>安全性方面: 前后台无用户验证和授权</li>
+              </ol>
+              <p>产品部署:</p>
+              使用<code>ng build --prod</code>命令进行优化并生成产品, 拷贝到任何Web服务器如Nginx即可. 
+              <br>请注意修改<code>index.html</code>文件中的<code>base</code>标签!
+              <br>详情请查看相关文档
+          </div>
+          <p><label>进一步学习</label></p>
+          <div class="bs-callout bs-callout-info">
+            <p>
+              <ol>
+                <li>Angular核心知识,前往<a href="https://angular.cn/" target="_blank">Angular官网</a></li>
+                <li>官方Angular Material库,前往<a href="https://material.angular.cn/" target="_blank">Angular Material</a></li>
+                <li>第三方Angular Material库,前往<a href="https://teradata.github.io/covalent/" target="_blank">Covalent库</a></li>
+                <li>第三方Angular Material库,前往<a href="https://ng.ant.design/" target="_blank">阿里Zorro库</a></li>
+                <li>Angular-Hero实例,前往<a href="https://github.com/Ismaestro/angular7-example-app" target="_blank">Angular7 + Material实例</a></li>
+                <li>Angular-Pizza实例,前往<a href="https://github.com/toddmotto/angular-pizza-creator" target="_blank">Pizza订购实例</a></li>
+                
+              </ol>
+            </p>
+          </div>
+          
           <hr>
           <!--angularjs聊天室实例=====================-->
-          <h3 id="angular-technode">基于WebSocket的聊天室实例</h3>
+          <h3 id="angular-technode"><s>基于WebSocket的聊天室实例</s>(过时)</h3>
           <p>本节我们将一步一步构建一个聊天室，该实例是一个综合例子，涉及AngularJS 、NodeJS、WebSocket、MondoDB等知识。本实例来自
             <a href="https://github.com/island205" target="_blank">isLand</a>在GitHub的分享</p>
           <div class="bs-callout bs-callout-info">
@@ -2788,7 +2828,7 @@ export class AppModule { }
           </div>
 
           <!-- MEAN资料-->
-          <h3 id="MEAN-data">MEAN全堆栈资料</h3>
+          <h3 id="MEAN-data"><s>MEAN全堆栈资料</s>(过时)</h3>
           <p>学习MEAN之前请先对HTML、BootStrap、Javascript有一定了解，特别是JS，是前后台的开发语言！</p>
           <div class="bs-callout bs-callout-info">
             <ol>
