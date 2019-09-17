@@ -2007,7 +2007,7 @@ console.log(loc.weatherMessage);            </code></pre>
           <p>请访问其
             <a href="https://angular.io/" target="_blank">英文站点</a>及
             <a href="https://angular.cn/" target="_blank">中文社区</a> 或
-            <a href="http://10.1.230.73/" target="_blank">校内镜像</a>进行学习。
+            <a href="http://10.1.230.73/" target="_blank"><strike>校内镜像</strike></a>进行学习。
           </p>
           <p>如果没完全明白以上的意思，那就看下面的例子。</p>
           <h3 id="angular-config">Angular配置</h3>
@@ -2016,19 +2016,28 @@ console.log(loc.weatherMessage);            </code></pre>
 1. JS运行环境node和版本控器git安装
 --------------------------------
 下载安装即可，重复安装即可更新，node -v和git --version可查看node和git是否安装成功
+注意:
+A: 建议安装时不要改变默认安装路径
+B: git安装完成后请运行 git config --global user.name "Your Name" 和 git config --global user.email "MY_NAME@example.com"配置用户信息
 ------------------
 2. 包管理器yarn安装
 ------------------
 node默认的包管理器为npm，我们推荐使用yarn作为包管理器
-方法A：npm install -g yarn     #注意使用管理员权限
+方法A：npm install -g yarn     #注意使用管理员权限进行全局安装
 方法B：下载yarn安装包
 重新安装yarn即可更新，安装完成后，运行yarn -v查看yarn是否安装成功
 ------------
-3. yarn配置
+3. 包源配置
 ------------
-配置yarn使用淘宝的包源，另外一个包node-sass也是头疼的地方。WTF GFW！
-yarn config set registry https://registry.npm.taobao.org --global #注意使用管理员权限
-yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass --global #注意使用管理员权限
+默认包仓库在海外, 速度及稳定性受到GFW的影响(WTF GFW！), 改为使用淘宝的包源。
+方法A: 使用包源管理yrm(推荐)
+      yarn global add yrm   # 注意使用管理员权限进行全局安装. 注意: 如果安装成功后yrm不能运行, 则是路径问题, 请使用 yarn global bin 查看位置并添加到系统路径中(建议重启系统生效)
+      yrm ls                # 列出可用的源
+      yrm test taobao       # 测速
+      yrm use taobao        # 使用淘宝源
+方法B: 手动配置
+  yarn config set registry https://registry.npm.taobao.org --global # 注意使用管理员权限
+  yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass --global #注意使用管理员权限
 
 ---------------------------------
 4. Angular开发工具angular/cli安装
@@ -2043,35 +2052,36 @@ yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass --glob
 5. angular/cli配置
 ---------------------
 配置angular/cli使用yarn作为包管理器，如果有问题随时可转换回npm或者cnpm
-ng config cli.packageManager yarn --global #注意使用管理员权限	
+  ng config cli.packageManager yarn --global #注意使用管理员权限	
 ---------------------
 6. angular/cli基本使用
 ---------------------
-ng new PROJECT_NAME     #在合适的位置新建Angular项目，且已经自动初始化了本地仓库
-cd PROJECT_NAME         #进入项目文件夹
-ng serve -o	            #启动开发服务器并自动打开浏览器访问http://localhost:4200/，同时监听文件变化，并在文件更改时重新构建此应用并自动刷新页面
+  ng new PROJECT_NAME --skip-tests     #在合适的位置新建Angular项目(取消生成测试文件)，且已经自动初始化了本地仓库
+  cd PROJECT_NAME         #进入项目文件夹
+  ng serve -o	            #启动开发服务器并自动打开浏览器访问http://localhost:4200/，同时监听文件变化，并在文件更改时重新构建此应用并自动刷新页面
 ---------------------
 7. angular/cli常用命令
 ---------------------
 详情请参考https://github.com/angular/angular-cli
-ng g c my-new-component     #新建组件
-ng g s my-new-service       #新建服务
-ng g m my-new-module        #新建模块
+  ng g c my-new-component     #新建组件
+  ng g s my-new-service       #新建服务
+  ng g m my-new-module        #新建模块
 ---------------------
 8. 推荐vs code插件
 ---------------------
-在前面的HTML以及TS部分我们已经推荐了以下插件：Auto Close Tag、Auto Rename Tag、Code Runner、IntelliSense for CSS、Material Icon、Open HTML in Browser、Path Intelligence、TSLint、TypeScript Hero、Bracket Pair Colorizer等，使用Angular再请安装Angular language service和Angular 7 Snippets等
+在前面的HTML以及TS部分我们已经推荐了以下插件：Auto Close Tag、Auto Rename Tag、Code Runner、IntelliSense for CSS、Material Icon、Open HTML in Browser、Path Intelligence、TSLint、TypeScript Hero、Bracket Pair Colorizer、TabOut等，使用Angular再请安装Angular language service和Angular 8 Snippets等
 
 ---------------------
 9. 后台服务器Deployd
 ---------------------
 Deployd是一个基于NodeJs和MongoDB数据库的后台服务程序，请访问http://deployd.com/
-以管理员身份运行npm install -g deployd-cli 或 yarn global add deployd-cli进行安装
-运行dpd -V查看是否安装成功。然后下载MongoDB进行安装并将“MongoDB安装路径/bin”添加到path中即可。
-在合适的位置运行如下命令，新建并运行后台服务
-dpd create TourOfHero   #新建后台服务
-cd TourOfHero           #进入目录
-dpd -d                  #运行后自动在浏览器打开2403的控制台
+A: 以管理员身份运行npm install -g deployd-cli 或 yarn global add deployd-cli进行安装
+   运行dpd -V查看是否安装成功。
+B: 然后下载MongoDB进行安装并将“MongoDB安装路径/bin”添加到系统path中即可。
+C: 在合适的位置运行如下命令，新建并运行后台服务
+    dpd create TourOfHero   #新建后台服务
+    cd TourOfHero           #进入目录
+    dpd -d                  #运行后自动在浏览器打开2403的控制台
 ---------------------
 10. github的使用
 ---------------------
