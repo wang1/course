@@ -443,7 +443,7 @@
               </ul>
             </li>
             <li>
-              <a href="#MEAN-data">MEAN全堆栈资料</a>
+              <a href="#MEAN-data">MFAN全栈开发</a>
             </li>
           </ul>
         </div>
@@ -2081,7 +2081,8 @@ B: 然后下载MongoDB进行安装并将“MongoDB安装路径/bin”添加到�
 C: 在合适的位置运行如下命令，新建并运行后台服务
     dpd create TourOfHero   #新建后台服务
     cd TourOfHero           #进入目录
-    dpd -d                  #运行后自动在浏览器打开2403的控制台
+    dpd -d                  #先自动启动MongoDB, 运行后自动在浏览器打开2403的控制台
+D: 如果仍然提示启动mongoDB失败, 则请先独自运行MongoDB(mongod --dbpath=data),指定当前目录下的data目录为数据库文件目录 然后再执行 dpd --host 127.0.0.1 -d 命令, 明确指定MongoDB服务器的地址. (原因不明)
 ---------------------
 10. github的使用
 ---------------------
@@ -2160,17 +2161,17 @@ isTop         boolean          yes        是否顶级英雄
 --------------
 #前端项目初始化
 --------------
-ng new TOH-V2-MDB   #新建Angular项目。在新建过程中请注意: 1. 自动添加路由；2. 更改样式表为scss（新的css语法，MDB使用，暂不用理会）
+ng new TOH-V2-MDB --skip-tests  #新建Angular项目。在新建过程中请注意: 1. 自动添加路由；2. 更改样式表为scss（新的css语法，MDB使用，暂不用理会）
 ----------------------------------------------------------
 #配置Angular项目使用MDB框架（请一定注意，以下步骤在项目目录下进行）
 ----------------------------------------------------------
-Step 1：#本地项目（注意没有global参数）添加MDB模块
-        yarn add angular-bootstrap-md    
+<!-- Step 1：#本地项目（注意没有global参数）添加MDB模块
+        yarn add angular-bootstrap-md     -->
 
-Step 2：#安装额外的库
-        yarn add chart.js@2.5.0 @types/chart.js font-awesome hammerjs angular5-csv 
+Step 1：#本地项目（注意没有global参数）安装额外的库
+        yarn add chart.js@2.5.0 font-awesome hammerjs npm-registry-client
 
-Step 3: #自动修改配置文件，实际就是执行后面的Step A 和 B两个步骤
+Step 2: #添加MDB模块, 自动修改配置文件，实际就是执行后面的Step A 和 B两个步骤
         ng add angular-bootstrap-md
 ================================================================
 注意：以下两个步骤已经由Step 3自动完成了，无需手动完成。以下列出是为明白其做了什么。
@@ -2849,9 +2850,10 @@ export class AppModule { }
           </div>
 
           <!-- MEAN资料-->
-          <h3 id="MEAN-data"><s>MEAN全堆栈资料</s>(过时)</h3>
-          <p>学习MEAN之前请先对HTML、BootStrap、Javascript有一定了解，特别是JS，是前后台的开发语言！</p>
-          <div class="bs-callout bs-callout-info">
+          <h3 id="MEAN-data">MFAN全栈开发</h3>
+          <p>使用Nestjs, Fastify, Graphql, MongoDB, Angular, Material等工具, 进行Angular官网的英雄之旅demo的前后端全栈开发</p>
+          <h3><a href="https://github.com/wang1/TOH-All-In-One">前往学习</a> </h3>
+          <!-- <div class="bs-callout bs-callout-info">
             <ol>
               <li>
                 <a href="../data/communication/JS.zip">JavaScript相关书籍</a>
@@ -2872,7 +2874,7 @@ export class AppModule { }
                 <a href="http://www.hubwiz.com/coursecenter">汇智网课程（外网）</a>
               </li>
             </ol>
-          </div>
+          </div> -->
 
         </div>
       </div>
