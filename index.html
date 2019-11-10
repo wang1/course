@@ -112,7 +112,7 @@
                                 13527556383</span>
                         </p>
                         <!-- <p class="bs2-link">由强大的Bootstrap3提供模版支持</p> -->
-                        <p class="bs2-link" id="quotes" onclick="getQuotes()" title="点击变换格言"></p>
+                        <p style="font: 1.1em sans-serif;" class="bs2-link" id="quotes" onclick="getQuotes()" title="点击变换格言"></p>
                     </div>
                 </div>
             </div>
@@ -298,13 +298,17 @@
         });
     </script>
     <!-- 动态格言显示 -->
-    <script>        
+    <script>
+        var lines = [];    
         function getQuotes() {
-            $.get('quotes.txt').success(function (content) {
-                console.log(content);
-                var lines = content.split('\n');
+            if (!lines.length) {
+                $.get('quotes.txt').success(function (content) {
+                    lines = content.split('\n');
+                    $('#quotes').html(lines[Math.floor(Math.random() * lines.length)]);
+                });
+            }else{
                 $('#quotes').html(lines[Math.floor(Math.random() * lines.length)]);
-            });
+            }
         }
         getQuotes();
     </script>
