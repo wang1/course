@@ -28,33 +28,34 @@ HTTP刚诞生的时候只被当作是一个相对简单直观的协议，但时�
 
 2. https://http3-explained.haxx.se/zh/
 
+Default mode is clearnet+Tor. Give zeronet permissions to configure hidden service:
+>>>   sudo usermod -a -G tor zeronet
+>>> Add/edit the following options in /etc/tor/torrc:
+>>>   ControlPort 9051
+>>>   DataDirectoryGroupReadable 1
+>>>   CookieAuthentication 1
+>>>   CookieAuthFileGroupReadable 1
+>>>   CookieAuthFile /var/lib/tor/control_auth_cookie
+>>> Restart tor (reload not enough):
+>>>   sudo systemctl restart tor
+>>> Run daemon and check status and view log:
+>>>   sudo systemctl start zeronet
+>>>   sudo systemctl status zeronet
+>>>   sudo journalctl -u zeronet
+>>> NOTE: all operations including editing zerosite files,
+>>>       should be done as user zeronet and config must be passed
+>>>       for data directory to be selected to /var/lib/zeronet: 
+>>>   sudo -u zeronet python zeronet.py --config_file /etc/zeronet.conf ...
+>>>      OR
+>>>   sudo su - zeronet
+>>>   cd /opt/zeronet
+>>>   python zeronet.py --config_file /etc/zeronet.conf ...
+Optional dependencies for zeronet
+    tor: anonymity
+    namecoin-core: local name resolution
+ldconfig: file /usr/lib/libaccountsservice.so.0.0.0 is truncated
 
-            $(function() {
-                $(window).ready(function() {
-                    $.ajax({
-                        type: "get",
-                        url: "action.php",
-                        success: function(data) {
-                            $(".table-two").text(data);
-                        },
-                        error: function() {
-                            console.log("Error Reading Data");
-                        },
-                        dataType: "json",
-                        async: true
-                    });
-                });
-            });
+ldconfig: file /usr/lib/libaccountsservice.so is truncated
 
-            $.get('Scripts/data.txt').success(function(content){
-// content就为文件data.txt的文本内容了,注意txt文件的编码需要与html文件的编码一致，最好保存成utf-8
-});
+ldconfig: file /usr/lib/libaccountsservice.so.0 is truncated
 
-function getRandomLine(filename){
-  fs.readFile(filename, function(err, data){
-    if(err) throw err;
-    var lines = data.split('\n');
-    /*do something with */ lines[Math.floor(Math.random()*lines.length)];
- })
-}
-        
