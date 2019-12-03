@@ -10,8 +10,8 @@
 @echo off
 
 echo 当前目录：%cd% 
-start "监控刷分ing" "C:\fuck\fuck.exe" --username=你的用户名 --passwd=你的密码
-echo 不要关闭 CMD ！系统半小时会自动关闭！
+start "监控ing" /min "C:\fuck\fuck.exe" --username=你的用户名 --passwd=你的密码
+echo 不要关闭这个窗口！一小时后会自动关闭！
 
 ::等待60分钟关闭=3600秒=3600000毫秒
 start /min /w mshta vbscript:setTimeout("window.close()",3600000)
