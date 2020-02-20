@@ -1,0 +1,484 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>HTML简介</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="brief-html"
+                  title="HTML简介"
+                  environment="web"
+                  feedback-link="mailto: gridwang@gmail.com">
+    
+      <google-codelab-step label="何为HTML" duration="5">
+        <p><strong>HTML</strong>是超文本标记语言（HyperText Markup Language）的缩写。我们用 HTML 来构建 Web 页面即所谓的网页。</p>
+<aside class="special"><p>&#34;超文本&#34;（hypertext）是指连接单个网站内或多个网站间的网页的链接。链接是网络的一个基本方面。只要将内容上传到互联网，并将其与他人创建的页面相链接，你就成为了万维网的积极参与者。</p>
+</aside>
+<p><strong>HTML</strong> 是构成 Web 世界的一砖一瓦。它定义了网页内容的含义和结构。除 HTML 以外的其它技术则通常用来描述一个网页的表现与展示效果（如 CSS），或功能与行为（如 JavaScript）。</p>
+<p><strong>HTML</strong> 不是一门编程语言，而是一种用于<strong>定义内容结构的标记语言</strong>。</p>
+<p>在浏览器中看到的任何网页背后都是一个 <strong>HTML</strong> 文档，只要在网页上点击鼠标右键-&gt;查看源代码（用控制台工具也可）就可看到。</p>
+<aside class="special"><p><strong>HTML</strong>以及我们后面将要学习的 <strong>CSS</strong>（Cascading Style Sheets 级联式样式表) 和 <strong>JavaScript</strong> 是构建广泛使用的Web程序的三剑客。</p>
+</aside>
+<p>下面我们就开始学习如何撰写 HTML 文档。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="HTML文档结构" duration="5">
+        <h2 is-upgraded>新建工作目录</h2>
+<p>前面我们已经安装了开发软件 <strong>code</strong> 及其相关的插件（<a href="https://code.org" target="_blank">code下载</a>）。运行该软件，打开/新建一个文件夹，如下图所示：</p>
+<p class="image-container"><img alt="new-directory" src="img/f10b6ef2504c5c26.png"></p>
+<aside class="warning"><p><strong>注意：</strong> 该文件夹是我们的工作目录，一般不建在C盘</p>
+</aside>
+<aside class="special"><p><strong>提示:</strong> 请把上图底部的选项 <strong>Auto Save</strong> 选中，这样系统会自动保存我们的代码</p>
+</aside>
+<h2 is-upgraded>新建 HTML 文件</h2>
+<p>接下来在该文件夹下新建一个 <strong>后缀名为html</strong> 的文件，如下图所示：</p>
+<p class="image-container"><img alt="new-file" src="img/f0526f52a68a611e.png"></p>
+<p>在该文件中输入如下内容：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&#34;utf-8&#34;&gt;
+  &lt;link rel=&#34;shortcut icon&#34; href=&#34;favicon.ico&#34; type=&#34;image/x-icon&#34;&gt;
+  &lt;title&gt;页面标题&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;我的第一个Web页&lt;/h1&gt;
+  &lt;p&gt;当前有点丑：)&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 is-upgraded>看看结果</h2>
+<p>Web 浏览器如 Chrome、 Firefox、Edge、Safari 等用来读取 HTML 文件并呈现出来。（<strong>再次推荐使用 Chrome 或 Firefox</strong>）</p>
+<p>在开发工具 code 中我们已经安装了<code>open in browser</code>插件，因此在 code 的<strong>编辑区点击鼠标右键</strong>即可看到快捷方式将该文件在浏览器中打开。如下图所示：</p>
+<p class="image-container"><img alt="code-open-in-browser" src="img/acf07e522fcb752b.png"></p>
+<aside class="warning"><p><strong>思考：</strong> 假设上述方式没能成功在浏览器打开，我们还有什么方法看到结果？</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="HTML 文档结构分析" duration="5">
+        <h2 is-upgraded>HTML元素（elements）</h2>
+<p>HTML 使用&#34;标记&#34;（markup）来注明文本、图片和其他内容，以便于在浏览器中显示。HTML 标记包含一些规定的&#34;元素&#34;如 <code>&lt;head&gt;，&lt;title&gt;，&lt;body&gt;，&lt;header&gt;，&lt;footer&gt;，&lt;article&gt;，&lt;section&gt;，&lt;p&gt;，&lt;div&gt;，&lt;span&gt;，&lt;img&gt;，&lt;aside&gt;，&lt;audio&gt;，&lt;canvas&gt;，&lt;d</code>atalist&gt;，&lt;details&gt;，&lt;embed&gt;，&lt;nav&gt;，&lt;output&gt;，&lt;progress&gt;，&lt;video&gt; 等等。</p>
+<p>检查我们刚创建的 HTML 文档你会发现，整个 HTML 就由一个个元素组成（可以嵌套），而元素则一般由一对标签（tag）构成。</p>
+<h2 is-upgraded>剖析一个 HTML 元素</h2>
+<p>如下所示的一个用于展示段落的元素：</p>
+<p class="image-container"><img alt="element" src="img/e2e6800602e55676.png"></p>
+<ol type="1">
+<li>开始标签（Opening tag）：包含元素的名称（本例为 p），被左、右角括号所包围。表示元素从这里开始或者开始起作用 —— 在本例中即段落由此开始。</li>
+<li>结束标签（Closing tag）：与开始标签相似，只是其在元素名之前包含了一个斜杠。这表示着元素的结尾 —— 在本例中即段落在此结束。初学者常常会犯忘记包含结束标签的错误，这可能会产生一些奇怪的结果。</li>
+<li>内容（Content）：元素的内容，本例中就是所输入的文本本身。</li>
+<li>元素（Element）：开始标签、结束标签与内容相结合，便是一个完整的元素。</li>
+</ol>
+<h2 is-upgraded>剖析 HTML 文档</h2>
+<p>对于我们前面创建的 HTML 文档，分析如下：</p>
+<ol type="1">
+<li><code>&lt;!DOCTYPE html&gt;</code>: 声明文档类型。出于历史原因需要，现在可有可无。</li>
+<li><code>&lt;html&gt;&lt;/html&gt;</code>: <code>&lt;html&gt;</code>元素。这个元素包裹了整个完整的页面，是一个根元素，<strong>其它元素都嵌套到其中</strong>。</li>
+<li><code>&lt;head&gt;&lt;/head&gt;</code>: <code>&lt;head&gt;</code>元素。 这个元素是一个容器，它包含了所有你想包含在HTML页面中但不想在HTML页面中显示的内容。这些内容包括你想在搜索结果中出现的关键字和页面描述，CSS样式，字符集声明等等。</li>
+<li><code>&lt;meta charset=&#34;utf-8&#34;&gt;</code>: 这个元素设置文档使用utf-8字符集编码，utf-8字符集包含了人类大部分的文字。基本上他能识别你放上去的所有文本内容。毫无疑问要使用它，并且它能在以后避免很多其他问题。</li>
+<li><code>&lt;link rel=&#34;shortcut icon&#34; href=&#34;favicon.ico&#34; type=&#34;image/x-icon&#34;&gt;</code>: 指定页面的图标，出现在浏览器标签上。(试一试：你可随意下载一个<code>.ico</code>图标文件到工作目录中)</li>
+<li><code>&lt;title&gt;&lt;/title&gt;</code>: 设置页面标题，出现在浏览器标签上，当你标记/收藏页面时它可用来描述页面。</li>
+<li><code>&lt;body&gt;&lt;/body&gt;</code>: <code>&lt;body&gt;</code>元素。 包含你能在页面看到的所有内容，包括文本，图片，音频，游戏等等。</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="HTML 文档相关说明" duration="10">
+        <h2 is-upgraded>注释</h2>
+<p>如同大部分的编程语言一样，在 HTML 中有一种可用的机制来在代码中书写注释 。</p>
+<p>注释是被浏览器忽略的，而且是对用户不可见的，它们的目的是允许你描述你的代码是如何工作的和不同部分的代码做了什么等等。 如果你在半年后重新返回你的代码库，而且不能记起你所做的事情，或者当你处理别人的代码的时候， 那么注释是很有用的.</p>
+<p>为了将一段 HTML 中的内容置为注释，你需要将其用特殊的记号<code>&lt;!--</code>和<code>--&gt;</code>包括起来， 比如：</p>
+<pre><code>&lt;p&gt;我在注释外，可以显示！&lt;/p&gt;
+&lt;!-- &lt;p&gt;我在注释内！浏览器将忽略我&lt;/p&gt; --&gt;
+</code></pre>
+<aside class="special"><p><strong>提示：</strong> 在 code 软件中，输入<code>Ctrl + /</code>即可快捷的进行注释！</p>
+</aside>
+<aside class="special"><p><strong>注意：</strong> HTML 不区分标签的大小写，但建议全部使用小写！</p>
+</aside>
+<h2 is-upgraded>空元素</h2>
+<p>一般来说，元素都拥有<strong>开始标签，内容，结束标签</strong>。但有一些元素只有一个开始标签，通常用来在此元素所在位置插入/嵌入一些东西，如<code>&lt;br&gt;, &lt;hr&gt;, &lt;input&gt;, &lt;img&gt;, &lt;a&gt;</code>等等。我们称其为空元素，如下：</p>
+<pre><code>&lt;!-- 换行 --&gt;
+&lt;p&gt;我可以&lt;br&gt;换行&lt;/p&gt; 
+&lt;!-- 水平分割线 --&gt;
+&lt;hr&gt;
+&lt;!-- 输入框 --&gt;
+&lt;input&gt;
+</code></pre>
+<aside class="special"><p><strong>提示:</strong> 在上面代码中你看到<code>&lt;br&gt;</code>元素放到<code>&lt;p&gt;</code>元素之中——这被称作嵌套！</p>
+</aside>
+<h2 is-upgraded>元素的属性</h2>
+<p>元素是可以有相关属性的。属性包含元素的额外信息，这些信息不会在浏览器中显示出来。</p>
+<pre><code>&lt;!-- 带属性的段落输入框 --&gt;
+&lt;p title=&#34;这是个title属性&#34;&gt;鼠标移上来试试！&lt;/p&gt;
+&lt;!-- 带属性的输入框 --&gt;
+&lt;input type=&#34;text&#34;&gt;
+&lt;input type=&#34;password&#34;&gt;
+</code></pre>
+<p>一个属性必须包含如下内容：</p>
+<ol type="1">
+<li>一个空格，在属性和元素名称之间。(如果已经有一个或多个属性，就与前一个属性之间有一个空格。)</li>
+<li>属性名称，后面跟着一个 = 号。</li>
+<li>一个属性值，由一对引号 &#34;&#34; 引起来。</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="标题（heading）" duration="3">
+        <p>HTML 提供了从大到小6级标题，分别是：<code>&lt;h1&gt; ~ &lt;h6&gt;</code>，如下所示：</p>
+<pre><code>&lt;h1&gt;This is heading 1&lt;/h1&gt;
+&lt;p&gt;This is some text.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;This is heading 2&lt;/h2&gt;
+&lt;p&gt;This is some other text.&lt;/p&gt;
+&lt;hr&gt;
+</code></pre>
+<p>在页面中，标题非常重要：</p>
+<ol type="1">
+<li>搜索引擎用标题来索引页面的内容</li>
+<li>用户也习惯以标题进行主要内容浏览，以决定是否查看该页面</li>
+</ol>
+<aside class="special"><p><strong>提示：</strong> 一级标题<code>&lt;h1&gt;</code>最醒目，应该用于页面的主标题，其次为二级标题，以此类推</p>
+</aside>
+<aside class="warning"><p><strong>注意：</strong> 不要因为希望醒目，试图使用标题对正文的文字进行放大或加粗。正文文字的醒目可以使用文本格式或 CSS 进行。</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="文本格式" duration="5">
+        <aside class="warning"><p><strong>注意：</strong> 除本节介绍的这些标签可用于文本的格式外，其它标签都不建议用来进行格式的设置，如：<code>&lt;font&gt;&lt;big&gt;&lt;center&gt;</code>等标签皆为不推荐使用的。HTML 是用来表现页面内容而不是对页面进行修饰的，专门的页面美化需要使用后面将要学习的 CSS 。</p>
+</aside>
+<p>我们需要知道的文本格式标签如下：</p>
+<pre><code>&lt;p&gt;You can use the mark tag to &lt;mark&gt;highlight&lt;/mark&gt; text.&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;This line of text is meant to be treated as deleted text.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;s&gt;This line of text is meant to be treated as no longer accurate.&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;&lt;ins&gt;This line of text is meant to be treated as an addition to the document.&lt;/ins&gt;&lt;/p&gt;
+&lt;p&gt;&lt;u&gt;This line of text will render as underlined&lt;/u&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This line rendered as bold text.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This line rendered as italicized text.&lt;/em&gt;&lt;/p&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="超链接 a" duration="5">
+        <p>没有超链接就没有万维网（World Wide Web）。基本上，我们可以把任何东西加上超链接，不过常用的是文本、图片等。</p>
+<h2 is-upgraded>超链接语法</h2>
+<pre><code>&lt;a href=&#34;https://www.baidu.com/&#34; target=&#34;_blank&#34;&gt;百度一下&lt;/a&gt;
+</code></pre>
+<p>说明：</p>
+<ol type="1">
+<li><code>href</code>即为要跳转去的地址 URL（Uniform Resorce Locator)</li>
+<li><code>target</code>属性为<code>_blank</code>表示在新的页面打开超链接（默认是在当前页面打开即<code>_self</code>）</li>
+<li>超链接标签包含的内容（当前为文字&#34;百度一下&#34;）即为显示在页面上供用户点击的</li>
+</ol>
+<h2 is-upgraded>锚点</h2>
+<p>锚点，也称为书签，用于标记页面的某个元素或位置。通过锚点，我们可以轻易的在长页面内实现跳转。</p>
+<p>先使用<code>id</code>属性生成某元素的锚点，然后再使用超链接指向该锚点即可。</p>
+<pre><code>&lt;!-- 文档其余部分 --&gt;
+&lt;h2 id=&#34;C4&#34;&gt;第四章 论零号病人的重要性&lt;/h2&gt;
+&lt;!-- 文档其余部分 --&gt;
+&lt;a href=&#34;#C4&#34;&gt;跳到第四章&lt;/a&gt;
+&lt;!-- 文档其余部分 --&gt;
+...
+</code></pre>
+<aside class="special"><p><strong>注意：</strong></p>
+<ol type="1">
+<li>元素的<code>id</code>值必须是唯一的，也即页面不能再有其它元素的<code>id</code>值为<code>C4</code></li>
+<li>超链接中的地址需要有<code>#</code>符号</li>
+</ol>
+</aside>
+<aside class="warning"><p><strong>思考：</strong> 经常在某些网站上看到一个浮动图标显示&#34;回到页首&#34;，它是如何实现的？</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="图片及文件路径 img" duration="8">
+        <h2 is-upgraded>图片</h2>
+<p>在页面插入一张图片如下：</p>
+<pre><code>&lt;img src=&#34;https://mdbootstrap.com/img/logo/mdb192x192.jpg&#34; alt=&#34;MDB Logo&#34; width=&#34;200&#34; height=&#34;200&#34;&gt;
+</code></pre>
+<p>说明：</p>
+<ol type="1">
+<li><code>src</code>属性为要显示图片文件的位置 URL，即图片文件的路径</li>
+<li><code>alt</code>属性当获取图片出现问题时显示的文字（占位符）</li>
+<li>可为图片指定高宽度，但不建议（可能导致图片变形）</li>
+</ol>
+<aside class="special"><p><strong>提示：</strong> 对于小尺寸的图片，现在可采用 <strong>base64</strong> 编码进行，可提高页面加载速度，提升用户体验。<a href="https://c.runoob.com/front-end/59" target="_blank">可前往一试</a>。</p>
+</aside>
+<h2 is-upgraded>文件路径</h2>
+<p>为获取图片文件，我们需要指定该文件位于何处，这称为文件路径。文件路径有相对路径和绝对路径两种。</p>
+<p>上面图片的例子即为绝对路径。下面是相对路径的例子：</p>
+<table>
+<tr></tr>
+<tr><td colspan="1" rowspan="1"><p>例子</p>
+</td><td colspan="1" rowspan="1"><p>解释</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>&lt;img src=&#34;picture.jpg&#34;&gt;</code></p>
+</td><td colspan="1" rowspan="1"><p>该图片文件与当前文档在同一目录中</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>&lt;img src=&#34;./images/picture.jpg&#34;&gt;</code></p>
+</td><td colspan="1" rowspan="1"><p>该图片文件在当前目录下的<code>images</code>目录中</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>&lt;img src=&#34;../picture.jpg&#34;&gt;</code></p>
+</td><td colspan="1" rowspan="1"><p>该图片文件在上一级目录中</p>
+</td></tr>
+</table>
+<aside class="warning"><p><strong>思考：</strong> 上表中，<code>.</code>表示当前目录，<code>..</code>表示上一级目录，那么<code>../../imgs</code>是什么意思？</p>
+</aside>
+<aside class="warning"><p><strong>思考：</strong> 如何用图片做成一个超链接？</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="表格 Table" duration="3">
+        <p>有时，页面的内容需要用表格来进行呈现。我们使用<code>&lt;table&gt;</code>等标签即可：</p>
+<pre><code>  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Firstname&lt;/th&gt;
+      &lt;th&gt;Lastname&lt;/th&gt;
+      &lt;th&gt;Age&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Jill&lt;/td&gt;
+      &lt;td&gt;Smith&lt;/td&gt;
+      &lt;td&gt;50&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Eve&lt;/td&gt;
+      &lt;td&gt;Jackson&lt;/td&gt;
+      &lt;td&gt;94&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+</code></pre>
+<p>代码中，<code>&lt;tr&gt;</code>表示行, <code>&lt;td&gt;</code>表示行中的单元, <code>&lt;th&gt;</code>是表头的单元（将会加粗显示）</p>
+<aside class="special"><p><strong>说明：</strong> 当前这个表格比较丑陋，有关表格的美化我们在 CSS 部分学习。</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="列表 List" duration="5">
+        <p>我们也可以使用列表来呈现内容，分为无序列表和有序列表。</p>
+<h2 is-upgraded>无序列表</h2>
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>无序列表使用<code>&lt;ul&gt;</code>标签，默认使用<strong>实心圆点</strong>作为每项的标志，其它的标志可以是空心圆<code>circle</code>，实心方块<code>square</code>以及不出现标志。</p>
+<pre><code>&lt;ul type=&#34;square&#34;&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h2 is-upgraded>有序列表</h2>
+<pre><code>&lt;ol&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+<p>有序列表使用<code>&lt;ol&gt;</code>标签，默认使用<strong>数字</strong>作为每项的标志，其它的标志可以是大写字母<code>A</code>，小写字母<code>a</code>，罗马字母<code>i</code>等。</p>
+<pre><code>&lt;ol type=&#34;a&#34;&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="表单 Form" duration="10">
+        <p>当网站需要获取我们的一些信息如：用户名、密码、选择买什么、买多少、提出意见等等时，我们就需要使用表单（form）来让用户填写或选择。</p>
+<p>请输入如下代码进行学习：</p>
+<pre><code>&lt;form&gt;
+  &lt;!-- 文本框，注意有 placeholder 提示符 --&gt;
+  用户名：&lt;br&gt;
+  &lt;input type=&#34;text&#34; name=&#34;name&#34; placeholder=&#34;请输入用户名&#34;&gt;&lt;br&gt;
+  &lt;!-- 密码框 --&gt;
+  密码：&lt;br&gt;
+  &lt;input type=&#34;password&#34; name=&#34;ps&#34; placeholder=&#34;请输入密码&#34;&gt;&lt;br&gt;
+  年龄：&lt;br&gt;
+  &lt;!-- 数字输入框，注意 min 和 value 属性--&gt;
+  &lt;input type=&#34;number&#34; name=&#34;age&#34; min=&#34;18&#34; value=&#34;18&#34;&gt;&lt;br&gt;
+  &lt;!-- 单选按钮, 注意 checked 属性 --&gt;
+  性别：&lt;br&gt;
+  &lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;male&#34; checked&gt; 男&lt;br&gt;
+  &lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;female&#34;&gt; 女&lt;br&gt;
+  &lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;other&#34;&gt; 其它&lt;br&gt;
+  &lt;!-- 下拉列表，注意 selected 属性 --&gt;
+  党派：&lt;br&gt;
+  &lt;select name=&#34;party&#34;&gt;
+    &lt;option value=&#34;D&#34;&gt;民主党&lt;/option&gt;
+    &lt;option value=&#34;R&#34; selected&gt;共和党&lt;/option&gt;
+    &lt;option value=&#34;N&#34;&gt;无党派&lt;/option&gt;
+  &lt;/select&gt;&lt;br&gt;
+  &lt;!-- 多选框 --&gt;
+  您有哪些交通工具：&lt;br&gt;
+  &lt;input type=&#34;checkbox&#34; name=&#34;vehicle1&#34; value=&#34;Bike&#34;&gt; 自行车&lt;br&gt;
+  &lt;input type=&#34;checkbox&#34; name=&#34;vehicle2&#34; value=&#34;Moto&#34; checked&gt; 摩托车&lt;br&gt;
+  &lt;input type=&#34;checkbox&#34; name=&#34;vehicle3&#34; value=&#34;Car&#34;&gt; 轿车&lt;br&gt;
+  &lt;input type=&#34;checkbox&#34; name=&#34;vehicle4&#34; value=&#34;Jet&#34;&gt; 飞机&lt;br&gt;
+  &lt;!-- 日期选择器 --&gt;
+  您的工作日期：&lt;br&gt;
+  &lt;input type=&#34;date&#34;&gt;&lt;br&gt;
+  &lt;!-- 文件选择器 --&gt;
+  上传您的照片:&lt;br&gt;
+  &lt;input type=&#34;file&#34; name=&#34;photo&#34;&gt;&lt;br&gt;
+  &lt;!-- 文本输入区域，注意 rows 和 cols 属性 --&gt;
+  您的建议：&lt;br&gt;
+  &lt;textarea name=&#34;message&#34; rows=&#34;5&#34; cols=&#34;30&#34;&gt;
+    The cat was playing in the garden.
+  &lt;/textarea&gt;&lt;br&gt;&lt;hr&gt;
+  &lt;!-- 表单提交/重置按钮，将表单中的数据取消或传输给服务器端进行处理 --&gt;
+  &lt;input type=&#34;submit&#34; value=&#34;提 交&#34;&gt;
+  &lt;input type=&#34;reset&#34; value=&#34;重 置&#34;&gt;
+&lt;/form&gt;
+</code></pre>
+<aside class="special"><p><strong>提示：</strong> 当提交时，表单中没有<code>name</code>属性的元素将不会提交，比如上面工作日期的选择器。有<code>name</code>属性的元素其<code>value</code>的值将提交给服务器。</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="其它" duration="5">
+        <p>HTML 的元素可以以称为<strong>区块</strong> 或 <strong>内联</strong>的方式进行显示。</p>
+<h2 is-upgraded>区块元素</h2>
+<p>区块元素在浏览器显示时，通常会以<strong>新行</strong>来开始（和结束）。如：<code>&lt;h1&gt;, &lt;pre&gt;, &lt;ul&gt;, &lt;table&gt;，&lt;</code>div&gt; 等。</p>
+<pre><code>&lt;h2&gt;区块元素&lt;/h2&gt;
+&lt;div&gt;Hello&lt;/div&gt;
+&lt;div&gt;World&lt;/div&gt;
+&lt;p&gt;单独一行&lt;/p&gt;
+</code></pre>
+<h2 is-upgraded>内联元素</h2>
+<p>内联元素相反，他们总是一个接一个进行显示，不会新起一行。如： <code>&lt;span&gt;, &lt;input&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;</code>等。</p>
+<pre><code>&lt;h3&gt;下面的元素将在一行中显示&lt;/h3&gt;
+&lt;span&gt;姓名：&lt;/span&gt;
+&lt;input name=&#34;username&#34;&gt;
+&lt;span&gt;哈哈哈&lt;/span&gt;
+&lt;a href=&#34;https://google.com/&#34;&gt;Google&lt;/a&gt;
+&lt;img src=&#34;https://mdbootstrap.com/img/logo/mdb192x192.jpg&#34;&gt;
+</code></pre>
+<h2 is-upgraded>预设格式</h2>
+<p>如果你想在网页中展示一首诗或一些特别格式的文本，那么请使用<code>pre</code>标签。</p>
+<pre><code>&lt;!-- pre标签中的内容将保持格式不变 --&gt;
+&lt;pre&gt;
+              我如果爱你——
+              绝不象攀援的凌霄花，
+              借你的高枝炫耀自己；
+
+              我如果爱你——
+              绝不学痴情的鸟儿，
+              为绿荫重复单调的歌曲；
+
+              也不止像泉源，
+              常年送来清凉的慰藉；
+
+              也不止像险峰，
+              增加你的高度，衬托你的威仪。
+
+              甚至日光。
+              甚至春雨。
+
+              不，这些都还不够！
+              我必须是你近旁的一株木棉，
+              作为树的形象和你站在一起。
+
+              根，紧握在地下，
+              叶，相触在云里。
+
+              每一阵风过，
+              我们都互相致意，
+              但没有人，
+              听懂我们的言语。
+
+              你有你的铜枝铁干，
+              像刀，像剑，
+              也像戟；
+
+              我有我红硕的花朵，
+              像沉重的叹息，
+              又像英勇的火炬。
+
+              我们分担寒潮、风雷、霹雳；
+              我们共享雾霭、流岚、虹霓。
+              仿佛永远分离，
+              却又终身相依。
+
+              这才是伟大的爱情，
+              坚贞就在这里：
+              爱——
+              不仅爱你伟岸的身躯，
+              也爱你坚持的位置，足下的土地。
+&lt;/pre&gt;
+</code></pre>
+<h2 is-upgraded>特殊字符</h2>
+<p>考虑下面的代码将显示成什么？</p>
+<pre><code>&lt;p&gt;有多          远，滚                         多远！&lt;/p&gt;
+</code></pre>
+<p>或者你希望在页面显示一段 HTML 的源代码，你打算用标签<code>&lt;pre&gt;</code>:</p>
+<pre><code>&lt;pre&gt;
+  &lt;h1&gt;这是个一级标题&lt;/h1&gt;
+  &lt;p&gt;这是一个段落&lt;p&gt;
+  &lt;a href=&#34;https://twitter.com/&#34;&gt;眼见何事，情系何处，身处何方，心思何人&lt;/a&gt;
+&lt;pre&gt;
+</code></pre>
+<p>以上代码将得不到你想要的结果。<br>原因是：在 HTML 中，某些字符是预留的。<br>在 HTML 中不能使用小于号（&lt;）和大于号（&gt;），这是因为浏览器会误认为它们是标签。<br>如果希望正确地显示预留字符，我们必须在 HTML 源代码中使用字符实体（character entities）</p>
+<pre><code>&lt;p&gt;有多&amp;nbsp;&amp;nbsp;&amp;nbsp;远，滚&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;多远！&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;test.html&lt;/h2&gt;
+&lt;pre&gt;
+  &amp;lt;h1&amp;gt;这是个一级标题&amp;lt;/h1&amp;gt;
+  &amp;lt;p&amp;gt;这是一个段落&amp;lt;p&amp;gt;
+  &amp;lt;a href=&#34;https://twitter.com/&#34;&amp;gt;眼见何事，情系何处，身处何方，心思何人&amp;lt;/a&amp;gt;
+&lt;pre&gt;
+</code></pre>
+<p>特殊字符可参考<a href="https://www.runoob.com/tags/ref-entities.html" target="_blank">ISO-8859-1 字符实体手册</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="作业" duration="2">
+        <p>至此，我们对HTML有了基本的掌握。在进行综合编写 HTML 文档之前，请对自己的学习进行一个总结。</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
