@@ -505,6 +505,8 @@
             Icon、Open HTML in Browser、Path Intelligence等。
           </p>
 
+          <p>运行code后，请注意在<code>File -> Auto Save</code> 选中，如此code将自动保存我们的代码</p>
+
           <h3>Chrome浏览器</h3>
           <p>开发网页，好的浏览器必不可少。推荐使用 Chrome <a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank">官网下载</a>
             或 Firefox <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">官网下载</a>
@@ -544,8 +546,10 @@
           </p>
           <a href="./brief-html/index.html" class="btn btn-lg btn-info btn-block" target="_blank">HTML学习请进入</a>
           <div class="bs-callout bs-callout-warning">
-            更多 HTML 学习，可访问
+            <h4>
+              更多 HTML 学习，可访问
             <a href="https://www.runoob.com/html/html-tutorial.html" target="_blank">菜鸟教程</a>。
+            </h4>
           </div>
 
           <h3 id="html-5">HTML5</h3>
@@ -564,12 +568,12 @@
                 class="glyphicon glyphicon-link"></span></a> -->
           </h4>
         </div>
-
+        <hr>
+        <p>在对 HTML 和 CSS 有相关了解后，下面我们通过三个示例综合进行学习。</p>
         <h3 id="html-example1">HTML5网页示例一</h3>
 
-          <p>在 code 中输入或复制如下 HTML 代码，我们稍作探究并在无 CSS 的情况下看看效果，并逐渐掌握
-            <code>Chrome开发者工具</code>的使用。</p>
-          <!--<div class="highlight">-->
+          <p>在 code 中新建一个 HTML 文件，输入或复制如下代码</p>
+
           <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-1">复制代码</button><code id="dm-1">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -596,12 +600,12 @@
             &lt;header&gt;
                 &lt;h1&gt;文章头部&lt;/h1&gt;
             &lt;/header&gt;
-            &lt;ol>
+            &lt;ul type="square">
                 &lt;li>当一个人只为维持生计而思维的时候，他的思想就难以高尚。 ——卢梭&lt;/li>
                 &lt;li>衣不如新，人不如旧&lt;/li>
                 &lt;li>井蛙不可语天，夏虫不可语冰&lt;/li>
                 &lt;li>有党性，没人性&lt;/li>
-            &lt;/ol>
+            &lt;/ul>
             &lt;footer&gt;
                 &lt;h2&gt;
                     文章底部
@@ -645,8 +649,14 @@ admire    羡慕    额的妈呀
 &lt;/body&gt;
 &lt;/html&gt;                    </code></pre>
 
-          <p>CSS即层叠样式表（Cascading Style Sheets）。用于修饰Web页面。如上，没有用CSS样式表的HTML惨不忍睹，我们添加如下代码后后探究一下</p>
-          <!--<div class="highlight">-->
+
+
+          <p>没有用 CSS 样式表的 HTML 惨不忍睹，新建如下内容的样式表文件</p>
+          <div class="bs-callout bs-callout-warning">
+            <h4>
+              思考：根据上面 HTML文件，这个CSS文件名称应该是什么？保存在哪个目录下？
+            </h4>
+          </div>
           <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#dm-2">复制代码</button><code id="dm-2">
 body{
     background-color: #cccccc;
@@ -778,14 +788,105 @@ footer h2{
     font: 14px;
     color: white;
 }</code></pre>
-          <!--</div>-->
-          <p>你看到的效果应如下所示</p>
+
+          <p>你看到的效果大致如下所示</p>
           <img src="../assets/img/html5.png" alt="html5" class="img-responsive" />
+          <div class="bs-callout bs-callout-info">
+            <h4>
+              对以上两个文件，请通过<code>开发者工具（F12或Ctrl+Shift+I)</code>仔细探究。
+              某位置显示的什么，为什么是这个样式，改变成其它怎么样？这些都需要你慢慢实践。
+            </h4>
+          </div>
           
           <h3 id="html-example2">HTML5网页示例二</h3>
-          
-          <!-- https://www.runoob.com/try/try.php?filename=trycss_image_gallery -->
-          
+
+          <p>新建如下两个文件，进行详细的分析与改进</p>
+
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#html-e1" data-toggle="tab">.html</a>
+            </li>
+            <li>
+              <a href="#html-e2" data-toggle="tab">.css</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="html-e1">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#html-c1">复制代码</button><code id="html-c1">
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+    &lt;meta charset="utf-8">
+    &lt;title>HTML-2&lt;/title>
+    &lt;link rel="stylesheet" href="./mycss.css">
+&lt;/head>
+&lt;body>
+  &lt;div class="responsive">
+    &lt;div class="img">
+      &lt;a target="_blank" href="https://static.runoob.com/images/demo/demo1.jpg">
+        &lt;img src="https://static.runoob.com/images/demo/demo1.jpg" alt="图片文本描述" width="300" height="200">
+      &lt;/a>
+      &lt;div class="desc">吻&lt;/div>
+    &lt;/div>
+  &lt;/div>
+    
+  &lt;div class="responsive">
+    &lt;div class="img">
+      &lt;a target="_blank" href="https://static.runoob.com/images/demo/demo2.jpg">
+        &lt;img src="https://static.runoob.com/images/demo/demo2.jpg" alt="图片文本描述" width="300" height="200">
+      &lt;/a>
+      &lt;div class="desc">路&lt;/div>
+    &lt;/div>
+  &lt;/div>
+    
+  &lt;div class="responsive">
+    &lt;div class="img">
+      &lt;a target="_blank" href="https://static.runoob.com/images/demo/demo3.jpg">
+        &lt;img src="https://static.runoob.com/images/demo/demo3.jpg" alt="图片文本描述" width="300" height="200">
+      &lt;/a>
+      &lt;div class="desc">桥&lt;/div>
+    &lt;/div>
+  &lt;/div>
+    
+  &lt;div class="responsive">
+    &lt;div class="img">
+      &lt;a target="_blank" href="https://static.runoob.com/images/demo/demo4.jpg">
+        &lt;img src="https://static.runoob.com/images/demo/demo4.jpg" alt="图片文本描述" width="300" height="200">
+      &lt;/a>
+      &lt;div class="desc">迷&lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/body>
+&lt;/html>                    
+</code></pre>
+            </div>
+            <div class="tab-pane fade" id="html-e2">
+              <pre class="snippet"><button class="btn btn-sm btn-primary" data-clipboard-target="#html-c2">复制代码</button><code id="html-c2">
+/* 该选择器表示：是div元素同时还是img类 */
+div.img {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.img:hover {
+  border: 1px solid #777;
+}
+
+div.img img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+</code></pre>
+            </div>
+          </div>          
           
           
           <h3 id="html-example2">HTML5网页示例三</h3>
@@ -807,13 +908,13 @@ footer h2{
           <div class="page-header">
             <h1 id="bs">Bootstrap初步</h1>
           </div>
-          <div class="bs-callout bs-callout-danger">
-            注意：本部分仅了解浏览即可，无需深入学习。
-          </div>
+          <h4><div class="bs-callout bs-callout-danger">
+            注意：本部分仅了解即可，无需深入学习。
+          </div></h4>
           
           <p class="lead">
             开发出漂亮的网站不仅要求掌握和灵活应用CSS，同时还需要有足够的美感，也即你不仅要有技术细胞，还要有艺术细胞，并且数量还不能少。<br>
-            那么有没有一个开箱即用，简洁、直观、优雅、强悍的前端CSS开发框架，让web开发更迅速、简单呢？<br>
+            那么有没有一个开箱即用，简洁、直观、优雅、强悍的前端CSS开发框架，让Web开发更迅速、简单呢？<br>
             Bootstrap 等一众 CSS前端框架的出现以及开源就让我们迎来了春天！
           </p>
 
@@ -849,15 +950,15 @@ footer h2{
           <div class="page-header">
             <h1 id="bs">MDBootstrap初步</h1>
           </div>
-          <div class="bs-callout bs-callout-danger">
+          <h4><div class="bs-callout bs-callout-danger">
             注意：本部分需深入学习。
-          </div>
-          <p class="lead">Material Design是谷歌于2014年推出用于媲美苹果的视觉设计规范。请访问其官网了解。</p>
+          </div></h4>
+          <p>Material Design是谷歌于2014年推出用于媲美苹果的视觉设计规范。请访问其官网了解。</p>
           <p>以Bootstrap为基础，同时遵循 MD规范的靓丽 CSS框架也不少，构建了许多直接使用的组件。其中以MDBootstrap为最佳</p>
           
           
           <!-- 搭建环境 基础学习 教程 -->
-          
+          <p class="lead">搭建MDB项目</p>
           <p>请下载
             <a href="../data/web/MDB-Free_4.5.11.zip">MDB-Free-4.5.11种子项目</a>(扩展为Pro版：<a
               href="../data/web/compiled-4.5.11.min.css" target="_blank">CSS文件</a>、
