@@ -542,10 +542,11 @@
             <code>body、head、title、p、img、a、div、span、ol、table</code>等。请注意如
             <code>font、big、center</code>等标签是不推荐使用的。
           </p>
-          <a href="./brief-html/index.html" class="btn btn-info btn-block" target="_blank">HTML学习请进入</a>
-          <p>也可访问
-            <a href="https://www.runoob.com/html/html-tutorial.html" target="_blank">菜鸟教程</a>开始学习。
-          </p>
+          <a href="./brief-html/index.html" class="btn btn-lg btn-info btn-block" target="_blank">HTML学习请进入</a>
+          <div class="bs-callout bs-callout-warning">
+            更多 HTML 学习，可访问
+            <a href="https://www.runoob.com/html/html-tutorial.html" target="_blank">菜鸟教程</a>。
+          </div>
 
           <h3 id="html-5">HTML5</h3>
 
@@ -553,7 +554,18 @@
             <code>header、footer、section、article、aside、nav</code>等。相关内容请查看网络资料。
           </p>
 
-          <h3 id="html-example1">HTML5网页示例一</h3>
+          <h3 id="html-css">CSS</h3>
+
+          <a href="./brief-css/index.html" class="btn btn-lg btn-info btn-block" target="_blank">CSS学习请进入</a>
+        <div class="bs-callout bs-callout-warning">
+          <h4>进一步的CSS学习推荐菜鸟教程(稍嫌繁杂, 但全面)<a href="http://www.runoob.com/css/css-tutorial.html" target="_blank">前往<span
+                class="glyphicon glyphicon-link"></span></a>,
+            <!-- 也可使用MDB网站的CSS教程(简明扼要, 但是英文)<a href="https://mdbootstrap.com/education/css/" target="_blank">前往<span
+                class="glyphicon glyphicon-link"></span></a> -->
+          </h4>
+        </div>
+
+        <h3 id="html-example1">HTML5网页示例一</h3>
 
           <p>在 code 中输入或复制如下 HTML 代码，我们稍作探究并在无 CSS 的情况下看看效果，并逐渐掌握
             <code>Chrome开发者工具</code>的使用。</p>
@@ -632,9 +644,6 @@ admire    羡慕    额的妈呀
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;                    </code></pre>
-          <!--</div>-->
-
-          <h3 id="html-css">CSS示例</h3>
 
           <p>CSS即层叠样式表（Cascading Style Sheets）。用于修饰Web页面。如上，没有用CSS样式表的HTML惨不忍睹，我们添加如下代码后后探究一下</p>
           <!--<div class="highlight">-->
@@ -772,8 +781,14 @@ footer h2{
           <!--</div>-->
           <p>你看到的效果应如下所示</p>
           <img src="../assets/img/html5.png" alt="html5" class="img-responsive" />
-
+          
           <h3 id="html-example2">HTML5网页示例二</h3>
+          
+          <!-- https://www.runoob.com/try/try.php?filename=trycss_image_gallery -->
+          
+          
+          
+          <h3 id="html-example2">HTML5网页示例三</h3>
 
           <p>请跟随
             <a
@@ -782,13 +797,7 @@ footer h2{
             </a>的指南构建另一个应用HTML5技术的网站，效果如下:</p>
           <img src="../assets/img/html2.jpg" alt="html2" class="img-responsive" />
         </div>
-
-        <div class="bs-callout bs-callout-warning">
-          <h4>CSS的学习推荐菜鸟教程(稍嫌繁杂, 但全面)<a href="http://www.runoob.com/css/css-tutorial.html" target="_blank">前往<span
-                class="glyphicon glyphicon-link"></span></a>,
-            也可使用MDB网站的CSS教程(简明扼要, 但是英文)<a href="https://mdbootstrap.com/education/css/" target="_blank">前往<span
-                class="glyphicon glyphicon-link"></span></a></h4>
-        </div>
+        
 
 
 
@@ -798,8 +807,14 @@ footer h2{
           <div class="page-header">
             <h1 id="bs">Bootstrap初步</h1>
           </div>
+          <div class="bs-callout bs-callout-danger">
+            注意：本部分仅了解浏览即可，无需深入学习。
+          </div>
+          
           <p class="lead">
-            简洁、直观、强悍的前端CSS开发框架，让web开发更迅速、简单。漂亮的Web页面不仅要求掌握CSS，同时还需要有足够的美感，对我等没有艺术细胞的开发者而言，2011年8月20日Bootstrap的出现以及开源就迎来了春天！
+            开发出漂亮的网站不仅要求掌握和灵活应用CSS，同时还需要有足够的美感，也即你不仅要有技术细胞，还要有艺术细胞，并且数量还不能少。<br>
+            那么有没有一个开箱即用，简洁、直观、优雅、强悍的前端CSS开发框架，让web开发更迅速、简单呢？<br>
+            Bootstrap 等一众 CSS前端框架的出现以及开源就让我们迎来了春天！
           </p>
 
           <h3 id="bs-example">以Bootstrap构建的网站案例</h3>
@@ -815,12 +830,14 @@ footer h2{
           <h3 id="bs-learn">学习Bootstrap</h3>
           <p>我们如何能做到？请移步
             <a href="http://www.bootcss.com/" target="_blank">
-              <code>Bootstrap中文网</code>
-            </a>或
+              <code>Bootstrap中文网</code>了解
+            </a>
+            <!-- 或
             <a href="http://202.202.243.2/course/bootstrap/index.html"
-              target="_blank"><s>Bootstrap校内镜像</s></a>学习。该网站紧跟英文文档，提供最新信息。</p>
-          <p>
-            <a href="../data/web/bootstrap-3.3.7-dist.zip">Bootstrap3.3.7下载</a>。BootStrap可以单独学习, 但推荐以下面的MDB的教程进行学习</p>
+              target="_blank"><s>Bootstrap校内镜像</s></a>学习。该网站紧跟英文文档，提供最新信息。 -->
+            </p>
+          <!-- <p>
+            <a href="../data/web/bootstrap-3.3.7-dist.zip">Bootstrap3.3.7下载</a>。BootStrap可以单独学习, 但推荐以下面的MDB的教程进行学习</p> -->
 
 
         </div>
@@ -832,8 +849,15 @@ footer h2{
           <div class="page-header">
             <h1 id="bs">MDBootstrap初步</h1>
           </div>
+          <div class="bs-callout bs-callout-danger">
+            注意：本部分需深入学习。
+          </div>
           <p class="lead">Material Design是谷歌于2014年推出用于媲美苹果的视觉设计规范。请访问其官网了解。</p>
-          <p>Bootstrap也使用了MD的规范，构建了许多靓丽的组件，其中，以MDBootstrap为最佳</p>
+          <p>以Bootstrap为基础，同时遵循 MD规范的靓丽 CSS框架也不少，构建了许多直接使用的组件。其中以MDBootstrap为最佳</p>
+          
+          
+          <!-- 搭建环境 基础学习 教程 -->
+          
           <p>请下载
             <a href="../data/web/MDB-Free_4.5.11.zip">MDB-Free-4.5.11种子项目</a>(扩展为Pro版：<a
               href="../data/web/compiled-4.5.11.min.css" target="_blank">CSS文件</a>、

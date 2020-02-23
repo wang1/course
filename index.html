@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>棋歌的教学网站</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Site CSS -->
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/site.min.css" rel="stylesheet">
+
+    <!-- Extras CSS -->
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <script>
+        var _hmt = _hmt || [];
+        if (document.all) {
+            alert("请使用更好的Chrome或Firefox浏览器！否则页面不能正常显示！")
+        }
+    </script>
+
+<body>
+
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand hidden-sm" href="index.html">棋歌教学网</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><span
+                                class="glyphicon glyphicon-book"></span> 全部课程<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="network/network.html" target="_blank">计算机网络</a>
+                            </li>
+                            <li>
+                                <a href="c/c.html" target="_blank">C 语言</a>
+                            </li>
+                            <li>
+                                <a href="linux/linux.html" target="_blank">Linux初步</a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">Java网络编程</a>
+                            </li>
+                            <li>
+                                <a href="ns/ns.html" target="_blank">网络信息安全</a>
+                            </li>
+                            <li>
+                                <a href="web/web.html" target="_blank">Web技术基础</a>
+                            </li>
+                            <li>
+                                <a href="computer/computer.html" target="_blank">大学计算机基础</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><span class="glyphicon glyphicon-th"></span> 实验教程</a></li>
+                    <li><a href="./Chrome-32.exe"><span class="glyphicon glyphicon-send"></span> Chrome32位</a></li>
+                    <li><a href="./Chrome-64.exe"><span class="glyphicon glyphicon-send"></span> Chrome64位</a></li>
+                    <li><a href="./XX-Net-3.2.9.zip"><span class="glyphicon glyphicon-send"></span> XX-Net-3.2.9</a>
+                    </li>
+
+                    <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> 关于</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+        <!-- Indicators
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol> -->
+        <div class="carousel-inner">
+            <div class="item active masthead">
+                <div class="masthead-bg"></div>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>棋 歌 教 学 网</h1>
+                        <h2>学习不应复杂和痛苦，而应简单和快乐</h2>
+                        <p> </p>
+                        <p>
+                            <!--<a class="btn btn-lg btn-primary btn-shadow bs3-link" href="http://v3.bootcss.com/" target="_blank" role="button">Bootstrap3中文文档(v3.0.2)</a>-->
+                            <span class="label label-success">QQ: 929051261 </span>
+                            <span class="label label-success"> <span class="glyphicon glyphicon-earphone"></span>
+                                13527556383</span>
+                        </p>
+                        <!-- <p class="bs2-link">由强大的Bootstrap3提供模版支持</p> -->
+                        <p style="font: 1.1em sans-serif;" class="bs2-link" id="quotes" onclick="getQuotes()" title="点击变换格言"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> -->
+    </div><!-- /.carousel -->
+
+    <div class="container projects">
+
+        <div class="projects-header page-header">
+            <h2>相关课程简介</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-6 col-md-4 ">
+                <div class="thumbnail">
+                    <a href="network/network.html" title="计算机网络" target="_blank"
+                        onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'opencdn'])"><img class="lazy"
+                            src="assets/img/null.png" width="300" height="150" data-src="assets/img/network.png"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="network/network.html" title="计算机网络" target="_blank"
+                                onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'opencdn'])">计算机网络<br><small>核心专业基础课程</small></a>
+                        </h3>
+                        <p>本课程是各专业的核心专业基础课。掌握计算机网络的基本原理，熟悉网络的运行方式，能对相应的网络故障进行诊断与解决，能进行基本的网络管理、规划和维护等，了解当前网络技术的发展。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 ">
+                <div class="thumbnail">
+                    <a href="c/c.html" title="C语言" target="_blank"
+                        onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'lesscss'])"><img class="lazy"
+                            src="assets/img/null.png" width="300" height="150" data-src="assets/img/C.png"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="c/c.html" title="C语言" target="_blank"
+                                onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'lesscss'])">C语言<br><small>计算机基础语言</small></a>
+                        </h3>
+                        <p>
+                            广泛用于系统与应用软件的开发。具有高效、灵活、功能丰富、表达力强和较高的可移植性等特点，在程序员中备受青睐。是使用最为广泛和最有生命力的编程语言。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 ">
+                <div class="thumbnail">
+                    <a href="linux/linux.html" title="Linux" target="_blank"
+                        onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'grunt'])"><img class="lazy"
+                            src="assets/img/null.png" width="300" height="150" data-src="assets/img/Linux.png"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="linux/linux.html" title="linux" target="_blank"
+                                onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'grunt'])">Linux<br><small>专业基础课程</small></a>
+                        </h3>
+                        <p>
+                            以Fedora为蓝本，了解Linux这个重要、安全、稳定、发展迅速的开源OS，掌握常见的桌面应用、shell命令、系统及网络管理，为脱离Windows使用计算机以及服务器运维打下基础。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 ">
+                <div class="thumbnail">
+                    <a href="web/web.html" title="Web技术基础" target="_blank"
+                        onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'unslider'])"><img class="lazy"
+                            src="assets/img/null.png" width="300" height="150" data-src="assets/img/web.png"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="web/web.html" title="Web技术基础" target="_blank"
+                                onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'unslider'])">Web技术基础<br><small>基于Web程序设计基础课程</small></a>
+                        </h3>
+                        <p>
+                            本课程要求了解和掌握HTML5、CSS以及JavaScript等方面的技术，来建设一个中等复杂程度的静态Web页面，同时为今后使用服务器端的动态网页技术构建网站打下基础。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 ">
+                <div class="thumbnail">
+                    <a href="computer/computer.html" title="大学计算机基础" target="_blank"
+                        onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'switch'])"><img class="lazy"
+                            src="assets/img/null.png" width="300" height="150" data-src="assets/img/computer.png"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="computer/computer.html" title="大学计算机基础" target="_blank"
+                                onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'switch'])">大学计算机基础<br><small>基础课程</small></a>
+                        </h3>
+                        <p>要求掌握计算机软硬件、Word、Excel、PowerPoint、计算机网络及安全等方面的基础知识。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 ">
+                <div class="thumbnail">
+                    <a href="npa/npa.html" title="通信网课程设计-网络协议分析" target="_blank"
+                        onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'switch'])"><img class="lazy"
+                            src="assets/img/null.png" width="300" height="150" data-src="assets/img/npa.png"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="npa/npa.html" title="通信网课程设计-网络协议分析" target="_blank"
+                                onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'switch'])">网络协议分析<br><small>通信网课程设计</small></a>
+                        </h3>
+                        <p>本课程设计通过一个实际的应用，使用Wireshark对常用的网络协议进行较为详尽的分析，从而理解各协议的使用。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 ">
+                <div class="thumbnail">
+                    <a href="#" title="Java网络编程" target="_blank"
+                        onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'button'])"><img class="lazy"
+                            src="assets/img/null.png" width="300" height="150" data-src="assets/img/Java.png"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="#" title="Java网络编程" target="_blank"
+                                onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'button'])">Java网络编程<br><small>专业课程</small></a>
+                        </h3>
+                        <p>
+                            更新中...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 ">
+                <div class="thumbnail">
+                    <a href="./ns/ns.html" title="网络信息安全" target="_blank"
+                        onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'layoutit'])"><img class="lazy"
+                            src="assets/img/null.png" width="300" height="150" data-src="assets/img/ns.png"></a>
+                    <div class="caption">
+                        <h3>
+                            <a href="./ns/ns.html" title="网络信息安全" target="_blank"
+                                onclick="_hmt.push(['_trackEvent', 'tile', 'click', 'layoutit'])">网络信息安全<br><small>专业课程</small></a>
+                        </h3>
+                        <p>
+                            本课程将学习网络安全相关的一些基础理论知识，同时在Kali（BackTrack）下，以虚拟机的方式进行各种模拟和实际渗透测试，以加强网络安全方面能力，提升这方面的兴趣。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div><!-- /.container -->
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>本网站所列文档全部由棋歌整理及维护，并全部遵循 <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY
+                3.0</a>协议发布。</p>
+        <p>Powered By <a href="http://nginx.org/" target="_blank" title="">Nginx</a> And<a
+                href="http://www.bootcss.com/"> Bootcss</a></p>
+        <p>
+            <a href="http://www.cqjtu.edu.cn/" target="_blank">重庆交通大学信息学院</a>
+        </p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.unveil.min.js"></script>
+    <script src="assets/js/jquery.scrollUp.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("img.lazy").unveil(); //图片的lazy加载，ke在<img class="lazy">中使用，提高响应速度
+
+            $.scrollUp({
+                scrollName: 'scrollUp', // Element ID
+                topDistance: '300', // Distance from top before showing element (px)
+                topSpeed: 300, // Speed back to top (ms)
+                animation: 'fade', // Fade, slide, none
+                animationInSpeed: 200, // Animation in speed (ms)
+                animationOutSpeed: 200, // Animation out speed (ms)
+                scrollText: '', // Text for element
+                activeOverlay: false // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+            });
+        });
+    </script>
+    <!-- 动态格言显示 -->
+    <script>
+        var lines = [];    
+        function getQuotes() {
+            if (!lines.length) {
+                $.get('quotes.txt').success(function (content) {
+                    lines = content.split('\n');
+                    $('#quotes').html(lines[Math.floor(Math.random() * lines.length)]);
+                });
+            }else{
+                $('#quotes').html(lines[Math.floor(Math.random() * lines.length)]);
+            }
+        }
+        getQuotes();
+    </script>
+    <!--<script type="text/javascript">-->
+    <!--var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");-->
+    <!--document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F3d8e7fc0de8a2a75f2ca3bfe128e6391' type='text/javascript'%3E%3C/script%3E"));-->
+    <!--</script>-->
+</body>
+</html>
