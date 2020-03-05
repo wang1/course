@@ -27,10 +27,26 @@
                   environment="web"
                   feedback-link="mailto: gridwang@gmail.com">
     
-      <google-codelab-step label="页面结构" duration="5">
-        <p>本教程将构建一个简单的公司首页。我们将学习到基本的页面结构和布局，以及 MDB 的常用的一些组件。<a href="https://mdbootstrap.com/snippets/jquery/ascensus/11?action=fullscreen" target="_blank">最后效果</a>如下图：</p>
+      <google-codelab-step label="概述" duration="1">
+        <p>本教程将使用 MDB 构建一个简单的公司首页。我们将学习以下 MDB 常用的一些组件。</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>如何使用MDB种子项目</li>
+<li>基本的页面结构</li>
+<li>栅格布局</li>
+<li>导航条</li>
+<li>特效图片</li>
+<li>卡片</li>
+<li>间距</li>
+</ul>
+<p>构建完毕后的<a href="https://mdbootstrap.com/snippets/jquery/ascensus/11?action=fullscreen" target="_blank">最后效果</a>如下图：</p>
 <p class="image-container"><img alt="final-1" src="img/8e88983ba426d83.webp"></p>
-<h2 is-upgraded>MDB 模板</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面结构" duration="5">
+        <h2 is-upgraded>MDB 模板</h2>
 <p>解压你下载的 MDB Pro 模板文件到某文件夹， code 中打开该文件夹（这是我们的工作目录），网站文件的基本结构如下图：</p>
 <p class="image-container"><img alt="mdb" src="img/d665c9d8eb456131.jpg"></p>
 <aside class="special"><p><strong>提示：</strong> 文件夹中目录的名称也表明了其作用。我们的网站文件结构大致如此。一个网站至少有一个文件为<code>index.html</code>作为首页。</p>
@@ -38,7 +54,7 @@
 <h2 is-upgraded>页面基本结构</h2>
 <p>在 code 中打开 <code>index.html</code>文件你可看到常见的 HTML 文档结构如下：</p>
 <p class="image-container"><img alt="index" src="img/ae71f5fa3e17876.jpg"></p>
-<aside class="warning"><p><strong>注意：</strong> 上图中绿色框内是 MDB 需要的 CSS 和 JS 文件，我们不要变动它。我们需要做的就是在红色框内进行编写（看见 start/end  your project here 了吗）。</p>
+<aside class="warning"><p><strong>注意：</strong> 上图中绿色框内是 MDB 需要的 CSS 和 JS 文件，我们不要变动它。我们需要做的就是在红色框内进行编写（看见 start/end  your project here 那个注释了吗）。</p>
 </aside>
 <p>现在将红色框中的内容替换为如下代码：</p>
 <pre><code>&lt;!-- start your project here --&gt;
@@ -67,7 +83,7 @@
 <li><code>main</code>元素是页面主要内容</li>
 <li><code>footer</code>元素是一些版权和其它链接</li>
 </ol>
-<p>至此，页面基本结构搭建完毕, 下面我们开始构建导航。（当然，现在浏览器中是看不到任何内容的）</p>
+<p>当然，现在浏览器中是看不到任何内容的.<br>至此，页面基本结构搭建完毕, 下面我们开始构建导航。</p>
 
 
       </google-codelab-step>
@@ -149,14 +165,14 @@
 <aside class="special"><p><strong>提示:</strong> 留意该<code>&lt;div&gt;</code>标签有<code>id</code>属性, 这是供<code>&lt;button&gt;</code>调用的.</p>
 </aside>
 <p>该标签内有一个<code>&lt;ul&gt;</code>无序列表(放置3个导航链接及1个下拉列表)和<code>&lt;form&gt;</code>表单(只有一个用于搜索的<code>input</code>).</p>
-<h3 is-upgraded>.navbar-nav</h3>
+<h3 is-upgraded><code>navbar-nav</code></h3>
 <p>表明是导航条中的导航链接, 使得<code>&lt;li&gt;</code>的列表项不会分布于多行(去掉试试).</p>
-<h3 is-upgraded>.mr-auto</h3>
+<h3 is-upgraded><code>mr-auto</code></h3>
 <p>该样式将会把其后的项(即搜索框<code>&lt;form&gt;</code>靠右对齐), 你去掉该样式就明白了. 参见<a href="https://getbootstrap.net/docs/utilities/flex/#auto-margins" target="_blank">自浮动</a>.</p>
 <p><strong>mr</strong> 代表 <code>margin-right</code>, 即右外边距, 有关这部分内容(代码的后面你还可以看到一个<code>my-0</code>)我们后面讲述.</p>
-<h3 is-upgraded>.active</h3>
+<h3 is-upgraded><code>active</code></h3>
 <p>注意这个样式, 它表明哪个超链接当前是激活的, 一般用于表明当前处于哪个活动页面.</p>
-<h3 is-upgraded>.sr-only</h3>
+<h3 is-upgraded><code>sr-only</code></h3>
 <p>意思是 <code>screen read only</code>, 为盲人上网设置的. 当前你可不用管它.</p>
 
 
@@ -451,7 +467,9 @@
 <p>至此, 我们整个页面完成.刷新浏览器看看结果. 但有一些小问题, 如: 顶底的颜色不大一致, 主体内容太靠近导航条等. 下面我们对这些小细节进行处理.</p>
 <h2 is-upgraded>细节调整</h2>
 <h3 is-upgraded>边界一致</h3>
-<p>你会发现导航条和底部的内容比主体内容更靠左一些. 查看底部的代码<code>&lt;div class=&#34;container-fluid text-center text-md-left&#34;&gt;</code>,你会发现有<code>container-fluid</code>类, 这将占用整个可用的宽度.<br>将其改为<code>container</code>, 刷新浏览器, 你将会发现与主体内容对齐了, 且更美观.<br>同样, 请将导航条的内容(就是我们前面说的三个部分)也用<code>container</code>容器包裹起来, 如下所示:</p>
+<p>你会发现导航条和底部的内容比主体内容更靠左一些. 查看底部的代码<code>&lt;div class=&#34;container-fluid text-center text-md-left&#34;&gt;</code>,你会发现有<code>container-fluid</code>类, 这将占用整个可用的宽度.</p>
+<p>将其改为<code>container</code>, 刷新浏览器, 你将会发现与主体内容对齐了, 且更美观.</p>
+<p>同样, 请将导航条的内容(就是我们前面说的三个部分)也用<code>container</code>容器包裹起来, 如下所示:</p>
 <pre><code>&lt;header&gt;
     &lt;!--Navbar--&gt;
     &lt;nav class=&#34;navbar navbar-expand-md navbar-dark primary-color&#34;&gt;
@@ -484,9 +502,9 @@
 &lt;!--Grid column 2--&gt;
 &lt;div class=&#34;col-md-5 mb-4&#34;&gt;
 </code></pre>
-<aside class="warning"><p><strong>思考:</strong> 为何不直接将<code>mb-4</code>加到第一行, 而要分别加到第一行的两列? (提示: 我们的页面是响应式的. 考虑一下小屏幕(&lt;768px时)上会发生什么)</p>
+<p>刷新试试.</p>
+<aside class="warning"><p><strong>思考:</strong> 为何不直接将<code>mb-4</code>加到第一行, 而要分别加到第一行的两列? 提示: 我们的页面是响应式的. 考虑一下小屏幕(&lt;768px时)上会发生什么.</p>
 </aside>
-<p>��生什么)</p>
 <p>同样的, 我们也为第二行的三列各自加上底外边距<code>mb-4</code>, 让其离底部稍远一点:</p>
 <pre><code>&lt;!--注意: 第二行的三列都如此--&gt;
 &lt;div class=&#34;col-lg-4 col-md-12 mb-4&#34;&gt;
