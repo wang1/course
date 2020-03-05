@@ -1,0 +1,811 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>棋歌教学网 - MDB教程一</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="mdb-tutorial-1"
+                  title="棋歌教学网 - MDB教程一"
+                  environment="web"
+                  feedback-link="mailto: gridwang@gmail.com">
+    
+      <google-codelab-step label="页面结构" duration="5">
+        <p>本教程将构建一个简单的公司首页。我们将学习到基本的页面结构和布局，以及 MDB 的常用的一些组件。<a href="https://mdbootstrap.com/snippets/jquery/ascensus/11?action=fullscreen" target="_blank">最后效果</a>如下图：</p>
+<p class="image-container"><img alt="final-1" src="img/8e88983ba426d83.webp"></p>
+<h2 is-upgraded>MDB 模板</h2>
+<p>解压你下载的 MDB Pro 模板文件到某文件夹， code 中打开该文件夹（这是我们的工作目录），网站文件的基本结构如下图：</p>
+<p class="image-container"><img alt="mdb" src="img/d665c9d8eb456131.jpg"></p>
+<aside class="special"><p><strong>提示：</strong> 文件夹中目录的名称也表明了其作用。我们的网站文件结构大致如此。一个网站至少有一个文件为<code>index.html</code>作为首页。</p>
+</aside>
+<h2 is-upgraded>页面基本结构</h2>
+<p>在 code 中打开 <code>index.html</code>文件你可看到常见的 HTML 文档结构如下：</p>
+<p class="image-container"><img alt="index" src="img/ae71f5fa3e17876.jpg"></p>
+<aside class="warning"><p><strong>注意：</strong> 上图中绿色框内是 MDB 需要的 CSS 和 JS 文件，我们不要变动它。我们需要做的就是在红色框内进行编写（看见 start/end  your project here 了吗）。</p>
+</aside>
+<p>现在将红色框中的内容替换为如下代码：</p>
+<pre><code>&lt;!-- start your project here --&gt;
+&lt;!--Main Navigation--&gt;
+&lt;header&gt;
+
+&lt;/header&gt;
+&lt;!--Main Navigation--&gt;
+
+&lt;!--Main layout--&gt;
+&lt;main&gt;
+
+&lt;/main&gt;
+&lt;!--Main layout--&gt;
+
+&lt;!--Footer--&gt;
+&lt;footer&gt;
+
+&lt;/footer&gt;
+&lt;!--Footer--&gt;
+&lt;!-- end your project here --&gt;
+</code></pre>
+<p>我们要构建的公司首页分为三个部分：</p>
+<ol type="1">
+<li><code>header</code>元素放置导航</li>
+<li><code>main</code>元素是页面主要内容</li>
+<li><code>footer</code>元素是一些版权和其它链接</li>
+</ol>
+<p>至此，页面基本结构搭建完毕, 下面我们开始构建导航。（当然，现在浏览器中是看不到任何内容的）</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面导航条 navbar" duration="5">
+        <p>将<code>&lt;header&gt;</code>元素替换为如下代码：</p>
+<pre><code>&lt;!--Main Navigation--&gt;
+&lt;header&gt;
+  &lt;!--Navbar--&gt;
+  &lt;nav class=&#34;navbar navbar-expand-lg navbar-dark primary-color&#34;&gt;
+    &lt;!-- Navbar brand --&gt;
+    &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Navbar&lt;/a&gt;
+    &lt;!-- Collapse button --&gt;
+    &lt;button class=&#34;navbar-toggler&#34; type=&#34;button&#34; data-toggle=&#34;collapse&#34; data-target=&#34;#basicExampleNav&#34;
+      aria-controls=&#34;basicExampleNav&#34; aria-expanded=&#34;false&#34; aria-label=&#34;Toggle navigation&#34;&gt;
+      &lt;span class=&#34;navbar-toggler-icon&#34;&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;!-- Collapsible content --&gt;
+    &lt;div class=&#34;collapse navbar-collapse&#34; id=&#34;basicExampleNav&#34;&gt;
+      &lt;!-- Links --&gt;
+      &lt;ul class=&#34;navbar-nav mr-auto&#34;&gt;
+        &lt;li class=&#34;nav-item active&#34;&gt;
+          &lt;a class=&#34;nav-link&#34; href=&#34;#&#34;&gt;Home
+            &lt;span class=&#34;sr-only&#34;&gt;(current)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&#34;nav-item&#34;&gt;
+          &lt;a class=&#34;nav-link&#34; href=&#34;#&#34;&gt;Features&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&#34;nav-item&#34;&gt;
+          &lt;a class=&#34;nav-link&#34; href=&#34;#&#34;&gt;Pricing&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;!-- Dropdown --&gt;
+        &lt;li class=&#34;nav-item dropdown&#34;&gt;
+          &lt;a class=&#34;nav-link dropdown-toggle&#34; id=&#34;navbarDropdownMenuLink&#34; data-toggle=&#34;dropdown&#34; aria-haspopup=&#34;true&#34;
+            aria-expanded=&#34;false&#34;&gt;Dropdown&lt;/a&gt;
+          &lt;div class=&#34;dropdown-menu dropdown-primary&#34; aria-labelledby=&#34;navbarDropdownMenuLink&#34;&gt;
+            &lt;a class=&#34;dropdown-item&#34; href=&#34;#&#34;&gt;Action&lt;/a&gt;
+            &lt;a class=&#34;dropdown-item&#34; href=&#34;#&#34;&gt;Another action&lt;/a&gt;
+            &lt;a class=&#34;dropdown-item&#34; href=&#34;#&#34;&gt;Something else here&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;!-- Links --&gt;
+      &lt;form class=&#34;form-inline&#34;&gt;
+        &lt;div class=&#34;md-form my-0&#34;&gt;
+          &lt;input class=&#34;form-control mr-sm-2&#34; type=&#34;text&#34; placeholder=&#34;Search&#34; aria-label=&#34;Search&#34;&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;!-- Collapsible content --&gt;
+  &lt;/nav&gt;
+  &lt;!--/.Navbar--&gt;
+&lt;/header&gt;
+</code></pre>
+<p>保存文件(如果你设置了 Code 软件的自动保存就不需要了，所以推荐），在浏览器中打开／刷新<code>index.html</code>文件, 现在你应该可以看到一个天蓝色的导航条出现.</p>
+<h2 is-upgraded>导航条结构</h2>
+<p>仔细观察导航条代码, 你会看到我们使用了一个<code>&lt;nav&gt;</code>标签, 其内部实际包含了三个部分:</p>
+<ul>
+<li><code>&lt;a&gt;</code> 超链接, 用于展示公司名称或logo</li>
+<li><code>&lt;button&gt;</code> 按钮, 当在小尺寸屏幕时会出现(你可能在浏览器中并没看到该按钮, 后面进一步解释)</li>
+<li>`  区块, 用于放置各个导航超链接</li>
+</ul>
+<p>下面我们分析一下<code>&lt;nav&gt;</code>标签的 CSS 样式类. 详细的<strong>Navbar</strong>介绍, 请访问 <a href="https://mdbootstrap.com/docs/jquery/navigation/navbar/#basic-example" target="_blank">MDB-Nav</a></p>
+<h3 is-upgraded><code>.navbar</code></h3>
+<p>这是导航条必须的样式, 你可以试试去掉后发生的变化(推荐使用开发者工具!)</p>
+<h3 is-upgraded><code>.navbar-expand-md</code></h3>
+<p>表明当处于中等屏幕及以上尺寸(&gt;768px)时, 导航条扩展开, 否则导航超链接不显示, 而显示一个折叠按钮.</p>
+<aside class="special"><p><strong>提示:</strong> 在浏览器中打开开发者工具(<code>Ctrl+Shift+I</code>), 可看到开发者窗口左上方的<strong>转换显示设备</strong>图标, 点击它或<code>Ctrl+Shift+M</code>则可让你的页面在各种手机/平板/PC等屏幕尺寸上进行模拟显示, 从而知道最终效果. 任意调整页面的大小看看导航条会发生什么?</p>
+</aside>
+<aside class="special"><p><strong>提示:</strong> MDB将屏幕尺寸分为5类即: xs/sm/md/lg/xl(extra small/small/medium/large/extra large), 请参见<a href="https://getbootstrap.net/docs/layout/grid/#grid-options" target="_blank">具体尺寸</a></p>
+</aside>
+<h3 is-upgraded><code>navbar-dark</code></h3>
+<p>将让导航条的背景与文字颜色自动高对比(去掉试试)</p>
+<h3 is-upgraded><code>primary-color</code></h3>
+<p>表明导航条使用主色调(蓝色). 请参见<a href="https://mdbootstrap.com/docs/jquery/css/colors/#mdb-colors" target="_blank">MBD的颜色</a>. (修改为你中意的颜色试试)</p>
+<h2 is-upgraded>内部元素分析</h2>
+<p>前面已经提及,在导航条内部有<code>&lt;a&gt;, &lt;button&gt;, &lt;div&gt;</code>三个标签, 下面我们分析一下包含导航链接的<code>&lt;div&gt;</code>标签.</p>
+<aside class="special"><p><strong>提示:</strong> 留意该<code>&lt;div&gt;</code>标签有<code>id</code>属性, 这是供<code>&lt;button&gt;</code>调用的.</p>
+</aside>
+<p>该标签内有一个<code>&lt;ul&gt;</code>无序列表(放置3个导航链接及1个下拉列表)和<code>&lt;form&gt;</code>表单(只有一个用于搜索的<code>input</code>).</p>
+<h3 is-upgraded>.navbar-nav</h3>
+<p>表明是导航条中的导航链接, 使得<code>&lt;li&gt;</code>的列表项不会分布于多行(去掉试试).</p>
+<h3 is-upgraded>.mr-auto</h3>
+<p>该样式将会把其后的项(即搜索框<code>&lt;form&gt;</code>靠右对齐), 你去掉该样式就明白了. 参见<a href="https://getbootstrap.net/docs/utilities/flex/#auto-margins" target="_blank">自浮动</a>.</p>
+<p><strong>mr</strong> 代表 <code>margin-right</code>, 即右外边距, 有关这部分内容(代码的后面你还可以看到一个<code>my-0</code>)我们后面讲述.</p>
+<h3 is-upgraded>.active</h3>
+<p>注意这个样式, 它表明哪个超链接当前是激活的, 一般用于表明当前处于哪个活动页面.</p>
+<h3 is-upgraded>.sr-only</h3>
+<p>意思是 <code>screen read only</code>, 为盲人上网设置的. 当前你可不用管它.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体布局: 栅格" duration="5">
+        <p>下面我们将为<code>&lt;main&gt;</code>标签即页面的主体进行布局. 在<code>&lt;main&gt;</code>标签中输入如下代码:</p>
+<pre><code>&lt;!--Main container--&gt;
+&lt;div class=&#34;container&#34;&gt;
+  &lt;!--Grid row 1--&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;!--Grid column 1--&gt;
+    &lt;div class=&#34;col-md-7&#34;&gt;
+      第一行,第一列, 中等尺寸屏幕及以上则宽 7/12
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+    &lt;!--Grid column 2--&gt;
+    &lt;div class=&#34;col-md-5&#34;&gt;
+      第一行,第二列, 中等尺寸屏幕及以上则宽 5/12
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+  &lt;/div&gt;
+  &lt;!--Grid row--&gt;
+  &lt;!--Grid row 2--&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;!--Grid column 1--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-12&#34;&gt;
+      第二行,第一列, 大尺寸屏幕及以上则宽 4/12, 中等屏幕独占一行
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+    &lt;!--Grid column 2--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-6&#34;&gt;
+      第二行,第二列, 大尺寸屏幕及以上则宽 4/12, 中等屏幕占6/12
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+    &lt;!--Grid column 3--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-6&#34;&gt;
+      第二行,第三列, 大尺寸屏幕及以上则宽 4/12, 中等屏幕占6/12
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+  &lt;/div&gt;
+  &lt;!--Grid row--&gt;
+&lt;/div&gt;
+&lt;!--Main container--&gt;
+</code></pre>
+<p>刷新你的浏览器, 可以看到结果, 这是因为 Bootstrap 采用了非常简单和灵活的弹性盒子(Flexbox) 和栅格布局(12列).</p>
+<aside class="special"><p><strong>注意:</strong> 栅格用行-row 和列-col 来规划, 一行分为<strong>12</strong>列, 通过 col 后跟的数字来确定占比. 且需要放在容器(container)中才能生效</p>
+</aside>
+<p>请参考 Bootstrap中文网 的 <a href="https://getbootstrap.net/docs/layout/overview/#containers" target="_blank">container容器</a>以及<a href="https://getbootstrap.net/docs/layout/grid/" target="_blank">栅格</a>. 下面我们开始对页面内容进行添加.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体 main" duration="5">
+        <h2 is-upgraded>第一行</h2>
+<p>在页面主体<code>&lt;main&gt;</code>的第一行中，我们设置了两列。<br>第一列放置一张出彩的图像(可能会吸引我们的访问者)。第二列将用于放置标题，简短说明和按钮。</p>
+<h3 is-upgraded>第一列</h3>
+<p>将第一行的第一列(即<code>col-md-7</code>)替换为如下代码:</p>
+<pre><code>&lt;!--Grid column 1--&gt;
+&lt;div class=&#34;col-md-7&#34;&gt;
+  &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+    &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg&#34; class=&#34;card-img-top&#34; alt=&#34;&#34;&gt;
+    &lt;div class=&#34;mask rgba-white-light&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--Grid column--&gt;
+</code></pre>
+<p>我们在这一列放置了一张带波纹特效( 鼠标移到图片上时呈现)的图片(<code>.view .overlay</code>), 并让图片有阴影效果(<code>.z-depth-1-half</code>). 详细学习请参考 <a href="https://mdbootstrap.com/docs/jquery/content/images/" target="_blank">MDB 图片</a>, 以及<a href="https://mdbootstrap.com/docs/jquery/css/shadows/" target="_blank">阴影效果</a></p>
+<h3 is-upgraded>第二列</h3>
+<p>第二列将给出一下文字介绍, 将第一行的第二列(即<code>col-md-5</code>)替换为如下代码:</p>
+<pre><code>&lt;!--Grid column 2--&gt;
+&lt;div class=&#34;col-md-5&#34;&gt;
+  &lt;h2&gt;Some awesome heading&lt;/h2&gt;
+  &lt;hr&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis pariatur quod ipsum atque quam dolorem
+    voluptate officia sunt placeat consectetur alias fugit cum praesentium ratione sint mollitia, perferendis
+    natus quaerat!&lt;/p&gt;
+  &lt;a href=&#34;#&#34; class=&#34;btn btn-primary&#34;&gt;Get it now!&lt;/a&gt;
+&lt;/div&gt;
+&lt;!--Grid column--&gt;
+</code></pre>
+<p>以上无需更多解释. 但请注意: 超链接<code>&lt;a&gt;</code>呈现出按钮的样式, 详情请参考<a href="https://mdbootstrap.com/docs/jquery/components/buttons/" target="_blank">MDB按钮</a></p>
+<p>刷新页面看看当前效果.</p>
+<aside class="warning"><p><strong>思考:</strong> 当前这个超链接即按钮左对齐, 可否让其居中显示? (请参考<a href="https://mdbootstrap.com/docs/jquery/utilities/text/#text-alignment" target="_blank">对齐</a>)</p>
+</aside>
+<h2 is-upgraded>第二行</h2>
+<p>在第二行, 我们使用卡片这种方式来放置一些我们站点的详细信息.</p>
+<aside class="special"><p><strong>提示:</strong> 用卡片的形式来向用户呈现信息非常实用, 也使用广泛. 看看 <code>Google, Facebook, LinkedIn</code> 等公司的设计就知道了.</p>
+</aside>
+<p>将整个第二行的(即<code>row</code>)替换为如下代码:</p>
+<pre><code>&lt;!--Grid row 2--&gt;
+&lt;div class=&#34;row&#34;&gt;
+
+  &lt;!--Grid column--&gt;
+  &lt;div class=&#34;col-lg-4 col-md-12&#34;&gt;
+
+    &lt;!--Card--&gt;
+    &lt;div class=&#34;card&#34;&gt;
+
+      &lt;!--Card image--&gt;
+      &lt;div class=&#34;view overlay&#34;&gt;
+        &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(72).jpg&#34; class=&#34;card-img-top&#34;
+          alt=&#34;&#34;&gt;
+        &lt;a href=&#34;#&#34;&gt;
+          &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;!--Card content--&gt;
+      &lt;div class=&#34;card-body&#34;&gt;
+        &lt;!--Title--&gt;
+        &lt;h4 class=&#34;card-title&#34;&gt;Card title&lt;/h4&gt;
+        &lt;!--Text--&gt;
+        &lt;p class=&#34;card-text&#34;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s
+          content.&lt;/p&gt;
+        &lt;a href=&#34;#!&#34; class=&#34;btn btn-primary&#34;&gt;Button&lt;/a&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+    &lt;!--/.Card--&gt;
+
+  &lt;/div&gt;
+  &lt;!--Grid column--&gt;
+
+  &lt;!--Grid column--&gt;
+  &lt;div class=&#34;col-lg-4 col-md-6&#34;&gt;
+
+    &lt;!--Card--&gt;
+    &lt;div class=&#34;card&#34;&gt;
+
+      &lt;!--Card image--&gt;
+      &lt;div class=&#34;view overlay&#34;&gt;
+        &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(74).jpg&#34; class=&#34;card-img-top&#34;
+          alt=&#34;&#34;&gt;
+        &lt;a href=&#34;#&#34;&gt;
+          &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;!--Card content--&gt;
+      &lt;div class=&#34;card-body&#34;&gt;
+        &lt;!--Title--&gt;
+        &lt;h4 class=&#34;card-title&#34;&gt;Card title&lt;/h4&gt;
+        &lt;!--Text--&gt;
+        &lt;p class=&#34;card-text&#34;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s
+          content.&lt;/p&gt;
+        &lt;a href=&#34;#&#34; class=&#34;btn btn-primary&#34;&gt;Button&lt;/a&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+    &lt;!--/.Card--&gt;
+
+  &lt;/div&gt;
+  &lt;!--Grid column--&gt;
+
+  &lt;!--Grid column--&gt;
+  &lt;div class=&#34;col-lg-4 col-md-6&#34;&gt;
+
+    &lt;!--Card--&gt;
+    &lt;div class=&#34;card&#34;&gt;
+
+      &lt;!--Card image--&gt;
+      &lt;div class=&#34;view overlay&#34;&gt;
+        &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(75).jpg&#34; class=&#34;card-img-top&#34;
+          alt=&#34;&#34;&gt;
+        &lt;a href=&#34;#&#34;&gt;
+          &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;!--Card content--&gt;
+      &lt;div class=&#34;card-body&#34;&gt;
+        &lt;!--Title--&gt;
+        &lt;h4 class=&#34;card-title&#34;&gt;Card title&lt;/h4&gt;
+        &lt;!--Text--&gt;
+        &lt;p class=&#34;card-text&#34;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s
+          content.&lt;/p&gt;
+        &lt;a href=&#34;#&#34; class=&#34;btn btn-primary&#34;&gt;Button&lt;/a&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+    &lt;!--/.Card--&gt;
+
+  &lt;/div&gt;
+  &lt;!--Grid column--&gt;
+
+&lt;/div&gt;
+&lt;!--Grid row--&gt;
+</code></pre>
+<p>先刷新浏览器看看结果. 我们可以看到整个第二行有三张卡片(除图片不同外都相似), 任使用了波纹效果.<br>对上面的代码我们不进行详细解释, 请参考 MDB <a href="https://mdbootstrap.com/docs/jquery/components/cards/#waves-effect" target="_blank">卡片</a></p>
+<aside class="warning"><p><strong>思考:</strong> 上面关于列的布局有<code>col-lg-4 col-md-12</code>两个样式类, 它们是什么意思? 为何需要两个列宽度布局?</p>
+</aside>
+<p>接下来我们将最终完成我们的设计.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面底部及相关调整" duration="5">
+        <h2 is-upgraded>页面底部 footer</h2>
+<p>将页面底部的<code>&lt;footer&gt;</code>部分替换为如下代码:</p>
+<pre><code>&lt;!-- Footer --&gt;
+&lt;footer class=&#34;page-footer font-small blue pt-4 mt-4&#34;&gt;
+
+  &lt;!-- Footer Links --&gt;
+  &lt;div class=&#34;container-fluid text-center text-md-left&#34;&gt;
+
+    &lt;!-- Grid row --&gt;
+    &lt;div class=&#34;row&#34;&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-md-6 mt-md-0 mt-3&#34;&gt;
+
+        &lt;!-- Content --&gt;
+        &lt;h5 class=&#34;text-uppercase&#34;&gt;Footer Content&lt;/h5&gt;
+        &lt;p&gt;Here you can use rows and columns here to organize your footer content.&lt;/p&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+      &lt;hr class=&#34;clearfix w-100 d-md-none pb-3&#34;&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-md-3 mb-md-0 mb-3&#34;&gt;
+
+        &lt;!-- Links --&gt;
+        &lt;h5 class=&#34;text-uppercase&#34;&gt;Links&lt;/h5&gt;
+
+        &lt;ul class=&#34;list-unstyled&#34;&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 1&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 2&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 3&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 4&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-md-3 mb-md-0 mb-3&#34;&gt;
+
+        &lt;!-- Links --&gt;
+        &lt;h5 class=&#34;text-uppercase&#34;&gt;Links&lt;/h5&gt;
+
+        &lt;ul class=&#34;list-unstyled&#34;&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 1&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 2&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 3&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 4&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Grid row --&gt;
+
+  &lt;/div&gt;
+  &lt;!-- Footer Links --&gt;
+
+  &lt;!-- Copyright --&gt;
+  &lt;div class=&#34;footer-copyright text-center py-3&#34;&gt;© 2018 Copyright:
+    &lt;a href=&#34;https://mdbootstrap.com/education/bootstrap/&#34;&gt; MDBootstrap.com&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;!-- Copyright --&gt;
+
+&lt;/footer&gt;
+&lt;!-- Footer --&gt;I
+</code></pre>
+<p>一般, 页面的底部我们会放置一些版权和链接之类的. 整个底部分为上下两个部分(<code>div</code>), 上部又分成<code>6-3-3</code>比例的3列.<br>MDB 有专门的页面底部组件, 请参考<a href="https://mdbootstrap.com/docs/jquery/navigation/footer/#basic" target="_blank">页面底部文档</a><br>我们对上面的样式类简单说明一下:</p>
+<ul>
+<li><code>blue</code> 蓝色背景, MDB 已经预定义了<a href="https://mdbootstrap.com/docs/jquery/navigation/footer/#basic" target="_blank">300多种漂亮的颜色</a>供使用.</li>
+<li><code>pt-4 mt-4</code> 内边距和外边距为 1.5个 rem. MDB规定, <code>1 rem = 16 px</code>, <code>1</code>表示0.25个rem, <code>2</code>表示0.5个rem, <code>3</code>表示1个rem, <code>4</code>表示1.5个rem, <code>5</code>表示3个rem. 总共有5个距离级别. 详情请前往 <a href="https://mdbootstrap.com/docs/jquery/utilities/spacing/" target="_blank">spacing</a>查看.</li>
+<li><code>.text-center .text-md-left</code> 中等尺寸屏幕及以上左对齐, 否则居中</li>
+<li><code>list-unstyled</code> 无需列表项前的装饰圆点</li>
+</ul>
+<p>至此, 我们整个页面完成.刷新浏览器看看结果. 但有一些小问题, 如: 顶底的颜色不大一致, 主体内容太靠近导航条等. 下面我们对这些小细节进行处理.</p>
+<h2 is-upgraded>细节调整</h2>
+<h3 is-upgraded>边界一致</h3>
+<p>你会发现导航条和底部的内容比主体内容更靠左一些. 查看底部的代码<code>&lt;div class=&#34;container-fluid text-center text-md-left&#34;&gt;</code>,你会发现有<code>container-fluid</code>类, 这将占用整个可用的宽度.<br>将其改为<code>container</code>, 刷新浏览器, 你将会发现与主体内容对齐了, 且更美观.<br>同样, 请将导航条的内容(就是我们前面说的三个部分)也用<code>container</code>容器包裹起来, 如下所示:</p>
+<pre><code>&lt;header&gt;
+    &lt;!--Navbar--&gt;
+    &lt;nav class=&#34;navbar navbar-expand-md navbar-dark primary-color&#34;&gt;
+      &lt;div class=&#34;container&#34;&gt;  &lt;!-- 请注意, 这是额外加的 div 开始标签 --&gt;
+        &lt;!-- Navbar brand --&gt;
+        &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Navbar&lt;/a&gt;
+        ...   &lt;!-- 其它代码省略 --&gt;
+      &lt;/div&gt;  &lt;!-- 请注意, 这是额外加的 div 结束标签 --&gt;
+</code></pre>
+<aside class="special"><p><strong>提示:</strong> 在 Code 中, 你粘贴了代码后, 可能使代码变乱, 可使用<code>Ctrl+Shite+I</code>快速格式化代码.</p>
+</aside>
+<h3 is-upgraded>颜色一致</h3>
+<p>将导航,底部,以及那几个按钮的颜色都调为<code>indigo</code>(靛青色), 代码如下:</p>
+<pre><code>&lt;!--Navbar--&gt;
+&lt;nav class=&#34;navbar navbar-expand-lg navbar-dark indigo&#34;&gt;
+
+&lt;!-- Footer --&gt;
+&lt;footer class=&#34;page-footer font-small indigo pt-4 mt-4&#34;&gt;
+&lt;!-- ---- --&gt;
+&lt;a href=&#34;#&#34; class=&#34;btn btn-indigo&#34;&gt;Button&lt;/a&gt;
+</code></pre>
+<h3 is-upgraded>调整间距</h3>
+<p>我们让页面主体的顶部离导航条稍微远一点, 加顶外边距<code>mt-5</code>即可:</p>
+<pre><code>&lt;!--Main layout--&gt;
+&lt;main class=&#34;mt-5&#34;&gt;
+</code></pre>
+<p>然后, 我们让页面主体第一行与下一行分开一点, 分别设置第一行的两列, 加底外边距<code>mb-4</code>即可:</p>
+<pre><code>&lt;!--Grid column 1--&gt;
+&lt;div class=&#34;col-md-7 mb-4&#34;&gt;
+&lt;!--Grid column 2--&gt;
+&lt;div class=&#34;col-md-5 mb-4&#34;&gt;
+</code></pre>
+<aside class="warning"><p><strong>思考:</strong> 为何不直接将<code>mb-4</code>加到第一行, 而要分别加到第一行的两列? (提示: 我们的页面是响应式的. 考虑一下小屏幕(&lt;768px时)上会发生什么)</p>
+</aside>
+<p>��生什么)</p>
+<p>同样的, 我们也为第二行的三列各自加上底外边距<code>mb-4</code>, 让其离底部稍远一点:</p>
+<pre><code>&lt;!--注意: 第二行的三列都如此--&gt;
+&lt;div class=&#34;col-lg-4 col-md-12 mb-4&#34;&gt;
+</code></pre>
+<p>大功告成. 现在看看你的最终页面. 如果有什么问题, 请参考下一节的完整代码.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="最终参考代码" duration="2">
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&#34;UTF-8&#34;&gt;
+  &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt;
+  &lt;meta http-equiv=&#34;x-ua-compatible&#34; content=&#34;ie=edge&#34;&gt;
+  &lt;title&gt;MDB4.12模板&lt;/title&gt;
+  &lt;!-- MDB icon --&gt;
+  &lt;link rel=&#34;icon&#34; href=&#34;img/mdb-favicon.ico&#34; type=&#34;image/x-icon&#34;&gt;
+  &lt;!-- Font Awesome --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://use.fontawesome.com/releases/v5.11.2/css/all.css&#34;&gt;
+  &lt;!-- Bootstrap core CSS --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;css/bootstrap.min.css&#34;&gt;
+  &lt;!-- Material Design Bootstrap --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;css/mdb.min.css&#34;&gt;
+  &lt;!-- Your custom styles (optional) --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;css/style.css&#34;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;!--Main Navigation--&gt;
+  &lt;header&gt;
+    &lt;!--Navbar--&gt;
+    &lt;nav class=&#34;navbar navbar-expand-md navbar-dark indigo&#34;&gt;
+      &lt;div class=&#34;container&#34;&gt;
+        &lt;!-- Navbar brand --&gt;
+        &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Navbar&lt;/a&gt;
+        &lt;!-- Collapse button --&gt;
+        &lt;button class=&#34;navbar-toggler&#34; type=&#34;button&#34; data-toggle=&#34;collapse&#34; data-target=&#34;#basicExampleNav&#34;
+          aria-controls=&#34;basicExampleNav&#34; aria-expanded=&#34;false&#34; aria-label=&#34;Toggle navigation&#34;&gt;
+          &lt;span class=&#34;navbar-toggler-icon&#34;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;!-- Collapsible content --&gt;
+        &lt;div class=&#34;collapse navbar-collapse&#34; id=&#34;basicExampleNav&#34;&gt;
+          &lt;!-- Links --&gt;
+          &lt;ul class=&#34;navbar-nav mr-auto&#34;&gt;
+            &lt;li class=&#34;nav-item active&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#&#34;&gt;Home
+                &lt;span class=&#34;sr-only&#34;&gt;(current)&lt;/span&gt;
+              &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#&#34;&gt;Features&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#&#34;&gt;Pricing&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;!-- Dropdown --&gt;
+            &lt;li class=&#34;nav-item dropdown&#34;&gt;
+              &lt;a class=&#34;nav-link dropdown-toggle&#34; id=&#34;navbarDropdownMenuLink&#34; data-toggle=&#34;dropdown&#34;
+                aria-haspopup=&#34;true&#34; aria-expanded=&#34;false&#34;&gt;Dropdown&lt;/a&gt;
+              &lt;div class=&#34;dropdown-menu dropdown-primary&#34; aria-labelledby=&#34;navbarDropdownMenuLink&#34;&gt;
+                &lt;a class=&#34;dropdown-item&#34; href=&#34;#&#34;&gt;Action&lt;/a&gt;
+                &lt;a class=&#34;dropdown-item&#34; href=&#34;#&#34;&gt;Another action&lt;/a&gt;
+                &lt;a class=&#34;dropdown-item&#34; href=&#34;#&#34;&gt;Something else here&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;!-- Links --&gt;
+          &lt;form class=&#34;form-inline&#34;&gt;
+            &lt;div class=&#34;md-form my-0&#34;&gt;
+              &lt;input class=&#34;form-control mr-sm-2&#34; type=&#34;text&#34; placeholder=&#34;Search&#34; aria-label=&#34;Search&#34;&gt;
+            &lt;/div&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;!-- Collapsible content --&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+    &lt;!--/.Navbar--&gt;
+  &lt;/header&gt;
+  &lt;!--Main Navigation--&gt;
+
+  &lt;main class=&#34;mt-5&#34;&gt;
+    &lt;!--Main container--&gt;
+    &lt;div class=&#34;container&#34;&gt;
+      &lt;!--Grid row 1--&gt;
+      &lt;div class=&#34;row&#34;&gt;
+        &lt;!--Grid column 1--&gt;
+        &lt;div class=&#34;col-md-7 mb-4&#34;&gt;
+          &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+            &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg&#34; class=&#34;card-img-top&#34; alt=&#34;&#34;&gt;
+            &lt;div class=&#34;mask rgba-white-light&#34;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!--Grid column--&gt;
+        &lt;!--Grid column 2--&gt;
+        &lt;div class=&#34;col-md-5 mb-4&#34;&gt;
+          &lt;h2&gt;Some awesome heading&lt;/h2&gt;
+          &lt;hr&gt;
+          &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis pariatur quod ipsum atque quam dolorem
+            voluptate officia sunt placeat consectetur alias fugit cum praesentium ratione sint mollitia, perferendis
+            natus quaerat!&lt;/p&gt;
+          &lt;a href=&#34;#&#34; class=&#34;btn btn-indigo&#34;&gt;Get it now!&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;!--Grid column--&gt;
+      &lt;/div&gt;
+      &lt;!--Grid row--&gt;
+      &lt;!--Grid row 2--&gt;
+      &lt;div class=&#34;row&#34;&gt;
+
+        &lt;!--Grid column--&gt;
+        &lt;div class=&#34;col-lg-4 col-md-12 mb-4&#34;&gt;
+
+          &lt;!--Card--&gt;
+          &lt;div class=&#34;card&#34;&gt;
+
+            &lt;!--Card image--&gt;
+            &lt;div class=&#34;view overlay&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(72).jpg&#34; class=&#34;card-img-top&#34;
+                alt=&#34;&#34;&gt;
+              &lt;a href=&#34;#&#34;&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;!--Card content--&gt;
+            &lt;div class=&#34;card-body&#34;&gt;
+              &lt;!--Title--&gt;
+              &lt;h4 class=&#34;card-title&#34;&gt;Card title&lt;/h4&gt;
+              &lt;!--Text--&gt;
+              &lt;p class=&#34;card-text&#34;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s
+                content.&lt;/p&gt;
+              &lt;a href=&#34;#!&#34; class=&#34;btn btn-indigo&#34;&gt;Button&lt;/a&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;!--/.Card--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid column--&gt;
+
+        &lt;!--Grid column--&gt;
+        &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+          &lt;!--Card--&gt;
+          &lt;div class=&#34;card&#34;&gt;
+
+            &lt;!--Card image--&gt;
+            &lt;div class=&#34;view overlay&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(74).jpg&#34; class=&#34;card-img-top&#34;
+                alt=&#34;&#34;&gt;
+              &lt;a href=&#34;#&#34;&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;!--Card content--&gt;
+            &lt;div class=&#34;card-body&#34;&gt;
+              &lt;!--Title--&gt;
+              &lt;h4 class=&#34;card-title&#34;&gt;Card title&lt;/h4&gt;
+              &lt;!--Text--&gt;
+              &lt;p class=&#34;card-text&#34;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s
+                content.&lt;/p&gt;
+              &lt;a href=&#34;#&#34; class=&#34;btn btn-indigo&#34;&gt;Button&lt;/a&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;!--/.Card--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid column--&gt;
+
+        &lt;!--Grid column--&gt;
+        &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+          &lt;!--Card--&gt;
+          &lt;div class=&#34;card&#34;&gt;
+
+            &lt;!--Card image--&gt;
+            &lt;div class=&#34;view overlay&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(75).jpg&#34; class=&#34;card-img-top&#34;
+                alt=&#34;&#34;&gt;
+              &lt;a href=&#34;#&#34;&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;!--Card content--&gt;
+            &lt;div class=&#34;card-body&#34;&gt;
+              &lt;!--Title--&gt;
+              &lt;h4 class=&#34;card-title&#34;&gt;Card title&lt;/h4&gt;
+              &lt;!--Text--&gt;
+              &lt;p class=&#34;card-text&#34;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s
+                content.&lt;/p&gt;
+              &lt;a href=&#34;#&#34; class=&#34;btn btn-indigo&#34;&gt;Button&lt;/a&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;!--/.Card--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid column--&gt;
+
+      &lt;/div&gt;
+      &lt;!--Grid row--&gt;
+    &lt;/div&gt;
+    &lt;!--Main container--&gt;
+  &lt;/main&gt;
+
+  &lt;!-- Footer --&gt;
+  &lt;footer class=&#34;page-footer indigo pt-4 mt-4&#34;&gt;
+
+    &lt;!-- Footer Links --&gt;
+    &lt;div class=&#34;container text-center text-md-left&#34;&gt;
+
+      &lt;!-- Grid row --&gt;
+      &lt;div class=&#34;row&#34;&gt;
+
+        &lt;!-- Grid column --&gt;
+        &lt;div class=&#34;col-md-6 mt-md-0 mt-3&#34;&gt;
+
+          &lt;!-- Content --&gt;
+          &lt;h5 class=&#34;text-uppercase&#34;&gt;Footer Content&lt;/h5&gt;
+          &lt;p&gt;Here you can use rows and columns here to organize your footer content.&lt;/p&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Grid column --&gt;
+
+        &lt;hr class=&#34;clearfix w-100 d-md-none pb-3&#34;&gt;
+
+        &lt;!-- Grid column --&gt;
+        &lt;div class=&#34;col-md-3 mb-md-0 mb-3&#34;&gt;
+
+          &lt;!-- Links --&gt;
+          &lt;h5 class=&#34;text-uppercase&#34;&gt;Links&lt;/h5&gt;
+
+          &lt;ul class=&#34;list-unstyled&#34;&gt;
+            &lt;li&gt;
+              &lt;a href=&#34;#!&#34;&gt;Link 1&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a href=&#34;#!&#34;&gt;Link 2&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a href=&#34;#!&#34;&gt;Link 3&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a href=&#34;#!&#34;&gt;Link 4&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Grid column --&gt;
+
+        &lt;!-- Grid column --&gt;
+        &lt;div class=&#34;col-md-3 mb-md-0 mb-3&#34;&gt;
+
+          &lt;!-- Links --&gt;
+          &lt;h5 class=&#34;text-uppercase&#34;&gt;Links&lt;/h5&gt;
+
+          &lt;ul class=&#34;list-unstyled&#34;&gt;
+            &lt;li&gt;
+              &lt;a href=&#34;#!&#34;&gt;Link 1&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a href=&#34;#!&#34;&gt;Link 2&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a href=&#34;#!&#34;&gt;Link 3&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a href=&#34;#!&#34;&gt;Link 4&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Grid column --&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Grid row --&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Footer Links --&gt;
+
+    &lt;!-- Copyright --&gt;
+    &lt;div class=&#34;footer-copyright text-center py-3&#34;&gt;© 2018 Copyright:
+      &lt;a href=&#34;https://mdbootstrap.com/education/bootstrap/&#34;&gt; MDBootstrap.com&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;!-- Copyright --&gt;
+
+  &lt;/footer&gt;
+  &lt;!-- Footer --&gt;I
+
+  &lt;!-- jQuery --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/jquery.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- Bootstrap tooltips --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/popper.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- Bootstrap core JavaScript --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/bootstrap.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- MDB core JavaScript --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/mdb.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- Your custom scripts (optional) --&gt;
+  &lt;script type=&#34;text/javascript&#34;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
