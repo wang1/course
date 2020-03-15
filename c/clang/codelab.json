@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-03-15T22:29:54+08:00",
+  "id": "clang",
+  "duration": 1350,
+  "title": "棋歌教学网 - C语言简明教程",
+  "authors": "QiGe",
+  "summary": "棋歌教学网 - C语言简明教程",
+  "source": "clang.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "clang"
+  ],
+  "tags": [
+    "qige"
+  ],
+  "feedback": "mailto: gridwang@gmail.com",
+  "url": "clang"
+}

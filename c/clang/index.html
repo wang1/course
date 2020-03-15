@@ -1,0 +1,711 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>棋歌教学网 - C语言简明教程</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="clang"
+                  title="棋歌教学网 - C语言简明教程"
+                  environment="web"
+                  feedback-link="mailto: gridwang@gmail.com">
+    
+      <google-codelab-step label="概述" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>程序的基本概念</li>
+<li>程序设计语言</li>
+<li>C语言的词法</li>
+<li>C程序的基本结构</li>
+<li>编译运行</li>
+</ul>
+<h2 is-upgraded>程序的基本概念</h2>
+<h3 is-upgraded>算法</h3>
+<p>我们给出如下问题: 有四个外观大小都一模一样的苹果, 现其中三个重量相同, 另外一个比这三个轻. 请用一个没有砝码的天平, 最大称两次, 找出这个轻的苹果.</p>
+<p>问题一经提出, 你的大脑(CPU)就会飞快的运行, 就会找到解决这个问题的方法.(我不怀疑你马上就找到了方法, 且方法可能还不止一个)</p>
+<p>那么, 我们就说</p>
+<aside class="special"><p>✍ 解决某问题的步骤和方法就是算法.</p>
+</aside>
+<aside class="special"><p>✍ 根据问题的复杂度, 算法有简单, 也有复杂的.<br>✍ 比如问题改为: 有12个外观大小都一模一样的苹果, 现其中11个重量相同, 另外一个与这11个重量不同, 但不知是轻还是重. 请用一个没有砝码的天平, 最多称 三次, 找出这个不同的苹果, 并说出是轻还是重.(说明: 请不要试图马上解决, 2个小时内能找到方法则你的 IQ 超高!)</p>
+</aside>
+<h3 is-upgraded>程序</h3>
+<p>考虑刚才那个找苹果的算法, 你一定会告诉别人: 先如何, 再如何, 然后就成了.<br>是的, 我们用人类的语言描述了这个算法. 但如果我们需要计算机帮助, 那我们就需要用计算机能懂的语言, 即计算机语言.</p>
+<p>那么, 简单的说,</p>
+<aside class="special"><p>✍ 用某种计算机语言描述的算法就是(计算机)程序. 而程序设计(即编程)就是用计算机语言(即程序设计语言)解决问题的步骤和过程.</p>
+</aside>
+<h2 is-upgraded>程序设计语言</h2>
+<h3 is-upgraded>分类</h3>
+<aside class="warning"><p>✘ 以下讲述如何你不明白, 请直接忽略.</p>
+</aside>
+<p>那么有哪些计算机语言或程序设计语言呢? 简单的说分为三种: 机器语言, 汇编语言, 高级语言.</p>
+<p>比如我们要计算机帮我计算 <code>1 + 2</code>, 上面三类计算机语言可能分别是这样的:</p>
+<pre><code>// 机器语言, 机器直接识别并能执行, 效率最高, 但程序员不喜欢
+// 第一个是操作码(加法), 后面是操作数(分别是1和2)
+00000011 00000001 00000010
+// 汇编语言, 将机器语言纯粹的二进制做了一些改进.
+// 但机器不能直接执行了, 需要汇编(简单想象成翻译好了)成计算机能识别的机器语言才能执行
+// 执行效率较高, 但一般程序员也不喜欢(破解软件的或搞外挂的必须掌握)
+// 下面代码先已经将1 和 2提前放到了eax和ebx寄存器了. 最后结果放到eax中
+ADD %eax, %ebx
+// 高级语言, 基本就是直白的数学表达式.
+// 计算机更是不知所云, 需要进行编译才可运行. 相比之下效率最低
+// 由于接近自然语言, 程序员非常喜欢
+1 + 2
+</code></pre>
+<aside class="special"><p>✍ 计算机做 <code>1 + 2</code> 花费的时间和做 <code>198964 + 469891</code> 的时间是相同的. 可以用一个 CPU 时钟周期来衡量.</p>
+</aside>
+<h3 is-upgraded>C语言</h3>
+<p>C语言即是高级计算机语言的一种, 且是生命力非常强的一种(上世纪70年代初问世. 同时, 迄今不知有多少种计算机语言销声匿迹了).<br>我们既可以用C语言编写系统软件(<code>Unix, Windows, Linux, Adroid</code> 等等), 也可以编写各种应用软件.</p>
+<aside class="special"><p>♚ C语言之父. 丹尼斯·麦卡利斯泰尔·里奇（Dennis MacAlistair Ritchie，1941年9月9日－2011年10月12日），美国计算机科学家。黑客圈子通常称他为&#34;dmr&#34;。他是C语言的创造者、Unix操作系统的关键开发者，对计算机领域产生了深远影响，并与肯·汤普逊同为1983年图灵奖得主。图片摄于其去世前5个月.详情见<a href="https://zh.wikipedia.org/wiki/%E4%B8%B9%E5%B0%BC%E6%96%AF%C2%B7%E9%87%8C%E5%A5%87" target="_blank">🌏维基百科</a></p>
+</aside>
+<p class="image-container"><img alt="dmr2011" src="img/84461cdd1d1836ed.webp"></p>
+<p>当然, 除了C语言外, 还有不少先进的高级语言. 推荐: <code>Go, Java, Python, Typescript, Dart, Rust, Scala</code> 等等</p>
+<h2 is-upgraded>C语言的词法</h2>
+<h3 is-upgraded>字符</h3>
+<p>既然是一门语言, 当然会规定语言中可以使用哪些字符.<br>C语言可使用的字符有: 大小写字母, 数字, 下划线, 一些特殊字符如 <code>+ - = / &gt; ? () ;</code>等等.</p>
+<aside class="special"><p>✍ 请一定注意使用英文输入法下的的这些字符, 而不是中文输入法下的. 如英文的<code>;</code>与中文的 ； 就是有区别的</p>
+</aside>
+<h3 is-upgraded>关键字</h3>
+<p>其次, C语言有一些关键字, 也称保留字是其内含的, 不能作为它用. 如: <code>int float if else switch void for</code> 等等</p>
+<aside class="warning"><p>✘ 这些关键字你无需记住, 随着我们的学习你自然就会熟悉了</p>
+</aside>
+<h3 is-upgraded>标识符</h3>
+<p>在程序中, 我们需要对一些对象进行命名, 这就是标识符.<br>假设我要处理上面称苹果的问题, 可能我会取标识符为: <code>apple1 apple2</code>等等</p>
+<aside class="special"><p>✍ C语言规定, 标识符只能由字母,数字,下划线构成, 且数字不能开头.<br>✍ 另外C语言严格区分大小写, 且同一个程序中的标识符必须不能相同, 也即必须唯一.</p>
+</aside>
+<p>合法的标识符: <code>sum Sum _xyz month count lengthOfSomething</code> 等等<br>非法的标识符: <code>3M @qq.com $solary a/b</code> 等等. 想想为什么?</p>
+<h3 is-upgraded>语句</h3>
+<p>任何语言都有语句, 一个计算机程序由或多或少的语句构成.<br>C语言有不少语句类型, 如循环语句, 选择语句等等.</p>
+<aside class="special"><p>✍ C语言规定, 语句必须以<code>;</code> 作为结束标记. 你在实际编程中一定会出现这个错误的!!!<br>🗣 <code>;</code>分号作为语句的结束影响了相当多的后代语言如<code>Java/TS/Go/C#</code>等. DMR去世后, 计算机爱好者们以特有的方式纪念他, 许多网友的发帖中没有一个字，只有一个分号 <code>;</code></p>
+</aside>
+<h2 is-upgraded>C程序的基本结构</h2>
+<p>或多或少的语句将组成一个个C语言程序. 显然, 这些语句需要按照一定的格式或规定进行组织.<br>下面是一个通用的C程序结构:</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  // 你的语句将写在此处, 也是你知识和智慧所在
+}
+</code></pre>
+<aside class="special"><p>✍ 请留意, 本课程的要求基本不会超出上面的基本结构, 所有的代码都在<code>{}</code>内. 请尽快熟悉!</p>
+</aside>
+<aside class="warning"><p>✘ 你也可能在其它地方看到有不同的结构如<code>int main()</code>等, 我们暂不解释区别. 强烈建议使用上面的最简单的结构.</p>
+</aside>
+<p>下面我们来编写我们的第一个C语言程序. 打开你的开发软件如 Code, 新建一个以<code>.c</code>为后缀的C语言源程序文件如下:</p>
+<pre><code>// 这是著名的 Hello World 程序
+#include &#34;stdio.h&#34;
+void main(){
+  printf(&#34;Hello World!\n&#34;);
+}
+</code></pre>
+<p>运行它试试(如果使用的是Code, 那么点击屏幕右上角的 ▷ 按钮即可运行了).<br>一句以上帝视角发出的问候会出现在你的屏幕的.</p>
+<aside class="special"><p>🌏 Hello World 是一个最著名的程序。对每一位程序员来说，这个程序几乎是每一门编程语言中的第一个示例程序。实际上，这个程序的功能只是告知计算机显示Hello World这句话。传统意义上，程序员一般用这个程序测试一种新的系统或编程语言。对程序员来说，看到这两个单词显示在电脑屏幕上，往往表示他们的代码已经能够编译、装载以及正常运行了，这个输出结果就是为了证明这一点。</p>
+</aside>
+<p>下面我们稍微解释一下</p>
+<ul>
+<li>整个程序由两部分组成, <code>#include &#34;stdio.h</code> 以及 <code>void main(){ }</code></li>
+<li><code>#include &#34;stdio.h&#34;</code>表明我们要使用<code>stdio.h</code>这个头文件(<code>Standard Input and Output</code>), 我们把它导入进来</li>
+<li><code>main()</code>称为主函数. 每个C语言程序有且只能有一个<code>main</code>函数, 它是程序开始执行的地方即入口</li>
+<li><code>main</code>函数的函数体即<code>{}</code>中的语句就是我们大展拳脚的地方</li>
+<li>第一行是一个注释, 用于解释/标注某些东西给程序员查看, C语言系统直接忽略它</li>
+<li><code>printf()</code>是来自我们前面导入的<code>stdio.h</code>头文件的一个输入函数, 简单的将要输出的内容放到<code>&#34;&#34;</code>中即可</li>
+<li>注意到<code>printf(&#34;...&#34;);</code>最后的<code>;</code>了吗, 不要忘记语句以<code>;</code>结束</li>
+<li>输出内容中有个奇怪的<code>\n</code>, 它代表的是回车这个特殊字符. 去掉它试试.</li>
+</ul>
+<aside class="warning"><p>✘ 如果你没有理解上面的解释, 或者还有一些疑问, 无需担心, 后面我们会学习的</p>
+</aside>
+<aside class="warning"><p>✎ 试一试: 你能否将输出的内容改为<code>I hate C language!</code>或者你的姓名?</p>
+</aside>
+<aside class="special"><p>✍ 在 Code中如果你要输出中文的话需要在屏幕下方的 终端 窗口输入<code>chcp 65001</code>回车执行即可.</p>
+</aside>
+<h2 is-upgraded>编译运行</h2>
+<aside class="warning"><p>✘ 以下内容了解即可, 如果不甚明白暂时无需担心</p>
+</aside>
+<p>前面我们谈到计算机编程语言, 计算机能直接理解并运行的只有机器语言编写的程序.<br>如果你运行了第一个C语言程序, 你马上就会想到, 我们不是直接点击 ▷ 按钮就运行了吗?<br>没错, 但它不能说明高级语言编写的程序计算机能直接执行. 实际上, 点击 ▷ 按钮按钮后, 经过了</p>
+<ol type="1">
+<li>编译 对源程序进行语法分析, 找出程序的语法问题, 生成二进制目标程序</li>
+<li>链接 将目标程序与相关的库文件连接, 生成可执行文件(Windows系统下即为 <code>.exe</code>文件)</li>
+<li>执行 然后才执行</li>
+</ol>
+<aside class="special"><p>✍ 当你点击  ▷ 按钮后, 如果没有语法错误, 你会在 Code窗口的左边栏看到一个 <code>.exe</code>文件生成了</p>
+</aside>
+<aside class="warning"><p>✘ 你如果想了解这个<code>exe</code>文件即可执行文件如何运行, 请网上查阅.</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>按照<a href="https://qige.io/c/c.html" target="_blank">棋歌教学网</a>的安装说明搭建开发环境, 并成功编写运行你的第一个C语言程序.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="数据类型与数据的输入与输出" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>数据类型</li>
+<li>常量</li>
+<li>变量</li>
+<li>格式化输入输出</li>
+<li>字符数据的输入输出</li>
+</ul>
+<h2 is-upgraded>数据类型</h2>
+<p>编写程序解决问题, 不可避免的会遇到很多的数据(想想现在火热的大数据<code>Big Data</code>).<br>这些数据一般分为两类:</p>
+<ul>
+<li>数值数据, 可进行算术运算. 如: <code>3.14, 8964</code>等等</li>
+<li>非数值数据, 即单个的字符或字符串, 一般无需进行运算, 只表示某种符号. 如: 你的姓名, 身份证号等等.</li>
+</ul>
+<p>无论那种数据, 在计算机内部都是以二进制表示的.<br>特别是英文字符, 我们用了1个字节即8位二进制来进行编码–ASCII码, 如字母A就将其编为<code>01000001</code>, 计算机一看到这串字符就明白它代表A.(8位二进制可以编多少个码呢?)</p>
+<aside class="special"><p>🌏 你可能会想, 那么我们使用的中文, 经常发的图片, 听的歌曲, 看的视频又是什么数据, 又是怎么处理的? Google一下吧.</p>
+</aside>
+<h2 is-upgraded>常量</h2>
+<p>常量, 程序运行过程中即不会发生改变的量.</p>
+<h3 is-upgraded>整型常量</h3>
+<p>如圆周率π为3.14, 珠峰高度8848等. 对一些较长的数, C语言还提供了科学计数的表示, 如<code>1.989E64</code>表示1.989乘以10的64次方.</p>
+<aside class="special"><p>✍ E大写小写都可以,如 <code>3.14e5</code>, 但 E或e 的前后至少一边有数字, 且后边的数字只能是整数. 所以 <code>0.15e3.6 E-8</code>都是错误的.</p>
+</aside>
+<h3 is-upgraded>字符常量</h3>
+<p>即单个的字符, 如 <code>U, $, @</code>等, 但C语言规定字符常量需用单引号包裹起来, 即: <code>&#39;U&#39;, &#39;$&#39;, &#39;@&#39;</code>.</p>
+<aside class="special"><p>✍ 单引号中只能包含一个字符, 如 <code>&#39;an&#39; &#39;sum&#39;</code>等都是错的. 多个字符即所谓的字符串用双引号包裹, 如<code>&#34;hahahaha&#34;</code>等, 我们将在第10讲学习.</p>
+</aside>
+<aside class="special"><p>✍ 字符在C语言中实际存储的是其ASCII值. 这点请留意, 我们后面用到时再进行说明.</p>
+</aside>
+<h3 is-upgraded>转义字符</h3>
+<p>某些字符是不可见的, 如键盘上的回车或退格等.<br>C语言采用了一种特殊的方法来表示这些不可见的字符, 用一个<code>\</code>再加上某个字母来代表. 如<code>&#39;\n&#39;</code>代表的就是回车.<br>以<code>\</code>开头后跟一个特定字母的表示就称为转义表示, 即它不代表<code>\</code>和<code>n</code>两个字符, 而是一个其它意思的字符.</p>
+<aside class="special"><p>✍ 你想起来我们第一个程序中的<code>Hello World</code>后面跟随的<code>\n</code>了吗?</p>
+</aside>
+<p>还有规定好的其它一些转义字符, 当前你只需知道<code>\n</code>即可.</p>
+<h2 is-upgraded>变量</h2>
+<h3 is-upgraded>概念</h3>
+<p>编程中, 我们不仅需要使用常量, 更需要使用其值可改变的量.<br>比如某些游戏用血量来表示角色是否活着. 开始满血可认为是100, 随着搏斗, 血量将减少, 如果减为0, 此次游戏则终止.<br>显然, 血量就是一个可以改变的量, 这就是变量.</p>
+<h3 is-upgraded>变量的定义</h3>
+<p>C语言规定, 要使用变量, 首先必须定义, 即需要说明其该变量是什么数据类型,叫什么名称.<br>C语言用<code>int</code>, <code>float</code> 和 <code>char</code>分别来定义整数, 实数(也称浮点数)和字符.<br>变量的名称即标识符(你还记得第一讲有关标识符的规定吧?), 一般我们希望这个名称能说明该变量用来存放什么, 如: <code>age powerOfBoss</code>等.</p>
+<p>下面是一些定义变量的例子:</p>
+<pre><code>int age, heigh, width;  // 定义了三个整型变量, 如果有多个用逗号进行分隔
+float income = 19896.4;           // 定义了一个浮点型变量, 并给定了一个值(初始化)
+char sex, isOver;       // 定义了两个字符型变量
+</code></pre>
+<aside class="special"><p>✍ 变量如果没有定义就使用将发生编译错误, 程序是不能运行的.</p>
+</aside>
+<h2 is-upgraded>格式化输入输出</h2>
+<p>下面我们谈谈如何在C语言中把数据输出到屏幕呈现给用户或者从键盘接收用户的输入.</p>
+<h3 is-upgraded>输出</h3>
+<p>我们使用在<code>stdio.h</code>头文件中已经定义好的<code>printf()</code>函数进行输出. 如我们要输出你的年龄:</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  int age;  // 定义了一个整型变量age
+  age = 20; // 把20放到 age 变量中
+  printf(&#34;-------this year--------&#34;);     // 输出双引号中的内容
+  printf(&#34;You are %d years old!\n&#34;, age); // 输出双引号中的内容, 注意 %d
+  age = 21; // 把21放到 age 中, age变量以前的值被替换
+  printf(&#34;-------next year--------&#34;);     // 输出双引号中的内容
+  printf(&#34;You will be %d years old next year!\n&#34;, age); // 输出双引号中的内容, 注意 %d
+}
+</code></pre>
+<p>运行上面的程序试试.<br><code>printf()</code>函数将原样输出双引号中的内容(实际是一个字符串), 这点你应该看得出来.<br>字符串中的<code>\n</code>你也应该知道是个特殊的字符表示回车.<br>但是你会看到有一点异样: 字符串中<code>%d</code>的位置输出的是<code>age</code>变量的内容即<code>20</code>或<code>21</code>.</p>
+<p>我们把<code>%d</code>称为输出占位符, 它表示此处要输出一个整数, 其值与字符串后面的量对应. 现在明白为何输出<code>20</code>或<code>21</code>了吧.</p>
+<aside class="warning"><p>✎ 试一试: 注释掉<code>int age;</code>这句看能否运行?<br>✎ 试一试: <code>%d</code>如果没有对应的变量age, 即改为<code>printf(&#34;You are %d years old!\n&#34;);</code>会如何?</p>
+</aside>
+<p>除了<code>%d</code>是整数的占位符外, <code>%f</code>对应小数, <code>%c</code>代表一个字符. 如:</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  int age = 20;  // 定义了一个整型变量age并初始化为20
+  float income = 1989.64; // 定义了一个浮点型变量income并初始化
+  char isOver = &#39;Y&#39;; // 定义了一个字符型变量isOver并初始化
+  printf(&#34;How old are you: %d\n&#34;, age);
+  printf(&#34;How old are you: %5d\n&#34;, age);  // 注意是 %5d, 表明这个整数至少占5个字符宽度
+  printf(&#34;What&#39;s your income: %f\n&#34;, income);
+  printf(&#34;What&#39;s your income: %.2f\n&#34;, income); // 注意%.2f, 表明小数点后只需2位
+  printf(&#34;Is this game over: %c\n&#34;, isOver);  // 输出指定的字符
+  printf(&#34;Age:%5d, Income:%10.2f, Over:%c\n&#34;, age, income, isOver); // 放在一块也可以的
+}
+</code></pre>
+<aside class="warning"><p>✎ 试一试: <code>printf(&#34;%c  %d\n&#34;, &#39;A&#39;, &#39;A&#39;)</code>会输出什么? <code>printf(&#34;%c  %d\n&#34;, 65, 65)</code>呢?</p>
+</aside>
+<h3 is-upgraded>输入</h3>
+<p>在上面的例子中, 你会发现数据都是程序中给定的. 那么我们可否在程序运行时, 用户才提供呢? 这样会更灵活.<br>现实编程中, 我们需要使用输入函数<code>scanf()</code>来接收用户提供的数据.<br><code>scanf()</code>函数也使用<code>%d</code>,<code>%f</code>,<code>%c</code>来分别接收整数,小数和单个的字符放到对应的变量中. 如:</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  int age;  // 定义了一个整型变量age
+  float income; // 定义了一个浮点型变量income
+  char isContinue; // 定义了一个字符型变量isContinue
+  printf(&#34;Continue(Y/N)?&#34;); // 问是否继续
+  scanf(&#34;%c&#34;, &amp;isContinue); // 接收用户的输入放到isContinue变量中. 注意&amp;符号, 我们以后再说明为什么必须加
+  printf(&#34;How old are you:&#34;);
+  scanf(&#34;%d&#34;, &amp;age);  // 注意 age前的&amp;符号, 我们以后再说明为什么必须加
+  printf(&#34;What&#39;s your income:&#34;);
+  scanf(&#34;%f&#34;, &amp;income); // 注意 income钱的&amp;符号  
+  printf(&#34;You are %d, your income is $%.2f. Go on? %c\n&#34;, age, income, isContinue);  
+}
+</code></pre>
+<p>运行以上程序, 你将会发现程序在每个<code>scanf()</code>处都会停下来, 等你输入对应类型的数据才继续.</p>
+<aside class="special"><p>✍ 注意一: <code>scanf()</code>函数中的输入字符串内只放占位符, 不要放置其它东西, 如<code>scanf(&#34;%d&#34;, &amp;age);</code>中就只有一个<code>%d</code>表明要接收一个整数并会放到<code>age</code>变量中.<br>✍ 注意二: <code>scanf()</code>函数中的变量名前需要<code>&amp;</code>符号, 否则接收不正确. 原因我们在<code>�</code>�针部分再讲述.</p>
+</aside>
+<aside class="warning"><p>✎ 试一试: <code>scanf(&#34;%d%d%d&#34;, &amp;a,&amp;b,&amp;c);</code>将一次性需要你输入3个整数(用空格或回车分隔这3个整数).</p>
+</aside>
+<h2 is-upgraded>字符数据的输入输出</h2>
+<p>针对字符, C语言还额外提供了两个函数来进行输入和输出: <code>putchar()</code>和<code>getchar()</code>. 如:</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  char gender;  // 定义了gender字符变量用于保存性别
+  printf(&#34;What is your gender(F-Female, M-Male):&#34;);
+  gender = getchar();  // 程序在此将等你输入F/M, 然后存到gender变量中
+  printf(&#34;Your gender is &#34;);
+  putchar(gender);
+  putchar(&#39;\n&#39;);  // 输出一个回车
+  putchar(66);    // 这也是可以的, 输出66这个ASCII码对应的字符
+}
+</code></pre>
+<aside class="warning"><p>✎ 试一试下面的代码, 你会发现不能正确接收用户的输入, 将中间那句注释去掉再试试:</p>
+</aside>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  char gender, degree;  // 定义了gender用于保存性别, degree保存等级(ABC)
+  printf(&#34;What is your gender(F-Female, M-Male):&#34;);
+  gender = getchar();  // 程序在此将等你输入F/M, 然后存到gender变量中
+  // getchar();  //  getchar()将接收上次输入中F/M后的回车, 以免影响下次输入
+  printf(&#34;What is your degree(A, B, or C):&#34;);
+  degree = getchar();  // 程序在此将等你输入A/B/C, 然后存到degree变量中
+  printf(&#34;Your gender is %c, your degree is %c\n&#34;, gender, degree);  
+}
+</code></pre>
+<h2 is-upgraded>课后练习</h2>
+<p>请掌握本讲列出的程序代码. 试着自行定义一些不同类型的变量, 并进行输入和输出练习.<br>如果你遇到了什么问题, 记录下来以进一步讨论.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="运算符与简单程序设计" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>算术运算</li>
+<li>赋值运算</li>
+<li>逗号运算</li>
+<li>长度运算</li>
+<li>类型转换</li>
+<li>简单顺序结构</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="选择结构程序设计1" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>关系运算</li>
+<li>逻辑运算</li>
+<li>条件运算</li>
+<li>选择结构</li>
+</ul>
+<h2 is-upgraded>关系运算</h2>
+<p>C 语言中的关系, 不是指男女关系, 而是大小关系.<br>当需要判断两个值的大小关系时,我们用关系运算.</p>
+<h3 is-upgraded>关系运算符</h3>
+<p>关系运算有以下类型:</p>
+<pre><code>小于  小于等于  大于  大于等于
+&lt;    &lt;=       &gt;     &gt;=
+等于  不等于
+==   !=
+</code></pre>
+<aside class="special"><p>✍  注意上面的<code>&lt;= &gt;= == !=</code>是两个字符组成的.</p>
+</aside>
+<h3 is-upgraded>关系表达式</h3>
+<p>使用关系运算符连接的式子即为关系表达式. 比如:</p>
+<pre><code>score &lt; 60              // 是否及格
+b * b - 4 * a * c &lt; 0   // 是否有实根(求根判别式)
+age &gt;= 18               // 是否成年
+sex == 1                // 是否男性(以 1 表示男性)
+</code></pre>
+<h3 is-upgraded>运算结果</h3>
+<p>你应该直觉的感知, 关系运算的结果要么为&#34;真&#34;, 要么为&#34;假&#34;.</p>
+<aside class="special"><p>✍  在 C 语言中, 我们用 1 表示真, 用 0 表示假.</p>
+</aside>
+<p>请输入如下程序进行理解:</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  int score = 58, age = 20, sex = 0;
+  int isPass, isAdult, isFemale;
+  isPass = score &gt;= 60; //根据上面的分数58, 结果为假, 故isPass将被赋值为0
+  isAdult = age &gt;= 18;  //根据上面的年龄20, 结果为真, 故isAdult将被赋值为1
+  isFemale = sex == 0;  //根据上面的性别 0, 结果为真, 故isFemale将被赋值为0
+  printf(&#34;Pass: %d\n&#34;, isPass);     //Pass: 0
+  printf(&#34;Adult: %d\n&#34;, isAdult);   //Adult: 1
+  printf(&#34;Female: %d\n&#34;, isFemale); //Female: 1
+}
+</code></pre>
+<h3 is-upgraded>运算优先级</h3>
+<p>当多个关系运算符或有其它运算符时, 我们需考虑它们的优先级.</p>
+<ul>
+<li><code>&lt;  &lt;=  &gt;  &gt;=</code> 这四个运算符同等优先级, 如果同时出现, 从左至右开始运算即可. 如:</li>
+</ul>
+<pre><code>89 &gt; 64 &lt; 0     // 运算顺序是先运算 89 &gt; 64, 结果为 1 ,然后再运算 1 &lt; 0
+</code></pre>
+<ul>
+<li>同理, <code>==  !=</code> 这两个运算符同等优先级, 如果同时出现, 从左至右开始运算即可. 如:</li>
+</ul>
+<pre><code>89 == 64 != 5   //先运算 89 == 64, 结果为 0, 再运算 0 != 5
+</code></pre>
+<ul>
+<li>但 <code>&lt;  &lt;=  &gt;  &gt;=</code> 的优先级高于 <code>==  !=</code> , 如:</li>
+</ul>
+<pre><code>89 == 64 &gt; 5    //先算 64 &gt; 5, 结果为1, 再算 89 == 1
+</code></pre>
+<ul>
+<li>当然算术运算高于关系运算, 关系运算又高于赋值运算. 如:</li>
+</ul>
+<pre><code>a = 1;
+b = 5;
+c = 3;
+// 先算 b * b, 得 25(中间结果),
+// 再算 4 * a 得 4, 再用这个结果 4 * c, 得 12,
+// 再用早先的 25 - 12, 得13,
+// 最后结果 13 赋值给变量 p
+p = b * b - 4 * a * c;
+</code></pre>
+<aside class="special"><p>✍  当然,圆括号的优先级最高. 建议多以圆括号来保证你运算需要的优先级!</p>
+</aside>
+<h2 is-upgraded>逻辑运算</h2>
+<aside class="special"><p>☀ 题外话: 出于某些原因, 我们的教育中是缺乏真正的逻辑教育的(什么是逻辑? 请移步<a href="https://zh.wikipedia.org/wiki/%E9%80%BB%E8%BE%91" target="_blank">维基百科</a>, 再题外话:不推荐看百度百科, 你可能看到的是假的), 以至于我们经常把&#34;举例/道理/类比/比喻&#34;等作为论证手段. 请参考<a href="https://www.bilibili.com/read/cv1672537" target="_blank">&#34;四大论证方法&#34;逻辑混乱，是有害的</a>一文.</p>
+</aside>
+<p>经常的, 我们要判断的关系非常复杂.<br>如某网红女在谈男朋友的条件时曾说: 非北大光华管理学院毕业的帅哥不予考虑!<br>如果她是百合网的会员, 那么百合网的程序猿大致要设置这么几个变量来为她进行筛选:</p>
+<pre><code>// 以下条件都要满足, 即都要为真才能进入她的法眼
+isPKU
+isGuanghua
+isHandsome
+isMale
+</code></pre>
+<p>这时, 我们就必须引入逻辑运算才能解决问题.</p>
+<h3 is-upgraded>逻辑运算符</h3>
+<p>有三种逻辑运算符:</p>
+<ul>
+<li>逻辑与 &amp;&amp;   两个连接符号, 如 isPKU &amp;&amp; isMale, 必须左右两个的值都为真, 整个表达式为真, 否则为假</li>
+<li>逻辑或 ||   两个竖线符号, 如 isPKU || isHandsome, 左右两边的值只要有一个为真, 整个表达式就为真</li>
+<li>逻辑非 !    一个感叹号,   如 !isPKU, 将 isPKU 的值变反</li>
+</ul>
+<h3 is-upgraded>逻辑表达式</h3>
+<p>我们如果要表达上述的择偶条件的话, 逻辑表达式应该是这样的:</p>
+<pre><code>// 非北大光华管理学院毕业的帅哥不予考虑
+isPKU &amp;&amp; isGuanghua &amp;&amp; isHandsome &amp;&amp; isMale
+// 由于条件苛刻, 降低标准为:北大的不帅也可以, 不是北大的必须要帅(但必须是男人啊)
+(isPKU || isHandsome) &amp;&amp; isMale
+</code></pre>
+<h3 is-upgraded>优先级</h3>
+<p>当有多种运算时, 优先级如下:</p>
+<ul>
+<li>! -&gt; &amp;&amp; -&gt; ||, 即 逻辑非 ! 最高, 逻辑与 &amp;&amp; 次之, 逻辑或 || 最低</li>
+<li>逻辑非 ! 的优先级比算术运算的优先级都高</li>
+<li>逻辑与 &amp;&amp; 和 逻辑或 || 的优先级低于关系运算</li>
+</ul>
+<aside class="warning"><p>♨ (isPKU || isHandsome) &amp;&amp; isMale 如果没有圆括号即 isPKU || isHandsome &amp;&amp; isMale 将表达什么意思?</p>
+</aside>
+<h3 is-upgraded>示例</h3>
+<aside class="special"><p>✍ 注意: C 语言中, 输出关系或逻辑表达式的结果时要么是 1, 要么是 0. 但在判断时, 采用的 0 为假, 非 0 的都为真. 请一定留意!</p>
+</aside>
+<aside class="special"><p>✍ 短路运算: 当 &amp;&amp; 运算符左边已经为假, 则右边不需要计算了, 整个表达式结果为假; 同理, 当 || 运算符左边已经为真, 则右边不需要计算了, 整个表达式结果为真. 这就称为短路!</p>
+</aside>
+<p>查看以下程序片段, 仔细分析输出的结果:</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  int a = 3, b = 1, x = 2, y = 0;
+  int result1, result2, result3;
+  // 注意: 先算 a &lt; b, 结果为 0, 此时就不再计算右边的 x &gt; y了, 直接将 0 赋值给result1
+  result1 = a &lt; b &amp;&amp; x &gt; y;
+  // 注意: 先算 !a, 因为 a 的值是3(非0即为真),所以结果为 0；再算 a &gt; b, 
+  result2 = !a || a &gt; b;
+  // 注意: 先算的 b &amp;&amp; y
+  result3 = y || b &amp;&amp; y || a;
+  printf(&#34;Result1: %d\n&#34;, result1);  // 0
+  printf(&#34;Result2: %d\n&#34;, result2);  // 1
+  printf(&#34;Result3: %d\n&#34;, result3);  // 1
+}
+</code></pre>
+<h2 is-upgraded>优先级总结</h2>
+<aside class="special"><p>✍ 优先级: 除了括号外, 计算的优先顺序为: 逻辑非 - 乘除 - 加减 - 大于/小于 - 等于/不等于 - 逻辑与 - 逻辑或 - 赋值 - 逗号</p>
+</aside>
+<h2 is-upgraded>条件运算</h2>
+<p>条件运算是一种非常简洁的二元判定结构, 其结果要么是这个, 要么是那个. 实际编程中我们经常使用.<br>其格式如下:</p>
+<p>&lt;判断表达式&gt;?&lt;结果表达式1&gt;:&lt;结果表达式2&gt;</p>
+<aside class="special"><p>✍ 三个表达式分别用 ? 和 : 分割开了, 意思是: 如果判断表达式的结果为真, 则整个表达式的结果就是&#34;结果表达式1&#34;的结果；否则就是&#34;结果表达式2&#34;的结果. 如 89 &gt; 64? 999 : 888 的结果就应该是 999.</p>
+</aside>
+<p>阅读以下程序, 分析其如何求出某个数的绝对值:</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  int x;
+  printf(&#34;Please input a integer number:&#34;);
+  scanf(&#34;%d&#34;, &amp;x);
+  x = x &gt; 0 ? x : -x;
+  printf(&#34;|x|=%d\n&#34;, x);
+}
+</code></pre>
+<h2 is-upgraded>选择结构</h2>
+<p>计算机, 也称为电脑, 能够根据程序中设置的不同的条件进行关系或逻辑判断, 以执行不同的任务, 实现一定的自动化.</p>
+<p>这种根据不同逻辑执行不同任务的程序设计就是–选择程序设计. 它可看着当前热门的人工智能的基础</p>
+<aside class="special"><p>➚ 简单人工智能: 请访问一个猜东西的网站<a href="http://20q.net/" target="_blank">20Q.net</a>, 它能通过询问20个左右的简单问题，猜出您想象的物品.</p>
+</aside>
+<h3 is-upgraded>单分支选择结构</h3>
+<p>格式如下:</p>
+<pre><code>// 如果条件表达式为真, 即条件成立, 则执行花括号{}中的语句;
+// 否则什么都不做
+if(条件表达式){
+  满足条件后要执行的一条或多条语句
+}
+</code></pre>
+<p>分析如下程序:</p>
+<pre><code>/* 题目: 求两个数哪个大
+ * 思路: 假设第一个数就是大的,然后进行验证,
+ *      如果第二个数还大,就修正
+ *      经过判断, 保证max中一定保存的是大的那个数
+ */
+#include &#34;stdio.h&#34;
+void main(){
+  int num1, num2, max;  // max 用来放两个数中大的那个
+  printf(&#34;Please input two integer number:&#34;);
+  scanf(&#34;%d%d&#34;, &amp;num1, &amp;num2);
+  max = num1;       // 假设num1是大的, 放到max变量中
+  if(max &lt; num2){   // 验证假设, 第二个是不是比我大?
+    max = num2;
+  }
+  printf(&#34;MAX: %d\n&#34;, max);
+}
+</code></pre>
+<h3 is-upgraded>双分支选择结构</h3>
+<p>格式如下:</p>
+<pre><code>// 如果条件表达式为真, 即条件成立, 则执行其紧跟花括号{}中的语句;
+// 否则执行else后面{}中的语句
+if(条件表达式){
+  满足条件后要执行的一条或多条语句
+}else{
+  不满足条件后要执行的一条或多条语句
+}
+</code></pre>
+<p>我们用双分支结构来完成上面的问题:</p>
+<pre><code>/* 题目: 求两个数哪个大
+ * 思路: 使用双分支选择结构直接比较即可
+ *       max保存大的那个数
+ */
+#include &#34;stdio.h&#34;
+void main(){
+  int num1, num2, max;  // max 用来放两个数中大的那个
+  printf(&#34;Please input two integer number:&#34;);
+  scanf(&#34;%d%d&#34;, &amp;num1, &amp;num2);
+  if(num1 &gt; num2){    // 直接比较, 第一个数是不是比第二个数大
+    max = num1;       // 第一个大, 放到max中
+  }else{
+    max = num2;       // 第二个大, 放到max中
+  }
+  printf(&#34;MAX: %d\n&#34;, max);
+}
+</code></pre>
+<aside class="warning"><p>✎ 试一试: 你能否根据上面的程序, 模拟一个游戏通关后系统会给出一个提示, 回答 1 则输出 again, 回答 0 则输出 bye</p>
+</aside>
+<aside class="warning"><p>✎ 试一试: 你可否使用前面讲述的 条件运算表达式来改写这个程序?</p>
+</aside>
+<h3 is-upgraded>多分支选择结构</h3>
+<p>有时, 我们遇到的情况比较复杂, 可能有多种情况需要我们进行处理, 那么我们可以使用多分支选择结构.</p>
+<p>一个三分支选择结构的格式如下:</p>
+<pre><code>// 如果条件表达式1为真, 则执行其花括号{}中的语句;
+// 否则如果条件表达式2为真, 则执行其花括号{}中的语句;
+// 否则, 执行else后面的语句
+if(条件表达式1){
+  满足条件1后要执行的一条或多条语句
+}else if(条件表达式2){
+  满足条件2后要执行的一条或多条语句
+}else{
+  以上条件都不满足则执行此处的一条或多条语句
+}
+</code></pre>
+<p>说明:</p>
+<ul>
+<li><code>else if</code>不是只能有一个, 可以有多个如四分支,五分支等</li>
+<li><code>else</code>块可以没有</li>
+</ul>
+<p>仔细阅读分析下面的程序:</p>
+<pre><code>/* 题目: 根据成绩(分数)输出对应的(优/良/中/及格/不及格)等级
+ * 思路: 使用多分支选择结构直接比较即可
+ */
+#include &#34;stdio.h&#34;
+void main(){
+  int score;
+  printf(&#34;Please input your score:&#34;);
+  scanf(&#34;%d&#34;, &amp;score);
+  if(score &gt;=90) {
+    printf(&#34;Excelent!&#34;);
+  }else if(score &gt;= 80 &amp;&amp; score &lt; 90){
+    printf(&#34;Good!&#34;);
+  }else if(score &gt;= 70 &amp;&amp; score &lt; 80){
+    printf(&#34;Middel&#34;);
+  }else if(score &gt;= 60 &amp;&amp; score &lt; 70){
+    printf(&#34;OK&#34;);
+  }else{
+    printf(&#34;Bad!&#34;);
+  }
+}
+</code></pre>
+<p>试试运行这个程序.</p>
+<aside class="warning"><p>✎ 上面这个程序有个小 bug. 假设我们合理的分数在0~100, 当不小心输入的分数为1989或-64时, 看看程序会发生什么, 如何修正?</p>
+</aside>
+<aside class="warning"><p>♨ 思考: 我们的判断条件 score &gt;=80 &amp;&amp; score &lt; 90 可以简化为 score &gt;= 80 吗?</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>请理解且熟悉本讲所列的示例程序, 尽力完成所有的思考和试一试.</p>
+<p>阅读并理解如下程序:</p>
+<pre><code>/* 题目: 判断输入的字符是那种类型, 如大写/数字等等
+ * 思路: 使用多分支选择结构, 判断该字符的ASCII码即可
+ * 注意: ASCII码值小于32的是一些控制字符, 如 回车/方向键/tab键等等
+ */
+#include &#34;stdio.h&#34;
+void main(){
+  char yourKey;
+  printf(&#34;Please input a character:&#34;);
+  yourKey = getchar();
+  if(yourKey &lt; 32 ){
+    printf(&#34;It&#39;s a control character\n&#34;); // 控制字符
+  }else if(yourKey &gt;= &#39;0&#39; &amp;&amp; yourKey &lt;= &#39;9&#39;){
+    printf(&#34;It&#39;s a number\n&#34;);            // 数字字符
+  }else if(yourKey &gt;= &#39;a&#39; &amp;&amp; yourKey &lt;= &#39;z&#39;){
+    printf(&#34;It&#39;s a lowercase letter\n&#34;);  // 小写字母
+  }else if(yourKey &gt;= &#39;A&#39; &amp;&amp; yourKey &lt;= &#39;Z&#39;){
+    printf(&#34;It&#39;s a uppercase letter\n&#34;);  // 大写字母
+  }else{
+    printf(&#34;It&#39;s other character\n&#34;);     // 其它字符
+  }
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="选择结构程序设计2" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="循环结构程序设计1" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="循环结构程序设计2" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="常用算法" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="一维数组" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="字符数组与字符串" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="函数的定义与调用" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="数组作函数参数、递归调用" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="变量的存储类别" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="编译预处理" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="指针" duration="90">
+        <p>本次课程我们将讲述以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>X</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
