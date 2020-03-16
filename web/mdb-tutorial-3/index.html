@@ -1,0 +1,2455 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>棋歌教学网 - MDB教程三</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="mdb-tutorial-3"
+                  title="棋歌教学网 - MDB教程三"
+                  environment="web"
+                  feedback-link="mailto: gridwang@gmail.com">
+    
+      <google-codelab-step label="概述" duration="2">
+        <p>本教程将构建一个全屏的, 现代的, 用于展示作品的网站, 几乎所有的组件都需要 MDB Pro的支持。<br>我们将涉及以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>全屏视频背景</li>
+<li>Features和Projects</li>
+<li>灯箱图片集</li>
+<li>字体</li>
+<li>Sogou/Google/高德地图</li>
+<li>图标/表单</li>
+<li>轮播/幻灯片</li>
+<li>使用自定义样式<br><br></li>
+</ul>
+<p>建设完毕后的效果<a href="https://mdbootstrap.com/snippets/jquery/ascensus/28?action=fullscreen" target="_blank">🌏在线查看</a>, 或如下图(部分效果)：</p>
+<p class="image-container"><img alt="final-3" src="img/3291b266cb9de440.webp"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面结构及全屏视频背景" duration="5">
+        <h2 is-upgraded>页面基本结构</h2>
+<p>解压你下载的 MDB Pro 模板文件到某文件夹， code 中打开该文件夹（这是我们的工作目录）.<br>跟上一个教程一样, 打开<code>index.html</code>文件, 在<code>&lt;body&gt;</code>中写入如下页面结构代码:</p>
+<pre><code>&lt;!-- start your project here --&gt;
+&lt;!--Main Navigation--&gt;
+&lt;header&gt;
+
+&lt;/header&gt;
+&lt;!--Main Navigation--&gt;
+
+&lt;!--Main layout--&gt;
+&lt;main&gt;
+
+&lt;/main&gt;
+&lt;!--Main layout--&gt;
+
+&lt;!--Footer--&gt;
+&lt;footer&gt;
+
+&lt;/footer&gt;
+&lt;!--Footer--&gt;
+&lt;!-- end your project here --&gt;
+</code></pre>
+<p>全屏页面展示我们已经在<a href="../mdb-tutorial-2/index.html" target="_blank">教程二</a>中较详细的介绍过, 此处不再累述.<br>MDB还提供了更精致漂亮的全屏页面让我们直接使用. 前往MDB <a href="https://mdbootstrap.com/docs/jquery/sections/intros/#v-6" target="_blank">Intros</a>文档查看, 选择某种你中意的模板即可.</p>
+<p>将<code>&lt;header&gt;</code>改变成如下代码:</p>
+<pre><code>&lt;!-- Main navigation --&gt;
+&lt;header&gt;
+  &lt;!-- Navbar --&gt;
+  &lt;nav class=&#34;navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar&#34;&gt;
+    &lt;div class=&#34;container&#34;&gt;
+      &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Navbar&lt;/a&gt;
+      &lt;button class=&#34;navbar-toggler&#34; type=&#34;button&#34; data-toggle=&#34;collapse&#34; data-target=&#34;#navbarTogglerDemo02&#34;
+        aria-controls=&#34;navbarTogglerDemo02&#34; aria-expanded=&#34;false&#34; aria-label=&#34;Toggle navigation&#34;&gt;
+        &lt;span class=&#34;navbar-toggler-icon&#34;&gt;&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;div class=&#34;collapse navbar-collapse&#34; id=&#34;navbarTogglerDemo02&#34;&gt;
+        &lt;ul class=&#34;navbar-nav mr-auto smooth-scroll&#34;&gt;
+          &lt;li class=&#34;nav-item&#34;&gt;
+            &lt;a class=&#34;nav-link&#34; href=&#34;#home&#34;&gt;Home
+              &lt;span class=&#34;sr-only&#34;&gt;(current)&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&#34;nav-item&#34;&gt;
+            &lt;a class=&#34;nav-link&#34; href=&#34;#about&#34; data-offset=&#34;90&#34;&gt;About&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&#34;nav-item&#34;&gt;
+            &lt;a class=&#34;nav-link&#34; href=&#34;#features&#34; data-offset=&#34;90&#34;&gt;Features&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&#34;nav-item&#34;&gt;
+            &lt;a class=&#34;nav-link&#34; href=&#34;#services&#34; data-offset=&#34;90&#34;&gt;Services&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&#34;nav-item&#34;&gt;
+            &lt;a class=&#34;nav-link&#34; href=&#34;#opinions&#34; data-offset=&#34;30&#34;&gt;Opinions&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&#34;nav-item&#34;&gt;
+            &lt;a class=&#34;nav-link&#34; href=&#34;#team&#34; data-offset=&#34;90&#34;&gt;Team&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&#34;nav-item&#34;&gt;
+            &lt;a class=&#34;nav-link&#34; href=&#34;#contact&#34; data-offset=&#34;90&#34;&gt;Contact&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;!-- Social Icon  --&gt;
+        &lt;ul class=&#34;navbar-nav nav-flex-icons&#34;&gt;
+          &lt;li class=&#34;nav-item&#34;&gt;
+            &lt;a class=&#34;nav-link&#34;&gt;
+              &lt;i class=&#34;fab fa-facebook-f light-green-text-2&#34;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&#34;nav-item&#34;&gt;
+            &lt;a class=&#34;nav-link&#34;&gt;
+              &lt;i class=&#34;fab fa-twitter light-green-text-2&#34;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&#34;nav-item&#34;&gt;
+            &lt;a class=&#34;nav-link&#34;&gt;
+              &lt;i class=&#34;fab fa-instagram light-green-text-2&#34;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+  &lt;!-- Navbar --&gt;
+  &lt;!-- Full Page Intro --&gt;
+  &lt;div class=&#34;view&#34;&gt;
+    &lt;video class=&#34;video-intro&#34; poster=&#34;https://mdbootstrap.com/img/Photos/Others/background.jpg&#34; playsinline autoplay
+      muted loop&gt;
+      &lt;source src=&#34;https://mdbootstrap.com/img/video/animation.mp4&#34; type=&#34;video/mp4&#34;&gt;
+    &lt;/video&gt;
+    &lt;!-- Mask &amp; flexbox options--&gt;
+    &lt;div class=&#34;mask rgba-gradient d-flex justify-content-center align-items-center&#34;&gt;
+      &lt;!-- Content --&gt;
+      &lt;div class=&#34;container px-md-3 px-sm-0&#34;&gt;
+        &lt;!--Grid row--&gt;
+        &lt;div class=&#34;row wow fadeIn&#34;&gt;
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-12 mb-4 white-text text-center wow fadeIn&#34;&gt;
+            &lt;h3 class=&#34;display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5&#34;&gt;Creative Agency&lt;/h3&gt;
+            &lt;hr class=&#34;hr-light my-4 w-75&#34;&gt;
+            &lt;h4 class=&#34;subtext-header mt-2 mb-4&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit deleniti
+              consequuntur nihil.&lt;/h4&gt;
+            &lt;a href=&#34;#!&#34; class=&#34;btn btn-rounded btn-outline-white&#34;&gt;
+              &lt;i class=&#34;fas fa-home &#34;&gt;&lt;/i&gt; Visit us
+            &lt;/a&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+        &lt;/div&gt;
+        &lt;!--Grid row--&gt;
+      &lt;/div&gt;
+      &lt;!-- Content --&gt;
+    &lt;/div&gt;
+    &lt;!-- Mask &amp; flexbox options--&gt;
+  &lt;/div&gt;
+  &lt;!-- Full Page Intro --&gt;
+&lt;/header&gt;
+&lt;!--Main layout--&gt;
+</code></pre>
+<p>现在刷新页面, 你会发现有些问题, 如不是全屏等. 我们需要添加些样式在<code>style.css</code> 文件中:</p>
+<pre><code>/* Required for full background image */
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100vh;
+  }
+}
+
+.top-nav-collapse {
+  background-color: #563e91 !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+
+@media (max-width: 991px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #563e91 !important;
+  }
+}
+
+.rgba-gradient {
+  background: -moz-linear-gradient(45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+  background: -webkit-linear-gradient(45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+  background: linear-gradient(to 45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+}
+</code></pre>
+<p>现在再试试. 现在页面背景上有动感的线条变换.</p>
+<h3 is-upgraded>video元素</h3>
+<p>注意一下<code>&lt;video&gt;</code>元素, 它会指定视频的源文件, 另外注意其有个属性<code>poster</code>即海报, 用于当某种原因视频不能呈现时显示该图片.</p>
+<aside class="special"><p>✍ 请留意: 无论哪种格式的视频, 都是属于页面中的重量级元素, 即获取它们是很耗时间的, 不能影响用户的体验.<br>🌏 推荐一个免费的高质量图片和视频网站<a href="https://www.pexels.com/videos/" target="_blank">Pexel Videos</a>, 绝对值得你关注!</p>
+</aside>
+<h3 is-upgraded>RGBA与渐变</h3>
+<p>留意样式表中的<code>.rgba-gradient{}</code>样式, 我们采用了45度的方向的两种 RGBA 颜色的渐变作为对背景的遮罩.</p>
+<p><code>RGBA</code>颜色即带透明通道的 RGB颜色搭配, 如下图展示了带透明度的红色:</p>
+<p class="image-container"><img alt="rgba-red" src="img/5ecaf590f3c43fe6.webp"></p>
+<p>CSS的渐变(gradient)展示了在两种颜色间的平滑过渡, 有两种方式:</p>
+<ul>
+<li>线性渐变(Linear): 上下, 左右, 对角线渐变</li>
+<li>中心渐变(Radial): 以中心径向渐变</li>
+</ul>
+<aside class="special"><p>🌏 一个非常方便的, 颜色搭配和谐的在线渐变生成器<a href="https://uigradients.com/#VisionsofGrandeur" target="_blank">uiGradients</a>值得你前往!</p>
+</aside>
+<h3 is-upgraded>更改页面的渐变</h3>
+<p>将我们样式表的<code>.rgba-gradient{}</code>样式改为如下:</p>
+<pre><code>.rgba-gradient {
+    /* fallback for old browsers */
+    background: rgba(35, 7, 77, 0.6);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(204, 83, 51, 0.6), rgba(35, 7, 77, 0.6));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(204, 83, 51, 0.6), rgba(35, 7, 77, 0.6));
+}
+</code></pre>
+<h2 is-upgraded>更改导航条</h2>
+<p>下面我们把导航条中的<code>&lt;ul&gt;</code>的超链接改为跟我们页面相符的内容.</p>
+<pre><code>&lt;ul class=&#34;navbar-nav mr-auto smooth-scroll&#34;&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#intro&#34;&gt;Home
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#about&#34; data-offset=&#34;90&#34;&gt;About&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#projects&#34; data-offset=&#34;90&#34;&gt;Projects&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#gallery&#34; data-offset=&#34;90&#34;&gt;Gallery&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#testimonials&#34; data-offset=&#34;30&#34;&gt;Testimonials&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#articles&#34; data-offset=&#34;90&#34;&gt;Articles&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#contact&#34; data-offset=&#34;90&#34;&gt;Contact&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>现在, 你应该看到<a href="https://mdbootstrap.com/snippets/jquery/ascensus/11149?action=fullscreen" target="_blank">🌏这样的效果</a><br>接下来, 我们进行页面主体内容的构建.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体-章节/Features/Projects" duration="5">
+        <h2 is-upgraded>主体结构</h2>
+<p>我们先来构建页面主体的章节结构. 将<code>&lt;main&gt;</code>元素替换为如下代码:</p>
+<pre><code>&lt;!--Main layout--&gt;
+&lt;main&gt;
+
+  &lt;!--Section: about--&gt;
+  &lt;section id=&#34;about&#34; class=&#34;py-5&#34;&gt;
+
+    &lt;!-- Container --&gt;
+    &lt;div class=&#34;container&#34;&gt;
+      &lt;!-- Section heading --&gt;
+      &lt;h2 class=&#34;h1-responsive font-weight-bold text-center mb-5&#34;&gt;Why is it so great?&lt;/h2&gt;
+      &lt;!-- Section description --&gt;
+      &lt;p class=&#34;lead grey-text text-center w-responsive mx-auto mb-5&#34;&gt;Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!-- Container --&gt;
+
+  &lt;/section&gt;
+  &lt;!--Section: about--&gt;
+
+  &lt;!--Section: projects--&gt;
+  &lt;section id=&#34;projects&#34; class=&#34;text-center py-5&#34; style=&#34;background-color: #eee;&#34;&gt;
+
+    &lt;!-- Container --&gt;
+    &lt;div class=&#34;container&#34;&gt;
+
+      &lt;!-- Section heading --&gt;
+      &lt;h2 class=&#34;h1-responsive font-weight-bold mb-5&#34;&gt;Our best projects&lt;/h2&gt;
+      &lt;!-- Section description --&gt;
+      &lt;p class=&#34;grey-text w-responsive mx-auto mb-5&#34;&gt;Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit est laborum.&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Container --&gt;
+
+  &lt;/section&gt;
+  &lt;!--Section: projects--&gt;
+
+  &lt;!--Section: gallery--&gt;
+  &lt;section id=&#34;gallery&#34; class=&#34;text-center py-5&#34;&gt;
+
+    &lt;!-- Container --&gt;
+    &lt;div class=&#34;container&#34;&gt;
+
+      &lt;!-- Section heading --&gt;
+      &lt;h2 class=&#34;h1-responsive font-weight-bold mb-5&#34;&gt;Gallery&lt;/h2&gt;
+      &lt;!-- Section description --&gt;
+      &lt;p class=&#34;grey-text w-responsive mx-auto mb-5&#34;&gt;Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit est laborum.&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Container --&gt;
+
+  &lt;/section&gt;
+  &lt;!--Section: gallery--&gt;
+
+  &lt;!--Section: testimonials--&gt;
+  &lt;section id=&#34;testimonials&#34; class=&#34;text-center py-5&#34; style=&#34;background-color: #eee;&#34;&gt;
+
+    &lt;!-- Container --&gt;
+    &lt;div class=&#34;container&#34;&gt;
+
+      &lt;!-- Section heading --&gt;
+      &lt;h2 class=&#34;h1-responsive font-weight-bold mb-5&#34;&gt;Testimonials&lt;/h2&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Container --&gt;
+
+  &lt;/section&gt;
+  &lt;!--Section: testimonials--&gt;
+
+  &lt;!--Section: call to action--&gt;
+  &lt;section id=&#34;&#34;&gt;
+
+
+
+  &lt;/section&gt;
+  &lt;!--Section: call to action--&gt;
+
+  &lt;!--Section: articles--&gt;
+  &lt;section id=&#34;articles&#34; class=&#34;text-center py-5&#34;&gt;
+
+    &lt;!-- Container --&gt;
+    &lt;div class=&#34;container&#34;&gt;
+
+      &lt;!-- Section heading --&gt;
+      &lt;h2 class=&#34;h1-responsive font-weight-bold mb-5&#34;&gt;Articles&lt;/h2&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Container --&gt;
+
+  &lt;/section&gt;
+  &lt;!--Section: articles--&gt;
+
+  &lt;!--Section: contact--&gt;
+  &lt;section id=&#34;contact&#34; class=&#34;py-5&#34; style=&#34;background-color: #eee;&#34;&gt;
+
+    &lt;div class=&#34;container&#34;&gt;
+
+    &lt;/div&gt;
+
+  &lt;/section&gt;
+  &lt;!--Section: contact--&gt;
+
+&lt;/main&gt;
+&lt;!--Main layout--&gt;
+</code></pre>
+<p>刷新页面看看.</p>
+<p>说明如下:</p>
+<ul>
+<li>我们使用<code>&lt;section&gt;</code>将页面主题总共分为<code>About/Projects/Gallery/Testimonials/Articles/Contact</code>六个部分, 与导航条对应.</li>
+<li>为每个<code>&lt;section&gt;</code>都设置了 ID, 以能够进行页内导航</li>
+<li>在<code>&lt;section&gt;</code>之间我们设置了<code>py-5</code>上下内边距</li>
+<li>我们通过<code>style=&#34;background-color: #eee;&#34;</code>内联样式为偶数的<code>section</code>设置了灰色背景以区分</li>
+<li>每个<code>section</code>中我们都使用了<code>container</code>, 拟使用Bootstrap的网格系统来进行布局</li>
+</ul>
+<p>Negative:✎ 试一试: 上面的代码中我们总共为3个<code>section</code>设置了内联样式, 你有没有简便一点的方法能减少这种重复代码?</p>
+<h2 is-upgraded>Features章节</h2>
+<p>MDB Pro版提供了很多的<a href="https://mdbootstrap.com/docs/jquery/sections/features/#v-3" target="_blank">Features Sections</a>文档. 将<code>about</code>章节替换为如下代码:</p>
+<pre><code>&lt;!--Section: about--&gt;
+&lt;section id=&#34;about&#34; class=&#34;py-5&#34;&gt;
+
+  &lt;!-- Container --&gt;
+  &lt;div class=&#34;container&#34;&gt;
+    &lt;!-- Section heading --&gt;
+    &lt;h2 class=&#34;h1-responsive font-weight-bold text-center mb-5&#34;&gt;Why is it so great?&lt;/h2&gt;
+    &lt;!-- Section description --&gt;
+    &lt;p class=&#34;lead grey-text text-center w-responsive mx-auto mb-5&#34;&gt;Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+      adminim veniam.
+    &lt;/p&gt;
+    &lt;!-- Grid row --&gt;
+    &lt;div class=&#34;row&#34;&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-lg-5 text-center text-lg-left&#34;&gt;
+        &lt;img class=&#34;img-fluid&#34; src=&#34;https://mdbootstrap.com/img/Photos/Others/screens-section.jpg&#34;
+          alt=&#34;Sample image&#34;&gt;
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-lg-7&#34;&gt;
+
+        &lt;!-- Grid row --&gt;
+        &lt;div class=&#34;row mb-3&#34;&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-1&#34;&gt;
+            &lt;i class=&#34;fas fa-share fa-lg indigo-text&#34;&gt;&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-xl-10 col-md-11 col-10&#34;&gt;
+            &lt;h5 class=&#34;font-weight-bold mb-3&#34;&gt;Safety&lt;/h5&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam,
+              quis
+              nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Grid row --&gt;
+
+        &lt;!-- Grid row --&gt;
+        &lt;div class=&#34;row mb-3&#34;&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-1&#34;&gt;
+            &lt;i class=&#34;fas fa-share fa-lg indigo-text&#34;&gt;&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-xl-10 col-md-11 col-10&#34;&gt;
+            &lt;h5 class=&#34;font-weight-bold mb-3&#34;&gt;Technology&lt;/h5&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam,
+              quis
+              nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Grid row --&gt;
+
+        &lt;!--Grid row--&gt;
+        &lt;div class=&#34;row&#34;&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-1&#34;&gt;
+            &lt;i class=&#34;fas fa-share fa-lg indigo-text&#34;&gt;&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-xl-10 col-md-11 col-10&#34;&gt;
+            &lt;h5 class=&#34;font-weight-bold mb-3&#34;&gt;Finance&lt;/h5&gt;
+            &lt;p class=&#34;grey-text mb-0&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima
+              veniam,
+              quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid row--&gt;
+
+      &lt;/div&gt;
+      &lt;!--Grid column--&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Grid row --&gt;
+
+  &lt;/div&gt;
+  &lt;!-- Container --&gt;
+
+&lt;/section&gt;
+&lt;!--Section: about--&gt;
+</code></pre>
+<p>为保证颜色的一致性, 将三个图标的颜色更改为紫色:的</p>
+<pre><code>&lt;i class=&#34;fas fa-share fa-lg purple-text&#34;&gt;&lt;/i&gt;
+</code></pre>
+<h2 is-upgraded>Projects章节</h2>
+<p>下面我们来构建下一个章节. MDB Pro版提供了不少的<a href="https://mdbootstrap.com/docs/jquery/sections/projects/#v-1" target="_blank">Projects Sections</a>文档. 替换页面的<code>Projects</code>章节为如下代码:</p>
+<pre><code>&lt;!--Section: projects--&gt;
+&lt;section id=&#34;projects&#34; class=&#34;text-center py-5&#34; style=&#34;background-color: #eee;&#34;&gt;
+
+  &lt;!-- Container --&gt;
+  &lt;div class=&#34;container&#34;&gt;
+
+    &lt;!-- Section heading --&gt;
+    &lt;h2 class=&#34;h1-responsive font-weight-bold mb-5&#34;&gt;Our best projects&lt;/h2&gt;
+    &lt;!-- Section description --&gt;
+    &lt;p class=&#34;grey-text w-responsive mx-auto mb-5&#34;&gt;Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit est laborum.&lt;/p&gt;
+
+    &lt;!-- Grid row --&gt;
+    &lt;div class=&#34;row text-center&#34;&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-lg-4 col-md-12 mb-lg-0 mb-4&#34;&gt;
+        &lt;!--Featured image--&gt;
+        &lt;div class=&#34;view overlay rounded z-depth-1&#34;&gt;
+          &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/58.jpg&#34; class=&#34;img-fluid&#34;
+            alt=&#34;Sample project image&#34;&gt;
+          &lt;a&gt;
+            &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+          &lt;/a&gt;
+          &lt;!--Excerpt--&gt;
+          &lt;div class=&#34;card-body pb-2&#34;&gt;
+            &lt;h4 class=&#34;font-weight-bold my-3&#34;&gt;Title of the news&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Temporibus autem quibusdam et aut officiis debitis aut rerum
+              necessitatibus saepe eveniet ut et voluptates repudiandae.
+            &lt;/p&gt;
+            &lt;a class=&#34;btn btn-purple btn-sm&#34;&gt;&lt;i class=&#34;fas fa-clone left&#34;&gt;&lt;/i&gt; View project&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-lg-4 col-md-6 mb-md-0 mb-4&#34;&gt;
+        &lt;!--Featured image--&gt;
+        &lt;div class=&#34;view overlay rounded z-depth-1&#34;&gt;
+          &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/project4.jpg&#34; class=&#34;img-fluid&#34;
+            alt=&#34;Sample project image&#34;&gt;
+          &lt;a&gt;
+            &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+          &lt;/a&gt;
+          &lt;!--Excerpt--&gt;
+          &lt;div class=&#34;card-body pb-2&#34;&gt;
+            &lt;h4 class=&#34;font-weight-bold my-3&#34;&gt;Title of the news&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Temporibus autem quibusdam et aut officiis debitis aut rerum
+              necessitatibus saepe eveniet ut et voluptates repudiandae.
+            &lt;/p&gt;
+            &lt;a class=&#34;btn btn-purple btn-sm&#34;&gt;&lt;i class=&#34;fas fa-clone left&#34;&gt;&lt;/i&gt; View project&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-lg-4 col-md-6&#34;&gt;
+        &lt;!--Featured image--&gt;
+        &lt;div class=&#34;view overlay rounded z-depth-1&#34;&gt;
+          &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/88.jpg&#34; class=&#34;img-fluid&#34;
+            alt=&#34;Sample project image&#34;&gt;
+          &lt;a&gt;
+            &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+          &lt;/a&gt;
+          &lt;!--Excerpt--&gt;
+          &lt;div class=&#34;card-body pb-2&#34;&gt;
+            &lt;h4 class=&#34;font-weight-bold my-3&#34;&gt;Title of the news&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Temporibus autem quibusdam et aut officiis debitis aut rerum
+              necessitatibus saepe eveniet ut et voluptates repudiandae.
+            &lt;/p&gt;
+            &lt;a class=&#34;btn btn-purple btn-sm&#34;&gt;&lt;i class=&#34;fas fa-clone left&#34;&gt;&lt;/i&gt; View project&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Grid row --&gt;
+
+  &lt;/div&gt;
+  &lt;!-- Container --&gt;
+
+&lt;/section&gt;
+&lt;!--Section: projects--&gt;
+</code></pre>
+<p>目前你的页面应该是<a href="https://mdbootstrap.com/snippets/jquery/ascensus/11948?action=fullscreen" target="_blank">🌏这样的效果</a></p>
+<p>接下来我们将构建灯箱图片集.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体-LightBox gallery" duration="5">
+        <p>MDB Pro版给我们提供了多种灯箱效果的图片展示方式. 所谓灯箱效果(<a href="https://mdbootstrap.com/docs/jquery/javascript/lightbox/#lightbox-margins" target="_blank">LightBox</a>), 即首先展示的是缩略图, 点击后才显示大图.<br>替换页面<code>Gallery</code>章节代码如下:</p>
+<pre><code>&lt;!--Section: gallery--&gt;
+&lt;section id=&#34;gallery&#34; class=&#34;text-center py-5&#34;&gt;
+
+  &lt;!-- Container --&gt;
+  &lt;div class=&#34;container&#34;&gt;
+
+    &lt;!-- Section heading --&gt;
+    &lt;h2 class=&#34;h1-responsive font-weight-bold mb-5&#34;&gt;LightBox Gallery&lt;/h2&gt;
+    &lt;!-- Section description --&gt;
+    &lt;p class=&#34;grey-text w-responsive mx-auto mb-5&#34;&gt;Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit est laborum.&lt;/p&gt;
+
+    &lt;div class=&#34;row&#34;&gt;
+      &lt;div class=&#34;col-md-12&#34;&gt;
+
+        &lt;div id=&#34;mdb-lightbox-ui&#34;&gt;&lt;/div&gt;
+
+        &lt;div class=&#34;mdb-lightbox&#34;&gt;
+
+          &lt;figure class=&#34;col-md-4&#34;&gt;
+            &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(145).jpg&#34; class=&#34;img-fluid z-depth-1-half&#34;&gt;
+            &lt;/a&gt;
+          &lt;/figure&gt;
+
+          &lt;figure class=&#34;col-md-4&#34;&gt;
+            &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(150).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(150).jpg&#34; class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+            &lt;/a&gt;
+          &lt;/figure&gt;
+
+          &lt;figure class=&#34;col-md-4&#34;&gt;
+            &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(152).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(152).jpg&#34; class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+            &lt;/a&gt;
+          &lt;/figure&gt;
+
+          &lt;figure class=&#34;col-md-4&#34;&gt;
+            &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(42).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(42).jpg&#34; class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+            &lt;/a&gt;
+          &lt;/figure&gt;
+
+          &lt;figure class=&#34;col-md-4&#34;&gt;
+            &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(151).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(151).jpg&#34; class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+            &lt;/a&gt;
+          &lt;/figure&gt;
+
+          &lt;figure class=&#34;col-md-4&#34;&gt;
+            &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(40).jpg&#34; class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+            &lt;/a&gt;
+          &lt;/figure&gt;
+
+          &lt;figure class=&#34;col-md-4&#34;&gt;
+            &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(148).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(148).jpg&#34; class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+            &lt;/a&gt;
+          &lt;/figure&gt;
+
+          &lt;figure class=&#34;col-md-4&#34;&gt;
+            &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg&#34; class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+            &lt;/a&gt;
+          &lt;/figure&gt;
+
+          &lt;figure class=&#34;col-md-4&#34;&gt;
+            &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(149).jpg&#34; class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+            &lt;/a&gt;
+          &lt;/figure&gt;
+
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+  &lt;!-- Container --&gt;
+
+&lt;/section&gt;
+&lt;!--Section: gallery--&gt;
+</code></pre>
+<p>代码中有关图片的代码如下:</p>
+<pre><code>&lt;figure class=&#34;col-md-4&#34;&gt;
+    &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg&#34;
+        data-size=&#34;1600x1067&#34;&gt;
+        &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(145).jpg&#34;
+            class=&#34;img-fluid&#34;&gt;
+    &lt;/a&gt;
+&lt;/figure&gt;
+</code></pre>
+<p>你会发现我们提供了两种尺寸的图片:</p>
+<ul>
+<li>大的, 高质量的图片(原始图)</li>
+<li>小的, 低分辨率的缩略图(thumbnail)</li>
+</ul>
+<p>这种方式现在非常常见, 主要是为了页面性能考虑. 用户需要查看时才获取该图片, 而不是全部都下载, 提高了页面加载速度.</p>
+<p>然而, 刷新页面, 点击某缩略图, 你发现了问题: 大图不能显示?<br>这是因为这种操作一定需要跟<code>JavaScript</code>代码结合才能生效. 将下面代码添加到页面底部自定义JS区域:</p>
+<pre><code>&lt;!-- Your custom scripts (optional) --&gt;
+  &lt;script type=&#34;text/javascript&#34;&gt;
+    // MDB Lightbox Init
+    $(function () {
+      $(&#34;#mdb-lightbox-ui&#34;).load(&#34;mdb-addons/mdb-lightbox-ui.html&#34;);
+    });
+  &lt;/script&gt;
+</code></pre>
+<p>刷新, 你仍然没看到大图! <code>Ctrl+Shift+C</code>打开浏览器控制台, 在<code>Console</code>面板, 你一定会看到如下错误信息:</p>
+<pre><code>Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.
+</code></pre>
+<p>什么意思呢? 简单的说, 当前我们的页面是以文件的形式打开的, 为安全考虑, 浏览器禁止了这种跨源请求行为.<br>我们需要部署网站到Web服务器中!</p>
+<h2 is-upgraded>超强的Web服务器-Nginx</h2>
+<p>在Nginx官网下载最新的版本<a href="http://nginx.org/download/nginx-1.17.9.zip" target="_blank">Nginx1.17</a>. 这是一个压缩文件, 解压到非C盘即可如<code>D:\nginx</code>, 打开该目录, 你看看到有一个文件夹<code>html</code>, 这就是你网站文件所在.</p>
+<p>假设你的项目文件夹名为<code>myMDB</code>, 复制该文件夹到<code>html</code>即可.<br>当前的路径结构应该是<code>D:\nginx\html\myMDB</code>, 双击Nginx的安装目录下的<code>nginx.exe</code>文件, 那么你就在本地运行了一个Web服务器.</p>
+<p>现在浏览器地址栏中输入<code>localhost/myMDB/</code>, 你应该看到我们开发的页面. 试试大图是否可以打开了.</p>
+<aside class="special"><p>✘ 如果你理解以上内容有些困难, 暂时忽略它吧.</p>
+</aside>
+<p>到此为止, 你应该看到<a href="https://mdbootstrap.com/snippets/jquery/ascensus/14589?action=fullscreen" target="_blank">🌏这样的效果</a><br>下一节我们将构建感言(testimonials)章节.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体-Testimonials" duration="5">
+        <p>MDB Pro版给我们提供了不同种类的感言<a href="https://mdbootstrap.com/docs/jquery/sections/testimonials/#v-2" target="_blank">Testimonials</a>. 将页面中<code>Testimonials</code>章节替换为如下代码:</p>
+<pre><code>&lt;!-- Section: Testimonials v.4 --&gt;
+&lt;section id=&#34;testimonials&#34; class=&#34;text-center py-5&#34; style=&#34;background-color: #eee;&#34;&gt;
+
+  &lt;!-- Section heading --&gt;
+  &lt;h2 class=&#34;h1-responsive font-weight-bold my-5&#34;&gt;Testimonials v.4&lt;/h2&gt;
+
+  &lt;!-- Grid row --&gt;
+  &lt;div class=&#34;row&#34;&gt;
+
+    &lt;!--Carousel Wrapper--&gt;
+    &lt;div id=&#34;multi-item-example&#34; class=&#34;carousel testimonial-carousel slide carousel-multi-item mb-5&#34;
+      data-ride=&#34;carousel&#34;&gt;
+
+      &lt;!--Controls--&gt;
+      &lt;div class=&#34;controls-top&#34;&gt;
+        &lt;a class=&#34;btn-floating light-blue darken-4&#34; href=&#34;#multi-item-example&#34; data-slide=&#34;prev&#34;&gt;&lt;i
+            class=&#34;fas fa-chevron-left&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+        &lt;a class=&#34;btn-floating light-blue darken-4&#34; href=&#34;#multi-item-example&#34; data-slide=&#34;next&#34;&gt;&lt;i
+            class=&#34;fas fa-chevron-right&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;!--Controls--&gt;
+
+      &lt;!--Indicators--&gt;
+      &lt;ol class=&#34;carousel-indicators&#34;&gt;
+        &lt;li data-target=&#34;#multi-item-example&#34; data-slide-to=&#34;0&#34; class=&#34;active light-blue darken-4&#34;&gt;&lt;/li&gt;
+        &lt;li data-target=&#34;#multi-item-example&#34; data-slide-to=&#34;1&#34; class=&#34;light-blue darken-4&#34;&gt;&lt;/li&gt;
+        &lt;li data-target=&#34;#multi-item-example&#34; data-slide-to=&#34;2&#34; class=&#34;light-blue darken-4&#34;&gt;&lt;/li&gt;
+      &lt;/ol&gt;
+      &lt;!--Indicators--&gt;
+
+      &lt;!--Slides--&gt;
+      &lt;div class=&#34;carousel-inner&#34; role=&#34;listbox&#34;&gt;
+
+        &lt;!--First slide--&gt;
+        &lt;div class=&#34;carousel-item active&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4&#34;&gt;
+            &lt;div class=&#34;testimonial&#34;&gt;
+              &lt;!--Avatar--&gt;
+              &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(26).jpg&#34;
+                  class=&#34;rounded-circle img-fluid&#34;&gt;
+              &lt;/div&gt;
+              &lt;!--Content--&gt;
+              &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Anna Deynah&lt;/h4&gt;
+              &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Web Designer&lt;/h6&gt;
+              &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Quod eos id officiis hic tenetur.&lt;/p&gt;
+              &lt;!--Review--&gt;
+              &lt;div class=&#34;grey-text&#34;&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star-half-alt&#34;&gt; &lt;/i&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+            &lt;div class=&#34;testimonial&#34;&gt;
+              &lt;!--Avatar--&gt;
+              &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg&#34;
+                  class=&#34;rounded-circle img-fluid&#34;&gt;
+              &lt;/div&gt;
+              &lt;!--Content--&gt;
+              &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;John Doe&lt;/h4&gt;
+              &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Web Developer&lt;/h6&gt;
+              &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Ut enim ad minima veniam,
+                quis
+                nostrum exercitationem ullam corporis laboriosam.&lt;/p&gt;
+              &lt;!--Review--&gt;
+              &lt;div class=&#34;grey-text&#34;&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+            &lt;div class=&#34;testimonial&#34;&gt;
+              &lt;!--Avatar--&gt;
+              &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg&#34;
+                  class=&#34;rounded-circle img-fluid&#34;&gt;
+              &lt;/div&gt;
+              &lt;!--Content--&gt;
+              &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Abbey Clark&lt;/h4&gt;
+              &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Photographer&lt;/h6&gt;
+              &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Quis autem vel eum iure
+                reprehenderit qui in ea voluptate velit esse quam nihil molestiae.&lt;/p&gt;
+              &lt;!--Review--&gt;
+              &lt;div class=&#34;grey-text&#34;&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;far fa-star&#34;&gt; &lt;/i&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--First slide--&gt;
+
+        &lt;!--Second slide--&gt;
+        &lt;div class=&#34;carousel-item&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4&#34;&gt;
+            &lt;div class=&#34;testimonial&#34;&gt;
+              &lt;!--Avatar--&gt;
+              &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(4).jpg&#34;
+                  class=&#34;rounded-circle img-fluid&#34;&gt;
+              &lt;/div&gt;
+              &lt;!--Content--&gt;
+              &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Blake Dabney&lt;/h4&gt;
+              &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Web Designer&lt;/h6&gt;
+              &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Ut enim ad minima veniam,
+                quis
+                nostrum exercitationem ullam corporis laboriosam.&lt;/p&gt;
+              &lt;!--Review--&gt;
+              &lt;div class=&#34;grey-text&#34;&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star-half-alt&#34;&gt; &lt;/i&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+            &lt;div class=&#34;testimonial&#34;&gt;
+              &lt;!--Avatar--&gt;
+              &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(6).jpg&#34;
+                  class=&#34;rounded-circle img-fluid&#34;&gt;
+              &lt;/div&gt;
+              &lt;!--Content--&gt;
+              &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Andrea Clay&lt;/h4&gt;
+              &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Front-end developer&lt;/h6&gt;
+              &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Quod eos id officiis hic tenetur quae.&lt;/p&gt;
+              &lt;!--Review--&gt;
+              &lt;div class=&#34;grey-text&#34;&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+            &lt;div class=&#34;testimonial&#34;&gt;
+              &lt;!--Avatar--&gt;
+              &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(7).jpg&#34;
+                  class=&#34;rounded-circle img-fluid&#34;&gt;
+              &lt;/div&gt;
+              &lt;!--Content--&gt;
+              &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Cami Gosse&lt;/h4&gt;
+              &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Phtographer&lt;/h6&gt;
+              &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;At vero eos et accusamus et
+                iusto odio dignissimos ducimus qui blanditiis praesentium.&lt;/p&gt;
+              &lt;!--Review--&gt;
+              &lt;div class=&#34;grey-text&#34;&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;far fa-star&#34;&gt; &lt;/i&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Second slide--&gt;
+
+        &lt;!--Third slide--&gt;
+        &lt;div class=&#34;carousel-item&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4&#34;&gt;
+            &lt;div class=&#34;testimonial&#34;&gt;
+              &lt;!--Avatar--&gt;
+              &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg&#34;
+                  class=&#34;rounded-circle img-fluid&#34;&gt;
+              &lt;/div&gt;
+              &lt;!--Content--&gt;
+              &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Bobby Haley&lt;/h4&gt;
+              &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Web Developer&lt;/h6&gt;
+              &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Quod eos id officiis hic tenetur quae.&lt;/p&gt;
+              &lt;!--Review--&gt;
+              &lt;div class=&#34;grey-text&#34;&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+            &lt;div class=&#34;testimonial&#34;&gt;
+              &lt;!--Avatar--&gt;
+              &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg&#34;
+                  class=&#34;rounded-circle img-fluid&#34;&gt;
+              &lt;/div&gt;
+              &lt;!--Content--&gt;
+              &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Elisa Janson&lt;/h4&gt;
+              &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Marketer&lt;/h6&gt;
+              &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;At vero eos et accusamus et
+                iusto odio dignissimos ducimus qui blanditiis praesentium.&lt;/p&gt;
+              &lt;!--Review--&gt;
+              &lt;div class=&#34;grey-text&#34;&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star-half-alt&#34;&gt; &lt;/i&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+            &lt;div class=&#34;testimonial&#34;&gt;
+              &lt;!--Avatar--&gt;
+              &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg&#34;
+                  class=&#34;rounded-circle img-fluid&#34;&gt;
+              &lt;/div&gt;
+              &lt;!--Content--&gt;
+              &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Rob Jacobs&lt;/h4&gt;
+              &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Front-end developer&lt;/h6&gt;
+              &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Ut enim ad minima veniam,
+                quis
+                nostrum exercitationem ullam corporis laboriosam.&lt;/p&gt;
+              &lt;!--Review--&gt;
+              &lt;div class=&#34;grey-text&#34;&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                &lt;i class=&#34;far fa-star&#34;&gt; &lt;/i&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Third slide--&gt;
+
+      &lt;/div&gt;
+      &lt;!--Slides--&gt;
+
+    &lt;/div&gt;
+    &lt;!--Carousel Wrapper--&gt;
+
+  &lt;/div&gt;
+  &lt;!-- Grid row --&gt;
+
+&lt;/section&gt;
+&lt;!-- Section: Testimonials v.4 --&gt;
+</code></pre>
+<p>刷新页面, 你会看到漂亮的<a href="https://mdbootstrap.com/docs/jquery/javascript/carousel/" target="_blank">轮播</a>感言出现.</p>
+<aside class="warning"><p>✎ 试一试: 感言底部的打分当前是<code>grey</code>, 你也可以用<a href="https://mdbootstrap.com/docs/jquery/css/text-color/" target="_blank">其它颜色</a>如<code>amber-text</code>等. 然后再看看空星/半星怎么来的.</p>
+</aside>
+<p>除此外, 你可能注意到在感言章节和文章章节之间有一个<code>&lt;!--Section: call to action--&gt;</code>章节, 这是我们额外放置的一个, 让<code>Jobs</code>激励一下我们吧.<br>将<code>&lt;!--Section: call to action--&gt;</code>代码替换如下:</p>
+<pre><code>&lt;!--Section: call to action--&gt;
+&lt;div class=&#34;streak streak-md streak-photo&#34;
+  style=&#34;background-image:url(&#39;https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img(115).jpg&#39;)&#34;&gt;
+  &lt;div class=&#34;flex-center white-text rgba-black-light pattern-1&#34;&gt;
+    &lt;ul class=&#34;mb-0 list-unstyled&#34;&gt;
+      &lt;li&gt;
+        &lt;h2 class=&#34;h2-responsive&#34;&gt;&lt;i class=&#34;fas fa-quote-left&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt; The people who
+          are
+          crazy enough to think they can change the world are the ones who do. &lt;i class=&#34;fas fa-quote-right&#34;
+            aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/h2&gt;
+      &lt;/li&gt;
+      &lt;li class=&#34;mb-0&#34;&gt;
+        &lt;h5 class=&#34;text-center font-italic mb-0&#34;&gt;~ Steve Jobs&lt;/h5&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--Section: call to action--&gt;
+</code></pre>
+<p>注意到<code>.pattern-1</code>样式类了吗? 它提供了一种特殊的点状遮罩效果. 看参考MDB <a href="https://mdbootstrap.com/docs/jquery/css/masks/" target="_blank">Mask</a>文档</p>
+<p>然后在自定义样式表文件<code>style.css</code>中添加如下代码, 让背景图片固定:</p>
+<pre><code>.streak.streak-photo {
+  background-attachment: fixed;
+}
+</code></pre>
+<p>现在刷新页面看看, 你会有<a href="https://mdbootstrap.com/snippets/jquery/ascensus/15217?action=fullscreen" target="_blank">🌏这样的效果</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体-Articles" duration="5">
+        <p>在<code>Articles</code>章节我们将使用MDB Pro版提供的<a href="https://mdbootstrap.com/docs/jquery/components/cards/#cascading-cards" target="_blank">卡片</a>.<br>将<code>Articles</code>章节的代码替换如下:</p>
+<pre><code>&lt;!--Section: articles--&gt;
+&lt;section id=&#34;articles&#34; class=&#34;text-center py-5&#34;&gt;
+
+  &lt;!-- Container --&gt;
+  &lt;div class=&#34;container&#34;&gt;
+
+    &lt;!-- Section heading --&gt;
+    &lt;h2 class=&#34;h1-responsive font-weight-bold mb-5&#34;&gt;Articles&lt;/h2&gt;
+
+    &lt;!--Grid row--&gt;
+    &lt;div class=&#34;row&#34;&gt;
+
+      &lt;!--Grid column--&gt;
+      &lt;div class=&#34;col-lg-4 col-md-12 mb-4&#34;&gt;
+
+        &lt;!-- Card Narrower --&gt;
+        &lt;div class=&#34;card card-cascade narrower&#34;&gt;
+
+          &lt;!-- Card image --&gt;
+          &lt;div class=&#34;view view-cascade overlay&#34;&gt;
+            &lt;img class=&#34;card-img-top&#34; src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg&#34;
+              alt=&#34;Card image cap&#34;&gt;
+            &lt;a&gt;
+              &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Card content --&gt;
+          &lt;div class=&#34;card-body card-body-cascade&#34;&gt;
+
+            &lt;!-- Label --&gt;
+            &lt;h5 class=&#34;pink-text pb-2 pt-1&#34;&gt;&lt;i class=&#34;fas fa-utensils&#34;&gt;&lt;/i&gt; Culinary&lt;/h5&gt;
+            &lt;!-- Title --&gt;
+            &lt;h4 class=&#34;font-weight-bold card-title&#34;&gt;Cheat day inspirations&lt;/h4&gt;
+            &lt;!-- Text --&gt;
+            &lt;p class=&#34;card-text&#34;&gt;Ut enim ad minima veniam, quis nostrum exercitationem ullam
+              corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.&lt;/p&gt;
+            &lt;!-- Button --&gt;
+            &lt;a class=&#34;btn btn-unique&#34;&gt;Button&lt;/a&gt;
+
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Card Narrower --&gt;
+
+      &lt;/div&gt;
+      &lt;!--Grid column--&gt;
+
+      &lt;!--Grid column--&gt;
+      &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+        &lt;!-- Card Narrower --&gt;
+        &lt;div class=&#34;card card-cascade narrower&#34;&gt;
+
+          &lt;!-- Card image --&gt;
+          &lt;div class=&#34;view view-cascade overlay&#34;&gt;
+            &lt;img class=&#34;card-img-top&#34; src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg&#34;
+              alt=&#34;Card image cap&#34;&gt;
+            &lt;a&gt;
+              &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Card content --&gt;
+          &lt;div class=&#34;card-body card-body-cascade&#34;&gt;
+
+            &lt;!-- Label --&gt;
+            &lt;h5 class=&#34;pink-text pb-2 pt-1&#34;&gt;&lt;i class=&#34;fas fa-utensils&#34;&gt;&lt;/i&gt; Culinary&lt;/h5&gt;
+            &lt;!-- Title --&gt;
+            &lt;h4 class=&#34;font-weight-bold card-title&#34;&gt;Cheat day inspirations&lt;/h4&gt;
+            &lt;!-- Text --&gt;
+            &lt;p class=&#34;card-text&#34;&gt;Ut enim ad minima veniam, quis nostrum exercitationem ullam
+              corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.&lt;/p&gt;
+            &lt;!-- Button --&gt;
+            &lt;a class=&#34;btn btn-unique&#34;&gt;Button&lt;/a&gt;
+
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Card Narrower --&gt;
+
+      &lt;/div&gt;
+      &lt;!--Grid column--&gt;
+
+      &lt;!--Grid column--&gt;
+      &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+        &lt;!-- Card Narrower --&gt;
+        &lt;div class=&#34;card card-cascade narrower&#34;&gt;
+
+          &lt;!-- Card image --&gt;
+          &lt;div class=&#34;view view-cascade overlay&#34;&gt;
+            &lt;img class=&#34;card-img-top&#34; src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg&#34;
+              alt=&#34;Card image cap&#34;&gt;
+            &lt;a&gt;
+              &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Card content --&gt;
+          &lt;div class=&#34;card-body card-body-cascade&#34;&gt;
+
+            &lt;!-- Label --&gt;
+            &lt;h5 class=&#34;pink-text pb-2 pt-1&#34;&gt;&lt;i class=&#34;fas fa-utensils&#34;&gt;&lt;/i&gt; Culinary&lt;/h5&gt;
+            &lt;!-- Title --&gt;
+            &lt;h4 class=&#34;font-weight-bold card-title&#34;&gt;Cheat day inspirations&lt;/h4&gt;
+            &lt;!-- Text --&gt;
+            &lt;p class=&#34;card-text&#34;&gt;Ut enim ad minima veniam, quis nostrum exercitationem ullam
+              corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.&lt;/p&gt;
+            &lt;!-- Button --&gt;
+            &lt;a class=&#34;btn btn-unique&#34;&gt;Button&lt;/a&gt;
+
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Card Narrower --&gt;
+
+      &lt;/div&gt;
+      &lt;!--Grid column--&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid row--&gt;
+
+  &lt;/div&gt;
+  &lt;!-- Container --&gt;
+
+&lt;/section&gt;
+&lt;!--Section: articles--&gt;
+</code></pre>
+<aside class="warning"><p>✎ 试一试: MDB官网的英文版本还对图像做了渐变处理, 你可跟着实践一下.</p>
+</aside>
+<p>刷新浏览器, 你当前应该是<a href="https://mdbootstrap.com/snippets/jquery/ascensus/16253?action=fullscreen" target="_blank">🌏这样的效果</a></p>
+<p>下面我们来完成<code>Contact</code>章节.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体-Contact/Footer" duration="5">
+        <h2 is-upgraded>Contact</h2>
+<p>查看MDB Pro版提供的<a href="https://mdbootstrap.com/docs/jquery/sections/contact/" target="_blank">Contatcts</a>文档. 替换页面的<code>Contacts</code>章节如下:</p>
+<pre><code>&lt;!--Section: contact--&gt;
+&lt;section id=&#34;contact&#34; class=&#34;py-5&#34; style=&#34;background-color: #eee;&#34;&gt;
+
+  &lt;div class=&#34;container&#34;&gt;
+
+    &lt;!-- Section heading --&gt;
+    &lt;h2 class=&#34;h1-responsive font-weight-bold text-center mb-5&#34;&gt;Contact us&lt;/h2&gt;
+    &lt;!-- Section description --&gt;
+    &lt;p class=&#34;text-center w-responsive mx-auto mb-5&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum
+      porro a pariatur veniam.&lt;/p&gt;
+
+    &lt;!-- Grid row --&gt;
+    &lt;div class=&#34;row&#34;&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-md-9 mb-md-0 mb-5&#34;&gt;
+
+        &lt;form&gt;
+
+          &lt;!-- Grid row --&gt;
+          &lt;div class=&#34;row&#34;&gt;
+
+            &lt;!-- Grid column --&gt;
+            &lt;div class=&#34;col-md-6&#34;&gt;
+              &lt;div class=&#34;md-form mb-0&#34;&gt;
+                &lt;input type=&#34;text&#34; id=&#34;contact-name&#34; class=&#34;form-control&#34;&gt;
+                &lt;label for=&#34;contact-name&#34; class=&#34;&#34;&gt;Your name&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- Grid column --&gt;
+
+            &lt;!-- Grid column --&gt;
+            &lt;div class=&#34;col-md-6&#34;&gt;
+              &lt;div class=&#34;md-form mb-0&#34;&gt;
+                &lt;input type=&#34;text&#34; id=&#34;contact-email&#34; class=&#34;form-control&#34;&gt;
+                &lt;label for=&#34;contact-email&#34; class=&#34;&#34;&gt;Your email&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- Grid column --&gt;
+
+          &lt;/div&gt;
+          &lt;!-- Grid row --&gt;
+
+          &lt;!-- Grid row --&gt;
+          &lt;div class=&#34;row&#34;&gt;
+
+            &lt;!-- Grid column --&gt;
+            &lt;div class=&#34;col-md-12&#34;&gt;
+              &lt;div class=&#34;md-form mb-0&#34;&gt;
+                &lt;input type=&#34;text&#34; id=&#34;contact-Subject&#34; class=&#34;form-control&#34;&gt;
+                &lt;label for=&#34;contact-Subject&#34; class=&#34;&#34;&gt;Subject&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- Grid column --&gt;
+
+          &lt;/div&gt;
+          &lt;!-- Grid row --&gt;
+
+          &lt;!-- Grid row --&gt;
+          &lt;div class=&#34;row&#34;&gt;
+
+            &lt;!-- Grid column --&gt;
+            &lt;div class=&#34;col-md-12&#34;&gt;
+              &lt;div class=&#34;md-form&#34;&gt;
+                &lt;textarea type=&#34;text&#34; id=&#34;contact-message&#34; class=&#34;form-control md-textarea&#34; rows=&#34;3&#34;&gt;&lt;/textarea&gt;
+                &lt;label for=&#34;contact-message&#34;&gt;Your message&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- Grid column --&gt;
+
+          &lt;/div&gt;
+          &lt;!-- Grid row --&gt;
+
+        &lt;/form&gt;
+
+        &lt;div class=&#34;text-center text-md-left&#34;&gt;
+          &lt;a class=&#34;btn btn-purple btn-md&#34;&gt;Send&lt;/a&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-md-3 text-center&#34;&gt;
+        &lt;ul class=&#34;list-unstyled mb-0&#34;&gt;
+          &lt;li&gt;
+            &lt;i class=&#34;fas fa-map-marker-alt fa-2x purple-text&#34;&gt;&lt;/i&gt;
+            &lt;p&gt;San Francisco, CA 94126, USA&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;i class=&#34;fas fa-phone fa-2x mt-4 purple-text&#34;&gt;&lt;/i&gt;
+            &lt;p&gt;+ 01 234 567 89&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;i class=&#34;fas fa-envelope fa-2x mt-4 purple-text&#34;&gt;&lt;/i&gt;
+            &lt;p class=&#34;mb-0&#34;&gt;contact@example.com&lt;/p&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Grid row --&gt;
+
+  &lt;/div&gt;
+
+&lt;/section&gt;
+&lt;!--Section: contact--&gt;
+</code></pre>
+<h2 is-upgraded>Footer</h2>
+<p>下面我们替换<code>Footer</code>代码如下:</p>
+<pre><code>&lt;!-- Footer --&gt;
+&lt;footer class=&#34;page-footer font-small pt-4&#34;&gt;
+
+  &lt;!-- Footer Elements --&gt;
+  &lt;div class=&#34;container&#34;&gt;
+
+    &lt;!-- Social buttons --&gt;
+    &lt;ul class=&#34;list-unstyled list-inline text-center&#34;&gt;
+      &lt;li class=&#34;list-inline-item&#34;&gt;
+        &lt;a class=&#34;btn-floating btn-fb mx-1&#34;&gt;
+          &lt;i class=&#34;fab fa-facebook-f&#34;&gt; &lt;/i&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class=&#34;list-inline-item&#34;&gt;
+        &lt;a class=&#34;btn-floating btn-tw mx-1&#34;&gt;
+          &lt;i class=&#34;fab fa-twitter&#34;&gt; &lt;/i&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class=&#34;list-inline-item&#34;&gt;
+        &lt;a class=&#34;btn-floating btn-gplus mx-1&#34;&gt;
+          &lt;i class=&#34;fab fa-google-plus-g&#34;&gt; &lt;/i&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class=&#34;list-inline-item&#34;&gt;
+        &lt;a class=&#34;btn-floating btn-li mx-1&#34;&gt;
+          &lt;i class=&#34;fab fa-linkedin-in&#34;&gt; &lt;/i&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class=&#34;list-inline-item&#34;&gt;
+        &lt;a class=&#34;btn-floating btn-dribbble mx-1&#34;&gt;
+          &lt;i class=&#34;fab fa-dribbble&#34;&gt; &lt;/i&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!-- Social buttons --&gt;
+
+  &lt;/div&gt;
+  &lt;!-- Footer Elements --&gt;
+
+  &lt;!-- Copyright --&gt;
+  &lt;div class=&#34;footer-copyright text-center py-3&#34;&gt;© 2018 Copyright:
+    &lt;a href=&#34;https://mdbootstrap.com/education/bootstrap/&#34;&gt; MDBootstrap.com&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;!-- Copyright --&gt;
+
+&lt;/footer&gt;
+&lt;!-- Footer --&gt;
+</code></pre>
+<p>为了让低顶的颜色一致, 打开<code>style.css</code>文件, 找到<code>.top-nav-collapse</code>类, 修改如下:</p>
+<pre><code>.top-nav-collapse, .page-footer {
+    background-color: #563e91 !important;
+}
+</code></pre>
+<aside class="special"><p>✍ 注意: <code>!important</code>表明该样式具有最高的优先级. 还记得CSS的优先级么?</p>
+</aside>
+<p>现在你的页面应该如此效果(https://mdbootstrap.com/snippets/jquery/ascensus/16408?action=fullscreen)</p>
+<h2 is-upgraded>动画</h2>
+<p>最后, 让我们为页面的每个章节添加点动画效果吧.</p>
+<p>在MDB中, 为元素添加点动画(共70+种)非常简单, 请参见 MDB <a href="https://mdbootstrap.com/docs/jquery/css/animations/" target="_blank">Animations</a>文档.<br>我们采用一种不同的方法来自动给页面上的每个<code>&lt;section&gt;</code>添加动画效果, 从而减轻工作量.<br>将页面底部的自定义<code>JavaScript</code>脚本区修改为如下代码:</p>
+<pre><code>&lt;!-- Your custom scripts (optional) --&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  // MDB Lightbox Init
+  $(function () {
+    $(&#34;#mdb-lightbox-ui&#34;).load(&#34;mdb-addons/mdb-lightbox-ui.html&#34;);
+  });
+  // 以下为动画效果新添加的两条语句
+  // Adding animations to the sections, 使用的是淡入, 你也可以试试zoomIn等动画
+  $(&#34;section&#34;).addClass(&#34;wow fadeIn&#34;);
+  // Animations Init, 注意必须放在ready方法中以防WOW对象没能加载成功
+  $(document).ready(function () {
+    new WOW().init();
+  });
+&lt;/script&gt;
+</code></pre>
+<p>至此, 大功告成, 刷新页面看看, 你应该有<a href="https://mdbootstrap.com/snippets/jquery/ascensus/16512?action=fullscreen" target="_blank">如此效果</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="参考代码" duration="0">
+        <aside class="special"><p>🌏 提示: 站点的图标是重要标志logo, 你可前往<a href="https://mdbootstrap.com/material-design-logo-generator/" target="_blank">MDB Logo generator</a>制作属于你的专用图标, It&#39;s FREE!</p>
+</aside>
+<p>完整的HTML代码如下:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&#34;UTF-8&#34;&gt;
+  &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt;
+  &lt;meta http-equiv=&#34;x-ua-compatible&#34; content=&#34;ie=edge&#34;&gt;
+  &lt;title&gt;MDB4.12模板&lt;/title&gt;
+  &lt;!-- MDB icon --&gt;
+  &lt;link rel=&#34;icon&#34; href=&#34;img/mdb-favicon.ico&#34; type=&#34;image/x-icon&#34;&gt;
+  &lt;!-- Font Awesome --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://use.fontawesome.com/releases/v5.11.2/css/all.css&#34;&gt;
+  &lt;!-- Bootstrap core CSS --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;css/bootstrap.min.css&#34;&gt;
+  &lt;!-- Material Design Bootstrap --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;css/mdb.min.css&#34;&gt;
+  &lt;!-- Your custom styles (optional) --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;css/style.css&#34;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;!-- Main navigation --&gt;
+  &lt;header&gt;
+    &lt;!-- Navbar --&gt;
+    &lt;nav class=&#34;navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar&#34;&gt;
+      &lt;div class=&#34;container&#34;&gt;
+        &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Navbar&lt;/a&gt;
+        &lt;button class=&#34;navbar-toggler&#34; type=&#34;button&#34; data-toggle=&#34;collapse&#34; data-target=&#34;#navbarTogglerDemo02&#34;
+          aria-controls=&#34;navbarTogglerDemo02&#34; aria-expanded=&#34;false&#34; aria-label=&#34;Toggle navigation&#34;&gt;
+          &lt;span class=&#34;navbar-toggler-icon&#34;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class=&#34;collapse navbar-collapse&#34; id=&#34;navbarTogglerDemo02&#34;&gt;
+          &lt;ul class=&#34;navbar-nav mr-auto smooth-scroll&#34;&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#intro&#34;&gt;Home
+              &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#about&#34; data-offset=&#34;90&#34;&gt;About&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#projects&#34; data-offset=&#34;90&#34;&gt;Projects&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#gallery&#34; data-offset=&#34;90&#34;&gt;Gallery&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#testimonials&#34; data-offset=&#34;30&#34;&gt;Testimonials&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#articles&#34; data-offset=&#34;90&#34;&gt;Articles&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#contact&#34; data-offset=&#34;90&#34;&gt;Contact&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;!-- Social Icon  --&gt;
+          &lt;ul class=&#34;navbar-nav nav-flex-icons&#34;&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34;&gt;
+                &lt;i class=&#34;fab fa-facebook-f light-green-text-2&#34;&gt;&lt;/i&gt;
+              &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34;&gt;
+                &lt;i class=&#34;fab fa-twitter light-green-text-2&#34;&gt;&lt;/i&gt;
+              &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34;&gt;
+                &lt;i class=&#34;fab fa-instagram light-green-text-2&#34;&gt;&lt;/i&gt;
+              &lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+    &lt;!-- Navbar --&gt;
+    &lt;!-- Full Page Intro --&gt;
+    &lt;div class=&#34;view&#34;&gt;
+      &lt;video class=&#34;video-intro&#34; poster=&#34;https://mdbootstrap.com/img/Photos/Others/background.jpg&#34; playsinline autoplay
+        muted loop&gt;
+        &lt;source src=&#34;https://mdbootstrap.com/img/video/animation.mp4&#34; type=&#34;video/mp4&#34;&gt;
+      &lt;/video&gt;
+      &lt;!-- Mask &amp; flexbox options--&gt;
+      &lt;div class=&#34;mask rgba-gradient d-flex justify-content-center align-items-center&#34;&gt;
+        &lt;!-- Content --&gt;
+        &lt;div class=&#34;container px-md-3 px-sm-0&#34;&gt;
+          &lt;!--Grid row--&gt;
+          &lt;div class=&#34;row wow fadeIn&#34;&gt;
+            &lt;!--Grid column--&gt;
+            &lt;div class=&#34;col-md-12 mb-4 white-text text-center wow fadeIn&#34;&gt;
+              &lt;h3 class=&#34;display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5&#34;&gt;Creative Agency&lt;/h3&gt;
+              &lt;hr class=&#34;hr-light my-4 w-75&#34;&gt;
+              &lt;h4 class=&#34;subtext-header mt-2 mb-4&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit deleniti
+                consequuntur nihil.&lt;/h4&gt;
+              &lt;a href=&#34;#!&#34; class=&#34;btn btn-rounded btn-outline-white&#34;&gt;
+                &lt;i class=&#34;fas fa-home &#34;&gt;&lt;/i&gt; Visit us
+              &lt;/a&gt;
+            &lt;/div&gt;
+            &lt;!--Grid column--&gt;
+          &lt;/div&gt;
+          &lt;!--Grid row--&gt;
+        &lt;/div&gt;
+        &lt;!-- Content --&gt;
+      &lt;/div&gt;
+      &lt;!-- Mask &amp; flexbox options--&gt;
+    &lt;/div&gt;
+    &lt;!-- Full Page Intro --&gt;
+  &lt;/header&gt;
+  &lt;!--Main layout--&gt;
+  &lt;main&gt;
+
+    &lt;!--Section: about--&gt;
+    &lt;section id=&#34;about&#34; class=&#34;py-5&#34;&gt;
+
+      &lt;!-- Container --&gt;
+      &lt;div class=&#34;container&#34;&gt;
+        &lt;!-- Section heading --&gt;
+        &lt;h2 class=&#34;h1-responsive font-weight-bold text-center mb-5&#34;&gt;Why is it so great?&lt;/h2&gt;
+        &lt;!-- Section description --&gt;
+        &lt;p class=&#34;lead grey-text text-center w-responsive mx-auto mb-5&#34;&gt;Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+          adminim veniam.
+        &lt;/p&gt;
+        &lt;!-- Grid row --&gt;
+        &lt;div class=&#34;row&#34;&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-lg-5 text-center text-lg-left&#34;&gt;
+            &lt;img class=&#34;img-fluid&#34; src=&#34;https://mdbootstrap.com/img/Photos/Others/screens-section.jpg&#34;
+              alt=&#34;Sample image&#34;&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-lg-7&#34;&gt;
+
+            &lt;!-- Grid row --&gt;
+            &lt;div class=&#34;row mb-3&#34;&gt;
+
+              &lt;!-- Grid column --&gt;
+              &lt;div class=&#34;col-1&#34;&gt;
+                &lt;i class=&#34;fas fa-share fa-lg purple-text&#34;&gt;&lt;/i&gt;
+              &lt;/div&gt;
+              &lt;!-- Grid column --&gt;
+
+              &lt;!-- Grid column --&gt;
+              &lt;div class=&#34;col-xl-10 col-md-11 col-10&#34;&gt;
+                &lt;h5 class=&#34;font-weight-bold mb-3&#34;&gt;Safety&lt;/h5&gt;
+                &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam,
+                  quis
+                  nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;!-- Grid column --&gt;
+
+            &lt;/div&gt;
+            &lt;!-- Grid row --&gt;
+
+            &lt;!-- Grid row --&gt;
+            &lt;div class=&#34;row mb-3&#34;&gt;
+
+              &lt;!-- Grid column --&gt;
+              &lt;div class=&#34;col-1&#34;&gt;
+                &lt;i class=&#34;fas fa-share fa-lg purple-text&#34;&gt;&lt;/i&gt;
+              &lt;/div&gt;
+              &lt;!-- Grid column --&gt;
+
+              &lt;!-- Grid column --&gt;
+              &lt;div class=&#34;col-xl-10 col-md-11 col-10&#34;&gt;
+                &lt;h5 class=&#34;font-weight-bold mb-3&#34;&gt;Technology&lt;/h5&gt;
+                &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam,
+                  quis
+                  nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;!-- Grid column --&gt;
+
+            &lt;/div&gt;
+            &lt;!-- Grid row --&gt;
+
+            &lt;!--Grid row--&gt;
+            &lt;div class=&#34;row&#34;&gt;
+
+              &lt;!-- Grid column --&gt;
+              &lt;div class=&#34;col-1&#34;&gt;
+                &lt;i class=&#34;fas fa-share fa-lg purple-text&#34;&gt;&lt;/i&gt;
+              &lt;/div&gt;
+              &lt;!-- Grid column --&gt;
+
+              &lt;!-- Grid column --&gt;
+              &lt;div class=&#34;col-xl-10 col-md-11 col-10&#34;&gt;
+                &lt;h5 class=&#34;font-weight-bold mb-3&#34;&gt;Finance&lt;/h5&gt;
+                &lt;p class=&#34;grey-text mb-0&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima
+                  veniam,
+                  quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;!-- Grid column --&gt;
+
+            &lt;/div&gt;
+            &lt;!--Grid row--&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Grid row --&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Container --&gt;
+
+    &lt;/section&gt;
+    &lt;!--Section: about--&gt;
+
+    &lt;!--Section: projects--&gt;
+    &lt;section id=&#34;projects&#34; class=&#34;text-center py-5&#34; style=&#34;background-color: #eee;&#34;&gt;
+
+      &lt;!-- Container --&gt;
+      &lt;div class=&#34;container&#34;&gt;
+
+        &lt;!-- Section heading --&gt;
+        &lt;h2 class=&#34;h1-responsive font-weight-bold mb-5&#34;&gt;Our best projects&lt;/h2&gt;
+        &lt;!-- Section description --&gt;
+        &lt;p class=&#34;grey-text w-responsive mx-auto mb-5&#34;&gt;Duis aute irure dolor in reprehenderit in
+          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit est laborum.&lt;/p&gt;
+
+        &lt;!-- Grid row --&gt;
+        &lt;div class=&#34;row text-center&#34;&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-lg-4 col-md-12 mb-lg-0 mb-4&#34;&gt;
+            &lt;!--Featured image--&gt;
+            &lt;div class=&#34;view overlay rounded z-depth-1&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/58.jpg&#34; class=&#34;img-fluid&#34;
+                alt=&#34;Sample project image&#34;&gt;
+              &lt;a&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+              &lt;!--Excerpt--&gt;
+              &lt;div class=&#34;card-body pb-2&#34;&gt;
+                &lt;h4 class=&#34;font-weight-bold my-3&#34;&gt;Title of the news&lt;/h4&gt;
+                &lt;p class=&#34;grey-text&#34;&gt;Temporibus autem quibusdam et aut officiis debitis aut rerum
+                  necessitatibus saepe eveniet ut et voluptates repudiandae.
+                &lt;/p&gt;
+                &lt;a class=&#34;btn btn-purple btn-sm&#34;&gt;&lt;i class=&#34;fas fa-clone left&#34;&gt;&lt;/i&gt; View project&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-lg-4 col-md-6 mb-md-0 mb-4&#34;&gt;
+            &lt;!--Featured image--&gt;
+            &lt;div class=&#34;view overlay rounded z-depth-1&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/project4.jpg&#34; class=&#34;img-fluid&#34;
+                alt=&#34;Sample project image&#34;&gt;
+              &lt;a&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+              &lt;!--Excerpt--&gt;
+              &lt;div class=&#34;card-body pb-2&#34;&gt;
+                &lt;h4 class=&#34;font-weight-bold my-3&#34;&gt;Title of the news&lt;/h4&gt;
+                &lt;p class=&#34;grey-text&#34;&gt;Temporibus autem quibusdam et aut officiis debitis aut rerum
+                  necessitatibus saepe eveniet ut et voluptates repudiandae.
+                &lt;/p&gt;
+                &lt;a class=&#34;btn btn-purple btn-sm&#34;&gt;&lt;i class=&#34;fas fa-clone left&#34;&gt;&lt;/i&gt; View project&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-lg-4 col-md-6&#34;&gt;
+            &lt;!--Featured image--&gt;
+            &lt;div class=&#34;view overlay rounded z-depth-1&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/88.jpg&#34; class=&#34;img-fluid&#34;
+                alt=&#34;Sample project image&#34;&gt;
+              &lt;a&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+              &lt;!--Excerpt--&gt;
+              &lt;div class=&#34;card-body pb-2&#34;&gt;
+                &lt;h4 class=&#34;font-weight-bold my-3&#34;&gt;Title of the news&lt;/h4&gt;
+                &lt;p class=&#34;grey-text&#34;&gt;Temporibus autem quibusdam et aut officiis debitis aut rerum
+                  necessitatibus saepe eveniet ut et voluptates repudiandae.
+                &lt;/p&gt;
+                &lt;a class=&#34;btn btn-purple btn-sm&#34;&gt;&lt;i class=&#34;fas fa-clone left&#34;&gt;&lt;/i&gt; View project&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Grid row --&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Container --&gt;
+
+    &lt;/section&gt;
+    &lt;!--Section: projects--&gt;
+
+    &lt;!--Section: gallery--&gt;
+    &lt;section id=&#34;gallery&#34; class=&#34;text-center py-5&#34;&gt;
+
+      &lt;!-- Container --&gt;
+      &lt;div class=&#34;container&#34;&gt;
+
+        &lt;!-- Section heading --&gt;
+        &lt;h2 class=&#34;h1-responsive font-weight-bold mb-5&#34;&gt;LightBox Gallery&lt;/h2&gt;
+        &lt;!-- Section description --&gt;
+        &lt;p class=&#34;grey-text w-responsive mx-auto mb-5&#34;&gt;Duis aute irure dolor in reprehenderit in
+          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit est laborum.&lt;/p&gt;
+
+        &lt;div class=&#34;row&#34;&gt;
+          &lt;div class=&#34;col-md-12&#34;&gt;
+
+            &lt;div id=&#34;mdb-lightbox-ui&#34;&gt;&lt;/div&gt;
+
+            &lt;div class=&#34;mdb-lightbox&#34;&gt;
+
+              &lt;figure class=&#34;col-md-4&#34;&gt;
+                &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+                  &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(145).jpg&#34;
+                    class=&#34;img-fluid z-depth-1-half&#34;&gt;
+                &lt;/a&gt;
+              &lt;/figure&gt;
+
+              &lt;figure class=&#34;col-md-4&#34;&gt;
+                &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(150).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+                  &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(150).jpg&#34;
+                    class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+                &lt;/a&gt;
+              &lt;/figure&gt;
+
+              &lt;figure class=&#34;col-md-4&#34;&gt;
+                &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(152).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+                  &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(152).jpg&#34;
+                    class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+                &lt;/a&gt;
+              &lt;/figure&gt;
+
+              &lt;figure class=&#34;col-md-4&#34;&gt;
+                &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(42).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+                  &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(42).jpg&#34;
+                    class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+                &lt;/a&gt;
+              &lt;/figure&gt;
+
+              &lt;figure class=&#34;col-md-4&#34;&gt;
+                &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(151).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+                  &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(151).jpg&#34;
+                    class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+                &lt;/a&gt;
+              &lt;/figure&gt;
+
+              &lt;figure class=&#34;col-md-4&#34;&gt;
+                &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+                  &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(40).jpg&#34;
+                    class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+                &lt;/a&gt;
+              &lt;/figure&gt;
+
+              &lt;figure class=&#34;col-md-4&#34;&gt;
+                &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(148).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+                  &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(148).jpg&#34;
+                    class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+                &lt;/a&gt;
+              &lt;/figure&gt;
+
+              &lt;figure class=&#34;col-md-4&#34;&gt;
+                &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+                  &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg&#34;
+                    class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+                &lt;/a&gt;
+              &lt;/figure&gt;
+
+              &lt;figure class=&#34;col-md-4&#34;&gt;
+                &lt;a href=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg&#34; data-size=&#34;1600x1067&#34;&gt;
+                  &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(149).jpg&#34;
+                    class=&#34;img-fluid z-depth-1-half&#34; /&gt;
+                &lt;/a&gt;
+              &lt;/figure&gt;
+
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Container --&gt;
+
+    &lt;/section&gt;
+    &lt;!--Section: gallery--&gt;
+
+    &lt;!-- Section: Testimonials v.4 --&gt;
+    &lt;section id=&#34;testimonials&#34; class=&#34;text-center py-5&#34; style=&#34;background-color: #eee;&#34;&gt;
+
+      &lt;!-- Section heading --&gt;
+      &lt;h2 class=&#34;h1-responsive font-weight-bold my-5&#34;&gt;Testimonials v.4&lt;/h2&gt;
+
+      &lt;!-- Grid row --&gt;
+      &lt;div class=&#34;row&#34;&gt;
+
+        &lt;!--Carousel Wrapper--&gt;
+        &lt;div id=&#34;multi-item-example&#34; class=&#34;carousel testimonial-carousel slide carousel-multi-item mb-5&#34;
+          data-ride=&#34;carousel&#34;&gt;
+
+          &lt;!--Controls--&gt;
+          &lt;div class=&#34;controls-top&#34;&gt;
+            &lt;a class=&#34;btn-floating light-blue darken-4&#34; href=&#34;#multi-item-example&#34; data-slide=&#34;prev&#34;&gt;&lt;i
+                class=&#34;fas fa-chevron-left&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;a class=&#34;btn-floating light-blue darken-4&#34; href=&#34;#multi-item-example&#34; data-slide=&#34;next&#34;&gt;&lt;i
+                class=&#34;fas fa-chevron-right&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+          &lt;/div&gt;
+          &lt;!--Controls--&gt;
+
+          &lt;!--Indicators--&gt;
+          &lt;ol class=&#34;carousel-indicators&#34;&gt;
+            &lt;li data-target=&#34;#multi-item-example&#34; data-slide-to=&#34;0&#34; class=&#34;active light-blue darken-4&#34;&gt;&lt;/li&gt;
+            &lt;li data-target=&#34;#multi-item-example&#34; data-slide-to=&#34;1&#34; class=&#34;light-blue darken-4&#34;&gt;&lt;/li&gt;
+            &lt;li data-target=&#34;#multi-item-example&#34; data-slide-to=&#34;2&#34; class=&#34;light-blue darken-4&#34;&gt;&lt;/li&gt;
+          &lt;/ol&gt;
+          &lt;!--Indicators--&gt;
+
+          &lt;!--Slides--&gt;
+          &lt;div class=&#34;carousel-inner&#34; role=&#34;listbox&#34;&gt;
+
+            &lt;!--First slide--&gt;
+            &lt;div class=&#34;carousel-item active&#34;&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-md-4&#34;&gt;
+                &lt;div class=&#34;testimonial&#34;&gt;
+                  &lt;!--Avatar--&gt;
+                  &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                    &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(26).jpg&#34;
+                      class=&#34;rounded-circle img-fluid&#34;&gt;
+                  &lt;/div&gt;
+                  &lt;!--Content--&gt;
+                  &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Anna Deynah&lt;/h4&gt;
+                  &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Web Designer&lt;/h6&gt;
+                  &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit. Quod eos id officiis hic tenetur.&lt;/p&gt;
+                  &lt;!--Review--&gt;
+                  &lt;div class=&#34;grey-text&#34;&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star-half-alt&#34;&gt; &lt;/i&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+                &lt;div class=&#34;testimonial&#34;&gt;
+                  &lt;!--Avatar--&gt;
+                  &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                    &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg&#34;
+                      class=&#34;rounded-circle img-fluid&#34;&gt;
+                  &lt;/div&gt;
+                  &lt;!--Content--&gt;
+                  &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;John Doe&lt;/h4&gt;
+                  &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Web Developer&lt;/h6&gt;
+                  &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Ut enim ad minima veniam,
+                    quis
+                    nostrum exercitationem ullam corporis laboriosam.&lt;/p&gt;
+                  &lt;!--Review--&gt;
+                  &lt;div class=&#34;grey-text&#34;&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+                &lt;div class=&#34;testimonial&#34;&gt;
+                  &lt;!--Avatar--&gt;
+                  &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                    &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg&#34;
+                      class=&#34;rounded-circle img-fluid&#34;&gt;
+                  &lt;/div&gt;
+                  &lt;!--Content--&gt;
+                  &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Abbey Clark&lt;/h4&gt;
+                  &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Photographer&lt;/h6&gt;
+                  &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Quis autem vel eum iure
+                    reprehenderit qui in ea voluptate velit esse quam nihil molestiae.&lt;/p&gt;
+                  &lt;!--Review--&gt;
+                  &lt;div class=&#34;grey-text&#34;&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;far fa-star&#34;&gt; &lt;/i&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+            &lt;/div&gt;
+            &lt;!--First slide--&gt;
+
+            &lt;!--Second slide--&gt;
+            &lt;div class=&#34;carousel-item&#34;&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-md-4&#34;&gt;
+                &lt;div class=&#34;testimonial&#34;&gt;
+                  &lt;!--Avatar--&gt;
+                  &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                    &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(4).jpg&#34;
+                      class=&#34;rounded-circle img-fluid&#34;&gt;
+                  &lt;/div&gt;
+                  &lt;!--Content--&gt;
+                  &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Blake Dabney&lt;/h4&gt;
+                  &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Web Designer&lt;/h6&gt;
+                  &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Ut enim ad minima veniam,
+                    quis
+                    nostrum exercitationem ullam corporis laboriosam.&lt;/p&gt;
+                  &lt;!--Review--&gt;
+                  &lt;div class=&#34;grey-text&#34;&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star-half-alt&#34;&gt; &lt;/i&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+                &lt;div class=&#34;testimonial&#34;&gt;
+                  &lt;!--Avatar--&gt;
+                  &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                    &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(6).jpg&#34;
+                      class=&#34;rounded-circle img-fluid&#34;&gt;
+                  &lt;/div&gt;
+                  &lt;!--Content--&gt;
+                  &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Andrea Clay&lt;/h4&gt;
+                  &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Front-end developer&lt;/h6&gt;
+                  &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit. Quod eos id officiis hic tenetur quae.&lt;/p&gt;
+                  &lt;!--Review--&gt;
+                  &lt;div class=&#34;grey-text&#34;&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+                &lt;div class=&#34;testimonial&#34;&gt;
+                  &lt;!--Avatar--&gt;
+                  &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                    &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(7).jpg&#34;
+                      class=&#34;rounded-circle img-fluid&#34;&gt;
+                  &lt;/div&gt;
+                  &lt;!--Content--&gt;
+                  &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Cami Gosse&lt;/h4&gt;
+                  &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Phtographer&lt;/h6&gt;
+                  &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;At vero eos et accusamus et
+                    iusto odio dignissimos ducimus qui blanditiis praesentium.&lt;/p&gt;
+                  &lt;!--Review--&gt;
+                  &lt;div class=&#34;grey-text&#34;&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;far fa-star&#34;&gt; &lt;/i&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+            &lt;/div&gt;
+            &lt;!--Second slide--&gt;
+
+            &lt;!--Third slide--&gt;
+            &lt;div class=&#34;carousel-item&#34;&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-md-4&#34;&gt;
+                &lt;div class=&#34;testimonial&#34;&gt;
+                  &lt;!--Avatar--&gt;
+                  &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                    &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg&#34;
+                      class=&#34;rounded-circle img-fluid&#34;&gt;
+                  &lt;/div&gt;
+                  &lt;!--Content--&gt;
+                  &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Bobby Haley&lt;/h4&gt;
+                  &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Web Developer&lt;/h6&gt;
+                  &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit. Quod eos id officiis hic tenetur quae.&lt;/p&gt;
+                  &lt;!--Review--&gt;
+                  &lt;div class=&#34;grey-text&#34;&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+                &lt;div class=&#34;testimonial&#34;&gt;
+                  &lt;!--Avatar--&gt;
+                  &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                    &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg&#34;
+                      class=&#34;rounded-circle img-fluid&#34;&gt;
+                  &lt;/div&gt;
+                  &lt;!--Content--&gt;
+                  &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Elisa Janson&lt;/h4&gt;
+                  &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Marketer&lt;/h6&gt;
+                  &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;At vero eos et accusamus et
+                    iusto odio dignissimos ducimus qui blanditiis praesentium.&lt;/p&gt;
+                  &lt;!--Review--&gt;
+                  &lt;div class=&#34;grey-text&#34;&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star-half-alt&#34;&gt; &lt;/i&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-md-4 clearfix d-none d-md-block&#34;&gt;
+                &lt;div class=&#34;testimonial&#34;&gt;
+                  &lt;!--Avatar--&gt;
+                  &lt;div class=&#34;avatar mx-auto&#34;&gt;
+                    &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg&#34;
+                      class=&#34;rounded-circle img-fluid&#34;&gt;
+                  &lt;/div&gt;
+                  &lt;!--Content--&gt;
+                  &lt;h4 class=&#34;font-weight-bold mt-4&#34;&gt;Rob Jacobs&lt;/h4&gt;
+                  &lt;h6 class=&#34;blue-text font-weight-bold my-3&#34;&gt;Front-end developer&lt;/h6&gt;
+                  &lt;p class=&#34;font-weight-normal&#34;&gt;&lt;i class=&#34;fas fa-quote-left pr-2&#34;&gt;&lt;/i&gt;Ut enim ad minima veniam,
+                    quis
+                    nostrum exercitationem ullam corporis laboriosam.&lt;/p&gt;
+                  &lt;!--Review--&gt;
+                  &lt;div class=&#34;grey-text&#34;&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;fas fa-star&#34;&gt; &lt;/i&gt;
+                    &lt;i class=&#34;far fa-star&#34;&gt; &lt;/i&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+            &lt;/div&gt;
+            &lt;!--Third slide--&gt;
+
+          &lt;/div&gt;
+          &lt;!--Slides--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Carousel Wrapper--&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Grid row --&gt;
+
+    &lt;/section&gt;
+    &lt;!-- Section: Testimonials v.4 --&gt;
+
+    &lt;!--Section: call to action--&gt;
+    &lt;div class=&#34;streak streak-md streak-photo&#34;
+      style=&#34;background-image:url(&#39;https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img(115).jpg&#39;)&#34;&gt;
+      &lt;div class=&#34;flex-center white-text rgba-black-light pattern-1&#34;&gt;
+        &lt;ul class=&#34;mb-0 list-unstyled&#34;&gt;
+          &lt;li&gt;
+            &lt;h2 class=&#34;h2-responsive&#34;&gt;&lt;i class=&#34;fas fa-quote-left&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt; The people who
+              are
+              crazy enough to think they can change the world are the ones who do. &lt;i class=&#34;fas fa-quote-right&#34;
+                aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/h2&gt;
+          &lt;/li&gt;
+          &lt;li class=&#34;mb-0&#34;&gt;
+            &lt;h5 class=&#34;text-center font-italic mb-0&#34;&gt;~ Steve Jobs&lt;/h5&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!--Section: call to action--&gt;
+
+
+    &lt;!--Section: articles--&gt;
+    &lt;section id=&#34;articles&#34; class=&#34;text-center py-5&#34;&gt;
+
+      &lt;!-- Container --&gt;
+      &lt;div class=&#34;container&#34;&gt;
+
+        &lt;!-- Section heading --&gt;
+        &lt;h2 class=&#34;h1-responsive font-weight-bold mb-5&#34;&gt;Articles&lt;/h2&gt;
+
+        &lt;!--Grid row--&gt;
+        &lt;div class=&#34;row&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-4 col-md-12 mb-4&#34;&gt;
+
+            &lt;!-- Card Narrower --&gt;
+            &lt;div class=&#34;card card-cascade narrower&#34;&gt;
+
+              &lt;!-- Card image --&gt;
+              &lt;div class=&#34;view view-cascade overlay&#34;&gt;
+                &lt;img class=&#34;card-img-top&#34; src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg&#34;
+                  alt=&#34;Card image cap&#34;&gt;
+                &lt;a&gt;
+                  &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+                &lt;/a&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Card content --&gt;
+              &lt;div class=&#34;card-body card-body-cascade&#34;&gt;
+
+                &lt;!-- Label --&gt;
+                &lt;h5 class=&#34;pink-text pb-2 pt-1&#34;&gt;&lt;i class=&#34;fas fa-utensils&#34;&gt;&lt;/i&gt; Culinary&lt;/h5&gt;
+                &lt;!-- Title --&gt;
+                &lt;h4 class=&#34;font-weight-bold card-title&#34;&gt;Cheat day inspirations&lt;/h4&gt;
+                &lt;!-- Text --&gt;
+                &lt;p class=&#34;card-text&#34;&gt;Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                  corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.&lt;/p&gt;
+                &lt;!-- Button --&gt;
+                &lt;a class=&#34;btn btn-unique&#34;&gt;Button&lt;/a&gt;
+
+              &lt;/div&gt;
+
+            &lt;/div&gt;
+            &lt;!-- Card Narrower --&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+            &lt;!-- Card Narrower --&gt;
+            &lt;div class=&#34;card card-cascade narrower&#34;&gt;
+
+              &lt;!-- Card image --&gt;
+              &lt;div class=&#34;view view-cascade overlay&#34;&gt;
+                &lt;img class=&#34;card-img-top&#34; src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg&#34;
+                  alt=&#34;Card image cap&#34;&gt;
+                &lt;a&gt;
+                  &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+                &lt;/a&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Card content --&gt;
+              &lt;div class=&#34;card-body card-body-cascade&#34;&gt;
+
+                &lt;!-- Label --&gt;
+                &lt;h5 class=&#34;pink-text pb-2 pt-1&#34;&gt;&lt;i class=&#34;fas fa-utensils&#34;&gt;&lt;/i&gt; Culinary&lt;/h5&gt;
+                &lt;!-- Title --&gt;
+                &lt;h4 class=&#34;font-weight-bold card-title&#34;&gt;Cheat day inspirations&lt;/h4&gt;
+                &lt;!-- Text --&gt;
+                &lt;p class=&#34;card-text&#34;&gt;Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                  corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.&lt;/p&gt;
+                &lt;!-- Button --&gt;
+                &lt;a class=&#34;btn btn-unique&#34;&gt;Button&lt;/a&gt;
+
+              &lt;/div&gt;
+
+            &lt;/div&gt;
+            &lt;!-- Card Narrower --&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+            &lt;!-- Card Narrower --&gt;
+            &lt;div class=&#34;card card-cascade narrower&#34;&gt;
+
+              &lt;!-- Card image --&gt;
+              &lt;div class=&#34;view view-cascade overlay&#34;&gt;
+                &lt;img class=&#34;card-img-top&#34; src=&#34;https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg&#34;
+                  alt=&#34;Card image cap&#34;&gt;
+                &lt;a&gt;
+                  &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+                &lt;/a&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Card content --&gt;
+              &lt;div class=&#34;card-body card-body-cascade&#34;&gt;
+
+                &lt;!-- Label --&gt;
+                &lt;h5 class=&#34;pink-text pb-2 pt-1&#34;&gt;&lt;i class=&#34;fas fa-utensils&#34;&gt;&lt;/i&gt; Culinary&lt;/h5&gt;
+                &lt;!-- Title --&gt;
+                &lt;h4 class=&#34;font-weight-bold card-title&#34;&gt;Cheat day inspirations&lt;/h4&gt;
+                &lt;!-- Text --&gt;
+                &lt;p class=&#34;card-text&#34;&gt;Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                  corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.&lt;/p&gt;
+                &lt;!-- Button --&gt;
+                &lt;a class=&#34;btn btn-unique&#34;&gt;Button&lt;/a&gt;
+
+              &lt;/div&gt;
+
+            &lt;/div&gt;
+            &lt;!-- Card Narrower --&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid row--&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Container --&gt;
+
+    &lt;/section&gt;
+    &lt;!--Section: articles--&gt;
+
+    &lt;!--Section: contact--&gt;
+    &lt;section id=&#34;contact&#34; class=&#34;py-5&#34; style=&#34;background-color: #eee;&#34;&gt;
+
+      &lt;div class=&#34;container&#34;&gt;
+
+        &lt;!-- Section heading --&gt;
+        &lt;h2 class=&#34;h1-responsive font-weight-bold text-center mb-5&#34;&gt;Contact us&lt;/h2&gt;
+        &lt;!-- Section description --&gt;
+        &lt;p class=&#34;text-center w-responsive mx-auto mb-5&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum
+          porro a pariatur veniam.&lt;/p&gt;
+
+        &lt;!-- Grid row --&gt;
+        &lt;div class=&#34;row&#34;&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-md-9 mb-md-0 mb-5&#34;&gt;
+
+            &lt;form&gt;
+
+              &lt;!-- Grid row --&gt;
+              &lt;div class=&#34;row&#34;&gt;
+
+                &lt;!-- Grid column --&gt;
+                &lt;div class=&#34;col-md-6&#34;&gt;
+                  &lt;div class=&#34;md-form mb-0&#34;&gt;
+                    &lt;input type=&#34;text&#34; id=&#34;contact-name&#34; class=&#34;form-control&#34;&gt;
+                    &lt;label for=&#34;contact-name&#34; class=&#34;&#34;&gt;Your name&lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- Grid column --&gt;
+
+                &lt;!-- Grid column --&gt;
+                &lt;div class=&#34;col-md-6&#34;&gt;
+                  &lt;div class=&#34;md-form mb-0&#34;&gt;
+                    &lt;input type=&#34;text&#34; id=&#34;contact-email&#34; class=&#34;form-control&#34;&gt;
+                    &lt;label for=&#34;contact-email&#34; class=&#34;&#34;&gt;Your email&lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- Grid column --&gt;
+
+              &lt;/div&gt;
+              &lt;!-- Grid row --&gt;
+
+              &lt;!-- Grid row --&gt;
+              &lt;div class=&#34;row&#34;&gt;
+
+                &lt;!-- Grid column --&gt;
+                &lt;div class=&#34;col-md-12&#34;&gt;
+                  &lt;div class=&#34;md-form mb-0&#34;&gt;
+                    &lt;input type=&#34;text&#34; id=&#34;contact-Subject&#34; class=&#34;form-control&#34;&gt;
+                    &lt;label for=&#34;contact-Subject&#34; class=&#34;&#34;&gt;Subject&lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- Grid column --&gt;
+
+              &lt;/div&gt;
+              &lt;!-- Grid row --&gt;
+
+              &lt;!-- Grid row --&gt;
+              &lt;div class=&#34;row&#34;&gt;
+
+                &lt;!-- Grid column --&gt;
+                &lt;div class=&#34;col-md-12&#34;&gt;
+                  &lt;div class=&#34;md-form&#34;&gt;
+                    &lt;textarea type=&#34;text&#34; id=&#34;contact-message&#34; class=&#34;form-control md-textarea&#34; rows=&#34;3&#34;&gt;&lt;/textarea&gt;
+                    &lt;label for=&#34;contact-message&#34;&gt;Your message&lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- Grid column --&gt;
+
+              &lt;/div&gt;
+              &lt;!-- Grid row --&gt;
+
+            &lt;/form&gt;
+
+            &lt;div class=&#34;text-center text-md-left&#34;&gt;
+              &lt;a class=&#34;btn btn-purple btn-md&#34;&gt;Send&lt;/a&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+          &lt;!-- Grid column --&gt;
+          &lt;div class=&#34;col-md-3 text-center&#34;&gt;
+            &lt;ul class=&#34;list-unstyled mb-0&#34;&gt;
+              &lt;li&gt;
+                &lt;i class=&#34;fas fa-map-marker-alt fa-2x purple-text&#34;&gt;&lt;/i&gt;
+                &lt;p&gt;San Francisco, CA 94126, USA&lt;/p&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;i class=&#34;fas fa-phone fa-2x mt-4 purple-text&#34;&gt;&lt;/i&gt;
+                &lt;p&gt;+ 01 234 567 89&lt;/p&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;i class=&#34;fas fa-envelope fa-2x mt-4 purple-text&#34;&gt;&lt;/i&gt;
+                &lt;p class=&#34;mb-0&#34;&gt;contact@example.com&lt;/p&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;!-- Grid column --&gt;
+
+        &lt;/div&gt;
+        &lt;!-- Grid row --&gt;
+
+      &lt;/div&gt;
+
+    &lt;/section&gt;
+    &lt;!--Section: contact--&gt;
+
+  &lt;/main&gt;
+  &lt;!--Main layout--&gt;
+
+  &lt;!-- Footer --&gt;
+  &lt;footer class=&#34;page-footer font-small pt-4&#34;&gt;
+
+    &lt;!-- Footer Elements --&gt;
+    &lt;div class=&#34;container&#34;&gt;
+
+      &lt;!-- Social buttons --&gt;
+      &lt;ul class=&#34;list-unstyled list-inline text-center&#34;&gt;
+        &lt;li class=&#34;list-inline-item&#34;&gt;
+          &lt;a class=&#34;btn-floating btn-fb mx-1&#34;&gt;
+            &lt;i class=&#34;fab fa-facebook-f&#34;&gt; &lt;/i&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&#34;list-inline-item&#34;&gt;
+          &lt;a class=&#34;btn-floating btn-tw mx-1&#34;&gt;
+            &lt;i class=&#34;fab fa-twitter&#34;&gt; &lt;/i&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&#34;list-inline-item&#34;&gt;
+          &lt;a class=&#34;btn-floating btn-gplus mx-1&#34;&gt;
+            &lt;i class=&#34;fab fa-google-plus-g&#34;&gt; &lt;/i&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&#34;list-inline-item&#34;&gt;
+          &lt;a class=&#34;btn-floating btn-li mx-1&#34;&gt;
+            &lt;i class=&#34;fab fa-linkedin-in&#34;&gt; &lt;/i&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&#34;list-inline-item&#34;&gt;
+          &lt;a class=&#34;btn-floating btn-dribbble mx-1&#34;&gt;
+            &lt;i class=&#34;fab fa-dribbble&#34;&gt; &lt;/i&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;!-- Social buttons --&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Footer Elements --&gt;
+
+    &lt;!-- Copyright --&gt;
+    &lt;div class=&#34;footer-copyright text-center py-3&#34;&gt;© 2018 Copyright:
+      &lt;a href=&#34;https://mdbootstrap.com/education/bootstrap/&#34;&gt; MDBootstrap.com&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;!-- Copyright --&gt;
+
+  &lt;/footer&gt;
+  &lt;!-- Footer --&gt;
+
+
+  &lt;!-- jQuery --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/jquery.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- Bootstrap tooltips --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/popper.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- Bootstrap core JavaScript --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/bootstrap.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- MDB core JavaScript --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/mdb.min.js&#34;&gt;&lt;/script&gt;
+
+  &lt;!-- Your custom scripts (optional) --&gt;
+  &lt;script type=&#34;text/javascript&#34;&gt;
+    // MDB Lightbox Init
+    $(function () {
+      $(&#34;#mdb-lightbox-ui&#34;).load(&#34;mdb-addons/mdb-lightbox-ui.html&#34;);
+    });
+    // 以下为动画效果新添加的两条语句
+    // Adding animations to the sections, 使用的是淡入, 你也可以试试zoomIn等动画
+    $(&#34;section&#34;).addClass(&#34;wow fadeIn&#34;);
+    // Animations Init, 注意必须放在ready方法中以防WOW对象没能加载成功
+    $(document).ready(function () {
+      new WOW().init();
+    });
+  &lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>CSS代码如下:</p>
+<pre><code>/* Required for full background image */
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100vh;
+  }
+}
+
+.top-nav-collapse ,.page-footer{
+  background-color: #563e91 !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+
+@media (max-width: 991px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #563e91 !important;
+  }
+}
+
+.rgba-gradient {
+  background: rgba(35, 7, 77, 0.6);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, rgba(204, 83, 51, 0.6), rgba(35, 7, 77, 0.6));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, rgba(204, 83, 51, 0.6), rgba(35, 7, 77, 0.6)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.streak.streak-photo {
+  background-attachment: fixed;
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
