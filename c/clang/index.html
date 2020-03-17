@@ -94,7 +94,7 @@ ADD %eax, %ebx
 <p>合法的标识符: <code>sum Sum _xyz month count lengthOfSomething</code> 等等<br>非法的标识符: <code>3M @qq.com $solary a/b</code> 等等. 想想为什么?</p>
 <h3 is-upgraded>语句</h3>
 <p>任何语言都有语句, 一个计算机程序由或多或少的语句构成.<br>C语言有不少语句类型, 如循环语句, 选择语句等等.</p>
-<aside class="special"><p>✍ C语言规定, 语句必须以<code>;</code> 作为结束标记. 你在实际编程中一定会出现这个错误的!!!<br>🗣 <code>;</code>分号作为语句的结束影响了相当多的后代语言如<code>Java/TS/Go/C#</code>等. DMR去世后, 计算机爱好者们以特有的方式纪念他, 许多网友的发帖中没有一个字，只有一个分号 <code>;</code></p>
+<aside class="special"><p>✍ C语言规定, 语句必须以<code>;</code> 作为结束标记. 你在实际编程中一定会出现这个错误的!!!<br>✍ 多个带分号的语句可以用<code>{}</code>包围起来, 称为复合语句, 此时不需要用<code>;</code>来标记了. 看看<code>main</code>函数的<code>{}</code>.<br>🗣 <code>;</code>分号作为语句的结束影响了相当多的后代语言如<code>Java/TS/Go/C#</code>等. DMR去世后, 计算机爱好者们以特有的方式纪念他, 许多网友的发帖中没有一个字，只有一个分号 <code>;</code></p>
 </aside>
 <h2 is-upgraded>C程序的基本结构</h2>
 <p>或多或少的语句将组成一个个C语言程序. 显然, 这些语句需要按照一定的格式或规定进行组织.<br>下面是一个通用的C程序结构:</p>
@@ -293,13 +293,142 @@ void main(){
         <p>本次课程我们将讲述以下内容:</p>
 <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>算术运算</li>
 <li>赋值运算</li>
-<li>逗号运算</li>
-<li>长度运算</li>
+<li>算术运算</li>
+<li>复合运算</li>
 <li>类型转换</li>
 <li>简单顺序结构</li>
 </ul>
+<h2 is-upgraded>赋值运算</h2>
+<p>C语言将赋值也作为一种运算, 使用<code>=</code>进行, 即: 将<code>=</code>右边的值赋予左边的变量. 如:</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  int a, b, c;
+  a=1;    // 将1赋给a变量
+  b=2;    // 将2赋给b变量
+  c=a+b;  // 将a+b的结果赋给c变量
+  printf(&#34;%d\n&#34;,c);
+  a=a+1;  // 先计算a+1, 结果为2, 再把2放到a中.
+  b=b-1;  // 先计算b-1, 结果为1, 再把1放到b中.
+  c=a+b;
+  printf(&#34;%d\n&#34;,c);
+}
+</code></pre>
+<aside class="special"><p>✍ 赋值运算即 <code>=</code>的左边必须是一个变量, 如此才能存放右边的值. 所以<code>5=3</code>为什么不合法?<br>✍ 赋值运算的优先级很低, 仅高于我们逗号运算(我们没讲该运算, 可暂时忽略)</p>
+</aside>
+<h2 is-upgraded>算术运算</h2>
+<p>C语言的算术运算有<code>+ - * / %</code>等. 相关注意说明如下:</p>
+<ul>
+<li>当<code>/</code>号的两边都是整数时, 结果也为整数. 如: <code>5/2</code> 的结果是 2不是2.5</li>
+<li>当<code>/</code>号的任何一边为小数, 结果则为小数. 如: <code>5/2.0</code>的结果就是 2.500000</li>
+<li><code>%</code>是取余运算, 要求两边都必须是整数. 如: <code>5%2</code>的结果(余数)是1. 我们通常用于判断是否能整除.</li>
+</ul>
+<h2 is-upgraded>复合运算</h2>
+<h3 is-upgraded>++ –</h3>
+<p><code>++</code>或<code>--</code>称为自增或自减, 它只能用于变量, 即将自己增加1或减少1. 如:</p>
+<pre><code>int i=6; j=4;
+i++;  // 等价于 i=i+1
+j--;  // 等价于 j=j-1
+printf(&#34;%d,%d&#34;,i,j);  // 结果为7,3
+</code></pre>
+<aside class="special"><p>✍ 为什么<code>64++</code>不合法?</p>
+</aside>
+<p>此外, <code>++</code>或<code>--</code>有前后位置之分. 我们以<code>++</code>为例:</p>
+<pre><code>int i=1, j, k;
+j = i++;  // 称为后加, 即先将i的值赋给j, 然后i再自增. 所以j的值为1
+k = ++i;  // 称为前加, 即先自增, 然后将i的值赋给k. 所以k的值是3?
+</code></pre>
+<h3 is-upgraded>复合赋值</h3>
+<p>C语言还提供一种算术和赋值的组合运算, 即:<code>+= -= *= /= %=</code>, 如:</p>
+<pre><code>int a=6;
+a+=3;   // 等价于a=a+3
+a/=3;   // 等价于a=a/3
+printf(&#34;%d&#34;,a);   // 请问结果是什么?
+</code></pre>
+<h2 is-upgraded>类型转换</h2>
+<p>前面我们知道数据有不同的数据类型如整型实型等. 在运算过程中为了不损失精度, 都会向高精度的类型进行暂时的转换.<br>有一种取值范围和精度都更高的类型是<code>double</code>, 我们称为双精度, 我们前面学的<code>float</code>就是单精度. 如:</p>
+<pre><code>int a=1, sum;
+float b=8.9;
+double c=6.4;
+// 先计算a+b, 因为b是float型, 先将a暂时转换为float型, 结果是float型;
+// 然后与c相加, 因为c是double型, 就将刚才那个float型的结果先转换为double型;
+// 此时赋值号左边就有了一个double型的结果, 但=号的右边a是一个int型, 所以最后将double型取整赋给a即可.
+sum=a+b+c;  
+</code></pre>
+<h2 is-upgraded>简单顺序结构</h2>
+<p>在解决问题的过程中, 我们有时从前往后顺序执行就好了, 有时某些问题需要进行选择再决定该做些什么(如:游戏是否继续), 有时又需要重复的做某件事直至满足某种条件(如拥有的金币数量不为0就继续让用户买买买).</p>
+<p>这实际就是程序设计的3中基本结构:顺序,选择和循环. 下面我们看看顺序结构的程序.</p>
+<h3 is-upgraded>程序一</h3>
+<pre><code>// 求两个数的和差积商
+#include &#34;stdio.h&#34;
+void main(){
+  float a,b;
+  float sum, difference, product, quotient;
+  printf(&#34;Please input two number:&#34;);
+  scanf(&#34;%f%f&#34;, &amp;a, &amp;b);
+  sum = a + b;
+  difference = a - b;
+  product = a * b;
+  quotient = a / b;
+  printf(&#34;%.2f + %.2f = %.2f\n&#34;, a, b, sum);
+  printf(&#34;%.2f - %.2f = %.2f\n&#34;, a, b, difference);
+  printf(&#34;%.2f * %.2f = %.2f\n&#34;, a, b, product);
+  printf(&#34;%.2f / %.2f = %.2f\n&#34;, a, b, quotient);
+}
+</code></pre>
+<h3 is-upgraded>程序二</h3>
+<pre><code>// 交换两个变量的值并输出
+#include &#34;stdio.h&#34;
+void main(){
+  int you, me, temp;
+  printf(&#34;Please input you and me:&#34;);
+  scanf(&#34;%d%d&#34;, &amp;you, &amp;me);
+  printf(&#34;----Before----\n&#34;);
+  printf(&#34;You:%d, Me:%d\n&#34;, you, me);
+  temp = you;
+  you = me;
+  me = temp;
+  printf(&#34;----After----\n&#34;);
+  printf(&#34;You:%d, Me:%d\n&#34;, you, me);
+}
+</code></pre>
+<h2 is-upgraded>小测试</h2>
+<pre><code>一、单选题
+
+1.下列表达式中，表达式值为0的是（）。
+A. 2%5          B. 2/3.0
+C. a=0,a+(b=5)  D. 8/9
+
+2.下列运算符中，要求操作数必须是整型的是（）。
+A. %           B. *
+C. /=          D. ++
+
+3.下列运算符中，运算优先级最低的是（）。
+A. =           B. %
+C. +           D. -
+
+9.若有定义：int i=2,j;，则语句j=++i;执行结束之后，以下说法正确的是（）。
+A. i的值为3，j的值为2  B. i的值为2，j的值为2
+C. i的值为3，j的值为3  D. i的值为2，j的值为3
+
+12若有定义：int a=6;，则表达式a/=a+a的值是（）。
+A. 7        B. 2
+C. 0        D. 0.5
+
+二、判断题
+
+1.若有定义：int i=2;，则语句a+=a*=a;执行结束之后，变量a的值是6。（）
+
+2.若有定义：int num;，则语句num=3.561;执行结束之后，变量num的值是4。（）
+
+3.若有定义：int a=9;float x=6.3,y=3.5;，则表达式a%5*(int)(x+y)%7/4的值为0。（）
+
+4.若有定义：char c;，则表达式c=&#39;a&#39;-&#39;A&#39;+&#39;B&#39;的值为&#39;b&#39;。（）
+
+5.若有定义：int a;，则表达式a=3*5,a+a,a+3的值为33。（）
+</code></pre>
+<aside class="warning"><p>✉ 参考答案: DAACC ✘✘✔✔✘</p>
+</aside>
 
 
       </google-codelab-step>
@@ -382,20 +511,20 @@ p = b * b - 4 * a * c;
 <h2 is-upgraded>逻辑运算</h2>
 <aside class="special"><p>☀ 题外话: 出于某些原因, 我们的教育中是缺乏真正的逻辑教育的(什么是逻辑? 请移步<a href="https://zh.wikipedia.org/wiki/%E9%80%BB%E8%BE%91" target="_blank">维基百科</a>, 再题外话:不推荐看百度百科, 你可能看到的是假的), 以至于我们经常把&#34;举例/道理/类比/比喻&#34;等作为论证手段. 请参考<a href="https://www.bilibili.com/read/cv1672537" target="_blank">&#34;四大论证方法&#34;逻辑混乱，是有害的</a>一文.</p>
 </aside>
-<p>经常的, 我们要判断的关系非常复杂.<br>如某网红女在谈男朋友的条件时曾说: 非北大光华管理学院毕业的帅哥不予考虑!<br>如果她是百合网的会员, 那么百合网的程序猿大致要设置这么几个变量来为她进行筛选:</p>
+<p>经常的, 我们要判断的关系非常复杂.<br>如某网红女在谈男朋友的条件时曾说: 非北大光华管理学院毕业的帅哥不予考虑!<br>如果她是百合网的会员, 那么百合网的程序猿估计要设置这么几个变量来为她进行筛选:</p>
 <pre><code>// 以下条件都要满足, 即都要为真才能进入她的法眼
-isPKU
-isGuanghua
-isHandsome
-isMale
+isPKU       ---&gt; 是否北大的
+isGuanghua  ---&gt; 是否光华的
+isHandsome  ---&gt; 是否帅的
+isMale      ---&gt; 是否男的
 </code></pre>
 <p>这时, 我们就必须引入逻辑运算才能解决问题.</p>
 <h3 is-upgraded>逻辑运算符</h3>
 <p>有三种逻辑运算符:</p>
 <ul>
-<li>逻辑与 &amp;&amp;   两个连接符号, 如 isPKU &amp;&amp; isMale, 必须左右两个的值都为真, 整个表达式为真, 否则为假</li>
-<li>逻辑或 ||   两个竖线符号, 如 isPKU || isHandsome, 左右两边的值只要有一个为真, 整个表达式就为真</li>
-<li>逻辑非 !    一个感叹号,   如 !isPKU, 将 isPKU 的值变反</li>
+<li>逻辑与 <code>&amp;&amp;</code>  两个连接符号, 如 <code>isPKU &amp;&amp; isMale</code>, 必须左右两个的值都为真, 整个表达式为真, 否则为假</li>
+<li>逻辑或 <code>||</code>   两个竖线符号, 如 <code>isPKU || isHandsome</code>, 左右两边的值只要有一个为真, 整个表达式就为真</li>
+<li>逻辑非 <code>!</code>    一个感叹号,   如 <code>!isPKU</code>, 将 <code>isPKU</code> 的值变反, 即真假变换</li>
 </ul>
 <h3 is-upgraded>逻辑表达式</h3>
 <p>我们如果要表达上述的择偶条件的话, 逻辑表达式应该是这样的:</p>
@@ -407,16 +536,16 @@ isPKU &amp;&amp; isGuanghua &amp;&amp; isHandsome &amp;&amp; isMale
 <h3 is-upgraded>优先级</h3>
 <p>当有多种运算时, 优先级如下:</p>
 <ul>
-<li>! -&gt; &amp;&amp; -&gt; ||, 即 逻辑非 ! 最高, 逻辑与 &amp;&amp; 次之, 逻辑或 || 最低</li>
-<li>逻辑非 ! 的优先级比算术运算的优先级都高</li>
-<li>逻辑与 &amp;&amp; 和 逻辑或 || 的优先级低于关系运算</li>
+<li><code>!  &amp;&amp;  ||</code>, 即 逻辑非 <code>!</code> 最高, 逻辑与 <code>&amp;&amp;</code> 次之, 逻辑或 <code>||</code> 最低</li>
+<li>逻辑非 <code>!</code> 的优先级比算术运算的优先级都高</li>
+<li>逻辑与 <code>&amp;&amp;</code> 和 逻辑或 <code>||</code> 的优先级低于关系运算</li>
 </ul>
-<aside class="warning"><p>♨ (isPKU || isHandsome) &amp;&amp; isMale 如果没有圆括号即 isPKU || isHandsome &amp;&amp; isMale 将表达什么意思?</p>
+<aside class="warning"><p>✎ <code>(isPKU || isHandsome) &amp;&amp; isMale</code> 如果没有圆括号即 <code>isPKU || isHandsome &amp;&amp; isMale</code> 将表达什么意思?</p>
 </aside>
 <h3 is-upgraded>示例</h3>
-<aside class="special"><p>✍ 注意: C 语言中, 输出关系或逻辑表达式的结果时要么是 1, 要么是 0. 但在判断时, 采用的 0 为假, 非 0 的都为真. 请一定留意!</p>
+<aside class="special"><p>✍ 注意: C 语言中, 输出关系或逻辑表达式的结果时要么是 <code>1</code>, 要么是 <code>0</code>. 但在判断时, 采用的 <code>0</code> 为假, 非<code>0</code>的都为真. 请一定留意!</p>
 </aside>
-<aside class="special"><p>✍ 短路运算: 当 &amp;&amp; 运算符左边已经为假, 则右边不需要计算了, 整个表达式结果为假; 同理, 当 || 运算符左边已经为真, 则右边不需要计算了, 整个表达式结果为真. 这就称为短路!</p>
+<aside class="special"><p>✍ 短路运算: 当 <code>&amp;</code>&amp; 运算符左边已经为假, 则右边不需要计算了, 整个表达式结果为假; 同理, 当 <code>||</code> 运算符左边已经为真, 则右边不需要计算了, 整个表达式结果为真. 这就称为短路!</p>
 </aside>
 <p>查看以下程序片段, 仔细分析输出的结果:</p>
 <pre><code>#include &#34;stdio.h&#34;
@@ -437,10 +566,43 @@ void main(){
 <h2 is-upgraded>优先级总结</h2>
 <aside class="special"><p>✍ 优先级: 除了括号外, 计算的优先顺序为: 逻辑非 - 乘除 - 加减 - 大于/小于 - 等于/不等于 - 逻辑与 - 逻辑或 - 赋值 - 逗号</p>
 </aside>
+<h2 is-upgraded>小测试</h2>
+<pre><code>第一题
+设a、b、c、d、m、n均为int型变量，且a=5、b=6、c=7、d=8、m=2、n=2,
+则逻辑表达式(m=a&gt;b)&amp;&amp;(n=c&gt;d)运算后，n的值为()。
+A. 0      B. 1
+C. 2      D. 3
+
+第二题
+已有定义：int x=3, y=4, z=5; 则表达式!(x+y)+z-1 &amp;&amp; y+z/2的值是（）。
+A. 6      B. 0
+C. 2      D. 1
+
+第三题
+能正确表示&#34;当x的取值在[-58,-40]和[40,58]范围内为真，否则为假&#34;的表达式是（）。
+
+A. (x&gt;= -58) &amp;&amp; (x&lt;= -40) &amp;&amp; (x&gt;=40) &amp;&amp; (x&lt;=58)
+B. (x&gt;= -58) || (x&lt;= -40) || (x&gt;=40) || (x&lt;=58)
+C. (x&gt;= -58) &amp;&amp; (x&lt;= -40) || (x&gt;=40) &amp;&amp; (x&lt;=58)
+D. (x&gt;= -58) || (x&lt;= -40) &amp;&amp; (x&gt;=40) || (x&lt;=58)
+
+第四题
+若希望当x的值为奇数时，表达式的值为&#34;真&#34;，x的值为偶数时，表达式的值为&#34;假&#34;。
+则以下不能满足要求的表达式是（）。
+A. x%2==1     B. !(x%2==0)
+C. !(x%2)     D. x%2
+
+第五题
+已知 x=45, y=&#39;a&#39;, z=0; 则表达式(x&gt;=z &amp;&amp; y&lt;&#39;z&#39; || !y)的值是（）。
+A. 0          B. 语法错
+C. 1          C. 假
+</code></pre>
+<aside class="warning"><p>✉ 参考答案: ADCCC</p>
+</aside>
 <h2 is-upgraded>条件运算</h2>
 <p>条件运算是一种非常简洁的二元判定结构, 其结果要么是这个, 要么是那个. 实际编程中我们经常使用.<br>其格式如下:</p>
 <p>&lt;判断表达式&gt;?&lt;结果表达式1&gt;:&lt;结果表达式2&gt;</p>
-<aside class="special"><p>✍ 三个表达式分别用 ? 和 : 分割开了, 意思是: 如果判断表达式的结果为真, 则整个表达式的结果就是&#34;结果表达式1&#34;的结果；否则就是&#34;结果表达式2&#34;的结果. 如 89 &gt; 64? 999 : 888 的结果就应该是 999.</p>
+<aside class="special"><p>✍ 三个表达式分别用 <code>?</code> 和 <code>:</code> 分割开了, 意思是: 如果判断表达式的结果为真, 则整个表达式的结果就是&#34;结果表达式1&#34;的结果；否则就是&#34;结果表达式2&#34;的结果. 如 <code>89 &gt; 64? 999 : 888</code> 的结果就应该是 999.</p>
 </aside>
 <p>阅读以下程序, 分析其如何求出某个数的绝对值:</p>
 <pre><code>#include &#34;stdio.h&#34;
@@ -455,7 +617,7 @@ void main(){
 <h2 is-upgraded>选择结构</h2>
 <p>计算机, 也称为电脑, 能够根据程序中设置的不同的条件进行关系或逻辑判断, 以执行不同的任务, 实现一定的自动化.</p>
 <p>这种根据不同逻辑执行不同任务的程序设计就是–选择程序设计. 它可看着当前热门的人工智能的基础</p>
-<aside class="special"><p>➚ 简单人工智能: 请访问一个猜东西的网站<a href="http://20q.net/" target="_blank">20Q.net</a>, 它能通过询问20个左右的简单问题，猜出您想象的物品.</p>
+<aside class="special"><p>🌏 简单人工智能: 请访问一个猜东西的网站<a href="http://20q.net/" target="_blank">20Q.net</a>, 它能通过询问20个左右的简单问题，猜出您想象的物品.</p>
 </aside>
 <h3 is-upgraded>单分支选择结构</h3>
 <p>格式如下:</p>
@@ -557,9 +719,67 @@ void main(){
 }
 </code></pre>
 <p>试试运行这个程序.</p>
-<aside class="warning"><p>✎ 上面这个程序有个小 bug. 假设我们合理的分数在0~100, 当不小心输入的分数为1989或-64时, 看看程序会发生什么, 如何修正?</p>
+<aside class="warning"><p>✎ 上面这个程序有个小 bug. 假设我们合理的分数在<code>0~100</code>, 当不小心输入的分数为<code>1989</code>或<code>-64</code>时, 看看程序会发生什么, 如何修正?</p>
 </aside>
-<aside class="warning"><p>♨ 思考: 我们的判断条件 score &gt;=80 &amp;&amp; score &lt; 90 可以简化为 score &gt;= 80 吗?</p>
+<aside class="warning"><p>♨ 思考: 我们的判断条件 <code>score &gt;=80 &amp;&amp; score &lt; 90</code> 可以简化为 <code>score &gt;= 80</code> 吗?</p>
+</aside>
+<h2 is-upgraded>小测试</h2>
+<pre><code>第一题
+#include &#34;stdio．h&#34;
+void main(){
+  int x=-10, y=5, z=0;
+  if(x=y+z){
+    printf(&#34;***\n&#34;);
+  }else{
+     printf(&#34;$$$\n&#34;);
+  }
+}
+以上程序:
+A. 有语法错不能通过编译      B. 可以通过编译但不能通过连接
+C. 输出***                D.  输出$$$
+
+第二题
+#include &#34;stdio.h&#34;
+void main(){
+  int a=1;
+  if(a++&gt;1){
+    printf(&#34;%d\n&#34;, a);
+  }else{
+     printf(&#34;%d\n&#34;, a--);
+  }
+}
+程序的输出是:
+A. 0        B. 1
+C. 2        D. 3
+
+第三题
+#include &#34;stdio.h&#34;
+void main(){
+  int a=5, b=4, c=6, d;
+  printf(&#34;%d\n&#34;, d=a&gt;b? a&gt;c?a:c :b);
+}
+程序的输出结果是:
+A. 5        B. 4
+C. 6        D. 不确定
+
+第四题
+#include &#34;stdio.h&#34;
+void main(){  
+  float x=2.0, y;
+  if(x&lt;0.0){
+    y=0.0;
+  }else if(x&lt;10.0){
+    y=1.0/x;
+  }else{
+    y=1.0;
+  }
+  printf(&#34;%f\n&#34;,y);
+}
+y的值是:
+A. 0.000000       B. 0.250000  
+C. 0.500000       D. 1.000000
+</code></pre>
+<aside class="warning"><p>✉ 参考答案: CCCC</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解且熟悉本讲所列的示例程序, 尽力完成所有的思考和试一试.</p>
