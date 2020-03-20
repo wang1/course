@@ -99,7 +99,7 @@ ADD %eax, %ebx
 <h2 is-upgraded>C程序的基本结构</h2>
 <p>或多或少的语句将组成一个个C语言程序. 显然, 这些语句需要按照一定的格式或规定进行组织.<br>下面是一个通用的C程序结构:</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   // 你的语句将写在此处, 也是你知识和智慧所在
 }
 </code></pre>
@@ -110,7 +110,7 @@ void main(){
 <p>下面我们来编写我们的第一个C语言程序. 打开你的开发软件如 Code, 新建一个以<code>.c</code>为后缀的C语言源程序文件如下:</p>
 <pre><code>// 这是著名的 Hello World 程序
 #include &#34;stdio.h&#34;
-void main(){
+void main() {
   printf(&#34;Hello World!\n&#34;);
 }
 </code></pre>
@@ -119,7 +119,7 @@ void main(){
 </aside>
 <p>下面我们稍微解释一下</p>
 <ul>
-<li>整个程序由两部分组成, <code>#include &#34;stdio.h</code> 以及 <code>void main(){ }</code></li>
+<li>整个程序由两部分组成, <code>#include &#34;stdio.h</code> 以及 <code>void main() { }</code></li>
 <li><code>#include &#34;stdio.h&#34;</code>表明我们要使用<code>stdio.h</code>这个头文件(<code>Standard Input and Output</code>), 我们把它导入进来</li>
 <li><code>main()</code>称为主函数. 每个C语言程序有且只能有一个<code>main</code>函数, 它是程序开始执行的地方即入口</li>
 <li><code>main</code>函数的函数体即<code>{}</code>中的语句就是我们大展拳脚的地方</li>
@@ -206,7 +206,7 @@ char sex, isOver;       // 定义了两个字符型变量
 <h3 is-upgraded>输出</h3>
 <p>我们使用在<code>stdio.h</code>头文件中已经定义好的<code>printf()</code>函数进行输出. 如我们要输出你的年龄:</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   int age;  // 定义了一个整型变量age
   age = 20; // 把20放到 age 变量中
   printf(&#34;-------this year--------&#34;);     // 输出双引号中的内容
@@ -222,7 +222,7 @@ void main(){
 </aside>
 <p>除了<code>%d</code>是整数的占位符外, <code>%f</code>对应小数, <code>%c</code>代表一个字符. 如:</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   int age = 20;  // 定义了一个整型变量age并初始化为20
   float income = 1989.64; // 定义了一个浮点型变量income并初始化
   char isOver = &#39;Y&#39;; // 定义了一个字符型变量isOver并初始化
@@ -239,7 +239,7 @@ void main(){
 <h3 is-upgraded>输入</h3>
 <p>在上面的例子中, 你会发现数据都是程序中给定的. 那么我们可否在程序运行时, 用户才提供呢? 这样会更灵活.<br>现实编程中, 我们需要使用输入函数<code>scanf()</code>来接收用户提供的数据.<br><code>scanf()</code>函数也使用<code>%d</code>,<code>%f</code>,<code>%c</code>来分别接收整数,小数和单个的字符放到对应的变量中. 如:</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   int age;  // 定义了一个整型变量age
   float income; // 定义了一个浮点型变量income
   char isContinue; // 定义了一个字符型变量isContinue
@@ -260,7 +260,7 @@ void main(){
 <h2 is-upgraded>字符数据的输入输出</h2>
 <p>针对字符, C语言还额外提供了两个函数来进行输入和输出: <code>putchar()</code>和<code>getchar()</code>. 如:</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   char gender;  // 定义了gender字符变量用于保存性别
   printf(&#34;What is your gender(F-Female, M-Male):&#34;);
   gender = getchar();  // 程序在此将等你输入F/M, 然后存到gender变量中
@@ -270,10 +270,10 @@ void main(){
   putchar(66);    // 这也是可以的, 输出66这个ASCII码对应的字符
 }
 </code></pre>
-<aside class="warning"><p>✎ 试一试下面的代码, 你会发现不能正确接收用户的输入, 将中间那句注释去掉再试试:</p>
+<aside class="warning"><p>✎ 试一试下面的代码, 你会发现不能正确接收用户的输入, 将中间那句<code>getchar()</code>前的注释去掉再试试:</p>
 </aside>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   char gender, degree;  // 定义了gender用于保存性别, degree保存等级(ABC)
   printf(&#34;What is your gender(F-Female, M-Male):&#34;);
   gender = getchar();  // 程序在此将等你输入F/M, 然后存到gender变量中
@@ -302,19 +302,19 @@ void main(){
 <h2 is-upgraded>赋值运算</h2>
 <p>C语言将赋值也作为一种运算, 使用<code>=</code>进行, 即: 将<code>=</code>右边的值赋予左边的变量. 如:</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
-  int a, b, c;
-  a=1;    // 将1赋给a变量
-  b=2;    // 将2赋给b变量
-  c=a+b;  // 将a+b的结果赋给c变量
-  printf(&#34;%d\n&#34;,c);
-  a=a+1;  // 先计算a+1, 结果为2, 再把2放到a中.
-  b=b-1;  // 先计算b-1, 结果为1, 再把1放到b中.
-  c=a+b;
-  printf(&#34;%d\n&#34;,c);
+void main() {
+  int a, b, c;  // 定义了3个整型变量a、b、c
+  a = 1;    // 将1赋给a变量
+  b = 2;    // 将2赋给b变量
+  c = a + b;  // 将a + b的结果赋给c变量
+  printf(&#34;%d\n&#34;, c);
+  a = a + 1;  // 先计算a + 1, 结果为2, 再把2放到a中.
+  b = b - 1;  // 先计算b - 1, 结果为1, 再把1放到b中.
+  c = a + b;
+  printf(&#34;%d\n&#34;, c);
 }
 </code></pre>
-<aside class="special"><p>✍ 赋值运算即 <code>=</code>的左边必须是一个变量, 如此才能存放右边的值. 所以<code>5=3</code>为什么不合法?<br>✍ 赋值运算的优先级很低, 仅高于我们逗号运算(我们没讲该运算, 可暂时忽略)</p>
+<aside class="special"><p>✍ 赋值运算即<code>=</code>的左边必须是一个变量, 如此才能存放右边的值. 所以<code>5=3</code>为什么不合法?<br>✍ 赋值运算的优先级很低, 仅高于我们逗号运算(我们没讲该运算, 可暂时忽略)</p>
 </aside>
 <h2 is-upgraded>算术运算</h2>
 <p>C语言的算术运算有<code>+ - * / %</code>等. 相关注意说明如下:</p>
@@ -324,45 +324,48 @@ void main(){
 <li><code>%</code>是取余运算, 要求两边都必须是整数. 如: <code>5%2</code>的结果(余数)是1. 我们通常用于判断是否能整除.</li>
 </ul>
 <h2 is-upgraded>复合运算</h2>
-<h3 is-upgraded>++ –</h3>
+<h3 is-upgraded>自增和自减<code>++ --</code></h3>
 <p><code>++</code>或<code>--</code>称为自增或自减, 它只能用于变量, 即将自己增加1或减少1. 如:</p>
-<pre><code>int i=6; j=4;
-i++;  // 等价于 i=i+1
-j--;  // 等价于 j=j-1
-printf(&#34;%d,%d&#34;,i,j);  // 结果为7,3
+<pre><code>int i = 6, j = 4;
+i++;  // 等价于 i = i + 1
+j--;  // 等价于 j = j - 1
+printf(&#34;%d,%d&#34;, i, j);  // 结果为7,3
 </code></pre>
 <aside class="special"><p>✍ 为什么<code>64++</code>不合法?</p>
 </aside>
 <p>此外, <code>++</code>或<code>--</code>有前后位置之分. 我们以<code>++</code>为例:</p>
-<pre><code>int i=1, j, k;
+<pre><code>int i = 1, j, k;
 j = i++;  // 称为后加, 即先将i的值赋给j, 然后i再自增. 所以j的值为1
-k = ++i;  // 称为前加, 即先自增, 然后将i的值赋给k. 所以k的值是3?
+k = ++i;  // 称为前加, 即先自增, 然后将i的值赋给k. 所以k的值是3（请思考为什么）
 </code></pre>
 <h3 is-upgraded>复合赋值</h3>
 <p>C语言还提供一种算术和赋值的组合运算, 即:<code>+= -= *= /= %=</code>, 如:</p>
-<pre><code>int a=6;
-a+=3;   // 等价于a=a+3
-a/=3;   // 等价于a=a/3
-printf(&#34;%d&#34;,a);   // 请问结果是什么?
+<pre><code>int a = 6;
+a += 3;   // 等价于a = a + 3
+a /= 3;   // 等价于a = a / 3
+printf(&#34;%d&#34;, a);   // 请问结果是什么?
 </code></pre>
 <h2 is-upgraded>类型转换</h2>
 <p>前面我们知道数据有不同的数据类型如整型实型等. 在运算过程中为了不损失精度, 都会向高精度的类型进行暂时的转换.<br>有一种取值范围和精度都更高的类型是<code>double</code>, 我们称为双精度, 我们前面学的<code>float</code>就是单精度. 如:</p>
-<pre><code>int a=1, sum;
-float b=8.9;
-double c=6.4;
+<pre><code>int a = 1, sum;
+float b = 8.9;
+double c = 6.4;
 // 先计算a+b, 因为b是float型, 先将a暂时转换为float型, 结果是float型;
 // 然后与c相加, 因为c是double型, 就将刚才那个float型的结果先转换为double型;
-// 此时赋值号左边就有了一个double型的结果, 但=号的右边a是一个int型, 所以最后将double型取整赋给a即可.
-sum=a+b+c;  
+// 此时赋值号右边就有了一个double型的结果, 但=号的左边 sum 是一个int型, 所以最后将double型取整赋给 sum 即可.
+sum = a + b + c;  
 </code></pre>
 <h2 is-upgraded>简单顺序结构</h2>
-<p>在解决问题的过程中, 我们有时从前往后顺序执行就好了, 有时某些问题需要进行选择再决定该做些什么(如:游戏是否继续), 有时又需要重复的做某件事直至满足某种条件(如拥有的金币数量不为0就继续让用户买买买).</p>
-<p>这实际就是程序设计的3中基本结构:顺序,选择和循环. 下面我们看看顺序结构的程序.</p>
+<p>在解决问题的过程中, 我们基本会从前往后顺序执行即可。有时某些问题比较特殊，需要进行判断再决定该做些什么(如:游戏是否继续), 有时又需要重复的做某件事直至满足某种条件才停止(如拥有的金币数量不为0就继续让用户买买买直至没钱了).</p>
+<p>这实际就是程序设计的三种基本结构： 顺序、选择和循环.</p>
+<aside class="special"><p>✍ 我们即将进行编程学习。简单的说，编写程序一般是三步曲：<br>1.获取用户的输入（考虑定义需要的变量，接收用户的输入）<br>2.处理问题（根据拟定的算法进行相关运算）<br>3.输出结果给用户（将最终结果展示给用户）</p>
+</aside>
+<p>下面我们看看顺序结构的程序.</p>
 <h3 is-upgraded>程序一</h3>
 <pre><code>// 求两个数的和差积商
 #include &#34;stdio.h&#34;
-void main(){
-  float a,b;
+void main() {
+  float a, b;
   float sum, difference, product, quotient;
   printf(&#34;Please input two number:&#34;);
   scanf(&#34;%f%f&#34;, &amp;a, &amp;b);
@@ -378,8 +381,9 @@ void main(){
 </code></pre>
 <h3 is-upgraded>程序二</h3>
 <pre><code>// 交换两个变量的值并输出
+// 我们引入了一个临时的中间变量temp
 #include &#34;stdio.h&#34;
-void main(){
+void main() {
   int you, me, temp;
   printf(&#34;Please input you and me:&#34;);
   scanf(&#34;%d%d&#34;, &amp;you, &amp;me);
@@ -396,8 +400,8 @@ void main(){
 <pre><code>一、单选题
 
 1.下列表达式中，表达式值为0的是（）。
-A. 2%5          B. 2/3.0
-C. a=0,a+(b=5)  D. 8/9
+A. 2 % 5                B. 2 / 3.0
+C. a = 0, a + (b = 5)   D. 8 / 9
 
 2.下列运算符中，要求操作数必须是整型的是（）。
 A. %           B. *
@@ -407,26 +411,28 @@ C. /=          D. ++
 A. =           B. %
 C. +           D. -
 
-9.若有定义：int i=2,j;，则语句j=++i;执行结束之后，以下说法正确的是（）。
+4.若有定义：int i = 2, j;，则语句j = ++i;执行结束之后，以下说法正确的是（）。
 A. i的值为3，j的值为2  B. i的值为2，j的值为2
 C. i的值为3，j的值为3  D. i的值为2，j的值为3
 
-12若有定义：int a=6;，则表达式a/=a+a的值是（）。
+5.若有定义：int a = 6;，则表达式a /= a + a的值是（）。
 A. 7        B. 2
 C. 0        D. 0.5
 
 二、判断题
 
-1.若有定义：int i=2;，则语句a+=a*=a;执行结束之后，变量a的值是6。（）
+1.若有定义：int i = 2;，则语句a += a *= a;执行结束之后，变量a的值是6。（）
 
-2.若有定义：int num;，则语句num=3.561;执行结束之后，变量num的值是4。（）
+2.若有定义：int num;，则语句num = 3.561;执行结束之后，变量num的值是4。（）
 
-3.若有定义：int a=9;float x=6.3,y=3.5;，则表达式a%5*(int)(x+y)%7/4的值为0。（）
+3.若有定义：int a = 9;float x = 6.3, y = 3.5;，则表达式a % 5 * (int)(x+y) % 7 / 4的值为0。（）
 
-4.若有定义：char c;，则表达式c=&#39;a&#39;-&#39;A&#39;+&#39;B&#39;的值为&#39;b&#39;。（）
+4.若有定义：char c;，则表达式c = &#39;a&#39; - &#39;A&#39; + &#39;B&#39;的值为&#39;b&#39;。（）
 
-5.若有定义：int a;，则表达式a=3*5,a+a,a+3的值为33。（）
+5.若有定义：int a;，则表达式a = 3 * 5, a + a, a + 3的值为33。（）
 </code></pre>
+<aside class="special"><p>✍ 提示1： 第3题中<code>(int)(x + y)</code>的意思是将<code>(x + y)</code>的结果强行转变为<code>int</code>型，直接取整数部分，不会四舍五入。<br>✍ 提示2： 第4题请考虑使用ASCII码进行。<br>✍ 提示3： 第5题是我们没有讲述的逗号运算，是最低级的运算，你可忽略。</p>
+</aside>
 <aside class="warning"><p>✉ 参考答案: DAACC ✘✘✔✔✘</p>
 </aside>
 
@@ -451,7 +457,7 @@ C. 0        D. 0.5
 等于  不等于
 ==   !=
 </code></pre>
-<aside class="special"><p>✍  注意上面的<code>&lt;= &gt;= == !=</code>是两个字符组成的.</p>
+<aside class="special"><p>✍ 注意上面的<code>&lt;= &gt;= == !=</code>是两个字符组成的.</p>
 </aside>
 <h3 is-upgraded>关系表达式</h3>
 <p>使用关系运算符连接的式子即为关系表达式. 比如:</p>
@@ -466,7 +472,7 @@ sex == 1                // 是否男性(以 1 表示男性)
 </aside>
 <p>请输入如下程序进行理解:</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   int score = 58, age = 20, sex = 0;
   int isPass, isAdult, isFemale;
   isPass = score &gt;= 60; //根据上面的分数58, 结果为假, 故isPass将被赋值为0
@@ -549,7 +555,7 @@ isPKU &amp;&amp; isGuanghua &amp;&amp; isHandsome &amp;&amp; isMale
 </aside>
 <p>查看以下程序片段, 仔细分析输出的结果:</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   int a = 3, b = 1, x = 2, y = 0;
   int result1, result2, result3;
   // 注意: 先算 a &lt; b, 结果为 0, 此时就不再计算右边的 x &gt; y了, 直接将 0 赋值给result1
@@ -568,32 +574,32 @@ void main(){
 </aside>
 <h2 is-upgraded>小测试</h2>
 <pre><code>第一题
-设a、b、c、d、m、n均为int型变量，且a=5、b=6、c=7、d=8、m=2、n=2,
-则逻辑表达式(m=a&gt;b)&amp;&amp;(n=c&gt;d)运算后，n的值为()。
+设有定义： int a = 5, b = 6, c = 7, d = 8, m = 2, n = 2;
+则逻辑表达式(m = a &gt; b) &amp;&amp; (n = c &gt; d)运算后，n的值为()。
 A. 0      B. 1
 C. 2      D. 3
 
 第二题
-已有定义：int x=3, y=4, z=5; 则表达式!(x+y)+z-1 &amp;&amp; y+z/2的值是（）。
+已有定义：int x = 3, y = 4, z = 5;  则表达式!(x + y) + z - 1 &amp;&amp; y + z / 2的值是（）。
 A. 6      B. 0
 C. 2      D. 1
 
 第三题
 能正确表示&#34;当x的取值在[-58,-40]和[40,58]范围内为真，否则为假&#34;的表达式是（）。
 
-A. (x&gt;= -58) &amp;&amp; (x&lt;= -40) &amp;&amp; (x&gt;=40) &amp;&amp; (x&lt;=58)
-B. (x&gt;= -58) || (x&lt;= -40) || (x&gt;=40) || (x&lt;=58)
-C. (x&gt;= -58) &amp;&amp; (x&lt;= -40) || (x&gt;=40) &amp;&amp; (x&lt;=58)
-D. (x&gt;= -58) || (x&lt;= -40) &amp;&amp; (x&gt;=40) || (x&lt;=58)
+A. (x &gt;= -58) &amp;&amp; (x &lt;= -40) &amp;&amp; (x &gt;=40) &amp;&amp; (x &lt;=58)
+B. (x &gt;= -58) || (x &lt;= -40) || (x &gt;=40) || (x &lt;=58)
+C. (x &gt;= -58) &amp;&amp; (x &lt;= -40) || (x &gt;=40) &amp;&amp; (x &lt;=58)
+D. (x &gt;= -58) || (x &lt;= -40) &amp;&amp; (x &gt;=40) || (x &lt;=58)
 
 第四题
 若希望当x的值为奇数时，表达式的值为&#34;真&#34;，x的值为偶数时，表达式的值为&#34;假&#34;。
 则以下不能满足要求的表达式是（）。
-A. x%2==1     B. !(x%2==0)
-C. !(x%2)     D. x%2
+A. x % 2 == 1     B. !(x % 2 == 0)
+C. !( x % 2)      D. x % 2
 
 第五题
-已知 x=45, y=&#39;a&#39;, z=0; 则表达式(x&gt;=z &amp;&amp; y&lt;&#39;z&#39; || !y)的值是（）。
+已知 x = 45, y=&#39;a&#39;, z = 0; 则表达式(x &gt;= z &amp;&amp; y &lt; &#39;z&#39; || !y)的值是（）。
 A. 0          B. 语法错
 C. 1          C. 假
 </code></pre>
@@ -606,7 +612,7 @@ C. 1          C. 假
 </aside>
 <p>阅读以下程序, 分析其如何求出某个数的绝对值:</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   int x;
   printf(&#34;Please input a integer number:&#34;);
   scanf(&#34;%d&#34;, &amp;x);
@@ -623,7 +629,7 @@ void main(){
 <p>格式如下:</p>
 <pre><code>// 如果条件表达式为真, 即条件成立, 则执行花括号{}中的语句;
 // 否则什么都不做
-if(条件表达式){
+if(条件表达式) {
   满足条件后要执行的一条或多条语句
 }
 </code></pre>
@@ -634,12 +640,12 @@ if(条件表达式){
  *      经过判断, 保证max中一定保存的是大的那个数
  */
 #include &#34;stdio.h&#34;
-void main(){
+void main() {
   int num1, num2, max;  // max 用来放两个数中大的那个
   printf(&#34;Please input two integer number:&#34;);
   scanf(&#34;%d%d&#34;, &amp;num1, &amp;num2);
   max = num1;       // 假设num1是大的, 放到max变量中
-  if(max &lt; num2){   // 验证假设, 第二个是不是比我大?
+  if(max &lt; num2) {   // 验证假设, 第二个是不是比我大?
     max = num2;
   }
   printf(&#34;MAX: %d\n&#34;, max);
@@ -649,9 +655,9 @@ void main(){
 <p>格式如下:</p>
 <pre><code>// 如果条件表达式为真, 即条件成立, 则执行其紧跟花括号{}中的语句;
 // 否则执行else后面{}中的语句
-if(条件表达式){
+if(条件表达式) {
   满足条件后要执行的一条或多条语句
-}else{
+} else {
   不满足条件后要执行的一条或多条语句
 }
 </code></pre>
@@ -661,13 +667,13 @@ if(条件表达式){
  *       max保存大的那个数
  */
 #include &#34;stdio.h&#34;
-void main(){
+void main() {
   int num1, num2, max;  // max 用来放两个数中大的那个
   printf(&#34;Please input two integer number:&#34;);
   scanf(&#34;%d%d&#34;, &amp;num1, &amp;num2);
-  if(num1 &gt; num2){    // 直接比较, 第一个数是不是比第二个数大
+  if(num1 &gt; num2) {    // 直接比较, 第一个数是不是比第二个数大
     max = num1;       // 第一个大, 放到max中
-  }else{
+  } else {
     max = num2;       // 第二个大, 放到max中
   }
   printf(&#34;MAX: %d\n&#34;, max);
@@ -683,16 +689,17 @@ void main(){
 <pre><code>// 如果条件表达式1为真, 则执行其花括号{}中的语句;
 // 否则如果条件表达式2为真, 则执行其花括号{}中的语句;
 // 否则, 执行else后面的语句
-if(条件表达式1){
+if(条件表达式1) {
   满足条件1后要执行的一条或多条语句
-}else if(条件表达式2){
+} else if(条件表达式2) {
   满足条件2后要执行的一条或多条语句
-}else{
+} else {
   以上条件都不满足则执行此处的一条或多条语句
 }
 </code></pre>
 <p>说明:</p>
 <ul>
+<li>上面描述了一个三分支的情形</li>
 <li><code>else if</code>不是只能有一个, 可以有多个如四分支,五分支等</li>
 <li><code>else</code>块可以没有</li>
 </ul>
@@ -701,19 +708,19 @@ if(条件表达式1){
  * 思路: 使用多分支选择结构直接比较即可
  */
 #include &#34;stdio.h&#34;
-void main(){
+void main() {
   int score;
   printf(&#34;Please input your score:&#34;);
   scanf(&#34;%d&#34;, &amp;score);
   if(score &gt;=90) {
     printf(&#34;Excelent!&#34;);
-  }else if(score &gt;= 80 &amp;&amp; score &lt; 90){
+  }else if(score &gt;= 80 &amp;&amp; score &lt; 90) {
     printf(&#34;Good!&#34;);
-  }else if(score &gt;= 70 &amp;&amp; score &lt; 80){
+  }else if(score &gt;= 70 &amp;&amp; score &lt; 80) {
     printf(&#34;Middel&#34;);
-  }else if(score &gt;= 60 &amp;&amp; score &lt; 70){
+  }else if(score &gt;= 60 &amp;&amp; score &lt; 70) {
     printf(&#34;OK&#34;);
-  }else{
+  } else {
     printf(&#34;Bad!&#34;);
   }
 }
@@ -721,16 +728,16 @@ void main(){
 <p>试试运行这个程序.</p>
 <aside class="warning"><p>✎ 上面这个程序有个小 bug. 假设我们合理的分数在<code>0~100</code>, 当不小心输入的分数为<code>1989</code>或<code>-64</code>时, 看看程序会发生什么, 如何修正?</p>
 </aside>
-<aside class="warning"><p>♨ 思考: 我们的判断条件 <code>score &gt;=80 &amp;&amp; score &lt; 90</code> 可以简化为 <code>score &gt;= 80</code> 吗?</p>
+<aside class="warning"><p>✎  思考: 我们的判断条件 <code>score &gt;=80 &amp;&amp; score &lt; 90</code> 可以简化为 <code>score &gt;= 80</code> 吗?</p>
 </aside>
 <h2 is-upgraded>小测试</h2>
 <pre><code>第一题
 #include &#34;stdio．h&#34;
-void main(){
-  int x=-10, y=5, z=0;
-  if(x=y+z){
+void main() {
+  int x = -10, y = 5, z = 0;
+  if(x = y + z) {
     printf(&#34;***\n&#34;);
-  }else{
+  } else {
      printf(&#34;$$$\n&#34;);
   }
 }
@@ -740,11 +747,11 @@ C. 输出***                D.  输出$$$
 
 第二题
 #include &#34;stdio.h&#34;
-void main(){
-  int a=1;
-  if(a++&gt;1){
+void main() {
+  int a = 1;
+  if(a++ &gt; 1) {
     printf(&#34;%d\n&#34;, a);
-  }else{
+  } else {
      printf(&#34;%d\n&#34;, a--);
   }
 }
@@ -754,9 +761,9 @@ C. 2        D. 3
 
 第三题
 #include &#34;stdio.h&#34;
-void main(){
-  int a=5, b=4, c=6, d;
-  printf(&#34;%d\n&#34;, d=a&gt;b? a&gt;c?a:c :b);
+void main() {
+  int a = 5, b = 4, c = 6, d;
+  printf(&#34;%d\n&#34;, d = a &gt; b? a &gt; c? a : c : b);
 }
 程序的输出结果是:
 A. 5        B. 4
@@ -764,16 +771,16 @@ C. 6        D. 不确定
 
 第四题
 #include &#34;stdio.h&#34;
-void main(){  
-  float x=2.0, y;
-  if(x&lt;0.0){
-    y=0.0;
-  }else if(x&lt;10.0){
-    y=1.0/x;
-  }else{
-    y=1.0;
+void main() {  
+  float x = 2.0, y;
+  if(x &lt; 0.0) {
+    y = 0.0;
+  }else if(x &lt; 10.0) {
+    y = 1.0 / x;
+  } else {
+    y = 1.0;
   }
-  printf(&#34;%f\n&#34;,y);
+  printf(&#34;%f\n&#34;, y);
 }
 y的值是:
 A. 0.000000       B. 0.250000  
@@ -789,19 +796,19 @@ C. 0.500000       D. 1.000000
  * 注意: ASCII码值小于32的是一些控制字符, 如 回车/方向键/tab键等等
  */
 #include &#34;stdio.h&#34;
-void main(){
+void main() {
   char yourKey;
   printf(&#34;Please input a character:&#34;);
   yourKey = getchar();
-  if(yourKey &lt; 32 ){
+  if(yourKey &lt; 32 ) {
     printf(&#34;It&#39;s a control character\n&#34;); // 控制字符
-  }else if(yourKey &gt;= &#39;0&#39; &amp;&amp; yourKey &lt;= &#39;9&#39;){
+  }else if(yourKey &gt;= &#39;0&#39; &amp;&amp; yourKey &lt;= &#39;9&#39;) {
     printf(&#34;It&#39;s a number\n&#34;);            // 数字字符
-  }else if(yourKey &gt;= &#39;a&#39; &amp;&amp; yourKey &lt;= &#39;z&#39;){
+  }else if(yourKey &gt;= &#39;a&#39; &amp;&amp; yourKey &lt;= &#39;z&#39;) {
     printf(&#34;It&#39;s a lowercase letter\n&#34;);  // 小写字母
-  }else if(yourKey &gt;= &#39;A&#39; &amp;&amp; yourKey &lt;= &#39;Z&#39;){
+  }else if(yourKey &gt;= &#39;A&#39; &amp;&amp; yourKey &lt;= &#39;Z&#39;) {
     printf(&#34;It&#39;s a uppercase letter\n&#34;);  // 大写字母
-  }else{
+  } else {
     printf(&#34;It&#39;s other character\n&#34;);     // 其它字符
   }
 }
@@ -814,8 +821,145 @@ void main(){
         <p>本次课程我们将讲述以下内容:</p>
 <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>X</li>
+<li>多分支 switch 语句</li>
+<li>嵌套的 if 语句</li>
 </ul>
+<h2 is-upgraded>switch 语句</h2>
+<p>除了使用<code>else if</code>来构建多分支的选择结构外，某些情况下用<code>switch</code>来构建多分支会更清晰。 结构如下：</p>
+<pre><code>switch(整型或字符型变量) {
+  case 整型或字符型常量1: 语句1; break;
+  case 整型或字符型常量2: 语句2; break;
+  ...
+  case 整型或字符型常量n: 语句n; break;
+  default: 语句n+1;
+}
+</code></pre>
+<p>说明：</p>
+<ul>
+<li>以上结构共提供了<code>n+1</code>种情况</li>
+<li>根据 整型或字符型变量 的值与哪个<code>case</code>后的 常量相同，就执行哪个<code>case</code>后面的语句，然后就跳出整个<code>switch</code></li>
+<li>只能对整型或字符型变量进行判定</li>
+<li>注意每个<code>case</code>后面的<code>break</code>，如果没有它，程序将把所有<code>case</code>的语句都执行</li>
+</ul>
+<p>阅读理解如下程序：</p>
+<pre><code>/**
+ * 根据用户的输入值输出对应星期几
+ * 如用户输入2,则输出Tue
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int day;
+  printf(&#34;Please input a number(1~7):&#34;);
+  scanf(&#34;%d&#34;, &amp;day);
+  switch(day) {
+    case 1: printf(&#34;Monday\n&#34;);
+    case 2: printf(&#34;Tuesday\n&#34;);
+    case 3: printf(&#34;Wednesday\n&#34;);
+    case 4: printf(&#34;Thursday\n&#34;);
+    case 5: printf(&#34;Friday\n&#34;);
+    case 6: printf(&#34;Saturday\n&#34;);
+    case 7: printf(&#34;Sunday\n&#34;);
+    default: printf(&#34;Error!\n&#34;);
+  }
+}
+</code></pre>
+<aside class="warning"><p>✎ 运行上面的程序，如输入3，你会得到什么结果？如何修正？<br>✎ 如果我希望输入了<code>8</code>则输出<code>Monday</code>，输入<code>9</code>则输出<code>Tuesday</code>，依次类推，而不是输出<code>error</code>，你有什么想法？(提示：考虑取余运算<code>%</code>)</p>
+</aside>
+<p>再看看一个用<code>switch</code>编制的简单计算器程序：</p>
+<pre><code>/**
+ * 根据用户的输入的运算式给出结果
+ * 如用户输入6+4,则输出10
+ * 程序目前只支持+-×/四种运算
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  float a, b, result; // a和b浮点型变量放两个运算数，result变量放结果
+  char operator; //operator字符型变量放运算符
+  int isInputError=0; // isInputError整型变量设置是否有输入错误，1代表有错，0代表无错，默认无错即0
+  printf(&#34;Please input your expression(like 6+4):&#34;);
+  scanf(&#34;%f%c%f&#34;, &amp;a, &amp;operator, &amp;b); // 请留意如何接收用户输入的！
+  switch(operator) { // 根据operator中的运算符来决定该进行何种运算
+    case &#39;+&#39;: result = a + b; break;
+    case &#39;-&#39;: result = a - b; break;
+    case &#39;*&#39;: result = a * b; break;
+    case &#39;/&#39;: result = a / b; break;
+    default: isInputError = 1;  // 不是加减乘除，输入的运算不能进行，置isInputError为1
+  }
+  if(isInputError == 1) {  // isInputError为1则表明输入有错
+    printf(&#34;Sorry, I don&#39;t understand!&#34;);
+  } else {
+    printf(&#34;%.2f%c%.2f=%.2f\n&#34;, a, operator, b, result);
+  }
+}
+</code></pre>
+<p>运行这个程序试试。实际上，类似我们手机上的计算器，其背后就是这种程序在运行。不过它提供了图形界面而已。</p>
+<aside class="warning"><p>✎ 试一试：如果我们打算提供求余运算，该如何修改一下？<br>✎ 思考：程序中我们引入了<code>isInputError</code>变量来判断是否有输入发错误，这是很常用的编程手段。那么，请想一想判断条件可否从<code>if(isInputError == 1)</code>改为<code>if(isInputError)</code>?<br>✎ 试一试：这个程序使用<code>switch</code>非常方便，可读性也强。你可否把它用多分支的<code>if</code>语句来实现？</p>
+</aside>
+<h2 is-upgraded>嵌套的 if 语句</h2>
+<p>在某些时候，我们可能会遇到判断了一次条件后还要判断另外条件的情况。<br>考虑一下QQ的登录，它可能这样进行两步验证：先判断是否有这个用户，然后如果有这个用户那么密码是否正确。<br>此时我们就会用到嵌套的判断即嵌套的<code>if</code>语句。</p>
+<h3 is-upgraded>找最大的数</h3>
+<p>请看如下程序：</p>
+<pre><code>/**
+ * 对于用户任意给定的3个整数，输出最大的那个
+ * 如用户输入19 89 64,则输出89
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int a, b, c, max;  // a、b、c用来放用户给定的3个整数，max用来放最大的那个
+  printf(&#34;Please input 3 ingeger:&#34;);
+  scanf(&#34;%d%d%d&#34;, &amp;a, &amp;b, &amp;c);
+  if(a &gt; b) {    // a&gt;b
+    if(a &gt; c) {  // a&gt;b同时a&gt;c，所以a最大
+      max = a;
+    } else {      // c&gt;a&gt;b
+      max = c;
+    }
+  } else {        // b&gt;a
+    if(b &gt; c) {  // b&gt;a同时b&gt;c，所以b最大
+      max = b;
+    } else {
+      max = c;  // c&gt;b&gt;a
+    }
+  }
+  printf(&#34;Max: %d\n&#34;, max);
+}
+</code></pre>
+<p>以上程序使用了两层<code>if</code>嵌套。运行试试。</p>
+<h3 is-upgraded>找轻的苹果</h3>
+<p>还记得我们以前提到的那个找苹果问题吗？我们如何用C语言来让计算机给我们找出来呢？</p>
+<pre><code>/**
+ * 有四个外观大小都一模一样的苹果, 现其中三个重量相同, 另外一个比这三个轻.
+ * 请用一个没有砝码的天平, 最多称两次, 找出这个轻的苹果.
+ * 我们以a1、a2、a3、a4代表这四个苹果的重量，为简化我们用整数
+ * 程序运行时用户任意指定哪个苹果轻,如 2 2 1 2 就代表第三个苹果轻
+ * 注意：称两个苹果（左右两边）有三种可能：左跷、平衡、右跷
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int a1, a2, a3, a4;   // 存放四个苹果的重量
+  printf(&#34;Please input 4 apple&#39;s weight:&#34;);
+  scanf(&#34;%d%d%d%d&#34;, &amp;a1, &amp;a2, &amp;a3, &amp;a4);
+  if(a1 &lt; a2) {        // 第一个轻
+    printf(&#34;No.1 is light!\n&#34;);
+  }else if(a1 &gt; a2) {  // 第二个轻
+    printf(&#34;No.2 is light!\n&#34;);
+  } else {              // 第一个和第二个相等，需要再称一次
+    if(a3 &lt; a4) {
+      printf(&#34;No.3 is light!\n&#34;);
+    }else if(a3 &gt; a4) {
+      printf(&#34;No.4 is light!\n&#34;);
+    } else {            // 想想为何是错的？
+      printf(&#34;Your are Wrong!\n&#34;);
+    }
+  }
+}
+</code></pre>
+<p>Positive<br>： 🌏 <a href="https://baike.baidu.com/item/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/527" target="_blank">数学建模</a>： 使用数学方法解决实际应用问题。上面即是一种简单的建模。</p>
+<aside class="warning"><p>✎ 试一试：你可能有不同的称法（算法），如：天平两边各放2个苹果，然后再把轻的那边的两个再称一次即可。试试以这种算法来编写程序（提示：<code>a1 &lt; a2</code>可以表示天平一边放了一个苹果，那么考虑一下如何表示各放两个苹果）。</p>
+</aside>
+<h2 is-upgraded>小测验</h2>
+<h2 is-upgraded>课后练习</h2>
+<p>可以进行实验了</p>
 
 
       </google-codelab-step>
