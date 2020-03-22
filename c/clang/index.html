@@ -958,8 +958,48 @@ void main() {
 <aside class="warning"><p>✎ 试一试：你可能有不同的称法（算法），如：天平两边各放2个苹果，然后再把轻的那边的两个再称一次即可。试试以这种算法来编写程序（提示：<code>a1 &lt; a2</code>可以表示天平一边放了一个苹果，那么考虑一下如何表示各放两个苹果）。</p>
 </aside>
 <h2 is-upgraded>小测验</h2>
+<pre><code>1.若运行时输入:3 5/&lt;回车&gt;,则以下程序的运行结果是()
+
+#include &lt;stdio.h&gt;
+void main( ) {
+  float x,y;
+  char o;
+  double r;
+  scanf(&#34;%f %f %c&#34;, &amp;x, &amp;y, &amp;o);
+  
+  switch(o) {
+    case &#39;+&#39;: r = x + y; break;
+    case &#39;-&#39;: r = x - y; break;
+    case &#39;*&#39;: r = x * y; break;
+    case &#39;/&#39;: r = x / y; break;
+  }
+  printf(&#34;%f&#34;, r);
+}
+
+2.设有下面程序片段，若grade的值为&#39;C&#39;,则输出结果是().
+
+switch(grade) {
+  case &#39;A&#39;: printf(&#34;85-100\n&#34;);
+  case &#39;B&#39;: printf(&#34;70-84\n&#34;);
+  case &#39;C&#39;: printf(&#34;60-69\n&#34;);
+  case &#39;D&#39;: printf(&#34;&lt;60\n&#34;);
+  default: printf(&#34;error!\n&#34;);
+}
+
+3.设有下面程序片段，若grade的值为&#39;B&#39;, 则输出结果是().
+
+switch(grade) {
+  case &#39;A&#39;: printf(&#34;85-100\n&#34;); break;
+  case &#39;B&#39;: printf(&#34;70-84\n&#34;); break;
+  case &#39;C&#39;: printf(&#34;60-69\n&#34;); break;
+  case &#39;D&#39;: printf(&#34;&lt;60\n&#34;); break;
+  default: printf(&#34;error!\n&#34;);
+}
+</code></pre>
+<aside class="warning"><p>✉ 参考答案: 略，请实验验证</p>
+</aside>
 <h2 is-upgraded>课后练习</h2>
-<p>可以进行实验了</p>
+<p>请理解本讲所列程序。<br>需能独立编写<a href="https://qige.io/c/c-experiment.html" target="_blank">棋歌教学网实验一</a>的第1、2、3个实验，可参考课后实验部分的第5个实验（称12个苹果）</p>
 
 
       </google-codelab-step>
