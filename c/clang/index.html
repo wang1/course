@@ -946,7 +946,7 @@ void main() {
   } else {              // 第一个和第二个相等，需要再称一次
     if(a3 &lt; a4) {
       printf(&#34;No.3 is light!\n&#34;);
-    }else if(a3 &gt; a4) {
+    } else if(a3 &gt; a4) {
       printf(&#34;No.4 is light!\n&#34;);
     } else {            // 想想为何是错的？
       printf(&#34;Your are Wrong!\n&#34;);
@@ -1008,8 +1008,350 @@ switch(grade) {
         <p>本次课程我们将讲述以下内容:</p>
 <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>X</li>
+<li>While循环</li>
+<li>do while循环</li>
+<li>for循环</li>
 </ul>
+<h2 is-upgraded>引例</h2>
+<p>在某些问题的解决中，可能会重复的做某个动作很多次。如：</p>
+<pre><code>/**
+ * 此程序将输出10个*号
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  printf(&#34;*&#34;);
+  printf(&#34;*&#34;);
+  printf(&#34;*&#34;);
+  printf(&#34;*&#34;);
+  printf(&#34;*&#34;);
+  printf(&#34;*&#34;);
+  printf(&#34;*&#34;);
+  printf(&#34;*&#34;);  
+  printf(&#34;*&#34;);  
+  printf(&#34;*&#34;);
+}
+</code></pre>
+<p>10个<code>*</code>输出没问题，但有同学肯定会认为这种方式纯粹有病，一个<code>printf(&#34;**********&#34;)</code>语句都可以搞定的。<br>思路很好，创新很多都是那些&#34;偷懒&#34;的人想出来的，另类的思维！<br>不过，现在要求发生了改变：需要打印100个<code>*</code>。<br>你会想到这不就是<code>Ctrl+C</code>和<code>Ctrl+V</code>的事情吗？粘贴100个就搞定。<br>那么如果需要打印<code>198964</code>个或更多呢？或者你说打多少个我程序就打多少个？</p>
+<p>也即，我们的程序需要具有简洁性和通用性。此时，我们需要循环来解决问题！</p>
+<h2 is-upgraded>while循环</h2>
+<p>所谓的<code>while</code>循环，也称为<strong>当型循环</strong>，其结构如下：</p>
+<pre><code>while(条件表达式) {
+  循环语句（可以有多条）
+}
+</code></pre>
+<p>示意图如下：</p>
+<p class="image-container"><img alt="while" src="img/3e98790a7c33b6da.jpg"></p>
+<p>说明：</p>
+<ol type="1">
+<li>如果<strong>条件表达式</strong>为真，则执行<code>{}</code>中的循环语句，否则，直接执行<code>while</code>后花括号以后的语句</li>
+<li><code>{}</code>中的循环语句执行完毕后，再次判断<strong>条件表达式</strong>是否为真，也即回到第1步</li>
+</ol>
+<aside class="special"><p>✍ 从上面的表述你可得出：<br>1.循环语句重复执行的次数可能是0次或多次，需要看条件表达式的值<br>2.如果条件表达式永远为真，那么就是无限循环即死循环，我们需要避免这种情况<br>3.正常情况下，我们应该有一个趋势，使得条件表达式趋于变假，这样才能结束循环</p>
+</aside>
+<p>现在我们来分析一下如何利用<code>while</code>循环来打印10个<code>*</code>：</p>
+<ol type="1">
+<li>需要重复执行的是什么？简单分析可得知，即：<code>printf(&#34;*&#34;);</code>语句，执行一次打印一个<code>*</code></li>
+<li>需要重复多少次？题目明确要求10次</li>
+<li>那么如何控制次数？简单的引入一个统计打印次数的计数变量，初始为0，然后打印一个<code>*</code>就自增1，这样循环，直到次数超过10就停止打印</li>
+</ol>
+<h3 is-upgraded>使用while循环输出10个*号</h3>
+<p>程序如下：</p>
+<pre><code>/**
+ * 使用while循环输出10个*号
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int n = 0; // 打印次数计数变量n，最初一次都没有，初始化为0
+  while(n &lt; 10) {
+    printf(&#34;*&#34;);
+    n++;
+  }
+  printf(&#34;\n&#34;);
+}
+</code></pre>
+<p>运行一下程序，然后仔细分析和理解程序执行的过程。</p>
+<aside class="warning"><p>✎ 试一试：如果初始化为 1，即：<code>int n = 1;</code>，程序运行将发生什么变化，如何修正？<br>✎ 试一试：如果去掉<code>n++;</code>这句，程序运行将发生什么变化？原因是什么？（提示：<code>Ctrl+C</code>可终止程序运行)</p>
+</aside>
+<p>如果你已经理解了上面的<code>while</code>循环过程，那么我现在的要求是打印100个<code>*</code>号。<br>这不就是小case吗？直接修改<code>while</code>的条件表达式为<code>n &lt; 100</code>即可，你需要打几个，我就修改程序为几个！</p>
+<p>不错，但一般而言，我们不希望修改程序（你以为程序员真的应该 <a href="[去掉n++](https://996.icu/#/zh_CN)" target="_blank">🌏 996 ICU</a> 吗？）<br>我们的程序应该更通用、更健壮一些：</p>
+<pre><code>/**
+ * 使用while循环输出指定个数的*号
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int n = 0, howMany; // howMany变量用于存放用户输入的个数
+  printf(&#34;How many do you want to print: &#34;);
+  scanf(&#34;%d&#34;, &amp;howMany);
+  while(n &lt; howMany) {
+    printf(&#34;*&#34;);
+    n++;
+  }
+  printf(&#34;\n&#34;);
+}
+</code></pre>
+<p>运行试试。</p>
+<aside class="warning"><p>✎ 试一试：既然打印的个数都可以让用户任意指定，那么可否让用户指定打印什么字符呢，比如蟹老板喜欢的<code>$</code>?如此，我们的程序又进了一步：用户说打印多少个什么样的字符程序都能满足！</p>
+</aside>
+<p>下面我们再看一个使用<code>while</code>循环的程序：请依序输出<code>1 2 ... 9 10</code>这10个数。</p>
+<h3 is-upgraded>使用while循环输出 1到10</h3>
+<pre><code>/**
+ * 使用while循环输出 1到10
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int n = 1;
+  while(n &lt; 11) {
+    printf(&#34;%4d&#34;, n); // 注意，n不仅是计数器，也是输出对象
+    n++;
+  }
+  printf(&#34;\n&#34;);
+}
+</code></pre>
+<p>程序结构和思路与前一个并无不同，唯一是<code>n</code>变量既是计数器，也是输出对象。</p>
+<aside class="warning"><p>✎ 试一试：如果我只需要输出奇数该如何修正一下？（提示：每循环一次就不是加1了）偶数呢？<br>✎ 试一试：能否修改程序，让用户指定输出的范围如：<code>64</code> 到 <code>89</code>？</p>
+</aside>
+<h3 is-upgraded>使用while循环统计字符的个数</h3>
+<aside class="warning"><p>✘ 提示：本程序如果你没弄明白可暂时放弃，随着以后的学习会明白的</p>
+</aside>
+<pre><code>/**
+ * 使用while循环统计输入一行的字符个数
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int count = 0;  // count变量用于存放字符的个数
+  p
+  rintf(&#34;Please input a string, then press Enter:&#34;);
+  while(getchar() != &#39;\n&#39;) {  //  判断该字符是否为回车
+    count++;
+  }
+  printf(&#34;You typed %d characters&#34;, count);
+}
+</code></pre>
+<p>运行该程序，假设你输入的是<code>abc8964</code>然后回车（实际上这7个字符以及回车存入了一个称为输入缓存区的地方），那么程序将统计到7个字符。<br>说明如下：</p>
+<ol type="1">
+<li><code>getchar()</code>是字符输入函数，程序运行于此处将会停下，等待用户输入一个字符。此时用户输入了<code>abc8964</code>然后回车，这8个字符会进入系统的输入缓存区，然后<code>getchar()</code>将从输入缓冲区中得到第一个字符，即<code>a</code></li>
+<li>然后判断这个字符（当前是<code>a</code>）是否为回车（<code>\n</code>)</li>
+<li>如果不是回车，进入循环，执行<code>count++</code>，即统计一次。然后回到第1步（注意此时又会遇到<code>getchar()</code>，它又将从输入缓存区中取第二个字符，然后判断。以后以此类推）</li>
+<li>如果是回车，那么就结束循环（也即该字符串也统计完毕），执行循环外面的语句即打印输出结果</li>
+</ol>
+<aside class="special"><p>✍ 提示：你有没有想到<code>Office Word</code>中的字数统计就类似这个程序？</p>
+</aside>
+<aside class="warning"><p>✎ 试一试：如果不以回车而是以空格作为结束标志，即，假设你输入的是<code>Corona Virus</code>然后回车，程序将输出6个字符。该如何修正？</p>
+</aside>
+<h2 is-upgraded>do while循环</h2>
+<p>从上面学到的<code>while</code>循环中你可看出，有可能循环一次都不会执行。<br>某些情况下我们需要循环至少执行一次，如某游戏开始-&gt;进行中-&gt;你被干翻-&gt;问你是否重来一次。这时就不能游戏还没开始就问你要不要重来，游戏必须先玩一次然后再是重不重复的问题。<br>此时我们使用<code>do while</code>即<strong>直到型循环</strong>。格式如下：</p>
+<pre><code>do {
+  循环语句（可以有多条）
+}while(条件表达式);   // 注意结束处有分号！！！
+</code></pre>
+<p>示意图如下：</p>
+<p class="image-container"><img alt="dowhile" src="img/10679f5373588d84.jpg"></p>
+<p>说明：</p>
+<ol type="1">
+<li>先执行<code>{ }</code>中的循环语句</li>
+<li>执行完后判断<strong>条件表达式</strong>是否为真，</li>
+<li>如果为真，返回到第1步</li>
+<li>如果为假，跳出循环，执行循环后面的语句</li>
+</ol>
+<h3 is-upgraded>使用do while循环模拟游戏是否还要继续</h3>
+<p>程序如下：</p>
+<pre><code>/**
+ * 使用do while循环模拟游戏是否还要继续
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int again;  // again变量用于表示是否继续，规定：0-停止，非0-继续
+  do {
+    printf(&#34;LOL is starting...\n&#34;);
+    printf(&#34;LOL is in progress...\n&#34;);
+    printf(&#34;    /\\_/\\\n&#34;);
+    printf(&#34;   ( o o )\n&#34;);
+    printf(&#34;   =( I )=\t&#34;);
+    printf(&#34;Game is over!\n&#34;);
+
+    printf(&#34;Again (0 for exit or other for continue)?&#34;);
+    scanf(&#34;%d&#34;, &amp;again);
+  }while(again);
+  printf(&#34;Your Mom calls you home! Bye!\n&#34;);
+}
+</code></pre>
+<h2 is-upgraded>for循环</h2>
+<p>下面我们介绍另一种更常用的循环<code>for</code>循环。<br>凡是能用<code>while</code>循环写出来的，<code>for</code>也行，反之亦然。</p>
+<p><code>for</code>循环格式如下：</p>
+<pre><code>for(初始化表达式; 条件表达式; 增量表达式) {
+  循环语句（可以多条）
+}
+</code></pre>
+<p>示意图如下：</p>
+<p class="image-container"><img alt="for" src="img/ec67b4a7cbe8a6ef.jpg"></p>
+<p>说明：</p>
+<ol type="1">
+<li><code>init</code>即初始化表达式首先被执行，且只会执行一次。这一步允许您声明并初始化任何循环控制变量。您也可以不在这里写任何东西，只要有一个分号出现即可。</li>
+<li>接下来，会判断 <code>condition</code>即条件表达式。如果为真，则执行循环主体。如果为假，则不执行循环主体，for 循环终止，且控制流会跳转到紧接着 <code>for</code> 循环后的下一条语句。</li>
+<li>在执行完 <code>for</code> 循环主体后，控制流会跳回上面的 <code>increment</code>即增量表达式。该表达式允许您更新循环控制变量。此处可以留空，只要在条件后有一个分号出现即可。</li>
+<li>接下来<code>condition</code>即条件表达式再次被判断，回到上面第2步。</li>
+</ol>
+<h3 is-upgraded>使用for循环输出10个*号</h3>
+<p>程序如下：</p>
+<pre><code>/**
+ * 使用for循环输出10个*号
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int n; // 打印次数计数变量n
+  for(n = 0; n &lt; 10; n++) {
+    printf(&#34;*&#34;);
+  }
+  printf(&#34;\n&#34;);
+}
+</code></pre>
+<p>运行一下程序，然后仔细分析和理解程序执行的过程。</p>
+<aside class="warning"><p>✎ 试一试：如果初始化为 1，<code>n = 1;</code>，程序运行将发生什么变化，如何修正？<br>✎ 试一试：如果去掉<code>n++;</code>这句，程序运行将发生什么变化？原因是什么？（提示：<code>Ctrl+C</code>可终止程序运行)</p>
+</aside>
+<p>如果你已经理解了上面的<code>for</code>循环过程，那么我现在的要求是打印100个<code>*</code>号。<br>这不就是小case吗？直接修改<code>for</code>的条件表达式为<code>n &lt; 100</code>即可，你需要打几个，我就修改程序为几个！<br>同前一样，我们的程序应该更通用、更健壮一些：</p>
+<pre><code>/**
+ * 使用for循环输出指定个数的*号
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int n, howMany; // howMany变量用于存放用户输入的个数
+  printf(&#34;How many do you want to print: &#34;);
+  scanf(&#34;%d&#34;, &amp;howMany);
+  for(n = 0; n &lt; howMany; n++) {
+    printf(&#34;*&#34;);
+  }
+  printf(&#34;\n&#34;);
+}
+</code></pre>
+<p>运行试试。</p>
+<aside class="warning"><p>✎ 试一试：既然打印的个数都可以让用户任意指定，那么可否让用户指定打印什么字符呢，比如蟹老板喜欢的<code>$</code>?如此，我们的程序又进了一步：用户说打印多少个什么样的字符程序都能满足！</p>
+</aside>
+<p>下面我们再看一个使用<code>for</code>循环的程序：请依序输出<code>1 2 ... 9 10</code>这10个数。</p>
+<h3 is-upgraded>使用for循环输出 1到10</h3>
+<pre><code>/**
+ * 使用for循环输出 1到10
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int n;
+  for(n = 1; n &lt;= 10; n++) {
+    printf(&#34;%4d&#34;, n); // 注意，n不仅是计数器，也是输出对象
+  }
+  printf(&#34;\n&#34;);
+}
+</code></pre>
+<p>程序结构和思路与前一个并无不同，唯一是<code>n</code>变量既是计数器，也是输出对象。</p>
+<aside class="warning"><p>✎ 试一试：如果我只需要输出奇数该如何修正一下？偶数呢？<br>✎ 试一试：能否修改程序，让用户指定输出的范围如：<code>64</code> 到 <code>89</code>？<br>✎ 试一试：你能否反向即从100输出到1呢？</p>
+</aside>
+<h3 is-upgraded>使用for循环求 1+2+3+...+99+100</h3>
+<aside class="special"><p>✍ 记得最早接触这个问题是因为大数学家高斯，据说他率先得出<code>5050</code>的答案而傲视其他同学，因为他使用了简便算法<code>(1+99)+(2+98)+...+(48+52)+(49+51)+50+100=5050</code>。不过无论如何，高斯都会被下面的计算机程序&#34;搞死&#34;的:)</p>
+</aside>
+<pre><code>/**
+ * 使用for循环求 1+2+3+...+99+100
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int i, sum = 0;  // sum用来存放和
+  for(i = 1; i &lt;= 100; i++) {
+    sum = sum + i;
+  }
+  printf(&#34;1+2+3+...+99+100=%d\n&#34;, sum);
+}
+</code></pre>
+<aside class="warning"><p>✎ 注意：变量<code>sum</code>应该初始化为0<br>✎ 试一试：如果我需要求<code>[64, 89]</code>这个闭区间整数的和该怎么办？任意指定范围呢？</p>
+</aside>
+<h3 is-upgraded>无限循环的问题</h3>
+<p>无论是<code>while</code>循环还是<code>for</code>循环都要注意无限循环即死循环的问题。</p>
+<p>下面的程序片段都是死循环：</p>
+<pre><code>while(64) {
+  printf(&#34;hahaha\n&#34;);
+}
+/*----------------*/
+int a = 89;
+while(a = 8 * 8) {
+  printf(&#34;hahaha\n&#34;);
+}
+/*----------------*/
+for(i = 1; i &lt; 10; ) {
+  printf(&#34;hahaha\n&#34;);
+}
+/*----------------*/
+for(i = 1; i &lt; 10; i--) {
+  printf(&#34;hahaha\n&#34;);
+}
+/*----------------*/
+for(i = 1; ; i++) {
+  printf(&#34;hahaha\n&#34;);
+}
+</code></pre>
+<h2 is-upgraded>小测验</h2>
+<pre><code>1. 若k为整形，则while循环执行（  ）次。
+
+k = 2;
+while(k = 0)
+printf(&#34;%d&#34;, k);
+k--;
+printf(&#34;\n&#34;);
+
+A. 10   B. 1  C. 0  D. 无数次
+
+2. 执行下面程序片段的结果是（  ）
+
+int x = 23;
+do {
+  printf(&#34;%2d&#34;, x--);
+} while(!x);
+
+A. 打印出321      B. 打印出23
+
+C. 不打印任何内容   D. 陷入死循环
+
+3.以下程序的输出结果是（  ）。
+
+#include &#34;stdio.h&#34;
+void main() {
+  int a, b;
+  for(a = 1, b = 1; a &lt;= 100; a++) {
+    if( b &gt;= 10)
+      break;
+    b += 3;
+  }
+  printf(&#34;%d\n&#34;, a);
+}
+
+A. 101    B. 6    C. 5    D. 4
+
+4. 程序运行后的输出结果是（  ）
+
+#include &lt;stdio.h&gt;
+void main() {
+  int i;
+  for( i = 0; i &lt; 10; i++);
+    printf(&#34;%d&#34;, i);
+}
+
+A. 0            B. 123456789
+C. 0123456789   D. 10
+
+5.程序运行后的输出结果是（  ）
+
+#include &lt;stdio.h&gt;
+void main() {
+  int m, n;
+  for(m = 10, n = 0; m = 0; n++, m--);
+  printf(&#34;n=%d\n&#34;, n);
+}
+
+A. 程序无限循环无输出   B. n=10
+C. n=1               D. n=0
+</code></pre>
+<aside class="warning"><p>✉ 参考答案:  CBDDD</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<ol type="1">
+<li>请理解本讲所列程序。</li>
+<li>试一试用循环来求10的阶乘(即10!)</li>
+</ol>
 
 
       </google-codelab-step>
@@ -1018,8 +1360,15 @@ switch(grade) {
         <p>本次课程我们将讲述以下内容:</p>
 <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>X</li>
+<li>循环+选择</li>
+<li>多重循环</li>
 </ul>
+<h2 is-upgraded>小测验</h2>
+<pre><code></code></pre>
+<aside class="warning"><p>✉ 参考答案:<br>✍ 🌏 ✎ ✘</p>
+<h2 is-upgraded>课后练习</h2>
+</aside>
+<p>请理解本讲所列程序。</p>
 
 
       </google-codelab-step>
@@ -1028,8 +1377,15 @@ switch(grade) {
         <p>本次课程我们将讲述以下内容:</p>
 <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>X</li>
+<li>穷举</li>
+<li>迭代</li>
 </ul>
+<h2 is-upgraded>小测验</h2>
+<pre><code></code></pre>
+<aside class="warning"><p>✉ 参考答案:</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>请理解本讲所列程序。</p>
 
 
       </google-codelab-step>
@@ -1040,6 +1396,12 @@ switch(grade) {
 <ul class="checklist">
 <li>X</li>
 </ul>
+<h2 is-upgraded>小测验</h2>
+<pre><code></code></pre>
+<aside class="warning"><p>✉ 参考答案:</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>请理解本讲所列程序。</p>
 
 
       </google-codelab-step>
@@ -1050,6 +1412,13 @@ switch(grade) {
 <ul class="checklist">
 <li>X</li>
 </ul>
+<h2 is-upgraded>小测验</h2>
+<pre><code>加密
+</code></pre>
+<aside class="warning"><p>✉ 参考答案:</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>请理解本讲所列程序。</p>
 
 
       </google-codelab-step>
@@ -1060,6 +1429,12 @@ switch(grade) {
 <ul class="checklist">
 <li>X</li>
 </ul>
+<h2 is-upgraded>小测验</h2>
+<pre><code></code></pre>
+<aside class="warning"><p>✉ 参考答案:</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>请理解本讲所列程序。</p>
 
 
       </google-codelab-step>
@@ -1070,6 +1445,12 @@ switch(grade) {
 <ul class="checklist">
 <li>X</li>
 </ul>
+<h2 is-upgraded>小测验</h2>
+<pre><code></code></pre>
+<aside class="warning"><p>✉ 参考答案:</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>请理解本讲所列程序。</p>
 
 
       </google-codelab-step>
@@ -1080,6 +1461,12 @@ switch(grade) {
 <ul class="checklist">
 <li>X</li>
 </ul>
+<h2 is-upgraded>小测验</h2>
+<pre><code></code></pre>
+<aside class="warning"><p>✉ 参考答案:</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>请理解本讲所列程序。</p>
 
 
       </google-codelab-step>
@@ -1090,6 +1477,12 @@ switch(grade) {
 <ul class="checklist">
 <li>X</li>
 </ul>
+<h2 is-upgraded>小测验</h2>
+<pre><code></code></pre>
+<aside class="warning"><p>✉ 参考答案:</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>请理解本讲所列程序。</p>
 
 
       </google-codelab-step>
@@ -1100,6 +1493,12 @@ switch(grade) {
 <ul class="checklist">
 <li>X</li>
 </ul>
+<h2 is-upgraded>小测验</h2>
+<pre><code></code></pre>
+<aside class="warning"><p>✉ 参考答案:</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>请理解本讲所列程序。</p>
 
 
       </google-codelab-step>
