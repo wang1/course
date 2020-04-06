@@ -1034,11 +1034,7 @@ void main() {
 <p>10个<code>*</code>输出没问题，但有同学肯定会认为这种方式纯粹有病，一个<code>printf(&#34;**********&#34;)</code>语句都可以搞定的。<br>思路很好，创新很多都是那些&#34;偷懒&#34;的人想出来的，另类的思维！<br>不过，现在要求发生了改变：需要打印100个<code>*</code>。<br>你会想到这不就是<code>Ctrl+C</code>和<code>Ctrl+V</code>的事情吗？粘贴100个就搞定。<br>那么如果需要打印<code>198964</code>个或更多呢？或者你说打多少个我程序就打多少个？</p>
 <p>也即，我们的程序需要具有简洁性和通用性。此时，我们需要循环来解决问题！</p>
 <h2 is-upgraded>while循环</h2>
-<<<<<<< HEAD
 <p>所谓的<code>while</code>循环，也称为<strong>当型循环</strong>，即当条件成立时就执行，然后不停循环这个过程，直到条件为假。<br>其结构如下：</p>
-=======
-<p>所谓的<code>while</code>循环，也称为<strong>当型循环</strong>，其结构如下：</p>
->>>>>>> 0f33bc985b05a233d59aa56e94e95d606cb6aa90
 <pre><code>while(条件表达式) {
   循环语句（可以有多条）
 }
@@ -1356,6 +1352,27 @@ C. n=1               D. n=0
 <li>请理解本讲所列程序。</li>
 <li>试一试用循环来求10的阶乘(即10!)</li>
 </ol>
+<h2 is-upgraded>课后趣味程序</h2>
+<pre><code>#include &#34;stdio.h&#34;
+#include &#34;unistd.h&#34;
+void main(){
+#include &#34;stdio.h&#34;
+#include &#34;unistd.h&#34;
+void main(){
+  int i;
+  for (i = 10; i &lt;= 100; i+=10) {
+    // 进度条模拟
+    // printf(&#34;\b=&gt;&#34;);
+    // 模拟百分比
+    printf(&#34;\rprogress: [%3d%%]&#34;, i);
+    // 需要特别注意的是，终端设备是行缓冲设备，即除非输出换行符\n或缓冲区已满，
+    // 否则printf()不会有任何输出；所以这里需要使用fflush(stdout)清除标准输出缓冲区，以立即输出缓冲区内容。
+    fflush(stdout);
+    sleep(1); // 休眠1秒
+  }
+  printf(&#34;\n&#34;);
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -1365,14 +1382,202 @@ C. n=1               D. n=0
 <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
 <li>循环+选择</li>
+<li>循环终止</li>
 <li>多重循环</li>
+<li>循环总结</li>
 </ul>
-<h2 is-upgraded>小测验</h2>
-<pre><code></code></pre>
-<aside class="warning"><p>✉ 参考答案:<br>✍ 🌏 ✎ ✘</p>
-<h2 is-upgraded>课后练习</h2>
+<h2 is-upgraded>循环+选择</h2>
+<p>有些问题需要通过循环和选择（判断）来进行处理，如判断一个数（&gt;=2)是否为素数（质数）的问题。</p>
+<h3 is-upgraded>判断是否为素数</h3>
+<p>素数的定义是只能被<code>1</code>和它自身整除的数。现假设这个数是<code>89</code>，我们的思路是从<code>2</code>开始除这个数，直到<code>88</code>，如果没有任何一个数被整除，则这个数即<code>89</code>就是素数，否则就不是。请看下面的程序：</p>
+<pre><code>/**
+ * 使用循环和选择结构来判断是否为素数
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int i, flag, n = 89;  // i用于计数和作为除数；flag用于表示是否为素数，规定1是0不是；n是要判断的数
+  flag = 1;     // 先假设这个数是素数，下面就会用循环进行验证
+  for(i = 2; i &lt; n; i++) {
+    if(n % i == 0) {  // 被整除了
+      flag = 0;  // 设置不是素数的标志
+      i = n + 1;     // 把i的值设置为比n大，那么将会退出循环
+    }
+  }
+  if( flag == 1) {
+    printf(&#34;%d is a prime number!\n&#34;, n);
+  }else {
+    printf(&#34;%d is not a prime number!\n&#34;, n);
+  }
+}
+</code></pre>
+<p>运行这个程序试试。</p>
+<aside class="warning"><p>✎ 思考一：上面的程序将要判断的数直接写到代码中了，你应该考虑让用户告诉程序判断哪个数。如何修正一下？<br>思考二：对于一个素数如11，按我们的算法需要从<code>2</code>开始直到<code>10</code>共9次循环判断。实际上，我们只需要从<code>2</code>到<code>11</code>的平方根（约为4）这么多次即可，因为可以保证<code>11</code>的平方根（约为4）以前的都不能整除的话，那么后面也不能整除（这是个数学问题，如何你没想明白暂时就放弃）。所以，我们的程序可以从算法上进行优化，即使用平方根函数<code>sqrt(11)</code>即可。要使用这个函数请使用<code>#include &#34;math.h&#34;</code>导入头文件。看看你是否能对上面的程序进行相应的修正以提高运行速度。</p>
 </aside>
-<p>请理解本讲所列程序。</p>
+<aside class="special"><p>🌏 当你在网上支付的时候，你一定没想过我们的信息是否会被其他人截获。其实，我们的信息都是加密了的，即使被截获,他/她也不知道是什么内容（并且还不能伪造）。这个加密算法就是<a href="https://zh.wikipedia.org/wiki/RSA" target="_blank">RSA</a>，RSA算法运用了数学中&#34;两个大的素数（质数）相乘，难以在短时间内将其因式分解&#34;这么一套看似简单事实上真的是很困难的一个数学难题。另外，如果没有<code>RSA</code>，那么你可能听过的比特币、区块链等也无从谈起。</p>
+</aside>
+<h2 is-upgraded>求Fibonacci数列的前20项</h2>
+<p>Fibonacci数列的数学定义是：该数列前2项为1，从第3项开始的每一项都为其前两项之和。即：<code>1 1 2 3 5 8 13 21 ...</code></p>
+<pre><code>/**
+ * 使用循环和选择结构输出Fibonacci（1，1，2，3，5，8，13，21...）数列的前20项
+**/
+#include &lt;stdio.h&gt;
+void main(){
+  int f1, f2, f3, i;
+  f1 = f2 = 1;    // 初始第一项和第二项为1
+  printf(&#34;Fibonacci:\n%10d%10d&#34;, f1, f2);
+  for(i = 3;i &lt;= 20; i++){
+    f3 = f1 + f2;         // 将前两项求和得第三项
+    printf(&#34;%10d&#34;, f3);   // 输出新项
+    if(i % 5 == 0) {      // 如果项数能被5整除则换行，即每行只输出5个数
+      printf(&#34;\n&#34;);
+    }
+    f1 = f2;  // 原第二项变为第一项
+    f2 = f3;  // 原第三项变为第二项
+  }
+}
+</code></pre>
+<p>运行试试，你也可以进行一些改变，如输出的项数、每行打印的个数等等</p>
+<aside class="special"><p>🌏 Fibonacci数列在现实中有非常多的应用，也称为黄金分割数列等。植物的叶序、海螺的纹路、建筑物的比例、Apple的logo等等都与之有关，可自行<a href="https://www.bilibili.com/video/av5172721/" target="_blank">查询一下</a>。</p>
+</aside>
+<p>黄金分割比例</p>
+<p class="image-container"><img alt="FB" src="img/1c6617cb9b3c4bdd.jpg"></p>
+<p>另外，请参见课后趣味程序-猜数字，也是使用循环和判断的一个示例。</p>
+<h2 is-upgraded>循环终止</h2>
+<p>除正常结束循环外，我们可以使用<code>break</code>来强行退出循环（还记得前面我们在什么地方用过<code>break</code>么？），即循环不是正常退出而是提前退出的。</p>
+<h3 is-upgraded>用break改写判断素数程序</h3>
+<pre><code>/**
+ * 使用循环和选择结构来判断是否为素数，当判断到不是后，使用break退出循环
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int i, flag, n = 89;  // i用于计数和作为除数；flag用于表示是否为素数，规定1是0不是；n是要判断的数
+  flag = 1;     // 先假设这个数是素数，下面就会用循环进行验证
+  for(i = 2; i &lt; n; i++) {
+    if(n % i == 0) {  // 被整除了
+      flag = 0;  // 设置不是素数的标志
+      break;     // 使用break直接退出循环，执行循环后的语句
+    }
+  }
+  if( flag == 1) {
+    printf(&#34;%d is a prime number!\n&#34;, n);
+  }else {
+    printf(&#34;%d is not a prime number!\n&#34;, n);
+  }
+}
+</code></pre>
+<p>运行这个程序，你会发现与以前相同。</p>
+<h3 is-upgraded>在[10,100]内找前5个能被3整除的数</h3>
+<pre><code>/**
+ * 使用循环和选择结构在[10,100]内找前5个能被3整除的数，找满后使用break退出循环
+**/
+#include &lt;stdio.h&gt;
+void main(){
+  int i, n = 0;
+  for(i = 10; i &lt;= 100; i++) {
+    if(i % 3 == 0) {
+      n++;
+      printf(&#34;No%d: %d\n&#34;, n, i);
+    }
+    if(n == 5) {
+      break;
+    }
+  }
+}
+</code></pre>
+<aside class="special"><p>✍ 注意： break只能用在循环语句或switch语句中，程序其它地方不能出现！</p>
+</aside>
+<h2 is-upgraded>多重循环</h2>
+<p>某些情况下，我们可能需要在循环中再使用循环，这就是循环的嵌套或称为多重循环。</p>
+<p>我们学过的如下代码将会打印出10个<code>*</code>号：</p>
+<pre><code>for(i = 1; i &lt;=10; i++) {
+  printf(&#34;*&#34;);
+}
+</code></pre>
+<p>那么，我们把上面的代码放在另一个循环中，假设这个将循环5次，那么你应该能想到它将输出5×10共50个<code>*</code>号。</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  int i, j;  
+  for (i = 1; i &lt;= 5; i++) {    // 外循环
+    for(j = 1; j &lt;= 10; j++) {  // 内循环
+      printf(&#34;*&#34;);
+    }
+  }
+}
+</code></pre>
+<p>你马上会想到，打印50个<code>*</code>不需要这样做！对的。不过我的要求是打印5行，每行10个：</p>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  int i, j;  
+  for (i = 1; i &lt;= 5; i++) {    // 外循环控制行，此处将输出5行
+    for(j = 1; j &lt;= 10; j++) {  // 内循环控制列，此处将输出10列
+      printf(&#34;*&#34;);
+    }
+    printf(&#34;\n&#34;);               // 该语句在外循环中，表示每行打印10个*后回车
+  }
+}
+</code></pre>
+<p>运行试试看。你也可以对程序进行相应改变，输出你希望的图形。</p>
+<h2 is-upgraded>循环总结</h2>
+<p>我们学习了<code>while</code>、<code>do while</code>和<code>for</code>循环，一般有如下使用惯例：</p>
+<ol type="1">
+<li><code>while</code>和<code>for</code>可以互换;</li>
+<li>一般地，如果事先知道要循环的次数，我们习惯使用<code>for</code>循环，否则使用<code>while</code>循环;</li>
+<li>当至少循环一次时，我们使用<code>do while</code>循环;</li>
+<li><code>while, do-while, for</code>三种循环可互相嵌套，外层循环可包含两个以上内循环，但不能相互交叉。</li>
+</ol>
+<aside class="special"><p>✍ 注意： 本讲的内容非常重要，需要的时间也不会是2个课时，请根据自己的情况进行调整。</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<ol type="1">
+<li>请理解本讲所列程序。</li>
+<li>试着完成棋歌教学网实验一中的所有程序。</li>
+</ol>
+<h2 is-upgraded>课后趣味程序</h2>
+<h3 is-upgraded>猜数字</h3>
+<pre><code>/**
+ * 使用循环和选择结构来编写的猜数字游戏
+**/
+#include &#34;stdio.h&#34;
+#include &lt;time.h&gt;
+#include &lt;stdlib.h&gt;
+void main() {
+  char bingo = &#39;n&#39;;  // bingo变量用于表明是否猜中，默认为没有
+  int randomNumber, yourGuess, times = 0;
+  srand( (unsigned)time( NULL ) );  // 每次不一样的种子
+  randomNumber = rand()%100+1;      // 生成[1,100]之间的随机整数
+  //printf(&#34;%d\n&#34;,randomNumber);
+  printf(&#34;Please guess a number(1~100):&#34;);
+  while(bingo == &#39;n&#39;){
+    scanf(&#34;%d&#34;, &amp;yourGuess);
+    times++;
+    if(randomNumber &gt; yourGuess){
+      printf(&#34;It&#39;s greater than %d, try again:&#34;, yourGuess);
+    } else if (randomNumber &lt; yourGuess) {
+      printf(&#34;It&#39;s samller than %d, try again:&#34;, yourGuess);
+    } else {
+      printf(&#34;Bingo! You got %d in %d times!\n&#34;, randomNumber, times);
+      bingo = &#39;y&#39;;  // 猜中了，设置为y可退出循环
+    }
+  }  
+}
+</code></pre>
+<aside class="warning"><p>✎ 试一试：你可否不使用<code>bingo</code>作为猜中了的标准变量，而是使用无限循环，当猜中了后直接跳出循环来实现？</p>
+</aside>
+<h3 is-upgraded>看看你的机器运行有多快</h3>
+<pre><code>#include &#34;stdio.h&#34;
+void main(){
+  int i, j, k;  
+  for (i = 1; i &lt;= 100; i++) {
+    for(j = 1; j &lt;= 100; j++) {
+      for(k = 1; k &lt;= 100; k++) {
+        // 什么都不做，空循环100×100×100次。试着改大一点，你的CPU就会忙的。
+        // 所以我们一般不会嵌套许多的循环
+        // 以此，大家也可以了解一下那些大计算量问题如模拟分子结构等是需要大型计算机以及分布式处理的
+      }
+    }
+  }
+}
+</code></pre>
 
 
       </google-codelab-step>
@@ -1384,6 +1589,7 @@ C. n=1               D. n=0
 <li>穷举</li>
 <li>迭代</li>
 </ul>
+<p>程序设计的三种结构我们已经讲述完毕，接下来我们以一些程序进行相应的编程示例。</p>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
 <aside class="warning"><p>✉ 参考答案:</p>
