@@ -1589,13 +1589,37 @@ void main(){
 <li>穷举</li>
 <li>迭代</li>
 </ul>
-<p>程序设计的三种结构我们已经讲述完毕，接下来我们以一些程序进行相应的编程示例。</p>
-<h2 is-upgraded>小测验</h2>
-<pre><code></code></pre>
-<aside class="warning"><p>✉ 参考答案:</p>
+<p>程序设计的三种结构我们已经讲述完毕，接下来我们谈谈穷举和迭代算法。</p>
+<h2 is-upgraded>穷举</h2>
+<p>所谓穷举或枚举，即利用计算机进行全部可能的运算，最后从中找出满足条件的情况。</p>
+<p><a href="https://qige.io/c/c-experiment.html#1-p" target="_blank">棋歌教学网实验一中的第8题兑换硬币</a>即为穷举/枚举。<br>其它的如百钱买百鸡（有100块钱，小鸡1块，母鸡3块，公鸡5块，有多少买法），请自行编程验证。</p>
+<h3 is-upgraded>无重复数字的三位数有哪些</h3>
+<pre><code>/**
+ * 穷举：无重复数字的三位数有哪些
+**/
+#include &lt;stdio.h&gt;
+void main(){
+  int gw, sw, bw; // 代表个位、十位和百位
+  for (bw = 1; bw &lt;= 9; bw++) {
+    for (sw = 0; sw &lt;= 9; sw++) {
+      for (gw = 0; gw &lt;= 9; gw++) {
+        if (gw != sw &amp;&amp; sw != bw &amp;&amp; bw != gw) {
+          printf(&#34;%d%d%d  &#34;, bw, sw, gw);
+        }
+      }
+    }
+  }
+  printf(&#34;\n&#34;);
+}
+</code></pre>
+<aside class="warning"><p>✎ 试一试：如果希望你给出有多少个该如何处理？</p>
 </aside>
-<h2 is-upgraded>课后练习</h2>
-<p>请理解本讲所列程序。</p>
+<aside class="special"><p>✍ 暴力破解：我们常说的暴力破解，即是一种穷举法。如你的银行卡密码是数字的，且长度是6位，那么最多测试100万次即可搞定。所以这种情况下，登录网上银行的话，如果你错了3次，则该卡就锁定了。PS：某些骗子希望你打钱到某卡号上，那么你没事的话可以用该卡号进行登录，密码随便输入，3次就这个帐号锁了。是不是觉得有点成就？</p>
+</aside>
+<h2 is-upgraded>迭代</h2>
+<aside class="special"><p>✍：迭代是重复反馈过程的活动，其目的通常是为了逼近所需目标或结果。 每一次对过程的重复称为一次&#34;迭代&#34;，而每一次迭代得到的结果会作为下一次迭代的初始值。 重复执行一系列运算步骤，从前面的量依次求出后面的量的过程。</p>
+</aside>
+<p>我们前面学习的<code>Fibonacci</code>数列，以及<a href="https://qige.io/c/c-experiment.html#1-p" target="_blank">棋歌教学网实验一课后练习中的第4题——任意输入一个正整数，倒序输出</a>即为迭代。</p>
 
 
       </google-codelab-step>
