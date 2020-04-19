@@ -1592,7 +1592,7 @@ void main(){
 <p>程序设计的三种结构我们已经讲述完毕，接下来我们谈谈穷举和迭代算法。</p>
 <h2 is-upgraded>穷举</h2>
 <p>所谓穷举或枚举，即利用计算机进行全部可能的运算，最后从中找出满足条件的情况。</p>
-<p><a href="https://qige.io/c/c-experiment.html#1-p" target="_blank">棋歌教学网实验一中的第8题兑换硬币</a>即为穷举/枚举。<br>其它的如百钱买百鸡（有100块钱，小鸡1块，母鸡3块，公鸡5块，有多少买法），请自行编程验证。</p>
+<p><a href="../../c-experiment.html#1-p" target="_blank">棋歌教学网实验一中的第8题兑换硬币</a>即为穷举/枚举。<br>其它的如百钱买百鸡（有100块钱，小鸡1块，母鸡3块，公鸡5块，有多少买法），请自行编程验证。</p>
 <h3 is-upgraded>无重复数字的三位数有哪些</h3>
 <pre><code>/**
  * 穷举：无重复数字的三位数有哪些
@@ -1619,23 +1619,119 @@ void main(){
 <h2 is-upgraded>迭代</h2>
 <aside class="special"><p>✍：迭代是重复反馈过程的活动，其目的通常是为了逼近所需目标或结果。 每一次对过程的重复称为一次&#34;迭代&#34;，而每一次迭代得到的结果会作为下一次迭代的初始值。 重复执行一系列运算步骤，从前面的量依次求出后面的量的过程。</p>
 </aside>
-<p>我们前面学习的<code>Fibonacci</code>数列，以及<a href="https://qige.io/c/c-experiment.html#1-p" target="_blank">棋歌教学网实验一课后练习中的第4题——任意输入一个正整数，倒序输出</a>即为迭代。</p>
+<p>我们前面学习的<code>Fibonacci</code>数列，以及<a href="../../c-experiment.html#1-p" target="_blank">棋歌教学网实验一课后练习中的第4题——任意输入一个正整数，倒序输出</a>即为迭代。</p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="一维数组" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>X</li>
+<li>数组的概念</li>
+<li>数组的定义</li>
+<li>数组的初始化</li>
+<li>数组的应用</li>
+<li>数组的排序</li>
 </ul>
-<h2 is-upgraded>小测验</h2>
-<pre><code></code></pre>
-<aside class="warning"><p>✉ 参考答案:</p>
+<h2 is-upgraded>数组的概念</h2>
+<p>到目前为止，我们的程序所处理的数据量比较少，所以我们通过定义有限的几个变量就能解决问题。<br>但经常的，程序需要处理大量的数据，如：我需要对全班64个同学C语言期末考试的成绩进行处理（总分、平均分之类的）。</p>
+<aside class="special"><p>✍：这个问题有同学马上会想到用Excel解决。不错，但Excel能够进行处理，支撑它的仍然是后面的程序！所以，还是回到程序设计的思路吧。</p>
 </aside>
+<p>先不说如何处理，你首先遇到的问题是我的程序该如何存放这64个成绩？<br>按我们目前的能力，只有定义64个变量如：<code>float c1, c2, c3, ..., c64;</code>。看起来似乎也没什么不可。<br>但假如需要处理全校8964个同学的C语言成绩怎么办？且这些变量之间还没有什么关系可循。<br>所以，我们需要一次能定义多个变量且还有关系的新的数据结构——数组。</p>
+<aside class="special"><p>✍：简单的说，数组就是一组相同数据类型的数的集合。这组数的数据类型就是我们常见的<code>int float char</code>等。</p>
+</aside>
+<h2 is-upgraded>数组的定义</h2>
+<p>前面我们已经知道，要使用变量，我们必须首先进行定义。使用数组也是一样的，格式如下：</p>
+<pre><code>数据类型 数组名[长度]
+int score[5]
+</code></pre>
+<p>说明：</p>
+<ol type="1">
+<li>定义一个数组需要说明数组的名称、类型和长度。如<code>int score[5]</code>就定义了一个score数组，整型的，长度为5。注意<code>[]</code>是数组的标志，其内的常量值表示数组的长度即数组元素的个数。</li>
+<li>具体的含义是：我们定义了score数组，长度为5，相当于一次性定义了5个整型的变量，分别是<code>score[0], score[1], score[2],score[3],score[4]</code>。这5个变量<code>[]</code>后的数字称为元素的下标，也即元素的位置。规定从0开始。</li>
+<li>这样的定义将在内存中获得连续的一片空间，如下图：</li>
+</ol>
+<p class="image-container"><img alt="array" src="img/22fe163022984a22.jpg"></p>
+<aside class="special"><p>✍：对应的，以前的变量也称为简单变量。数组也可以和简单变量一起进行定义，如：<code>float salary, sex, score[89];</code></p>
+</aside>
+<aside class="warning"><p>✎：思考： <code>int a[10];</code>是一个定义数组的语句，那么定义了多少个数组元素/变量，有a[10]这个元素/变量吗？</p>
+</aside>
+<h2 is-upgraded>数组的初始化</h2>
+<p>与简单变量类似，定义数组时我们也可以赋予其一些初始值即初始化。如：</p>
+<pre><code>int score[6] = { 99, 98, 64, 89, 100, 52 };
+</code></pre>
+<p>以上语句定义了整型的score数组，且将 99 等6个成绩分别进行赋值。<br>相当于 score[0] = 99, score[1] = 98, ..., score[5] = 52</p>
+<pre><code>int a[10] = { 1, 2 };
+</code></pre>
+<p>如果值少于元素的个数，则依次赋值，其余自动赋值为0。<br>以上语句相当于 a[0] = 1, a[1] = 2, a[2] ~ a[9]都为0</p>
+<pre><code>int a[] = { 1, 2, 3, 4 };
+</code></pre>
+<p>定义时如果没有长度，那么就必须有初始化值，且数组的长度由值的个数来确定</p>
+<h2 is-upgraded>数组的应用</h2>
+<p>定义了数组，那么如何使用呢？我们主要通过数组的下标来对其元素进行使用。</p>
+<aside class="special"><p>✍ 请注意：通常，我们通过循环来处理数组的各个元素！</p>
+</aside>
+<h3 is-upgraded>初步使用</h3>
+<pre><code>/**
+ * 输出数组中的数据
+ * 对数组的处理一般都与循环相关
+**/
+#include &lt;stdio.h&gt;
+void main(){
+  int a[5] = { 66, 77, 88, 99, 100 }, i;  // score是存放成绩的数组，i用来作为循环变量和数组的下标
+  for (i = 0; i &lt; 5; i++) {
+    printf(&#34;%d &#34;, a[i]);
+  }
+}
+</code></pre>
+<aside class="warning"><p>✎ 思考一下，如果我希望反向输出数组中的数据该如何修正？</p>
+</aside>
+<p>还是回到我们处理C语言成绩那个问题。以下为方便起见，我们假设只有5个同学且成绩是整数。</p>
+<h3 is-upgraded>输入成绩并打印出来</h3>
+<pre><code>/**
+ * 利用数组输入成绩并打印出来
+ * 对数组的处理一般都与循环相关
+**/
+#include &lt;stdio.h&gt;
+void main(){
+  int score[5], i;  // score是存放成绩的数组，i用来作为循环变量和数组的下标
+  for (i = 0; i &lt; 5; i++) {
+    printf(&#34;Please input No:%d student&#39;s score:&#34;, i + 1);
+    scanf(&#34;%d&#34;, &amp;score[i]); // 请注意，通过i的变化（0～4）将成绩存放到score数组的各个元素中
+  }
+  printf(&#34;===Score Table===\n&#34;);
+  for (i = 0; i &lt; 5; i++) {
+    printf(&#34; No:%d, score: %d\n&#34;, i + 1, score[i]);
+  }
+}
+</code></pre>
+<p>以上程序接收用户输入的成绩并打印出来。显然，我们还需要进一步处理。</p>
+<h3 is-upgraded>求平均成绩</h3>
+<pre><code>/**
+ * 求平均成绩
+ * 对数组的处理一般都与循环相关
+**/
+#include &lt;stdio.h&gt;
+void main(){
+  int score[5] = { 64, 77, 89, 99, 100 }, i, total = 0; // total用来存放总分，需要初始化为0.
+  float ave;  // 存放平均分
+  for (i = 0; i &lt; 5; i++) {
+    total = total + score[i];
+  }
+  ave = total / 5.0;  
+  printf(&#34;Average is: %.2f\n&#34;, ave);
+}
+</code></pre>
+<aside class="warning"><p>✎ 试一试，total不初始化为0会发生什么？为什么？<br>✎ 思考：为何<code>total / 5.0</code>而不是<code>total / 5</code>?</p>
+</aside>
+<aside class="warning"><p>✎ 试一试，你能否改写程序，让其能统计有多少个同学没及格？<br>✎ 试一试，你能否改写程序，输出最高分及其下标？</p>
+</aside>
+<h2 is-upgraded>数组的排序</h2>
+<p>将数组中的值进行排序方法非常多<a href="https://zhuanlan.zhihu.com/p/57088609" target="_blank">算法+动画</a>，如下是容易理解的选择排序（从小到大）的示意图</p>
+<p class="image-container"><img alt="select" src="img/1e44e9c474ce2079.webp"></p>
+<p>基本思路是:第一轮在10个数中找最小的，放到0号位; 第二轮在剩下9个数中找最小的，放到1号位；依次类推。<br>程序请参见（<a href="https://qige.io/c/c-experiment.html#4" target="_blank">棋歌教学网实验四第3题</a>）</p>
 <h2 is-upgraded>课后练习</h2>
-<p>请理解本讲所列程序。</p>
+<p>请理解本讲所列程序。<br>掌握并理解棋歌教学网实验四1、2、3题即可。</p>
 
 
       </google-codelab-step>
@@ -1649,7 +1745,7 @@ void main(){
 <h2 is-upgraded>小测验</h2>
 <pre><code>加密
 </code></pre>
-<aside class="warning"><p>✉ 参考答案:</p>
+<aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
@@ -1665,7 +1761,7 @@ void main(){
 </ul>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
-<aside class="warning"><p>✉ 参考答案:</p>
+<aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
@@ -1681,7 +1777,7 @@ void main(){
 </ul>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
-<aside class="warning"><p>✉ 参考答案:</p>
+<aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
@@ -1697,7 +1793,7 @@ void main(){
 </ul>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
-<aside class="warning"><p>✉ 参考答案:</p>
+<aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
@@ -1713,7 +1809,7 @@ void main(){
 </ul>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
-<aside class="warning"><p>✉ 参考答案:</p>
+<aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
@@ -1729,7 +1825,7 @@ void main(){
 </ul>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
-<aside class="warning"><p>✉ 参考答案:</p>
+<aside class="warning"><p>✉ ✎ ✍参考答案:</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
