@@ -1612,7 +1612,7 @@ void main(){
   printf(&#34;\n&#34;);
 }
 </code></pre>
-<aside class="warning"><p>✎ 试一试：如果希望你给出有多少个该如何处理？</p>
+<aside class="warning"><p>✎ 试一试：如果希望你给出有多少个这样的三位数该如何处理？</p>
 </aside>
 <aside class="special"><p>✍ 暴力破解：我们常说的暴力破解，即是一种穷举法。如你的银行卡密码是数字的，且长度是6位，那么最多测试100万次即可搞定。所以这种情况下，登录网上银行的话，如果你错了3次，则该卡就锁定了。PS：某些骗子希望你打钱到某卡号上，那么你没事的话可以用该卡号进行登录，密码随便输入，3次就这个帐号锁了。是不是觉得有点成就？</p>
 </aside>
@@ -1705,7 +1705,7 @@ void main(){
   }
 }
 </code></pre>
-<p>以上程序接收用户输入的成绩并打印出来。显然，我们还需要进一步处理。</p>
+<p>以上程序接收用户输入的成绩并打印出来。显然，我们还有进一步的需求。</p>
 <h3 is-upgraded>求平均成绩</h3>
 <pre><code>/**
  * 求平均成绩
@@ -1724,7 +1724,7 @@ void main(){
 </code></pre>
 <aside class="warning"><p>✎ 试一试，total不初始化为0会发生什么？为什么？<br>✎ 思考：为何<code>total / 5.0</code>而不是<code>total / 5</code>?</p>
 </aside>
-<aside class="warning"><p>✎ 试一试，你能否改写程序，让其能统计有多少个同学没及格？<br>✎ 试一试，你能否改写程序，输出最高分及其下标？</p>
+<aside class="warning"><p>✎ 试一试，你能否改写程序，让其能统计有多少个同学没及格？<br>✎ 试一试，你能否改写程序，输出最高分并指出是第几个同学？</p>
 </aside>
 <h2 is-upgraded>数组的排序</h2>
 <p>将数组中的值进行排序方法非常多<a href="https://zhuanlan.zhihu.com/p/57088609" target="_blank">算法+动画</a>，如下是容易理解的选择排序（从小到大）的示意图</p>
@@ -1737,18 +1737,239 @@ void main(){
       </google-codelab-step>
     
       <google-codelab-step label="字符数组与字符串" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>X</li>
+<li>字符数组的定义</li>
+<li>字符数组的初始化</li>
+<li>字符数组的输入与输出</li>
+<li>字符串处理函数</li>
 </ul>
-<h2 is-upgraded>小测验</h2>
-<pre><code>加密
+<h2 is-upgraded>字符数组的定义</h2>
+<h3 is-upgraded>字符数组引出</h3>
+<p>要处理大批量的同类型的数值数据如 <code>int</code> 或 <code>float</code> 等，我们已经学习了可使用数组进行存取及操作。</p>
+<p>但数据还包括非数值型数据即字符数据，且这种数据一般会有多个字符即字符串，如你的姓名、身份证号码、密码等之类的，那么我们又该如何进行处理？</p>
+<p>答案是：仍然使用数组这种数据结构来存取及操作，不过此时我们称存放字符型数据的数组为字符数组而已（对应的，前述存放数值型数据的就称为数值数组）。同样的，字符数组的每个元素也只能存放一个字符。</p>
+<p>要在程序中处理多个字符即字符串，我们需要首先定义字符数组。</p>
+<h3 is-upgraded>字符数组定义</h3>
+<p>与数值数组定义类似，我们需要给出3个要素：类型、数组名、数组长度。如：</p>
+<pre><code>// 定义了一个字符型的数组，名为name，长度为20（即有20个元素，可存放最多20个字符的姓名）
+char name[20];
+// 定义了一个字符型的数组，名为password，长度为64（即有64个元素，可存放最多64个字符的密码）
+char password[64];
 </code></pre>
-<aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
+<p>以上两个语句就分别定义了两个字符数组。</p>
+<aside class="special"><p>✍ 仍需注意，该定义应放置在要使用这些数组的语句前。</p>
+</aside>
+<h2 is-upgraded>字符数组的初始化</h2>
+<h3 is-upgraded>初始化</h3>
+<p>与数值数组相同，在定义字符数组时也可以进行初始化即给数组预先给定一些数据。</p>
+<h4 is-upgraded>方式一</h4>
+<pre><code>// 将字符C到字符s共11个字符依次放到数组name的元素name[0]到name[10]中
+// 数组的长度仍然为20, 其余部分系统自动填充一个特殊字符&#39;\0&#39;
+char name[20] = { &#39;C&#39;, &#39;o&#39;, &#39;r&#39;, &#39;o&#39;, &#39;n&#39;, &#39;a&#39;, &#39;V&#39;, &#39;i&#39;, &#39;r&#39;, &#39;u&#39;, &#39;s&#39; };
+</code></pre>
+<h4 is-upgraded>方式二</h4>
+<p>某些情况下我们不希望指定数组的长度，而由给定的数据来决定数组的长度（即存储空间大小），那么我们在定义和初始化时可以省略长度。</p>
+<pre><code>// 将字符C到字符s共11个字符依次放到数组name的元素name[0]到name[10]中
+// 数组的长度现在为11, 但注意：系统将自动在最后一个字符s后填充一个特殊字符&#39;\0&#39;表明字符串结束
+char name[] = { &#39;C&#39;, &#39;o&#39;, &#39;r&#39;, &#39;o&#39;, &#39;n&#39;, &#39;a&#39;, &#39;V&#39;, &#39;i&#39;, &#39;r&#39;, &#39;u&#39;, &#39;s&#39; };
+</code></pre>
+<h4 is-upgraded>方式三</h4>
+<p>方式二仍不够简洁，我们可以直接使用字符串进行初始化。</p>
+<pre><code>//与方式二的初始化效果相同
+char name[] = &#34;CoronaVirus&#34;;
+char password[] = &#34;DaSiWoYeBuShuo&#34;;
+</code></pre>
+<h3 is-upgraded>字符串结束标志</h3>
+<p>上面的三种方式都是在用字符数组存放字符串。无论哪种方式，系统都将自动在字符串的最后一个字符后添加额外的一个特殊字符 <code>&#39;\0&#39;</code> ,作为该字符串结束的标志。也即，只要遇到字符 <code>&#39;\0&#39;</code> 则表示该字符串结束。</p>
+<aside class="special"><p>✍ 请一定记住字符串结束标记——特殊字符 <code>&#39;\0&#39;</code>，编程中我们会较多的使用它来判断字符串是否结束！</p>
+</aside>
+<h2 is-upgraded>字符数组的输入与输出</h2>
+<p>要在程序中进行输入或输出时，请注意在程序首部引入标准输入输出头文件：</p>
+<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+</code></pre>
+<h3 is-upgraded>字符数组的输出</h3>
+<h4 is-upgraded>方式一</h4>
+<p>在<code>printf()</code>函数中使用 <code>%c</code> 格式符，在辅以循环一个一个将数组中的字符输出到屏幕。</p>
+<p>这种方式不灵活，一般我们比较少用。</p>
+<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+void main(){
+  int i;
+  char str[] = &#34;I hate C Language&#34;;
+  for(i = 0; i &lt; 9; i++) {    // 必须要知道该字符串的准确长度
+    printf(&#34;%c&#34;, str[i]);
+  }
+  printf(&#34;\n&#34;);
+}
+</code></pre>
+<h4 is-upgraded>方式二</h4>
+<p>在<code>printf()</code>函数中使用 <code>%s</code> 格式符，将数组中的字符整体（字符串）输出到屏幕。</p>
+<aside class="special"><p>✍ 注意：字符串以<code>&#39;\0&#39;</code>作为结束标志，且输出时使用数组名即可！</p>
+</aside>
+<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+void main(){
+  char str[] = &#34;I Hate C Language&#34;;
+  printf(&#34;%s\n&#34;, str);
+}
+</code></pre>
+<aside class="warning"><p>✎ 思考：如果字符串改为&#34;I ha\0te C Language&#34;将会有什么结果？</p>
+</aside>
+<h4 is-upgraded>方式三</h4>
+<p>使用<code>puts()</code>函数，更简单方便！</p>
+<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+void main(){
+  char str[] = &#34;I hate C Language&#34;;
+  puts(str);
+}
+</code></pre>
+<h3 is-upgraded>字符数组的输入</h3>
+<h5 is-upgraded>方式一</h5>
+<p>在<code>scanf()</code>函数中使用 <code>%c</code> 格式符，在辅以循环一个一个接收从键盘输入的字符。</p>
+<aside class="special"><p>✍ 这种方式不灵活，一般我们比较少用。</p>
+</aside>
+<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+void main(){
+  int i;
+  char str[20];
+  for(i = 0; i &lt; 20; i++){    //必须要输入指定的个数
+    scanf(&#34;%c&#34;, str[i]);
+  }
+  puts(str);
+}
+</code></pre>
+<h4 is-upgraded>方式二</h4>
+<p>在<code>scanf()</code>函数中使用 <code>%s</code> 格式符，将键盘输入的字符作为整体（字符串）存放到数组中。</p>
+<aside class="special"><p>✍ 1. 输入时使用数组名即可（没有使用我们前面强调的<code>&amp;</code>符号，原因在指针章节再讲述）<br>✍ 2. 输入时以空格、制表符（tab）或回车作为输入结束的标志<br>✍ 3. 结束标志<code>&#39;\0&#39;</code>系统将自动添加到末尾<br>✍ 4. 输入的字符个数不能超出数组的长度，否则会发生不可知问题</p>
+</aside>
+<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+void main(){
+  char str[20];
+  scanf(&#34;%s&#34;, str);
+  puts(str);
+}
+</code></pre>
+<p>Nagetive✎ 思考1：如果输入的字符串为<code>Your  Name�</code>��，输出是什么结果？<br>✎ 思考2：试试输入超过<code>20</code>个字符，看看会发生什么？</p>
+<h4 is-upgraded>方式三</h4>
+<p>假如我们的输入的确需要包含有空格或制表符如<code>What&#39;s Your name�</code>��这样的字符串，那么就使用<code>gets()</code>函数。该函数只以回车作为字符串输入完成的标志。</p>
+<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+void main(){
+  char str[20];
+  gets(&#34;%s&#34;, str);
+  puts(str);
+}
+</code></pre>
+<p>现在试试输入含有空格或制表符的字符串，看看输出是否正常。</p>
+<h2 is-upgraded>字符串处理函数</h2>
+<p>在实际编程中，对字符串的操作很常见，如两个字符串的比较、连接两个字符串、复制一个字符串等。所以C语言给我们提供了不少已经定义好的函数供直接调用。要使用这些函数，需要引入字符串相关的头文件：</p>
+<pre><code>#include &#34;string.h&#34; //引入字符串头文件
+</code></pre>
+<h3 is-upgraded>字符串长度函数 strlen()</h3>
+<p>统计字符串的长度（<code>length</code>），以<code>&#39;\0&#39;</code>为结束标志。</p>
+<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+#include &#34;string.h&#34; //引入字符串头文件
+void main(){
+  char name[] = &#34;CoronaVirus&#34;;
+  int length;
+  length = strlen(name);    //strlen函数将从头开始统计数组中的字符个数，直到遇到&#39;\0&#39;
+  printf(&#34;Length: %d\n&#34;, length);
+}
+</code></pre>
+<aside class="warning"><p>✎ 思考：字符串<code>Coron\0a Virus</code>的长度是多少？</p>
+</aside>
+<h3 is-upgraded>字符串复制函数 strcpy()</h3>
+<p>将后一个字符串复制（<code>copy</code>）到前一个中。请注意，字符串复制不能使用赋值运算（<code>=</code>）进行！</p>
+<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+#include &#34;string.h&#34; //引入字符串头文件
+void main(){
+  char firstName[] = &#34;Corona&#34;;
+  char secondName[] = &#34;Virus&#34;;
+  strcpy(firstName, secondName);  //将secondName复制到firstName中
+  puts(firstName);
+}
+</code></pre>
+<p>上面程序将输出<code>Virus</code>。</p>
+<p>下面我们以程序运行时的内存示意图对这个过程进行分析：</p>
+<p>最初，<code>firstName</code>数组内存示意图如下：</p>
+<pre><code>... C o r o n a \0 ...
+</code></pre>
+<p><code>secondName</code>内存示意图如下：</p>
+<pre><code>... V i r u s \0 ...
+</code></pre>
+<p>随后执行了复制操作，将<code>secondName</code>中的内容复制到<code>firstName</code>中，<code>firstName</code>数组所在内存就变成如下：</p>
+<pre><code>... V i r u s \0 \0 ...
+</code></pre>
+<p>其中，第一个<code>\0</code>是<code>secondName</code>复制时带过来的，第二个<code>\0</code>是<code>firstName</code>原来的。</p>
+<aside class="warning"><p>✎ 思考1：现在<code>firstName</code>的长度是多少？<br>✎ 思考2：如果<code>secondName</code>的长度比<code>firstName</code>长，复制时将会可能发生什么？</p>
+</aside>
+<h3 is-upgraded>字符串连接函数 strcat()</h3>
+<p>去掉前一个字符串的结束标志<code>\0</code>，然后将后一个字符串连接（<code>catenate</code>）到前一个字符串后。</p>
+<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+#include &#34;string.h&#34; //引入字符串头文件
+void main(){
+  char firstName[50] = &#34;Corona&#34;;
+  char secondName[] = &#34;Virus&#34;;
+  strcat(firstName, secondName);  //将secondName链接到firstName中
+  puts(firstName);
+}
+</code></pre>
+<aside class="warning"><p>✎ 思考：如果第一个数组的空间不够可能会发生什么？</p>
+</aside>
+<h3 is-upgraded>字符串比较函数 strcmp()</h3>
+<p>在实际应用中，我们通常需要比较（<code>compair</code>）两个字符串，如查找是否有这个用户，验证口令是否一致，或者对姓名进行排序等等。</p>
+<p><code>strcmp()</code>函数将逐字符比较前后两个字符串中字符的<code>ASCII</code>码值。如果两个字符串完全相同则结果为<code>0</code>，前面字符串大则结果为<code>1</code>，前面字符串小则结果为<code>-1</code>。请看如下程序片段进行理解：</p>
+<pre><code>strcmp(&#34;ABC&#34;, &#34;ABC&#34;); //结果为0
+strcmp(&#34;ABC&#34;, &#34;BBC&#34;); //结果为-1
+strcmp(&#34;aBC&#34;, &#34;BBC&#34;); //结果为1
+strcmp(&#34;ABCD&#34;, &#34;ABC&#34;); //结果为1
+</code></pre>
+<p>至此，本章节学习完毕。</p>
+<h2 is-upgraded>小测验</h2>
+<p>【程序填空】</p>
+<p>有一个管理系统，需要输入正确的口令才能进入。</p>
+<p>现假设正确口令是<code>DaSiWoYeBuShuo</code>，我们可以使用相关的字符串处理函数，模拟提示用户输入口令，<br>然后进行比较，如果正确则输出<code>Yes</code>，否则输出<code>No</code>。</p>
+<p>程序大致如下：</p>
+<pre><code>#include &#34;stdio.h&#34;
+#include &#34;string.h&#34;
+void main(){
+  char correctPassword[] = &#34;DaSiWoYeBuShuo&#34;;
+  char yourPassword[50];
+  printf(&#34;Please input your password:&#34;);
+  _________________________;         // 填空 1
+  if( ________________________ ) {   // 填空 2
+    printf(&#34;Yes, Please!&#34;);
+  } else {
+    printf(&#34;No, Get out!&#34;);
+  }
+}
+</code></pre>
+<aside class="warning"><p>✉ 参考答案:<br>1：gets(yourPassword)或scanf(&#34;%s&#34;, yourPassword)<br>2：strcmp(correctPassword, yourPassword) == 0</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
+<p>请掌握<a href="../../c/c-experiment.html#4" target="_blank">棋歌教学网实验四</a>第7、8、10题程序</p>
+<p>请阅读如下的凯撒加密程序</p>
+<pre><code>/**
+ * 凯撒加密，即将字符变为其后方固定位置的字符，以致看不明白意思
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  // plainText是没加密的明文口令，cypherText存放加密的密文口令  
+  char plainText[]=&#34;DaShiWoYeBuShuo&#34;, cypherText[20];
+  int i = 0;
+  while(plainText[i] != &#39;\0&#39;) {
+     // 将明文的每个字符变为其后方第2个字符，如a变为c，S变为U等
+    cypherText[i] = plainText[i] + 2;
+    i++;
+  }
+  cypherText[i] = &#39;\0&#39;;   // 添加新字符串结束标记
+  printf(&#34;Password is : &#34;);
+  puts(cypherText);
+}
+</code></pre>
+<aside class="special"><p>🌏 恺撒密码（Caesar cipher）<br>或称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。 它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。 例如，当偏移量是3的时候，所有的字母A将被替换成D，B变成E，以此类推。<br>请参阅<a href="http://www.atoolbox.net/Tool.php?Id=778" target="_blank">在线加密/解密</a></p>
+</aside>
+<aside class="warning"><p>✎ 思考1：可否修改一下程序，使得可以让用户随意输入明文？<br>✎ 思考2：程序中退出循环后，为何要给<code>cypherText</code>添加<code>\0</code>？<br>✎ 思考3：思考解密的关键是什么，如何解密？</p>
+</aside>
 
 
       </google-codelab-step>
@@ -1756,12 +1977,9 @@ void main(){
       <google-codelab-step label="函数的定义与调用" duration="90">
         <p>本次课程我们将讲述以下内容:</p>
 <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
-<ul class="checklist">
-<li>X</li>
-</ul>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
-<aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
+<aside class="warning"><p>✉ ✎ ✍ 🌏参考答案:</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
