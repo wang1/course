@@ -1516,7 +1516,7 @@ void main(){
   }
 }
 </code></pre>
-<p>运行试试看。你也可以对程序进行相应改变，输出你希望的图形。</p>
+<p>运行试试看。你也可以对循环次数进行相应改变，输出不一样的图形。</p>
 <h2 is-upgraded>循环总结</h2>
 <p>我们学习了<code>while</code>、<code>do while</code>和<code>for</code>循环，一般有如下使用惯例：</p>
 <ol type="1">
@@ -1684,6 +1684,7 @@ void main(){
   }
 }
 </code></pre>
+<p>运行试试。也可前往 <a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序的执行。</p>
 <aside class="warning"><p>✎ 思考一下，如果我希望反向输出数组中的数据该如何修正？</p>
 </aside>
 <p>还是回到我们处理C语言成绩那个问题。以下为方便起见，我们假设只有5个同学且成绩是整数。</p>
@@ -1782,6 +1783,7 @@ char password[] = &#34;DaSiWoYeBuShuo&#34;;
 </code></pre>
 <h3 is-upgraded>字符串结束标志</h3>
 <p>上面的三种方式都是在用字符数组存放字符串。无论哪种方式，系统都将自动在字符串的最后一个字符后添加额外的一个特殊字符 <code>&#39;\0&#39;</code> ,作为该字符串结束的标志。也即，只要遇到字符 <code>&#39;\0&#39;</code> 则表示该字符串结束。</p>
+<p>前往 <a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序片段的执行。</p>
 <aside class="special"><p>✍ 请一定记住字符串结束标记——特殊字符 <code>&#39;\0&#39;</code>，编程中我们会较多的使用它来判断字符串是否结束！</p>
 </aside>
 <h2 is-upgraded>字符数组的输入与输出</h2>
@@ -1802,6 +1804,7 @@ void main(){
   printf(&#34;\n&#34;);
 }
 </code></pre>
+<p>运行试试。也可前往 <a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序的执行。</p>
 <h4 is-upgraded>方式二</h4>
 <p>在<code>printf()</code>函数中使用 <code>%s</code> 格式符，将数组中的字符整体（字符串）输出到屏幕。</p>
 <aside class="special"><p>✍ 注意：字符串以<code>&#39;\0&#39;</code>作为结束标志，且输出时使用数组名即可！</p>
@@ -1924,6 +1927,44 @@ strcmp(&#34;ABCD&#34;, &#34;ABC&#34;); //结果为1
 </code></pre>
 <p>至此，本章节学习完毕。</p>
 <h2 is-upgraded>小测验</h2>
+<pre><code>单项选择题
+1．以下错误的语句是(    )。
+A、char word[] = {&#39;C&#39;,&#39;h&#39;,&#39;i&#39;,&#39;n&#39;,&#39;a&#39;};
+B、char word[] = {&#34;China&#34;};
+C、char word[] = &#34;China&#34;;
+D、char word[] = &#39;China&#39;;
+
+2．以下对C语言字符数组的描述错误的是(    )。
+A、字符数组可以存放字符串
+B、字符数组中的字符串可以进行整体输入输出
+C、可以在赋值语句中通过赋值运算符&#34;=&#34;对字符数组整体赋值
+D、字符数组的下标从0开始
+
+3．已知 char str1[10], str2[] = {&#34;China&#34;}; 则在程序中能将字符串&#34;China&#34;赋给数组str1的正确语句是(   )。
+A、str1 = {&#34;China&#34;};
+B、strcpy(str1, str2);
+C、str1 = str2;
+D、strcpy(str2, str1);
+
+4．以下程序的执行结果是(    )。
+#include &#34;stdio.h&#34;
+void main() {
+  char s[] = {&#39;a&#39;,&#39;b&#39;,&#39;\0&#39;,&#39;c&#39;,&#39;\0&#39;};
+  printf(&#34;%s\n&#34;, s);
+}
+A、&#39;a&#39;&#39;b&#39;
+B、ab
+C、ab c
+D、以上都不对
+
+5．已知 char c1[] = {&#34;abcd&#34;}; char c2[] = {&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;}; 则下列叙述正确的是(    )。
+A、数组c1和数组c2等价
+B、数组c1和数组c2的长度相同
+C、数组c1的长度大于数组c2的长度
+D、以上都不对
+</code></pre>
+<aside class="warning"><p>✉ 参考答案: DCBBC</p>
+</aside>
 <p>【程序填空】</p>
 <p>有一个管理系统，需要输入正确的口令才能进入。</p>
 <p>现假设正确口令是<code>DaSiWoYeBuShuo</code>，我们可以使用相关的字符串处理函数，模拟提示用户输入口令，<br>然后进行比较，如果正确则输出<code>Yes</code>，否则输出<code>No</code>。</p>
@@ -1975,14 +2016,202 @@ void main() {
       </google-codelab-step>
     
       <google-codelab-step label="函数的定义与调用" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>函数的引入</li>
+<li>函数定义的三要素</li>
+<li>无/有返回值函数及其使用</li>
+<li>有/无参数函数及其使用</li>
+<li>函数的分类</li>
+</ul>
+<h2 is-upgraded>函数的引入</h2>
+<p>现在再来回想一下我们编写的程序，你会发现我们所有的代码都在<code>main</code>函数的<code>{}</code>花括号中。<br>是的，我们说过，C语言程序是由函数构成的，有且只能有一个<code>main</code>函数，它是程序执行的入口和出口。<br>我们还说过，编写程序基本就是三部曲，即：获得初始数据、使用算法进行处理、输出结果。<br>对于简单的问题我们可以把这三部曲都写在<code>main</code>函数中，对对于复杂的、大型的问题，我们可能需要将其进行模块化处理。<br>也即，我们可以把某些代码（一般是完成某项功能的代码）单独放到一个自己定义的函数中，然后在<code>main</code>函数中调用即可。<br>仅此而已。<br>利用函数进行模块化是一个解决问题的方法论问题。下面是对汽车生产的论述，同样也适用于软件开发领域。</p>
+<aside class="special"><p>🌏 流水线 Vs 模块化<br>&#34;福特的生产线将会死去。&#34;奥迪公司负责生产和物流的董事瓦特尔说：&#34;这种流水线线只有始终生产一样的产品时，才具有意义。&#34;<br>现在的客户想要的正相反，需求越来越多样化。然而时下汽车生产方式的窘境是，当你需要预定一辆蓝色的带有导航的车型版本时，汽车公司需要收集到足够多的订单后才能安排在某一个批次进行批量生产。大多数时候，汽车企业并不提供更多个性化的配置供选择。<br>1913年，亨利福特在他位于底特律的汽车工厂中引入了生产流水线，奠定了现代工业文明的基础。这种生产模式背后的理念就是&#34;规模效应&#34;，降低产品的品类，提升产品的制造速度快速供给市场，通过规模降低成本，通过低价格扩大市场份额，反过来再次降低成本。<br>由于流水线生产方式的引入，导致当时福特汽车生产能力是世界上所有汽车制造公司的总和。当时，市场上一辆车子的售价大约为000-3000美金，福特&#34;T型车&#34;直接把价格降到了850美金，这种割喉式的价格战导致&#34;T型车&#34;占据90%的市场份额。为了提高产线的运转速度，当时的&#34;T型车&#34;只有一种颜色——黑色。<br>流水线生产的最大问题是所有的操作环节均互相&#34;耦合&#34;，任何一个环节的错误都可能造成整条产线的停顿。<br>模块化组装消灭了流水线，把汽车制造的环节拆分成200来个互相独立的流程，每个生产流程都有一个单独的生产车间。任何一辆汽车，在完成某一个部件的组装之后，可去往任意一个有空余产能的车间，排队和调度通过中央电脑系统控制。每一个个性化订单都会电脑记录，安排生产，并清楚地知道这辆车目前在哪个车间，预计需要多少时间能够开出产线。<br>在这个系统里面，可以允许无数个不同型号、配置的车型在同一时间段进行生产。而不必像在原来的生产线中那样，每一个批次只能生产相同型号和配置的车型，哪怕加装配置都会造成后面车型的排队等待。为了生产不同的车型，需要切换生产线，包括不同的夹具，匹配不同的零部件供应。每一次产线的停止都意味着巨大的产能损失。</p>
+</aside>
+<h2 is-upgraded>函数定义的三要素</h2>
+<p>要使用函数，那么我们就需要先定义函数。<br>定义函数有三个要素：带一个<code>(){}</code>的函数名、函数的类型、函数的参数：</p>
+<pre><code>返回值类型 函数名(参数) {
+  函数的代码
+}
+</code></pre>
+<p>如下面定义的函数代码如果被调用，将会输出<code>hahahaha</code>字符串：</p>
+<pre><code>void printHahaha() {
+  printf(&#34;hahahaha!&#34;);
+}
+</code></pre>
+<p>说明：</p>
+<ul>
+<li>函数的名称符合命名规则，做到见名知义</li>
+<li>圆括号<code>()</code>中定义函数要接收的参数，可以有 0 个和多个</li>
+<li>函数名前是函数的返回值类型如 int、float等，如果没有返回值则写 void</li>
+<li>然后花括号<code>{}</code>中是函数的代码，即函数要做些什么</li>
+</ul>
+<p>如果没能理解，不要急，请看下面的实例。</p>
+<h2 is-upgraded>无/有返回值函数及其使用</h2>
+<h3 is-upgraded>无返回值函数</h3>
+<p>即该函数执行后不会返回任何值给调用方，需要在函数名前使用 <code>void</code>关键字（还记得<code>main</code>函数前面的<code>void</code>吗？）<br>如我们需要在屏幕上打印两只猫：</p>
+<pre><code>/**
+ * 利用函数打印两只猫
+**/
+#include &#34;stdio.h&#34;
+// 自定义函数
+void printCat() {
+  printf(&#34;    /\\_/\\\n&#34;);
+  printf(&#34;   ( o o )\n&#34;);
+  printf(&#34;   =( I )=\n&#34;);
+}
+// 主函数
+void main() {
+  printCat();     // 调用我们前面定义的函数
+  printf(&#34;\n&#34;);   // 调用系统已经定义好的函数
+  printCat();     // 再次调用，调用一次则执行一次
+}
+</code></pre>
+<p>运行这个程序试试。</p>
+<aside class="special"><p>✍ 注意：函数必须先定义再使用！<br>上面的程序与我们以前编写的程序有些不同了。该程序由两个函数组成，一个是自定义的<code>printCat</code>函数，一个是必须的<code>main</code>函数</p>
+</aside>
+<aside class="warning"><p>✎ 思考：假设不使用函数，那么我们该如何打印两只猫？哪种方式的结构更清晰？哪种可复用性更好？</p>
+</aside>
+<h3 is-upgraded>有返回值函数</h3>
+<p>即该函数执行后会返回一个值给调用方，需要在函数名前表明返回值的类型如 <code>int</code>或 <code>float</code>等。<br>还记得大数学家高斯小时候是如何计算<code>1+2+3+...+99+100</code>那个问题吗，下面我们编写一个高斯求和函数来给我们使用：</p>
+<pre><code>/**
+ * 利用高斯求和函数
+**/
+#include &#34;stdio.h&#34;
+
+int GaussSum() {  // 主要int，表明该函数要返回给调用方一个整数
+  int sum;
+  sum = (1 + 100) * 50;
+  return sum;     // 有返回值的函数必须使用 return 返回值
+}
+
+void main() {
+  printf(&#34;The teacher asked： 1+2+3+...+99+100=?\n&#34;);
+  printf(&#34;Gauss answered: is %d\n&#34;, GaussSum());   // 调用自定义函数，得到一个整型的结果
+}
+</code></pre>
+<aside class="special"><p>✍ 注意：有返回值的函数名前必须说明返回值的类型，且在函数体中需要使用 return 返回某个对应的值</p>
+</aside>
+<h2 is-upgraded>无/有参数函数及其使用</h2>
+<p>前面介绍的两个自定义函数都是没有参数的示例，即函数后面的圆括号<code>()</code>是空的。<br>有时候，我们需要给函数提供一些初始的数据，那么就需要传递参数给函数，就需要在圆括号<code>()</code>进行说明有几个参数、是什么类型的。</p>
+<h3 is-upgraded>打印指定个数的猫</h3>
+<pre><code>/**
+ * 打印指定个数的猫
+**/
+#include &#34;stdio.h&#34;
+
+void printCat(int m) {        // m 就是函数要接收的整型参数，称为形式参数，简称形参
+  int i;
+  for(i = 1; i &lt;= m; i++) {
+    printf(&#34;    /\\_/\\\n&#34;);
+    printf(&#34;   ( o o )\n&#34;);
+    printf(&#34;   =( I )=\n&#34;);
+  }
+}
+
+void main() {
+  printCat(3);    // 3 就是调用时传递给函数的参数，称为实际参数，简称实参
+}
+</code></pre>
+<p>运行以上程序试试。请前往 <a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序的执行。</p>
+<aside class="special"><p>✍ 注意：实参的个数、类型和顺序必须与函数定义中形参必须完全一致</p>
+</aside>
+<aside class="warning"><p>✎ 试一试：你能否在<code>main</code>中让用户任意输入打印猫的个数？</p>
+</aside>
+<h3 is-upgraded>求两个数中的最大数</h3>
+<pre><code>/**
+ * 使用函数求两个数中的最大数
+**/
+#include &#34;stdio.h&#34;
+
+int myMax(int a, int b) { // 接收两个整型参数，返回一个整数
+  int result;
+  if (a &gt; b) {
+    result = a;
+  } else {
+    result =b;
+  }
+  return result;  // 返回结果
+}
+
+void main() {
+  int x, y;
+  printf(&#34;Please input two integer number:&#34;);
+  scanf(&#34;%d%d&#34;, &amp;x, &amp;y);
+  printf(&#34;Max: %d\n&#34;, myMax(x, y)); // 调用函数，得到结果并输出
+}
+</code></pre>
+<aside class="warning"><p>✎ 试一试：你能否修改为在三个数中求最大值？你能否修改为求最小值？</p>
+</aside>
+<h3 is-upgraded>使用函数判断是否为润年</h3>
+<pre><code>/**
+ * 使用函数判断是否为润年
+ * 满足润年的条件是：
+ * 能被4整除但不能被100整除(普通润年）；或者能被400整除（世纪润年）
+**/
+#include &#34;stdio.h&#34;
+
+int isLeapYear(int year) {   // 返回一个整数（1或者0代表是或否），接收要判断的年份
+  int result;
+  if ((year % 4 == 0 &amp;&amp; year % 100 != 0) || year % 400 ==0) {
+    result = 1;
+  } else {
+    result =0;
+  }
+  return result;
+}
+
+void main() {
+  int n;
+  printf(&#34;Please input a year:&#34;);
+  scanf(&#34;%d&#34;, &amp;n);
+  if (isLeapYear(n)) {  // 调用函数，得到结果要么1, 要么0
+    printf(&#34;%d is leap year!\n&#34;, n);
+  } else {
+    printf(&#34;%d is not leap year!\n&#34;, n);
+  }  
+}
+
+</code></pre>
+<p>运行试试。</p>
+<aside class="special"><p>✍ 注意：<code>main</code>函数中<code>if (isLeapYear(n))</code>实际是与<code>if (isLeapYear(n) == 1)</code>等价的</p>
+</aside>
+<h2 is-upgraded>函数的分类</h2>
+<p>通过我们上面的学习，下面我们总结一下函数的类别（了解即可）：</p>
+<ul>
+<li>系统函数和自定义函数。如<code>printf(), scanf(), gets()</code>等是系统预先定义好的，引入头文件后就可以使用</li>
+<li>无返回值函数和有返回值函数。无返回值函数前需加<code>void</code>进行标明</li>
+<li>无参函数和有参函数。有参函数需说明接收参数的类型、名称，如有多个则用逗号分开</li>
+</ul>
 <h2 is-upgraded>小测验</h2>
-<pre><code></code></pre>
-<aside class="warning"><p>✉ ✎ ✍ 🌏参考答案:</p>
+<pre><code>1. 下列函数调用中，不正确的是（）。
+   A) max(a, b);
+   B) max(3, a+b);
+   C) max(3, 5);
+   D) int  max(int a , int b);
+
+2. 以下正确的函数原型形式是:（）
+    A) float  fun(int x, int)
+    B) float  fun(int x, y)
+    C) float  fun(int x, int y)
+    D) float  fun(int , int )
+
+3. 下列函数定义形式正确的是（）。
+    A) int  f(int x ; int y)      B) int  f(int x, y)
+    C) int  f(int x , int y)      D) int  f(x, y:int)
+
+4. 一个函数的返回值由（）确定。
+    A) return语句中的表达式      B) 调用函数的类型
+    C) 系统默认的类型            D) 被调用函数的类型
+
+5. 函数调用语句 f(x, a, 64);  中，所含的实参个数是:（）
+    A) 1	     B) 2         C) 3		  D) 4
+
+</code></pre>
+<aside class="warning"><p>✉ 参考答案: DCCDC</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
-<p>请理解本讲所列程序。</p>
+<p>请理解本讲所列程序。<br>请练习并掌握 <a href="../../c/c-experiment.html#2" target="_blank">棋歌教学网实验二中的4个程序</a></p>
 
 
       </google-codelab-step>
@@ -1993,6 +2222,7 @@ void main() {
 <ul class="checklist">
 <li>X</li>
 </ul>
+<p>分形图案</p>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
 <aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
