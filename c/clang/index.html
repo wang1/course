@@ -28,8 +28,7 @@
                   feedback-link="mailto: gridwang@gmail.com">
     
       <google-codelab-step label="概述" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
 <li>程序的基本概念</li>
 <li>程序设计语言</li>
@@ -154,8 +153,7 @@ void main() {
       </google-codelab-step>
     
       <google-codelab-step label="数据类型与数据的输入与输出" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
 <li>数据类型</li>
 <li>常量</li>
@@ -290,8 +288,7 @@ void main() {
       </google-codelab-step>
     
       <google-codelab-step label="运算符与简单程序设计" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
 <li>赋值运算</li>
 <li>算术运算</li>
@@ -440,8 +437,7 @@ C. 0        D. 0.5
       </google-codelab-step>
     
       <google-codelab-step label="选择结构程序设计1" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
 <li>关系运算</li>
 <li>逻辑运算</li>
@@ -818,8 +814,7 @@ void main() {
       </google-codelab-step>
     
       <google-codelab-step label="选择结构程序设计2" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
 <li>多分支 switch 语句</li>
 <li>嵌套的 if 语句</li>
@@ -1005,8 +1000,7 @@ switch(grade) {
       </google-codelab-step>
     
       <google-codelab-step label="循环结构程序设计1" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
 <li>While循环</li>
 <li>do while循环</li>
@@ -1378,8 +1372,7 @@ void main(){
       </google-codelab-step>
     
       <google-codelab-step label="循环结构程序设计2" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
 <li>循环+选择</li>
 <li>循环终止</li>
@@ -1583,12 +1576,13 @@ void main(){
       </google-codelab-step>
     
       <google-codelab-step label="常用算法" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
 <li>穷举</li>
 <li>迭代</li>
 </ul>
+<aside class="special"><p>✍ 注意：本部分内容了解即可。</p>
+</aside>
 <p>程序设计的三种结构我们已经讲述完毕，接下来我们谈谈穷举和迭代算法。</p>
 <h2 is-upgraded>穷举</h2>
 <p>所谓穷举或枚举，即利用计算机进行全部可能的运算，最后从中找出满足条件的情况。</p>
@@ -2216,12 +2210,208 @@ void main() {
 
       </google-codelab-step>
     
-      <google-codelab-step label="数组作函数参数、递归调用" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+      <google-codelab-step label="指针" duration="90">
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>X</li>
+<li>指针的概念</li>
+<li>指针的定义和初始化</li>
+<li>指针的使用</li>
 </ul>
+<aside class="special"><p>✍ 请注意：指针是 C 语言的重点和难点，是瑞士军刀，也是双刃剑。我们只进行简要的学习。</p>
+</aside>
+<h2 is-upgraded>指针的概念</h2>
+<h3 is-upgraded>内存空间</h3>
+<p>当前，计算机的体系结构及运行方式都是冯诺伊曼定义下来的，即：计算机由计算器、控制器、存储器、输入设备、输出设备这五大部件构成，任何程序运行都必须加载到内存中。</p>
+<aside class="special"><p>✍ 想一想：计算机启动到底在干什么？我们双击 VSCode 程序的图标发生了什么？为什么程序没保存就会丢失？</p>
+</aside>
+<p>既然任何程序要运行都必须在操作系统的管理下进驻内存，那么，内存空间的大小就应该是衡量一台计算机性能的重要指标之一。</p>
+<p>看看你的计算机硬件参数，你会发现当前我们的 PC 一般都会有4G/8G/16G 字节的容量（移动设备如手机一般要少一些）。</p>
+<aside class="special"><p>✍ 请注意区分内存和外存！一般你的外存如硬盘有500G/1T的容量，容量远高于内存，速度远低于内存。</p>
+</aside>
+<h3 is-upgraded>地址 - 指针</h3>
+<p>以字节为单位/单元的内存空间是非常多的，类似一栋大楼有很多的房间我们需要对这些房间进行编号一样，为方便管理/存取，我们也需要对这些内存单元进行编号，这些编号就称为内存地址。</p>
+<p>我们以前的程序中定义了不少的变量来存放不同类型的数据。程序运行时，这些变量就是一个个的由系统分配给我们的内存空间。</p>
+<p>如下程序：</p>
+<pre><code>/**
+ * 输出变量的地址
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int x = 89, y;  // 程序运行时将分配两个内存空间单元并标记为 x 和 y，其中 x在分配后马上放入89
+  y = 64;
+  printf(&#34;x and y&#39;s value:&#34;);
+  printf(&#34;%d, %d\n&#34;, x, y);     // 直接使用 x和y，将输出x，y变量即内存空间的内容即值
+  printf(&#34;x and y&#39;s address:&#34;);
+  printf(&#34;%ld, %ld\n&#34;, &amp;x, &amp;y);   // 使用 &amp; 运算符，将输出x，y变量即内存空间的地址。ld 表示以长整型输出。
+}
+</code></pre>
+<p>运行该程序，你会发现程序将把 <code>x</code> 和<code>y</code>变量在内存空间的编号即地址打印出来了。</p>
+<p>程序中出现了<code>&amp;</code>运算符，放在变量的前面就可以得到变量的地址。</p>
+<p>现在你再想想以前我们在什么地方用过该操作符？</p>
+<p>看如下的程序片段你应该有进一步的认识了：</p>
+<pre><code>int age;
+printf(&#34;Please input your age:&#34;);
+scanf(&#34;%d&#34;, &amp;age);  // 从键盘接收一个整数，将它放入 age这个变量中。实际上我们提供的是 age这个变量的地址！
+</code></pre>
+<aside class="warning"><p>✎ 思考：再次运行程序，或者在不同的计算机运行该程序，你应该会发现地址即编号不同了。为什么？</p>
+</aside>
+<aside class="special"><p>✍ 指针：在 C语言中，我们就把内存单元的编号即地址称为指针！</p>
+</aside>
+<h2 is-upgraded>直接访问和间接访问</h2>
+<p>前面看到，这些内存单元的地址即指针是很长的数字，并且，不同环境运行时，这些地址/指针还不相同。</p>
+<p>其实我们也不大关心这些地址/指针具体的值是多少，那提出这个指针的概念干什么？</p>
+<p>我们已经知道，通过变量的名称可以直接得到其值或者操作该变量，这称为 <strong>直接访问</strong> 。</p>
+<p>我们也可以通过变量的地址即指针来得到其值或者操作该变量，这称为 <strong>间接访问</strong> 。</p>
+<p>比如现实生活中，你对我说需要 64块钱，我可以直接给你 64块，这叫直接获取；我也可以回答你：64块在我的上衣右下口袋中，告诉你地址/指针，这叫间接获取。</p>
+<p>又比如你想在网上看《肖申克的救赎》这部电影，我可以直接拷贝给你，也可以告诉你网址。</p>
+<p>我拥有了你的地址即指针，也可认为我指向了你，那么我就能找到你，操作你，</p>
+<aside class="special"><p>✍ 间接访问：即通过指针进行操作是一种非常强大、灵活的操作。</p>
+</aside>
+<h2 is-upgraded>指针的定义和初始化</h2>
+<p>我们知道，一般的变量用来存放整数、小数或字符类型的数据。</p>
+<p>如果一个变量是指针，就表明该变量只能存放地址。定义格式如下：</p>
+<pre><code>// 类型 *变量名;
+int *p1;   // 定义了整型指针变量p1（注意*作为标志，以与一般变量区分），且 p1只能指向一个整型变量即只能存放一个整型变量的地址
+float *p2; // 定义了浮点型指针变量p2（注意*作为标志，以与一般变量区分），且 p2只能指向一个浮点型变量即只能存放一个浮点型变量的地址
+</code></pre>
+<aside class="special"><p>✍ 注意： 定义变量时，变量名前的 * 号表明其为一个指针变量，只能存放地址！</p>
+</aside>
+<p>运行并分析如下程序：</p>
+<pre><code>/**
+ * 使用指针来输出变量
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int x, *px;  // 定义了整型变量 x和整型指针变量 px
+  x = 64;
+  printf(&#34;x: %d\n&#34;, x);  // 常规做法，输出 x的值
+  px = &amp;x;  // 将 x的地址放入 px中，即 px指向了变量x
+  printf(&#34;px: %ld\n&#34;, px);  // 输出变量 px的值，实际就是变量 x的地址
+  printf(&#34;x: %d\n&#34;, *px);    // 在指针变量px前使用 *号操作，将输出 px指向单元中的值，因为当前 px指向 x，所以就是x的值
+}
+</code></pre>
+<p>可前往<a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>直观的查看！</p>
+<aside class="special"><p>✍ 注意： 如果不是在定义变量，那么一个变量名前使用 * 号就表明是取值操作，即获取该指针变量即它指向单元的内容。</p>
+</aside>
+<p>下面我们再来看看输入：</p>
+<pre><code>/**
+ * 使用指针来输入输出变量
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int x, *px = &amp;x;  // 定义了整型变量 x和整型指针变量 px，同时将 x的地址放入 px中，即 px指向了变量x（初始化）
+  scanf(&#34;%d&#34;, &amp;x);  // 常规做法，从键盘接收一个整数放到 &amp;x这个地址中。实际上就是放到 x变量中
+  printf(&#34;x is %d\n&#34;, x);
+  scanf(&#34;%d&#34;, px);  // 使用指针，从键盘接收一个整数放到 px指向的这个地址中。因为当前 px指向x变量，实际上就是放到 x变量中
+  printf(&#34;x is :%d\n&#34;, *px);    // 在指针变量px前使用 *号操作，将输出 px指向单元中的值，因为当前 px指向 x，所以就是x的值
+}
+</code></pre>
+<aside class="warning"><p>✎ 思考：上面代码中第二个<code>scanf</code>语句中，变量<code>px</code>前为何不需要<code>&amp;</code>符号？</p>
+</aside>
+<aside class="special"><p>✍ 注意：在指针 p指向 x的情况下即<code>p = &amp;x</code>：<code>*p</code>与<code>x</code>等价，<code>p</code>与<code>&amp;x</code>等价。至此，你应该明白为何我们以前一直强调<code>scanf</code>输入语句中，变量名前为何需要使用<code>&amp;</code>符号的问题了。</p>
+</aside>
+<h2 is-upgraded>指针的使用</h2>
+<p>下面我们通过两个简单的程序来了解指针的使用。</p>
+<h3 is-upgraded>程序一</h3>
+<pre><code>/**
+ * 使用指针来进行加减运算
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int x = 89, y = 64, *px, *py;  // 定义了整型变量 x和 y并初始化，再定义了整型指针变量 px和 py
+  int sum, diff;  // 定义 和差 变量
+  px = &amp;x;  // 将 x的地址放入 px中，即 px指向了变量x
+  py = &amp;y;  // 将 y的地址放入 py中，即 py指向了变量y
+  sum = (*px) + (*py);  // 为清晰加了圆括号
+  diff = (*px) - (*py);
+  printf(&#34;%d + %d = %d\n&#34;, x, y, sum);
+  printf(&#34;%d - %d = %d\n&#34;, x, y, diff);
+}
+</code></pre>
+<p>可前往<a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>直观的查看！</p>
+<h3 is-upgraded>程序二</h3>
+<pre><code>/**
+ * 使用指针来进行求最大值
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int x, y, *max;  // 定义了整型变量 x和 y，再定义了整型指针变量 max用来指向大的那个数
+  printf(&#34;Please input two integer number:&#34;);
+  scanf(&#34;%d%d&#34;, &amp;x, &amp;y);
+  if (x &gt; y) {
+    max = &amp;x;   // 如果 x大，max指向 x
+  } else {
+    max = &amp;y;   // 如果 y大，max指向 y
+  }
+  printf(&#34;Max is : %d\n&#34;, *max);  // 输出 max指向变量的值
+}
+</code></pre>
+<aside class="special"><p>✍ 注意：不要使用未赋值的指针即空指针，或者强行赋予非法的地址即非法指针！</p>
+</aside>
+<p>如下程序将会运行时出错：</p>
+<pre><code>/**
+ * 使用空指针/非法指针
+**/
+#include &#34;stdio.h&#34;
+void main() {
+  int *p;
+  printf(&#34;%d\n&#34;, *max);  // 输出 max指向变量的值，但此时 max未指向任何确定的单元或不知道指向什么内存空间，称为空指针，危险操作，系统将停止该程序运行
+  p = 8964;  // 代替操作系统让 max指向编号为 8964的这个内存单元，但这个内存单元不是属于你的，危险操作！
+  printf(&#34;%d\n&#34;, *max);  //  危险操作，系统将停止该程序运行
+}
+</code></pre>
+<h2 is-upgraded>小测验</h2>
+<pre><code>选择题
+1. 为让指针 px指向 int型变量 x， 下列正确的是（）：
+   A. int *px = x, x;     B. int *px = &amp;x, x;
+   C. int x, *px = &amp;x;    D. int *px, x; *px = &amp;x;
+
+2. 如下程序代码的输出结果是（）：
+    int x = 19, *pa, *pb;
+    pa = pb = &amp;x;
+    *pb = 89;
+    *pa = 64;
+    printf(&#34;%d\n&#34;, x);
+    A. 19   B. 89   C. 64   D. 程序有错
+
+3. 变量的指针是指（）：
+    A. 值   B. 地址   C. 名   D. 标志
+
+4. 如有说明： int m = 5, n, *p; ，以下正确的是（）：
+    A. p = &amp;n; scanf(&#34;%d&#34;, &amp;p);   B. p = &amp;n; scanf(&#34;%d&#34;, *p);
+    C. scanf(&#34;%d&#34;, &amp;n); *p = n;   D. p = &amp;n; *p = m;
+
+5. 下列程序代码运行的结果是（）：
+    int a[] = {1, 9, 8, 9, 6, 4}, *p;
+    p = &amp;a[4];
+    printf(&#34;%d&#34;, *p);
+    A. 6    B. 8    C. 9    D. 程序有错
+</code></pre>
+<aside class="warning"><p>✉ ✎ ✍参考答案: CCBDA</p>
+</aside>
+<h2 is-upgraded>课后练习</h2>
+<p>请理解本讲所列程序。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="数组作函数参数、递归函数" duration="90">
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>数组作函数参数</li>
+<li>递归函数</li>
+</ul>
+<aside class="special"><p>✍ 注意：本部分内容了解即可。</p>
+</aside>
+<h2 is-upgraded>数组作函数参数</h2>
+<p>前面的课程中我们学习了函数。你有可能会发现，我们传递给函数的参数个数非常有限。</p>
+<p>如果你有比较多的数据，比如100个整数需要交给函数去处理，那么怎么办？</p>
+<p>按照以前的做法，我们得为函数定义100个形参，这样是不科学的！</p>
+<p>另外，你也会想到我们处理大量数据的时候不是使用了数组这种数据结构吗？我们可不可以将一个数组传给函数呢？</p>
+<p>是的，我们可以这样非常简单方便的传递数组。那么，我们是把数组中各个元素都一一传递给函数吗？</p>
+<p>不是的，我们是传递的这个数组的地址即指针！函数得到这个地址后还拿不到数据吗？</p>
+<pre><code></code></pre>
+<h2 is-upgraded>递归函数</h2>
 <p>分形图案</p>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
@@ -2233,12 +2423,14 @@ void main() {
 
       </google-codelab-step>
     
-      <google-codelab-step label="变量的存储类别" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+      <google-codelab-step label="变量的作用域、存储类别" duration="90">
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>X</li>
+<li>变量的作用域</li>
+<li>变量的存储类别</li>
 </ul>
+<aside class="special"><p>✍ 注意：本部分内容了解即可。</p>
+</aside>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
 <aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
@@ -2249,31 +2441,18 @@ void main() {
 
       </google-codelab-step>
     
-      <google-codelab-step label="编译预处理" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+      <google-codelab-step label="编译预处理及其它" duration="90">
+        <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>X</li>
+<li>编译预处理</li>
+<li>宏定义</li>
+<li>文件包含</li>
 </ul>
+<aside class="special"><p>✍ 注意：本部分内容了解即可。</p>
+</aside>
 <h2 is-upgraded>小测验</h2>
 <pre><code></code></pre>
 <aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
-</aside>
-<h2 is-upgraded>课后练习</h2>
-<p>请理解本讲所列程序。</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="指针" duration="90">
-        <p>本次课程我们将讲述以下内容:</p>
-<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
-<ul class="checklist">
-<li>X</li>
-</ul>
-<h2 is-upgraded>小测验</h2>
-<pre><code></code></pre>
-<aside class="warning"><p>✉ ✎ ✍参考答案:</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
