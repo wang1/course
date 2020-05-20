@@ -2387,7 +2387,7 @@ void main() {
     printf(&#34;%d&#34;, *p);
     A. 6    B. 8    C. 9    D. 程序有错
 </code></pre>
-<aside class="warning"><p>✉ ✎ ✍参考答案: CCBDA</p>
+<aside class="warning"><p>✉ 参考答案: CCBDA</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
@@ -2409,21 +2409,85 @@ void main() {
 <p>按照以前的做法，我们得为函数定义100个形参，这样是不科学的！</p>
 <p>另外，你也会想到我们处理大量数据的时候不是使用了数组这种数据结构吗？我们可不可以将一个数组传给函数呢？</p>
 <p>是的，我们可以这样非常简单方便的传递数组。那么，我们是把数组中各个元素都一一传递给函数吗？</p>
-<p>不是的，我们是传递的这个数组的地址即指针！函数得到这个地址后还拿不到数据吗？</p>
-<pre><code></code></pre>
-<h2 is-upgraded>递归函数</h2>
-<p>分形图案</p>
-<h2 is-upgraded>小测验</h2>
-<pre><code></code></pre>
-<aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
+<p>不是的，因为在内存中，数组元素是占用的一片连续的空间，所以我们只需要传递这个数组的首地址/指针即可！函数得到这个首地址后就相当于得到了这个数组。</p>
+<aside class="special"><p>✍ 注意：C语言规定，数组名也是数组的首地址/指针，即与数组的首元素的地址等价！</p>
 </aside>
-<h2 is-upgraded>课后练习</h2>
-<p>请理解本讲所列程序。</p>
+<p>我们用下面的程序为例帮助大家进行理解：</p>
+<pre><code>/**
+ * 使用数组作为参数传递给函数，找出数组中的最大值。
+ * 各函数都共享该数组
+**/
+#include &#34;stdio.h&#34;
+// 输入数据的函数
+void inputData(int a[], int n) {
+  int i;
+  for(i = 0; i &lt; n; i++) {
+    printf(&#34;Please input data, No.%d:&#34;, i + 1);
+    scanf(&#34;%d&#34;, &amp;a[i]);
+  }
+}
+// 找数组中最大值的函数
+int findMax(int a[], int n) {
+  int i, max;
+  max = a[0]; // 假设数组的第一个元素是最大的
+  for(i = 1; i &lt; n; i++) { // 将假设的最大值max依次与数组中的其它元素比较
+    if(max &lt; a[i]) {       // 如果后面的元素比max大，修正max，始终保证max中保存的是最大值 
+      max = a[i];
+    }
+  }
+  return max;             // 返回最大值
+}
+// 主函数
+void main() {
+  int data[10], max;        // 定义10个元素的整型数组data，max用来保存最大值
+  inputData(data, 10);      // 调用自定义函数进行数据输入，传递数组的首地址及数组的大小
+  max = findMax(data, 10);  // 调用自定义函数找最大值，传递数组的首地址及数组的大小
+  printf(&#34;MAX: %d\n&#34;, max); // 输出最大值
+}
+</code></pre>
+<aside class="special"><p>✍ 注意：请一定留意上面程序中的三个函数都共用一个数组。这也是为何在 main函数中定义的数组，在 inputData函数中可以向该数组输入数据，也在 findMax函数中可以得到的数据原因。</p>
+</aside>
+<aside class="warning"><p>✎ 思考：data 是数组名，也是首地址，那么我们可不可以传递<code>&amp;data[0]</code>呢？</p>
+</aside>
+<h2 is-upgraded>递归函数</h2>
+<p>所谓递归函数，就是函数自己调用自己。</p>
+<p>从字面意思来看，递——是传递，归——是回归，那么从传递开始回归到传递的开始，就是从一个地方出发，回到了出发的地方，就完成了一次循环，而不断重复这个循环，就是——递归。</p>
+<p>这里有一个耳熟能详的递归故事：</p>
+<p>从前有一座山，山里有一座庙，庙里有一个老和尚和一个小和尚，他们在说故事，故事是什么呢？从前有座山，山里有座庙，庙里有一个老和尚和一个小和尚，他们在说故事，故事是什么呢？从前有座山，山里有一座庙......等等</p>
+<p>你马上应该想到，这种方式如果没有特别处理的话，有一个问题就是会无限执行下去。</p>
+<p>是的，我们必须在满足某种条件的情况下才继续调用，否则就停止。</p>
+<p>有些问题天然就是递归的，如求阶乘。阶乘的数学定义是：当 <code>n = 0</code>时，结果是 <code>1</code>，否则结果为<code>n*(n-1)!</code>，对于<code>(n-1)!</code>又重复刚才的过程。</p>
+<p>请看以下程序：</p>
+<pre><code>/**
+ * 在main函数中输入一个正整数，要求在1～20之间，否则重新输入
+ * 由fact函数使用递归的方式求出该正整数的阶乘
+ * 在main函数中输出结果。
+**/
+#include &#34;stdio.h&#34;
+// 求阶乘的递归函数
+int fact(int n){
+    if(n == 0){     // 当n为1时返回
+        return 1;
+    }else{
+        return n * fact(n - 1);  // 递归调用
+    }
+}
+void main(){
+    int n;
+    do{
+        printf(&#34;Please input a integer number(1 ~ 20):&#34;);
+        scanf(&#34;%d&#34;, &amp;n);
+    }while(n &lt; 1 || n &gt; 20);
+    printf(&#34;%d! = %ld\n&#34;, n, fact(n));
+}
+</code></pre>
+<p>请仔细分析程序的执行过程。<br>某些问题必须得用递归进行求解如：<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E5%BD%A2" target="_blank">分形问题</a>、<a href="https://zh.wikipedia.org/wiki/%E6%B1%89%E8%AF%BA%E5%A1%94" target="_blank">汉诺塔问题</a>等，有兴趣的同学可参阅其它资料。</p>
+<p>本讲所列程序了解即可。</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="变量的作用域、存储类别" duration="90">
+      <google-codelab-step label="变量的作用域及存储类别" duration="90">
         <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
 <li>变量的作用域</li>
@@ -2431,12 +2495,100 @@ void main() {
 </ul>
 <aside class="special"><p>✍ 注意：本部分内容了解即可。</p>
 </aside>
-<h2 is-upgraded>小测验</h2>
-<pre><code></code></pre>
-<aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
-</aside>
-<h2 is-upgraded>课后练习</h2>
-<p>请理解本讲所列程序。</p>
+<h2 is-upgraded>变量的作用域</h2>
+<p>所谓变量的作用域，是指我们定义的变量在哪个范围是有效的。</p>
+<p>这是什么意思呢？比如如下代码：</p>
+<pre><code>#include &#34;stdio.h&#34;
+void fun(){  
+  printf(&#34;%d %d\n&#34; , x, y);
+}
+void main(){
+  int x = 6, y = 4;
+  fun();
+  printf(&#34;%d %d\n&#34; , x, y);
+}
+</code></pre>
+<p>仔细阅读该程序，然后运行上面这个程序试试，系统会报错的。</p>
+<p>我们在<code>main</code>函数中定义了<code>x</code>和<code>y</code>变量，但是<code>fun</code>函数中并不能看到这两个变量，即这两个变量仅在<code>main</code>函数中有效。</p>
+<p>现在大家应该明白变量的作用域的意思了。</p>
+<h3 is-upgraded>局部变量</h3>
+<p>我们以前都是在某函数中定义变量的，这些变量的作用范围仅限于该函数内部，这就是局部变量。</p>
+<p>将上面程序修改如下：</p>
+<pre><code>#include &#34;stdio.h&#34;
+void fun(){
+  int x = 6, y = 4;   // 与 main中的 x 和 y 变量相互独立，互不影响
+  printf(&#34;%d %d\n&#34; , x, y);
+}
+void main(){
+  int x = 2, y = 3;   // 与 fun中的 x 和 y 变量相互独立，互不影响
+  fun();
+  printf(&#34;%d %d\n&#34; , x, y);
+}
+</code></pre>
+<h3 is-upgraded>全局变量</h3>
+<p>如果在函数外部定义变量，那么这些变量就全局可见，即为全局变量。</p>
+<p>我们修改上面的代码如下：</p>
+<pre><code>#include &#34;stdio.h&#34;
+int x = 6, y = 4;   // 定义在函数外部，是全局变量
+void fun(){
+  printf(&#34;%d %d\n&#34; , x, y);
+  x = 8;
+  y = 9;
+}
+void main(){
+  fun();
+  printf(&#34;%d %d\n&#34; , x, y);
+}
+</code></pre>
+<p>试试运行上面的程序，体会全局变量的作用范围。</p>
+<h3 is-upgraded>作用域屏蔽</h3>
+<p>如果一个变量既是全局的，又是局部的，那么全局变量将会被屏蔽，以局部变量为准。</p>
+<p>如下所示：</p>
+<pre><code>#include &#34;stdio.h&#34;
+int x = 6, y = 4;   // 定义在函数外部，是全局变量
+void fun(){
+  int x = 1;  // fun函数中也定义了x变量，且为局部变量，因此，fun函数就会使用这个变量
+  printf(&#34;%d %d\n&#34; , x, y);  // 输出1 4
+  x = 8;  // 改变的是局部变量的值
+  y = 9;  // 改变的是全局变量的值
+}
+void main(){
+  fun();
+  printf(&#34;%d %d\n&#34; , x, y);  // 将输出6 4
+}
+</code></pre>
+<p>运行并分析上面这个程序进行理解。</p>
+<h2 is-upgraded>变量的存储类别</h2>
+<p>对于变量的存储类型，是指变量的生命期，当前我们不需要深入的了解，明白如下两个程序之间的差异即可。</p>
+<h3 is-upgraded>自动存储类型变量</h3>
+<pre><code>#include &#34;stdio.h&#34;
+void func(){
+    int x = 64;   // x是自动存储类型，进入func函数时分配空间，该函数执行完毕时x消失
+    printf(&#34;%d\n&#34;, x);
+    x = 89;  // 虽然看似将x的值改变了，但函数执行完毕后x已经不存在了。
+}
+void main(){
+    func();
+    func();
+    func();
+}
+</code></pre>
+<p>运行该程序，结果将会打印3次<code>64</code>，请前往<a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序的执行。</p>
+<p>但是下面的程序的结果就不相同了。</p>
+<h3 is-upgraded>静态存储类型变量</h3>
+<pre><code>#include &#34;stdio.h&#34;
+void func(){
+    static int x = 64;   // x是静态存储类型，它在整个程序运行过程中都存在，且只初始化一次。该函数即使执行完毕x也不会消失
+    printf(&#34;%d\n&#34;, x);
+    x++;  // 但函数执行完毕 x仍然存在
+}
+void main(){
+    func();
+    func();
+    func();
+}
+</code></pre>
+<p>运行该程序，结果将会打印<code>64 65 66</code>，请前往<a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序的执行。</p>
 
 
       </google-codelab-step>
@@ -2444,18 +2596,44 @@ void main() {
       <google-codelab-step label="编译预处理及其它" duration="90">
         <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <ul class="checklist">
-<li>编译预处理</li>
-<li>宏定义</li>
 <li>文件包含</li>
+<li>宏定义</li>
 </ul>
 <aside class="special"><p>✍ 注意：本部分内容了解即可。</p>
 </aside>
-<h2 is-upgraded>小测验</h2>
-<pre><code></code></pre>
-<aside class="warning"><p>✉ ✎ ✍ 参考答案:</p>
+<p>当我们运行程序时，首先需要进行编译，而编译之前还有部分工作即为编译预处理。比如需要导入<code>stdio.h</code>文件等等。</p>
+<h2 is-upgraded>文件包含</h2>
+<p>我们的每个程序几乎都在顶部有<code>#include &#34;stdio.h&#34;</code>这个包含命令（注意不是语句），在使用某些数学函数时还曾经使用过<code>#include &#34;math.h&#34;</code>。这些都称为文件包含。</p>
+<p>这些命令告诉C语言编译程序将对应的文件引入进来，本程序需要使用。如果没有，那么诸如<code>printf</code>之类的函数就不能使用。</p>
+<p>一般我们使用<code>&#34;&#34;</code>包裹文件名，但你也可以使用<code>&lt;&gt;</code>，我们不做区分说明。</p>
+<h2 is-upgraded>宏定义</h2>
+<p>所谓的宏定义，一般就是使用一个大写的标识符来表示一个字符串的过程。</p>
+<p>如下程序：</p>
+<pre><code>#include &#34;stdio.h&#34;
+#define PI 3.1415926  //  定义PI，程序中任何地方出现PI都会被替换
+void main(){
+  int r;
+  float s;
+  r = 2;
+  s = PI * r * r;  // 此处的PI将会在编译前被替换为上面的定义即3.1415926
+  printf(&#34;Area is %f\n&#34;, s);
+}
+</code></pre>
+<p>上面程序是不带参数的宏。下面我们看看带参数的宏：</p>
+<pre><code>#include &#34;stdio.h&#34;
+#define PF(x) x*x  // 带参数的宏，希望求x的平方
+void main(){
+    int a, pf;
+    printf(&#34;Please input a integer number:&#34;);
+    scanf(&#34;%d&#34;, &amp;a);
+    pf = PF(a+1);  // 编译前将被替换为 a+1*a+1
+    printf(&#34;PF(a+1)=%d\n&#34;, pf);
+}
+</code></pre>
+<p>运行该程序，理解带参数的宏定义。</p>
+<aside class="warning"><p>✎ 思考：比如输入<code>2</code>,那么我们就是求的<code>2+1</code>即<code>3</code>的平方，但你会发现结果并不是<code>9</code>，而是<code>5</code>，发生了什么问题？把宏定义改为<code>#define PF(x) (x)*(x)</code>如何？</p>
 </aside>
-<h2 is-upgraded>课后练习</h2>
-<p>请理解本讲所列程序。</p>
+<h2 is-upgraded>== 恭喜，本简明教程结束 ==</h2>
 
 
       </google-codelab-step>
