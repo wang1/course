@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>棋歌教学网 - C语言简明教程</title>
+  <title>棋歌教学网 - C 语言简明教程</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
@@ -23,7 +23,7 @@
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
   <google-codelab codelab-gaid=""
                   id="clang"
-                  title="棋歌教学网 - C语言简明教程"
+                  title="棋歌教学网 - C 语言简明教程"
                   environment="web"
                   feedback-link="mailto: gridwang@gmail.com">
     
@@ -32,122 +32,132 @@
 <ul class="checklist">
 <li>程序的基本概念</li>
 <li>程序设计语言</li>
-<li>C语言的词法</li>
-<li>C程序的基本结构</li>
+<li><code>C</code>语言的词法</li>
+<li><code>C</code>程序的基本结构</li>
 <li>编译运行</li>
 </ul>
 <h2 is-upgraded>程序的基本概念</h2>
 <h3 is-upgraded>算法</h3>
-<p>我们给出如下问题: 有四个外观大小都一模一样的苹果, 现其中三个重量相同, 另外一个比这三个轻. 请用一个没有砝码的天平, 最大称两次, 找出这个轻的苹果.</p>
-<p>问题一经提出, 你的大脑(CPU)就会飞快的运行, 就会找到解决这个问题的方法.(我不怀疑你马上就找到了方法, 且方法可能还不止一个)</p>
-<p>那么, 我们就说</p>
-<aside class="special"><p>✍ 解决某问题的步骤和方法就是算法.</p>
+<p>我们给出如下问题：有四个外观大小都一模一样的苹果，现其中三个重量相同，另外一个比这三个轻。请用一个没有砝码的天平，最大称两次，找出这个轻的苹果。</p>
+<p>问题一经提出，你的大脑（<code>CPU</code>）就会飞快的运行，就会找到解决这个问题的方法。（我不怀疑你马上就找到了方法，且方法可能还不止一个）</p>
+<p>那么，我们就说</p>
+<aside class="special"><p>✍ 解决某问题的步骤和方法就是算法。</p>
 </aside>
-<aside class="special"><p>✍ 根据问题的复杂度, 算法有简单, 也有复杂的.<br>✍ 比如问题改为: 有12个外观大小都一模一样的苹果, 现其中11个重量相同, 另外一个与这11个重量不同, 但不知是轻还是重. 请用一个没有砝码的天平, 最多称 三次, 找出这个不同的苹果, 并说出是轻还是重.(说明: 请不要试图马上解决, 2个小时内能找到方法则你的 IQ 超高!)</p>
+<aside class="special"><p>✍ 根据问题的复杂度，算法有简单，也有复杂的。<br>✍ 比如问题改为: 有<code>12</code>个外观大小都一模一样的苹果，现其中<code>11</code>个重量相同，另外一个与这<code>11</code>个重量不同，但不知是轻还是重。 请用一个没有砝码的天平，最多称<code>3</code>次，找出这个不同的苹果，并说出是轻还是重。（说明: 请不要试图马上解决，<code>2</code>个小时内能找到方法则你的<code>IQ</code>超高!）</p>
 </aside>
 <h3 is-upgraded>程序</h3>
-<p>考虑刚才那个找苹果的算法, 你一定会告诉别人: 先如何, 再如何, 然后就成了.<br>是的, 我们用人类的语言描述了这个算法. 但如果我们需要计算机帮助, 那我们就需要用计算机能懂的语言, 即计算机语言.</p>
-<p>那么, 简单的说,</p>
-<aside class="special"><p>✍ 用某种计算机语言描述的算法就是(计算机)程序. 而程序设计(即编程)就是用计算机语言(即程序设计语言)解决问题的步骤和过程.</p>
+<p>考虑刚才那个找苹果的算法，你一定会告诉别人: 先如何，再如何，然后就成了。</p>
+<p>是的，我们用人类的语言描述了这个算法。 但如果我们需要计算机帮助，那我们就需要用计算机能懂的语言，即计算机语言。</p>
+<p>那么，简单的说，</p>
+<aside class="special"><p>✍ 用某种计算机语言描述的算法就是（计算机）程序。 而程序设计（即编程）就是用计算机语言（即程序设计语言）解决问题的步骤和过程。</p>
 </aside>
 <h2 is-upgraded>程序设计语言</h2>
 <h3 is-upgraded>分类</h3>
-<aside class="warning"><p>✘ 以下讲述如何你不明白, 请直接忽略.</p>
+<aside class="warning"><p>✘ 以下讲述如何你不明白，请直接忽略。</p>
 </aside>
-<p>那么有哪些计算机语言或程序设计语言呢? 简单的说分为三种: 机器语言, 汇编语言, 高级语言.</p>
-<p>比如我们要计算机帮我计算 <code>1 + 2</code>, 上面三类计算机语言可能分别是这样的:</p>
-<pre><code>// 机器语言, 机器直接识别并能执行, 效率最高, 但程序员不喜欢
-// 第一个是操作码(加法), 后面是操作数(分别是1和2)
+<p>那么有哪些计算机语言或程序设计语言呢? 简单的说分为三种: 机器语言，汇编语言，高级语言。</p>
+<p>比如我们要计算机帮我计算 <code>1 + 2</code>，上面三类计算机语言可能分别是这样的:</p>
+<pre><code>// 机器语言，机器直接识别并能执行，效率最高，但程序员不喜欢
+// 第一个是操作码（加法），后面是操作数（分别是1和2）
 00000011 00000001 00000010
-// 汇编语言, 将机器语言纯粹的二进制做了一些改进.
-// 但机器不能直接执行了, 需要汇编(简单想象成翻译好了)成计算机能识别的机器语言才能执行
-// 执行效率较高, 但一般程序员也不喜欢(破解软件的或搞外挂的必须掌握)
-// 下面代码先已经将1 和 2提前放到了eax和ebx寄存器了. 最后结果放到eax中
-ADD %eax, %ebx
-// 高级语言, 基本就是直白的数学表达式.
-// 计算机更是不知所云, 需要进行编译才可运行. 相比之下效率最低
-// 由于接近自然语言, 程序员非常喜欢
+// 汇编语言，将机器语言纯粹的二进制做了一些改进。
+// 但机器不能直接执行了，需要汇编（简单想象成翻译好了）成计算机能识别的机器语言才能执行
+// 执行效率较高，但一般程序员也不喜欢（破解软件的或搞外挂的必须掌握）
+// 下面代码先已经将1 和 2提前放到了eax和ebx寄存器了。 最后结果放到eax中
+ADD %eax，%ebx
+// 高级语言，基本就是直白的数学表达式。
+// 计算机更是不知所云，需要进行编译才可运行。 相比之下效率最低
+// 由于接近自然语言，程序员非常喜欢
 1 + 2
 </code></pre>
-<aside class="special"><p>✍ 计算机做 <code>1 + 2</code> 花费的时间和做 <code>198964 + 469891</code> 的时间是相同的. 可以用一个 CPU 时钟周期来衡量.</p>
+<aside class="special"><p>✍ 计算机做 <code>1 + 2</code> 花费的时间和做 <code>198964 + 469891</code> 的时间是相同的。 可以用一个<code>CPU</code>时钟周期来衡量。</p>
 </aside>
-<h3 is-upgraded>C语言</h3>
-<p>C语言即是高级计算机语言的一种, 且是生命力非常强的一种(上世纪70年代初问世. 同时, 迄今不知有多少种计算机语言销声匿迹了).<br>我们既可以用C语言编写系统软件(<code>Unix, Windows, Linux, Adroid</code> 等等), 也可以编写各种应用软件.</p>
-<aside class="special"><p>♚ C语言之父. 丹尼斯·麦卡利斯泰尔·里奇（Dennis MacAlistair Ritchie，1941年9月9日－2011年10月12日），美国计算机科学家。黑客圈子通常称他为&#34;dmr&#34;。他是C语言的创造者、Unix操作系统的关键开发者，对计算机领域产生了深远影响，并与肯·汤普逊同为1983年图灵奖得主。图片摄于其去世前5个月.详情见<a href="https://zh.wikipedia.org/wiki/%E4%B8%B9%E5%B0%BC%E6%96%AF%C2%B7%E9%87%8C%E5%A5%87" target="_blank">🌏维基百科</a></p>
+<h3 is-upgraded>C 语言</h3>
+<p><code>C</code>语言即是高级计算机语言的一种，且是生命力非常强的一种（上世纪<code>70</code>年代初问世。 同时，迄今不知有多少种计算机语言销声匿迹了）。</p>
+<p>我们既可以用<code>C</code>语言编写系统软件（<code>Unix</code>，<code>Windows</code>，<code>Linux</code>，<code>Adroid</code> 等等），也可以编写各种应用软件。</p>
+<aside class="special"><p>♚ <code>C</code>语言之父。 丹尼斯·麦卡利斯泰尔·里奇（<code>Dennis MacAlistair Ritchie</code>，1941 年 9月 9日－2011年 10月 12日），美国计算机科学家。黑客圈子通常称他为<code>dmr</code>。他是<code>C</code>语言的创造者、<code>Unix</code>操作系统的关键开发者，对计算机领域产生了深远影响，并与肯·汤普逊同为<code>1983</code>年图灵奖得主。图片摄于其去世前<code>5</code>个月。详情见<a href="https://zh.wikipedia.org/wiki/%E4%B8%B9%E5%B0%BC%E6%96%AF%C2%B7%E9%87%8C%E5%A5%87" target="_blank">🌏维基百科</a></p>
 </aside>
 <p class="image-container"><img alt="dmr2011" src="img/84461cdd1d1836ed.webp"></p>
-<p>当然, 除了C语言外, 还有不少先进的高级语言. 推荐: <code>Go, Java, Python, Typescript, Dart, Rust, Scala</code> 等等</p>
-<h2 is-upgraded>C语言的词法</h2>
+<p>当然，除了<code>C</code>语言外，还有不少先进的高级语言。 推荐: <code>Go</code>，<code>Java</code>，<code>Python</code>，<code>Typescript</code>，<code>Dart</code>，<code>Rust</code>，<code>Scala</code>等等</p>
+<h2 is-upgraded>C 语言的词法</h2>
 <h3 is-upgraded>字符</h3>
-<p>既然是一门语言, 当然会规定语言中可以使用哪些字符.<br>C语言可使用的字符有: 大小写字母, 数字, 下划线, 一些特殊字符如 <code>+ - = / &gt; ? () ;</code>等等.</p>
-<aside class="special"><p>✍ 请一定注意使用英文输入法下的的这些字符, 而不是中文输入法下的. 如英文的<code>;</code>与中文的 ； 就是有区别的</p>
+<p>既然是一门语言，当然会规定语言中可以使用哪些字符。</p>
+<p><code>C</code>语言可使用的字符有: 大小写字母，数字，下划线，一些特殊字符如 <code>+</code>，<code>-</code>，<code>=</code>，<code>/</code>，<code>&gt;</code>，<code>?</code>，<code>(</code>，<code>)</code>，<code>;</code>等等。</p>
+<aside class="special"><p>✍ 请一定注意使用英文输入法下的的这些字符，而不是中文输入法下的。 如英文的<code>;</code>与中文的 ； 就是有区别的</p>
 </aside>
 <h3 is-upgraded>关键字</h3>
-<p>其次, C语言有一些关键字, 也称保留字是其内含的, 不能作为它用. 如: <code>int float if else switch void for</code> 等等</p>
-<aside class="warning"><p>✘ 这些关键字你无需记住, 随着我们的学习你自然就会熟悉了</p>
+<p>其次，<code>C</code>语言有一些关键字，也称保留字是其内含的，不能作为它用。 如: <code>int</code>，<code>float</code>，<code>if</code>，<code>else</code>，<code>switch</code>，<code>void</code>，<code>for</code>等等</p>
+<aside class="warning"><p>✘ 这些关键字你无需记住，随着我们的学习你自然就会熟悉了</p>
 </aside>
 <h3 is-upgraded>标识符</h3>
-<p>在程序中, 我们需要对一些对象进行命名, 这就是标识符.<br>假设我要处理上面称苹果的问题, 可能我会取标识符为: <code>apple1 apple2</code>等等</p>
-<aside class="special"><p>✍ C语言规定, 标识符只能由字母,数字,下划线构成, 且数字不能开头.<br>✍ 另外C语言严格区分大小写, 且同一个程序中的标识符必须不能相同, 也即必须唯一.</p>
+<p>在程序中，我们需要对一些对象进行命名，这就是标识符。</p>
+<p>假设我要处理上面称苹果的问题，可能我会取标识符为: <code>apple1</code>，<code>apple2</code>等等</p>
+<aside class="special"><p>✍ <code>C</code>语言规定，标识符只能由字母,数字,下划线构成，且数字不能开头。<br>✍ 另外<code>C</code>语言严格区分大小写，且同一个程序中的标识符必须不能相同，也即必须唯一。</p>
 </aside>
-<p>合法的标识符: <code>sum Sum _xyz month count lengthOfSomething</code> 等等<br>非法的标识符: <code>3M @qq.com $solary a/b</code> 等等. 想想为什么?</p>
+<p>合法的标识符: <code>sum</code>，<code>Sum</code>，<code>_xyz</code>，<code>month</code>，<code>count</code>，<code>lengthOfSomething</code> 等等</p>
+<p>非法的标识符: <code>3M</code>，<code>@qq.com</code>，<code>$solary</code>， <code>a/b</code> 等等。 想想为什么?</p>
 <h3 is-upgraded>语句</h3>
-<p>任何语言都有语句, 一个计算机程序由或多或少的语句构成.<br>C语言有不少语句类型, 如循环语句, 选择语句等等.</p>
-<aside class="special"><p>✍ C语言规定, 语句必须以<code>;</code> 作为结束标记. 你在实际编程中一定会出现这个错误的!!!<br>✍ 多个带分号的语句可以用<code>{}</code>包围起来, 称为复合语句, 此时不需要用<code>;</code>来标记了. 看看<code>main</code>函数的<code>{}</code>.<br>🗣 <code>;</code>分号作为语句的结束影响了相当多的后代语言如<code>Java/TS/Go/C#</code>等. DMR去世后, 计算机爱好者们以特有的方式纪念他, 许多网友的发帖中没有一个字，只有一个分号 <code>;</code></p>
+<p>任何语言都有语句，一个计算机程序由或多或少的语句构成。</p>
+<p><code>C</code>语言有不少语句类型，如循环语句，选择语句等等。</p>
+<aside class="special"><p>✍ <code>C</code>语言规定，语句必须以<code>;</code> 作为结束标记。 你在实际编程中一定会出现这个错误的!!!<br>✍ 多个带分号的语句可以用<code>{}</code>包围起来，称为复合语句，此时不需要用<code>;</code>来标记了。 看看<code>main</code>函数的<code>{}</code>。<br>🗣 <code>;</code>分号作为语句的结束影响了相当多的后代语言如<code>Java</code>，<code>TS</code>，<code>Go</code>，<code>C#</code>等。 <code>DMR</code>去世后，计算机爱好者们以特有的方式纪念他，许多网友的发帖中没有一个字，只有一个分号 <code>;</code></p>
 </aside>
-<h2 is-upgraded>C程序的基本结构</h2>
-<p>或多或少的语句将组成一个个C语言程序. 显然, 这些语句需要按照一定的格式或规定进行组织.<br>下面是一个通用的C程序结构:</p>
+<h2 is-upgraded>C 程序的基本结构</h2>
+<p>或多或少的语句将组成一个个<code>C</code>语言程序。 显然，这些语句需要按照一定的格式或规定进行组织。</p>
+<p>下面是一个通用的<code>C</code>程序结构:</p>
 <pre><code>#include &#34;stdio.h&#34;
 void main() {
-  // 你的语句将写在此处, 也是你知识和智慧所在
+  // 你的语句将写在此处，也是你知识和智慧所在
 }
 </code></pre>
-<aside class="special"><p>✍ 请留意, 本课程的要求基本不会超出上面的基本结构, 所有的代码都在<code>{}</code>内. 请尽快熟悉!</p>
+<aside class="special"><p>✍ 请留意，本课程的要求基本不会超出上面的基本结构，所有的代码都在<code>{}</code>内。 请尽快熟悉!</p>
 </aside>
-<aside class="warning"><p>✘ 你也可能在其它地方看到有不同的结构如<code>int main()</code>等, 我们暂不解释区别. 强烈建议使用上面的最简单的结构.</p>
+<aside class="warning"><p>✘ 你也可能在其它地方看到有不同的结构如<code>int main()</code>等，我们暂不解释区别。 强烈建议使用上面的最简单的结构。</p>
 </aside>
-<p>下面我们来编写我们的第一个C语言程序. 打开你的开发软件如 Code, 新建一个以<code>.c</code>为后缀的C语言源程序文件如下:</p>
+<p>下面我们来编写我们的第一个<code>C</code>语言程序。 打开你的开发软件如<code>Code</code>，新建一个以<code>.c</code>为后缀的<code>C</code>语言源程序文件如下:</p>
 <pre><code>// 这是著名的 Hello World 程序
 #include &#34;stdio.h&#34;
 void main() {
   printf(&#34;Hello World!\n&#34;);
 }
 </code></pre>
-<p>运行它试试(如果使用的是Code, 那么点击屏幕右上角的 ▷ 按钮即可运行了).<br>一句以上帝视角发出的问候会出现在你的屏幕的.</p>
+<p>运行它试试(如果使用的是<code>Code</code>，那么点击屏幕右上角的 ▷ 按钮即可运行了）。</p>
+<p>一句以上帝视角发出的问候会出现在你的屏幕的。</p>
 <aside class="special"><p>🌏 Hello World 是一个最著名的程序。对每一位程序员来说，这个程序几乎是每一门编程语言中的第一个示例程序。实际上，这个程序的功能只是告知计算机显示Hello World这句话。传统意义上，程序员一般用这个程序测试一种新的系统或编程语言。对程序员来说，看到这两个单词显示在电脑屏幕上，往往表示他们的代码已经能够编译、装载以及正常运行了，这个输出结果就是为了证明这一点。</p>
 </aside>
 <p>下面我们稍微解释一下</p>
 <ul>
-<li>整个程序由两部分组成, <code>#include &#34;stdio.h</code> 以及 <code>void main() { }</code></li>
-<li><code>#include &#34;stdio.h&#34;</code>表明我们要使用<code>stdio.h</code>这个头文件(<code>Standard Input and Output</code>), 我们把它导入进来</li>
-<li><code>main()</code>称为主函数. 每个C语言程序有且只能有一个<code>main</code>函数, 它是程序开始执行的地方即入口</li>
+<li>整个程序由两部分组成，<code>#include &#34;stdio.h</code> 以及 <code>void main() { }</code></li>
+<li><code>#include &#34;stdio.h&#34;</code>表明我们要使用<code>stdio.h</code>这个头文件(<code>Standard Input and Output</code>），我们把它导入进来</li>
+<li><code>main()</code>称为主函数。 每个<code>C</code>语言程序有且只能有一个<code>main</code>函数，它是程序开始执行的地方即入口</li>
 <li><code>main</code>函数的函数体即<code>{}</code>中的语句就是我们大展拳脚的地方</li>
-<li>第一行是一个注释, 用于解释/标注某些东西给程序员查看, C语言系统直接忽略它</li>
-<li><code>printf()</code>是来自我们前面导入的<code>stdio.h</code>头文件的一个输入函数, 简单的将要输出的内容放到<code>&#34;&#34;</code>中即可</li>
-<li>注意到<code>printf(&#34;...&#34;);</code>最后的<code>;</code>了吗, 不要忘记语句以<code>;</code>结束</li>
-<li>输出内容中有个奇怪的<code>\n</code>, 它代表的是回车这个特殊字符. 去掉它试试.</li>
+<li>第一行是一个注释，用于解释/标注某些东西给程序员查看，<code>C</code>语言系统直接忽略它</li>
+<li><code>printf()</code>是来自我们前面导入的<code>stdio.h</code>头文件的一个输入函数，简单的将要输出的内容放到<code>&#34;&#34;</code>中即可</li>
+<li>注意到<code>printf(&#34;...&#34;);</code>最后的<code>;</code>了吗，不要忘记语句以<code>;</code>结束</li>
+<li>输出内容中有个奇怪的<code>\n</code>，它代表的是回车这个特殊字符。 去掉它试试。</li>
 </ul>
-<aside class="warning"><p>✘ 如果你没有理解上面的解释, 或者还有一些疑问, 无需担心, 后面我们会学习的</p>
+<aside class="warning"><p>✘ 如果你没有理解上面的解释，或者还有一些疑问，无需担心，后面我们会学习的</p>
 </aside>
 <aside class="warning"><p>✎ 试一试: 你能否将输出的内容改为<code>I hate C language!</code>或者你的姓名?</p>
 </aside>
-<aside class="special"><p>✍ 在 Code中如果你要输出中文的话需要在屏幕下方的 终端 窗口输入<code>chcp 65001</code>回车执行即可.</p>
+<aside class="special"><p>✍ 在<code>Code</code>中，如果你要输出中文的话，需要在屏幕下方的<code>Terminal</code>即终端窗口输入<code>chcp 65001</code>，然后回车执行即可。</p>
 </aside>
 <h2 is-upgraded>编译运行</h2>
-<aside class="warning"><p>✘ 以下内容了解即可, 如果不甚明白暂时无需担心</p>
+<aside class="warning"><p>✘ 以下内容了解即可，如果不甚明白暂时无需担心</p>
 </aside>
-<p>前面我们谈到计算机编程语言, 计算机能直接理解并运行的只有机器语言编写的程序.<br>如果你运行了第一个C语言程序, 你马上就会想到, 我们不是直接点击 ▷ 按钮就运行了吗?<br>没错, 但它不能说明高级语言编写的程序计算机能直接执行. 实际上, 点击 ▷ 按钮按钮后, 经过了</p>
+<p>前面我们谈到计算机编程语言，计算机能直接理解并运行的只有机器语言编写的程序。</p>
+<p>如果你运行了第一个<code>C</code>语言程序，你马上就会想到，我们不是直接点击 ▷ 按钮就运行了吗?</p>
+<p>没错，但它不能说明高级语言编写的程序计算机能直接执行。 实际上，点击 ▷ 按钮按钮后，经过了：</p>
 <ol type="1">
-<li>编译 对源程序进行语法分析, 找出程序的语法问题, 生成二进制目标程序</li>
-<li>链接 将目标程序与相关的库文件连接, 生成可执行文件(Windows系统下即为 <code>.exe</code>文件)</li>
+<li>编译 对源程序进行语法分析，找出程序的语法问题，生成二进制目标程序</li>
+<li>链接 将目标程序与相关的库文件连接，生成可执行文件（<code>Windows</code>系统下即为 <code>.exe</code>文件）</li>
 <li>执行 然后才执行</li>
 </ol>
-<aside class="special"><p>✍ 当你点击  ▷ 按钮后, 如果没有语法错误, 你会在 Code窗口的左边栏看到一个 <code>.exe</code>文件生成了</p>
+<aside class="special"><p>✍ 当你点击  ▷ 按钮后，如果没有语法错误，你会在<code>Code</code>窗口的左边栏看到一个 <code>.exe</code>文件生成了</p>
 </aside>
-<aside class="warning"><p>✘ 你如果想了解这个<code>exe</code>文件即可执行文件如何运行, 请网上查阅.</p>
+<aside class="warning"><p>✘ 你如果想了解这个<code>exe</code>文件即可执行文件如何运行，请网上查阅。</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
-<p>按照<a href="https://qige.io/c/c.html" target="_blank">棋歌教学网</a>的安装说明搭建开发环境, 并成功编写运行你的第一个C语言程序.</p>
+<p>按照<a href="https://qige.io/c/c.html" target="_blank">棋歌教学网</a>的安装说明搭建开发环境，并成功编写运行你的第一个<code>C</code>语言程序。</p>
 
 
       </google-codelab-step>
@@ -162,72 +172,85 @@ void main() {
 <li>字符数据的输入输出</li>
 </ul>
 <h2 is-upgraded>数据类型</h2>
-<p>编写程序解决问题, 不可避免的会遇到很多的数据(想想现在火热的大数据<code>Big Data</code>).<br>这些数据一般分为两类:</p>
+<p>编写程序解决问题，不可避免的会遇到很多的数据（想想现在火热的大数据<code>Big Data</code>）。</p>
+<p>这些数据一般分为两类:</p>
 <ul>
-<li>数值数据, 可进行算术运算. 如: <code>3.14, 8964</code>等等</li>
-<li>非数值数据, 即单个的字符或字符串, 一般无需进行运算, 只表示某种符号. 如: 你的姓名, 身份证号等等.</li>
+<li>数值数据，可进行算术运算。 如: <code>3.14</code>，<code>8964</code>等等</li>
+<li>非数值数据，即单个的字符或字符串，一般无需进行运算，只表示某种符号。 如: 你的姓名，身份证号等等。</li>
 </ul>
-<p>无论那种数据, 在计算机内部都是以二进制表示的.<br>特别是英文字符, 我们用了1个字节即8位二进制来进行编码–ASCII码, 如字母A就将其编为<code>01000001</code>, 计算机一看到这串字符就明白它代表A.(8位二进制可以编多少个码呢?)</p>
-<aside class="special"><p>🌏 你可能会想, 那么我们使用的中文, 经常发的图片, 听的歌曲, 看的视频又是什么数据, 又是怎么处理的? Google一下吧.</p>
+<p>无论那种数据，在计算机内部都是以二进制表示的。</p>
+<p>特别是英文字符，我们用了<code>1</code>个字节即<code>8</code>个二进制位来进行编码即<code>ASCII</code>码，如字母<code>A</code>就将其编为<code>01000001</code>，计算机一看到这串字符就明白它代表大写字母<code>A</code>。（<code>8</code>个二进制位可以编多少个码呢?）</p>
+<aside class="special"><p>🌏 你可能会想，那么我们使用的中文，经常发的图片，听的歌曲，看的视频又是什么数据，又是怎么处理的? <code>Google</code>一下吧。</p>
 </aside>
 <h2 is-upgraded>常量</h2>
-<p>常量, 程序运行过程中即不会发生改变的量.</p>
+<p>常量，程序运行过程中即不会发生改变的量。</p>
 <h3 is-upgraded>整型常量</h3>
-<p>如圆周率π为3.14, 珠峰高度8848等. 对一些较长的数, C语言还提供了科学计数的表示, 如<code>1.989E64</code>表示1.989乘以10的64次方.</p>
-<aside class="special"><p>✍ E大写小写都可以,如 <code>3.14e5</code>, 但 E或e 的前后至少一边有数字, 且后边的数字只能是整数. 所以 <code>0.15e3.6 E-8</code>都是错误的.</p>
+<p>如圆周率 π 为<code>3.14</code>，珠峰高度<code>8848</code>米等。 对一些较长的数，<code>C</code>语言还提供了科学计数的表示，如<code>1.989E64</code>表示<code>1.989</code>乘以<code>10</code>的<code>64</code>次方。</p>
+<aside class="special"><p>✍ 字母<code>E</code>大写小写都可以,如 <code>3.14e5</code>，但<code>E</code>或<code>e</code>的前后至少一边有数字，且后边的数字只能是整数。 所以 <code>0.15e3.6</code>，<code>E-8</code>都是错误的。</p>
 </aside>
 <h3 is-upgraded>字符常量</h3>
-<p>即单个的字符, 如 <code>U, $, @</code>等, 但C语言规定字符常量需用单引号包裹起来, 即: <code>&#39;U&#39;, &#39;$&#39;, &#39;@&#39;</code>.</p>
-<aside class="special"><p>✍ 单引号中只能包含一个字符, 如 <code>&#39;an&#39; &#39;sum&#39;</code>等都是错的. 多个字符即所谓的字符串用双引号包裹, 如<code>&#34;hahahaha&#34;</code>等, 我们将在第10讲学习.</p>
+<p>字符常量就是单个的字符，如 <code>U</code>，<code>$</code>，<code>@</code>等，但<code>C</code>语言规定：字符常量需用单引号包裹起来，即: <code>&#39;U&#39;</code>，<code>&#39;$&#39;</code>，<code>&#39;@&#39;</code>。</p>
+<aside class="special"><p>✍ 单引号中只能包含一个字符，如 <code>&#39;an&#39;</code>，<code>&#39;sum&#39;</code>等都是错的。 多个字符即所谓的字符串需要用双引号包裹，如<code>&#34;hahahaha&#34;</code>，<code>&#34;I hate C Language&#34;</code>等，我们将在第<code>10</code>讲学习。</p>
 </aside>
-<aside class="special"><p>✍ 字符在C语言中实际存储的是其ASCII值. 这点请留意, 我们后面用到时再进行说明.</p>
+<aside class="special"><p>✍ 字符在<code>C</code>语言中实际存储的是其<code>ASCII</code>码值。 这点请留意，我们后面用到时再进行说明。</p>
 </aside>
 <h3 is-upgraded>转义字符</h3>
-<p>某些字符是不可见的, 如键盘上的回车或退格等.<br>C语言采用了一种特殊的方法来表示这些不可见的字符, 用一个<code>\</code>再加上某个字母来代表. 如<code>&#39;\n&#39;</code>代表的就是回车.<br>以<code>\</code>开头后跟一个特定字母的表示就称为转义表示, 即它不代表<code>\</code>和<code>n</code>两个字符, 而是一个其它意思的字符.</p>
-<aside class="special"><p>✍ 你想起来我们第一个程序中的<code>Hello World</code>后面跟随的<code>\n</code>了吗?</p>
+<p>某些字符是不可见的，如键盘上的回车或退格等。</p>
+<p><code>C</code>语言采用了一种特殊的方法来表示这些不可见的字符，用一个特殊字符反斜杠<code>\</code>再加上某个字母来代表。 如<code>&#39;\n&#39;</code>代表的就是回车。</p>
+<p>以反斜杠<code>\</code>开头后跟一个特定字母的表示就称为转义表示，即它不代表<code>\</code>和<code>n</code>两个字符，而是一个其它意思的字符。</p>
+<aside class="special"><p>✍ 你想起来我们第一个程序中的<code>Hello World\n</code>后面跟随的<code>\n</code>了吗？ 现在应该明白它的作用了吧。</p>
 </aside>
-<p>还有规定好的其它一些转义字符, 当前你只需知道<code>\n</code>即可.</p>
+<p>还有规定好的其它一些转义字符，当前你只需知道<code>\n</code>即可。</p>
 <h2 is-upgraded>变量</h2>
 <h3 is-upgraded>概念</h3>
-<p>编程中, 我们不仅需要使用常量, 更需要使用其值可改变的量.<br>比如某些游戏用血量来表示角色是否活着. 开始满血可认为是100, 随着搏斗, 血量将减少, 如果减为0, 此次游戏则终止.<br>显然, 血量就是一个可以改变的量, 这就是变量.</p>
+<p>编程中，我们不仅需要使用常量，更需要使用其值可改变的量。</p>
+<p>比如某些游戏用血量来表示角色是否活着。</p>
+<p>开始满血可认为是<code>100</code>，随着搏斗，血量将减少，如果减为<code>0</code>，此次游戏则终止。</p>
+<p>显然，血量就是一个可以改变的量，这就是变量。</p>
 <h3 is-upgraded>变量的定义</h3>
-<p>C语言规定, 要使用变量, 首先必须定义, 即需要说明其该变量是什么数据类型,叫什么名称.<br>C语言用<code>int</code>, <code>float</code> 和 <code>char</code>分别来定义整数, 实数(也称浮点数)和字符.<br>变量的名称即标识符(你还记得第一讲有关标识符的规定吧?), 一般我们希望这个名称能说明该变量用来存放什么, 如: <code>age powerOfBoss</code>等.</p>
+<p><code>C</code>语言规定，要使用变量，首先必须定义，即需要说明其该变量是什么数据类型,叫什么名称。</p>
+<p><code>C</code>语言用<code>int</code>，<code>float</code> 和 <code>char</code>分别来定义整数，实数（也称浮点数）和字符型变量。</p>
+<p>变量的名称就是标识符（你还记得第一讲有关标识符的规定吧?），一般我们希望这个名称能说明该变量用来存放什么，如: <code>age</code>，<code>powerOfBoss</code>等。</p>
 <p>下面是一些定义变量的例子:</p>
-<pre><code>int age, heigh, width;  // 定义了三个整型变量, 如果有多个用逗号进行分隔
-float income = 19896.4;           // 定义了一个浮点型变量, 并给定了一个值(初始化)
+<pre><code>int age, heigh, width;  // 定义了三个整型变量，如果有多个用逗号进行分隔
+float income = 19896.4; // 定义了一个浮点型变量，并给定了一个值（初始化）
 char sex, isOver;       // 定义了两个字符型变量
 </code></pre>
-<aside class="special"><p>✍ 变量如果没有定义就使用将发生编译错误, 程序是不能运行的.</p>
+<aside class="special"><p>✍ 变量如果没有定义就使用将发生编译错误，程序是不能运行的。</p>
 </aside>
 <h2 is-upgraded>格式化输入输出</h2>
-<p>下面我们谈谈如何在C语言中把数据输出到屏幕呈现给用户或者从键盘接收用户的输入.</p>
+<p>下面我们谈谈如何在<code>C</code>语言中把数据输出到屏幕呈现给用户或者从键盘接收用户的输入。</p>
 <h3 is-upgraded>输出</h3>
-<p>我们使用在<code>stdio.h</code>头文件中已经定义好的<code>printf()</code>函数进行输出. 如我们要输出你的年龄:</p>
+<p>我们使用在<code>stdio.h</code>头文件中已经定义好的<code>printf()</code>函数进行数据的输出。</p>
+<p>如下程序将输出你的年龄:</p>
 <pre><code>#include &#34;stdio.h&#34;
 void main() {
-  int age;  // 定义了一个整型变量age
-  age = 20; // 把20放到 age 变量中
+  int age;  // 定义了一个整型变量 age
+  age = 20; // 把 20 放到 age 变量中
   printf(&#34;-------this year--------&#34;);     // 输出双引号中的内容
-  printf(&#34;You are %d years old!\n&#34;, age); // 输出双引号中的内容, 注意 %d
-  age = 21; // 把21放到 age 中, age变量以前的值被替换
+  printf(&#34;You are %d years old!\n&#34;, age); // 输出双引号中的内容，注意 %d
+  age = 21; // 把 21 放到 age 中，age 变量以前的值被替换
   printf(&#34;-------next year--------&#34;);     // 输出双引号中的内容
-  printf(&#34;You will be %d years old next year!\n&#34;, age); // 输出双引号中的内容, 注意 %d
+  printf(&#34;You will be %d years old next year!\n&#34;, age); // 输出双引号中的内容，注意 %d
 }
 </code></pre>
-<p>运行上面的程序试试.<br><code>printf()</code>函数将原样输出双引号中的内容(实际是一个字符串), 这点你应该看得出来.<br>字符串中的<code>\n</code>你也应该知道是个特殊的字符表示回车.<br>但是你会看到有一点异样: 字符串中<code>%d</code>的位置输出的是<code>age</code>变量的内容即<code>20</code>或<code>21</code>.</p>
-<p>我们把<code>%d</code>称为输出占位符, 它表示此处要输出一个整数, 其值与字符串后面的量对应. 现在明白为何输出<code>20</code>或<code>21</code>了吧.</p>
-<aside class="warning"><p>✎ 试一试: 注释掉<code>int age;</code>这句看能否运行?<br>✎ 试一试: <code>%d</code>如果没有对应的变量age, 即改为<code>printf(&#34;You are %d years old!\n&#34;);</code>会如何?</p>
+<p>运行上面的程序试试。</p>
+<p><code>printf()</code>函数将原样输出双引号中的内容（实际是一个字符串），这点你应该看得出来。</p>
+<p>字符串中的<code>\n</code>你也应该知道是个特殊的字符表示回车。</p>
+<p>但是你会看到有一点异样: 字符串中<code>%d</code>的位置输出的是<code>age</code>变量的内容即<code>20</code>或<code>21</code>。</p>
+<p>我们把<code>%d</code>称为输出占位符，它表示此处要输出一个整数，其值与字符串后面的变量或值一一对应。 现在明白为何输出<code>20</code>或<code>21</code>了吧。</p>
+<aside class="warning"><p>✎ 试一试: 注释掉<code>int age;</code>这句看能否运行? 为什么?<br>✎ 试一试: <code>%d</code>如果没有对应的变量<code>age</code>，即改为<code>printf(&#34;You are %d years old!\n&#34;);</code>会如何?</p>
 </aside>
-<p>除了<code>%d</code>是整数的占位符外, <code>%f</code>对应小数, <code>%c</code>代表一个字符. 如:</p>
+<p>除了<code>%d</code>是整数的占位符外，<code>%f</code>对应小数，<code>%c</code>代表一个字符。 如:</p>
 <pre><code>#include &#34;stdio.h&#34;
 void main() {
-  int age = 20;  // 定义了一个整型变量age并初始化为20
-  float income = 1989.64; // 定义了一个浮点型变量income并初始化
-  char isOver = &#39;Y&#39;; // 定义了一个字符型变量isOver并初始化
+  int age = 20;  // 定义了一个整型变量 age 并初始化为 20
+  float income = 1989.64; // 定义了一个浮点型变量 income 并初始化
+  char isOver = &#39;Y&#39;; // 定义了一个字符型变量 isOver 并初始化
   printf(&#34;How old are you: %d\n&#34;, age);
-  printf(&#34;How old are you: %5d\n&#34;, age);  // 注意是 %5d, 表明这个整数至少占5个字符宽度
+  printf(&#34;How old are you: %5d\n&#34;, age);  // 注意是 %5d，表明这个整数至少占 5 个字符宽度
   printf(&#34;What&#39;s your income: %f\n&#34;, income);
-  printf(&#34;What&#39;s your income: %.2f\n&#34;, income); // 注意%.2f, 表明小数点后只需2位
+  printf(&#34;What&#39;s your income: %.2f\n&#34;, income); // 注意 %.2f，表明小数点后只需 2 位
   printf(&#34;Is this game over: %c\n&#34;, isOver);  // 输出指定的字符
   printf(&#34;Age:%5d, Income:%10.2f, Over:%c\n&#34;, age, income, isOver); // 放在一块也可以的
 }
@@ -235,54 +258,58 @@ void main() {
 <aside class="warning"><p>✎ 试一试: <code>printf(&#34;%c  %d\n&#34;, &#39;A&#39;, &#39;A&#39;)</code>会输出什么? <code>printf(&#34;%c  %d\n&#34;, 65, 65)</code>呢?</p>
 </aside>
 <h3 is-upgraded>输入</h3>
-<p>在上面的例子中, 你会发现数据都是程序中给定的. 那么我们可否在程序运行时, 用户才提供呢? 这样会更灵活.<br>现实编程中, 我们需要使用输入函数<code>scanf()</code>来接收用户提供的数据.<br><code>scanf()</code>函数也使用<code>%d</code>,<code>%f</code>,<code>%c</code>来分别接收整数,小数和单个的字符放到对应的变量中. 如:</p>
+<p>在上面的例子中，你会发现数据都是程序中给定的。</p>
+<p>那么我们可否在程序运行时，用户才提供呢? 显然这样的程序更灵活、更有通用性。</p>
+<p>现实编程中，我们需要使用输入函数<code>scanf()</code>在程序运行时来接收用户提供的数据。</p>
+<p><code>scanf()</code>函数也使用<code>%d</code>,<code>%f</code>,<code>%c</code>来分别接收整数、小数和单个的字符放到对应的变量中。 如:</p>
 <pre><code>#include &#34;stdio.h&#34;
 void main() {
-  int age;  // 定义了一个整型变量age
-  float income; // 定义了一个浮点型变量income
-  char isContinue; // 定义了一个字符型变量isContinue
+  int age;  // 定义了一个整型变量 age
+  float income; // 定义了一个浮点型变量 income
+  char isContinue; // 定义了一个字符型变量 isContinue
   printf(&#34;Continue(Y/N)?&#34;); // 问是否继续
-  scanf(&#34;%c&#34;, &amp;isContinue); // 接收用户的输入放到isContinue变量中. 注意&amp;符号, 我们以后再说明为什么必须加
+  scanf(&#34;%c&#34;, &amp;isContinue); // 接收用户的输入放到 isContinue变量中。 注意 &amp; 符号，我们以后再说明为什么必须加
   printf(&#34;How old are you:&#34;);
-  scanf(&#34;%d&#34;, &amp;age);  // 注意 age前的&amp;符号, 我们以后再说明为什么必须加
+  scanf(&#34;%d&#34;, &amp;age);  // 注意 age前的 &amp; 符号，我们以后再说明为什么必须加
   printf(&#34;What&#39;s your income:&#34;);
-  scanf(&#34;%f&#34;, &amp;income); // 注意 income钱的&amp;符号  
+  scanf(&#34;%f&#34;, &amp;income); // 注意 income 前的 &amp; 符号  
   printf(&#34;You are %d, your income is $%.2f. Go on? %c\n&#34;, age, income, isContinue);  
 }
 </code></pre>
-<p>运行以上程序, 你将会发现程序在每个<code>scanf()</code>处都会停下来, 等你输入对应类型的数据才继续.</p>
-<aside class="special"><p>✍ 注意一: <code>scanf()</code>函数中的输入字符串内只放占位符, 不要放置其它东西, 如<code>scanf(&#34;%d&#34;, &amp;age);</code>中就只有一个<code>%d</code>表明要接收一个整数并会放到<code>age</code>变量中.<br>✍ 注意二: <code>scanf()</code>函数中的变量名前需要<code>&amp;</code>符号, 否则接收不正确. 原因我们在<code>�</code>�针部分再讲述.</p>
+<p>运行以上程序，你将会发现程序在每个<code>scanf()</code>处都会停下来，等你输入对应类型的数据才继续。</p>
+<aside class="special"><p>✍ 注意一: <code>scanf()</code>函数中的输入字符串内只放占位符，不要放置其它东西，如<code>scanf(&#34;%d&#34;, &amp;age);</code>中就只有一个<code>%d</code>表明要接收一个整数并会放到<code>age</code>变量中。<br>✍ 注意二: <code>scanf()</code>函数中的变量名前需要<code>&amp;</code>符号，否则接收不正确。 原因我们在<code>�</code>�针部分再讲述。</p>
 </aside>
-<aside class="warning"><p>✎ 试一试: <code>scanf(&#34;%d%d%d&#34;, &amp;a,&amp;b,&amp;c);</code>将一次性需要你输入3个整数(用空格或回车分隔这3个整数).</p>
+<aside class="warning"><p>✎ 试一试: <code>scanf(&#34;%d%d%d&#34;, &amp;a,&amp;b,&amp;c);</code>将一次性需要你输入<code>3</code>个整数（用空格或回车分隔这<code>3</code>个整数）。</p>
 </aside>
 <h2 is-upgraded>字符数据的输入输出</h2>
-<p>针对字符, C语言还额外提供了两个函数来进行输入和输出: <code>putchar()</code>和<code>getchar()</code>. 如:</p>
+<p>针对字符，<code>C</code>语言还额外提供了两个函数来进行输入和输出: <code>putchar()</code>和<code>getchar()</code>。 如:</p>
 <pre><code>#include &#34;stdio.h&#34;
 void main() {
-  char gender;  // 定义了gender字符变量用于保存性别
+  char gender;  // 定义了 gender 字符变量用于保存性别
   printf(&#34;What is your gender(F-Female, M-Male):&#34;);
-  gender = getchar();  // 程序在此将等你输入F/M, 然后存到gender变量中
+  gender = getchar();  // 程序在此将等你输入 F/M，然后存到 gender 变量中
   printf(&#34;Your gender is &#34;);
   putchar(gender);
   putchar(&#39;\n&#39;);  // 输出一个回车
-  putchar(66);    // 这也是可以的, 输出66这个ASCII码对应的字符
+  putchar(66);    // 这也是可以的，输出 66 这个 ASCII 码值对应的字符
 }
 </code></pre>
-<aside class="warning"><p>✎ 试一试下面的代码, 你会发现不能正确接收用户的输入, 将中间那句<code>getchar()</code>前的注释去掉再试试:</p>
+<aside class="warning"><p>✎ 试一试下面的代码，你会发现不能正确接收用户的输入，将中间那句<code>getchar()</code>前的注释去掉再试试:</p>
 </aside>
 <pre><code>#include &#34;stdio.h&#34;
 void main() {
-  char gender, degree;  // 定义了gender用于保存性别, degree保存等级(ABC)
+  char gender, degree;  // 定义了 gender 用于保存性别，degree 保存等级（ABC）
   printf(&#34;What is your gender(F-Female, M-Male):&#34;);
-  gender = getchar();  // 程序在此将等你输入F/M, 然后存到gender变量中
-  // getchar();  //  getchar()将接收上次输入中F/M后的回车, 以免影响下次输入
+  gender = getchar();  // 程序在此将等你输入 F/M，然后存到 gender 变量中
+  // getchar();  //  getchar()将接收上次输入中 F/M 后的回车，以免影响下次输入
   printf(&#34;What is your degree(A, B, or C):&#34;);
-  degree = getchar();  // 程序在此将等你输入A/B/C, 然后存到degree变量中
+  degree = getchar();  // 程序在此将等你输入 A/B/C，然后存到 degree 变量中
   printf(&#34;Your gender is %c, your degree is %c\n&#34;, gender, degree);  
 }
 </code></pre>
 <h2 is-upgraded>课后练习</h2>
-<p>请掌握本讲列出的程序代码. 试着自行定义一些不同类型的变量, 并进行输入和输出练习.<br>如果你遇到了什么问题, 记录下来以进一步讨论.</p>
+<p>请掌握本讲列出的程序代码。 试着自行定义一些不同类型的变量，并进行输入和输出练习。</p>
+<p>如果你遇到了什么问题，记录下来以进一步讨论。</p>
 
 
       </google-codelab-step>
@@ -297,67 +324,71 @@ void main() {
 <li>简单顺序结构</li>
 </ul>
 <h2 is-upgraded>赋值运算</h2>
-<p>C语言将赋值也作为一种运算, 使用<code>=</code>进行, 即: 将<code>=</code>右边的值赋予左边的变量. 如:</p>
+<p><code>C</code>语言将赋值也作为一种运算，使用<code>=</code>进行，即: 将<code>=</code>右边的值赋予左边的变量。 如:</p>
 <pre><code>#include &#34;stdio.h&#34;
 void main() {
-  int a, b, c;  // 定义了3个整型变量a、b、c
-  a = 1;    // 将1赋给a变量
-  b = 2;    // 将2赋给b变量
-  c = a + b;  // 将a + b的结果赋给c变量
+  int a, b, c;  // 定义了 3 个整型变量 a、b、c
+  a = 1;    // 将 1 赋给 a 变量
+  b = 2;    // 将 2 赋给 b 变量
+  c = a + b;  // 将 a + b 的结果赋给 c 变量
   printf(&#34;%d\n&#34;, c);
-  a = a + 1;  // 先计算a + 1, 结果为2, 再把2放到a中.
-  b = b - 1;  // 先计算b - 1, 结果为1, 再把1放到b中.
+  a = a + 1;  // 先计算 a + 1，结果为 2，再把 2 放到 a 变量中。
+  b = b - 1;  // 先计算 b - 1，结果为 1，再把 1 放到 b 变量中。
   c = a + b;
-  printf(&#34;%d\n&#34;, c);
+  printf(&#34;%d\n&#34;, c); // 输出变量 c 中保存的值
 }
 </code></pre>
-<aside class="special"><p>✍ 赋值运算即<code>=</code>的左边必须是一个变量, 如此才能存放右边的值. 所以<code>5=3</code>为什么不合法?<br>✍ 赋值运算的优先级很低, 仅高于我们逗号运算(我们没讲该运算, 可暂时忽略)</p>
+<aside class="special"><p>✍ 赋值运算即<code>=</code>的左边必须是一个变量，如此才能存放右边的值。 所以<code>5=3</code>是不合法的，为什么?<br>✍ 赋值运算的优先级很低，仅高于我们逗号运算（我们没讲该运算，可暂时忽略）</p>
 </aside>
 <h2 is-upgraded>算术运算</h2>
-<p>C语言的算术运算有<code>+ - * / %</code>等. 相关注意说明如下:</p>
+<p><code>C</code>语言的算术运算有加<code>+</code>，减<code>-</code>，乘<code>*</code>，除<code>/</code>，取余<code>%</code>等。</p>
+<p>相关注意说明如下:</p>
 <ul>
-<li>当<code>/</code>号的两边都是整数时, 结果也为整数. 如: <code>5/2</code> 的结果是 2不是2.5</li>
-<li>当<code>/</code>号的任何一边为小数, 结果则为小数. 如: <code>5/2.0</code>的结果就是 2.500000</li>
-<li><code>%</code>是取余运算, 要求两边都必须是整数. 如: <code>5%2</code>的结果(余数)是1. 我们通常用于判断是否能整除.</li>
+<li>当<code>/</code>号的两边都是整数时，结果也为整数。 如: <code>5/2</code> 的结果是<code>2</code>，不是<code>2.5</code></li>
+<li>当<code>/</code>号的任何一边为小数，结果则为小数。 如: <code>5/2.0</code>的结果就是<code>2.500000</code></li>
+<li><code>%</code>是取余运算，要求两边都必须是整数。 如: <code>5%2</code>的结果（余数）是<code>1</code>。 我们通常用<code>%</code>来判断某数是否能整除等。</li>
 </ul>
 <h2 is-upgraded>复合运算</h2>
-<h3 is-upgraded>自增和自减<code>++ --</code></h3>
-<p><code>++</code>或<code>--</code>称为自增或自减, 它只能用于变量, 即将自己增加1或减少1. 如:</p>
+<h3 is-upgraded>自增 ++ 和自减 – 运算</h3>
+<p><code>++</code>或<code>--</code>称为自增或自减，它只能用于变量，即将自己增加<code>1</code>或减少<code>1</code>。 如:</p>
 <pre><code>int i = 6, j = 4;
 i++;  // 等价于 i = i + 1
 j--;  // 等价于 j = j - 1
-printf(&#34;%d,%d&#34;, i, j);  // 结果为7,3
+printf(&#34;%d,%d&#34;, i, j);  // 结果为 7,3
 </code></pre>
 <aside class="special"><p>✍ 为什么<code>64++</code>不合法?</p>
 </aside>
-<p>此外, <code>++</code>或<code>--</code>有前后位置之分. 我们以<code>++</code>为例:</p>
+<p>此外，<code>++</code>或<code>--</code>有前后位置之分。 我们以<code>++</code>为例:</p>
 <pre><code>int i = 1, j, k;
-j = i++;  // 称为后加, 即先将i的值赋给j, 然后i再自增. 所以j的值为1
-k = ++i;  // 称为前加, 即先自增, 然后将i的值赋给k. 所以k的值是3（请思考为什么）
+j = i++;  // 称为后加，即先将 i 的值赋给 j，然后 i 再自增。 所以 j 的值为1
+k = ++i;  // 称为前加，即先自增，然后将 i 的值赋给k。 所以 k 的值是3（请思考为什么）
 </code></pre>
 <h3 is-upgraded>复合赋值</h3>
-<p>C语言还提供一种算术和赋值的组合运算, 即:<code>+= -= *= /= %=</code>, 如:</p>
+<p><code>C</code>语言还提供一种算术和赋值的组合运算，即:<code>+=</code>，<code>-=</code>，<code>*=</code>，<code>/=</code>，<code>%=</code>，如:</p>
 <pre><code>int a = 6;
 a += 3;   // 等价于a = a + 3
 a /= 3;   // 等价于a = a / 3
 printf(&#34;%d&#34;, a);   // 请问结果是什么?
 </code></pre>
 <h2 is-upgraded>类型转换</h2>
-<p>前面我们知道数据有不同的数据类型如整型实型等. 在运算过程中为了不损失精度, 都会向高精度的类型进行暂时的转换.<br>有一种取值范围和精度都更高的类型是<code>double</code>, 我们称为双精度, 我们前面学的<code>float</code>就是单精度. 如:</p>
+<p>前面我们知道数据有不同的数据类型如整型实型等。 在运算过程中为了不损失精度，都会向高精度的类型进行暂时的转换。</p>
+<p>有一种取值范围和精度都更高的类型是<code>double</code>，我们称为双精度，我们前面学的<code>float</code>就是单精度。 如:</p>
 <pre><code>int a = 1, sum;
 float b = 8.9;
 double c = 6.4;
-// 先计算a+b, 因为b是float型, 先将a暂时转换为float型, 结果是float型;
-// 然后与c相加, 因为c是double型, 就将刚才那个float型的结果先转换为double型;
-// 此时赋值号右边就有了一个double型的结果, 但=号的左边 sum 是一个int型, 所以最后将double型取整赋给 sum 即可.
+// 先计算a+b，因为b是float型，先将a暂时转换为float型，结果是float型;
+// 然后与c相加，因为c是double型，就将刚才那个float型的结果先转换为double型;
+// 此时赋值号右边就有了一个double型的结果，但=号的左边 sum 是一个int型，所以最后将double型取整赋给 sum 即可。
 sum = a + b + c;  
 </code></pre>
 <h2 is-upgraded>简单顺序结构</h2>
-<p>在解决问题的过程中, 我们基本会从前往后顺序执行即可。有时某些问题比较特殊，需要进行判断再决定该做些什么(如:游戏是否继续), 有时又需要重复的做某件事直至满足某种条件才停止(如拥有的金币数量不为0就继续让用户买买买直至没钱了).</p>
-<p>这实际就是程序设计的三种基本结构： 顺序、选择和循环.</p>
-<aside class="special"><p>✍ 我们即将进行编程学习。简单的说，编写程序一般是三步曲：<br>1.获取用户的输入（考虑定义需要的变量，接收用户的输入）<br>2.处理问题（根据拟定的算法进行相关运算）<br>3.输出结果给用户（将最终结果展示给用户）</p>
+<p>在解决问题的过程中，我们基本会从前往后顺序执行即可。</p>
+<p>有时某些问题比较特殊，需要进行判断再决定该做些什么（如:游戏是否继续），</p>
+<p>有时又需要重复的做某件事直至满足某种条件才停止（如拥有的金币数量不为0就继续让用户买买买直至没钱了）。</p>
+<p>这实际就是程序设计的三种基本结构： 顺序、选择和循环。</p>
+<aside class="special"><p>✍ 编程三部曲<br>我们即将进行编程学习。简单的说，编写程序一般是三部曲：<br>1.获取用户的输入（考虑定义需要的变量，接收用户的输入）<br>2.处理问题（根据拟定的算法进行相关运算）<br>3.输出结果给用户（将最终结果展示给用户）</p>
 </aside>
-<p>下面我们看看顺序结构的程序.</p>
+<p>下面我们看看顺序结构的程序。</p>
 <h3 is-upgraded>程序一</h3>
 <pre><code>// 求两个数的和差积商
 #include &#34;stdio.h&#34;
@@ -378,7 +409,7 @@ void main() {
 </code></pre>
 <h3 is-upgraded>程序二</h3>
 <pre><code>// 交换两个变量的值并输出
-// 我们引入了一个临时的中间变量temp
+// 我们引入了一个临时的中间变量 temp
 #include &#34;stdio.h&#34;
 void main() {
   int you, me, temp;
@@ -396,7 +427,7 @@ void main() {
 <h2 is-upgraded>小测试</h2>
 <pre><code>一、单选题
 
-1.下列表达式中，表达式值为0的是（）。
+1.下列表达式中，表达式值为 0 的是（）。
 A. 2 % 5                B. 2 / 3.0
 C. a = 0, a + (b = 5)   D. 8 / 9
 
@@ -408,27 +439,27 @@ C. /=          D. ++
 A. =           B. %
 C. +           D. -
 
-4.若有定义：int i = 2, j;，则语句j = ++i;执行结束之后，以下说法正确的是（）。
-A. i的值为3，j的值为2  B. i的值为2，j的值为2
-C. i的值为3，j的值为3  D. i的值为2，j的值为3
+4.若有定义：int i = 2, j;，则语句 j = ++i; 执行结束之后，以下说法正确的是（）。
+A. i 的值为 3，j 的值为 2  B. i 的值为 2，j 的值为 2
+C. i 的值为 3，j 的值为 3  D. i 的值为 2，j 的值为 3
 
-5.若有定义：int a = 6;，则表达式a /= a + a的值是（）。
+5.若有定义：int a = 6;，则表达式a /= a + a 的值是（）。
 A. 7        B. 2
 C. 0        D. 0.5
 
 二、判断题
 
-1.若有定义：int i = 2;，则语句a += a *= a;执行结束之后，变量a的值是6。（）
+1.若有定义：int i = 2;，则语句 a += a *= a; 执行结束之后，变量 a 的值是 6 。（）
 
-2.若有定义：int num;，则语句num = 3.561;执行结束之后，变量num的值是4。（）
+2.若有定义：int num;，则语句 num = 3.561; 执行结束之后，变量 num 的值是 4 。（）
 
-3.若有定义：int a = 9;float x = 6.3, y = 3.5;，则表达式a % 5 * (int)(x+y) % 7 / 4的值为0。（）
+3.若有定义：int a = 9; float x = 6.3, y = 3.5;，则表达式 a % 5 * (int)(x+y) % 7 / 4 的值为 0 。（）
 
-4.若有定义：char c;，则表达式c = &#39;a&#39; - &#39;A&#39; + &#39;B&#39;的值为&#39;b&#39;。（）
+4.若有定义：char c;，则表达式 c = &#39;a&#39; - &#39;A&#39; + &#39;B&#39; 的值为 &#39;b&#39; 。（）
 
-5.若有定义：int a;，则表达式a = 3 * 5, a + a, a + 3的值为33。（）
+5.若有定义：int a;，则表达式 a = 3 * 5, a + a, a + 3 的值为 33。（）
 </code></pre>
-<aside class="special"><p>✍ 提示1： 第3题中<code>(int)(x + y)</code>的意思是将<code>(x + y)</code>的结果强行转变为<code>int</code>型，直接取整数部分，不会四舍五入。<br>✍ 提示2： 第4题请考虑使用ASCII码进行。<br>✍ 提示3： 第5题是我们没有讲述的逗号运算，是最低级的运算，你可忽略。</p>
+<aside class="special"><p>✍ 提示1： 第 3 题中<code>(int)(x + y)</code>的意思是将<code>(x + y)</code>的结果强行转变为<code>int</code>型，直接取整数部分，不会四舍五入。<br>✍ 提示2： 第 4 题请考虑使用<code>ASCII</code>码进行。<br>✍ 提示3： 第 5 题是我们没有讲述的逗号运算，是最低级的运算，你可忽略。</p>
 </aside>
 <aside class="warning"><p>✉ 参考答案: DAACC ✘✘✔✔✘</p>
 </aside>
@@ -445,118 +476,119 @@ C. 0        D. 0.5
 <li>选择结构</li>
 </ul>
 <h2 is-upgraded>关系运算</h2>
-<p>C 语言中的关系, 不是指男女关系, 而是大小关系.<br>当需要判断两个值的大小关系时,我们用关系运算.</p>
+<p><code>C</code>语言中的关系，不是指男女关系，而是大小关系。</p>
+<p>当需要判断两个值的大小关系时,我们用关系运算。</p>
 <h3 is-upgraded>关系运算符</h3>
 <p>关系运算有以下类型:</p>
-<pre><code>小于  小于等于  大于  大于等于
-&lt;    &lt;=       &gt;     &gt;=
-等于  不等于
-==   !=
+<pre><code>小于  小于等于  大于  大于等于  等于  不等于
+ &lt;      &lt;=     &gt;     &gt;=      ==    !=
 </code></pre>
-<aside class="special"><p>✍ 注意上面的<code>&lt;= &gt;= == !=</code>是两个字符组成的.</p>
+<aside class="special"><p>✍ 注意上面的<code>&lt;=</code>，<code>&gt;=</code>，<code>==</code>，<code>!=</code>是两个字符组成的。</p>
 </aside>
 <h3 is-upgraded>关系表达式</h3>
-<p>使用关系运算符连接的式子即为关系表达式. 比如:</p>
+<p>使用关系运算符连接的式子即为关系表达式。 比如:</p>
 <pre><code>score &lt; 60              // 是否及格
-b * b - 4 * a * c &lt; 0   // 是否有实根(求根判别式)
+b * b - 4 * a * c &lt; 0   // 是否有实根（求根判别式）
 age &gt;= 18               // 是否成年
-sex == 1                // 是否男性(以 1 表示男性)
+sex == 1                // 是否男性（以 1 表示男性）
 </code></pre>
 <h3 is-upgraded>运算结果</h3>
-<p>你应该直觉的感知, 关系运算的结果要么为&#34;真&#34;, 要么为&#34;假&#34;.</p>
-<aside class="special"><p>✍  在 C 语言中, 我们用 1 表示真, 用 0 表示假.</p>
+<p>你应该直觉的感知，关系运算的结果要么为&#34;真&#34;，要么为&#34;假&#34;。</p>
+<aside class="special"><p>✍  在<code>C</code>语言中，我们用<code>1</code>表示真，用<code>0</code>表示假。</p>
 </aside>
 <p>请输入如下程序进行理解:</p>
 <pre><code>#include &#34;stdio.h&#34;
 void main() {
   int score = 58, age = 20, sex = 0;
   int isPass, isAdult, isFemale;
-  isPass = score &gt;= 60; //根据上面的分数58, 结果为假, 故isPass将被赋值为0
-  isAdult = age &gt;= 18;  //根据上面的年龄20, 结果为真, 故isAdult将被赋值为1
-  isFemale = sex == 0;  //根据上面的性别 0, 结果为真, 故isFemale将被赋值为0
+  isPass = score &gt;= 60; //根据上面的分数 58，结果为假，故 isPass 将被赋值为 0
+  isAdult = age &gt;= 18;  //根据上面的年龄 20，结果为真，故 isAdult 将被赋值为 1
+  isFemale = sex == 0;  //根据上面的性别 0，结果为真，故 isFemale 将被赋值为 0
   printf(&#34;Pass: %d\n&#34;, isPass);     //Pass: 0
   printf(&#34;Adult: %d\n&#34;, isAdult);   //Adult: 1
   printf(&#34;Female: %d\n&#34;, isFemale); //Female: 1
 }
 </code></pre>
 <h3 is-upgraded>运算优先级</h3>
-<p>当多个关系运算符或有其它运算符时, 我们需考虑它们的优先级.</p>
+<p>当多个关系运算符或有其它运算符时，我们需考虑它们的优先级。</p>
 <ul>
-<li><code>&lt;  &lt;=  &gt;  &gt;=</code> 这四个运算符同等优先级, 如果同时出现, 从左至右开始运算即可. 如:</li>
+<li><code>&lt;</code>，<code>&lt;=</code>，<code>&gt;</code>，<code>&gt;=</code> 这四个运算符同等优先级，如果同时出现，从左至右开始运算即可。 如:</li>
 </ul>
-<pre><code>89 &gt; 64 &lt; 0     // 运算顺序是先运算 89 &gt; 64, 结果为 1 ,然后再运算 1 &lt; 0
+<pre><code>89 &gt; 64 &lt; 0     // 运算顺序是先运算 89 &gt; 64，结果为 1 ,然后再运算 1 &lt; 0，结果为假即 0
 </code></pre>
 <ul>
-<li>同理, <code>==  !=</code> 这两个运算符同等优先级, 如果同时出现, 从左至右开始运算即可. 如:</li>
+<li>同理，<code>==</code>，<code>!=</code> 这两个运算符同等优先级，如果同时出现，从左至右开始运算即可。 如:</li>
 </ul>
-<pre><code>89 == 64 != 5   //先运算 89 == 64, 结果为 0, 再运算 0 != 5
+<pre><code>89 == 64 != 5   // 先运算 89 == 64，结果为 0，再运算 0 != 5，结果为真即 1
 </code></pre>
 <ul>
-<li>但 <code>&lt;  &lt;=  &gt;  &gt;=</code> 的优先级高于 <code>==  !=</code> , 如:</li>
+<li>但 <code>&lt;  &lt;=  &gt;  &gt;=</code> 的优先级高于 <code>==  !=</code> ，如:</li>
 </ul>
-<pre><code>89 == 64 &gt; 5    //先算 64 &gt; 5, 结果为1, 再算 89 == 1
+<pre><code>89 == 64 &gt; 5    // 先算 64 &gt; 5，结果为1，再算 89 == 1，结果为假即 0
 </code></pre>
 <ul>
-<li>当然算术运算高于关系运算, 关系运算又高于赋值运算. 如:</li>
+<li>算术运算高于关系运算，关系运算又高于赋值运算。 如:</li>
 </ul>
 <pre><code>a = 1;
 b = 5;
 c = 3;
-// 先算 b * b, 得 25(中间结果),
-// 再算 4 * a 得 4, 再用这个结果 4 * c, 得 12,
-// 再用早先的 25 - 12, 得13,
+// 先算 b * b，得 25（中间结果）,
+// 再算 4 * a 得 4，再用这个结果 4 * c，得 12,
+// 再用早先的 25 - 12，得 13,
 // 最后结果 13 赋值给变量 p
 p = b * b - 4 * a * c;
 </code></pre>
-<aside class="special"><p>✍  当然,圆括号的优先级最高. 建议多以圆括号来保证你运算需要的优先级!</p>
+<aside class="special"><p>✍  当然，圆括号的优先级最高。 建议多以圆括号来保证你运算需要的优先级!</p>
 </aside>
 <h2 is-upgraded>逻辑运算</h2>
-<aside class="special"><p>☀ 题外话: 出于某些原因, 我们的教育中是缺乏真正的逻辑教育的(什么是逻辑? 请移步<a href="https://zh.wikipedia.org/wiki/%E9%80%BB%E8%BE%91" target="_blank">维基百科</a>, 再题外话:不推荐看百度百科, 你可能看到的是假的), 以至于我们经常把&#34;举例/道理/类比/比喻&#34;等作为论证手段. 请参考<a href="https://www.bilibili.com/read/cv1672537" target="_blank">&#34;四大论证方法&#34;逻辑混乱，是有害的</a>一文.</p>
+<aside class="special"><p>☀ 题外话: 出于某些原因，我们的教育中是缺乏真正的逻辑教育的（什么是逻辑? 请移步<a href="https://zh.wikipedia.org/wiki/%E9%80%BB%E8%BE%91" target="_blank">维基百科</a>，再题外话:不推荐看百度百科，你可能看到的是假的），以至于我们经常把&#34;举例/道理/类比/比喻&#34;等作为论证手段。 请参考<a href="https://www.bilibili.com/read/cv1672537" target="_blank">&#34;四大论证方法&#34;逻辑混乱，是有害的</a>一文。</p>
 </aside>
-<p>经常的, 我们要判断的关系非常复杂.<br>如某网红女在谈男朋友的条件时曾说: 非北大光华管理学院毕业的帅哥不予考虑!<br>如果她是百合网的会员, 那么百合网的程序猿估计要设置这么几个变量来为她进行筛选:</p>
-<pre><code>// 以下条件都要满足, 即都要为真才能进入她的法眼
+<p>经常的，我们要判断的关系非常复杂。</p>
+<p>如某网红女在谈男朋友的条件时曾说: 非北大光华管理学院毕业的帅哥不予考虑!</p>
+<p>如果她是百合网的会员，那么百合网的程序猿估计要设置这么几个变量来为她进行筛选:</p>
+<pre><code>// 以下条件都要满足，即都要为真才能进入她的法眼
 isPKU       ---&gt; 是否北大的
 isGuanghua  ---&gt; 是否光华的
 isHandsome  ---&gt; 是否帅的
 isMale      ---&gt; 是否男的
 </code></pre>
-<p>这时, 我们就必须引入逻辑运算才能解决问题.</p>
+<p>这时，对于这种复杂的条件表达，我们就必须引入逻辑运算才能解决问题。</p>
 <h3 is-upgraded>逻辑运算符</h3>
 <p>有三种逻辑运算符:</p>
 <ul>
-<li>逻辑与 <code>&amp;&amp;</code>  两个连接符号, 如 <code>isPKU &amp;&amp; isMale</code>, 必须左右两个的值都为真, 整个表达式为真, 否则为假</li>
-<li>逻辑或 <code>||</code>   两个竖线符号, 如 <code>isPKU || isHandsome</code>, 左右两边的值只要有一个为真, 整个表达式就为真</li>
-<li>逻辑非 <code>!</code>    一个感叹号,   如 <code>!isPKU</code>, 将 <code>isPKU</code> 的值变反, 即真假变换</li>
+<li>逻辑与 <code>&amp;&amp;</code>：两个连接符号，如 <code>isPKU &amp;&amp; isMale</code>，必须左右两个的值都为真，整个表达式为真，否则为假</li>
+<li>逻辑或 <code>||</code>：两个竖线符号，如 <code>isPKU || isHandsome</code>，左右两边的值只要有一个为真，整个表达式就为真</li>
+<li>逻辑非 <code>!</code> ：一个感叹号，  如 <code>!isPKU</code>，将 <code>isPKU</code> 的值变反，即真假变换</li>
 </ul>
 <h3 is-upgraded>逻辑表达式</h3>
-<p>我们如果要表达上述的择偶条件的话, 逻辑表达式应该是这样的:</p>
+<p>我们如果要表达上述的择偶条件的话，逻辑表达式应该是这样的:</p>
 <pre><code>// 非北大光华管理学院毕业的帅哥不予考虑
 isPKU &amp;&amp; isGuanghua &amp;&amp; isHandsome &amp;&amp; isMale
-// 由于条件苛刻, 降低标准为:北大的不帅也可以, 不是北大的必须要帅(但必须是男人啊)
+// 由于条件太苛刻，降低择偶标准为:北大的不帅也可以，不是北大的必须要帅（但必须是男人啊）
 (isPKU || isHandsome) &amp;&amp; isMale
 </code></pre>
 <h3 is-upgraded>优先级</h3>
-<p>当有多种运算时, 优先级如下:</p>
+<p>当有多种运算时，优先级如下:</p>
 <ul>
-<li><code>!  &amp;&amp;  ||</code>, 即 逻辑非 <code>!</code> 最高, 逻辑与 <code>&amp;&amp;</code> 次之, 逻辑或 <code>||</code> 最低</li>
+<li><code>!  &amp;&amp;  ||</code>，即 逻辑非 <code>!</code> 最高，逻辑与 <code>&amp;&amp;</code> 次之，逻辑或 <code>||</code> 最低</li>
 <li>逻辑非 <code>!</code> 的优先级比算术运算的优先级都高</li>
 <li>逻辑与 <code>&amp;&amp;</code> 和 逻辑或 <code>||</code> 的优先级低于关系运算</li>
 </ul>
-<aside class="warning"><p>✎ <code>(isPKU || isHandsome) &amp;&amp; isMale</code> 如果没有圆括号即 <code>isPKU || isHandsome &amp;&amp; isMale</code> 将表达什么意思?</p>
+<aside class="warning"><p>✎ 思考：<code>(isPKU || isHandsome) &amp;&amp; isMale</code> 如果没有圆括号即 <code>isPKU || isHandsome &amp;&amp; isMale</code> 将表达什么意思?</p>
 </aside>
 <h3 is-upgraded>示例</h3>
-<aside class="special"><p>✍ 注意: C 语言中, 输出关系或逻辑表达式的结果时要么是 <code>1</code>, 要么是 <code>0</code>. 但在判断时, 采用的 <code>0</code> 为假, 非<code>0</code>的都为真. 请一定留意!</p>
+<aside class="warning"><p>✎ 注意: <code>C</code>语言中，输出关系或逻辑表达式的结果时要么是 <code>1</code>，要么是 <code>0</code>。 但在判断时，采用的 <code>0</code> 为假，非<code>0</code>的都为真。 请一定留意!</p>
 </aside>
-<aside class="special"><p>✍ 短路运算: 当 <code>&amp;</code>&amp; 运算符左边已经为假, 则右边不需要计算了, 整个表达式结果为假; 同理, 当 <code>||</code> 运算符左边已经为真, 则右边不需要计算了, 整个表达式结果为真. 这就称为短路!</p>
+<aside class="special"><p>✍ 短路运算: 当 <code>&amp;</code>&amp; 运算符左边已经为假，则右边不需要计算了，整个表达式结果为假; 同理，当 <code>||</code> 运算符左边已经为真，则右边不需要计算了，整个表达式结果为真。 这就称为短路!</p>
 </aside>
-<p>查看以下程序片段, 仔细分析输出的结果:</p>
+<p>查看以下程序片段，仔细分析输出的结果:</p>
 <pre><code>#include &#34;stdio.h&#34;
 void main() {
   int a = 3, b = 1, x = 2, y = 0;
   int result1, result2, result3;
-  // 注意: 先算 a &lt; b, 结果为 0, 此时就不再计算右边的 x &gt; y了, 直接将 0 赋值给result1
+  // 注意: 先算 a &lt; b，结果为 0，此时就不再计算右边的 x &gt; y 了，直接将 0 赋值给 result1
   result1 = a &lt; b &amp;&amp; x &gt; y;
-  // 注意: 先算 !a, 因为 a 的值是3(非0即为真),所以结果为 0；再算 a &gt; b, 
+  // 注意: 先算 !a，因为 a 的值是 3（非 0 即为真),所以结果为 0；再算 a &gt; b
   result2 = !a || a &gt; b;
   // 注意: 先算的 b &amp;&amp; y
   result3 = y || b &amp;&amp; y || a;
@@ -566,47 +598,49 @@ void main() {
 }
 </code></pre>
 <h2 is-upgraded>优先级总结</h2>
-<aside class="special"><p>✍ 优先级: 除了括号外, 计算的优先顺序为: 逻辑非 - 乘除 - 加减 - 大于/小于 - 等于/不等于 - 逻辑与 - 逻辑或 - 赋值 - 逗号</p>
+<aside class="special"><p>✍ 优先级: 除了括号外，计算的优先顺序为:<br>逻辑非 ➡ 乘除 ➡ 加减 ➡ 大于/小于 ➡ 等于/不等于 ➡ 逻辑与 ➡ 逻辑或 ➡ 赋值 ➡ 逗号<br>也即：！ ➡ * / ➡ + - ➡ &gt; &lt; ➡ == != ➡ &amp;&amp; ➡ || ➡ = ➡ ,</p>
 </aside>
 <h2 is-upgraded>小测试</h2>
 <pre><code>第一题
 设有定义： int a = 5, b = 6, c = 7, d = 8, m = 2, n = 2;
-则逻辑表达式(m = a &gt; b) &amp;&amp; (n = c &gt; d)运算后，n的值为()。
+则逻辑表达式 (m = a &gt; b) &amp;&amp; (n = c &gt; d) 运算后，n 的值为（）。
 A. 0      B. 1
 C. 2      D. 3
 
 第二题
-已有定义：int x = 3, y = 4, z = 5;  则表达式!(x + y) + z - 1 &amp;&amp; y + z / 2的值是（）。
+已有定义：int x = 3, y = 4, z = 5;  则表达式 !(x + y) + z - 1 &amp;&amp; y + z / 2 的值是（）。
 A. 6      B. 0
 C. 2      D. 1
 
 第三题
-能正确表示&#34;当x的取值在[-58,-40]和[40,58]范围内为真，否则为假&#34;的表达式是（）。
+能正确表示&#34;当 x 的取值在 [-58,-40] 和 [40,58] 范围内为真，否则为假&#34;的表达式是（）。
 
-A. (x &gt;= -58) &amp;&amp; (x &lt;= -40) &amp;&amp; (x &gt;=40) &amp;&amp; (x &lt;=58)
-B. (x &gt;= -58) || (x &lt;= -40) || (x &gt;=40) || (x &lt;=58)
-C. (x &gt;= -58) &amp;&amp; (x &lt;= -40) || (x &gt;=40) &amp;&amp; (x &lt;=58)
-D. (x &gt;= -58) || (x &lt;= -40) &amp;&amp; (x &gt;=40) || (x &lt;=58)
+A. (x &gt;= -58) &amp;&amp; (x &lt;= -40) &amp;&amp; (x &gt;= 40) &amp;&amp; (x &lt;= 58)
+B. (x &gt;= -58) || (x &lt;= -40) || (x &gt;= 40) || (x &lt;= 58)
+C. (x &gt;= -58) &amp;&amp; (x &lt;= -40) || (x &gt;= 40) &amp;&amp; (x &lt;= 58)
+D. (x &gt;= -58) || (x &lt;= -40) &amp;&amp; (x &gt;= 40) || (x &lt;= 58)
 
 第四题
-若希望当x的值为奇数时，表达式的值为&#34;真&#34;，x的值为偶数时，表达式的值为&#34;假&#34;。
+若希望当 x 的值为奇数时，表达式的值为&#34;真&#34;，x 的值为偶数时，表达式的值为&#34;假&#34;。
 则以下不能满足要求的表达式是（）。
 A. x % 2 == 1     B. !(x % 2 == 0)
 C. !( x % 2)      D. x % 2
 
 第五题
-已知 x = 45, y=&#39;a&#39;, z = 0; 则表达式(x &gt;= z &amp;&amp; y &lt; &#39;z&#39; || !y)的值是（）。
+已知 x = 45, y=&#39;a&#39;, z = 0; 则表达式 (x &gt;= z &amp;&amp; y &lt; &#39;z&#39; || !y) 的值是（）。
 A. 0          B. 语法错
 C. 1          C. 假
 </code></pre>
 <aside class="warning"><p>✉ 参考答案: ADCCC</p>
 </aside>
 <h2 is-upgraded>条件运算</h2>
-<p>条件运算是一种非常简洁的二元判定结构, 其结果要么是这个, 要么是那个. 实际编程中我们经常使用.<br>其格式如下:</p>
-<p>&lt;判断表达式&gt;?&lt;结果表达式1&gt;:&lt;结果表达式2&gt;</p>
-<aside class="special"><p>✍ 三个表达式分别用 <code>?</code> 和 <code>:</code> 分割开了, 意思是: 如果判断表达式的结果为真, 则整个表达式的结果就是&#34;结果表达式1&#34;的结果；否则就是&#34;结果表达式2&#34;的结果. 如 <code>89 &gt; 64? 999 : 888</code> 的结果就应该是 999.</p>
+<p>条件运算是一种非常简洁的二元判定结构，其结果要么是这个，要么是那个。 实际编程中我们经常使用。</p>
+<p>其格式如下:</p>
+<pre><code>&lt;判断表达式&gt; ? &lt;结果表达式1&gt; : &lt;结果表达式2&gt;
+</code></pre>
+<aside class="special"><p>✍ 三个表达式分别用 <code>?</code> 和 <code>:</code> 分割开了，意思是: 如果判断表达式的结果为真，则整个表达式的结果就是&#34;结果表达式1&#34;的结果；否则就是&#34;结果表达式2&#34;的结果。 如 <code>89 &gt; 64 ? 999 : 888</code> 的结果就应该是<code>999</code>。</p>
 </aside>
-<p>阅读以下程序, 分析其如何求出某个数的绝对值:</p>
+<p>阅读以下程序，分析其如何求出某个数的绝对值:</p>
 <pre><code>#include &#34;stdio.h&#34;
 void main() {
   int x;
@@ -617,15 +651,15 @@ void main() {
 }
 </code></pre>
 <h2 is-upgraded>选择结构</h2>
-<p>计算机, 也称为电脑, 能够根据程序中设置的不同的条件进行关系或逻辑判断, 以执行不同的任务, 实现一定的自动化.</p>
-<p>这种根据不同逻辑执行不同任务的程序设计就是–选择程序设计. 它可看着当前热门的人工智能的基础</p>
-<aside class="special"><p>🌏 简单人工智能: 请访问一个猜东西的网站<a href="http://20q.net/" target="_blank">20Q.net</a>, 它能通过询问20个左右的简单问题，猜出您想象的物品.</p>
+<p>计算机，也称为电脑，能够根据程序中设置的不同的条件进行关系或逻辑判断，以执行不同的任务，实现一定的自动化。</p>
+<p>这种根据不同逻辑执行不同任务的程序设计就是–选择程序设计。 它可看着当前热门的人工智能的基础</p>
+<aside class="special"><p>🌏 简单人工智能: 请访问一个有趣的猜东西网站<a href="http://20q.net/" target="_blank">20Q.net</a>，它能通过询问 20 个左右的简单问题，猜出您想象的物品。</p>
 </aside>
 <h3 is-upgraded>单分支选择结构</h3>
 <p>格式如下:</p>
-<pre><code>// 如果条件表达式为真, 即条件成立, 则执行花括号{}中的语句;
+<pre><code>// 如果条件表达式为真，即条件成立，则执行花括号 {} 中的语句;
 // 否则什么都不做
-if(条件表达式) {
+if (条件表达式) {
   满足条件后要执行的一条或多条语句
 }
 </code></pre>
@@ -633,15 +667,15 @@ if(条件表达式) {
 <pre><code>/* 题目: 求两个数哪个大
  * 思路: 假设第一个数就是大的,然后进行验证,
  *      如果第二个数还大,就修正
- *      经过判断, 保证max中一定保存的是大的那个数
+ *      经过判断，保证 max 中一定保存的是大的那个数
  */
 #include &#34;stdio.h&#34;
 void main() {
   int num1, num2, max;  // max 用来放两个数中大的那个
   printf(&#34;Please input two integer number:&#34;);
   scanf(&#34;%d%d&#34;, &amp;num1, &amp;num2);
-  max = num1;       // 假设num1是大的, 放到max变量中
-  if(max &lt; num2) {   // 验证假设, 第二个是不是比我大?
+  max = num1;       // 假设 num1 是大的，放到 max 变量中
+  if (max &lt; num2) {   // 验证假设，第二个是不是比我大? 如果大就修正 max，保证 max 保存的一定是最大的
     max = num2;
   }
   printf(&#34;MAX: %d\n&#34;, max);
@@ -649,9 +683,9 @@ void main() {
 </code></pre>
 <h3 is-upgraded>双分支选择结构</h3>
 <p>格式如下:</p>
-<pre><code>// 如果条件表达式为真, 即条件成立, 则执行其紧跟花括号{}中的语句;
-// 否则执行else后面{}中的语句
-if(条件表达式) {
+<pre><code>// 如果条件表达式为真，即条件成立，则执行其紧跟花括号 {} 中的语句;
+// 否则执行 else 后面 {} 中的语句
+if (条件表达式) {
   满足条件后要执行的一条或多条语句
 } else {
   不满足条件后要执行的一条或多条语句
@@ -660,35 +694,35 @@ if(条件表达式) {
 <p>我们用双分支结构来完成上面的问题:</p>
 <pre><code>/* 题目: 求两个数哪个大
  * 思路: 使用双分支选择结构直接比较即可
- *       max保存大的那个数
+ *       max 保存大的那个数
  */
 #include &#34;stdio.h&#34;
 void main() {
-  int num1, num2, max;  // max 用来放两个数中大的那个
+  int num1, num2, max; // max 用来放两个数中大的那个
   printf(&#34;Please input two integer number:&#34;);
   scanf(&#34;%d%d&#34;, &amp;num1, &amp;num2);
-  if(num1 &gt; num2) {    // 直接比较, 第一个数是不是比第二个数大
-    max = num1;       // 第一个大, 放到max中
+  if (num1 &gt; num2) {    // 直接比较，第一个数是不是比第二个数大
+    max = num1;        // 如果第一个大，放到 max 中
   } else {
-    max = num2;       // 第二个大, 放到max中
+    max = num2;        // 如果第二个大，放到 max 中
   }
   printf(&#34;MAX: %d\n&#34;, max);
 }
 </code></pre>
-<aside class="warning"><p>✎ 试一试: 你能否根据上面的程序, 模拟一个游戏通关后系统会给出一个提示, 回答 1 则输出 again, 回答 0 则输出 bye</p>
+<aside class="warning"><p>✎ 试一试: 你能否根据上面的程序，模拟一个游戏通关后系统会给出一个提示，回答<code>1</code>则输出<code>again</code>，回答<code>0</code>则输出<code>bye</code></p>
 </aside>
 <aside class="warning"><p>✎ 试一试: 你可否使用前面讲述的 条件运算表达式来改写这个程序?</p>
 </aside>
 <h3 is-upgraded>多分支选择结构</h3>
-<p>有时, 我们遇到的情况比较复杂, 可能有多种情况需要我们进行处理, 那么我们可以使用多分支选择结构.</p>
+<p>有时，我们遇到的情况比较复杂，可能有多种情况需要我们进行处理，那么我们可以使用多分支选择结构。</p>
 <p>一个三分支选择结构的格式如下:</p>
-<pre><code>// 如果条件表达式1为真, 则执行其花括号{}中的语句;
-// 否则如果条件表达式2为真, 则执行其花括号{}中的语句;
-// 否则, 执行else后面的语句
-if(条件表达式1) {
-  满足条件1后要执行的一条或多条语句
-} else if(条件表达式2) {
-  满足条件2后要执行的一条或多条语句
+<pre><code>// 如果条件表达式 1 为真，则执行其花括号 {} 中的语句;
+// 否则如果条件表达式 2 为真，则执行其花括号 {} 中的语句;
+// 否则，执行 else 后面的语句
+if (条件表达式1) {
+  满足条件表达式1 后要执行的一条或多条语句
+} else if (条件表达式2) {
+  满足条件表达式2 后要执行的一条或多条语句
 } else {
   以上条件都不满足则执行此处的一条或多条语句
 }
@@ -696,11 +730,11 @@ if(条件表达式1) {
 <p>说明:</p>
 <ul>
 <li>上面描述了一个三分支的情形</li>
-<li><code>else if</code>不是只能有一个, 可以有多个如四分支,五分支等</li>
+<li><code>else if</code>不是只能有一个，可以有多个如四分支,五分支等</li>
 <li><code>else</code>块可以没有</li>
 </ul>
 <p>仔细阅读分析下面的程序:</p>
-<pre><code>/* 题目: 根据成绩(分数)输出对应的(优/良/中/及格/不及格)等级
+<pre><code>/* 题目: 根据成绩（分数）输出对应的（优/良/中/及格/不及格）等级
  * 思路: 使用多分支选择结构直接比较即可
  */
 #include &#34;stdio.h&#34;
@@ -708,21 +742,21 @@ void main() {
   int score;
   printf(&#34;Please input your score:&#34;);
   scanf(&#34;%d&#34;, &amp;score);
-  if(score &gt;=90) {
+  if (score &gt;= 90) {
     printf(&#34;Excelent!&#34;);
-  }else if(score &gt;= 80 &amp;&amp; score &lt; 90) {
+  } else if (score &gt;= 80 &amp;&amp; score &lt; 90) {
     printf(&#34;Good!&#34;);
-  }else if(score &gt;= 70 &amp;&amp; score &lt; 80) {
+  } else if (score &gt;= 70 &amp;&amp; score &lt; 80) {
     printf(&#34;Middel&#34;);
-  }else if(score &gt;= 60 &amp;&amp; score &lt; 70) {
+  } else if (score &gt;= 60 &amp;&amp; score &lt; 70) {
     printf(&#34;OK&#34;);
   } else {
     printf(&#34;Bad!&#34;);
   }
 }
 </code></pre>
-<p>试试运行这个程序.</p>
-<aside class="warning"><p>✎ 上面这个程序有个小 bug. 假设我们合理的分数在<code>0~100</code>, 当不小心输入的分数为<code>1989</code>或<code>-64</code>时, 看看程序会发生什么, 如何修正?</p>
+<p>试试运行这个程序。</p>
+<aside class="warning"><p>✎ 上面这个程序有个小<code>bug</code>。 假设我们合理的分数在<code>0~100</code>，当不小心输入的分数为<code>1989</code>或<code>-64</code>时，看看程序会发生什么，如何修正?</p>
 </aside>
 <aside class="warning"><p>✎  思考: 我们的判断条件 <code>score &gt;=80 &amp;&amp; score &lt; 90</code> 可以简化为 <code>score &gt;= 80</code> 吗?</p>
 </aside>
@@ -731,7 +765,7 @@ void main() {
 #include &#34;stdio．h&#34;
 void main() {
   int x = -10, y = 5, z = 0;
-  if(x = y + z) {
+  if (x = y + z) {
     printf(&#34;***\n&#34;);
   } else {
      printf(&#34;$$$\n&#34;);
@@ -739,13 +773,13 @@ void main() {
 }
 以上程序:
 A. 有语法错不能通过编译      B. 可以通过编译但不能通过连接
-C. 输出***                D.  输出$$$
+C. 输出 ***               D.  输出 $$$
 
 第二题
 #include &#34;stdio.h&#34;
 void main() {
   int a = 1;
-  if(a++ &gt; 1) {
+  if (a++ &gt; 1) {
     printf(&#34;%d\n&#34;, a);
   } else {
      printf(&#34;%d\n&#34;, a--);
@@ -769,9 +803,9 @@ C. 6        D. 不确定
 #include &#34;stdio.h&#34;
 void main() {  
   float x = 2.0, y;
-  if(x &lt; 0.0) {
+  if (x &lt; 0.0) {
     y = 0.0;
-  }else if(x &lt; 10.0) {
+  } else if (x &lt; 10.0) {
     y = 1.0 / x;
   } else {
     y = 1.0;
@@ -785,24 +819,24 @@ C. 0.500000       D. 1.000000
 <aside class="warning"><p>✉ 参考答案: CCCC</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
-<p>请理解且熟悉本讲所列的示例程序, 尽力完成所有的思考和试一试.</p>
+<p>请理解且熟悉本讲所列的示例程序，尽力完成所有的思考和试一试。</p>
 <p>阅读并理解如下程序:</p>
-<pre><code>/* 题目: 判断输入的字符是那种类型, 如大写/数字等等
- * 思路: 使用多分支选择结构, 判断该字符的ASCII码即可
- * 注意: ASCII码值小于32的是一些控制字符, 如 回车/方向键/tab键等等
+<pre><code>/* 题目: 判断输入的字符是那种类型，如大写、数字等等
+ * 思路: 使用多分支选择结构，判断该字符的 ASCII 码值即可
+ * 注意: ASCII 码值小于 32 的是一些控制字符，如 回车、方向键、tab键等等
  */
 #include &#34;stdio.h&#34;
 void main() {
   char yourKey;
   printf(&#34;Please input a character:&#34;);
   yourKey = getchar();
-  if(yourKey &lt; 32 ) {
+  if (yourKey &lt; 32 ) {
     printf(&#34;It&#39;s a control character\n&#34;); // 控制字符
-  }else if(yourKey &gt;= &#39;0&#39; &amp;&amp; yourKey &lt;= &#39;9&#39;) {
+  } else if (yourKey &gt;= &#39;0&#39; &amp;&amp; yourKey &lt;= &#39;9&#39;) {
     printf(&#34;It&#39;s a number\n&#34;);            // 数字字符
-  }else if(yourKey &gt;= &#39;a&#39; &amp;&amp; yourKey &lt;= &#39;z&#39;) {
+  } else if (yourKey &gt;= &#39;a&#39; &amp;&amp; yourKey &lt;= &#39;z&#39;) {
     printf(&#34;It&#39;s a lowercase letter\n&#34;);  // 小写字母
-  }else if(yourKey &gt;= &#39;A&#39; &amp;&amp; yourKey &lt;= &#39;Z&#39;) {
+  } else if (yourKey &gt;= &#39;A&#39; &amp;&amp; yourKey &lt;= &#39;Z&#39;) {
     printf(&#34;It&#39;s a uppercase letter\n&#34;);  // 大写字母
   } else {
     printf(&#34;It&#39;s other character\n&#34;);     // 其它字符
@@ -821,7 +855,7 @@ void main() {
 </ul>
 <h2 is-upgraded>switch 语句</h2>
 <p>除了使用<code>else if</code>来构建多分支的选择结构外，某些情况下用<code>switch</code>来构建多分支会更清晰。 结构如下：</p>
-<pre><code>switch(整型或字符型变量) {
+<pre><code>switch (整型或字符型变量) {
   case 整型或字符型常量1: 语句1; break;
   case 整型或字符型常量2: 语句2; break;
   ...
@@ -832,7 +866,7 @@ void main() {
 <p>说明：</p>
 <ul>
 <li>以上结构共提供了<code>n+1</code>种情况</li>
-<li>根据 整型或字符型变量 的值与哪个<code>case</code>后的 常量相同，就执行哪个<code>case</code>后面的语句，然后就跳出整个<code>switch</code></li>
+<li>根据整型或字符型变量的值与哪个<code>case</code>后的 常量相同，就执行哪个<code>case</code>后面的语句，然后就跳出整个<code>switch</code></li>
 <li>只能对整型或字符型变量进行判定</li>
 <li>注意每个<code>case</code>后面的<code>break</code>，如果没有它，程序将把所有<code>case</code>的语句都执行</li>
 </ul>
@@ -846,7 +880,7 @@ void main() {
   int day;
   printf(&#34;Please input a number(1~7):&#34;);
   scanf(&#34;%d&#34;, &amp;day);
-  switch(day) {
+  switch (day) {
     case 1: printf(&#34;Monday\n&#34;);
     case 2: printf(&#34;Tuesday\n&#34;);
     case 3: printf(&#34;Wednesday\n&#34;);
@@ -858,62 +892,65 @@ void main() {
   }
 }
 </code></pre>
-<aside class="warning"><p>✎ 运行上面的程序，如输入3，你会得到什么结果？如何修正？<br>✎ 如果我希望输入了<code>8</code>则输出<code>Monday</code>，输入<code>9</code>则输出<code>Tuesday</code>，依次类推，而不是输出<code>error</code>，你有什么想法？(提示：考虑取余运算<code>%</code>)</p>
+<aside class="warning"><p>✎ 运行上面的程序，如输入<code>3</code>，你会得到什么结果？如何修正？<br>✎ 如果我希望输入了<code>8</code>则输出<code>Monday</code>，输入<code>9</code>则输出<code>Tuesday</code>，依次类推，而不是输出<code>error</code>，你有什么想法？（提示：考虑取余运算<code>%</code>）</p>
 </aside>
 <p>再看看一个用<code>switch</code>编制的简单计算器程序：</p>
 <pre><code>/**
  * 根据用户的输入的运算式给出结果
- * 如用户输入6+4,则输出10
- * 程序目前只支持+-×/四种运算
+ * 如用户输入 6+4,则输出 10
+ * 程序目前只支持 加减乘除 四种运算
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  float a, b, result; // a和b浮点型变量放两个运算数，result变量放结果
-  char operator; //operator字符型变量放运算符
-  int isInputError=0; // isInputError整型变量设置是否有输入错误，1代表有错，0代表无错，默认无错即0
+  float a, b, result; // 定义 a 和 b 两个浮点型变量用于存放两个运算数，result 变量放结果
+  char operator; //operator 字符型变量放运算符
+  int isInputError=0; // isInputError 整型变量设置是否有输入错误，1 代表有错，0 代表无错，默认无错即 0
   printf(&#34;Please input your expression(like 6+4):&#34;);
   scanf(&#34;%f%c%f&#34;, &amp;a, &amp;operator, &amp;b); // 请留意如何接收用户输入的！
-  switch(operator) { // 根据operator中的运算符来决定该进行何种运算
+  switch (operator) { // 根据 operator中的运算符来决定该进行何种运算
     case &#39;+&#39;: result = a + b; break;
     case &#39;-&#39;: result = a - b; break;
     case &#39;*&#39;: result = a * b; break;
     case &#39;/&#39;: result = a / b; break;
-    default: isInputError = 1;  // 不是加减乘除，输入的运算不能进行，置isInputError为1
+    default: isInputError = 1;  // 不是加减乘除，输入的运算不能进行，置 isInputError为 1，即输入有误
   }
-  if(isInputError == 1) {  // isInputError为1则表明输入有错
+  if (isInputError == 1) {  // isInputError 为 1 则表明输入有错
     printf(&#34;Sorry, I don&#39;t understand!&#34;);
   } else {
     printf(&#34;%.2f%c%.2f=%.2f\n&#34;, a, operator, b, result);
   }
 }
 </code></pre>
-<p>运行这个程序试试。实际上，类似我们手机上的计算器，其背后就是这种程序在运行。不过它提供了图形界面而已。</p>
-<aside class="warning"><p>✎ 试一试：如果我们打算提供求余运算，该如何修改一下？<br>✎ 思考：程序中我们引入了<code>isInputError</code>变量来判断是否有输入发错误，这是很常用的编程手段。那么，请想一想判断条件可否从<code>if(isInputError == 1)</code>改为<code>if(isInputError)</code>?<br>✎ 试一试：这个程序使用<code>switch</code>非常方便，可读性也强。你可否把它用多分支的<code>if</code>语句来实现？</p>
+<p>运行这个程序试试。</p>
+<p>实际上，类似我们手机上的计算器，其背后就是这种程序在运行，不过它提供了图形界面而已。</p>
+<aside class="warning"><p>✎ 试一试：如果我们打算提供求余运算，该如何修改一下？<br>✎ 思考：程序中我们引入了<code>isInputError</code>变量来判断是否有输入发错误，这是很常用的编程手段。那么，请想一想判断条件可否从<code>if (isInputError == 1)</code>改为<code>if (isInputError)</code>?<br>✎ 试一试：这个程序使用了<code>switch</code>多分支，表达非常方便，可读性也强。你可否把它用多分支的<code>if</code>语句来实现？</p>
 </aside>
 <h2 is-upgraded>嵌套的 if 语句</h2>
-<p>在某些时候，我们可能会遇到判断了一次条件后还要判断另外条件的情况。<br>考虑一下QQ的登录，它可能这样进行两步验证：先判断是否有这个用户，然后如果有这个用户那么密码是否正确。<br>此时我们就会用到嵌套的判断即嵌套的<code>if</code>语句。</p>
+<p>在某些时候，我们可能会遇到判断了一次条件后还要判断另外条件的情况。</p>
+<p>考虑一下<code>QQ</code>的登录，它可能这样进行两步验证：先判断是否有这个用户，然后如果有这个用户那么密码是否正确。</p>
+<p>此时我们就会用到嵌套的判断即嵌套的<code>if</code>语句。</p>
 <h3 is-upgraded>找最大的数</h3>
 <p>请看如下程序：</p>
 <pre><code>/**
- * 对于用户任意给定的3个整数，输出最大的那个
- * 如用户输入19 89 64,则输出89
+ * 对于用户任意给定的 3 个整数，输出最大的那个
+ * 如用户输入 19 89 64,则输出 89
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int a, b, c, max;  // a、b、c用来放用户给定的3个整数，max用来放最大的那个
+  int a, b, c, max;  // a、b、c 用来放用户任意输入的 3 个整数，max 用来放最大的那个
   printf(&#34;Please input 3 ingeger:&#34;);
   scanf(&#34;%d%d%d&#34;, &amp;a, &amp;b, &amp;c);
-  if(a &gt; b) {    // a&gt;b
-    if(a &gt; c) {  // a&gt;b同时a&gt;c，所以a最大
+  if (a &gt; b) {    // a &gt; b
+    if (a &gt; c) {  // a &gt; b 同时 a &gt; c，所以 a 最大
       max = a;
-    } else {      // c&gt;a&gt;b
+    } else {      // c &gt; a &gt; b
       max = c;
     }
-  } else {        // b&gt;a
-    if(b &gt; c) {  // b&gt;a同时b&gt;c，所以b最大
+  } else {        // b &gt; a
+    if (b &gt; c) {  // b &gt; a 同时 b &gt; c，所以 b 最大
       max = b;
     } else {
-      max = c;  // c&gt;b&gt;a
+      max = c;  // c &gt; b &gt; a
     }
   }
   printf(&#34;Max: %d\n&#34;, max);
@@ -921,11 +958,11 @@ void main() {
 </code></pre>
 <p>以上程序使用了两层<code>if</code>嵌套。运行试试。</p>
 <h3 is-upgraded>找轻的苹果</h3>
-<p>还记得我们以前提到的那个找苹果问题吗？我们如何用C语言来让计算机给我们找出来呢？</p>
+<p>还记得我们以前提到的那个找苹果问题吗？我们如何用<code>C</code>语言来让计算机给我们找出来呢？</p>
 <pre><code>/**
- * 有四个外观大小都一模一样的苹果, 现其中三个重量相同, 另外一个比这三个轻.
- * 请用一个没有砝码的天平, 最多称两次, 找出这个轻的苹果.
- * 我们以a1、a2、a3、a4代表这四个苹果的重量，为简化我们用整数
+ * 有四个外观大小都一模一样的苹果，现其中三个重量相同，另外一个比这三个轻。
+ * 请用一个没有砝码的天平，最多称两次，找出这个轻的苹果。
+ * 我们以 a1、a2、a3、a4 代表这四个苹果的重量，为简单起见我们用整数
  * 程序运行时用户任意指定哪个苹果轻,如 2 2 1 2 就代表第三个苹果轻
  * 注意：称两个苹果（左右两边）有三种可能：左跷、平衡、右跷
 **/
@@ -934,14 +971,14 @@ void main() {
   int a1, a2, a3, a4;   // 存放四个苹果的重量
   printf(&#34;Please input 4 apple&#39;s weight:&#34;);
   scanf(&#34;%d%d%d%d&#34;, &amp;a1, &amp;a2, &amp;a3, &amp;a4);
-  if(a1 &lt; a2) {        // 第一个轻
+  if (a1 &lt; a2) {        // 第一个轻
     printf(&#34;No.1 is light!\n&#34;);
-  }else if(a1 &gt; a2) {  // 第二个轻
+  } else if (a1 &gt; a2) { // 第二个轻
     printf(&#34;No.2 is light!\n&#34;);
   } else {              // 第一个和第二个相等，需要再称一次
-    if(a3 &lt; a4) {
+    if (a3 &lt; a4) {
       printf(&#34;No.3 is light!\n&#34;);
-    } else if(a3 &gt; a4) {
+    } else if (a3 &gt; a4) {
       printf(&#34;No.4 is light!\n&#34;);
     } else {            // 想想为何是错的？
       printf(&#34;Your are Wrong!\n&#34;);
@@ -950,19 +987,19 @@ void main() {
 }
 </code></pre>
 <p>Positive<br>： 🌏 <a href="https://baike.baidu.com/item/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/527" target="_blank">数学建模</a>： 使用数学方法解决实际应用问题。上面即是一种简单的建模。</p>
-<aside class="warning"><p>✎ 试一试：你可能有不同的称法（算法），如：天平两边各放2个苹果，然后再把轻的那边的两个再称一次即可。试试以这种算法来编写程序（提示：<code>a1 &lt; a2</code>可以表示天平一边放了一个苹果，那么考虑一下如何表示各放两个苹果）。</p>
+<aside class="warning"><p>✎ 试一试：你可能有不同的称法（算法），如：天平两边各放<code>2</code>个苹果，然后再把轻的那边的两个再称一次即可。试试以这种算法来编写程序（提示：<code>a1 &lt; a2</code>可以表示天平一边放了一个苹果，那么考虑一下如何表示各放两个苹果）。</p>
 </aside>
 <h2 is-upgraded>小测验</h2>
-<pre><code>1.若运行时输入:3 5/&lt;回车&gt;,则以下程序的运行结果是()
+<pre><code>1.若运行时输入:3 5 /然后回车，则以下程序的运行结果是（）
 
 #include &lt;stdio.h&gt;
-void main( ) {
+void main() {
   float x,y;
   char o;
   double r;
   scanf(&#34;%f %f %c&#34;, &amp;x, &amp;y, &amp;o);
   
-  switch(o) {
+  switch (o) {
     case &#39;+&#39;: r = x + y; break;
     case &#39;-&#39;: r = x - y; break;
     case &#39;*&#39;: r = x * y; break;
@@ -971,9 +1008,9 @@ void main( ) {
   printf(&#34;%f&#34;, r);
 }
 
-2.设有下面程序片段，若grade的值为&#39;C&#39;,则输出结果是().
+2.设有下面程序片段，若 grade 的值为&#39;C&#39;,则输出结果是（）。
 
-switch(grade) {
+switch (grade) {
   case &#39;A&#39;: printf(&#34;85-100\n&#34;);
   case &#39;B&#39;: printf(&#34;70-84\n&#34;);
   case &#39;C&#39;: printf(&#34;60-69\n&#34;);
@@ -981,9 +1018,9 @@ switch(grade) {
   default: printf(&#34;error!\n&#34;);
 }
 
-3.设有下面程序片段，若grade的值为&#39;B&#39;, 则输出结果是().
+3.设有下面程序片段，若 grade 的值为&#39;B&#39;，则输出结果是（）。
 
-switch(grade) {
+switch (grade) {
   case &#39;A&#39;: printf(&#34;85-100\n&#34;); break;
   case &#39;B&#39;: printf(&#34;70-84\n&#34;); break;
   case &#39;C&#39;: printf(&#34;60-69\n&#34;); break;
@@ -994,7 +1031,8 @@ switch(grade) {
 <aside class="warning"><p>✉ 参考答案: 略，请实验验证</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
-<p>请理解本讲所列程序。<br>需能独立编写<a href="https://qige.io/c/c-experiment.html" target="_blank">棋歌教学网实验一</a>的第1、2、3个实验，可参考课后实验部分的第5个实验（称12个苹果）</p>
+<p>请理解本讲所列程序。</p>
+<p>需能独立编写<a href="https://qige.io/c/c-experiment.html" target="_blank">棋歌教学网实验一</a>的第 <code>1</code>、<code>2</code>、<code>3</code>个实验，可参考课后实验部分的第<code>5</code>个实验（称<code>12</code>个苹果）</p>
 
 
       </google-codelab-step>
@@ -1009,7 +1047,7 @@ switch(grade) {
 <h2 is-upgraded>引例</h2>
 <p>在某些问题的解决中，可能会重复的做某个动作很多次。如：</p>
 <pre><code>/**
- * 此程序将输出10个*号
+ * 此程序将输出 10 个 * 号
 **/
 #include &#34;stdio.h&#34;
 void main() {
@@ -1025,11 +1063,17 @@ void main() {
   printf(&#34;*&#34;);
 }
 </code></pre>
-<p>10个<code>*</code>输出没问题，但有同学肯定会认为这种方式纯粹有病，一个<code>printf(&#34;**********&#34;)</code>语句都可以搞定的。<br>思路很好，创新很多都是那些&#34;偷懒&#34;的人想出来的，另类的思维！<br>不过，现在要求发生了改变：需要打印100个<code>*</code>。<br>你会想到这不就是<code>Ctrl+C</code>和<code>Ctrl+V</code>的事情吗？粘贴100个就搞定。<br>那么如果需要打印<code>198964</code>个或更多呢？或者你说打多少个我程序就打多少个？</p>
-<p>也即，我们的程序需要具有简洁性和通用性。此时，我们需要循环来解决问题！</p>
-<h2 is-upgraded>while循环</h2>
-<p>所谓的<code>while</code>循环，也称为<strong>当型循环</strong>，即当条件成立时就执行，然后不停循环这个过程，直到条件为假。<br>其结构如下：</p>
-<pre><code>while(条件表达式) {
+<p><code>10</code> 个<code>*</code>输出没问题，但有同学肯定会认为这种方式纯粹有病，一个<code>printf(&#34;**********&#34;)</code>语句都可以搞定的。</p>
+<p>思路很好，创新很多时候都是那些&#34;偷懒&#34;的人想出来的，也是另类的思维！</p>
+<p>不过，现在要求发生了改变：需要打印 <code>100</code> 个<code>*</code>。</p>
+<p>你会想到这不就是<code>Ctrl+C</code>和<code>Ctrl+V</code>的事情吗？粘贴 <code>100</code> 次就搞定。</p>
+<p>那么如果需要打印<code>198964</code>个或更多呢？或者你说打多少个<code>*</code>我程序就打多少个<code>*</code>？</p>
+<p>也即，我们的程序需要具有简洁性和通用性。</p>
+<p>此时，我们需要循环来解决问题！</p>
+<h2 is-upgraded>while 循环</h2>
+<p>所谓的<code>while</code>循环，也称为<strong>当型循环</strong>，即当条件成立时就执行，然后不停循环这个过程，直到条件为假。</p>
+<p>其结构如下：</p>
+<pre><code>while (条件表达式) {
   循环语句（可以有多条）
 }
 </code></pre>
@@ -1038,25 +1082,25 @@ void main() {
 <p>说明：</p>
 <ol type="1">
 <li>如果<strong>条件表达式</strong>为真，则执行<code>{}</code>中的循环语句，否则，直接执行<code>while</code>后花括号以后的语句</li>
-<li><code>{}</code>中的循环语句执行完毕后，再次判断<strong>条件表达式</strong>是否为真，也即回到第1步</li>
+<li><code>{}</code>中的循环语句执行完毕后，再次判断<strong>条件表达式</strong>是否为真，也即回到第<code>1</code>步</li>
 </ol>
-<aside class="special"><p>✍ 从上面的表述你可得出：<br>1.循环语句重复执行的次数可能是0次或多次，需要看条件表达式的值<br>2.如果条件表达式永远为真，那么就是无限循环即死循环，我们需要避免这种情况<br>3.正常情况下，我们应该有一个趋势，使得条件表达式趋于变假，这样才能结束循环</p>
+<aside class="special"><p>✍ 从上面的表述你可得出：<br>1.循环语句重复执行的次数可能是<code>0</code>次或多次，需要看条件表达式的值<br>2.如果条件表达式永远为真，那么就是无限循环即死循环，我们需要避免这种情况<br>3.正常情况下，我们应该有一个趋势，使得条件表达式趋于变假，这样才能结束循环</p>
 </aside>
-<p>现在我们来分析一下如何利用<code>while</code>循环来打印10个<code>*</code>：</p>
+<p>现在我们来分析一下如何利用<code>while</code>循环来打印<code>10</code>个<code>*</code>：</p>
 <ol type="1">
 <li>需要重复执行的是什么？简单分析可得知，即：<code>printf(&#34;*&#34;);</code>语句，执行一次打印一个<code>*</code></li>
 <li>需要重复多少次？题目明确要求10次</li>
 <li>那么如何控制次数？简单的引入一个统计打印次数的计数变量，初始为0，然后打印一个<code>*</code>就自增1，这样循环，直到次数超过10就停止打印</li>
 </ol>
-<h3 is-upgraded>使用while循环输出10个*号</h3>
+<h3 is-upgraded>使用 while 循环输出 10 个 * 号</h3>
 <p>程序如下：</p>
 <pre><code>/**
  * 使用while循环输出10个*号
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int n = 0; // 打印次数计数变量n，最初一次都没有，初始化为0
-  while(n &lt; 10) {
+  int n = 0; // 打印次数计数变量 n，最初没有打印，初始化为 0
+  while (n &lt; 10) {
     printf(&#34;*&#34;);
     n++;
   }
@@ -1064,19 +1108,20 @@ void main() {
 }
 </code></pre>
 <p>运行一下程序，然后仔细分析和理解程序执行的过程。</p>
-<aside class="warning"><p>✎ 试一试：如果初始化为 1，即：<code>int n = 1;</code>，程序运行将发生什么变化，如何修正？<br>✎ 试一试：如果去掉<code>n++;</code>这句，程序运行将发生什么变化？原因是什么？（提示：<code>Ctrl+C</code>可终止程序运行)</p>
+<aside class="warning"><p>✎ 试一试：如果初始化为<code>1</code>，即：<code>int n = 1;</code>，程序运行将发生什么变化，如何修正？<br>✎ 试一试：如果去掉<code>n++;</code>这句，程序运行将发生什么变化？原因是什么？（提示：<code>Ctrl+C</code>可终止程序运行)</p>
 </aside>
-<p>如果你已经理解了上面的<code>while</code>循环过程，那么我现在的要求是打印100个<code>*</code>号。<br>这不就是小case吗？直接修改<code>while</code>的条件表达式为<code>n &lt; 100</code>即可，你需要打几个，我就修改程序为几个！</p>
-<p>不错，但一般而言，我们不希望修改程序（你以为程序员真的应该 <a href="[去掉n++](https://996.icu/#/zh_CN)" target="_blank">🌏 996 ICU</a> 吗？）<br>我们的程序应该更通用、更健壮一些：</p>
+<p>如果你已经理解了上面的<code>while</code>循环过程，那么我现在的要求是打印<code>100</code>个<code>*</code>号。<br>这不就是小<code>case</code>吗？直接修改<code>while</code>的条件表达式为<code>n &lt; 100</code>即可，你需要打几个，我就修改程序为几个！</p>
+<p>不错，但一般而言，我们不希望修改程序（你以为程序员真的应该 <a href="[去掉n++](https://996.icu/#/zh_CN)" target="_blank">🌏 996 ICU</a> 吗？）</p>
+<p>我们的程序应该更通用、更健壮一些：</p>
 <pre><code>/**
  * 使用while循环输出指定个数的*号
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int n = 0, howMany; // howMany变量用于存放用户输入的个数
+  int n = 0, howMany; // howMany 变量用于存放用户输入的个数
   printf(&#34;How many do you want to print: &#34;);
   scanf(&#34;%d&#34;, &amp;howMany);
-  while(n &lt; howMany) {
+  while (n &lt; howMany) {
     printf(&#34;*&#34;);
     n++;
   }
@@ -1084,70 +1129,72 @@ void main() {
 }
 </code></pre>
 <p>运行试试。</p>
-<aside class="warning"><p>✎ 试一试：既然打印的个数都可以让用户任意指定，那么可否让用户指定打印什么字符呢，比如蟹老板喜欢的<code>$</code>?如此，我们的程序又进了一步：用户说打印多少个什么样的字符程序都能满足！</p>
+<aside class="warning"><p>✎ 试一试：既然打印的个数都可以让用户任意指定，那么可否让用户指定打印什么字符呢，比如蟹老板喜欢的<code>$</code>?如此，我们的程序又进了一步：用户说打印多少个什么样的字符，我们的程序都能满足！</p>
 </aside>
-<p>下面我们再看一个使用<code>while</code>循环的程序：请依序输出<code>1 2 ... 9 10</code>这10个数。</p>
-<h3 is-upgraded>使用while循环输出 1到10</h3>
+<p>下面我们再看一个使用<code>while</code>循环的程序：请依序输出<code>1 2 ... 9 10</code>这<code>10</code>个数。</p>
+<h3 is-upgraded>使用 while 循环输出 1 到 10</h3>
 <pre><code>/**
- * 使用while循环输出 1到10
+ * 使用 while 循环输出 1到10
 **/
 #include &#34;stdio.h&#34;
 void main() {
   int n = 1;
-  while(n &lt; 11) {
-    printf(&#34;%4d&#34;, n); // 注意，n不仅是计数器，也是输出对象
+  while (n &lt; 11) {
+    printf(&#34;%4d&#34;, n); // 注意，n 不仅是计数器，也是输出对象
     n++;
   }
   printf(&#34;\n&#34;);
 }
 </code></pre>
 <p>程序结构和思路与前一个并无不同，唯一是<code>n</code>变量既是计数器，也是输出对象。</p>
-<aside class="warning"><p>✎ 试一试：如果我只需要输出奇数该如何修正一下？（提示：每循环一次就不是加1了）偶数呢？<br>✎ 试一试：能否修改程序，让用户指定输出的范围如：<code>64</code> 到 <code>89</code>？</p>
+<aside class="warning"><p>✎ 试一试：如果我只需要输出奇数该如何修正一下？（提示：每循环一次就不是加<code>1</code>了）偶数呢？<br>✎ 试一试：能否修改程序，让用户指定输出的范围如：<code>64</code> 到 <code>89</code>？</p>
 </aside>
-<h3 is-upgraded>使用while循环统计字符的个数</h3>
+<h3 is-upgraded>使用 while 循环统计字符的个数</h3>
 <aside class="warning"><p>✘ 提示：本程序如果你没弄明白可暂时放弃，随着以后的学习会明白的</p>
 </aside>
 <pre><code>/**
- * 使用while循环统计输入一行的字符个数
+ * 使用 while 循环统计输入一行的字符个数
 **/
 #include &#34;stdio.h&#34;
 void main() {
   int count = 0;  // count变量用于存放字符的个数
-  p
-  rintf(&#34;Please input a string, then press Enter:&#34;);
-  while(getchar() != &#39;\n&#39;) {  //  判断该字符是否为回车
+  printf(&#34;Please input a string, then press Enter:&#34;);
+  while (getchar() != &#39;\n&#39;) {  //  判断该字符是否为回车
     count++;
   }
   printf(&#34;You typed %d characters&#34;, count);
 }
 </code></pre>
-<p>运行该程序，假设你输入的是<code>abc8964</code>然后回车（实际上这7个字符以及回车存入了一个称为输入缓存区的地方），那么程序将统计到7个字符。<br>说明如下：</p>
+<p>运行该程序，假设你输入的是<code>abc8964</code>然后回车（实际上这7个字符以及回车存入了一个称为输入缓存区的地方），那么程序将统计到<code>7</code>个字符。</p>
+<p>说明如下：</p>
 <ol type="1">
 <li><code>getchar()</code>是字符输入函数，程序运行于此处将会停下，等待用户输入一个字符。此时用户输入了<code>abc8964</code>然后回车，这8个字符会进入系统的输入缓存区，然后<code>getchar()</code>将从输入缓冲区中得到第一个字符，即<code>a</code></li>
 <li>然后判断这个字符（当前是<code>a</code>）是否为回车（<code>\n</code>)</li>
-<li>如果不是回车，进入循环，执行<code>count++</code>，即统计一次。然后回到第1步（注意此时又会遇到<code>getchar()</code>，它又将从输入缓存区中取第二个字符，然后判断。以后以此类推）</li>
+<li>如果不是回车，进入循环，执行<code>count++</code>，即统计一次。然后回到第<code>1</code>步（注意此时又会遇到<code>getchar()</code>，它又将从输入缓存区中取第二个字符，然后判断。以后以此类推）</li>
 <li>如果是回车，那么就结束循环（也即该字符串也统计完毕），执行循环外面的语句即打印输出结果</li>
 </ol>
-<aside class="special"><p>✍ 提示：你有没有想到<code>Office Word</code>中的字数统计就类似这个程序？</p>
+<aside class="special"><p>✍ 提示：你有没有想到<code>Office Word</code>软件中的字数统计就类似这个程序？</p>
 </aside>
-<aside class="warning"><p>✎ 试一试：如果不以回车而是以空格作为结束标志，即，假设你输入的是<code>Corona Virus</code>然后回车，程序将输出6个字符。该如何修正？</p>
+<aside class="warning"><p>✎ 试一试：如果不以回车而是以空格作为结束标志，即，假设你输入的是<code>Corona Virus</code>然后回车，程序将输出<code>6</code>个字符。该如何修正？</p>
 </aside>
-<h2 is-upgraded>do while循环</h2>
-<p>从上面学到的<code>while</code>循环中你可看出，有可能循环一次都不会执行。<br>某些情况下我们需要循环至少执行一次，如某游戏开始-&gt;进行中-&gt;你被干翻-&gt;问你是否重来一次。这时就不能游戏还没开始就问你要不要重来，游戏必须先玩一次然后再是重不重复的问题。<br>此时我们使用<code>do while</code>即<strong>直到型循环</strong>。格式如下：</p>
+<h2 is-upgraded>do while 循环</h2>
+<p>从上面学到的<code>while</code>循环中你可看出，有可能循环一次都不会执行。</p>
+<p>某些情况下我们需要循环至少执行一次，如某游戏开始 ➡ 进行中 ➡ 你被干翻 ➡ 问你是否重来一次。<br>这时就不能游戏还没开始就问你要不要重来，游戏必须先玩一次然后再是重不重复的问题。</p>
+<p>此时我们使用<code>do while</code>即<strong>直到型循环</strong>。格式如下：</p>
 <pre><code>do {
   循环语句（可以有多条）
-}while(条件表达式);   // 注意结束处有分号！！！
+}while (条件表达式);   // 注意结束处有分号！！！
 </code></pre>
 <p>示意图如下：</p>
 <p class="image-container"><img alt="dowhile" src="img/10679f5373588d84.jpg"></p>
 <p>说明：</p>
 <ol type="1">
-<li>先执行<code>{ }</code>中的循环语句</li>
+<li>先执行<code>{ }</code>中的循环语句一次</li>
 <li>执行完后判断<strong>条件表达式</strong>是否为真，</li>
-<li>如果为真，返回到第1步</li>
+<li>如果为真，返回到第<code>1</code>步</li>
 <li>如果为假，跳出循环，执行循环后面的语句</li>
 </ol>
-<h3 is-upgraded>使用do while循环模拟游戏是否还要继续</h3>
+<h3 is-upgraded>使用 do while 循环模拟游戏是否还要继续</h3>
 <p>程序如下：</p>
 <pre><code>/**
  * 使用do while循环模拟游戏是否还要继续
@@ -1165,14 +1212,14 @@ void main() {
 
     printf(&#34;Again (0 for exit or other for continue)?&#34;);
     scanf(&#34;%d&#34;, &amp;again);
-  }while(again);
+  }while (again);
   printf(&#34;Your Mom calls you home! Bye!\n&#34;);
 }
 </code></pre>
-<h2 is-upgraded>for循环</h2>
+<h2 is-upgraded>for 循环</h2>
 <p>下面我们介绍另一种更常用的循环<code>for</code>循环。<br>凡是能用<code>while</code>循环写出来的，<code>for</code>也行，反之亦然。</p>
 <p><code>for</code>循环格式如下：</p>
-<pre><code>for(初始化表达式; 条件表达式; 增量表达式) {
+<pre><code>for (初始化表达式; 条件表达式; 增量表达式) {
   循环语句（可以多条）
 }
 </code></pre>
@@ -1183,9 +1230,9 @@ void main() {
 <li><code>init</code>即初始化表达式首先被执行，且只会执行一次。这一步允许您声明并初始化任何循环控制变量。您也可以不在这里写任何东西，只要有一个分号出现即可。</li>
 <li>接下来，会判断 <code>condition</code>即条件表达式。如果为真，则执行循环主体。如果为假，则不执行循环主体，for 循环终止，且控制流会跳转到紧接着 <code>for</code> 循环后的下一条语句。</li>
 <li>在执行完 <code>for</code> 循环主体后，控制流会跳回上面的 <code>increment</code>即增量表达式。该表达式允许您更新循环控制变量。此处可以留空，只要在条件后有一个分号出现即可。</li>
-<li>接下来<code>condition</code>即条件表达式再次被判断，回到上面第2步。</li>
+<li>接下来<code>condition</code>即条件表达式再次被判断，回到上面第 2 步。</li>
 </ol>
-<h3 is-upgraded>使用for循环输出10个*号</h3>
+<h3 is-upgraded>使用 for 循环输出 10 个*号</h3>
 <p>程序如下：</p>
 <pre><code>/**
  * 使用for循环输出10个*号
@@ -1193,120 +1240,122 @@ void main() {
 #include &#34;stdio.h&#34;
 void main() {
   int n; // 打印次数计数变量n
-  for(n = 0; n &lt; 10; n++) {
+  for (n = 0; n &lt; 10; n++) {
     printf(&#34;*&#34;);
   }
   printf(&#34;\n&#34;);
 }
 </code></pre>
 <p>运行一下程序，然后仔细分析和理解程序执行的过程。</p>
-<aside class="warning"><p>✎ 试一试：如果初始化为 1，<code>n = 1;</code>，程序运行将发生什么变化，如何修正？<br>✎ 试一试：如果去掉<code>n++;</code>这句，程序运行将发生什么变化？原因是什么？（提示：<code>Ctrl+C</code>可终止程序运行)</p>
+<aside class="warning"><p>✎ 试一试：如果在<code>for�</code>�句中设置<code>n = 1;</code>即<code>n</code>从<code>1</code>开始，程序运行将发生什么变化？<br>✎ 试一试：如果去掉<code>n++;</code>这句，程序运行将发生什么变化？原因是什么？（提示：<code>Ctrl+C</code>可终止程序运行)</p>
 </aside>
-<p>如果你已经理解了上面的<code>for</code>循环过程，那么我现在的要求是打印100个<code>*</code>号。<br>这不就是小case吗？直接修改<code>for</code>的条件表达式为<code>n &lt; 100</code>即可，你需要打几个，我就修改程序为几个！<br>同前一样，我们的程序应该更通用、更健壮一些：</p>
+<p>如果你已经理解了上面的<code>for</code>循环过程，那么我现在的要求是打印<code>100</code>个<code>*</code>号。</p>
+<p>这不就是小<code>case</code>吗？直接修改<code>for</code>的条件表达式为<code>n &lt; 100</code>即可，你需要打几个，我就修改程序为几个！</p>
+<p>同前一样，我们的程序还可以更通用、更健壮一些：</p>
 <pre><code>/**
- * 使用for循环输出指定个数的*号
+ * 使用 for 循环输出指定个数的 * 号
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int n, howMany; // howMany变量用于存放用户输入的个数
+  int n, howMany; // howMany 变量用于存放用户输入的个数
   printf(&#34;How many do you want to print: &#34;);
   scanf(&#34;%d&#34;, &amp;howMany);
-  for(n = 0; n &lt; howMany; n++) {
+  for (n = 0; n &lt; howMany; n++) {
     printf(&#34;*&#34;);
   }
   printf(&#34;\n&#34;);
 }
 </code></pre>
 <p>运行试试。</p>
-<aside class="warning"><p>✎ 试一试：既然打印的个数都可以让用户任意指定，那么可否让用户指定打印什么字符呢，比如蟹老板喜欢的<code>$</code>?如此，我们的程序又进了一步：用户说打印多少个什么样的字符程序都能满足！</p>
+<aside class="warning"><p>✎ 试一试：既然打印的个数都可以让用户任意指定，那么可否让用户指定打印什么字符呢，比如蟹老板喜欢的<code>$</code>?如此，我们的程序又进了一步：用户说打印多少个什么样的字符我们的程序都能满足！</p>
 </aside>
-<p>下面我们再看一个使用<code>for</code>循环的程序：请依序输出<code>1 2 ... 9 10</code>这10个数。</p>
-<h3 is-upgraded>使用for循环输出 1到10</h3>
+<p>下面我们再看一个使用<code>for</code>循环的程序：请依序输出<code>1 2 ... 9 10</code>这<code>10</code>个数。</p>
+<h3 is-upgraded>使用 for 循环输出 1 到 10</h3>
 <pre><code>/**
- * 使用for循环输出 1到10
+ * 使用 for 循环输出 1 到 10
 **/
 #include &#34;stdio.h&#34;
 void main() {
   int n;
-  for(n = 1; n &lt;= 10; n++) {
-    printf(&#34;%4d&#34;, n); // 注意，n不仅是计数器，也是输出对象
+  for (n = 1; n &lt;= 10; n++) {
+    printf(&#34;%4d&#34;, n); // 注意，n 不仅是计数器，也是输出对象
   }
   printf(&#34;\n&#34;);
 }
 </code></pre>
 <p>程序结构和思路与前一个并无不同，唯一是<code>n</code>变量既是计数器，也是输出对象。</p>
-<aside class="warning"><p>✎ 试一试：如果我只需要输出奇数该如何修正一下？偶数呢？<br>✎ 试一试：能否修改程序，让用户指定输出的范围如：<code>64</code> 到 <code>89</code>？<br>✎ 试一试：你能否反向即从100输出到1呢？</p>
+<aside class="warning"><p>✎ 试一试：如果我只需要输出奇数该如何修正一下？偶数呢？<br>✎ 试一试：能否修改程序，让用户指定输出的范围如：<code>64</code> 到 <code>89</code>？<br>✎ 试一试：你能否反向即从<code>100</code>输出到<code>1</code>呢？</p>
 </aside>
-<h3 is-upgraded>使用for循环求 1+2+3+...+99+100</h3>
+<h3 is-upgraded>使用 for 循环求 1+2+3+...+99+100</h3>
 <aside class="special"><p>✍ 记得最早接触这个问题是因为大数学家高斯，据说他率先得出<code>5050</code>的答案而傲视其他同学，因为他使用了简便算法<code>(1+99)+(2+98)+...+(48+52)+(49+51)+50+100=5050</code>。不过无论如何，高斯都会被下面的计算机程序&#34;搞死&#34;的:)</p>
 </aside>
 <pre><code>/**
- * 使用for循环求 1+2+3+...+99+100
+ * 使用 for 循环求 1+2+3+...+99+100
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int i, sum = 0;  // sum用来存放和
-  for(i = 1; i &lt;= 100; i++) {
+  int i, sum = 0;  // sum 用来存放和
+  for (i = 1; i &lt;= 100; i++) {
     sum = sum + i;
   }
   printf(&#34;1+2+3+...+99+100=%d\n&#34;, sum);
 }
 </code></pre>
-<aside class="warning"><p>✎ 注意：变量<code>sum</code>应该初始化为0<br>✎ 试一试：如果我需要求<code>[64, 89]</code>这个闭区间整数的和该怎么办？任意指定范围呢？</p>
+<aside class="warning"><p>✎ 注意：变量<code>sum</code>应该初始化为<code>0</code>，否则结果不确定！<br>✎ 试一试：如果我需要求<code>[64, 89]</code>这个闭区间所有整数的和该怎么办？任意指定范围呢？</p>
 </aside>
 <h3 is-upgraded>无限循环的问题</h3>
 <p>无论是<code>while</code>循环还是<code>for</code>循环都要注意无限循环即死循环的问题。</p>
 <p>下面的程序片段都是死循环：</p>
-<pre><code>while(64) {
+<pre><code>while (64) {
   printf(&#34;hahaha\n&#34;);
 }
 /*----------------*/
 int a = 89;
-while(a = 8 * 8) {
+while (a = 8 * 8) {
   printf(&#34;hahaha\n&#34;);
 }
 /*----------------*/
-for(i = 1; i &lt; 10; ) {
+for (i = 1; i &lt; 10; ) {
   printf(&#34;hahaha\n&#34;);
 }
 /*----------------*/
-for(i = 1; i &lt; 10; i--) {
+for (i = 1; i &lt; 10; i--) {
   printf(&#34;hahaha\n&#34;);
 }
 /*----------------*/
-for(i = 1; ; i++) {
+for (i = 1; ; i++) {
   printf(&#34;hahaha\n&#34;);
 }
 </code></pre>
 <h2 is-upgraded>小测验</h2>
-<pre><code>1. 若k为整形，则while循环执行（  ）次。
+<pre><code>1. 若 k 为整形，则 while 循环执行（）次。
 
 k = 2;
-while(k = 0)
+while (k = 0)
 printf(&#34;%d&#34;, k);
 k--;
 printf(&#34;\n&#34;);
 
 A. 10   B. 1  C. 0  D. 无数次
 
-2. 执行下面程序片段的结果是（  ）
+2. 执行下面程序片段的结果是（）
 
 int x = 23;
 do {
   printf(&#34;%2d&#34;, x--);
-} while(!x);
+} while (!x);
 
-A. 打印出321      B. 打印出23
+A. 打印出 321      B. 打印出 23
 
 C. 不打印任何内容   D. 陷入死循环
 
-3.以下程序的输出结果是（  ）。
+3.以下程序的输出结果是（）。
 
 #include &#34;stdio.h&#34;
 void main() {
   int a, b;
-  for(a = 1, b = 1; a &lt;= 100; a++) {
-    if( b &gt;= 10)
+  for (a = 1, b = 1; a &lt;= 100; a++) {
+    if ( b &gt;= 10)
       break;
     b += 3;
   }
@@ -1315,24 +1364,24 @@ void main() {
 
 A. 101    B. 6    C. 5    D. 4
 
-4. 程序运行后的输出结果是（  ）
+4. 程序运行后的输出结果是（）
 
 #include &lt;stdio.h&gt;
 void main() {
   int i;
-  for( i = 0; i &lt; 10; i++);
+  for ( i = 0; i &lt; 10; i++);
     printf(&#34;%d&#34;, i);
 }
 
 A. 0            B. 123456789
 C. 0123456789   D. 10
 
-5.程序运行后的输出结果是（  ）
+5.程序运行后的输出结果是（）
 
 #include &lt;stdio.h&gt;
 void main() {
   int m, n;
-  for(m = 10, n = 0; m = 0; n++, m--);
+  for (m = 10, n = 0; m = 0; n++, m--);
   printf(&#34;n=%d\n&#34;, n);
 }
 
@@ -1344,23 +1393,23 @@ C. n=1               D. n=0
 <h2 is-upgraded>课后练习</h2>
 <ol type="1">
 <li>请理解本讲所列程序。</li>
-<li>试一试用循环来求10的阶乘(即10!)</li>
+<li>试一试用循环来求<code>10</code>的阶乘(即<code>10!</code>)</li>
 </ol>
 <h2 is-upgraded>课后趣味程序</h2>
 <pre><code>#include &#34;stdio.h&#34;
 #include &#34;unistd.h&#34;
-void main(){
+void main() {
 #include &#34;stdio.h&#34;
 #include &#34;unistd.h&#34;
-void main(){
+void main() {
   int i;
   for (i = 10; i &lt;= 100; i+=10) {
     // 进度条模拟
     // printf(&#34;\b=&gt;&#34;);
     // 模拟百分比
     printf(&#34;\rprogress: [%3d%%]&#34;, i);
-    // 需要特别注意的是，终端设备是行缓冲设备，即除非输出换行符\n或缓冲区已满，
-    // 否则printf()不会有任何输出；所以这里需要使用fflush(stdout)清除标准输出缓冲区，以立即输出缓冲区内容。
+    // 需要特别注意的是，终端设备是行缓冲设备，即除非输出换行符 \n 或缓冲区已满，
+    // 否则 printf() 不会有任何输出；所以这里需要使用 fflush(stdout) 清除标准输出缓冲区，以立即输出缓冲区内容。
     fflush(stdout);
     sleep(1); // 休眠1秒
   }
@@ -1380,48 +1429,49 @@ void main(){
 <li>循环总结</li>
 </ul>
 <h2 is-upgraded>循环+选择</h2>
-<p>有些问题需要通过循环和选择（判断）来进行处理，如判断一个数（&gt;=2)是否为素数（质数）的问题。</p>
+<p>有些问题需要通过循环和选择（判断）来进行处理，如判断一个数（<code>&gt;=2</code>)是否为素数（质数）的问题。</p>
 <h3 is-upgraded>判断是否为素数</h3>
-<p>素数的定义是只能被<code>1</code>和它自身整除的数。现假设这个数是<code>89</code>，我们的思路是从<code>2</code>开始除这个数，直到<code>88</code>，如果没有任何一个数被整除，则这个数即<code>89</code>就是素数，否则就不是。请看下面的程序：</p>
+<p>素数的定义是只能被<code>1</code>和它自身整除的数。现假设这个数是<code>89</code>，我们的思路是从<code>2</code>开始除这个数，直到<code>88</code>，如果没有任何一个数被整除，则这个数即<code>89</code>就是素数，否则就不是。</p>
+<p>请看下面的程序：</p>
 <pre><code>/**
  * 使用循环和选择结构来判断是否为素数
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int i, flag, n = 89;  // i用于计数和作为除数；flag用于表示是否为素数，规定1是0不是；n是要判断的数
+  int i, flag, n = 89;  // i 用于计数和作为除数；flag 用于表示是否为素数，规定 1 是，0 不是；n 是要判断的数
   flag = 1;     // 先假设这个数是素数，下面就会用循环进行验证
-  for(i = 2; i &lt; n; i++) {
-    if(n % i == 0) {  // 被整除了
+  for (i = 2; i &lt; n; i++) {
+    if (n % i == 0) {  // 被整除了
       flag = 0;  // 设置不是素数的标志
-      i = n + 1;     // 把i的值设置为比n大，那么将会退出循环
+      i = n + 1;     // 把i的值设置为比 n 大，那么将会退出循环
     }
   }
-  if( flag == 1) {
+  if ( flag == 1) {
     printf(&#34;%d is a prime number!\n&#34;, n);
-  }else {
+  } else {
     printf(&#34;%d is not a prime number!\n&#34;, n);
   }
 }
 </code></pre>
 <p>运行这个程序试试。</p>
-<aside class="warning"><p>✎ 思考一：上面的程序将要判断的数直接写到代码中了，你应该考虑让用户告诉程序判断哪个数。如何修正一下？<br>思考二：对于一个素数如11，按我们的算法需要从<code>2</code>开始直到<code>10</code>共9次循环判断。实际上，我们只需要从<code>2</code>到<code>11</code>的平方根（约为4）这么多次即可，因为可以保证<code>11</code>的平方根（约为4）以前的都不能整除的话，那么后面也不能整除（这是个数学问题，如何你没想明白暂时就放弃）。所以，我们的程序可以从算法上进行优化，即使用平方根函数<code>sqrt(11)</code>即可。要使用这个函数请使用<code>#include &#34;math.h&#34;</code>导入头文件。看看你是否能对上面的程序进行相应的修正以提高运行速度。</p>
+<aside class="warning"><p>✎ 思考一：上面的程序将要判断的数直接写到代码中了，你应该考虑让用户告诉程序判断哪个数。如何修正一下？<br>思考二：对于一个素数如<code>11</code>，按我们的算法需要从<code>2</code>开始直到<code>10</code>共9次循环判断。实际上，我们只需要从<code>2</code>到<code>11</code>的平方根（约为<code>4</code>）这么多次即可，因为可以保证<code>11</code>的平方根（约为<code>4</code>）以前的都不能整除的话，那么后面也不能整除（这是个数学问题，如何你没想明白暂时就放弃）。所以，我们的程序可以从算法上进行优化，即使用平方根函数<code>sqrt(11)</code>即可。要使用这个函数请使用<code>#include &#34;math.h&#34;</code>导入头文件。看看你是否能对上面的程序进行相应的修正以提高运行速度。</p>
 </aside>
-<aside class="special"><p>🌏 当你在网上支付的时候，你一定没想过我们的信息是否会被其他人截获。其实，我们的信息都是加密了的，即使被截获,他/她也不知道是什么内容（并且还不能伪造）。这个加密算法就是<a href="https://zh.wikipedia.org/wiki/RSA" target="_blank">RSA</a>，RSA算法运用了数学中&#34;两个大的素数（质数）相乘，难以在短时间内将其因式分解&#34;这么一套看似简单事实上真的是很困难的一个数学难题。另外，如果没有<code>RSA</code>，那么你可能听过的比特币、区块链等也无从谈起。</p>
+<aside class="special"><p>🌏 当你在网上支付的时候，你可能没意识到我们发出的信息或数据是否会被其他人截获。其实，我们的信息或数据都是加密了的，即使被截获,他/她也不知道是什么内容（并且还不能伪造）。这个加密算法就是<a href="https://zh.wikipedia.org/wiki/RSA" target="_blank">RSA</a>，<code>RSA</code>算法运用了数学中&#34;两个大的素数（质数）相乘，难以在短时间内将其进行因式分解&#34;这么一套看似简单而事实上真的是很困难的一个极大计算量的数学难题。另外，如果没有<code>RSA</code>，那么你可能听过的比特币、区块链等技术也无从谈起。</p>
 </aside>
-<h2 is-upgraded>求Fibonacci数列的前20项</h2>
-<p>Fibonacci数列的数学定义是：该数列前2项为1，从第3项开始的每一项都为其前两项之和。即：<code>1 1 2 3 5 8 13 21 ...</code></p>
+<h2 is-upgraded>求 Fibonacci 数列的前 20  项</h2>
+<p><code>Fibonacci</code>数列的数学定义是：该数列前<code>2</code>项为<code>1</code>，从第<code>3</code>项开始的每一项都为其前两项之和。即：<code>1 1 2 3 5 8 13 21 ...</code></p>
 <pre><code>/**
- * 使用循环和选择结构输出Fibonacci（1，1，2，3，5，8，13，21...）数列的前20项
+ * 使用循环和选择结构输出 Fibonacci（1，1，2，3，5，8，13，21...）数列的前 20 项
 **/
 #include &lt;stdio.h&gt;
-void main(){
+void main() {
   int f1, f2, f3, i;
-  f1 = f2 = 1;    // 初始第一项和第二项为1
+  f1 = f2 = 1;    // 初始第一项和第二项为 1
   printf(&#34;Fibonacci:\n%10d%10d&#34;, f1, f2);
-  for(i = 3;i &lt;= 20; i++){
+  for (i = 3;i &lt;= 20; i++) {
     f3 = f1 + f2;         // 将前两项求和得第三项
     printf(&#34;%10d&#34;, f3);   // 输出新项
-    if(i % 5 == 0) {      // 如果项数能被5整除则换行，即每行只输出5个数
+    if (i % 5 == 0) {     // 如果项数能被 5 整除则换行，即每行只输出 5 个数
       printf(&#34;\n&#34;);
     }
     f1 = f2;  // 原第二项变为第一项
@@ -1430,7 +1480,7 @@ void main(){
 }
 </code></pre>
 <p>运行试试，你也可以进行一些改变，如输出的项数、每行打印的个数等等</p>
-<aside class="special"><p>🌏 Fibonacci数列在现实中有非常多的应用，也称为黄金分割数列等。植物的叶序、海螺的纹路、建筑物的比例、Apple的logo等等都与之有关，可自行<a href="https://www.bilibili.com/video/av5172721/" target="_blank">查询一下</a>。</p>
+<aside class="special"><p>🌏 <code>Fibonacci</code>数列在现实中有非常多的应用，也称为黄金分割数列等。植物的叶序、海螺的纹路、建筑物的比例、<code>Apple</code>的<code>logo</code>等等都与之有关，可自行<a href="https://www.bilibili.com/video/av5172721/" target="_blank">查询一下</a>。</p>
 </aside>
 <p>黄金分割比例</p>
 <p class="image-container"><img alt="FB" src="img/1c6617cb9b3c4bdd.jpg"></p>
@@ -1443,69 +1493,70 @@ void main(){
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int i, flag, n = 89;  // i用于计数和作为除数；flag用于表示是否为素数，规定1是0不是；n是要判断的数
+  int i, flag, n = 89;  // i 用于计数和作为除数；flag 用于表示是否为素数，规定 1 是 0 不是；n 是要判断的数
   flag = 1;     // 先假设这个数是素数，下面就会用循环进行验证
-  for(i = 2; i &lt; n; i++) {
-    if(n % i == 0) {  // 被整除了
+  for (i = 2; i &lt; n; i++) {
+    if (n % i == 0) {  // 被整除了
       flag = 0;  // 设置不是素数的标志
-      break;     // 使用break直接退出循环，执行循环后的语句
+      break;     // 使用 break 直接退出循环，执行循环后的语句
     }
   }
-  if( flag == 1) {
+  if ( flag == 1) {
     printf(&#34;%d is a prime number!\n&#34;, n);
-  }else {
+  } else {
     printf(&#34;%d is not a prime number!\n&#34;, n);
   }
 }
 </code></pre>
 <p>运行这个程序，你会发现与以前相同。</p>
-<h3 is-upgraded>在[10,100]内找前5个能被3整除的数</h3>
+<h3 is-upgraded>在 [10,100] 内找前 5 个能被 3 整除的数</h3>
 <pre><code>/**
- * 使用循环和选择结构在[10,100]内找前5个能被3整除的数，找满后使用break退出循环
+ * 使用循环和选择结构在 [10,100] 内找前 5 个能被 3 整除的数，找满后使用 break 退出循环
 **/
 #include &lt;stdio.h&gt;
-void main(){
+void main() {
   int i, n = 0;
-  for(i = 10; i &lt;= 100; i++) {
-    if(i % 3 == 0) {
+  for (i = 10; i &lt;= 100; i++) {
+    if (i % 3 == 0) {
       n++;
       printf(&#34;No%d: %d\n&#34;, n, i);
     }
-    if(n == 5) {
+    if (n == 5) {
       break;
     }
   }
 }
 </code></pre>
-<aside class="special"><p>✍ 注意： break只能用在循环语句或switch语句中，程序其它地方不能出现！</p>
+<aside class="special"><p>✍ 注意： <code>break</code>只能用在循环语句或<code>switch</code>语句中，程序其它地方不能出现！</p>
 </aside>
 <h2 is-upgraded>多重循环</h2>
 <p>某些情况下，我们可能需要在循环中再使用循环，这就是循环的嵌套或称为多重循环。</p>
-<p>我们学过的如下代码将会打印出10个<code>*</code>号：</p>
-<pre><code>for(i = 1; i &lt;=10; i++) {
+<p>我们学过的如下代码将会打印出 10 个<code>*</code>号：</p>
+<pre><code>for (i = 1; i &lt;=10; i++) {
   printf(&#34;*&#34;);
 }
 </code></pre>
-<p>那么，我们把上面的代码放在另一个循环中，假设这个将循环5次，那么你应该能想到它将输出5×10共50个<code>*</code>号。</p>
+<p>那么，我们把上面的代码放在另一个循环中，假设这个将循环<code>5</code>次，那么你应该能想到它将输出 <code>5*10</code>共<code>50</code>个<code>*</code>号。</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   int i, j;  
   for (i = 1; i &lt;= 5; i++) {    // 外循环
-    for(j = 1; j &lt;= 10; j++) {  // 内循环
+    for (j = 1; j &lt;= 10; j++) {  // 内循环
       printf(&#34;*&#34;);
     }
   }
 }
 </code></pre>
-<p>你马上会想到，打印50个<code>*</code>不需要这样做！对的。不过我的要求是打印5行，每行10个：</p>
+<p>你马上会想到，打印<code>50</code>个<code>*</code>不需要这样做，用单层循环即可解决！</p>
+<p>对的。不过我的要求是打印<code>5</code>行，每行<code>10</code>个：</p>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   int i, j;  
-  for (i = 1; i &lt;= 5; i++) {    // 外循环控制行，此处将输出5行
-    for(j = 1; j &lt;= 10; j++) {  // 内循环控制列，此处将输出10列
+  for (i = 1; i &lt;= 5; i++) {     // 外循环控制行，此处将输出 5 行
+    for (j = 1; j &lt;= 10; j++) {  // 内循环控制列，此处将输出 10 列
       printf(&#34;*&#34;);
     }
-    printf(&#34;\n&#34;);               // 该语句在外循环中，表示每行打印10个*后回车
+    printf(&#34;\n&#34;);                // 该语句在外循环中，表示每行打印 10 个*后回车
   }
 }
 </code></pre>
@@ -1518,7 +1569,7 @@ void main(){
 <li>当至少循环一次时，我们使用<code>do while</code>循环;</li>
 <li><code>while, do-while, for</code>三种循环可互相嵌套，外层循环可包含两个以上内循环，但不能相互交叉。</li>
 </ol>
-<aside class="special"><p>✍ 注意： 本讲的内容非常重要，需要的时间也不会是2个课时，请根据自己的情况进行调整。</p>
+<aside class="special"><p>✍ 注意： 本讲的内容非常重要，需要的时间也不会是<code>2</code>个课时，请根据自己的情况进行调整。</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <ol type="1">
@@ -1534,22 +1585,22 @@ void main(){
 #include &lt;time.h&gt;
 #include &lt;stdlib.h&gt;
 void main() {
-  char bingo = &#39;n&#39;;  // bingo变量用于表明是否猜中，默认为没有
+  char bingo = &#39;n&#39;;  // bingo 变量用于表明是否猜中，默认为没有
   int randomNumber, yourGuess, times = 0;
   srand( (unsigned)time( NULL ) );  // 每次不一样的种子
-  randomNumber = rand()%100+1;      // 生成[1,100]之间的随机整数
+  randomNumber = rand()%100+1;      // 生成 [1,100] 之间的随机整数
   //printf(&#34;%d\n&#34;,randomNumber);
   printf(&#34;Please guess a number(1~100):&#34;);
-  while(bingo == &#39;n&#39;){
+  while (bingo == &#39;n&#39;) {
     scanf(&#34;%d&#34;, &amp;yourGuess);
     times++;
-    if(randomNumber &gt; yourGuess){
+    if (randomNumber &gt; yourGuess) {
       printf(&#34;It&#39;s greater than %d, try again:&#34;, yourGuess);
     } else if (randomNumber &lt; yourGuess) {
       printf(&#34;It&#39;s samller than %d, try again:&#34;, yourGuess);
     } else {
       printf(&#34;Bingo! You got %d in %d times!\n&#34;, randomNumber, times);
-      bingo = &#39;y&#39;;  // 猜中了，设置为y可退出循环
+      bingo = &#39;y&#39;;  // 猜中了，设置为 y 可退出循环
     }
   }  
 }
@@ -1558,12 +1609,12 @@ void main() {
 </aside>
 <h3 is-upgraded>看看你的机器运行有多快</h3>
 <pre><code>#include &#34;stdio.h&#34;
-void main(){
+void main() {
   int i, j, k;  
   for (i = 1; i &lt;= 100; i++) {
-    for(j = 1; j &lt;= 100; j++) {
-      for(k = 1; k &lt;= 100; k++) {
-        // 什么都不做，空循环100×100×100次。试着改大一点，你的CPU就会忙的。
+    for (j = 1; j &lt;= 100; j++) {
+      for (k = 1; k &lt;= 100; k++) {
+        // 什么都不做，空循环 100×100×100 次。试着改大一点，你的 CPU 就会忙的。
         // 所以我们一般不会嵌套许多的循环
         // 以此，大家也可以了解一下那些大计算量问题如模拟分子结构等是需要大型计算机以及分布式处理的
       }
@@ -1586,13 +1637,13 @@ void main(){
 <p>程序设计的三种结构我们已经讲述完毕，接下来我们谈谈穷举和迭代算法。</p>
 <h2 is-upgraded>穷举</h2>
 <p>所谓穷举或枚举，即利用计算机进行全部可能的运算，最后从中找出满足条件的情况。</p>
-<p><a href="../../c/c-experiment.html#1-p" target="_blank">棋歌教学网实验一中的第8题兑换硬币</a>即为穷举/枚举。<br>其它的如百钱买百鸡（有100块钱，小鸡1块，母鸡3块，公鸡5块，有多少买法），请自行编程验证。</p>
+<p><a href="../../c/c-experiment.html#1-p" target="_blank">棋歌教学网实验一中的第 8 题兑换硬币</a>即为穷举/枚举。<br>其它的如百钱买百鸡（有<code>100</code>块钱，小鸡<code>1</code>块，母鸡<code>3</code>块，公鸡<code>5</code>块，有多少买法），请自行编程验证。</p>
 <h3 is-upgraded>无重复数字的三位数有哪些</h3>
 <pre><code>/**
  * 穷举：无重复数字的三位数有哪些
 **/
 #include &lt;stdio.h&gt;
-void main(){
+void main() {
   int gw, sw, bw; // 代表个位、十位和百位
   for (bw = 1; bw &lt;= 9; bw++) {
     for (sw = 0; sw &lt;= 9; sw++) {
@@ -1608,12 +1659,12 @@ void main(){
 </code></pre>
 <aside class="warning"><p>✎ 试一试：如果希望你给出有多少个这样的三位数该如何处理？</p>
 </aside>
-<aside class="special"><p>✍ 暴力破解：我们常说的暴力破解，即是一种穷举法。如你的银行卡密码是数字的，且长度是6位，那么最多测试100万次即可搞定。所以这种情况下，登录网上银行的话，如果你错了3次，则该卡就锁定了。PS：某些骗子希望你打钱到某卡号上，那么你没事的话可以用该卡号进行登录，密码随便输入，3次就这个帐号锁了。是不是觉得有点成就？</p>
+<aside class="special"><p>✍ 暴力破解：我们常说的暴力破解，即是一种穷举法。如你的银行卡密码是数字的，且长度是<code>6</code>位，那么最多测试<code>100</code>万次即可搞定。所以这种情况下，银行规定如果你错了<code>3</code>次，则该卡就锁定了。<br>PS：某些骗子希望你打钱到某卡号上，那么你没事的话可以用该卡号进行登录，密码随便输入，<code>3</code>次就这个帐号锁了。是不是觉得有点成就？</p>
 </aside>
 <h2 is-upgraded>迭代</h2>
 <aside class="special"><p>✍：迭代是重复反馈过程的活动，其目的通常是为了逼近所需目标或结果。 每一次对过程的重复称为一次&#34;迭代&#34;，而每一次迭代得到的结果会作为下一次迭代的初始值。 重复执行一系列运算步骤，从前面的量依次求出后面的量的过程。</p>
 </aside>
-<p>我们前面学习的<code>Fibonacci</code>数列，以及<a href="../../c/c-experiment.html#1-p" target="_blank">棋歌教学网实验一课后练习中的第4题——任意输入一个正整数，倒序输出</a>即为迭代。</p>
+<p>我们前面学习的<code>Fibonacci</code>数列，以及<a href="../../c/c-experiment.html#1-p" target="_blank">棋歌教学网实验一课后练习中的第4题——任意输入一个正整数，倒序输出</a>即为迭代，请自行学习。</p>
 
 
       </google-codelab-step>
@@ -1628,36 +1679,41 @@ void main(){
 <li>数组的排序</li>
 </ul>
 <h2 is-upgraded>数组的概念</h2>
-<p>到目前为止，我们的程序所处理的数据量比较少，所以我们通过定义有限的几个变量就能解决问题。<br>但经常的，程序需要处理大量的数据，如：我需要对全班64个同学C语言期末考试的成绩进行处理（总分、平均分之类的）。</p>
-<aside class="special"><p>✍：这个问题有同学马上会想到用Excel解决。不错，但Excel能够进行处理，支撑它的仍然是后面的程序！所以，还是回到程序设计的思路吧。</p>
+<p>到目前为止，我们的程序所处理的数据量比较少，所以我们通过定义有限的几个变量就能解决问题。</p>
+<p>但经常的，程序需要处理大量的数据，如：我需要对全班<code>64</code>个同学C语言期末考试的成绩进行处理（总分、平均分之类的）。</p>
+<aside class="special"><p>✍：这个问题有同学马上会想到用<code>Excel</code>解决。不错，但<code>Excel</code>能够进行处理，支撑它的仍然是背后的程序！所以，还是回到程序设计的思路吧。</p>
 </aside>
-<p>先不说如何处理，你首先遇到的问题是我的程序该如何存放这64个成绩？<br>按我们目前的能力，只有定义64个变量如：<code>float c1, c2, c3, ..., c64;</code>。看起来似乎也没什么不可。<br>但假如需要处理全校8964个同学的C语言成绩怎么办？且这些变量之间还没有什么关系可循。<br>所以，我们需要一次能定义多个变量且还有关系的新的数据结构——数组。</p>
-<aside class="special"><p>✍：简单的说，数组就是一组相同数据类型的数的集合。这组数的数据类型就是我们常见的<code>int float char</code>等。</p>
+<p>先不说如何处理，你首先遇到的问题是我的程序该如何存放这<code>64</code>个成绩？</p>
+<p>按我们目前的能力，只有定义<code>64</code>个变量如：<code>float c1, c2, c3, ..., c64;</code>。看起来似乎也没什么不可。</p>
+<p>但假如我们的程序需要处理全校<code>8964</code>个同学的<code>C</code>语言成绩怎么办？且这些变量之间还没有什么关系可循。</p>
+<p>所以，我们需要一次能定义多个变量且还有关系的新的数据结构——数组。</p>
+<aside class="special"><p>✍：简单的说，数组就是一组相同数据类型的数的集合。这组数的数据类型可以是我们常见的<code>int</code>，<code>float</code>，<code>char</code>等。</p>
 </aside>
 <h2 is-upgraded>数组的定义</h2>
-<p>前面我们已经知道，要使用变量，我们必须首先进行定义。使用数组也是一样的，格式如下：</p>
+<p>前面我们已经知道，要使用变量，我们必须首先进行定义。</p>
+<p>使用数组也是一样的，格式如下：</p>
 <pre><code>数据类型 数组名[长度]
 int score[5]
 </code></pre>
 <p>说明：</p>
 <ol type="1">
-<li>定义一个数组需要说明数组的名称、类型和长度。如<code>int score[5]</code>就定义了一个score数组，整型的，长度为5。注意<code>[]</code>是数组的标志，其内的常量值表示数组的长度即数组元素的个数。</li>
-<li>具体的含义是：我们定义了score数组，长度为5，相当于一次性定义了5个整型的变量，分别是<code>score[0], score[1], score[2],score[3],score[4]</code>。这5个变量<code>[]</code>后的数字称为元素的下标，也即元素的位置。规定从0开始。</li>
+<li>定义一个数组需要说明数组的名称、类型和长度。如<code>int score[5]</code>就定义了一个名为<code>score</code>的数组，整型的，长度为<code>5</code>。注意<code>[]</code>是数组的标志，其内的常量值表示数组的长度即数组元素的个数。</li>
+<li>具体的含义是：我们定义了<code>score</code>数组，长度为<code>5</code>，相当于一次性定义了<code>5</code>个整型的变量，分别是<code>score[0]</code>，<code>score[1]</code>，<code>score[2]</code>，<code>score[3]</code>，<code>score[4]</code>。这<code>5</code>个变量<code>[]</code>后的数字称为元素的下标，也即元素的位置。规定从<code>0</code>开始。</li>
 <li>这样的定义将在内存中获得连续的一片空间，如下图：</li>
 </ol>
 <p class="image-container"><img alt="array" src="img/22fe163022984a22.jpg"></p>
 <aside class="special"><p>✍：对应的，以前的变量也称为简单变量。数组也可以和简单变量一起进行定义，如：<code>float salary, sex, score[89];</code></p>
 </aside>
-<aside class="warning"><p>✎：思考： <code>int a[10];</code>是一个定义数组的语句，那么定义了多少个数组元素/变量，有a[10]这个元素/变量吗？</p>
+<aside class="warning"><p>✎：思考： <code>int a[10];</code>是一个定义数组的语句，那么定义了多少个数组元素/变量，有<code>a[10]</code>这个元素/变量吗？</p>
 </aside>
 <h2 is-upgraded>数组的初始化</h2>
 <p>与简单变量类似，定义数组时我们也可以赋予其一些初始值即初始化。如：</p>
 <pre><code>int score[6] = { 99, 98, 64, 89, 100, 52 };
 </code></pre>
-<p>以上语句定义了整型的score数组，且将 99 等6个成绩分别进行赋值。<br>相当于 score[0] = 99, score[1] = 98, ..., score[5] = 52</p>
+<p>以上语句定义了整型的<code>score</code>数组，且将<code>99</code>，<code>98</code>等成绩分别初始化给对应的数组元素。<br>相当于 <code>score[0] = 99</code>，<code>score[1] = 98</code>，<code>...</code>，<code>score[5] = 52</code></p>
 <pre><code>int a[10] = { 1, 2 };
 </code></pre>
-<p>如果值少于元素的个数，则依次赋值，其余自动赋值为0。<br>以上语句相当于 a[0] = 1, a[1] = 2, a[2] ~ a[9]都为0</p>
+<p>如果值少于元素的个数，则依次赋值，其余自动赋值为<code>0</code>。<br>以上语句相当于 <code>a[0] = 1</code>，<code>a[1] = 2</code>，<code>a[2] ~ a[9]</code>都为<code>0</code></p>
 <pre><code>int a[] = { 1, 2, 3, 4 };
 </code></pre>
 <p>定义时如果没有长度，那么就必须有初始化值，且数组的长度由值的个数来确定</p>
@@ -1671,28 +1727,28 @@ int score[5]
  * 对数组的处理一般都与循环相关
 **/
 #include &lt;stdio.h&gt;
-void main(){
-  int a[5] = { 66, 77, 88, 99, 100 }, i;  // score是存放成绩的数组，i用来作为循环变量和数组的下标
+void main() {
+  int a[5] = { 66, 77, 88, 99, 100 }, i;  // score 是存放成绩的数组，i 用来作为循环变量和数组的下标
   for (i = 0; i &lt; 5; i++) {
     printf(&#34;%d &#34;, a[i]);
   }
 }
 </code></pre>
-<p>运行试试。也可前往 <a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序的执行。</p>
+<p>运行试试。<br>请前往 <a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序的执行。</p>
 <aside class="warning"><p>✎ 思考一下，如果我希望反向输出数组中的数据该如何修正？</p>
 </aside>
-<p>还是回到我们处理C语言成绩那个问题。以下为方便起见，我们假设只有5个同学且成绩是整数。</p>
-<h3 is-upgraded>输入成绩并打印出来</h3>
+<p>还是回到我们处理<code>C</code>语言成绩那个问题。以下为简单起见，我们假设只有<code>5</code>个同学且成绩是整数。</p>
+<h3 is-upgraded>输入 5 个同学的成绩并打印出来</h3>
 <pre><code>/**
  * 利用数组输入成绩并打印出来
  * 对数组的处理一般都与循环相关
 **/
 #include &lt;stdio.h&gt;
-void main(){
-  int score[5], i;  // score是存放成绩的数组，i用来作为循环变量和数组的下标
+void main() {
+  int score[5], i;  // score 是存放成绩的数组，i 用来作为循环变量和数组的下标
   for (i = 0; i &lt; 5; i++) {
     printf(&#34;Please input No:%d student&#39;s score:&#34;, i + 1);
-    scanf(&#34;%d&#34;, &amp;score[i]); // 请注意，通过i的变化（0～4）将成绩存放到score数组的各个元素中
+    scanf(&#34;%d&#34;, &amp;score[i]); // 请注意，通过 i 的变化（0～4）将成绩分别存放到 score 数组的各个元素中
   }
   printf(&#34;===Score Table===\n&#34;);
   for (i = 0; i &lt; 5; i++) {
@@ -1707,8 +1763,8 @@ void main(){
  * 对数组的处理一般都与循环相关
 **/
 #include &lt;stdio.h&gt;
-void main(){
-  int score[5] = { 64, 77, 89, 99, 100 }, i, total = 0; // total用来存放总分，需要初始化为0.
+void main() {
+  int score[5] = { 64, 77, 89, 99, 100 }, i, total = 0; // total 用来存放总分，需要初始化为 0
   float ave;  // 存放平均分
   for (i = 0; i &lt; 5; i++) {
     total = total + score[i];
@@ -1717,16 +1773,16 @@ void main(){
   printf(&#34;Average is: %.2f\n&#34;, ave);
 }
 </code></pre>
-<aside class="warning"><p>✎ 试一试，total不初始化为0会发生什么？为什么？<br>✎ 思考：为何<code>total / 5.0</code>而不是<code>total / 5</code>?</p>
+<aside class="warning"><p>✎ 试一试，<code>total</code>不初始化为<code>0</code>会发生什么？为什么？<br>✎ 思考：为何<code>total / 5.0</code>而不是<code>total / 5</code>?</p>
 </aside>
 <aside class="warning"><p>✎ 试一试，你能否改写程序，让其能统计有多少个同学没及格？<br>✎ 试一试，你能否改写程序，输出最高分并指出是第几个同学？</p>
 </aside>
 <h2 is-upgraded>数组的排序</h2>
 <p>将数组中的值进行排序方法非常多<a href="https://zhuanlan.zhihu.com/p/57088609" target="_blank">算法+动画</a>，如下是容易理解的选择排序（从小到大）的示意图</p>
 <p class="image-container"><img alt="select" src="img/1e44e9c474ce2079.webp"></p>
-<p>基本思路是:第一轮在10个数中找最小的，放到0号位; 第二轮在剩下9个数中找最小的，放到1号位；依次类推。<br>程序请参见（<a href="../../c/c-experiment.html#4" target="_blank">棋歌教学网实验四第3题</a>）</p>
+<p>基本思路是:第一轮在<code>10</code>个数中找最小的，放到<code>0</code>号位; 第二轮在剩下<code>9</code>个数中找最小的，放到<code>1</code>号位；依次类推。<br>程序请参见（<a href="../../c/c-experiment.html#4" target="_blank">棋歌教学网实验四第 3 题</a>）</p>
 <h2 is-upgraded>课后练习</h2>
-<p>请理解本讲所列程序。<br>掌握并理解棋歌教学网实验四1、2、3题即可。</p>
+<p>请理解本讲所列程序。<br>掌握并理解棋歌教学网实验四 1、2、3 题即可。</p>
 
 
       </google-codelab-step>
@@ -1746,10 +1802,10 @@ void main(){
 <p>答案是：仍然使用数组这种数据结构来存取及操作，不过此时我们称存放字符型数据的数组为字符数组而已（对应的，前述存放数值型数据的就称为数值数组）。同样的，字符数组的每个元素也只能存放一个字符。</p>
 <p>要在程序中处理多个字符即字符串，我们需要首先定义字符数组。</p>
 <h3 is-upgraded>字符数组定义</h3>
-<p>与数值数组定义类似，我们需要给出3个要素：类型、数组名、数组长度。如：</p>
-<pre><code>// 定义了一个字符型的数组，名为name，长度为20（即有20个元素，可存放最多20个字符的姓名）
+<p>与数值数组定义类似，我们仍需要给出 3 个要素：类型、数组名、数组长度。如：</p>
+<pre><code>// 定义了一个字符型的数组，名为 name，长度为 20（即有 20个元素，可存放最多 20个字符的姓名）
 char name[20];
-// 定义了一个字符型的数组，名为password，长度为64（即有64个元素，可存放最多64个字符的密码）
+// 定义了一个字符型的数组，名为 password，长度为 64（即有 64个元素，可存放最多 64个字符的密码）
 char password[64];
 </code></pre>
 <p>以上两个语句就分别定义了两个字符数组。</p>
@@ -1759,19 +1815,19 @@ char password[64];
 <h3 is-upgraded>初始化</h3>
 <p>与数值数组相同，在定义字符数组时也可以进行初始化即给数组预先给定一些数据。</p>
 <h4 is-upgraded>方式一</h4>
-<pre><code>// 将字符C到字符s共11个字符依次放到数组name的元素name[0]到name[10]中
-// 数组的长度仍然为20, 其余部分系统自动填充一个特殊字符&#39;\0&#39;
+<pre><code>// 将字符 C 到字符 s 共 11 个字符依次放到数组 name 的元素 name[0] 到 name[10] 中
+// 数组的长度仍然为 20, 其余部分系统自动填充一个特殊字符&#39;\0&#39;
 char name[20] = { &#39;C&#39;, &#39;o&#39;, &#39;r&#39;, &#39;o&#39;, &#39;n&#39;, &#39;a&#39;, &#39;V&#39;, &#39;i&#39;, &#39;r&#39;, &#39;u&#39;, &#39;s&#39; };
 </code></pre>
 <h4 is-upgraded>方式二</h4>
 <p>某些情况下我们不希望指定数组的长度，而由给定的数据来决定数组的长度（即存储空间大小），那么我们在定义和初始化时可以省略长度。</p>
-<pre><code>// 将字符C到字符s共11个字符依次放到数组name的元素name[0]到name[10]中
-// 数组的长度现在为11, 但注意：系统将自动在最后一个字符s后填充一个特殊字符&#39;\0&#39;表明字符串结束
+<pre><code>// 将字符 C 到字符 s 共 11 个字符依次放到数组 name 的元素 name[0] 到 name[10] 中
+// 数组的长度现在为 11, 但注意：系统将自动在最后一个字符 s 后填充一个特殊字符&#39;\0&#39;表明字符串结束
 char name[] = { &#39;C&#39;, &#39;o&#39;, &#39;r&#39;, &#39;o&#39;, &#39;n&#39;, &#39;a&#39;, &#39;V&#39;, &#39;i&#39;, &#39;r&#39;, &#39;u&#39;, &#39;s&#39; };
 </code></pre>
 <h4 is-upgraded>方式三</h4>
 <p>方式二仍不够简洁，我们可以直接使用字符串进行初始化。</p>
-<pre><code>//与方式二的初始化效果相同
+<pre><code>// 与方式二的初始化效果相同
 char name[] = &#34;CoronaVirus&#34;;
 char password[] = &#34;DaSiWoYeBuShuo&#34;;
 </code></pre>
@@ -1782,17 +1838,17 @@ char password[] = &#34;DaSiWoYeBuShuo&#34;;
 </aside>
 <h2 is-upgraded>字符数组的输入与输出</h2>
 <p>要在程序中进行输入或输出时，请注意在程序首部引入标准输入输出头文件：</p>
-<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
 </code></pre>
 <h3 is-upgraded>字符数组的输出</h3>
 <h4 is-upgraded>方式一</h4>
 <p>在<code>printf()</code>函数中使用 <code>%c</code> 格式符，在辅以循环一个一个将数组中的字符输出到屏幕。</p>
 <p>这种方式不灵活，一般我们比较少用。</p>
 <pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
-void main(){
+void main() {
   int i;
   char str[] = &#34;I hate C Language&#34;;
-  for(i = 0; i &lt; 9; i++) {    // 必须要知道该字符串的准确长度
+  for (i = 0; i &lt; 9; i++) {    // 必须要知道该字符串的准确长度
     printf(&#34;%c&#34;, str[i]);
   }
   printf(&#34;\n&#34;);
@@ -1803,8 +1859,8 @@ void main(){
 <p>在<code>printf()</code>函数中使用 <code>%s</code> 格式符，将数组中的字符整体（字符串）输出到屏幕。</p>
 <aside class="special"><p>✍ 注意：字符串以<code>&#39;\0&#39;</code>作为结束标志，且输出时使用数组名即可！</p>
 </aside>
-<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
-void main(){
+<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+void main() {
   char str[] = &#34;I Hate C Language&#34;;
   printf(&#34;%s\n&#34;, str);
 }
@@ -1813,8 +1869,8 @@ void main(){
 </aside>
 <h4 is-upgraded>方式三</h4>
 <p>使用<code>puts()</code>函数，更简单方便！</p>
-<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
-void main(){
+<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+void main() {
   char str[] = &#34;I hate C Language&#34;;
   puts(str);
 }
@@ -1824,11 +1880,11 @@ void main(){
 <p>在<code>scanf()</code>函数中使用 <code>%c</code> 格式符，在辅以循环一个一个接收从键盘输入的字符。</p>
 <aside class="special"><p>✍ 这种方式不灵活，一般我们比较少用。</p>
 </aside>
-<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
-void main(){
+<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+void main() {
   int i;
   char str[20];
-  for(i = 0; i &lt; 20; i++){    //必须要输入指定的个数
+  for (i = 0; i &lt; 20; i++) {    //必须要输入指定的个数
     scanf(&#34;%c&#34;, str[i]);
   }
   puts(str);
@@ -1836,10 +1892,10 @@ void main(){
 </code></pre>
 <h4 is-upgraded>方式二</h4>
 <p>在<code>scanf()</code>函数中使用 <code>%s</code> 格式符，将键盘输入的字符作为整体（字符串）存放到数组中。</p>
-<aside class="special"><p>✍ 1. 输入时使用数组名即可（没有使用我们前面强调的<code>&amp;</code>符号，原因在指针章节再讲述）<br>✍ 2. 输入时以空格、制表符（tab）或回车作为输入结束的标志<br>✍ 3. 结束标志<code>&#39;\0&#39;</code>系统将自动添加到末尾<br>✍ 4. 输入的字符个数不能超出数组的长度，否则会发生不可知问题</p>
+<aside class="special"><p>✍ 1. 输入时使用数组名即可（没有使用我们前面强调的<code>&amp;</code>符号，原因在指针章节再讲述）<br>✍ 2. 输入时以空格、制表符（<code>tab</code>）或回车作为输入结束的标志<br>✍ 3. 结束标志<code>&#39;\0&#39;</code>系统将自动添加到末尾<br>✍ 4. 输入的字符个数不能超出数组的长度，否则会发生不可知问题</p>
 </aside>
-<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
-void main(){
+<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+void main() {
   char str[20];
   scanf(&#34;%s&#34;, str);
   puts(str);
@@ -1849,7 +1905,7 @@ void main(){
 <h4 is-upgraded>方式三</h4>
 <p>假如我们的输入的确需要包含有空格或制表符如<code>What&#39;s Your name�</code>��这样的字符串，那么就使用<code>gets()</code>函数。该函数只以回车作为字符串输入完成的标志。</p>
 <pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
-void main(){
+void main() {
   char str[20];
   gets(&#34;%s&#34;, str);
   puts(str);
@@ -1857,17 +1913,17 @@ void main(){
 </code></pre>
 <p>现在试试输入含有空格或制表符的字符串，看看输出是否正常。</p>
 <h2 is-upgraded>字符串处理函数</h2>
-<p>在实际编程中，对字符串的操作很常见，如两个字符串的比较、连接两个字符串、复制一个字符串等。所以C语言给我们提供了不少已经定义好的函数供直接调用。要使用这些函数，需要引入字符串相关的头文件：</p>
-<pre><code>#include &#34;string.h&#34; //引入字符串头文件
+<p>在实际编程中，对字符串的操作很常见，如两个字符串的比较、连接两个字符串、复制一个字符串等。所以<code>C</code>语言给我们提供了不少已经定义好的函数供直接调用。要使用这些函数，需要引入字符串相关的头文件：</p>
+<pre><code>#include &#34;string.h&#34; // 引入字符串头文件
 </code></pre>
 <h3 is-upgraded>字符串长度函数 strlen()</h3>
 <p>统计字符串的长度（<code>length</code>），以<code>&#39;\0&#39;</code>为结束标志。</p>
-<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
-#include &#34;string.h&#34; //引入字符串头文件
-void main(){
+<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+#include &#34;string.h&#34; // 引入字符串头文件
+void main() {
   char name[] = &#34;CoronaVirus&#34;;
   int length;
-  length = strlen(name);    //strlen函数将从头开始统计数组中的字符个数，直到遇到&#39;\0&#39;
+  length = strlen(name);    // strlen 函数将从头开始统计数组中的字符个数，直到遇到 &#39;\0&#39;
   printf(&#34;Length: %d\n&#34;, length);
 }
 </code></pre>
@@ -1875,12 +1931,12 @@ void main(){
 </aside>
 <h3 is-upgraded>字符串复制函数 strcpy()</h3>
 <p>将后一个字符串复制（<code>copy</code>）到前一个中。请注意，字符串复制不能使用赋值运算（<code>=</code>）进行！</p>
-<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
-#include &#34;string.h&#34; //引入字符串头文件
-void main(){
+<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+#include &#34;string.h&#34; // 引入字符串头文件
+void main() {
   char firstName[] = &#34;Corona&#34;;
   char secondName[] = &#34;Virus&#34;;
-  strcpy(firstName, secondName);  //将secondName复制到firstName中
+  strcpy(firstName, secondName);  // 将 secondName 复制到 firstName 中
   puts(firstName);
 }
 </code></pre>
@@ -1900,12 +1956,12 @@ void main(){
 </aside>
 <h3 is-upgraded>字符串连接函数 strcat()</h3>
 <p>去掉前一个字符串的结束标志<code>\0</code>，然后将后一个字符串连接（<code>catenate</code>）到前一个字符串后。</p>
-<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
-#include &#34;string.h&#34; //引入字符串头文件
-void main(){
+<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+#include &#34;string.h&#34; // 引入字符串头文件
+void main() {
   char firstName[50] = &#34;Corona&#34;;
   char secondName[] = &#34;Virus&#34;;
-  strcat(firstName, secondName);  //将secondName链接到firstName中
+  strcat(firstName, secondName);  //将 secondName 链接到 firstName 中
   puts(firstName);
 }
 </code></pre>
@@ -1914,33 +1970,33 @@ void main(){
 <h3 is-upgraded>字符串比较函数 strcmp()</h3>
 <p>在实际应用中，我们通常需要比较（<code>compair</code>）两个字符串，如查找是否有这个用户，验证口令是否一致，或者对姓名进行排序等等。</p>
 <p><code>strcmp()</code>函数将逐字符比较前后两个字符串中字符的<code>ASCII</code>码值。如果两个字符串完全相同则结果为<code>0</code>，前面字符串大则结果为<code>1</code>，前面字符串小则结果为<code>-1</code>。请看如下程序片段进行理解：</p>
-<pre><code>strcmp(&#34;ABC&#34;, &#34;ABC&#34;); //结果为0
-strcmp(&#34;ABC&#34;, &#34;BBC&#34;); //结果为-1
-strcmp(&#34;aBC&#34;, &#34;BBC&#34;); //结果为1
-strcmp(&#34;ABCD&#34;, &#34;ABC&#34;); //结果为1
+<pre><code>strcmp(&#34;ABC&#34;, &#34;ABC&#34;);  // 结果为 0
+strcmp(&#34;ABC&#34;, &#34;BBC&#34;);  // 结果为 -1
+strcmp(&#34;aBC&#34;, &#34;BBC&#34;);  // 结果为 1
+strcmp(&#34;ABCD&#34;, &#34;ABC&#34;); // 结果为 1
 </code></pre>
 <p>至此，本章节学习完毕。</p>
 <h2 is-upgraded>小测验</h2>
-<pre><code>单项选择题
-1．以下错误的语句是(    )。
+<pre><code>【单项选择】
+1．以下错误的语句是（）。
 A、char word[] = {&#39;C&#39;,&#39;h&#39;,&#39;i&#39;,&#39;n&#39;,&#39;a&#39;};
 B、char word[] = {&#34;China&#34;};
 C、char word[] = &#34;China&#34;;
 D、char word[] = &#39;China&#39;;
 
-2．以下对C语言字符数组的描述错误的是(    )。
+2．以下对 C 语言字符数组的描述错误的是（）。
 A、字符数组可以存放字符串
 B、字符数组中的字符串可以进行整体输入输出
-C、可以在赋值语句中通过赋值运算符&#34;=&#34;对字符数组整体赋值
-D、字符数组的下标从0开始
+C、可以在赋值语句中通过赋值运算符 &#34;=&#34; 对字符数组整体赋值
+D、字符数组的下标从 0 开始
 
-3．已知 char str1[10], str2[] = {&#34;China&#34;}; 则在程序中能将字符串&#34;China&#34;赋给数组str1的正确语句是(   )。
+3．已知 char str1[10], str2[] = {&#34;China&#34;}; 则在程序中能将字符串 &#34;China&#34; 赋给数组 str1 的正确语句是（）。
 A、str1 = {&#34;China&#34;};
 B、strcpy(str1, str2);
 C、str1 = str2;
 D、strcpy(str2, str1);
 
-4．以下程序的执行结果是(    )。
+4．以下程序的执行结果是（）。
 #include &#34;stdio.h&#34;
 void main() {
   char s[] = {&#39;a&#39;,&#39;b&#39;,&#39;\0&#39;,&#39;c&#39;,&#39;\0&#39;};
@@ -1951,7 +2007,7 @@ B、ab
 C、ab c
 D、以上都不对
 
-5．已知 char c1[] = {&#34;abcd&#34;}; char c2[] = {&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;}; 则下列叙述正确的是(    )。
+5．已知 char c1[] = {&#34;abcd&#34;}; char c2[] = {&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;}; 则下列叙述正确的是（）。
 A、数组c1和数组c2等价
 B、数组c1和数组c2的长度相同
 C、数组c1的长度大于数组c2的长度
@@ -1961,38 +2017,39 @@ D、以上都不对
 </aside>
 <p>【程序填空】</p>
 <p>有一个管理系统，需要输入正确的口令才能进入。</p>
-<p>现假设正确口令是<code>DaSiWoYeBuShuo</code>，我们可以使用相关的字符串处理函数，模拟提示用户输入口令，<br>然后进行比较，如果正确则输出<code>Yes</code>，否则输出<code>No</code>。</p>
-<p>程序大致如下：</p>
+<p>现假设正确口令是<code>DaSiWoYeBuShuo</code>，我们可以使用相关的字符串处理函数，模拟提示用户输入口令，</p>
+<p>然后进行比较，如果正确则输出<code>Yes</code>，否则输出<code>No</code>。</p>
+<p>请进行程序填空满足以上要求：</p>
 <pre><code>#include &#34;stdio.h&#34;
 #include &#34;string.h&#34;
-void main(){
+void main() {
   char correctPassword[] = &#34;DaSiWoYeBuShuo&#34;;
   char yourPassword[50];
   printf(&#34;Please input your password:&#34;);
-  _________________________;         // 填空 1
-  if( ________________________ ) {   // 填空 2
+  _________________________;          // 填空 1
+  if ( ________________________ ) {   // 填空 2
     printf(&#34;Yes, Please!&#34;);
   } else {
     printf(&#34;No, Get out!&#34;);
   }
 }
 </code></pre>
-<aside class="warning"><p>✉ 参考答案:<br>1：gets(yourPassword)或scanf(&#34;%s&#34;, yourPassword)<br>2：strcmp(correctPassword, yourPassword) == 0</p>
+<aside class="warning"><p>✉ 参考答案:<br>1：<code>gets(yourPassword)</code> 或 <code>scanf(&#34;%s&#34;, yourPassword)</code><br>2：<code>strcmp(correctPassword, yourPassword) == 0</code></p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
-<p>请掌握<a href="../../c/c-experiment.html#4" target="_blank">棋歌教学网实验四</a>第7、8、10题程序</p>
-<p>请阅读如下的凯撒加密程序</p>
+<p>请掌握<a href="../../c/c-experiment.html#4" target="_blank">棋歌教学网实验四</a>第 7、8、10 题程序</p>
+<p>请阅读如下的凯撒加密程序：</p>
 <pre><code>/**
  * 凯撒加密，即将字符变为其后方固定位置的字符，以致看不明白意思
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  // plainText是没加密的明文口令，cypherText存放加密的密文口令  
+  // plainText 存放没加密的明文口令，cypherText 存放加密的密文口令  
   char plainText[]=&#34;DaShiWoYeBuShuo&#34;, cypherText[20];
   int i = 0;
-  while(plainText[i] != &#39;\0&#39;) {
-     // 将明文的每个字符变为其后方第2个字符，如a变为c，S变为U等
+  while (plainText[i] != &#39;\0&#39;) {
+     // 将明文的每个字符变为其后方第 2 个字符，如 a 变为 c，S 变为 U 等
     cypherText[i] = plainText[i] + 2;
     i++;
   }
@@ -2001,7 +2058,7 @@ void main() {
   puts(cypherText);
 }
 </code></pre>
-<aside class="special"><p>🌏 恺撒密码（Caesar cipher）<br>或称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。 它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。 例如，当偏移量是3的时候，所有的字母A将被替换成D，B变成E，以此类推。<br>请参阅<a href="http://www.atoolbox.net/Tool.php?Id=778" target="_blank">在线加密/解密</a></p>
+<aside class="special"><p>🌏 恺撒密码（Caesar cipher）<br>或称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。 它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。 例如，当偏移量是<code>3</code>的时候，所有的字母<code>A</code>将被替换成<code>D</code>，<code>B</code>变成<code>E</code>，以此类推。<br>请参阅<a href="http://www.atoolbox.net/Tool.php?Id=778" target="_blank">在线加密/解密</a></p>
 </aside>
 <aside class="warning"><p>✎ 思考1：可否修改一下程序，使得可以让用户随意输入明文？<br>✎ 思考2：程序中退出循环后，为何要给<code>cypherText</code>添加<code>\0</code>？<br>✎ 思考3：思考解密的关键是什么，如何解密？</p>
 </aside>
@@ -2019,11 +2076,16 @@ void main() {
 <li>函数的分类</li>
 </ul>
 <h2 is-upgraded>函数的引入</h2>
-<p>现在再来回想一下我们编写的程序，你会发现我们所有的代码都在<code>main</code>函数的<code>{}</code>花括号中。<br>是的，我们说过，C语言程序是由函数构成的，有且只能有一个<code>main</code>函数，它是程序执行的入口和出口。<br>我们还说过，编写程序基本就是三部曲，即：获得初始数据、使用算法进行处理、输出结果。<br>对于简单的问题我们可以把这三部曲都写在<code>main</code>函数中，对对于复杂的、大型的问题，我们可能需要将其进行模块化处理。<br>也即，我们可以把某些代码（一般是完成某项功能的代码）单独放到一个自己定义的函数中，然后在<code>main</code>函数中调用即可。<br>仅此而已。<br>利用函数进行模块化是一个解决问题的方法论问题。下面是对汽车生产的论述，同样也适用于软件开发领域。</p>
+<p>现在再来回想一下我们编写的程序，你会发现我们所有的代码都在<code>main</code>函数的<code>{}</code>花括号中。</p>
+<p>是的，我们说过，<code>C</code>语言程序是由函数构成的，有且只能有一个<code>main</code>函数，它是程序执行的入口和出口。<br>我们还说过，编写程序基本就是三部曲，即：获得初始数据、使用算法进行处理、输出结果。</p>
+<p>对于简单的问题我们可以把这三部曲都写在<code>main</code>函数中，对对于复杂的、大型的问题，我们可能需要将其进行模块化处理。<br>也即，我们可以把某些代码（一般是完成某项功能的代码）单独放到一个自己定义的函数中，然后在<code>main</code>函数中调用即可。</p>
+<p>仅此而已。</p>
+<p>利用函数进行模块化是一个解决问题的方法论问题。下面是对汽车生产的论述，同样也适用于软件开发领域。</p>
 <aside class="special"><p>🌏 流水线 Vs 模块化<br>&#34;福特的生产线将会死去。&#34;奥迪公司负责生产和物流的董事瓦特尔说：&#34;这种流水线线只有始终生产一样的产品时，才具有意义。&#34;<br>现在的客户想要的正相反，需求越来越多样化。然而时下汽车生产方式的窘境是，当你需要预定一辆蓝色的带有导航的车型版本时，汽车公司需要收集到足够多的订单后才能安排在某一个批次进行批量生产。大多数时候，汽车企业并不提供更多个性化的配置供选择。<br>1913年，亨利福特在他位于底特律的汽车工厂中引入了生产流水线，奠定了现代工业文明的基础。这种生产模式背后的理念就是&#34;规模效应&#34;，降低产品的品类，提升产品的制造速度快速供给市场，通过规模降低成本，通过低价格扩大市场份额，反过来再次降低成本。<br>由于流水线生产方式的引入，导致当时福特汽车生产能力是世界上所有汽车制造公司的总和。当时，市场上一辆车子的售价大约为000-3000美金，福特&#34;T型车&#34;直接把价格降到了850美金，这种割喉式的价格战导致&#34;T型车&#34;占据90%的市场份额。为了提高产线的运转速度，当时的&#34;T型车&#34;只有一种颜色——黑色。<br>流水线生产的最大问题是所有的操作环节均互相&#34;耦合&#34;，任何一个环节的错误都可能造成整条产线的停顿。<br>模块化组装消灭了流水线，把汽车制造的环节拆分成200来个互相独立的流程，每个生产流程都有一个单独的生产车间。任何一辆汽车，在完成某一个部件的组装之后，可去往任意一个有空余产能的车间，排队和调度通过中央电脑系统控制。每一个个性化订单都会电脑记录，安排生产，并清楚地知道这辆车目前在哪个车间，预计需要多少时间能够开出产线。<br>在这个系统里面，可以允许无数个不同型号、配置的车型在同一时间段进行生产。而不必像在原来的生产线中那样，每一个批次只能生产相同型号和配置的车型，哪怕加装配置都会造成后面车型的排队等待。为了生产不同的车型，需要切换生产线，包括不同的夹具，匹配不同的零部件供应。每一次产线的停止都意味着巨大的产能损失。</p>
 </aside>
 <h2 is-upgraded>函数定义的三要素</h2>
-<p>要使用函数，那么我们就需要先定义函数。<br>定义函数有三个要素：带一个<code>(){}</code>的函数名、函数的类型、函数的参数：</p>
+<p>要使用函数，那么我们就需要先定义函数。</p>
+<p>定义函数有三个要素：带一个<code>() {}</code>的函数名、函数的类型、函数的参数：</p>
 <pre><code>返回值类型 函数名(参数) {
   函数的代码
 }
@@ -2036,14 +2098,15 @@ void main() {
 <p>说明：</p>
 <ul>
 <li>函数的名称符合命名规则，做到见名知义</li>
-<li>圆括号<code>()</code>中定义函数要接收的参数，可以有 0 个和多个</li>
-<li>函数名前是函数的返回值类型如 int、float等，如果没有返回值则写 void</li>
+<li>圆括号<code>()</code>中定义函数要接收的参数，可以有<code>0</code>个和多个</li>
+<li>函数名前是函数的返回值类型如<code>int</code>、<code>float</code>等，如果没有返回值则写<code>void</code></li>
 <li>然后花括号<code>{}</code>中是函数的代码，即函数要做些什么</li>
 </ul>
 <p>如果没能理解，不要急，请看下面的实例。</p>
 <h2 is-upgraded>无/有返回值函数及其使用</h2>
 <h3 is-upgraded>无返回值函数</h3>
-<p>即该函数执行后不会返回任何值给调用方，需要在函数名前使用 <code>void</code>关键字（还记得<code>main</code>函数前面的<code>void</code>吗？）<br>如我们需要在屏幕上打印两只猫：</p>
+<p>即该函数执行后不会返回任何值给调用方，需要在函数名前使用 <code>void</code>关键字（还记得<code>main</code>函数前面的<code>void</code>吗？）</p>
+<p>如我们需要在屏幕上打印两只猫：</p>
 <pre><code>/**
  * 利用函数打印两只猫
 **/
@@ -2073,7 +2136,7 @@ void main() {
 **/
 #include &#34;stdio.h&#34;
 
-int GaussSum() {  // 主要int，表明该函数要返回给调用方一个整数
+int GaussSum() {  // 返回类型为 int，表明该函数要返回给调用方一个整数
   int sum;
   sum = (1 + 100) * 50;
   return sum;     // 有返回值的函数必须使用 return 返回值
@@ -2084,10 +2147,11 @@ void main() {
   printf(&#34;Gauss answered: is %d\n&#34;, GaussSum());   // 调用自定义函数，得到一个整型的结果
 }
 </code></pre>
-<aside class="special"><p>✍ 注意：有返回值的函数名前必须说明返回值的类型，且在函数体中需要使用 return 返回某个对应的值</p>
+<aside class="special"><p>✍ 注意：有返回值的函数名前必须说明返回值的类型，且在函数体中需要使用<code>return</code>返回某个对应的值</p>
 </aside>
 <h2 is-upgraded>无/有参数函数及其使用</h2>
-<p>前面介绍的两个自定义函数都是没有参数的示例，即函数后面的圆括号<code>()</code>是空的。<br>有时候，我们需要给函数提供一些初始的数据，那么就需要传递参数给函数，就需要在圆括号<code>()</code>进行说明有几个参数、是什么类型的。</p>
+<p>前面介绍的两个自定义函数都是没有参数的示例，即函数后面的圆括号<code>()</code>是空的。</p>
+<p>有时候，我们需要给函数提供一些初始的数据，那么就需要传递参数给函数，就需要在圆括号<code>()</code>进行说明有几个参数、是什么类型的。</p>
 <h3 is-upgraded>打印指定个数的猫</h3>
 <pre><code>/**
  * 打印指定个数的猫
@@ -2096,7 +2160,7 @@ void main() {
 
 void printCat(int m) {        // m 就是函数要接收的整型参数，称为形式参数，简称形参
   int i;
-  for(i = 1; i &lt;= m; i++) {
+  for (i = 1; i &lt;= m; i++) {
     printf(&#34;    /\\_/\\\n&#34;);
     printf(&#34;   ( o o )\n&#34;);
     printf(&#34;   =( I )=\n&#34;);
@@ -2137,15 +2201,15 @@ void main() {
 </code></pre>
 <aside class="warning"><p>✎ 试一试：你能否修改为在三个数中求最大值？你能否修改为求最小值？</p>
 </aside>
-<h3 is-upgraded>使用函数判断是否为润年</h3>
+<h3 is-upgraded>使用函数判断是否为闰年</h3>
 <pre><code>/**
- * 使用函数判断是否为润年
- * 满足润年的条件是：
- * 能被4整除但不能被100整除(普通润年）；或者能被400整除（世纪润年）
+ * 使用函数判断是否为闰年
+ * 满足闰年的条件是：
+ * 能被4整除但不能被 100 整除(普通闰年）；或者能被 400 整除（世纪闰年）
 **/
 #include &#34;stdio.h&#34;
 
-int isLeapYear(int year) {   // 返回一个整数（1或者0代表是或否），接收要判断的年份
+int isLeapYear(int year) {   // year 接收要判断的年份，返回一个整数 result（1 代表是，0 代表否），
   int result;
   if ((year % 4 == 0 &amp;&amp; year % 100 != 0) || year % 400 ==0) {
     result = 1;
@@ -2159,7 +2223,7 @@ void main() {
   int n;
   printf(&#34;Please input a year:&#34;);
   scanf(&#34;%d&#34;, &amp;n);
-  if (isLeapYear(n)) {  // 调用函数，得到结果要么1, 要么0
+  if (isLeapYear(n)) {  // 调用函数，得到结果要么 1, 要么 0
     printf(&#34;%d is leap year!\n&#34;, n);
   } else {
     printf(&#34;%d is not leap year!\n&#34;, n);
@@ -2182,30 +2246,30 @@ void main() {
    A) max(a, b);
    B) max(3, a+b);
    C) max(3, 5);
-   D) int  max(int a , int b);
+   D) int max(int a , int b);
 
 2. 以下正确的函数原型形式是:（）
-    A) float  fun(int x, int)
-    B) float  fun(int x, y)
-    C) float  fun(int x, int y)
-    D) float  fun(int , int )
+    A) float fun(int x, int)
+    B) float fun(int x, y)
+    C) float fun(int x, int y)
+    D) float fun(int , int )
 
 3. 下列函数定义形式正确的是（）。
-    A) int  f(int x ; int y)      B) int  f(int x, y)
-    C) int  f(int x , int y)      D) int  f(x, y:int)
+    A) int f(int x ; int y)      B) int f(int x, y)
+    C) int f(int x , int y)      D) int f(x, y:int)
 
 4. 一个函数的返回值由（）确定。
-    A) return语句中的表达式      B) 调用函数的类型
+    A) return 语句中的表达式      B) 调用函数的类型
     C) 系统默认的类型            D) 被调用函数的类型
 
 5. 函数调用语句 f(x, a, 64);  中，所含的实参个数是:（）
-    A) 1	     B) 2         C) 3		  D) 4
+    A) 1    B) 2    C) 3     D) 4
 
 </code></pre>
 <aside class="warning"><p>✉ 参考答案: DCCDC</p>
 </aside>
 <h2 is-upgraded>课后练习</h2>
-<p>请理解本讲所列程序。<br>请练习并掌握 <a href="../../c/c-experiment.html#2" target="_blank">棋歌教学网实验二中的4个程序</a></p>
+<p>请理解本讲所列程序。<br>请练习并掌握 <a href="../../c/c-experiment.html#2" target="_blank">棋歌教学网实验二中的 4 个程序</a></p>
 
 
       </google-codelab-step>
@@ -2217,16 +2281,16 @@ void main() {
 <li>指针的定义和初始化</li>
 <li>指针的使用</li>
 </ul>
-<aside class="special"><p>✍ 请注意：指针是 C 语言的重点和难点，是瑞士军刀，也是双刃剑。我们只进行简要的学习。</p>
+<aside class="special"><p>✍ 请注意：指针是<code>C</code>语言的重点和难点，是瑞士军刀，也是双刃剑。我们当前只进行简要的学习。</p>
 </aside>
 <h2 is-upgraded>指针的概念</h2>
 <h3 is-upgraded>内存空间</h3>
 <p>当前，计算机的体系结构及运行方式都是冯诺伊曼定义下来的，即：计算机由计算器、控制器、存储器、输入设备、输出设备这五大部件构成，任何程序运行都必须加载到内存中。</p>
-<aside class="special"><p>✍ 想一想：计算机启动到底在干什么？我们双击 VSCode 程序的图标发生了什么？为什么程序没保存就会丢失？</p>
+<aside class="special"><p>✍ 想一想：计算机启动到底在干什么？我们双击<code>VSCode</code>程序的图标发生了什么？为什么程序没保存就会丢失？</p>
 </aside>
 <p>既然任何程序要运行都必须在操作系统的管理下进驻内存，那么，内存空间的大小就应该是衡量一台计算机性能的重要指标之一。</p>
-<p>看看你的计算机硬件参数，你会发现当前我们的 PC 一般都会有4G/8G/16G 字节的容量（移动设备如手机一般要少一些）。</p>
-<aside class="special"><p>✍ 请注意区分内存和外存！一般你的外存如硬盘有500G/1T的容量，容量远高于内存，速度远低于内存。</p>
+<p>看看你的计算机硬件参数，你会发现当前我们的<code>PC</code>一般都会有<code>4G/8G/16G</code>字节的容量（移动设备如手机一般要少一些）。</p>
+<aside class="special"><p>✍ 请注意区分内存和外存！一般你的外存如硬盘有<code>500G/1T</code>的容量，容量远高于内存，速度远低于内存。</p>
 </aside>
 <h3 is-upgraded>地址 - 指针</h3>
 <p>以字节为单位/单元的内存空间是非常多的，类似一栋大楼有很多的房间我们需要对这些房间进行编号一样，为方便管理/存取，我们也需要对这些内存单元进行编号，这些编号就称为内存地址。</p>
@@ -2237,12 +2301,12 @@ void main() {
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int x = 89, y;  // 程序运行时将分配两个内存空间单元并标记为 x 和 y，其中 x在分配后马上放入89
+  int x = 89, y;  // 程序运行时将分配两个内存空间单元并标记为 x 和 y，其中 x 在分配后马上放入 89
   y = 64;
   printf(&#34;x and y&#39;s value:&#34;);
-  printf(&#34;%d, %d\n&#34;, x, y);     // 直接使用 x和y，将输出x，y变量即内存空间的内容即值
+  printf(&#34;%d, %d\n&#34;, x, y);     // 直接使用 x 和 y，将输出 x，y 变量即内存空间的内容即值
   printf(&#34;x and y&#39;s address:&#34;);
-  printf(&#34;%ld, %ld\n&#34;, &amp;x, &amp;y);   // 使用 &amp; 运算符，将输出x，y变量即内存空间的地址。ld 表示以长整型输出。
+  printf(&#34;%ld, %ld\n&#34;, &amp;x, &amp;y);   // 使用 &amp; 运算符，将输出 x，y 变量即内存空间的地址。ld 表示以长整型输出。
 }
 </code></pre>
 <p>运行该程序，你会发现程序将把 <code>x</code> 和<code>y</code>变量在内存空间的编号即地址打印出来了。</p>
@@ -2251,30 +2315,30 @@ void main() {
 <p>看如下的程序片段你应该有进一步的认识了：</p>
 <pre><code>int age;
 printf(&#34;Please input your age:&#34;);
-scanf(&#34;%d&#34;, &amp;age);  // 从键盘接收一个整数，将它放入 age这个变量中。实际上我们提供的是 age这个变量的地址！
+scanf(&#34;%d&#34;, &amp;age);  // 从键盘接收一个整数，将它放入 age 这个变量中。实际上我们提供的是 age 这个变量的地址！
 </code></pre>
 <aside class="warning"><p>✎ 思考：再次运行程序，或者在不同的计算机运行该程序，你应该会发现地址即编号不同了。为什么？</p>
 </aside>
-<aside class="special"><p>✍ 指针：在 C语言中，我们就把内存单元的编号即地址称为指针！</p>
+<aside class="special"><p>✍ 指针：在<code>C</code>语言中，我们就把内存单元的编号即地址称为指针！</p>
 </aside>
 <h2 is-upgraded>直接访问和间接访问</h2>
 <p>前面看到，这些内存单元的地址即指针是很长的数字，并且，不同环境运行时，这些地址/指针还不相同。</p>
 <p>其实我们也不大关心这些地址/指针具体的值是多少，那提出这个指针的概念干什么？</p>
 <p>我们已经知道，通过变量的名称可以直接得到其值或者操作该变量，这称为 <strong>直接访问</strong> 。</p>
 <p>我们也可以通过变量的地址即指针来得到其值或者操作该变量，这称为 <strong>间接访问</strong> 。</p>
-<p>比如现实生活中，你对我说需要 64块钱，我可以直接给你 64块，这叫直接获取；我也可以回答你：64块在我的上衣右下口袋中，告诉你地址/指针，这叫间接获取。</p>
+<p>比如现实生活中，你对我说需要<code>64</code>块钱，我可以直接给你<code>64</code>块，这叫直接获取；我也可以回答你：<code>64</code>块在我的上衣右下口袋中，告诉你地址/指针，这叫间接获取。</p>
 <p>又比如你想在网上看《肖申克的救赎》这部电影，我可以直接拷贝给你，也可以告诉你网址。</p>
-<p>我拥有了你的地址即指针，也可认为我指向了你，那么我就能找到你，操作你，</p>
+<p>我拥有了你的地址即指针，也可认为我指向了你，那么我就能找到你，操作你。</p>
 <aside class="special"><p>✍ 间接访问：即通过指针进行操作是一种非常强大、灵活的操作。</p>
 </aside>
 <h2 is-upgraded>指针的定义和初始化</h2>
 <p>我们知道，一般的变量用来存放整数、小数或字符类型的数据。</p>
 <p>如果一个变量是指针，就表明该变量只能存放地址。定义格式如下：</p>
 <pre><code>// 类型 *变量名;
-int *p1;   // 定义了整型指针变量p1（注意*作为标志，以与一般变量区分），且 p1只能指向一个整型变量即只能存放一个整型变量的地址
-float *p2; // 定义了浮点型指针变量p2（注意*作为标志，以与一般变量区分），且 p2只能指向一个浮点型变量即只能存放一个浮点型变量的地址
+int *p1;   // 定义了整型指针变量 p1（注意 * 作为标志，以与一般变量区分），且 p1 只能指向一个整型变量即只能存放一个整型变量的地址
+float *p2; // 定义了浮点型指针变量 p2（注意 * 作为标志，以与一般变量区分），且 p2 只能指向一个浮点型变量即只能存放一个浮点型变量的地址
 </code></pre>
-<aside class="special"><p>✍ 注意： 定义变量时，变量名前的 * 号表明其为一个指针变量，只能存放地址！</p>
+<aside class="special"><p>✍ 注意： 定义变量时，变量名前的<code>*</code>号表明其为一个指针变量，该变量只能存放地址！</p>
 </aside>
 <p>运行并分析如下程序：</p>
 <pre><code>/**
@@ -2282,12 +2346,12 @@ float *p2; // 定义了浮点型指针变量p2（注意*作为标志，以与一
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int x, *px;  // 定义了整型变量 x和整型指针变量 px
+  int x, *px;  // 定义了整型变量 x 和整型指针变量 px
   x = 64;
-  printf(&#34;x: %d\n&#34;, x);  // 常规做法，输出 x的值
-  px = &amp;x;  // 将 x的地址放入 px中，即 px指向了变量x
-  printf(&#34;px: %ld\n&#34;, px);  // 输出变量 px的值，实际就是变量 x的地址
-  printf(&#34;x: %d\n&#34;, *px);    // 在指针变量px前使用 *号操作，将输出 px指向单元中的值，因为当前 px指向 x，所以就是x的值
+  printf(&#34;x: %d\n&#34;, x);  // 常规做法，输出 x 的值
+  px = &amp;x;  // 将 x 的地址放入 px 中，即 px 指向了变量 x
+  printf(&#34;px: %ld\n&#34;, px);  // 输出变量 px 的值，实际就是变量 x 的地址
+  printf(&#34;x: %d\n&#34;, *px);    // 在指针变量 px 前使用 * 号操作，将输出 px 指向单元中的值，因为当前 px 指向 x，所以就是 x 的值
 }
 </code></pre>
 <p>可前往<a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>直观的查看！</p>
@@ -2299,16 +2363,16 @@ void main() {
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int x, *px = &amp;x;  // 定义了整型变量 x和整型指针变量 px，同时将 x的地址放入 px中，即 px指向了变量x（初始化）
-  scanf(&#34;%d&#34;, &amp;x);  // 常规做法，从键盘接收一个整数放到 &amp;x这个地址中。实际上就是放到 x变量中
+  int x, *px = &amp;x;  // 定义了整型变量 x 和整型指针变量 px，同时将 x 的地址放入 px 中，即 px 指向了变量 x（初始化）
+  scanf(&#34;%d&#34;, &amp;x);  // 常规做法，从键盘接收一个整数放到 &amp;x 这个地址中。实际上就是放到 x 变量中
   printf(&#34;x is %d\n&#34;, x);
-  scanf(&#34;%d&#34;, px);  // 使用指针，从键盘接收一个整数放到 px指向的这个地址中。因为当前 px指向x变量，实际上就是放到 x变量中
-  printf(&#34;x is :%d\n&#34;, *px);    // 在指针变量px前使用 *号操作，将输出 px指向单元中的值，因为当前 px指向 x，所以就是x的值
+  scanf(&#34;%d&#34;, px);  // 使用指针，从键盘接收一个整数放到 px 指向的这个地址中。因为当前 px 指向 x 变量，实际上就是放到 x 变量中
+  printf(&#34;x is :%d\n&#34;, *px);    // 在指针变量 px 前使用 * 号操作，将输出 px 指向单元中的值，因为当前 px 指向 x，所以就是 x 的值
 }
 </code></pre>
 <aside class="warning"><p>✎ 思考：上面代码中第二个<code>scanf</code>语句中，变量<code>px</code>前为何不需要<code>&amp;</code>符号？</p>
 </aside>
-<aside class="special"><p>✍ 注意：在指针 p指向 x的情况下即<code>p = &amp;x</code>：<code>*p</code>与<code>x</code>等价，<code>p</code>与<code>&amp;x</code>等价。至此，你应该明白为何我们以前一直强调<code>scanf</code>输入语句中，变量名前为何需要使用<code>&amp;</code>符号的问题了。</p>
+<aside class="special"><p>✍ 注意：在指针<code>p</code>指向<code>x</code>的情况下即<code>p = &amp;x</code>：<code>*p</code>与<code>x</code>等价，<code>p</code>与<code>&amp;x</code>等价。至此，你应该明白为何我们以前一直强调<code>scanf</code>输入语句中，变量名前为何需要使用<code>&amp;</code>符号的问题了。</p>
 </aside>
 <h2 is-upgraded>指针的使用</h2>
 <p>下面我们通过两个简单的程序来了解指针的使用。</p>
@@ -2318,10 +2382,10 @@ void main() {
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int x = 89, y = 64, *px, *py;  // 定义了整型变量 x和 y并初始化，再定义了整型指针变量 px和 py
+  int x = 89, y = 64, *px, *py;  // 定义了整型变量 x 和 y 并初始化，再定义了整型指针变量 px 和 py
   int sum, diff;  // 定义 和差 变量
-  px = &amp;x;  // 将 x的地址放入 px中，即 px指向了变量x
-  py = &amp;y;  // 将 y的地址放入 py中，即 py指向了变量y
+  px = &amp;x;  // 将 x 的地址放入 px 中，即 px 指向了变量 x
+  py = &amp;y;  // 将 y 的地址放入 py 中，即 py 指向了变量 y
   sum = (*px) + (*py);  // 为清晰加了圆括号
   diff = (*px) - (*py);
   printf(&#34;%d + %d = %d\n&#34;, x, y, sum);
@@ -2335,15 +2399,15 @@ void main() {
 **/
 #include &#34;stdio.h&#34;
 void main() {
-  int x, y, *max;  // 定义了整型变量 x和 y，再定义了整型指针变量 max用来指向大的那个数
+  int x, y, *max;  // 定义了整型变量 x 和 y，再定义了整型指针变量 max 用来指向大的那个数
   printf(&#34;Please input two integer number:&#34;);
   scanf(&#34;%d%d&#34;, &amp;x, &amp;y);
   if (x &gt; y) {
-    max = &amp;x;   // 如果 x大，max指向 x
+    max = &amp;x;   // 如果 x 大，max指向 x
   } else {
-    max = &amp;y;   // 如果 y大，max指向 y
+    max = &amp;y;   // 如果 y 大，max指向 y
   }
-  printf(&#34;Max is : %d\n&#34;, *max);  // 输出 max指向变量的值
+  printf(&#34;Max is : %d\n&#34;, *max);  // 输出 max 指向变量的值
 }
 </code></pre>
 <aside class="special"><p>✍ 注意：不要使用未赋值的指针即空指针，或者强行赋予非法的地址即非法指针！</p>
@@ -2355,14 +2419,14 @@ void main() {
 #include &#34;stdio.h&#34;
 void main() {
   int *p;
-  printf(&#34;%d\n&#34;, *max);  // 输出 max指向变量的值，但此时 max未指向任何确定的单元或不知道指向什么内存空间，称为空指针，危险操作，系统将停止该程序运行
-  p = 8964;  // 代替操作系统让 max指向编号为 8964的这个内存单元，但这个内存单元不是属于你的，危险操作！
+  printf(&#34;%d\n&#34;, *max);  // 输出 max 指向变量的值，但此时 max 未指向任何确定的单元或不知道指向什么内存空间，称为空指针，危险操作，系统将停止该程序运行
+  p = 8964;  // 代替操作系统让 max 指向编号为 8964 的这个内存单元，但这个内存单元不是属于你的，危险操作！
   printf(&#34;%d\n&#34;, *max);  //  危险操作，系统将停止该程序运行
 }
 </code></pre>
 <h2 is-upgraded>小测验</h2>
 <pre><code>选择题
-1. 为让指针 px指向 int型变量 x， 下列正确的是（）：
+1. 为让指针 px 指向 int 型变量 x， 下列正确的是（）：
    A. int *px = x, x;     B. int *px = &amp;x, x;
    C. int x, *px = &amp;x;    D. int *px, x; *px = &amp;x;
 
@@ -2405,12 +2469,12 @@ void main() {
 </aside>
 <h2 is-upgraded>数组作函数参数</h2>
 <p>前面的课程中我们学习了函数。你有可能会发现，我们传递给函数的参数个数非常有限。</p>
-<p>如果你有比较多的数据，比如100个整数需要交给函数去处理，那么怎么办？</p>
-<p>按照以前的做法，我们得为函数定义100个形参，这样是不科学的！</p>
+<p>如果你有比较多的数据，比如<code>100</code>个整数需要交给函数去处理，那么怎么办？</p>
+<p>按照以前的做法，我们得为函数定义<code>100</code>个形参，这样是不科学的！</p>
 <p>另外，你也会想到我们处理大量数据的时候不是使用了数组这种数据结构吗？我们可不可以将一个数组传给函数呢？</p>
 <p>是的，我们可以这样非常简单方便的传递数组。那么，我们是把数组中各个元素都一一传递给函数吗？</p>
 <p>不是的，因为在内存中，数组元素是占用的一片连续的空间，所以我们只需要传递这个数组的首地址/指针即可！函数得到这个首地址后就相当于得到了这个数组。</p>
-<aside class="special"><p>✍ 注意：C语言规定，数组名也是数组的首地址/指针，即与数组的首元素的地址等价！</p>
+<aside class="special"><p>✍ 注意：<code>C</code>语言规定，数组名也是数组的首地址/指针，即与数组的首元素的地址等价！</p>
 </aside>
 <p>我们用下面的程序为例帮助大家进行理解：</p>
 <pre><code>/**
@@ -2421,7 +2485,7 @@ void main() {
 // 输入数据的函数
 void inputData(int a[], int n) {
   int i;
-  for(i = 0; i &lt; n; i++) {
+  for (i = 0; i &lt; n; i++) {
     printf(&#34;Please input data, No.%d:&#34;, i + 1);
     scanf(&#34;%d&#34;, &amp;a[i]);
   }
@@ -2430,8 +2494,8 @@ void inputData(int a[], int n) {
 int findMax(int a[], int n) {
   int i, max;
   max = a[0]; // 假设数组的第一个元素是最大的
-  for(i = 1; i &lt; n; i++) { // 将假设的最大值max依次与数组中的其它元素比较
-    if(max &lt; a[i]) {       // 如果后面的元素比max大，修正max，始终保证max中保存的是最大值 
+  for (i = 1; i &lt; n; i++) { // 将假设的最大值 max 依次与数组中的其它元素比较
+    if (max &lt; a[i]) {       // 如果后面的元素比 max 大，修正 max，始终保证 max 中保存的是最大值 
       max = a[i];
     }
   }
@@ -2439,49 +2503,50 @@ int findMax(int a[], int n) {
 }
 // 主函数
 void main() {
-  int data[10], max;        // 定义10个元素的整型数组data，max用来保存最大值
+  int data[10], max;        // 定义 10 个元素的整型数组 data，max 用来保存最大值
   inputData(data, 10);      // 调用自定义函数进行数据输入，传递数组的首地址及数组的大小
   max = findMax(data, 10);  // 调用自定义函数找最大值，传递数组的首地址及数组的大小
   printf(&#34;MAX: %d\n&#34;, max); // 输出最大值
 }
 </code></pre>
-<aside class="special"><p>✍ 注意：请一定留意上面程序中的三个函数都共用一个数组。这也是为何在 main函数中定义的数组，在 inputData函数中可以向该数组输入数据，也在 findMax函数中可以得到的数据原因。</p>
+<aside class="special"><p>✍ 注意：请一定留意上面程序中的三个函数都共用一个数组。这也是为何在<code>main</code>函数中定义的数组，在<code>inputData</code>函数中可以向该数组输入数据，也在<code>findMax</code>函数中可以得到的数据原因。</p>
 </aside>
-<aside class="warning"><p>✎ 思考：data 是数组名，也是首地址，那么我们可不可以传递<code>&amp;data[0]</code>呢？</p>
+<aside class="warning"><p>✎ 思考：<code>data</code>是数组名，也是数组的首地址，上面的程序我们进行了使用。那么我们可不可以传递<code>&amp;data[0]</code>呢？</p>
 </aside>
 <h2 is-upgraded>递归函数</h2>
 <p>所谓递归函数，就是函数自己调用自己。</p>
 <p>从字面意思来看，递——是传递，归——是回归，那么从传递开始回归到传递的开始，就是从一个地方出发，回到了出发的地方，就完成了一次循环，而不断重复这个循环，就是——递归。</p>
 <p>这里有一个耳熟能详的递归故事：</p>
 <p>从前有一座山，山里有一座庙，庙里有一个老和尚和一个小和尚，他们在说故事，故事是什么呢？从前有座山，山里有座庙，庙里有一个老和尚和一个小和尚，他们在说故事，故事是什么呢？从前有座山，山里有一座庙......等等</p>
-<p>你马上应该想到，这种方式如果没有特别处理的话，有一个问题就是会无限执行下去。</p>
-<p>是的，我们必须在满足某种条件的情况下才继续调用，否则就停止。</p>
+<p>你马上应该想到，这种方式如果没有特别处理的话，故事就没完没了。</p>
+<p>是的，我们必须在满足某种条件的情况下才继续调用（传递），否则应该返回了（回归）。</p>
 <p>有些问题天然就是递归的，如求阶乘。阶乘的数学定义是：当 <code>n = 0</code>时，结果是 <code>1</code>，否则结果为<code>n*(n-1)!</code>，对于<code>(n-1)!</code>又重复刚才的过程。</p>
 <p>请看以下程序：</p>
 <pre><code>/**
- * 在main函数中输入一个正整数，要求在1～20之间，否则重新输入
- * 由fact函数使用递归的方式求出该正整数的阶乘
- * 在main函数中输出结果。
+ * 在 main 函数中输入一个正整数，要求在 1～20 之间，否则重新输入
+ * 由 fact 函数使用递归的方式求出该正整数的阶乘
+ * 在 main 函数中输出结果。
 **/
 #include &#34;stdio.h&#34;
 // 求阶乘的递归函数
-int fact(int n){
-    if(n == 0){     // 当n为1时返回
+int fact(int n) {
+    if (n == 0) {     // 当 n 为 1 时返回
         return 1;
-    }else{
+    } else {
         return n * fact(n - 1);  // 递归调用
     }
 }
-void main(){
+void main() {
     int n;
-    do{
+    do {
         printf(&#34;Please input a integer number(1 ~ 20):&#34;);
         scanf(&#34;%d&#34;, &amp;n);
-    }while(n &lt; 1 || n &gt; 20);
+    }while (n &lt; 1 || n &gt; 20);
     printf(&#34;%d! = %ld\n&#34;, n, fact(n));
 }
 </code></pre>
-<p>请仔细分析程序的执行过程。<br>某些问题必须得用递归进行求解如：<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E5%BD%A2" target="_blank">分形问题</a>、<a href="https://zh.wikipedia.org/wiki/%E6%B1%89%E8%AF%BA%E5%A1%94" target="_blank">汉诺塔问题</a>等，有兴趣的同学可参阅其它资料。</p>
+<p>请仔细分析程序的执行过程。</p>
+<p>某些问题必须得用递归进行求解。如：<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E5%BD%A2" target="_blank">分形问题</a>、<a href="https://zh.wikipedia.org/wiki/%E6%B1%89%E8%AF%BA%E5%A1%94" target="_blank">汉诺塔问题</a>等，有兴趣的同学可参阅其它资料。</p>
 <p>本讲所列程序了解即可。</p>
 
 
@@ -2499,10 +2564,10 @@ void main(){
 <p>所谓变量的作用域，是指我们定义的变量在哪个范围是有效的。</p>
 <p>这是什么意思呢？比如如下代码：</p>
 <pre><code>#include &#34;stdio.h&#34;
-void fun(){  
+void fun() {  
   printf(&#34;%d %d\n&#34; , x, y);
 }
-void main(){
+void main() {
   int x = 6, y = 4;
   fun();
   printf(&#34;%d %d\n&#34; , x, y);
@@ -2515,12 +2580,12 @@ void main(){
 <p>我们以前都是在某函数中定义变量的，这些变量的作用范围仅限于该函数内部，这就是局部变量。</p>
 <p>将上面程序修改如下：</p>
 <pre><code>#include &#34;stdio.h&#34;
-void fun(){
-  int x = 6, y = 4;   // 与 main中的 x 和 y 变量相互独立，互不影响
+void fun() {
+  int x = 6, y = 4;   // 与 main 中的 x 和 y 变量相互独立，互不影响
   printf(&#34;%d %d\n&#34; , x, y);
 }
-void main(){
-  int x = 2, y = 3;   // 与 fun中的 x 和 y 变量相互独立，互不影响
+void main() {
+  int x = 2, y = 3;   // 与 fun 中的 x 和 y 变量相互独立，互不影响
   fun();
   printf(&#34;%d %d\n&#34; , x, y);
 }
@@ -2530,12 +2595,12 @@ void main(){
 <p>我们修改上面的代码如下：</p>
 <pre><code>#include &#34;stdio.h&#34;
 int x = 6, y = 4;   // 定义在函数外部，是全局变量
-void fun(){
+void fun() {
   printf(&#34;%d %d\n&#34; , x, y);
   x = 8;
   y = 9;
 }
-void main(){
+void main() {
   fun();
   printf(&#34;%d %d\n&#34; , x, y);
 }
@@ -2546,15 +2611,15 @@ void main(){
 <p>如下所示：</p>
 <pre><code>#include &#34;stdio.h&#34;
 int x = 6, y = 4;   // 定义在函数外部，是全局变量
-void fun(){
-  int x = 1;  // fun函数中也定义了x变量，且为局部变量，因此，fun函数就会使用这个变量
-  printf(&#34;%d %d\n&#34; , x, y);  // 输出1 4
+void fun() {
+  int x = 1;  // fun 函数中也定义了 x 变量，且为局部变量，因此，fun 函数就会使用这个变量
+  printf(&#34;%d %d\n&#34; , x, y);  // 输出 1 4
   x = 8;  // 改变的是局部变量的值
   y = 9;  // 改变的是全局变量的值
 }
-void main(){
+void main() {
   fun();
-  printf(&#34;%d %d\n&#34; , x, y);  // 将输出6 4
+  printf(&#34;%d %d\n&#34; , x, y);  // 将输出 6 4
 }
 </code></pre>
 <p>运行并分析上面这个程序进行理解。</p>
@@ -2562,27 +2627,27 @@ void main(){
 <p>对于变量的存储类型，是指变量的生命期，当前我们不需要深入的了解，明白如下两个程序之间的差异即可。</p>
 <h3 is-upgraded>自动存储类型变量</h3>
 <pre><code>#include &#34;stdio.h&#34;
-void func(){
-    int x = 64;   // x是自动存储类型，进入func函数时分配空间，该函数执行完毕时x消失
+void func() {
+    int x = 64;   // x是自动存储类型，进入 func 函数时分配空间，该函数执行完毕时 x 消失
     printf(&#34;%d\n&#34;, x);
-    x = 89;  // 虽然看似将x的值改变了，但函数执行完毕后x已经不存在了。
+    x = 89;  // 虽然看似将 x 的值改变了，但函数执行完毕后 x 已经不存在了。
 }
-void main(){
+void main() {
     func();
     func();
     func();
 }
 </code></pre>
-<p>运行该程序，结果将会打印3次<code>64</code>，请前往<a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序的执行。</p>
+<p>运行该程序，结果将会打印<code>3</code>次<code>64</code>，请前往<a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序的执行。</p>
 <p>但是下面的程序的结果就不相同了。</p>
 <h3 is-upgraded>静态存储类型变量</h3>
 <pre><code>#include &#34;stdio.h&#34;
-void func(){
-    static int x = 64;   // x是静态存储类型，它在整个程序运行过程中都存在，且只初始化一次。该函数即使执行完毕x也不会消失
+void func() {
+    static int x = 64;   // x 是静态存储类型，它在整个程序运行过程中都存在，且只初始化一次。该函数即使执行完毕 x 也不会消失
     printf(&#34;%d\n&#34;, x);
-    x++;  // 但函数执行完毕 x仍然存在
+    x++;  // 但函数执行完毕 x 仍然存在
 }
-void main(){
+void main() {
     func();
     func();
     func();
@@ -2604,25 +2669,25 @@ void main(){
 <p>当我们运行程序时，首先需要进行编译，而编译之前还有部分工作即为编译预处理。比如需要导入<code>stdio.h</code>文件等等。</p>
 <h2 is-upgraded>文件包含</h2>
 <p>我们的每个程序几乎都在顶部有<code>#include &#34;stdio.h&#34;</code>这个包含命令（注意不是语句），在使用某些数学函数时还曾经使用过<code>#include &#34;math.h&#34;</code>。这些都称为文件包含。</p>
-<p>这些命令告诉C语言编译程序将对应的文件引入进来，本程序需要使用。如果没有，那么诸如<code>printf</code>之类的函数就不能使用。</p>
-<p>一般我们使用<code>&#34;&#34;</code>包裹文件名，但你也可以使用<code>&lt;&gt;</code>，我们不做区分说明。</p>
+<p>这些命令告诉<code>C</code>语言编译程序将对应的文件引入进来，本程序需要使用。如果没有，那么诸如<code>printf</code>之类的函数就不能使用。</p>
+<p>一般我们使用<code>&#34;&#34;</code>包裹文件名，但你也可以使用<code>&lt;&gt;</code>，关于区别我们不做说明。</p>
 <h2 is-upgraded>宏定义</h2>
 <p>所谓的宏定义，一般就是使用一个大写的标识符来表示一个字符串的过程。</p>
 <p>如下程序：</p>
 <pre><code>#include &#34;stdio.h&#34;
-#define PI 3.1415926  //  定义PI，程序中任何地方出现PI都会被替换
-void main(){
+#define PI 3.1415926  //  定义宏 PI，程序中任何地方出现 PI 都会被替换
+void main() {
   int r;
   float s;
   r = 2;
-  s = PI * r * r;  // 此处的PI将会在编译前被替换为上面的定义即3.1415926
+  s = PI * r * r;  // 此处的 PI 将会在编译前被替换为上面的定义即 3.1415926
   printf(&#34;Area is %f\n&#34;, s);
 }
 </code></pre>
 <p>上面程序是不带参数的宏。下面我们看看带参数的宏：</p>
 <pre><code>#include &#34;stdio.h&#34;
-#define PF(x) x*x  // 带参数的宏，希望求x的平方
-void main(){
+#define PF(x) x*x  // 带参数的宏，希望求 x 的平方
+void main() {
     int a, pf;
     printf(&#34;Please input a integer number:&#34;);
     scanf(&#34;%d&#34;, &amp;a);
