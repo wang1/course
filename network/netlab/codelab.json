@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-06-04T08:40:20Z",
+  "id": "netlab",
+  "duration": 722,
+  "title": "计算机网络实验教程-棋歌教学网",
+  "authors": "王勇",
+  "summary": "通过使用命令行、Wireshark 和 Cisco Packet Tracer 进行计算机网络实验",
+  "source": "1sQvF9ZlDoBDXJwjGe5KPlY2TefPyfiB3J7LRjYfhjp0",
+  "theme": "network",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "Network"
+  ],
+  "tags": [],
+  "feedback": "mailto:gridwang@gmail.com",
+  "url": "netlab"
+}
