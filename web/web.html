@@ -2276,7 +2276,7 @@ node默认的包管理器为npm，我们推荐使用yarn作为包管理器
 Deployd是一个基于NodeJs和MongoDB数据库的开箱即用的后台服务程序，请访问http://deployd.com/
 A: 以管理员身份运行npm install -g deployd-cli 或 yarn global add deployd-cli进行安装
    运行dpd -V查看是否安装成功。
-B: 下载MongoDB进行安装（保持默认方式，一路next即可），安装完毕后MongoDB自动在后台启动了。
+B: 下载MongoDB（https://www.mongodb.com/try/download/community）进行安装（保持默认方式，一路next即可），安装完毕后MongoDB自动在后台启动了。
 C: 在合适的位置（非C盘）运行如下命令，新建并运行后台服务程序
     dpd create TourOfHero   #新建后台服务程序
     cd TourOfHero           #进入目录
@@ -2311,6 +2311,7 @@ git config --global credential.helper wincred命令可以缓存github账户和�
             <hr>
             <h3 id="angular-TOH-v2">TOH-Version 2</h3>
             <p>在上节的基础上，我们进行Tour Of Heroes的升级版开发。本版本仍以TOH为例，当模拟一个生产环境进行开发。</p>
+            <p>说明：因 MDB 升级为5.0后所用标签不兼容以前版本，故以下有关MDB代码不能成功运行了。考虑使用免费的 Angular Material（https://material.angular.io/）、 Covalent（https://teradata.github.io/covalent/）、ng-bootstrap（ https://ng-bootstrap.github.io/）等进行Angular程序的美化。</p>
             <p>
               <label>用户需求</label>
             </p>
