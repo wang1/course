@@ -2273,15 +2273,16 @@ node默认的包管理器为npm，我们推荐使用yarn作为包管理器
 ---------------------
 9. 后台服务器Deployd
 ---------------------
-Deployd是一个基于NodeJs和MongoDB数据库的后台服务程序，请访问http://deployd.com/
+Deployd是一个基于NodeJs和MongoDB数据库的开箱即用的后台服务程序，请访问http://deployd.com/
 A: 以管理员身份运行npm install -g deployd-cli 或 yarn global add deployd-cli进行安装
    运行dpd -V查看是否安装成功。
-B: 然后下载MongoDB进行安装并将“MongoDB安装路径/bin”添加到系统path中即可。
-C: 在合适的位置运行如下命令，新建并运行后台服务
-    dpd create TourOfHero   #新建后台服务
+B: 下载MongoDB进行安装（保持默认方式，一路next即可），安装完毕后MongoDB自动在后台启动了。
+C: 在合适的位置（非C盘）运行如下命令，新建并运行后台服务程序
+    dpd create TourOfHero   #新建后台服务程序
     cd TourOfHero           #进入目录
     dpd -d                  #先自动启动MongoDB, 运行后自动在浏览器打开2403的控制台
 D: 如果仍然提示启动mongoDB失败, 则请先独自运行MongoDB(mongod --dbpath=data),指定当前目录下的data目录为数据库文件目录 然后再执行 dpd --host 127.0.0.1 -d 命令, 明确指定MongoDB服务器的地址. (原因不明)
+E: 如果报“lookup is not function...”之类的错误，修改刚生成的 TourOfHero 目录下 node_modules/filed/main.js 文件33和155行 lookup 函数为 getType 即可
 ---------------------
 10. github的使用
 ---------------------
