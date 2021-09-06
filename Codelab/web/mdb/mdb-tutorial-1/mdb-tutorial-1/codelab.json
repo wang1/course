@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-03-06T00:06:43+08:00",
+  "id": "mdb-tutorial-1",
+  "duration": 28,
+  "title": "棋歌教学网 - MDB教程一",
+  "authors": "QiGe",
+  "summary": "棋歌教学网 - MDB教程一",
+  "source": "mdb-tutorial-1.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [
+    "qige"
+  ],
+  "feedback": "mailto: gridwang@gmail.com",
+  "url": "mdb-tutorial-1"
+}

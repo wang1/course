@@ -1,0 +1,627 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>CSS 简介</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="brief-css"
+                  title="CSS 简介"
+                  environment="web"
+                  feedback-link="mailto: gridwang@gmail.com">
+    
+      <google-codelab-step label="何为 CSS" duration="2">
+        <p><strong>CSS</strong>是级联样式表（Cascading Style Sheets）的缩写。HTML 用于撰写页面的内容，而 CSS 将决定这些内容该如何在屏幕上呈现。</p>
+<p>网页的内容是由 HTML的元素构建的，这些元素如何呈现，涉及许多方面，如整个页面的布局，元素的位置、距离、颜色、大小、是否显示、是否浮动、透明度等等。</p>
+<aside class="special"><p><strong>提示：</strong> 在 Internet 早期阶段（CSS大量使用之前），页面的内容和样式都由 HTML 来负责，这是一个相当糟糕的问题。</p>
+</aside>
+<p>万维网联盟 W3C（World Wide Web Consortium）意识到这个问题，于1997年推出 CSS 1.0（当前最新的版本是 CSS3），正式推动了内容（HTML）和表现（CSS）的分离，人们开始可以把所有的布局和样式代码从 HTML 中移除放入到 CSS 中。</p>
+<p>CSS 入门极其容易，但要完全掌握及合理的应用则比较困难。</p>
+<p>下面我们就对 CSS 进行简要的学习。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="CSS 语法" duration="10">
+        <p>一条CSS样式规则由两个主要的部分构成：选择器，以<code>{}</code>包裹的一条或多条声明:</p>
+<p class="image-container"><img alt="CSS-syntax" src="img/86e63894cd2a6e2f.jpg"></p>
+<p>这条规则表明，页面中所有的一级标题都显示为蓝色，字体大小为12像数。<br>说明：</p>
+<ul>
+<li>选择器是您需要改变样式的对象（上图的规则就一级标题生效）。</li>
+<li>每条声明由一个属性和一个值组成。（无论是一条或多条声明，都需要用<code>{}</code>包裹，且声明用<code>;</code>分割）</li>
+<li>属性（property）是您希望设置的样式属性（style attribute）。每个属性有一个值。属性和值被冒号分开。</li>
+</ul>
+<p>再如下例所示：</p>
+<pre><code>/* 这是CSS的注释 */
+/* 建议每条申明占一行 */
+p{
+  color:red;
+  text-align:center;  /* 文本居中 */
+}
+</code></pre>
+<h2 is-upgraded>选择器</h2>
+<p>一个页面上的元素众多，选择器就用于在页面中找到/选择需要应用这个样式的对象。<br>除我们前示的元素选择器外，还有<code>id</code>和<code>class</code>选择器。其中<code>class</code>选择器使用非常普遍。</p>
+<p><strong>id 选择器</strong></p>
+<pre><code>/* 注意：id选择器前有 # 号。 */
+#sky{
+  color: blue;
+}
+</code></pre>
+<p>这条规则表明，找到页面上<code>id</code>为<code>sky</code>的那个元素让它呈现蓝色，如下所示的页面，<strong>蓝色的天空</strong>这几个字就将会是蓝色的。</p>
+<pre><code>&lt;p id=&#34;sky&#34;&gt;蓝色的天空&lt;/p&gt;
+&lt;p id=&#34;forest&#34;&gt;绿色的森林&lt;/p&gt;
+</code></pre>
+<aside class="special"><p><strong>提示：</strong> 你还记得HTML中，元素的id值必须唯一吗？ 所以，id 选择器适用范围只有一个元素。</p>
+</aside>
+<p><strong>class 选择器</strong></p>
+<pre><code>/* 注意：class选择器前有 . 号。 */
+.center{
+  text-align: center;
+}
+.large{
+  font-size: 30px;
+}
+.red{
+  color: red;
+}
+</code></pre>
+<p>以上代码定义了三条规则，分别应用于页面上对应的元素，如只要页面上某元素的<code>class</code>为<code>red</code>，那么就让它呈现红色。<br>如下所示的页面：</p>
+<pre><code>&lt;p class=&#34;center&#34;&gt;我会居中显示的&lt;/p&gt;
+&lt;p class=&#34;red&#34;&gt;我是红色的&lt;/p&gt;
+&lt;p class=&#34;center large red&#34;&gt;我又红又大还居中&lt;/p&gt;
+&lt;p class=&#34;red&#34;&gt;我也可以是红的&lt;/p&gt;
+</code></pre>
+<aside class="special"><p><strong>提示：</strong> 由上例可看出，元素的class值可以多个，也可以重复。因此，实际应用中，class 选择器应用非常普遍。</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="CSS 如何生效" duration="8">
+        <p>上节我们学习了如何定义 CSS样式，那么如何让这些规则对页面生效？<br>我们一般有三种方法：外部样式表，内部样式表，内联样式</p>
+<h2 is-upgraded>外部样式表</h2>
+<p>新建如下内容的一个 HTML文件（后缀为.html)：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&#34;utf-8&#34;&gt;
+  &lt;!-- 注意下面这个语句，将导入外部的 mycss.css 样式表文件 --&gt;
+  &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;mycss.css&#34;&gt;
+  &lt;title&gt;页面标题&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;我是有样式的&lt;/h1&gt;
+  &lt;hr&gt;
+  &lt;p class=&#34;haha&#34;&gt;还是有点丑：)&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>在同一目录新建一个样式表文件mycss.css（注意后缀名为css）如下：</p>
+<pre><code>body {
+  background-color: linen;
+  text-align: center;
+}
+h1 {
+  color: red;
+}
+.haha {
+  margin-top: 100px;
+  color: chocolate;
+  font-size: 50px;
+}
+</code></pre>
+<p>在浏览器中打开这个 HTML 文件看看效果。</p>
+<aside class="special"><p><strong>提示：</strong> 一般我们会在项目目录下建一个文件夹如<code>css</code>专门存放样式表文件，如此我们引入样式文件时路径就变为 <code>./css/mycss.css</code>之类的。</p>
+</aside>
+<aside class="special"><p><strong>提示：</strong> 引入外部样式表是我们使用样式的主流方式，因为众多的样式规则单独放在一个文件中，与 HTML 内容分开，结构清晰。同时其它页面也可使用，达到复用的目的。</p>
+</aside>
+<h2 is-upgraded>内部样式表</h2>
+<p>我们也可以将样式放在 HTML 文件中，这称为内部样式表。如：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&#34;utf-8&#34;&gt;
+  &lt;!-- 注意下面这个语句，将导入外部的 mycss.css 样式表文件 --&gt;
+  &lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;mycss.css&#34;&gt;
+  &lt;title&gt;页面标题&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      background-color: linen;
+      text-align: center;
+    }
+    h1 {
+      color: red;
+    }
+    .haha {
+      margin-top: 100px;
+      color: chocolate;
+      font-size: 50px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;我是有样式的&lt;/h1&gt;
+  &lt;hr&gt;
+  &lt;p class=&#34;haha&#34;&gt;还是有点丑：)&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>该例子与上述例子一样的效果，但注意在<code>&lt;head&gt;</code>元素中引入了<code>&lt;style&gt;</code>标签，放入了样式。</p>
+<aside class="special"><p><strong>提示：</strong> 一般而言，只有页面的样式规则较少时可采用这种方式。</p>
+</aside>
+<h2 is-upgraded>内联样式</h2>
+<p>所谓内联样式，就是直接把样式规则直接写到要应用的元素中，如：</p>
+<pre><code>&lt;h3 style=&#34;color:green;&#34;&gt;I am a heading&lt;/h3&gt;
+</code></pre>
+<aside class="special"><p><strong>提示：</strong> 内联样式是最不灵活的一种方式，完全将内容和样式合在一起，实际应用中非常少见。</p>
+</aside>
+<h2 is-upgraded>级联的优先级</h2>
+<p>前面我们学习了三种使用样式的方式，如果某元素如<code>&lt;p&gt;</code>在外部、内部及内联样式中都被设置<code>color:red;</code>、<code>color:green;</code>、<code>color:blue;</code>，那么到底是什么颜色，也即到底哪个有效呢？<br>这就涉及样式的优先级问题，从高到低分别是：</p>
+<ol type="1">
+<li>内联样式</li>
+<li>内部样式表或外部样式表</li>
+<li>浏览器缺省样式</li>
+</ol>
+<aside class="special"><p><strong>提示：</strong> 其实，一句话可总结为哪个样式定义离元素的距离近，哪个就生效。</p>
+</aside>
+<aside class="warning"><p><strong>思考：</strong> 上面优先级第2项有内部样式表和外部样式表两个，到底哪个优先？</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="颜色, 尺寸, 对齐" duration="6">
+        <h2 is-upgraded>颜色</h2>
+<p>颜色在网页中的重要性不言而喻。<br>我们可以采用颜色名称也可以使用颜色RGB16进制值，来设定前景或背景的颜色。如：</p>
+<pre><code>&lt;!-- 颜色名称 --&gt;
+&lt;h3 style=&#34;background-color:Tomato;&#34;&gt;Tomato&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:Orange;&#34;&gt;Orange&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:DodgerBlue;&#34;&gt;DodgerBlue&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:MediumSeaGreen;&#34;&gt;MediumSeaGreen&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:Gray;&#34;&gt;Gray&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:SlateBlue;&#34;&gt;SlateBlue&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:Violet;&#34;&gt;Violet&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:LightGray;&#34;&gt;LightGray&lt;/h3&gt;
+&lt;hr&gt;
+&lt;!-- 颜色值，3个字节分别代表RGB（Red，Green，Blue）的0～255的值 --&gt;
+&lt;h3 style=&#34;background-color:#ff0000;&#34;&gt;#ff0000&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:#0000ff;&#34;&gt;#0000ff&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:#3cb371;&#34;&gt;#3cb371&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:#ee82ee;&#34;&gt;#ee82ee&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:#ffa500;&#34;&gt;#ffa500&lt;/h3&gt;
+&lt;h3 style=&#34;background-color:#6a5acd;&#34;&gt;#6a5acd&lt;/h3&gt;
+&lt;!-- 文本颜色 --&gt;
+&lt;h3 style=&#34;color:Tomato;&#34;&gt;Hello World&lt;/h3&gt;
+&lt;p style=&#34;color:DodgerBlue;&#34;&gt;Lorem ipsum dolor sit, amet consectetur adipisicing elit.&lt;/p&gt;
+&lt;p style=&#34;color:MediumSeaGreen;&#34;&gt;Ad facilis est ducimus rem consectetur, corporis omnis, eveniet esse dolor molestiae numquam odio corrupti, sed obcaecati praesentium accusamus? Tempora, dolor a?&lt;/p&gt;
+</code></pre>
+<aside class="warning"><p><strong>注意：</strong> 为演示方便，我们的样式采用了内联方式，实际中不能这样做！</p>
+</aside>
+<p>一个网站，颜色是其重要的一个特征。如 facebook，twitter，taobao等等（我们学校的主色调是什么？）。甚至连香港地铁的各个站也使用了颜色来区分，如下图：</p>
+<p class="image-container"><img alt="HKC" src="img/feebeaa13d866203.jpg"></p>
+<aside class="special"><p>网页选用一种耐看、易用、符合心意的配色是不容易的，尤其在没有专业设计师时。幸好，即使没有美学基础，但有一些已经调配好的配色方案我们可以直接使用。去<a href="https://colordrop.io/" target="_blank">ColorDrop</a> 或 <a href="https://www.webdesignrankings.com/resources/lolcolors/" target="_blank">LOL Corlors</a> 挑选你网站的配色吧。</p>
+</aside>
+<h2 is-upgraded>尺寸</h2>
+<p>我们可以用 <code>height</code> 和 <code>width</code> 设定元素内容占据的尺寸。常见的尺寸单位有：像数 <code>px</code>，百分比 <code>%</code>等。<br>新建如下 HTML 文件：</p>
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;./mycss.css&#34;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&#34;example-1&#34;&gt;
+      这个元素高 200 pixels，占据全部宽度
+    &lt;/div&gt;
+    &lt;div class=&#34;example-2&#34;&gt;
+      这个元素宽200像素,高300像素
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>再建对应的 CSS 文件如下：</p>
+<pre><code>.example-1 {
+  width: 100%;
+  height: 200px;
+  background-color: powderblue;
+  text-align: center;
+}
+.example-2 {
+  height: 100px;
+  width: 500px;
+  background-color: rgb(73, 138, 60);
+  text-align: right;
+}
+</code></pre>
+<h2 is-upgraded>对齐</h2>
+<p>对于<strong>元素中的文本</strong>，我们可以简单的设置<code>text-align</code>属性为<code>left, center, right</code>即可（显然缺省的是左对齐），上例中已有相关的应用。<br>对于元素本身如何对齐，我们后面再学习。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="盒子模型" duration="10">
+        <p>盒子模型指的是一个 HTML 元素可以看作一个盒子。从内到外，这个盒子是由<strong>内容 content, 内边距 padding, 边框 border, 外边距 margin</strong>构成的，如下图所示：</p>
+<p class="image-container"><img alt="box" src="img/bd78f5d3be0673d6.jpg"></p>
+<p><strong>说明：</strong></p>
+<ul>
+<li>Content 盒子的内容，如文本、图片等</li>
+<li>Padding 填充，也叫内边距，即内容和边框之间的区域</li>
+<li>Border  边框，默认不显示</li>
+<li>Margin  外边距，边框以外与其它元素的区域</li>
+</ul>
+<p>新建如下 HTML 文件：</p>
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;./mycss.css&#34;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&#34;box1&#34;&gt;我是内容一，外面红色的是我的边框。注意边框的内外都有25px的距离。&lt;/div&gt;
+    &lt;div class=&#34;box2&#34;&gt;我是内容二，外面蓝色的是我的边框。注意与上面元素的外边距，发生了叠加，不是50px而是25px。&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>再建对应的 CSS 文件如下：</p>
+<pre><code>.box1 {
+  height: 200px;
+  width: 200px;
+  background-color:#615200;
+  color: aliceblue;
+  border: 10px solid red;
+  padding: 25px;
+  margin: 25px;
+}
+.box2 {
+  height: 300px;
+  width: 300px;
+  background-color:#004d61;
+  color: aliceblue;
+  border: 10px solid blue;
+  padding: 25px;
+  margin: 25px;
+}
+</code></pre>
+<p>打开浏览器看看效果。</p>
+<aside class="special"><p><strong>提示：</strong> 在页面上点击鼠标右键，选择<strong>审查元素</strong>，你可清楚看到如下图所示的布局。</p>
+</aside>
+<p class="image-container"><img alt="border" src="img/4bc1c350e350a023.jpg"></p>
+<p>留意上图，你会发现一个元素真正占据的宽度应该是：<br>左外边距 + 左边框宽度 + 左内边距 + 内容宽度 + 右内边距 + 右边框宽度 + 右外边距</p>
+<p>因此，我们在用<code>width</code>属性设置元素的宽度时，实际上只设置了其内容的宽度。</p>
+<aside class="warning"><p><strong>思考：</strong> 请想想高度该如何计算？</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="边框与边距" duration="6">
+        <aside class="special"><p><strong>提示：</strong> 无论边框、内边距还是外边距，它们都有上下左右四个方向。</p>
+</aside>
+<h2 is-upgraded>边框</h2>
+<p>试一试如下的代码：</p>
+<pre><code>&lt;p class=&#34;example-1&#34;&gt;I have black borders on all sides.&lt;/p&gt;
+&lt;p class=&#34;example-2&#34;&gt;I have a blue bottom border.&lt;/p&gt;
+&lt;p class=&#34;example-3&#34;&gt;I have rounded grey borders.&lt;/p&gt;
+&lt;p class=&#34;example-4&#34;&gt;I have a purple left border.&lt;/p&gt;
+</code></pre>
+<pre><code>.example-1 {
+  border: 1px dotted black; /* 上下左右都相同 */
+}
+.example-2 {
+  border-bottom: 1px solid blue; /* 只设置底部边框 */
+}
+.example-3 {
+  border: 1px solid grey;
+  border-radius: 15px; /* 边框圆角 */
+}
+.example-4 {
+  border-left: 5px solid purple;
+}
+</code></pre>
+<h2 is-upgraded>边距</h2>
+<p>下面样式说明了内边距的设置：</p>
+<pre><code>padding: 20px; /* 上下左右都相同 */
+padding-top: 20px;
+padding-bottom: 100px;
+padding-right: 50px;
+padding-left: 80px;
+padding: 25px 50px 75px 100px; /* 简写形式，按上，右，下，左顺序设置 */
+padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
+</code></pre>
+<p>外边距与此类似。</p>
+<aside class="special"><p><strong>提示：</strong> 请留意简写时的顺序为上，右，下，左，或记为顺时针方向。</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="定位" duration="9">
+        <p><code>position</code>属性用于对元素进行定位。该属性有以下一些值：</p>
+<ul>
+<li>static    静态</li>
+<li>relative  相对</li>
+<li>fixed     固定</li>
+<li>absolute  绝对</li>
+</ul>
+<p>设置了元素的<code>position</code>属性后，我们才能使用<code>top, bottom, left, right</code>属性，否则定位无效。</p>
+<h2 is-upgraded>static</h2>
+<p>设置为静态定位<code>position: static;</code>，这是元素的默认定位方式，也即你设置与否，元素都将按正常的页面布局进行。<br>即：按照元素在 HTML出现的先后顺序从上到下，从左到右进行元素的安排。</p>
+<h2 is-upgraded>relative</h2>
+<p>设置为相对定位<code>position: relative;</code>，这将把元素相对于他的静态（正常）位置进行偏移<br>试试如下的代码：</p>
+<pre><code>&lt;!-- HTML --&gt;
+&lt;div class=&#34;example-relative&#34;&gt;我偏移了正常显示的位置。去掉我的样式对比看看？&lt;/div&gt;
+&lt;!-- CSS --&gt;
+.example-relative {
+  position: relative;
+  left: 60px;
+  top: 40px;
+  background-color: rgb(173, 241, 241);
+}
+</code></pre>
+<h2 is-upgraded>fixed</h2>
+<p>设置为固定定位<code>position: fixed;</code>，这将使得元素固定不动（即使你上下左右拖动浏览器的滚动条）。<br>此时元素固定的位置仍由<code>top, bottom, left, right</code>属性确定，但相对的是视口（viewport，就是浏览器的屏幕可见区域）<br>如下的代码将会在浏览器右下角固定放置一个按钮元素：</p>
+<pre><code>&lt;!-- HTML --&gt;
+&lt;div class=&#34;broad&#34;&gt;占位区域。请将浏览器窗口改变大小，看看右下角的按钮发生了什么？&lt;/div&gt;
+&lt;div class=&#34;example-fixed&#34;&gt;这个按钮是固定的&lt;/div&gt;
+&lt;!-- CSS --&gt;
+.example-fixed {
+  position: fixed;
+  bottom: 40px;
+  right: 10px;
+  padding: 6px 24px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #9d0f0f;
+  cursor: pointer;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.3), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.broad {
+  height: 5000px;
+  width: 5000px;
+  padding: 20px;
+  background-color: darkkhaki;
+}
+</code></pre>
+<h2 is-upgraded>absolute</h2>
+<p>设置为绝对定位<code>position: absolute;</code>，将使元素相对于其<strong>最近设置了定位属性（非static）的父元素</strong>进行偏移。<br>如果该元素的所有父元素都没有设置定位属性，那么就相对于<code>&lt;body&gt;</code>这个父元素。</p>
+<aside class="warning"><p><strong>注意：</strong> 绝对定位此处可能有些混淆，请留意其是仍是相对的，不过是相对<strong>最近的父元素</strong></p>
+</aside>
+<p>试试如下的代码：</p>
+<pre><code>&lt;!-- HTML --&gt;
+&lt;div class=&#34;example-relative&#34;&gt;这是父元素，有 relative 定位属性
+  &lt;div class=&#34;example-absolute&#34;&gt;
+    这是子元素，有 absolute 定位属性
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- CSS --&gt;
+.example-relative {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  border: 3px solid rgb(87, 33, 173);
+}
+.example-absolute {
+  position: absolute;
+  top: 80px;
+  right: 5px;
+  width: 200px;
+  height: 100px;
+  border: 3px solid rgb(218, 73, 16);
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="溢出" duration="3">
+        <p>当元素内容超过其指定的区域时，我们通过溢出<code>overflow</code>属性来处理这些溢出的部分。<br>溢出属性有一下几个值：</p>
+<ul>
+<li>visible 默认值，溢出部分不被裁剪，在区域外面显示</li>
+<li>hidden  裁剪溢出部分且不可见</li>
+<li>scroll  裁剪溢出部分，但提供上下和左右滚动条供显示</li>
+<li>auto    裁剪溢出部分，视情况提供滚动条</li>
+</ul>
+<p>以上内容较好理解，请自行进行验证。<br>关于滚动，我们还可以单独对上下或左右方向进行，如下代码所示：</p>
+<pre><code>&lt;!-- HTML --&gt;
+&lt;div class=&#34;example-overflow-scroll-y&#34;&gt;You can use the overflow property when you want to have better control of the
+    layout. The overflow property specifies what happens if content overflows an element&#39;s box.
+&lt;/div&gt;
+&lt;!-- CSS --&gt;
+.example-overflow-scroll-y {
+  width: 200px;
+  height: 100px;
+  background-color: #eee;
+  overflow-y: scroll;
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="浮动" duration="6">
+        <p>在一个区域或容器内，我们可以设置<code>float</code>属性让某元素水平方向上向左或右进行移动，其周围的元素也会重新排列。<br>我们常用这种样式来使图像和文本进行合理布局，如我们希望有以下的效果：</p>
+<p class="image-container"><img alt="float1" src="img/827b45ec5fec3e35.jpg"></p>
+<p>让图片向右浮动即可，代码如下：</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    .example-float-right {
+      float: right;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/placeholder1.jpg&#34; class=&#34;example-float-right&#34; alt=&#34;&#34;&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, architecto officiis, repellendus
+  corporis obcaecati, et commodi quam vitae vel laudantium omnis incidunt repellat qui eveniet fugiat totam
+  modi nam vero!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。<br>浮动元素之后的元素将围绕它。</p>
+<aside class="warning"><p><strong>试一试：</strong> 有如下4张图片，如果没加样式的话，这几张图片将会从上到下依次显示。考虑使用左浮动，让它们水平依次显示。</p>
+</aside>
+<p class="image-container"><img alt="float2" src="img/ad0c8b6ab2441f5.jpg"></p>
+<p>一个元素浮动后，其后的元素将尽可能包围它，或者说出现在这个浮动元素的左或右方。<br>如果希望浮动元素后面的元素在其下方显示，可使用<code>clear: both</code>样式来进行清除。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="不透明度" duration="4">
+        <p>我们可以用<code>opacity</code>对任何元素（不过常用于图片）设置不透明度。<br>值在<code>[0.0～</code>1.0]之间，值越低，透明度越高，如下图所示：</p>
+<p class="image-container"><img alt="opacity" src="img/4922d14e36a0f88a.jpg"></p>
+<p>试试如下代码：</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    img {
+      width: 25%;
+      border-radius: 10px;
+      float: left;
+      margin: 10px;
+    }
+    .opacity-2 {
+      opacity: 0.2;
+    }
+    .opacity-5 {
+      opacity: 0.5;
+    }
+    .opacity-10 {
+      opacity: 1;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;img class=&#34;opacity-2&#34; src=&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(87).jpg&#34;&gt;
+  &lt;img class=&#34;opacity-5&#34; src=&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(87).jpg&#34;&gt;
+  &lt;img class=&#34;opacity-10&#34; src=&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(87).jpg&#34;&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="组合选择器" duration="4">
+        <p>前面我们学习了 CSS有三种选择器：元素、id 和 class 。但我们也可以进行组合，以得到简洁精确的选择。<br>下面我们介绍两种组合选择器。</p>
+<h2 is-upgraded>后代选择器</h2>
+<p>以空格作为分隔，如：<code>.haha p</code> 代表在<code>div</code>元素内有<code>.haha</code>这种类的所有元素。<br>参见如下代码：</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    .haha p {
+      background-color: yellow;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&#34;haha&#34;&gt;
+    &lt;p&gt;Paragraph 1 in the div .haha.&lt;/p&gt;
+    &lt;p&gt;Paragraph 2 in the div .haha&gt;.&lt;/p&gt;
+    &lt;span&gt;
+        &lt;p&gt;Paragraph 3 in the div .haha.&lt;/p&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Paragraph 4. Not in a div .haha.&lt;/p&gt;
+  &lt;p&gt;Paragraph 5. Not in a div .haha.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>段落1、2、3都将有黄色的背景，而段落4、5没有。</p>
+<h2 is-upgraded>子选择器</h2>
+<p>也称为直接后代选择器，以<code>&gt;</code>作为分隔，如：<code>.haha &gt; p</code> 代表在有<code>.haha</code>类的元素内的直接<code>&lt;p&gt;</code>元素。<br>参见如下代码：</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    .haha &gt; p {
+      background-color: yellow;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&#34;haha&#34;&gt;
+    &lt;p&gt;Paragraph 1 in the div .haha.&lt;/p&gt;
+    &lt;p&gt;Paragraph 2 in the div .haha.&lt;/p&gt;
+    &lt;span&gt;
+        &lt;p&gt;Paragraph 3 in the div .haha - it is descendant but not immediate child.&lt;/p&gt;
+    &lt;/span&gt; &lt;!-- not Child but Descendant --&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Paragraph 4. Not in a div .haha.&lt;/p&gt;
+  &lt;p&gt;Paragraph 5. Not in a div .haha.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>虽然段落3在<code>.haha</code>类中，但它的直接父元素是<code>span</code>，不是<code>.haha</code>的直接后代，所以不能选择。只有段落1、2有黄色背景。</p>
+<aside class="special"><p>✎ 试一试： 如果两个选择器用<code>,</code>分隔会是什么意思</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="伪类和伪元素" duration="6">
+        <p>伪类（pseudo-class）或伪元素（pseudo-element）用于定义元素的某种特定的状态或位置等。<br>比如我们可能有这样的需求：</p>
+<ul>
+<li>鼠标移到某元素上变换背景颜色</li>
+<li>超链接访问前后访问后样式不同</li>
+<li>离开必须填写的输入框时出现红色的外框进行警示</li>
+<li>保证段落的第一行加粗，其它正常</li>
+<li>...</li>
+</ul>
+<p>使用伪类/伪元素的语法如下：</p>
+<pre><code>/* 选择器后使用 : 号，再跟上某个伪类/伪元素 */
+selector:pseudo-class/pseudo-element {
+  property:value;
+}
+</code></pre>
+<p>以下是常用的伪类/伪元素的简单使用：</p>
+<pre><code>a:link {color:#FF0000;}     /* 未访问的链接 */
+a:visited {color:#00FF00;}  /* 已访问的链接 */
+a:hover {color:#FF00FF;}    /* 鼠标划过链接 */
+/* 鼠标移到段落则改变背景颜色 */
+p:hover {background-color: rgb(226, 43, 144);}
+p:first-line{color:blue;}   /* 段落的第一行显示蓝色 */
+p:first-letter{font-size: xx-large;}   /* 段落的第一个字超大 */
+
+h1:before { content:url(smiley.gif); } /* 在每个一级标题前插入该图片 */
+h1:after { content:url(smiley.gif); } /* 在每个一级标题后插入该图片 */
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="作业" duration="2">
+        <p>至此，我们对 CSS 有了基本的了解和掌握。下面我们进行一些小测验（来自菜鸟教程）：</p>
+<aside class="warning"><p><strong>测验：</strong><a href="https://c.runoob.com/quiz/5596" target="_blank">测验一</a>, <a href="https://c.runoob.com/quiz/5597" target="_blank">测验二</a>, <a href="https://c.runoob.com/quiz/5598" target="_blank">测验三</a>, <a href="https://c.runoob.com/quiz/5599" target="_blank">测验四</a>, <a href="https://c.runoob.com/quiz/5600" target="_blank">测验五</a>,</p>
+</aside>
+<aside class="warning"><p><strong>作业：</strong> 请对自己学习和掌握的 CSS 知识进行一个总结。</p>
+</aside>
+<aside class="special"><p><strong>提示：</strong> 可考虑采用简单易用的<strong>markdown</strong>格式来撰写文档而不是<strong>Word</strong>.</p>
+</aside>
+<p>你可能觉得 CSS也不过如此。的确，入门容易，用好困难。<br>下面推荐两本免费但质量上乘的书供你继续：<a href="http://gdut_yy.gitee.io/doc-csstdg4/" target="_blank">CSS权威指南</a>，<a href="http://file.allitebooks.com/20180423/CSS%20in%20Depth.pdf" target="_blank">CSS In Depth</a></p>
+<p>现在，请回到<a href="https://qige.io/web/web.html" target="_blank">棋歌教学网</a>进一步学习。</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
