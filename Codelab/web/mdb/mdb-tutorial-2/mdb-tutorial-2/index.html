@@ -1,0 +1,1893 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>棋歌教学网 - MDB教程二</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="mdb-tutorial-2"
+                  title="棋歌教学网 - MDB教程二"
+                  environment="web"
+                  feedback-link="mailto: gridwang@gmail.com">
+    
+      <google-codelab-step label="概述" duration="2">
+        <p>本教程将构建一个所谓的单页应用SPA(Single Page App), 即内容都在一个页面, 不会发生跳转。<br>我们将涉及以下内容:</p>
+<h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
+<ul class="checklist">
+<li>全屏页面</li>
+<li>遮罩和阴影</li>
+<li>动画</li>
+<li>字体</li>
+<li>Sogou/Google/高德地图</li>
+<li>图标/表单</li>
+<li>轮播/幻灯片</li>
+<li>使用自定义样式<br><br></li>
+</ul>
+<p>建设完毕后的效果<a href="https://mdbootstrap.com/snippets/jquery/ascensus/28?action=fullscreen" target="_blank">在线查看</a>,或如下图：</p>
+<p class="image-container"><img alt="final-1" src="img/db22da205974e197.webp"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="导航及全屏图片背景" duration="5">
+        <h2 is-upgraded>导航条</h2>
+<p>解压你下载的 MDB Pro 模板文件到某文件夹， code 中打开该文件夹（这是我们的工作目录）.<br>类似上一个教程, 打开<code>index.html</code>文件, 在<code>&lt;body&gt;</code>中写入如下页面结构代码:</p>
+<pre><code>&lt;!-- start your project here --&gt;
+&lt;!--Main Navigation--&gt;
+&lt;header&gt;
+
+&lt;/header&gt;
+&lt;!--Main Navigation--&gt;
+
+&lt;!--Main layout--&gt;
+&lt;main&gt;
+
+&lt;/main&gt;
+&lt;!--Main layout--&gt;
+
+&lt;!--Footer--&gt;
+&lt;footer&gt;
+
+&lt;/footer&gt;
+&lt;!--Footer--&gt;
+&lt;!-- end your project here --&gt;
+</code></pre>
+<p><a href="https://mdbootstrap.com/docs/jquery/navigation/navbar/#basic-example" target="_blank">导航条</a>我们已经在<a href="../mdb-tutorial-1/index.html#2" target="_blank">教程一</a>中介绍过, 此处不再累述. 在<code>&lt;header&gt;</code>中写入如下代码构建导航条:</p>
+<pre><code>&lt;!--Navbar--&gt;
+&lt;nav class=&#34;navbar navbar-expand-lg navbar-dark primary-color&#34;&gt;
+
+  &lt;div class=&#34;container&#34;&gt;
+
+    &lt;!-- Navbar brand --&gt;
+    &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Navbar&lt;/a&gt;
+
+    &lt;!-- Collapse button --&gt;
+    &lt;button class=&#34;navbar-toggler&#34; type=&#34;button&#34; data-toggle=&#34;collapse&#34; data-target=&#34;#basicExampleNav&#34;
+      aria-controls=&#34;basicExampleNav&#34; aria-expanded=&#34;false&#34; aria-label=&#34;Toggle navigation&#34;&gt;
+      &lt;span class=&#34;navbar-toggler-icon&#34;&gt;&lt;/span&gt;
+    &lt;/button&gt;
+
+    &lt;!-- Collapsible content --&gt;
+    &lt;div class=&#34;collapse navbar-collapse&#34; id=&#34;basicExampleNav&#34;&gt;
+
+      &lt;!-- Links --&gt;
+      &lt;ul class=&#34;navbar-nav mr-auto&#34;&gt;
+        &lt;li class=&#34;nav-item active&#34;&gt;
+          &lt;a class=&#34;nav-link&#34; href=&#34;#&#34;&gt;Home
+            &lt;span class=&#34;sr-only&#34;&gt;(current)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&#34;nav-item&#34;&gt;
+          &lt;a class=&#34;nav-link&#34; href=&#34;#&#34;&gt;Features&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&#34;nav-item&#34;&gt;
+          &lt;a class=&#34;nav-link&#34; href=&#34;#&#34;&gt;Pricing&lt;/a&gt;
+        &lt;/li&gt;
+
+        &lt;!-- Dropdown --&gt;
+        &lt;li class=&#34;nav-item dropdown&#34;&gt;
+          &lt;a class=&#34;nav-link dropdown-toggle&#34; id=&#34;navbarDropdownMenuLink&#34; data-toggle=&#34;dropdown&#34; aria-haspopup=&#34;true&#34;
+            aria-expanded=&#34;false&#34;&gt;Dropdown&lt;/a&gt;
+          &lt;div class=&#34;dropdown-menu dropdown-primary&#34; aria-labelledby=&#34;navbarDropdownMenuLink&#34;&gt;
+            &lt;a class=&#34;dropdown-item&#34; href=&#34;#&#34;&gt;Action&lt;/a&gt;
+            &lt;a class=&#34;dropdown-item&#34; href=&#34;#&#34;&gt;Another action&lt;/a&gt;
+            &lt;a class=&#34;dropdown-item&#34; href=&#34;#&#34;&gt;Something else here&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+
+      &lt;/ul&gt;
+      &lt;!-- Links --&gt;
+
+      &lt;form class=&#34;form-inline&#34;&gt;
+        &lt;div class=&#34;md-form my-0&#34;&gt;
+          &lt;input class=&#34;form-control mr-sm-2&#34; type=&#34;text&#34; placeholder=&#34;Search&#34; aria-label=&#34;Search&#34;&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;!-- Collapsible content --&gt;
+
+  &lt;/div&gt;
+
+&lt;/nav&gt;
+&lt;!--/.Navbar--&gt;
+</code></pre>
+<p>我们稍微做点改变, 希望导航条能固定在页面顶部, 简单的添加<code>.fixed-top</code>类即可.</p>
+<pre><code>&lt;!--Navbar--&gt;
+&lt;nav class=&#34;navbar navbar-expand-lg navbar-dark primary-color fixed-top&#34;&gt;
+</code></pre>
+<aside class="warning"><p><strong>思考:</strong> 刷新页面似乎看不到变化? 想想如何能看到固定的导航条?</p>
+</aside>
+<h2 is-upgraded>全屏幕图像背景</h2>
+<p>我们现在来构建一个以图片作为整个背景的页面.<br>添加如下代码在<code>&lt;header&gt;</code>标签中, <code>&lt;nav&gt;</code>标签之后(注意添加位置):</p>
+<pre><code>&lt;!--Mask--&gt;
+&lt;div id=&#34;intro&#34; class=&#34;view&#34;&gt;
+
+  &lt;div class=&#34;mask&#34;&gt;
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;!--/.Mask--&gt;
+</code></pre>
+<p>解释如下:</p>
+<ul>
+<li><code>.view</code> 是我们背景图片的封装器, 同时使我们可以对图片进行明暗等效果的遮罩.</li>
+<li><code>.mask</code> 是一个有绝对定位的元素, 它将以某种效果覆盖图片(通常我们将添加一些文字).</li>
+<li><code>id=&#34;intro&#34;</code> 这是<code>.view</code>元素的ID, 我们稍后将会用到.</li>
+</ul>
+<p>不过, 如果你刷新页面看不到任何改变, 因为我们没有引入图片. 添加如下 CSS 代码到<code>css/style.css</code>文件中.</p>
+<aside class="special"><p><strong>提示:</strong> 除了大量使用 MDB 预定义的样式类外, 我们也可以使用自定义的样式, 一般放在<code>style.css</code>文件中.</p>
+</aside>
+<pre><code>html,
+body,
+header,
+#intro {
+    height: 100%;
+}
+
+#intro {
+    background: url(&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20%283%29.jpg&#34;)no-repeat center center fixed;
+    -webkit-background-size: cover; /* 针对Chrome, Safari, Edge等浏览器 */
+    -moz-background-size: cover;    /* 针对Firefox浏览器 */
+    -o-background-size: cover;      /* 针对Operallq */
+    background-size: cover;         /* 通用 */
+}
+</code></pre>
+<p>说明:</p>
+<ul>
+<li>我们将背景图像的所有父元素高度设置为100％，只有这样，图像才能覆盖整个屏幕</li>
+<li>我们通过ID(<code>intro</code>)为该元素设置的背景图像的 URL. 请注意, 这也是我们显示图片的常用方式(这种情况下, 我们就不能通过在页面图片上点击右键来另存为...之类的了)</li>
+<li>我们使用了<code>cover</code>来设置背景的尺寸, 它将覆盖屏幕所有可用的空间</li>
+<li>另外, <code>-webkit-, -moz- , -o-</code>前缀是为了确保在所有浏览器都正常工作. 不过现代浏览器都支持了, 所以不用也没什么问题(就放弃老旧的浏览器市场吧)</li>
+</ul>
+<aside class="special"><p><strong>提示:</strong> 背景图片一般需要 <code>1920px * 1280px</code>以上的分辨率, 最好采用<code>JPG, Webp</code>等压缩格式, 因为其是属于<code>重</code>量级元素!</p>
+</aside>
+<aside class="special"><p><strong>提示:</strong> 图片压缩可考虑<a href="http://compressjpeg.com/" target="_blank">CompresJPG</a>, <a href="https://tinify.cn/" target="_blank">TinyFY</a>, <a href="https://www.websiteplanet.com/zh-hans/webtools/imagecompressor/" target="_blank">Website Planet</a>等等. 另外, 请一定关注 Goolge 提出的新的图片格式 <code>Webp</code>, 有非常高的压缩率且质量上乘, 当前已被主流浏览器支持了. 请访问<a href="https://developers.google.com/speed/webp" target="_blank">Webp官网</a></p>
+</aside>
+<p>刷新浏览器, 你将看到全屏图像出现了. 此时你应该看到<a href="https://mdbootstrap.com/snippets/jquery/ascensus/16?action=fullscreen" target="_blank">这样的结果</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="遮罩和弹性盒子布局" duration="5">
+        <h2 is-upgraded>遮罩 Mask</h2>
+<p>虽然一个全屏的图像让人印象不错, 但它不是我们的重点. 它应该暗淡一点, 应该有些文字.<br>简单的添加一个强暗黑遮罩效果<code>rgba-black-strong</code>就好了.</p>
+<pre><code>&lt;div class=&#34;mask rgba-black-strong&#34;&gt;
+</code></pre>
+<p>刷新浏览器即可看到不同的效果. 进一步学习, 请参考MDB的 <a href="https://mdbootstrap.com/docs/jquery/css/masks/" target="_blank">mask</a>文档.</p>
+<p>暗黑的背景上当然需要添加一些东西. 添加如下代码在<code>.mask .rgba-black-strong</code>元素内:</p>
+<pre><code>&lt;div class=&#34;mask rgba-black-strong&#34;&gt;
+
+  &lt;!-- Heading --&gt;
+  &lt;h2 class=&#34;display-4 font-weight-bold white-text pt-5 mb-2&#34;&gt;Travel&lt;/h2&gt;
+
+  &lt;!-- Divider --&gt;
+  &lt;hr class=&#34;hr-light&#34;&gt;
+
+  &lt;!-- Description --&gt;
+  &lt;h4 class=&#34;white-text my-4&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti consequuntur.&lt;/h4&gt;
+  &lt;button type=&#34;button&#34; class=&#34;btn btn-outline-white&#34;&gt;Read more&lt;i class=&#34;fas fa-book ml-2&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+
+&lt;/div&gt;
+</code></pre>
+<p>我们添加了一个二级标题, 一条分割线, 一点描述文字和一个按钮在页面上.<br>说明:</p>
+<ul>
+<li><code>display-4</code> 一个好看的大标题. 参见 MDB版式 <a href="https://mdbootstrap.com/docs/jquery/content/typography/#display-headings" target="_blank">Typography</a>文档.</li>
+<li><code>font-weight-bold</code> 文本加粗. 参见 MDB文本工具 <a href="https://mdbootstrap.com/docs/jquery/content/typography/#display-headings" target="_blank">Text Utilities</a>文档.</li>
+<li><code>white-color</code> 白色文本. 参见 MDB 颜色<a href="https://mdbootstrap.com/docs/jquery/css/colors/#text-colors" target="_blank">Color</a>文档.</li>
+<li><code>hr-light</code> 一条白色分割线.</li>
+<li><code>btn-outline-white</code> 一个白色的透明轮廓按钮. 参见 MDB 按钮<a href="https://mdbootstrap.com/docs/jquery/components/buttons/#outline-buttons" target="_blank">Buttons</a>文档.</li>
+<li><code>fa-book</code> 一个书本样的图标(注意不是图片而是特殊字体). MDB 提供了众多的图标供我们使用, 参见图标<a href="https://mdbootstrap.com/docs/jquery/content/icons-list/" target="_blank">Icons</a>文档.</li>
+</ul>
+<p>刷新浏览器看看结果. 你可能对页面上内容的布局不太满意. 下面我们对这些元素进行合理的布局.</p>
+<h2 is-upgraded>弹性盒子布局 Flexbox</h2>
+<p>通常我们希望这些内容居中显示. 将这四个内容(标题, 分割线, 文字, 按钮)用一个<code>div</code>包裹起来并加上一些样式如下:</p>
+<pre><code>&lt;div class=&#34;mask rgba-black-strong&#34;&gt;
+  &lt;!-- 新添加的div --&gt;
+  &lt;div class=&#34;d-flex align-items-center h-100&#34;&gt;
+
+    &lt;!-- Heading --&gt;
+    &lt;h2 class=&#34;display-4 font-weight-bold white-text pt-5 mb-2&#34;&gt;Travel&lt;/h2&gt;
+
+    &lt;!-- Divider --&gt;
+    &lt;hr class=&#34;hr-light&#34;&gt;
+
+    &lt;!-- Description --&gt;
+    &lt;h4 class=&#34;white-text my-4&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti consequuntur.&lt;/h4&gt;
+    &lt;button type=&#34;button&#34; class=&#34;btn btn-outline-white&#34;&gt;Read more&lt;i class=&#34;fas fa-book ml-2&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+<p>说明:</p>
+<ul>
+<li><code>d-flex</code> 使得元素以 <code>flex</code>即弹性模式显示(相当于 CSS的<code>display: flex;</code>)属性.</li>
+<li><code>align-items-center</code> 必须与<code>d-flex</code>一起使用才能生效, 将使内容在其父元素中垂直居中.</li>
+<li><code>h-100</code> 使元素占用全部(100%)可用高度. 请参见 MDB 尺寸<a href="https://mdbootstrap.com/docs/jquery/utilities/sizing/" target="_blank">Sizing</a>文档.</li>
+</ul>
+<aside class="special"><p><strong>提示:</strong><code>Flex Box</code>是现代 CSS流行及强大的布局方式, 请尽可能掌握. 参见 MDB 弹性布局<a href="https://mdbootstrap.com/docs/jquery/utilities/flexbox/#overview" target="_blank">Flexbox</a>文档.</p>
+</aside>
+<p>当前你应该看到<a href="https://mdbootstrap.com/snippets/jquery/ascensus/17?action=fullscreen" target="_blank">如此结果</a></p>
+<p>所有内容虽然垂直居中了, 似乎水平还没有, 且显得拥挤, 不怎么美观, 下面我们进一步进行调整.</p>
+<p>为避免出错, 请将整个<code>&lt;div id=&#34;intro&#34; class=&#34;view&#34;&gt;</code>的内容替换如下:</p>
+<pre><code>&lt;!--Mask--&gt;
+&lt;div id=&#34;intro&#34; class=&#34;view&#34;&gt;
+
+  &lt;div class=&#34;mask rgba-black-strong&#34;&gt;
+    &lt;!-- 添加了.container-fluid 容器以利用栅格进行布局 --&gt;
+    &lt;div class=&#34;container-fluid d-flex align-items-center justify-content-center h-100&#34;&gt;
+      &lt;!-- 新添加的 div, 表示栅格中的行 --&gt;
+      &lt;div class=&#34;row d-flex justify-content-center text-center&#34;&gt;
+        &lt;!-- 新添加的 div, 表示栅格中的列 --&gt;
+        &lt;div class=&#34;col-md-10&#34;&gt;
+
+          &lt;!-- Heading --&gt;
+          &lt;h2 class=&#34;display-4 font-weight-bold white-text pt-5 mb-2&#34;&gt;Travel&lt;/h2&gt;
+
+          &lt;!-- Divider --&gt;
+          &lt;hr class=&#34;hr-light&#34;&gt;
+
+          &lt;!-- Description --&gt;
+          &lt;h4 class=&#34;white-text my-4&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti consequuntur.&lt;/h4&gt;
+          &lt;button type=&#34;button&#34; class=&#34;btn btn-outline-white&#34;&gt;Read more&lt;i class=&#34;fas fa-book ml-2&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+      &lt;/div&gt;
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;!--/.Mask--&gt;
+</code></pre>
+<p>上面代码出现了些新的样式, 也有一些新的<code>div</code>, 下面我们进行解释.</p>
+<ul>
+<li>添加了<code>.container-fluid</code> 容器以利用栅格进行布局. 我们使用栅格系统的构建方式一般为<code>.container or .container-fluid &gt; .row &gt; column</code>. 另外我们添加了<code>justify-content-center</code>来保证元素水平居中.</li>
+<li>根据上面的规则, 我们将四个元素(标题, 分割线, 文字, 按钮)再用两个<code>div</code>(分别是行和列)进行包裹.</li>
+<li>在行元素<code>.row</code>上, 我们再次应用了弹性布局及其<code>justify-content-center</code>样式来保证行内的列元素水平居中. 同时我们使用了<code>text-center</code>样式保证个元素内的文本居中.</li>
+</ul>
+<aside class="warning"><p><strong>试一试:</strong> 请将行元素上的<code>justify-content-center</code>样式去掉看看发生什么?</p>
+</aside>
+<p>在列元素<code>.col-md-10</code>上, 我们没有使用全部宽度(你应该还记得10/12), 这会使得在大屏幕上内容不会被拉得很长.</p>
+<p>刷新浏览器, 现在你应该可以看到一个较好的有<a href="https://mdbootstrap.com/snippets/jquery/ascensus/19?action=fullscreen" target="_blank">全屏图像背景的页面</a>.<br>接下来, 我们将进一步添加一下新的元素到我们的页面.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体-结构及 Best Features章节" duration="5">
+        <h2 is-upgraded>主体结构</h2>
+<p>现在是时候添加页面的具体内容了. 将<code>&lt;main&gt;</code>标签用如下代码替换:</p>
+<pre><code>&lt;!--Main layout--&gt;
+&lt;main class=&#34;mt-5&#34;&gt;
+  &lt;div class=&#34;container&#34;&gt;
+
+    &lt;!--Section: Best Features--&gt;
+    &lt;section id=&#34;best-features&#34;&gt;
+
+
+
+    &lt;/section&gt;
+    &lt;!--Section: Best Features--&gt;
+
+    &lt;hr class=&#34;my-5&#34;&gt;
+
+    &lt;!--Section: Examples--&gt;
+    &lt;section id=&#34;examples&#34;&gt;
+
+
+
+    &lt;/section&gt;
+    &lt;!--Section: Examples--&gt;
+
+    &lt;hr class=&#34;my-5&#34;&gt;
+
+    &lt;!--Section: Gallery--&gt;
+    &lt;section id=&#34;gallery&#34;&gt;
+
+
+
+    &lt;/section&gt;
+    &lt;!--Section: Gallery--&gt;
+
+    &lt;hr class=&#34;my-5&#34;&gt;
+
+    &lt;!--Section: Contact--&gt;
+    &lt;section id=&#34;contact&#34;&gt;
+
+
+
+    &lt;/section&gt;
+    &lt;!--Section: Contact--&gt;
+
+  &lt;/div&gt;
+&lt;/main&gt;
+&lt;!--Main layout--&gt;
+</code></pre>
+<p><code>&lt;main&gt;</code>标签包含我们绝大多数的内容, 我们应用了<code>container</code>容器来来使用栅格系统.</p>
+<p>同时, 我们将内容用<code>&lt;section&gt;</code>标签分为了4个部分. <code>section</code>之间还添加了分割线, 并且上下(<code>my-5</code>)都留了不少间距.<br><code>section</code>标签没有任何具体的显示效果, 我们使用它是为了代码的干净与可读性.</p>
+<p>另外, 你会发现每个<code>section</code>都设置了 ID, 我们将在页面导航/跳转时用到它.</p>
+<aside class="warning"><p><strong>注意:</strong> 在一个 HTML 文档中, ID 用来标识某元素, 必须是唯一的. 多个元素如果使用相同的 ID 值将导致严重的问题.</p>
+</aside>
+<aside class="special"><p><strong>提示:</strong> 目前为止, 你应该看到我们的代码中有不少注释, 这是一个非常好的习惯. 当项目变大或时间久远时, 这些注释对你自己或者你的小伙伴都无比有益. 请习得.</p>
+</aside>
+<h2 is-upgraded>第一 section</h2>
+<p>下面我们为第一个章节<code>Best Features</code>添加如下内容:</p>
+<pre><code>&lt;!--Section: Best Features--&gt;
+&lt;section id=&#34;best-features&#34; class=&#34;text-center&#34;&gt;
+
+  &lt;!-- Heading --&gt;
+  &lt;h2 class=&#34;mb-5&#34;&gt;Best Features&lt;/h2&gt;
+
+  &lt;!--Grid row--&gt;
+  &lt;div class=&#34;row d-flex justify-content-center mb-4&#34;&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-md-8&#34;&gt;
+
+      &lt;!-- Description --&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate hic provident nulla repellat
+          facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis est
+          sit pariatur.&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+  &lt;/div&gt;
+  &lt;!--Grid row--&gt;
+
+  &lt;!--Grid row--&gt;
+  &lt;div class=&#34;row&#34;&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-md-4 mb-1&#34;&gt;
+      &lt;i class=&#34;fas fa-camera-retro&#34;&gt;&lt;/i&gt;
+      &lt;h4 class=&#34;my-4&#34;&gt;Experience&lt;/h4&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+          assumenda deleniti hic.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-md-4 mb-1&#34;&gt;
+      &lt;i class=&#34;fas fa-heart&#34;&gt;&lt;/i&gt;
+      &lt;h4 class=&#34;my-4&#34;&gt;Happiness&lt;/h4&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+          assumenda deleniti hic.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-md-4 mb-1&#34;&gt;
+      &lt;i class=&#34;fas fa-bicycle&#34;&gt;&lt;/i&gt;
+      &lt;h4 class=&#34;my-4&#34;&gt;Adventure&lt;/h4&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+          assumenda deleniti hic.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+  &lt;/div&gt;
+  &lt;!--Grid row--&gt;
+
+&lt;/section&gt;
+&lt;!--Section: Best Features--&gt;
+</code></pre>
+<p>该章节有三个部分: 标题和两个<code>div</code>(第一行有一列, 第二行有三列).<br>整个代码应该没什么需要解释的. 不过我们可以调整得更专业一些:</p>
+<ul>
+<li>将标题再加粗一点</li>
+</ul>
+<pre><code>&lt;!-- Heading --&gt;
+&lt;h2 class=&#34;mb-5 font-weight-bold&#34;&gt;Best Features&lt;/h2&gt;
+</code></pre>
+<ul>
+<li>调整一下图标的颜色和大小<br><br></li>
+</ul>
+<pre><code>&lt;i class=&#34;fas fa-camera-retro fa-4x orange-text&#34;&gt;&lt;/i&gt;
+</code></pre>
+<ul>
+<li>将正文颜色变淡一点</li>
+</ul>
+<pre><code>&lt;!-- Description --&gt;
+&lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate hic provident nulla repellat facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis est sit ariatur.&lt;/p&gt;
+</code></pre>
+<p>OK, 目前你应该看到<a href="https://mdbootstrap.com/snippets/jquery/ascensus/21?action=fullscreen" target="_blank">这样的结果</a>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体- Example 章节" duration="5">
+        <p>本<code>section</code>我们将应用一些图片的效果. 我们将其分为2行3列的单元格, 每个单元显示一张图片及其介绍. 代码如下:</p>
+<pre><code>&lt;!--Section: Examples--&gt;
+&lt;section id=&#34;examples&#34; class=&#34;text-center&#34;&gt;
+
+  &lt;!-- heading --&gt;
+  &lt;h2 class=&#34;mb-5 font-weight-bold&#34;&gt;Stunning Examples&lt;/h2&gt;
+
+  &lt;!--Grid row--&gt;
+  &lt;div class=&#34;row&#34;&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-12 mb-4&#34;&gt;
+
+      &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+        &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/48.jpg&#34; class=&#34;img-fluid&#34;&gt;
+        &lt;a href=&#34;#!&#34;&gt;
+          &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+      &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+        aperiam minima
+        assumenda deleniti hic.&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+      &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+        &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/49.jpg&#34; class=&#34;img-fluid&#34;&gt;
+        &lt;a href=&#34;#!&#34;&gt;
+          &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+      &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+        aperiam minima
+        assumenda deleniti hic.&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+      &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+        &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/50.jpg&#34; class=&#34;img-fluid&#34;&gt;
+        &lt;a href=&#34;#!&#34;&gt;
+          &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+      &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+        aperiam minima
+        assumenda deleniti hic.&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+  &lt;/div&gt;
+  &lt;!--Grid row--&gt;
+
+  &lt;!--Grid row--&gt;
+  &lt;div class=&#34;row&#34;&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-12 mb-4&#34;&gt;
+
+      &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+        &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/51.jpg&#34; class=&#34;img-fluid&#34;&gt;
+        &lt;a href=&#34;#!&#34;&gt;
+          &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+      &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+        aperiam minima
+        assumenda deleniti hic.&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+      &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+        &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/52.jpg&#34; class=&#34;img-fluid&#34;&gt;
+        &lt;a href=&#34;#!&#34;&gt;
+          &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+      &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+        aperiam minima
+        assumenda deleniti hic.&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+      &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+        &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/53.jpg&#34; class=&#34;img-fluid&#34;&gt;
+        &lt;a href=&#34;#!&#34;&gt;
+          &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+      &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+        aperiam minima
+        assumenda deleniti hic.&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+  &lt;/div&gt;
+  &lt;!--Grid row--&gt;
+
+&lt;/section&gt;
+&lt;!--Section: Examples--&gt;
+</code></pre>
+<p>请注意, 我们在每张图片的遮罩上都添加了超链接:</p>
+<pre><code>&lt;a href=&#34;#!&#34;&gt;
+  &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+&lt;/a&gt;
+</code></pre>
+<p>此外, 我们使用</p>
+<ul>
+<li><code>z-depth-1-half</code> 使图片有阴影效果. 参见MDB <a href="https://mdbootstrap.com/docs/jquery/css/shadows/" target="_blank">Shadows</a>文档.</li>
+<li><code>view overlay</code> 点击时有波纹效果. MDB 默认为遮罩/按钮/导航条等提供波纹效果, 参见 MDB <a href="https://mdbootstrap.com/docs/jquery/javascript/waves-effect/" target="_blank">Waves Effect</a>文档.</li>
+<li><code>mask rgba-white-slight</code> 鼠标移上图片时(<code>hover</code>)有变色效果. 参见 MDB <a href="https://mdbootstrap.com/docs/jquery/css/hover-effects/" target="_blank">Hover Effects</a>文档.</li>
+</ul>
+<p>至此, 第二个section构建完毕. 当前你应该看到<a href="https://mdbootstrap.com/snippets/jquery/ascensus/23?action=fullscreen" target="_blank">这样的效果</a>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体- Gallery 章节" duration="5">
+        <p>我们将在<code>Gallery</code>章节使用轮播(Carousel)来进行类似幻灯片的展示. 该节除标题外还有包含两列的行, 代码如下:</p>
+<pre><code>&lt;!--Section: Gallery--&gt;
+&lt;section id=&#34;gallery&#34;&gt;
+
+  &lt;!-- Heading --&gt;
+  &lt;h2 class=&#34;mb-5 font-weight-bold text-center&#34;&gt;Gallery heading&lt;/h2&gt;
+
+  &lt;!--Grid row--&gt;
+  &lt;div class=&#34;row&#34;&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-md-6 mb-4&#34;&gt;
+
+
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-md-6&#34;&gt;
+
+
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+  &lt;/div&gt;
+  &lt;!--Grid row--&gt;
+
+&lt;/section&gt;
+&lt;!--Section: Gallery--&gt;
+</code></pre>
+<p>我们的轮播内容将放到左边那一列. 代码如下:</p>
+<pre><code>&lt;!--Grid column--&gt;
+&lt;div class=&#34;col-md-6 mb-4&#34;&gt;
+
+  &lt;!--Carousel Wrapper--&gt;
+&lt;div id=&#34;carousel-example-2&#34; class=&#34;carousel slide carousel-fade&#34; data-ride=&#34;carousel&#34;&gt;
+  &lt;!--Indicators--&gt;
+  &lt;ol class=&#34;carousel-indicators&#34;&gt;
+    &lt;li data-target=&#34;#carousel-example-2&#34; data-slide-to=&#34;0&#34; class=&#34;active&#34;&gt;&lt;/li&gt;
+    &lt;li data-target=&#34;#carousel-example-2&#34; data-slide-to=&#34;1&#34;&gt;&lt;/li&gt;
+    &lt;li data-target=&#34;#carousel-example-2&#34; data-slide-to=&#34;2&#34;&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;!--/.Indicators--&gt;
+  &lt;!--Slides--&gt;
+  &lt;div class=&#34;carousel-inner&#34; role=&#34;listbox&#34;&gt;
+    &lt;div class=&#34;carousel-item active&#34;&gt;
+      &lt;div class=&#34;view&#34;&gt;
+        &lt;img class=&#34;d-block w-100&#34; src=&#34;https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg&#34;
+          alt=&#34;First slide&#34;&gt;
+        &lt;div class=&#34;mask rgba-black-light&#34;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;carousel-caption&#34;&gt;
+        &lt;h3 class=&#34;h3-responsive&#34;&gt;Light mask&lt;/h3&gt;
+        &lt;p&gt;First text&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;carousel-item&#34;&gt;
+      &lt;!--Mask color--&gt;
+      &lt;div class=&#34;view&#34;&gt;
+        &lt;img class=&#34;d-block w-100&#34; src=&#34;https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg&#34;
+          alt=&#34;Second slide&#34;&gt;
+        &lt;div class=&#34;mask rgba-black-strong&#34;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;carousel-caption&#34;&gt;
+        &lt;h3 class=&#34;h3-responsive&#34;&gt;Strong mask&lt;/h3&gt;
+        &lt;p&gt;Secondary text&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;carousel-item&#34;&gt;
+      &lt;!--Mask color--&gt;
+      &lt;div class=&#34;view&#34;&gt;
+        &lt;img class=&#34;d-block w-100&#34; src=&#34;https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg&#34;
+          alt=&#34;Third slide&#34;&gt;
+        &lt;div class=&#34;mask rgba-black-slight&#34;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;carousel-caption&#34;&gt;
+        &lt;h3 class=&#34;h3-responsive&#34;&gt;Slight mask&lt;/h3&gt;
+        &lt;p&gt;Third text&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!--/.Slides--&gt;
+  &lt;!--Controls--&gt;
+  &lt;a class=&#34;carousel-control-prev&#34; href=&#34;#carousel-example-2&#34; role=&#34;button&#34; data-slide=&#34;prev&#34;&gt;
+    &lt;span class=&#34;carousel-control-prev-icon&#34; aria-hidden=&#34;true&#34;&gt;&lt;/span&gt;
+    &lt;span class=&#34;sr-only&#34;&gt;Previous&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a class=&#34;carousel-control-next&#34; href=&#34;#carousel-example-2&#34; role=&#34;button&#34; data-slide=&#34;next&#34;&gt;
+    &lt;span class=&#34;carousel-control-next-icon&#34; aria-hidden=&#34;true&#34;&gt;&lt;/span&gt;
+    &lt;span class=&#34;sr-only&#34;&gt;Next&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;!--/.Controls--&gt;
+&lt;/div&gt;
+&lt;!--/.Carousel Wrapper--&gt;
+
+&lt;/div&gt;
+&lt;!--Grid column--&gt;
+</code></pre>
+<p>有关轮播的使用, 请查看 MDB 轮播<a href="https://mdbootstrap.com/docs/jquery/javascript/carousel/#example" target="_blank">Carousel</a>文档, 相信大家依样画瓢应该没有问题的.</p>
+<p>但如果需要控制轮播的一些选项如: 间隔时间/轮播方向/是否循环等等则需要 JavaScrip 的支持. 下面我们简单介绍一下.</p>
+<p>基本思路是: 找到轮播元素(通过id), 传递相关参数对象给它. 将如下代码添加到靠近底部自定义 JS 代码块中 :</p>
+<pre><code>&lt;!-- Your custom scripts (optional) --&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+  // Carousel options
+  $(&#39;#carousel-example-2&#39;).carousel({
+    interval: 2000, // 间隔时间, 默认5000毫秒, 如果设置为false则不会自动播放
+    pause: false,   // 鼠标移上后是否暂停, 默认暂停
+    wrap: false,    // 是否循环轮播, 默认循环
+  })
+&lt;/script&gt;
+</code></pre>
+<p>刷新页面试试.</p>
+<aside class="special"><p><strong>提示:</strong> 当前我们还没有学习 JS, 这些内容可不必深究, 待学习 JS 之后再理解即可.</p>
+</aside>
+<p>最后, 我们将以下代码添加到第二列中:</p>
+<pre><code>&lt;!--Grid column--&gt;
+&lt;div class=&#34;col-md-6&#34;&gt;
+
+  &lt;!--Excerpt--&gt;
+  &lt;a href=&#34;&#34; class=&#34;teal-text&#34;&gt;
+      &lt;h6 class=&#34;pb-1&#34;&gt;&lt;i class=&#34;fas fa-heart&#34;&gt;&lt;/i&gt;&lt;strong&gt; Lifestyle &lt;/strong&gt;&lt;/h6&gt;
+  &lt;/a&gt;
+  &lt;h4 class=&#34;mb-3&#34;&gt;&lt;strong&gt;This is title of the news&lt;/strong&gt;&lt;/h4&gt;
+  &lt;p&gt;Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+      placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis
+      debitis aut rerum.&lt;/p&gt;
+
+  &lt;p&gt;Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+      placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis
+      debitis aut rerum.&lt;/p&gt;
+  &lt;p&gt;by &lt;a&gt;&lt;strong&gt;Jessica Clark&lt;/strong&gt;&lt;/a&gt;, 26/08/2016&lt;/p&gt;
+  &lt;a class=&#34;btn btn-primary btn-md&#34;&gt;Read more&lt;/a&gt;
+
+&lt;/div&gt;
+&lt;!--Grid column--&gt;
+</code></pre>
+<p>至此, <code>Gallery</code>章节完毕. 现在你应该看到<a href="https://mdbootstrap.com/snippets/jquery/ascensus/24?action=fullscreen" target="_blank">这样的效果</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面主体- Contact 章节" duration="5">
+        <p><code>Contact</code>章节是我们页面主体的最后一个章节. 我们依然把它分为两列, 左边放置输入表单(Form), 右边放置一个在线地图. 结构如下:</p>
+<pre><code>&lt;!--Section: Contact--&gt;
+&lt;section id=&#34;contact&#34;&gt;
+
+  &lt;!-- Heading --&gt;
+  &lt;h2 class=&#34;mb-5 font-weight-bold text-center&#34;&gt;Contact us&lt;/h2&gt;
+
+  &lt;!--Grid row--&gt;
+  &lt;div class=&#34;row&#34;&gt;
+
+  &lt;!--Grid column--&gt;
+  &lt;div class=&#34;col-lg-5 col-md-12&#34;&gt;
+
+
+
+  &lt;/div&gt;
+  &lt;!--Grid column--&gt;
+
+  &lt;!--Grid column--&gt;
+  &lt;div class=&#34;col-lg-7 col-md-12&#34;&gt;
+
+
+
+  &lt;/div&gt;
+  &lt;!--Grid column--&gt;
+
+  &lt;/div&gt;
+  &lt;!--Grid row--&gt;
+
+&lt;/section&gt;
+&lt;!--Section: Contact--&gt;
+</code></pre>
+<h2 is-upgraded>联系表单</h2>
+<p>将以下代码放在第一列(左边):</p>
+<pre><code>&lt;!--Grid column--&gt;
+&lt;div class=&#34;col-lg-5 col-md-12&#34;&gt;
+  &lt;!-- Form contact --&gt;
+  &lt;form class=&#34;p-5 grey-text&#34;&gt;
+    &lt;div class=&#34;md-form form-sm&#34;&gt; &lt;i class=&#34;fas fa-user prefix&#34;&gt;&lt;/i&gt;
+      &lt;input type=&#34;text&#34; id=&#34;form1&#34; class=&#34;form-control form-control-sm&#34;&gt;
+      &lt;label for=&#34;form1&#34;&gt;Your name&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;md-form form-sm&#34;&gt; &lt;i class=&#34;fas fa-envelope prefix&#34;&gt;&lt;/i&gt;
+      &lt;input type=&#34;text&#34; id=&#34;form2&#34; class=&#34;form-control form-control-sm&#34;&gt;
+      &lt;label for=&#34;form2&#34;&gt;Your email&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;md-form form-sm&#34;&gt; &lt;i class=&#34;fas fa-tag prefix&#34;&gt;&lt;/i&gt;
+      &lt;input type=&#34;text&#34; id=&#34;form3&#34; class=&#34;form-control form-control-sm&#34;&gt;
+      &lt;label for=&#34;form3&#34;&gt;Subject&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;md-form form-sm&#34;&gt; &lt;i class=&#34;fas fa-pencil-alt prefix&#34;&gt;&lt;/i&gt;
+      &lt;textarea type=&#34;text&#34; id=&#34;form4&#34; class=&#34;md-textarea form-control form-control-sm&#34; rows=&#34;4&#34;&gt;&lt;/textarea&gt;
+      &lt;label for=&#34;form4&#34;&gt;Your message&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;text-center mt-4&#34;&gt;
+      &lt;button class=&#34;btn btn-primary&#34;&gt;Send &lt;i class=&#34;far fa-paper-planeml-1&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+  &lt;!-- Form contact --&gt;
+&lt;/div&gt;
+&lt;!--Grid column--&gt;
+</code></pre>
+<p>我们通常使用表单(form)来收集用户输入的数据(一般会通过检查后送到远程服务器进一步处理, 目前我们不会涉及).<br>下面我们将表单中使用的样式说明如下:</p>
+<ul>
+<li><code>md-form</code> 提供 Material Design 风格的输入元素.</li>
+<li><code>form-sm , form-control-sm</code> 使得我们的输入稍微小一点. 你可去掉试试.</li>
+<li><code>prefix</code> 使得图标成为输入元素的前缀, 当用户点击该元素时激活. 你可去掉试试.</li>
+<li><code>label</code> 是输入元素的标签, 相当于输入提示(placeholder). 但请注意, 每个标签都设置了<code>for</code>属性对应其输入元素的<code>id</code>, 如此, 当点击标签时它会平滑的上移并缩小. 你可去掉试试.</li>
+</ul>
+<p>进一步学习, 可参考 MDB 提供的输入<a href="https://mdbootstrap.com/components/inputs/" target="_blank">Inputs</a>文档和表单<a href="https://mdbootstrap.com/docs/jquery/forms/basic/" target="_blank">Forms</a>文档.</p>
+<p>当前, 你应该看到<a href="https://mdbootstrap.com/snippets/jquery/ascensus/25?action=fullscreen" target="_blank">这样的结果</a>.</p>
+<h2 is-upgraded>在线地图</h2>
+<p>接下来我们将在第二列(右边)放置一些联系信息及在线地图. 代码如下:</p>
+<aside class="special"><p><strong>提示:</strong> 现在, 依托地图的应用非常多. 最好用的首推地图的鼻祖 Google Map. 但由于你懂的原因, 我不得不使用国内的地图(以简单点的Sogou为例).<br>仍然的, 此部分涉及 JS, 请简单的跟随好了.</p>
+</aside>
+<pre><code>&lt;div class=&#34;col-lg-7 col-md-12&#34;&gt;
+
+&lt;!--Grid row--&gt;
+  &lt;div class=&#34;row text-center&#34;&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-12 mb-3&#34;&gt;
+
+        &lt;p&gt;&lt;i class=&#34;fas fa-map fa-1x mr-2 grey-text&#34;&gt;&lt;/i&gt;New York, NY 10012&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-6 mb-3&#34;&gt;
+
+        &lt;p&gt;&lt;i class=&#34;fas fa-building fa-1x mr-2 grey-text&#34;&gt;&lt;/i&gt;Mon - Fri, 8:00-22:00&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+    &lt;!--Grid column--&gt;
+    &lt;div class=&#34;col-lg-4 col-md-6 mb-3&#34;&gt;
+
+        &lt;p&gt;&lt;i class=&#34;fas fa-phone fa-1x mr-2 grey-text&#34;&gt;&lt;/i&gt;+ 01 234 567 89&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid column--&gt;
+
+  &lt;/div&gt;
+  &lt;!--Grid row--&gt;
+
+  &lt;!--Sogou 地图--&gt;
+  &lt;div id=&#34;map-container&#34; class=&#34;z-depth-1-half map-container mb-5&#34; style=&#34;height: 400px&#34;&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;!--Grid column--&gt;
+</code></pre>
+<p>注意代码底部放置地图的区域(<code>&lt;div id=&#34;map-container&#34; ...&gt;</code>), 我们设置了其高度为<code>400px</code>.</p>
+<p>接下来导入 Sogou地图 API库. 在页面底部放置其它 JS文件的后面添加, 如下代码所示:</p>
+<pre><code>&lt;!-- jQuery --&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;js/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;!-- Bootstrap tooltips --&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;js/popper.min.js&#34;&gt;&lt;/script&gt;
+&lt;!-- Bootstrap core JavaScript --&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;js/bootstrap.min.js&#34;&gt;&lt;/script&gt;
+&lt;!-- MDB core JavaScript --&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;js/mdb.min.js&#34;&gt;&lt;/script&gt;
+&lt;!-- 导入 Sogou Map API, 注意: 以上是已有的代码,下面这句是新增的 --&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;//api.map.sogou.com/maps/js/api_v2.5.1.js&#34;&gt;&lt;/script&gt;
+</code></pre>
+<p>然后在自定义 JS 脚本中写入如下代码:</p>
+<pre><code>&lt;!-- Your custom scripts (optional) --&gt;
+  &lt;script type=&#34;text/javascript&#34;&gt;
+    // Carousel options
+    $(&#39;#carousel-example-2&#39;).carousel({
+      interval: 2000, // 间隔时间, 默认5000毫秒, 如果设置为false则不会自动播放
+      pause: false,   // 鼠标移上后是否暂停, 默认暂停
+      wrap: false,    // 是否循环轮播, 默认循环
+    });
+//-------以下代码是新增的--------//
+    /* 定义函数, 加载指定坐标的地图 */
+    function showMap() {
+      var myLatlng = new sogou.maps.LatLng(29.4902, 106.5714);
+      var myOptions = {
+          zoom: 13,
+          center: myLatlng,
+          mapTypeId: sogou.maps.MapTypeId.ROADMAP
+      };
+      map = new sogou.maps.Map(document.getElementById(&#34;map-container&#34;), myOptions);
+      marker = new sogou.maps.Marker({position:myLatlng, map:map, title:&#34;重庆交通大学&#34;});
+    }
+    // 设置事件侦听器, 当窗口加载时调用 showMap 函数
+    sogou.maps.event.addDomListener(window, &#39;load&#39;, showMap);
+  &lt;/script&gt;
+
+</code></pre>
+<p>至此, <code>Contact</code> 章节OK. 你应该有<a href="https://mdbootstrap.com/snippets/jquery/ascensus/26?action=fullscreen" target="_blank">这样的结果</a>. 当然, Google地图为白色, 需要科学上网.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="页面底部及导航调整" duration="5">
+        <h2 is-upgraded>页面底部</h2>
+<p>现在我们来完成页面的底部. 先替换为如下的代码:</p>
+<pre><code>&lt;!-- Footer --&gt;
+&lt;footer class=&#34;page-footer font-small blue pt-4&#34;&gt;
+
+  &lt;!-- Footer Links --&gt;
+  &lt;div class=&#34;container-fluid text-center text-md-left&#34;&gt;
+
+    &lt;!-- Grid row --&gt;
+    &lt;div class=&#34;row&#34;&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-md-6 mt-md-0 mt-3&#34;&gt;
+
+        &lt;!-- Content --&gt;
+        &lt;h5 class=&#34;text-uppercase&#34;&gt;Footer Content&lt;/h5&gt;
+        &lt;p&gt;Here you can use rows and columns here to organize your footer content.&lt;/p&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+      &lt;hr class=&#34;clearfix w-100 d-md-none pb-3&#34;&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-md-3 mb-md-0 mb-3&#34;&gt;
+
+        &lt;!-- Links --&gt;
+        &lt;h5 class=&#34;text-uppercase&#34;&gt;Links&lt;/h5&gt;
+
+        &lt;ul class=&#34;list-unstyled&#34;&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 1&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 2&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 3&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 4&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+      &lt;!-- Grid column --&gt;
+      &lt;div class=&#34;col-md-3 mb-md-0 mb-3&#34;&gt;
+
+        &lt;!-- Links --&gt;
+        &lt;h5 class=&#34;text-uppercase&#34;&gt;Links&lt;/h5&gt;
+
+        &lt;ul class=&#34;list-unstyled&#34;&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 1&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 2&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 3&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&#34;#!&#34;&gt;Link 4&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Grid column --&gt;
+
+    &lt;/div&gt;
+    &lt;!-- Grid row --&gt;
+
+  &lt;/div&gt;
+  &lt;!-- Footer Links --&gt;
+
+  &lt;!-- Copyright --&gt;
+  &lt;div class=&#34;footer-copyright text-center py-3&#34;&gt;© 2018 Copyright:
+    &lt;a href=&#34;https://mdbootstrap.com/education/bootstrap/&#34;&gt; MDBootstrap.com&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;!-- Copyright --&gt;
+
+&lt;/footer&gt;
+&lt;!-- Footer --&gt;
+</code></pre>
+<p>这是直接从 MDB <a href="https://mdbootstrap.com/docs/jquery/navigation/footer/#basic" target="_blank">Footer</a>文档的实例代码中复制过来的. 目前有两个部分, 一些假的链接和版权申明, 有蓝色的底色. 它有改善的空间.</p>
+<p>我们先将那些假的链接修正一下. 找到<code>footer</code>中的一个叫<code>Footer Links</code>的<code>div</code>, 替换为如下代码:</p>
+<pre><code>&lt;!--Footer Links--&gt;
+&lt;div class=&#34;container mt-5 mb-4 text-center text-md-left&#34;&gt;
+  &lt;div class=&#34;row mt-3&#34;&gt;
+
+    &lt;!--First column--&gt;
+    &lt;div class=&#34;col-md-3 col-lg-4 col-xl-3 mb-4&#34;&gt;
+      &lt;h6 class=&#34;text-uppercase font-weight-bold&#34;&gt;
+        &lt;strong&gt;Company name&lt;/strong&gt;
+      &lt;/h6&gt;
+      &lt;hr class=&#34;deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto&#34; style=&#34;width: 60px;&#34;&gt;
+      &lt;p&gt;Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+        amet, consectetur adipisicing elit.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!--/.First column--&gt;
+
+    &lt;!--Second column--&gt;
+    &lt;div class=&#34;col-md-2 col-lg-2 col-xl-2 mx-auto mb-4&#34;&gt;
+      &lt;h6 class=&#34;text-uppercase font-weight-bold&#34;&gt;
+        &lt;strong&gt;Products&lt;/strong&gt;
+      &lt;/h6&gt;
+      &lt;hr class=&#34;deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto&#34; style=&#34;width: 60px;&#34;&gt;
+      &lt;p&gt;
+        &lt;a href=&#34;#!&#34;&gt;MDBootstrap&lt;/a&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;a href=&#34;#!&#34;&gt;MDWordPress&lt;/a&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;a href=&#34;#!&#34;&gt;BrandFlow&lt;/a&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;a href=&#34;#!&#34;&gt;Bootstrap Angular&lt;/a&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!--/.Second column--&gt;
+
+    &lt;!--Third column--&gt;
+    &lt;div class=&#34;col-md-3 col-lg-2 col-xl-2 mx-auto mb-4&#34;&gt;
+      &lt;h6 class=&#34;text-uppercase font-weight-bold&#34;&gt;
+        &lt;strong&gt;Useful links&lt;/strong&gt;
+      &lt;/h6&gt;
+      &lt;hr class=&#34;deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto&#34; style=&#34;width: 60px;&#34;&gt;
+      &lt;p&gt;
+        &lt;a href=&#34;#!&#34;&gt;Your Account&lt;/a&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;a href=&#34;#!&#34;&gt;Become an Affiliate&lt;/a&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;a href=&#34;#!&#34;&gt;Shipping Rates&lt;/a&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;a href=&#34;#!&#34;&gt;Help&lt;/a&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!--/.Third column--&gt;
+
+    &lt;!--Fourth column--&gt;
+    &lt;div class=&#34;col-md-4 col-lg-3 col-xl-3&#34;&gt;
+      &lt;h6 class=&#34;text-uppercase font-weight-bold&#34;&gt;
+        &lt;strong&gt;Contact&lt;/strong&gt;
+      &lt;/h6&gt;
+      &lt;hr class=&#34;deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto&#34; style=&#34;width: 60px;&#34;&gt;
+      &lt;p&gt;
+        &lt;i class=&#34;fas fa-home  mr-3&#34;&gt;&lt;/i&gt; New York, NY 10012, US&lt;/p&gt;
+      &lt;p&gt;
+        &lt;i class=&#34;fas fa-envelope mr-3&#34;&gt;&lt;/i&gt; info@example.com&lt;/p&gt;
+      &lt;p&gt;
+        &lt;i class=&#34;fas fa-phone mr-3&#34;&gt;&lt;/i&gt; + 01 234 567 88&lt;/p&gt;
+      &lt;p&gt;
+        &lt;i class=&#34;fas fa-print mr-3&#34;&gt;&lt;/i&gt; + 01 234 567 89&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!--/.Fourth column--&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--/.Footer Links--&gt;
+</code></pre>
+<p>新的链接部分内容更丰富, 我们分为了四列进行展示.</p>
+<ul>
+<li>使用<code>container</code>替换了<code>container-fluid</code>容器, 使得内容不会扩展到边界</li>
+<li>总共给出四列来分别展示文字,产品,推荐和联系方式</li>
+<li>每一列都有一个突出的标题, 且其下给了一条紫色的分割线(给了固定宽度为:<code>60px</code>)</li>
+</ul>
+<aside class="warning"><p><strong>思考:</strong> 刷新页面, 你应该会觉得标题小的分割线长度和标题不协调. 想想怎么改进一下.</p>
+</aside>
+<p>我们还打算在<code>footer</code>中添加一个部分用于放置社交媒体链接. 也即, 现在页面的<code>footer</code>由3个部分组成: 社交媒体链接, 公司信息, 版权信息.</p>
+<p>将如下代码添加到我们刚刚才改造过的 Footer Links 这个<code>div</code>前(注意添加的位置).</p>
+<pre><code>&lt;!-- Social buttons --&gt;
+&lt;div class=&#34;primary-color&#34;&gt;
+  &lt;div class=&#34;container&#34;&gt;
+    &lt;!--Grid row--&gt;
+    &lt;div class=&#34;row py-4 d-flex align-items-center&#34;&gt;
+
+      &lt;!--Grid column--&gt;
+      &lt;div class=&#34;col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0&#34;&gt;
+        &lt;h6 class=&#34;mb-0 white-text&#34;&gt;Get connected with us on social networks!&lt;/h6&gt;
+      &lt;/div&gt;
+      &lt;!--Grid column--&gt;
+
+      &lt;!--Grid column--&gt;
+      &lt;div class=&#34;col-md-6 col-lg-7 text-center text-md-right&#34;&gt;
+        &lt;!--Facebook--&gt;
+        &lt;a class=&#34;fb-ic ml-0&#34;&gt;
+          &lt;i class=&#34;fab fa-facebook-f white-text mr-4&#34;&gt; &lt;/i&gt;
+        &lt;/a&gt;
+        &lt;!--Twitter--&gt;
+        &lt;a class=&#34;tw-ic&#34;&gt;
+          &lt;i class=&#34;fab fa-twitter white-text mr-4&#34;&gt; &lt;/i&gt;
+        &lt;/a&gt;
+        &lt;!--Google +--&gt;
+        &lt;a class=&#34;gplus-ic&#34;&gt;
+          &lt;i class=&#34;fab fa-google-plus-g white-text mr-4&#34;&gt; &lt;/i&gt;
+        &lt;/a&gt;
+        &lt;!--Linkedin--&gt;
+        &lt;a class=&#34;li-ic&#34;&gt;
+          &lt;i class=&#34;fab fa-linkedin-in white-text mr-4&#34;&gt; &lt;/i&gt;
+        &lt;/a&gt;
+        &lt;!--Instagram--&gt;
+        &lt;a class=&#34;ins-ic&#34;&gt;
+          &lt;i class=&#34;fab fa-instagram white-text mr-lg-4&#34;&gt; &lt;/i&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+      &lt;!--Grid column--&gt;
+
+    &lt;/div&gt;
+    &lt;!--Grid row--&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Social buttons --&gt;
+</code></pre>
+<p>刷新后, 你会觉得新添加的这部分不大和谐, 似乎是硬插入的, 文字也有点小. 简单的修正如下即可:</p>
+<pre><code>&lt;!-- Footer --&gt;
+  &lt;footer class=&#34;page-footer unique-color-dark&#34;&gt;
+</code></pre>
+<p>在看看, 应该美观多了. 你现在可以看到<a href="https://mdbootstrap.com/snippets/jquery/ascensus/27?action=fullscreen" target="_blank">这样的效果</a></p>
+<p>下面, 我们进行最后的调整和提升.</p>
+<h2 is-upgraded>导航调整</h2>
+<h3 is-upgraded>让导航生效</h3>
+<p>你应该会发现导航条中的导航似乎与我们页面的内容不匹配的, 将导航条中的<code>Links</code>部分用下面的代码修正:</p>
+<pre><code>&lt;!-- Links --&gt;
+&lt;ul class=&#34;navbar-nav mr-auto&#34;&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#intro&#34;&gt;Home&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#best-features&#34;&gt;Features&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#examples&#34;&gt;Examples&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#gallery&#34;&gt;Gallery&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34; href=&#34;#contact&#34;&gt;Contact&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- Links --&gt;
+</code></pre>
+<p>现在点击各个导航, 页面将跳到定义好的相应位置(即各<code>section</code>, 你应该知道这是通过 <code>id</code>进行的页内导航).</p>
+<h3 is-upgraded>滚动平滑</h3>
+<p>当点击导航超链接时, 页面瞬间定位到指定位置. 其实我们可以让其优雅一点的. 简单的使用<code>smooth-scroll</code>则OK:</p>
+<pre><code>&lt;!-- Links --&gt;
+&lt;ul class=&#34;navbar-nav mr-auto smooth-scroll&#34;&gt;
+</code></pre>
+<p>试试看.</p>
+<h3 is-upgraded>取消搜索</h3>
+<p>我们打算在导航条中搜索的位置放置社交图标, 用下面的代码替换<code>form</code>标签:</p>
+<pre><code>&lt;!-- Social Icon  --&gt;
+&lt;ul class=&#34;navbar-nav nav-flex-icons&#34;&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34;&gt;&lt;i class=&#34;fab fa-facebook-f&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34;&gt;&lt;i class=&#34;fab fa-twitter&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class=&#34;nav-item&#34;&gt;
+    &lt;a class=&#34;nav-link&#34;&gt;&lt;i class=&#34;fab fa-instagram&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h3 is-upgraded>导航条透明及动感</h3>
+<p>最后, 我们让导航条更动感一点. 添加<code>scrolling-navbar</code>类, 去掉<code>primary-color</code>类:</p>
+<pre><code>&lt;!--Navbar--&gt;
+&lt;nav class=&#34;navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar&#34;&gt;
+</code></pre>
+<p>刷新后, 你会发现导航条透明了, 也有一定的动画效果(赞!). 不过当向上滚动时有问题.<br>打开我们自定义的样式文件<code>css/style.css</code>, 添加如下样式:</p>
+<pre><code>.top-nav-collapse {
+  background-color: #24355C;
+}
+</code></pre>
+<p>我们为<code>.top-nav-collapse</code>自定义了样式, 即设置了背景. 不过你找遍了整个 HTML, 也不会看到那个元素在使用这个样式类.<br>那么, 我们定义它又怎么能生效呢? 解释如下:</p>
+<ul>
+<li>当我们没有设置导航条的颜色如刚才去掉了<code>primary-color</code>, 那么导航条将是透明的</li>
+<li><code>scrolling-navbar</code>是 MDB 定义的一个特殊的样式类. 当感知到用户在滚动页面时, MDB 将自动运行一段 JS 代码, 将<code>.top-nav-collapse</code>这个样式类添加给<code>.navbar</code>即导航条. 因此, 拥有这个样式类的元素的背景颜色即刻发生改变.</li>
+</ul>
+<aside class="special"><p><strong>提示:</strong> 不滚动时没有这个样式, 滚动时动态添加. 这是非常聪明的做法, 在现代前端中大量的应用了, 如 Angular.</p>
+</aside>
+<h3 is-upgraded>大功告成</h3>
+<p>现在看看你的<a href="https://mdbootstrap.com/snippets/jquery/ascensus/28?action=fullscreen" target="_blank">最终页面</a>. 如果有什么问题, 请参考下一节的完整代码.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="最终参考代码" duration="2">
+        <h2 is-upgraded>index.html 参考代码</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&#34;UTF-8&#34;&gt;
+  &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt;
+  &lt;meta http-equiv=&#34;x-ua-compatible&#34; content=&#34;ie=edge&#34;&gt;
+  &lt;title&gt;MDB4.12模板&lt;/title&gt;
+  &lt;!-- MDB icon --&gt;
+  &lt;link rel=&#34;icon&#34; href=&#34;img/mdb-favicon.ico&#34; type=&#34;image/x-icon&#34;&gt;
+  &lt;!-- Font Awesome --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://use.fontawesome.com/releases/v5.11.2/css/all.css&#34;&gt;
+  &lt;!-- Bootstrap core CSS --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;css/bootstrap.min.css&#34;&gt;
+  &lt;!-- Material Design Bootstrap --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;css/mdb.min.css&#34;&gt;
+  &lt;!-- Your custom styles (optional) --&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;css/style.css&#34;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;!--Main Navigation--&gt;
+  &lt;header&gt;
+    &lt;!--Navbar--&gt;
+    &lt;nav class=&#34;navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top&#34;&gt;
+
+      &lt;div class=&#34;container&#34;&gt;
+
+        &lt;!-- Navbar brand --&gt;
+        &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Navbar&lt;/a&gt;
+
+        &lt;!-- Collapse button --&gt;
+        &lt;button class=&#34;navbar-toggler&#34; type=&#34;button&#34; data-toggle=&#34;collapse&#34; data-target=&#34;#basicExampleNav&#34;
+          aria-controls=&#34;basicExampleNav&#34; aria-expanded=&#34;false&#34; aria-label=&#34;Toggle navigation&#34;&gt;
+          &lt;span class=&#34;navbar-toggler-icon&#34;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+
+        &lt;!-- Collapsible content --&gt;
+        &lt;div class=&#34;collapse navbar-collapse&#34; id=&#34;basicExampleNav&#34;&gt;
+
+          &lt;!-- Links --&gt;
+          &lt;ul class=&#34;navbar-nav mr-auto smooth-scroll&#34;&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#intro&#34;&gt;Home&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#best-features&#34;&gt;Features&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#examples&#34;&gt;Examples&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#gallery&#34;&gt;Gallery&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34; href=&#34;#contact&#34;&gt;Contact&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;!-- Links --&gt;
+
+          &lt;!-- Social Icon  --&gt;
+          &lt;ul class=&#34;navbar-nav nav-flex-icons&#34;&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34;&gt;&lt;i class=&#34;fab fa-facebook-f&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34;&gt;&lt;i class=&#34;fab fa-twitter&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;nav-item&#34;&gt;
+              &lt;a class=&#34;nav-link&#34;&gt;&lt;i class=&#34;fab fa-instagram&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;!-- Collapsible content --&gt;
+
+      &lt;/div&gt;
+
+    &lt;/nav&gt;
+    &lt;!--/.Navbar--&gt;
+    &lt;!--Mask--&gt;
+    &lt;div id=&#34;intro&#34; class=&#34;view&#34;&gt;
+
+      &lt;div class=&#34;mask rgba-black-strong&#34;&gt;
+
+        &lt;div class=&#34;container-fluid d-flex align-items-center justify-content-center h-100&#34;&gt;
+
+          &lt;div class=&#34;row d-flex justify-content-center text-center&#34;&gt;
+
+            &lt;div class=&#34;col-md-10&#34;&gt;
+
+              &lt;!-- Heading --&gt;
+              &lt;h2 class=&#34;display-4 font-weight-bold white-text pt-5 mb-2&#34;&gt;Travel&lt;/h2&gt;
+
+              &lt;!-- Divider --&gt;
+              &lt;hr class=&#34;hr-light&#34;&gt;
+
+              &lt;!-- Description --&gt;
+              &lt;h4 class=&#34;white-text my-4&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti
+                consequuntur.&lt;/h4&gt;
+              &lt;button type=&#34;button&#34; class=&#34;btn btn-outline-white&#34;&gt;Read more&lt;i class=&#34;fas fa-book ml-2&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+    &lt;!--/.Mask--&gt;
+  &lt;/header&gt;
+  &lt;!--Main Navigation--&gt;
+
+  &lt;!--Main layout--&gt;
+  &lt;main class=&#34;mt-5&#34;&gt;
+    &lt;div class=&#34;container&#34;&gt;
+
+      &lt;!--Section: Best Features--&gt;
+      &lt;section id=&#34;best-features&#34; class=&#34;text-center&#34;&gt;
+
+        &lt;!-- Heading --&gt;
+        &lt;h2 class=&#34;mb-5 font-weight-bold&#34;&gt;Best Features&lt;/h2&gt;
+
+        &lt;!--Grid row--&gt;
+        &lt;div class=&#34;row d-flex justify-content-center mb-4&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-8&#34;&gt;
+
+            &lt;!-- Description --&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate hic provident
+              nulla repellat
+              facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis est
+              sit pariatur.&lt;/p&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid row--&gt;
+
+        &lt;!--Grid row--&gt;
+        &lt;div class=&#34;row&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4 mb-1&#34;&gt;
+            &lt;i class=&#34;fas fa-camera-retro fa-4x orange-text&#34;&gt;&lt;/i&gt;
+            &lt;h4 class=&#34;my-4&#34;&gt;Experience&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+              aperiam minima
+              assumenda deleniti hic.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4 mb-1&#34;&gt;
+            &lt;i class=&#34;fas fa-heart fa-4x orange-text&#34;&gt;&lt;/i&gt;
+            &lt;h4 class=&#34;my-4&#34;&gt;Happiness&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+              aperiam minima
+              assumenda deleniti hic.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-4 mb-1&#34;&gt;
+            &lt;i class=&#34;fas fa-bicycle fa-4x orange-text&#34;&gt;&lt;/i&gt;
+            &lt;h4 class=&#34;my-4&#34;&gt;Adventure&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+              aperiam minima
+              assumenda deleniti hic.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid row--&gt;
+
+      &lt;/section&gt;
+      &lt;!--Section: Best Features--&gt;
+
+      &lt;hr class=&#34;my-5&#34;&gt;
+
+      &lt;!--Section: Examples--&gt;
+      &lt;section id=&#34;examples&#34; class=&#34;text-center&#34;&gt;
+
+        &lt;!-- heading --&gt;
+        &lt;h2 class=&#34;mb-5 font-weight-bold&#34;&gt;Stunning Examples&lt;/h2&gt;
+
+        &lt;!--Grid row--&gt;
+        &lt;div class=&#34;row&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-4 col-md-12 mb-4&#34;&gt;
+
+            &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/48.jpg&#34; class=&#34;img-fluid&#34;&gt;
+              &lt;a href=&#34;#!&#34;&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+              aperiam minima
+              assumenda deleniti hic.&lt;/p&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+            &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/49.jpg&#34; class=&#34;img-fluid&#34;&gt;
+              &lt;a href=&#34;#!&#34;&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+              aperiam minima
+              assumenda deleniti hic.&lt;/p&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+            &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/50.jpg&#34; class=&#34;img-fluid&#34;&gt;
+              &lt;a href=&#34;#!&#34;&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+              aperiam minima
+              assumenda deleniti hic.&lt;/p&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid row--&gt;
+
+        &lt;!--Grid row--&gt;
+        &lt;div class=&#34;row&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-4 col-md-12 mb-4&#34;&gt;
+
+            &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/51.jpg&#34; class=&#34;img-fluid&#34;&gt;
+              &lt;a href=&#34;#!&#34;&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+              aperiam minima
+              assumenda deleniti hic.&lt;/p&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+            &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/52.jpg&#34; class=&#34;img-fluid&#34;&gt;
+              &lt;a href=&#34;#!&#34;&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+              aperiam minima
+              assumenda deleniti hic.&lt;/p&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-4 col-md-6 mb-4&#34;&gt;
+
+            &lt;div class=&#34;view overlay z-depth-1-half&#34;&gt;
+              &lt;img src=&#34;https://mdbootstrap.com/img/Photos/Others/images/53.jpg&#34; class=&#34;img-fluid&#34;&gt;
+              &lt;a href=&#34;#!&#34;&gt;
+                &lt;div class=&#34;mask rgba-white-slight&#34;&gt;&lt;/div&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;h4 class=&#34;my-4 font-weight-bold&#34;&gt;Heading&lt;/h4&gt;
+            &lt;p class=&#34;grey-text&#34;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam,
+              aperiam minima
+              assumenda deleniti hic.&lt;/p&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid row--&gt;
+
+      &lt;/section&gt;
+      &lt;!--Section: Examples--&gt;
+
+      &lt;hr class=&#34;my-5&#34;&gt;
+
+      &lt;!--Section: Gallery--&gt;
+      &lt;section id=&#34;gallery&#34;&gt;
+
+        &lt;!-- Heading --&gt;
+        &lt;h2 class=&#34;mb-5 font-weight-bold text-center&#34;&gt;Gallery heading&lt;/h2&gt;
+
+        &lt;!--Grid row--&gt;
+        &lt;div class=&#34;row&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-6 mb-4&#34;&gt;
+
+            &lt;!--Carousel Wrapper--&gt;
+            &lt;div id=&#34;carousel-example-2&#34; class=&#34;carousel slide carousel-fade&#34; data-ride=&#34;carousel&#34;&gt;
+              &lt;!--Indicators--&gt;
+              &lt;ol class=&#34;carousel-indicators&#34;&gt;
+                &lt;li data-target=&#34;#carousel-example-2&#34; data-slide-to=&#34;0&#34; class=&#34;active&#34;&gt;&lt;/li&gt;
+                &lt;li data-target=&#34;#carousel-example-2&#34; data-slide-to=&#34;1&#34;&gt;&lt;/li&gt;
+                &lt;li data-target=&#34;#carousel-example-2&#34; data-slide-to=&#34;2&#34;&gt;&lt;/li&gt;
+              &lt;/ol&gt;
+              &lt;!--/.Indicators--&gt;
+              &lt;!--Slides--&gt;
+              &lt;div class=&#34;carousel-inner&#34; role=&#34;listbox&#34;&gt;
+                &lt;div class=&#34;carousel-item active&#34;&gt;
+                  &lt;div class=&#34;view&#34;&gt;
+                    &lt;img class=&#34;d-block w-100&#34; src=&#34;https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg&#34;
+                      alt=&#34;First slide&#34;&gt;
+                    &lt;div class=&#34;mask rgba-black-light&#34;&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&#34;carousel-caption&#34;&gt;
+                    &lt;h3 class=&#34;h3-responsive&#34;&gt;Light mask&lt;/h3&gt;
+                    &lt;p&gt;First text&lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;carousel-item&#34;&gt;
+                  &lt;!--Mask color--&gt;
+                  &lt;div class=&#34;view&#34;&gt;
+                    &lt;img class=&#34;d-block w-100&#34; src=&#34;https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg&#34;
+                      alt=&#34;Second slide&#34;&gt;
+                    &lt;div class=&#34;mask rgba-black-strong&#34;&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&#34;carousel-caption&#34;&gt;
+                    &lt;h3 class=&#34;h3-responsive&#34;&gt;Strong mask&lt;/h3&gt;
+                    &lt;p&gt;Secondary text&lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;carousel-item&#34;&gt;
+                  &lt;!--Mask color--&gt;
+                  &lt;div class=&#34;view&#34;&gt;
+                    &lt;img class=&#34;d-block w-100&#34; src=&#34;https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg&#34;
+                      alt=&#34;Third slide&#34;&gt;
+                    &lt;div class=&#34;mask rgba-black-slight&#34;&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&#34;carousel-caption&#34;&gt;
+                    &lt;h3 class=&#34;h3-responsive&#34;&gt;Slight mask&lt;/h3&gt;
+                    &lt;p&gt;Third text&lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!--/.Slides--&gt;
+              &lt;!--Controls--&gt;
+              &lt;a class=&#34;carousel-control-prev&#34; href=&#34;#carousel-example-2&#34; role=&#34;button&#34; data-slide=&#34;prev&#34;&gt;
+                &lt;span class=&#34;carousel-control-prev-icon&#34; aria-hidden=&#34;true&#34;&gt;&lt;/span&gt;
+                &lt;span class=&#34;sr-only&#34;&gt;Previous&lt;/span&gt;
+              &lt;/a&gt;
+              &lt;a class=&#34;carousel-control-next&#34; href=&#34;#carousel-example-2&#34; role=&#34;button&#34; data-slide=&#34;next&#34;&gt;
+                &lt;span class=&#34;carousel-control-next-icon&#34; aria-hidden=&#34;true&#34;&gt;&lt;/span&gt;
+                &lt;span class=&#34;sr-only&#34;&gt;Next&lt;/span&gt;
+              &lt;/a&gt;
+              &lt;!--/.Controls--&gt;
+            &lt;/div&gt;
+            &lt;!--/.Carousel Wrapper--&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-6&#34;&gt;
+
+            &lt;!--Excerpt--&gt;
+            &lt;a href=&#34;&#34; class=&#34;teal-text&#34;&gt;
+              &lt;h6 class=&#34;pb-1&#34;&gt;&lt;i class=&#34;fas fa-heart&#34;&gt;&lt;/i&gt;&lt;strong&gt; Lifestyle &lt;/strong&gt;&lt;/h6&gt;
+            &lt;/a&gt;
+            &lt;h4 class=&#34;mb-3&#34;&gt;&lt;strong&gt;This is title of the news&lt;/strong&gt;&lt;/h4&gt;
+            &lt;p&gt;Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+              placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis
+              debitis aut rerum.&lt;/p&gt;
+
+            &lt;p&gt;Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+              placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis
+              debitis aut rerum.&lt;/p&gt;
+            &lt;p&gt;by &lt;a&gt;&lt;strong&gt;Jessica Clark&lt;/strong&gt;&lt;/a&gt;, 26/08/2016&lt;/p&gt;
+            &lt;a class=&#34;btn btn-primary btn-md&#34;&gt;Read more&lt;/a&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid row--&gt;
+
+      &lt;/section&gt;
+      &lt;!--Section: Gallery--&gt;
+
+      &lt;hr class=&#34;my-5&#34;&gt;
+
+      &lt;!--Section: Contact--&gt;
+      &lt;section id=&#34;contact&#34;&gt;
+
+        &lt;!-- Heading --&gt;
+        &lt;h2 class=&#34;mb-5 font-weight-bold text-center&#34;&gt;Contact us&lt;/h2&gt;
+
+        &lt;!--Grid row--&gt;
+        &lt;div class=&#34;row&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-5 col-md-12&#34;&gt;
+            &lt;!-- Form contact --&gt;
+            &lt;form class=&#34;p-5 grey-text&#34;&gt;
+              &lt;div class=&#34;md-form form-sm&#34;&gt; &lt;i class=&#34;fas fa-user prefix&#34;&gt;&lt;/i&gt;
+                &lt;input type=&#34;text&#34; id=&#34;form1&#34; class=&#34;form-control form-control-sm&#34;&gt;
+                &lt;label for=&#34;form1&#34;&gt;Your name&lt;/label&gt;
+              &lt;/div&gt;
+              &lt;div class=&#34;md-form form-sm&#34;&gt; &lt;i class=&#34;fas fa-envelope prefix&#34;&gt;&lt;/i&gt;
+                &lt;input type=&#34;text&#34; id=&#34;form2&#34; class=&#34;form-control form-control-sm&#34;&gt;
+                &lt;label for=&#34;form2&#34;&gt;Your email&lt;/label&gt;
+              &lt;/div&gt;
+              &lt;div class=&#34;md-form form-sm&#34;&gt; &lt;i class=&#34;fas fa-tag prefix&#34;&gt;&lt;/i&gt;
+                &lt;input type=&#34;text&#34; id=&#34;form3&#34; class=&#34;form-control form-control-sm&#34;&gt;
+                &lt;label for=&#34;form3&#34;&gt;Subject&lt;/label&gt;
+              &lt;/div&gt;
+              &lt;div class=&#34;md-form form-sm&#34;&gt; &lt;i class=&#34;fas fa-pencil-alt prefix&#34;&gt;&lt;/i&gt;
+                &lt;textarea type=&#34;text&#34; id=&#34;form4&#34; class=&#34;md-textarea form-control form-control-sm&#34; rows=&#34;4&#34;&gt;&lt;/textarea&gt;
+                &lt;label for=&#34;form4&#34;&gt;Your message&lt;/label&gt;
+              &lt;/div&gt;
+              &lt;div class=&#34;text-center mt-4&#34;&gt;
+                &lt;button class=&#34;btn btn-primary&#34;&gt;Send &lt;i class=&#34;far fa-paper-planeml-1&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+            &lt;!-- Form contact --&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-lg-7 col-md-12&#34;&gt;
+
+            &lt;!--Grid row--&gt;
+            &lt;div class=&#34;row text-center&#34;&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-lg-4 col-md-12 mb-3&#34;&gt;
+
+                &lt;p&gt;&lt;i class=&#34;fas fa-map fa-1x mr-2 grey-text&#34;&gt;&lt;/i&gt;New York, NY 10012&lt;/p&gt;
+
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-lg-4 col-md-6 mb-3&#34;&gt;
+
+                &lt;p&gt;&lt;i class=&#34;fas fa-building fa-1x mr-2 grey-text&#34;&gt;&lt;/i&gt;Mon - Fri, 8:00-22:00&lt;/p&gt;
+
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+              &lt;!--Grid column--&gt;
+              &lt;div class=&#34;col-lg-4 col-md-6 mb-3&#34;&gt;
+
+                &lt;p&gt;&lt;i class=&#34;fas fa-phone fa-1x mr-2 grey-text&#34;&gt;&lt;/i&gt;+ 01 234 567 89&lt;/p&gt;
+
+              &lt;/div&gt;
+              &lt;!--Grid column--&gt;
+
+            &lt;/div&gt;
+            &lt;!--Grid row--&gt;
+
+            &lt;!--Sogou 地图--&gt;
+            &lt;div id=&#34;map-container&#34; class=&#34;z-depth-1-half map-container mb-5&#34; style=&#34;height: 400px&#34;&gt;&lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid row--&gt;
+
+      &lt;/section&gt;
+      &lt;!--Section: Contact--&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+  &lt;!--Main layout--&gt;
+
+  &lt;!-- Footer --&gt;
+  &lt;footer class=&#34;page-footer unique-color-dark&#34;&gt;
+
+    &lt;!-- Social buttons --&gt;
+    &lt;div class=&#34;primary-color&#34;&gt;
+      &lt;div class=&#34;container&#34;&gt;
+        &lt;!--Grid row--&gt;
+        &lt;div class=&#34;row py-4 d-flex align-items-center&#34;&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0&#34;&gt;
+            &lt;h6 class=&#34;mb-0 white-text&#34;&gt;Get connected with us on social networks!&lt;/h6&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+          &lt;!--Grid column--&gt;
+          &lt;div class=&#34;col-md-6 col-lg-7 text-center text-md-right&#34;&gt;
+            &lt;!--Facebook--&gt;
+            &lt;a class=&#34;fb-ic ml-0&#34;&gt;
+              &lt;i class=&#34;fab fa-facebook-f white-text mr-4&#34;&gt; &lt;/i&gt;
+            &lt;/a&gt;
+            &lt;!--Twitter--&gt;
+            &lt;a class=&#34;tw-ic&#34;&gt;
+              &lt;i class=&#34;fab fa-twitter white-text mr-4&#34;&gt; &lt;/i&gt;
+            &lt;/a&gt;
+            &lt;!--Google +--&gt;
+            &lt;a class=&#34;gplus-ic&#34;&gt;
+              &lt;i class=&#34;fab fa-google-plus-g white-text mr-4&#34;&gt; &lt;/i&gt;
+            &lt;/a&gt;
+            &lt;!--Linkedin--&gt;
+            &lt;a class=&#34;li-ic&#34;&gt;
+              &lt;i class=&#34;fab fa-linkedin-in white-text mr-4&#34;&gt; &lt;/i&gt;
+            &lt;/a&gt;
+            &lt;!--Instagram--&gt;
+            &lt;a class=&#34;ins-ic&#34;&gt;
+              &lt;i class=&#34;fab fa-instagram white-text mr-lg-4&#34;&gt; &lt;/i&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+          &lt;!--Grid column--&gt;
+
+        &lt;/div&gt;
+        &lt;!--Grid row--&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Social buttons --&gt;
+
+    &lt;!--Footer Links--&gt;
+    &lt;div class=&#34;container mt-5 mb-4 text-center text-md-left&#34;&gt;
+      &lt;div class=&#34;row mt-3&#34;&gt;
+
+        &lt;!--First column--&gt;
+        &lt;div class=&#34;col-md-3 col-lg-4 col-xl-3 mb-4&#34;&gt;
+          &lt;h6 class=&#34;text-uppercase font-weight-bold&#34;&gt;
+            &lt;strong&gt;Company name&lt;/strong&gt;
+          &lt;/h6&gt;
+          &lt;hr class=&#34;deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto&#34; style=&#34;width: 60px;&#34;&gt;
+          &lt;p&gt;Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+            amet, consectetur adipisicing elit.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;!--/.First column--&gt;
+
+        &lt;!--Second column--&gt;
+        &lt;div class=&#34;col-md-2 col-lg-2 col-xl-2 mx-auto mb-4&#34;&gt;
+          &lt;h6 class=&#34;text-uppercase font-weight-bold&#34;&gt;
+            &lt;strong&gt;Products&lt;/strong&gt;
+          &lt;/h6&gt;
+          &lt;hr class=&#34;deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto&#34; style=&#34;width: 60px;&#34;&gt;
+          &lt;p&gt;
+            &lt;a href=&#34;#!&#34;&gt;MDBootstrap&lt;/a&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;a href=&#34;#!&#34;&gt;MDWordPress&lt;/a&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;a href=&#34;#!&#34;&gt;BrandFlow&lt;/a&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;a href=&#34;#!&#34;&gt;Bootstrap Angular&lt;/a&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;!--/.Second column--&gt;
+
+        &lt;!--Third column--&gt;
+        &lt;div class=&#34;col-md-3 col-lg-2 col-xl-2 mx-auto mb-4&#34;&gt;
+          &lt;h6 class=&#34;text-uppercase font-weight-bold&#34;&gt;
+            &lt;strong&gt;Useful links&lt;/strong&gt;
+          &lt;/h6&gt;
+          &lt;hr class=&#34;deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto&#34; style=&#34;width: 60px;&#34;&gt;
+          &lt;p&gt;
+            &lt;a href=&#34;#!&#34;&gt;Your Account&lt;/a&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;a href=&#34;#!&#34;&gt;Become an Affiliate&lt;/a&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;a href=&#34;#!&#34;&gt;Shipping Rates&lt;/a&gt;
+          &lt;/p&gt;
+          &lt;p&gt;
+            &lt;a href=&#34;#!&#34;&gt;Help&lt;/a&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;!--/.Third column--&gt;
+
+        &lt;!--Fourth column--&gt;
+        &lt;div class=&#34;col-md-4 col-lg-3 col-xl-3&#34;&gt;
+          &lt;h6 class=&#34;text-uppercase font-weight-bold&#34;&gt;
+            &lt;strong&gt;Contact&lt;/strong&gt;
+          &lt;/h6&gt;
+          &lt;hr class=&#34;deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto&#34; style=&#34;width: 60px;&#34;&gt;
+          &lt;p&gt;
+            &lt;i class=&#34;fas fa-home  mr-3&#34;&gt;&lt;/i&gt; New York, NY 10012, US&lt;/p&gt;
+          &lt;p&gt;
+            &lt;i class=&#34;fas fa-envelope mr-3&#34;&gt;&lt;/i&gt; info@example.com&lt;/p&gt;
+          &lt;p&gt;
+            &lt;i class=&#34;fas fa-phone mr-3&#34;&gt;&lt;/i&gt; + 01 234 567 88&lt;/p&gt;
+          &lt;p&gt;
+            &lt;i class=&#34;fas fa-print mr-3&#34;&gt;&lt;/i&gt; + 01 234 567 89&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;!--/.Fourth column--&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!--/.Footer Links--&gt;
+
+    &lt;!-- Copyright --&gt;
+    &lt;div class=&#34;footer-copyright text-center py-3&#34;&gt;© 2018 Copyright:
+      &lt;a href=&#34;https://mdbootstrap.com/education/bootstrap/&#34;&gt; MDBootstrap.com&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;!-- Copyright --&gt;
+
+  &lt;/footer&gt;
+  &lt;!-- Footer --&gt;
+
+  &lt;!-- jQuery --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/jquery.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- Bootstrap tooltips --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/popper.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- Bootstrap core JavaScript --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/bootstrap.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- MDB core JavaScript --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;js/mdb.min.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- 导入 Sogou Map API --&gt;
+  &lt;script type=&#34;text/javascript&#34; src=&#34;https://api.go2map.com/maps/js/api_v2.5.1.js&#34;&gt;&lt;/script&gt;
+  &lt;!-- Your custom scripts (optional) --&gt;
+  &lt;script type=&#34;text/javascript&#34;&gt;
+    // Carousel options
+    $(&#39;#carousel-example-2&#39;).carousel({
+      interval: 2000, // 间隔时间, 默认5000毫秒, 如果设置为false则不会自动播放
+      pause: false, // 鼠标移上后是否暂停, 默认暂停
+      wrap: false, // 是否循环轮播, 默认循环
+    });
+
+    /** 定义函数, 加载指定坐标的地图 */
+    function showMap() {
+      var myLatlng = new sogou.maps.LatLng(29.4902, 106.5714);
+      var myOptions = {
+        zoom: 13,
+        center: myLatlng,
+        mapTypeId: sogou.maps.MapTypeId.ROADMAP
+      };
+      map = new sogou.maps.Map(document.getElementById(&#34;map-container&#34;), myOptions);
+      marker = new sogou.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title: &#34;重庆交通大学&#34;
+      });
+    }
+    // 设置事件侦听器, 当窗口加载时调用 showMap 函数
+    sogou.maps.event.addDomListener(window, &#39;load&#39;, showMap);
+  &lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<h2 is-upgraded>style.css 参考代码</h2>
+<pre><code>html,
+body,
+header,
+#intro {
+    height: 100%;
+}
+
+#intro {
+    background: url(&#34;https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20%283%29.jpg&#34;)no-repeat center center fixed;
+    -webkit-background-size: cover; /* 针对Chrome, Safari, Edge等浏览器 */
+    -moz-background-size: cover;    /* 针对Firefox浏览器 */
+    -o-background-size: cover;      /* 针对Operallq */
+    background-size: cover;         /* 通用 */
+}
+
+.top-nav-collapse {
+  background-color: #24355C;
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

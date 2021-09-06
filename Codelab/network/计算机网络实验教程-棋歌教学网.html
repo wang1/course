@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<!-- saved from url=(0092)https://codelabs-preview.appspot.com/?file_id=1sQvF9ZlDoBDXJwjGe5KPlY2TefPyfiB3J7LRjYfhjp0#3 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  
+  <title>计算机网络实验教程-棋歌教学网</title>
+  <link rel="stylesheet" href="./计算机网络实验教程-棋歌教学网_files/css">
+  <link rel="stylesheet" href="./计算机网络实验教程-棋歌教学网_files/icon">
+  <link rel="stylesheet" href="./计算机网络实验教程-棋歌教学网_files/codelab-elements.css">
+  <link rel="stylesheet" href="./计算机网络实验教程-棋歌教学网_files/prettify.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab id="netlab" environment="web" feedback-link="mailto:gridwang@gmail.com" selected="3" google-codelab-ready="" codelab-title="计算机网络实验教程-棋歌教学网"><div id="drawer"><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>270 mins remaining</div></div><div class="steps"><ol><li completed=""><a href="https://codelabs-preview.appspot.com/?file_id=1sQvF9ZlDoBDXJwjGe5KPlY2TefPyfiB3J7LRjYfhjp0#0"><span class="step"><span>简介</span></span></a></li><li completed=""><a href="https://codelabs-preview.appspot.com/?file_id=1sQvF9ZlDoBDXJwjGe5KPlY2TefPyfiB3J7LRjYfhjp0#1"><span class="step"><span>验证性实验</span></span></a></li><li completed=""><a href="https://codelabs-preview.appspot.com/?file_id=1sQvF9ZlDoBDXJwjGe5KPlY2TefPyfiB3J7LRjYfhjp0#2"><span class="step"><span>Wireshark 实验</span></span></a></li><li completed="" selected=""><a href="https://codelabs-preview.appspot.com/?file_id=1sQvF9ZlDoBDXJwjGe5KPlY2TefPyfiB3J7LRjYfhjp0#3"><span class="step"><span>Cisco Packet Tracer 实验</span></span></a></li></ol></div><div class="metadata"><a target="_blank" href="mailto:gridwang@gmail.com"><i class="material-icons">bug_report</i> Report a mistake</a></div></div><div id="codelab-title"><div id="codelab-nav-buttons"><a href="https://codelabs-preview.appspot.com/" id="arrow-back"><i class="material-icons">close</i></a><a href="https://codelabs-preview.appspot.com/?file_id=1sQvF9ZlDoBDXJwjGe5KPlY2TefPyfiB3J7LRjYfhjp0#" id="menu"><i class="material-icons">menu</i></a></div><h1 is-upgraded="" class="title">计算机网络实验教程-棋歌教学网</h1><div class="codelab-time-container"><div class="time-remaining" title="Time remaining"><i class="material-icons">access_time</i>270 mins remaining</div></div><devsite-user></devsite-user></div><div id="main"><div id="steps"><google-codelab-step label="简介" duration="2" step="1"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">1. 简介</h2>
+        <p>本计算机网络实验教程由验证性、Wireshark 和 Cisco Packet Tracer 实验等三个部分组成，可供信息学院各专业及校内其它专业使用</p>
+<h2 is-upgraded="">建议</h2>
+<p>验证性实验和 Wireshark 实验建议全部掌握，Cisco Packet Tracer 实验可根据情况选择完成</p>
+<h2 is-upgraded="">特点</h2>
+<ul>
+<li><strong>覆盖面广</strong></li>
+<li><strong>难易组合</strong></li>
+<li><strong>实用性强</strong></li>
+</ul>
+<h2 class="checklist" is-upgraded="">What you'll learn</h2>
+<ul class="checklist">
+<li>常用计算机网络命令</li>
+<li>使用 Wireshark 进行协议分析</li>
+<li>使用 Cisco Packet Tracer 进行网络模拟</li>
+</ul>
+<h2 is-upgraded="">What you'll need</h2>
+<p>本教程的实验在 Windows 平台下进行，但你也可在 Linux 或其它平台下进行这些实验。</p>
+<p>Windows 平台需要安装的软件如下：</p>
+<ul>
+<li>Windows 自带的命令行窗口程序非常糟糕，我们推荐使用  <a href="https://github.com/cmderdev/cmder/releases/download/v1.3.14/cmder_mini.zip" target="_blank"><paper-button class="colored" raised="">Cmder</paper-button></a></li>
+<li>抓包和协议分析软件 <a href="https://www.wireshark.org/#download" target="_blank"><paper-button class="colored" raised="">Wireshark</paper-button></a></li>
+<li>Cisco Packet Tracer（CPT） 是网络模拟软件 <a href="https://www.netacad.com/zh-hans/courses/packet-tracer/introduction-packet-tracer" target="_blank"><paper-button class="colored" raised="">Cisco Packet Tracer</paper-button></a> 或<a href="https://www.netacad.com/zh-hans/courses/packet-tracer/introduction-packet-tracer" target="_blank"><paper-button class="colored" raised="">备用站点下载</paper-button></a></li>
+<li>最新版的浏览器谷歌或火狐, <a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank"><paper-button class="colored" raised="">Chrome</paper-button></a>或 <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank"><paper-button class="colored" raised="">Firefox</paper-button></a> 下载</li>
+</ul>
+<aside class="warning"><p>🗣 <strong>注意</strong></p>
+<p>以上软件都需要官网下载，推荐使用上面的链接下载安装。其中，CPT 建议免费注册，否则将以 Guest 身份下载和使用。Firefox 请下载国际版而不是国内版，原因你懂的。</p>
+</aside>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="验证性实验" duration="180" step="2"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">2. 验证性实验</h2>
+        <p>本部分共有 8 个实验，实验 1～7 使用 <code>Cmder</code> 在命令行窗口完成，实验 8 使用浏览器完成。</p>
+<h2 is-upgraded="">ipconfig</h2>
+<aside class="special"><p>✍ <code>ipconfig</code> 是微软操作系统的计算机上用来控制网络连接的一个命令行工具。它的主要用来显示当前网络连接的配置信息（<code>/all</code> 参数）。</p>
+</aside>
+<aside class="special"><p>🌏 参考</p>
+<ol type="1" start="1">
+<li><a href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/ipconfig" target="_blank">https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/ipconfig</a></li>
+<li><a href="https://www.itread01.com/articles/1475880029.html" target="_blank">https://www.itread01.com/articles/1475880029.html</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Ipconfig" target="_blank">https://zh.wikipedia.org/wiki/Ipconfig</a></li>
+</ol>
+</aside>
+<h3 is-upgraded="">实作一</h3>
+<p>使用 <code>ipconfig/all</code> 查看<strong>自己</strong>计算机的网络配置，尽可能明白每行的意思，特别注意 <code>IP</code> 地址、子网掩码 <code>Subnet Mask</code>、网关 <code>Gateway</code>。</p>
+<h3 is-upgraded="">实作二</h3>
+<p>使用 <code>ipconfig/all</code> 查看<strong>旁边</strong>计算机的网络配置，看看有什么异同。</p>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    你的计算机和旁边的计算机是否处于同一子网，为什么？</p>
+</aside>
+<h2 is-upgraded="">ping</h2>
+<aside class="special"><p>✍ <code>PING</code> （Packet Internet Groper），因特网包探索器，用于测试网络连接量的程序 。<code>ping</code> 是工作在 TCP/IP 网络体系结构中应用层的一个服务命令， 主要是向特定的目的主机发送 ICMP（Internet Control Message Protocol 因特网报文控制协议）Echo 请求报文，测试目的站是否可达及了解其有关状态。</p>
+</aside>
+<aside class="special"><p>🌏 参考</p>
+<ol type="1" start="1">
+<li><a href="https://bkso.baidu.com/item/ping/6235?fromtitle=PING%E5%91%BD%E4%BB%A4&amp;fromid=670278" target="_blank">https://bkso.baidu.com/item/ping/6235?fromtitle=PING%E5%91%BD%E4%BB%A4&amp;fromid=670278</a></li>
+<li><a href="https://blog.csdn.net/hebbely/article/details/54965989" target="_blank">https://blog.csdn.net/hebbely/article/details/54965989</a></li>
+<li><a href="https://sites.google.com/site/goh1933/ping-zhi-ling-gao-ji-yong-fa" target="_blank">https://sites.google.com/site/goh1933/ping-zhi-ling-gao-ji-yong-fa</a></li>
+</ol>
+</aside>
+<h3 is-upgraded="">实作一</h3>
+<p>要测试到某计算机如 重庆交通大学 Web 服务器的连通性，可以使用 <code>ping www.cqjtu.edu.cn</code> 命令，也可直接使用 IP 地址。</p>
+<p>请掌握使用该命令后屏幕显示的反馈回来信息的意思，如：TTL、时间等。</p>
+<h3 is-upgraded="">实作二</h3>
+<p>使用 <code>ping/?</code> 命令了解该命令的各种选项并实际使用。</p>
+<aside class="warning"><p>✎ <strong>TroubleShooting</strong></p>
+<p>    假设你不能 <code>ping</code> 通某计算机或 IP，但你确定该计算机和你之间的网络是连通的，那么可能的原因是什么？该如何处理能保证 <code>ping</code> 通？</p>
+</aside>
+<aside class="special"><p>📬 秘籍</p>
+<p>    当你的网络出现故障不能访问某计算机如 <code>14.215.177.39</code> (百度的 IP 地址之一 ) 时，我们一般可采用由近及远的连通性测试来确定问题所在。现假设你的 IP 是 <code>192.168.1.89</code>，你旁边计算机的 IP 是 <code>192.168.1.64</code>，网关的 IP 是 <code>192.168.1.1</code> ，那么过程如下：</p>
+<ol type="1" start="1">
+<li><code>ping 127.0.0.1</code> ，测试自己计算机的状态，如果 OK，那么说明本机网络软件硬件工作正常，否则，问题在本机，检查本机 TCP/IP 配置即网卡状态等</li>
+<li><code>ping 192.168.1.64</code> ，测试到旁边计算机的连通性，如果OK，那么说明本子网内部工作正常，否则，问题在本机网络出口到交换机之间，检查本机网卡到交换机的连线等</li>
+<li><code>ping 192.168.1.1</code>，测试到网关的连通性，如果 OK，那么说明本子网出口工作正常，否则，问题在网关，这是你无能为力的事情，报告给网管</li>
+<li><code>ping 14.215.177.39</code>，测试到百度的连通性，如果 OK，那就 OK，否则，问题在网关以外，这也是你无能为力的事情，报告给网管或者李彦宏？</li>
+</ol>
+</aside>
+<aside class="warning"><p>✎ <strong>TroubleShooting</strong></p>
+<p>    假设在秘籍中进行的网络排查中，<code>ping</code> 百度的 IP 即 <code>ping 14.215.177.39</code> 没问题，但 <code>ping</code> 百度的域名即 <code>ping </code><a href="http://www.baidu.com/" target="_blank"><code>www.baidu.com</code></a> 不行，那么可能的原因是什么？如何进行验证和解决？</p>
+<p>    另外，经常有同学问到的："能上 QQ，但不能上网" 跟这个问题的原因是相似的。</p>
+</aside>
+<h3 is-upgraded="">课外浏览</h3>
+<p><code>ping</code> 这个程序曾经是有 bug 的，比如使对方缓冲区溢出导致死机，或死 <code>ping</code> 对方以达到耗费对方主机的系统和网络资源等，请查阅相关资料了解。</p>
+<h2 is-upgraded="">tracert</h2>
+<aside class="special"><p>✍ <code>TRACERT</code> (Trace Route 的组合缩写)，也称为路由追踪，该命令行程序可用于跟踪 Internet 协议 （IP） 数据包传送到目标地址时经过的路径。</p>
+</aside>
+<aside class="special"><p>🌏 参考</p>
+<ol type="1" start="1">
+<li><a href="https://zh.wikipedia.org/wiki/Traceroute" target="_blank">https://zh.wikipedia.org/wiki/Traceroute</a></li>
+<li><a href="https://support.microsoft.com/zh-cn/help/314868/how-to-use-tracert-to-troubleshoot-tcp-ip-problems-in-windows" target="_blank">https://support.microsoft.com/zh-cn/help/314868/how-to-use-tracert-to-troubleshoot-tcp-ip-problems-in-windows</a></li>
+<li><a href="http://www.ttlsa.com/tools/how-to-use-tracert/" target="_blank">http://www.ttlsa.com/tools/how-to-use-tracert/</a></li>
+</ol>
+</aside>
+<h3 is-upgraded="">实作一</h3>
+<p>要了解到某计算机如 <a href="http://www.cqjtu.edu.cn/" target="_blank">www.baidu.com</a> 中间经过了哪些节点（路由器）及其它状态，可使用 <code>tracert www.baidu.com</code> 命令，查看反馈的信息，了解节点的个数。</p>
+<p>可通过网站 <a href="http://ip.cn/" target="_blank">http://ip.cn</a> 查看这些节点位于何处，是哪个公司的，大致清楚本机到百度服务器之间的路径。</p>
+<h3 is-upgraded="">实作二</h3>
+<p><code>ping.pe</code> 这个网站可以探测从全球主要的 ISP 到某站点如 <a href="https://qige.io/" target="_blank">https://qige.io</a>  的线路状态，当然也包括各线路到该主机的路由情况。请使用浏览器访问 <a href="http://ping.pe/qige.io" target="_blank">http://ping.pe/qige.io</a> 进行了解。</p>
+<aside class="warning"><p>✎ <strong>问题一</strong></p>
+<p><code>tracert</code> 能告诉我们路径上的节点以及大致的延迟等信息，那么它背后的原理是什么？本问题可结合第二部分的 Wireshark 实验进行验证。</p>
+</aside>
+<aside class="warning"><p>✎ <strong>问题二</strong></p>
+<p>    在以上两个实作中，如果你留意路径中的节点，你会发现无论是访问百度还是棋歌教学网，路径中的第一跳都是相同的，甚至你应该发现似乎前几个节点都是相同的，你的解释是什么？</p>
+</aside>
+<aside class="warning"><p>✎ <strong>问题三</strong></p>
+<p>    在追踪过程中，你可能会看到路径中某些节点显示为 * 号，这是发生了什么？</p>
+</aside>
+<aside class="special"><p>📬 秘籍</p>
+<p>     如果你使用 Linux 系统，那么应该用过其下的 My Trace Route 即 <code>mtr</code> 命令。</p>
+<p>     该命令的速度比  Windows 平台下的 <code>tracert</code> 快多了。为此，有人也开发了 Windows下的<a href="https://sourceforge.net/projects/winmtrcmd/" target="_blank"><paper-button class="colored" raised="">MTR</paper-button></a> 命令，你可以试一试。其次还可以试试<a href="http://www.pingplotter.com/downloads/pingplotter_install.exe" target="_blank"><paper-button class="colored" raised="">PingPlotter</paper-button></a></p>
+<p>     另外，提供一个全球地图，可视化的显示追踪路径也值得你前往（因为使用了 Google 地图，需要科学上网）</p>
+<ol type="1" start="1">
+<li><a href="https://visualtraceroute.net/" target="_blank">https://visualtraceroute.net/</a></li>
+<li><a href="http://en.dnstools.ch/visual-traceroute.html" target="_blank">http://en.dnstools.ch/visual-traceroute.html</a></li>
+<li><a href="https://gsuite.tools/traceroute" target="_blank">https://gsuite.tools/traceroute</a></li>
+</ol>
+</aside>
+<h2 is-upgraded="">ARP</h2>
+<aside class="special"><p>✍ ARP（Address Resolution Protocol）即地址解析协议，是用于根据给定网络层地址即 IP 地址，查找并得到其对应的数据链路层地址即 MAC地址的协议。 ARP 协议定义在 1982 年的 RFC 826。</p>
+</aside>
+<aside class="special"><p>🌏 参考</p>
+<ol type="1" start="1">
+<li><a href="http://c.biancheng.net/view/6388.html" target="_blank">http://c.biancheng.net/view/6388.html</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/28771785" target="_blank">https://zhuanlan.zhihu.com/p/28771785</a></li>
+<li><a href="https://juejin.im/entry/5b85f4c6e51d451a447a7adc" target="_blank">https://juejin.im/entry/5b85f4c6e51d451a447a7adc</a></li>
+<li><a href="https://www.cnblogs.com/songwenlong/p/6103406.html" target="_blank">https://www.cnblogs.com/songwenlong/p/6103406.html</a></li>
+</ol>
+</aside>
+<h3 is-upgraded="">实作一</h3>
+<p>运行 <code>arp -a</code> 命令查看当前的 arp 缓存， 请留意缓存了些什么。</p>
+<p>然后 <code>ping</code> 一下你旁边的计算机 IP（注意，需保证该计算机的 IP 没有出现在 arp 缓存中，或者使用 <code>arp -d *</code> 先删除全部缓存），再次查看缓存，你会发现一些改变，请作出解释。</p>
+<h3 is-upgraded="">实作二</h3>
+<p>请使用 <code>arp /?</code> 命令了解该命令的各种选项。</p>
+<h3 is-upgraded="">实作三</h3>
+<p>一般而言，arp 缓存里常常会有网关的缓存，并且是动态类型的。</p>
+<p>假设当前网关的 IP 地址是 <code>192.168.0.1</code>，MAC 地址是 <code>5c-d9-98-f1-89-64</code>，请使用 <code>arp -s 192.168.0.1 5c-d9-98-f1-89-64</code> 命令设置其为静态类型的。</p>
+<aside class="warning"><p>🗣 <strong>TroubleShooting</strong></p>
+<p>    你可能会在实作三的操作中得到 "ARP 项添加失败: 请求的操作需要提升" 这样的信息，表示命令没能执行成功，你该如何解决？</p>
+</aside>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    在实作三中，为何缓存中常常有网关的信息？</p>
+<p>    我们将网关或其它计算机的 arp 信息设置为静态有什么优缺点？</p>
+</aside>
+<h3 is-upgraded="">课外浏览</h3>
+<p>ARP 协议在制定之初是没有考虑安全性的，导致现在广泛提及的"网络扫描"、"内网渗透"、"中间人拦截"、"局域网流控"、"流量欺骗"等等其实都跟 ARP 欺骗有关。</p>
+<p>那么什么是 ARP 欺骗，发生ARP 欺骗后会有什么后果，我们该如何进行防范？这里给出<a href="https://zh.wikipedia.org/wiki/ARP%E6%AC%BA%E9%A8%99" target="_blank">维基百科</a>，其它的请查阅相关资料了解。</p>
+<h2 is-upgraded="">DHCP</h2>
+<aside class="special"><p>✍ DHCP（Dynamic Host Configuration Protocol）即动态主机配置协议，是一个用于 IP 网络的网络协议，位于 OSI 模型的应用层，使用 UDP 协议工作，主要有两个用途：</p>
+<ul>
+<li>用于内部网或网络服务供应商自动分配 IP 地址给用户</li>
+<li>用于内部网管理员对所有电脑作中央管理</li>
+</ul>
+<p>简单的说，DHCP 可以让计算机自动获取/释放网络配置。</p>
+</aside>
+<aside class="special"><p>🌏 参考</p>
+<ol type="1" start="1">
+<li><a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E8%AE%BE%E7%BD%AE%E5%8D%8F%E8%AE%AE" target="_blank">https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E8%AE%BE%E7%BD%AE%E5%8D%8F%E8%AE%AE</a></li>
+<li><a href="https://docs.oracle.com/cd/E24847_01/html/819-7058/dhcp-overview-3.html" target="_blank">https://docs.oracle.com/cd/E24847_01/html/819-7058/dhcp-overview-3.html</a></li>
+<li><a href="https://www.jianshu.com/p/a14b5446855e" target="_blank">https://www.jianshu.com/p/a14b5446855e</a></li>
+</ol>
+</aside>
+<h3 is-upgraded="">实作一</h3>
+<p>一般地，我们自动获取的网络配置信息包括：IP 地址、子网掩码、网关 IP 以及 DNS 服务器 IP 等。使用 <code>ipconfig/release</code> 命令释放自动获取的网络配置，并用 <code>ipconfig/renew</code> 命令重新获取，了解 DHCP 工作过程和原理。</p>
+<aside class="warning"><p>🗣 <strong>TroubleShooting</strong></p>
+<p>     如果你没能成功的释放，请思考有哪些可能的原因并着手进行解决？</p>
+</aside>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    在Windows系统下，如果由于某种原因计算机不能获取 DHCP 服务器的配置数据，那么Windows将会根据某种算法自动配置为 169.254.x.x 这样的 IP 地址。显然，这样的 IP 以及相关的配置信息是不能让我们真正接入 Internet 的，为什么？既然不能接入 Internet，那么Winodws系统采用这样的方案有什么意义？</p>
+</aside>
+<aside class="special"><p>📬 秘籍</p>
+<p>     在我校不少地方如教室，计算机都采用了 DHCP 来获得网络配置。假如某天因 DHCP 服务器问题从而不能获得网络配置，那么我们可以查看隔壁教室计算机的配置信息来手动进行网络配置，从而使该计算机能够接入 Internet。</p>
+<p>     经常的，在一个固定地方的网络配置我都喜欢采用 静态/手动配置，而不是动态 DHCP 来进行。你能想到是什么原因吗？</p>
+</aside>
+<h3 is-upgraded="">课外浏览</h3>
+<p>DHCP也是一个没有考虑安全性的并且使用广泛的一个协议。比如，因为 DHCP 维护的地址池是有限的，那么我可以不停的发出 DHCP 请求，从而导致 DHCP 地址耗尽。然后我自己再运行一个 DHCP 服务器来提供虚假的网络信息，特别是伪造的网关和 DNS 信息。请查阅相关资料了解。</p>
+<h2 is-upgraded="">netstat</h2>
+<aside class="special"><p>✍ 无论是使用 TCP 还是 UDP，任何一个网络服务都与特定的端口（Port Number）关联在一起。因此，每个端口都对应于某个通信协议/服务。</p>
+<p><code>netstat</code>（Network Statistics）是在内核中访问网络连接状态及其相关信息的命令行程序，可以显示路由表、实际的网络连接和网络接口设备的状态信息，以及与 IP、TCP、UDP 和 ICMP 协议相关的统计数据，一般用于检验本机各端口的网络服务运行状况。</p>
+</aside>
+<aside class="special"><p>🌏 参考</p>
+<ol type="1" start="1">
+<li><a href="https://zh.wikipedia.org/zh-cn/%E9%80%9A%E8%A8%8A%E5%9F%A0" target="_blank">https://zh.wikipedia.org/zh-cn/%E9%80%9A%E8%A8%8A%E5%9F%A0</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/TCP/UDP%E7%AB%AF%E5%8F%A3%E5%88%97%E8%A1%A8" target="_blank">https://zh.wikipedia.org/wiki/TCP/UDP%E7%AB%AF%E5%8F%A3%E5%88%97%E8%A1%A8</a></li>
+<li><a href="https://cnbin.github.io/blog/2015/08/22/wang-luo-chang-yong-duan-kou-hao-da-quan/" target="_blank">https://cnbin.github.io/blog/2015/08/22/wang-luo-chang-yong-duan-kou-hao-da-quan/</a></li>
+<li><a href="https://www.jianshu.com/p/b866f3f6e46e" target="_blank">https://www.jianshu.com/p/b866f3f6e46e</a></li>
+<li><a href="https://blog.csdn.net/weixin_39800144/article/details/80929947" target="_blank">https://blog.csdn.net/weixin_39800144/article/details/80929947</a></li>
+</ol>
+</aside>
+<h3 is-upgraded="">实作一</h3>
+<p>Windows 系统将一些常用的端口与服务记录在 <code>C:\WINDOWS\system32\drivers\etc\services</code> 文件中，请查看该文件了解常用的端口号分配。</p>
+<h3 is-upgraded="">实作二</h3>
+<p>使用 <code>netstat -an</code> 命令，查看计算机当前的网络连接状况。更多的 <code>netstat</code> 命令选项，可参考上面链接 <code>4</code> 和 <code>5</code> 。</p>
+<aside class="special"><p>📬 秘籍</p>
+<p>     打开的计算机端口，就是向 Internet 打开的一个通道。通过 <code>netstat</code> 命令，我们可以了解当前计算机哪些端口是打开的，从而找出一些恶意后台程序，分析其所作所为，并且可以进一步将相关端口关闭，降低安全风险。</p>
+</aside>
+<h2 is-upgraded="">DNS</h2>
+<aside class="special"><p>✍ DNS（Domain Name System）即域名系统，是互联网的一项服务。它作为将域名和 IP 地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS 使用 TCP 和 UDP 的 53 号端口。</p>
+</aside>
+<aside class="special"><p>🌏 参考</p>
+<ol type="1" start="1">
+<li><a href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F" target="_blank">https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F</a></li>
+<li><a href="https://www.cnblogs.com/crazylqy/p/7110357.html" target="_blank">https://www.cnblogs.com/crazylqy/p/7110357.html</a></li>
+<li><a href="https://juejin.im/post/5b0a32a36fb9a07ab979f0b4" target="_blank">https://juejin.im/post/5b0a32a36fb9a07ab979f0b4</a></li>
+<li><a href="https://blog.csdn.net/violet_echo_0908/article/details/52033725" target="_blank">https://blog.csdn.net/violet_echo_0908/article/details/52033725</a></li>
+<li><a href="https://www.cnblogs.com/machangwei-8/p/10353137.html" target="_blank">https://www.cnblogs.com/machangwei-8/p/10353137.html</a></li>
+</ol>
+</aside>
+<h3 is-upgraded="">实作一</h3>
+<p>Windows 系统将一些固定的/静态的 DNS 信息记录在 <code>C:\WINDOWS\system32\drivers\etc\hosts</code> 文件中，如我们常用的 <code>localhost</code> 就对应 <code>127.0.0.1</code> 。请查看该文件看看有什么记录在该文件中。</p>
+<h3 is-upgraded="">实作二</h3>
+<p>解析过的 DNS 记录将会被缓存，以利于加快解析速度。请使用 <code>ipconfig /displaydns</code> 命令查看。我们也可以使用 <code>ipconfig /flushdns</code> 命令来清除所有的 DNS 缓存。</p>
+<h3 is-upgraded="">实作三</h3>
+<p>使用 <code>nslookup qige.io</code> 命令，将使用默认的 DNS 服务器查询该域名。当然你也可以指定使用 <code>CloudFlare</code>（<code>1.1.1.1</code>）或 <code>Google</code>（<code>8.8.8.8</code>） 的全球 DNS 服务器来解析，如：<code>nslookup qige.io 8.8.8.8，当然，由于你懂的原因，这不一定会得到正确的答案。</code></p>
+<aside class="special"><p>📬 秘籍</p>
+<p>     当我们使用浏览器上网时，或多或少的会看到一些广告。某些网站的广告是非常没有节操的，所以我们一般可以通过安装浏览器插件如 AdGuard、AdBlocker 等来拦截和过滤。</p>
+<p>    这种方法简单方便有效，不过有一定安全或隐私问题，因为该插件实时知道你访问的 URL。</p>
+<p>    假设不使用这种第三方的插件，希望自己完全控制，那么就请考虑在我们前面提到的 <code>hosts</code> 文件中添加 DNS 记录。有自愿者时时在维护全球正确的 DNS 记录文件 <a href="https://github.com/otobtc/ADhosts/blob/master/hosts" target="_blank"><paper-button class="colored" raised="">hosts-1</paper-button></a> <a href="https://cdn.jsdelivr.net/gh/neoFelhz/neohosts@gh-pages/full/hosts" target="_blank"><paper-button class="colored" raised="">hosts-2</paper-button></a></p>
+</aside>
+<aside class="warning"><p>🗣 <strong>TroubleShooting</strong></p>
+<p>    上面秘籍中我们提到了使用插件或自己修改 <code>hosts</code> 文件来屏蔽广告，思考一下这种方式为何能过滤广告？如果某些广告拦截失效，那么是什么原因？你应该怎样进行分析从而能够成功屏蔽它？</p>
+</aside>
+<h3 is-upgraded="">课外浏览</h3>
+<p>我们常说的 DNS 欺骗、DNS 劫持、DNS 毒化等都与 DNS 的安全性相关。请查阅相关资料了解其发生原因以及如何进行防范。</p>
+<p>另外考虑去一些大的 Internet 服务公司购买一个属于自己的域名，构建自己的 Internet 空间。</p>
+<h2 is-upgraded="">cache</h2>
+<aside class="special"><p>✍ cache 即缓存，是 IT 领域一个重要的技术。我们此处提到的 cache 主要是浏览器缓存。</p>
+<p>     浏览器缓存是根据 HTTP 报文的缓存标识进行的，是性能优化中简单高效的一种优化方式了。一个优秀的缓存策略可以缩短网页请求资源的距离，减少延迟，并且由于缓存文件可以重复利用，还可以减少带宽，降低网络负荷。</p>
+</aside>
+<aside class="special"><p>🌏 参考</p>
+<ol type="1" start="1">
+<li><a href="https://www.jianshu.com/p/54cc04190252" target="_blank">https://www.jianshu.com/p/54cc04190252</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/60950750" target="_blank">https://zhuanlan.zhihu.com/p/60950750</a></li>
+<li><a href="https://juejin.im/entry/5ad86c16f265da505a77dca4" target="_blank">https://juejin.im/entry/5ad86c16f265da505a77dca4</a></li>
+</ol>
+</aside>
+<h3 is-upgraded="">实作一</h3>
+<p>打开 Chrome 或 Firefox 浏览器，访问 https://qige.io ，接下来敲 <code>F12</code> 键 或 <code>Ctrl + Shift + I</code> 组合键打开开发者工具，选择 <code>Network</code> 面板后刷新页面，你会在开发者工具底部看到加载该页面花费的时间。请进一步查看哪些文件被 cache了，哪些没有。</p>
+<h3 is-upgraded="">实作二</h3>
+<p>接下来仍在 <code>Network</code> 面板，选择 <code>Disable cache</code> 选项框，表明当前不使用 cache，页面数据全部来自于 Internet，刷新页面，再次在开发者工具底部查看加载该页面花费的时间。你可比对与有 cache 时的加载速度差异。</p>
+<aside class="special"><p>📬 秘籍</p>
+<p>     你的计算机可能还在使用 XX 管家，XX 卫士之类的垃圾软件，那么它可能就会在某些时候提示你计算机的垃圾文件有多少多少，请清理（其实是它本身应该被清理！）之类的弹窗。如果你查看一下它判断的所谓垃圾文件，你会发现大多都是浏览器的缓存，而你已经明白了这些缓存文件的作用。所以，清理吗？</p>
+</aside>
+<h3 is-upgraded="">课外浏览</h3>
+<p>刚才我们使用了浏览器的开发者工具，这个异常强大的工具也非常有助于我们学习计算机网络。请前往学习：</p>
+<ol type="1" start="1">
+<li>Firefox开发者工具 <a href="https://developer.mozilla.org/zh-CN/docs/Tools" target="_blank">https://developer.mozilla.org/zh-CN/docs/Tools</a></li>
+<li>Chrome开发者工具 <a href="https://developers.google.com/web/tools/chrome-devtools?hl=zh-cn" target="_blank">https://developers.google.com/web/tools/chrome-devtools?hl=zh-cn</a></li>
+</ol>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Wireshark 实验" duration="270" step="3"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">3. Wireshark 实验</h2>
+        <p>本部分按照数据链路层、网络层、传输层以及应用层进行分类，共有 10 个实验。需要使用协议分析软件 <code>Wireshark</code> 进行，请根据简介部分自行下载安装。</p>
+<h2 is-upgraded="">准备</h2>
+<p>请自行查找或使用如下参考资料，了解 <code>Wireshark</code> 的基本使用：</p>
+<ul>
+<li>选择对哪块网卡进行数据包捕获</li>
+<li>开始/停止捕获</li>
+<li>了解 <code>Wireshark</code> 主要窗口区域</li>
+<li>设置数据包的过滤</li>
+<li>跟踪数据流</li>
+</ul>
+<aside class="special"><p>🌏 参考</p>
+<ol type="1" start="1">
+<li>官方文档 <a href="https://www.wireshark.org/docs/wsug_html/" target="_blank">https://www.wireshark.org/docs/wsug_html/</a></li>
+<li>Wireshark抓包新手使用教程<a href="https://www.cnblogs.com/linyfeng/p/9496126.html" target="_blank">https://www.cnblogs.com/linyfeng/p/9496126.html</a></li>
+<li>Troubleshooting with Wireshark <a href="http://file.allitebooks.com/20160907/Troubleshooting%20with%20Wireshark.pdf" target="_blank">http://file.allitebooks.com/20160907/Troubleshooting%20with%20Wireshark.pdf</a></li>
+<li>The Official Wireshark Certified Network Analyst  Study Guide <a href="http://file.allitebooks.com/20150724/Wireshark%20Network%20Analysis-%20The%20Official%20Wireshark%20Certified%20Network%20Analyst%20Study%20Guide,%202nd%20Edition.pdf" target="_blank">http://file.allitebooks.com/20150724/Wireshark%20Network%20Analysis-%20The%20Official%20Wireshark%20Certified%20Network%20Analyst%20Study%20Guide,%202nd%20Edition.pdf</a></li>
+<li>Wireshark Network Security <a href="http://file.allitebooks.com/20190315/Wireshark%20Network%20Security.pdf" target="_blank">http://file.allitebooks.com/20190315/Wireshark%20Network%20Security.pdf</a></li>
+</ol>
+</aside>
+<h2 is-upgraded="">数据链路层</h2>
+<h3 is-upgraded="">实作一 熟悉 Ethernet 帧结构</h3>
+<p>使用 Wireshark 任意进行抓包，熟悉 Ethernet 帧的结构，如：目的 MAC、源 MAC、类型、字段等。</p>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    你会发现 Wireshark 展现给我们的帧中没有校验字段，请了解一下原因。</p>
+</aside>
+<h3 is-upgraded="">实作二 了解子网内/外通信时的 MAC 地址</h3>
+<ol type="1" start="1">
+<li><code>ping</code> 你旁边的计算机（同一子网），同时用 Wireshark 抓这些包（可使用 icmp 关键字进行过滤以利于分析），记录一下发出帧的目的 MAC 地址以及返回帧的源 MAC 地址是多少？这个 MAC 地址是谁的？</li>
+<li>然后 <code>ping qige.io</code> （或者本子网外的主机都可以），同时用 Wireshark 抓这些包（可 icmp 过滤），记录一下发出帧的目的 MAC 地址以及返回帧的源 MAC 地址是多少？这个 MAC 地址是谁的？</li>
+<li>再次 <code>ping www.cqjtu.edu.cn</code> （或者本子网外的主机都可以），同时用 Wireshark 抓这些包（可 icmp 过滤），记录一下发出帧的目的 MAC 地址以及返回帧的源 MAC 地址又是多少？这个 MAC 地址又是谁的？</li>
+</ol>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    通过以上的实验，你会发现：</p>
+<ol type="1" start="1">
+<li>访问本子网的计算机时，目的 MAC 就是该主机的</li>
+<li>访问非本子网的计算机时，目的 MAC 是网关的</li>
+</ol>
+<p>   请问原因是什么？</p>
+</aside>
+<h3 is-upgraded="">实作三 掌握 ARP 解析过程</h3>
+<ol type="1" start="1">
+<li>为防止干扰，先使用 <code>arp -d *</code> 命令清空 arp 缓存</li>
+<li><code>ping</code> 你旁边的计算机（同一子网），同时用 Wireshark 抓这些包（可 arp 过滤），查看 ARP 请求的格式以及请求的内容，注意观察该请求的目的 MAC 地址是什么。再查看一下该请求的回应，注意观察该回应的源 MAC 和目的 MAC 地址是什么。</li>
+<li>再次使用 <code>arp -d *</code> 命令清空 arp 缓存</li>
+<li>然后 <code>ping qige.io</code> （或者本子网外的主机都可以），同时用 Wireshark 抓这些包（可 arp 过滤）。查看这次 ARP 请求的是什么，注意观察该请求是谁在回应。</li>
+</ol>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    通过以上的实验，你应该会发现，</p>
+<ol type="1" start="1">
+<li>ARP 请求都是使用广播方式发送的</li>
+<li>如果访问的是本子网的 IP，那么 ARP 解析将直接得到该 IP 对应的 MAC；如果访问的非本子网的 IP， 那么 ARP 解析将得到网关的 MAC。</li>
+</ol>
+<p>    请问为什么？</p>
+</aside>
+<h2 is-upgraded="">网络层</h2>
+<h3 is-upgraded="">实作一 熟悉 IP 包结构</h3>
+<p>使用 Wireshark 任意进行抓包（可用 ip 过滤），熟悉 IP 包的结构，如：版本、头部长度、总长度、TTL、协议类型等字段。</p>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    为提高效率，我们应该让 IP 的头部尽可能的精简。但在如此珍贵的 IP 头部你会发现既有头部长度字段，也有总长度字段。请问为什么？</p>
+</aside>
+<h3 is-upgraded="">实作二 IP 包的分段与重组</h3>
+<p>根据规定，一个 IP 包最大可以有 64K 字节。但由于 Ethernet 帧的限制，当 IP 包的数据超过 1500 字节时就会被发送方的数据链路层分段，然后在接收方的网络层重组。</p>
+<p>缺省的，<code>ping</code> 命令只会向对方发送 32 个字节的数据。我们可以使用 <code>ping 202.202.240.16 -l 2000</code> 命令指定要发送的数据长度。此时使用 Wireshark 抓包（用 <code>ip.addr == 202.202.240.16</code> 进行过滤），了解 IP 包如何进行分段，如：分段标志、偏移量以及每个包的大小等</p>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    分段与重组是一个耗费资源的操作，特别是当分段由传送路径上的节点即路由器来完成的时候，所以 IPv6 已经不允许分段了。那么 IPv6 中，如果路由器遇到了一个大数据包该怎么办？</p>
+</aside>
+<h3 is-upgraded="">实作三 考察 TTL 事件</h3>
+<p>在 IP 包头中有一个 TTL 字段用来限定该包可以在 Internet上传输多少跳（hops），一般该值设置为 64、128等。</p>
+<p>在验证性实验部分我们使用了 <code>tracert</code> 命令进行路由追踪。其原理是主动设置 IP 包的 TTL 值，从 1 开始逐渐增加，直至到达最终目的主机。</p>
+<p>请使用 <code>tracert www.baidu.com</code> 命令进行追踪，此时使用 Wireshark 抓包（用 <code>icmp</code> 过滤），分析每个发送包的 TTL 是如何进行改变的，从而理解路由追踪原理。 </p>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    在 IPv4 中，TTL 虽然定义为生命期即 Time To Live，但现实中我们都以跳数/节点数进行设置。如果你收到一个包，其 TTL 的值为 50，那么可以推断这个包从源点到你之间有多少跳？</p>
+</aside>
+<h2 is-upgraded="">传输层</h2>
+<h3 is-upgraded="">实作一 熟悉 TCP 和 UDP 段结构</h3>
+<ol type="1" start="1">
+<li>用 Wireshark 任意抓包（可用 tcp 过滤），熟悉 TCP 段的结构，如：源端口、目的端口、序列号、确认号、各种标志位等字段。</li>
+<li>用 Wireshark 任意抓包（可用 udp 过滤），熟悉 UDP 段的结构，如：源端口、目的端口、长度等。</li>
+</ol>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    由上大家可以看到 UDP 的头部比 TCP 简单得多，但两者都有源和目的端口号。请问源和目的端口号用来干什么？</p>
+</aside>
+<h3 is-upgraded="">实作二 分析 TCP 建立和释放连接</h3>
+<ol type="1" start="1">
+<li>打开浏览器访问 qige.io 网站，用 Wireshark 抓包（可用 tcp 过滤后再使用加上 <code>Follow TCP Stream</code>），不要立即停止 Wireshark 捕获，待页面显示完毕后再多等一段时间使得能够捕获释放连接的包。</li>
+<li>请在你捕获的包中找到三次握手建立连接的包，并说明为何它们是用于建立连接的，有什么特征。</li>
+<li>请在你捕获的包中找到四次挥手释放连接的包，并说明为何它们是用于释放连接的，有什么特征。</li>
+</ol>
+<aside class="warning"><p>✎ <strong>问题一</strong></p>
+<p>    去掉 <code>Follow TCP Stream</code>，即不跟踪一个 TCP 流，你可能会看到访问 <code>qige.io</code> 时我们建立的连接有多个。请思考为什么会有多个连接？作用是什么？</p>
+</aside>
+<aside class="warning"><p>✎ <strong>问题二</strong></p>
+<p>    我们上面提到了释放连接需要四次挥手，有时你可能会抓到只有三次挥手。原因是什么？</p>
+</aside>
+<h2 is-upgraded="">应用层</h2>
+<p>应用层的协议非常的多，我们只对 DNS 和 HTTP 进行相关的分析。</p>
+<h3 is-upgraded="">实作一 了解 DNS 解析</h3>
+<ol type="1" start="1">
+<li>先使用 <code>ipconfig /flushdns</code> 命令清除缓存，再使用 <code>nslookup qige.io</code> 命令进行解析，同时用 Wireshark 任意抓包（可用 dns 过滤）。</li>
+<li>你应该可以看到当前计算机使用 UDP，向默认的 DNS 服务器的 53 号端口发出了查询请求，而 DNS 服务器的 53 号端口返回了结果。</li>
+<li>可了解一下 DNS 查询和应答的相关字段的含义</li>
+</ol>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    你可能会发现对同一个站点，我们发出的 DNS 解析请求不止一个，思考一下是什么原因？</p>
+</aside>
+<h3 is-upgraded="">实作二 了解 HTTP 的请求和应答</h3>
+<ol type="1" start="1">
+<li>打开浏览器访问 qige.io 网站，用 Wireshark 抓包（可用http 过滤再加上 <code>Follow TCP Stream</code>），不要立即停止 Wireshark 捕获，待页面显示完毕后再多等一段时间以将释放连接的包捕获。</li>
+<li>请在你捕获的包中找到 HTTP 请求包，查看请求使用的什么命令，如：<code>GET, POST</code>。并仔细了解请求的头部有哪些字段及其意义。</li>
+<li>请在你捕获的包中找到 HTTP 应答包，查看应答的代码是什么，如：<code>200, 304, 404</code> 等。并仔细了解应答的头部有哪些字段及其意义。</li>
+</ol>
+<aside class="special"><p>✍ 建议：</p>
+<p>     HTTP 请求和应答的头部字段值得大家认真的学习，因为基于 Web 的编程中我们将会大量使用。如：将用户认证的令牌信息放到头部，或者把 cookie 放到头部等。</p>
+</aside>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    刷新一次 qige.io 网站的页面同时进行抓包，你会发现不少的 <code>304</code> 代码的应答，这是所请求的对象没有更改的意思，让浏览器使用本地缓存的内容即可。那么服务器为什么会回答 <code>304</code> 应答而不是常见的 <code>200</code> 应答？</p>
+</aside>
+
+
+      </div></div></google-codelab-step><google-codelab-step label="Cisco Packet Tracer 实验" duration="270" step="4" selected=""><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title">4. Cisco Packet Tracer 实验</h2>
+        <p>本部分实验共有 15 个，需使用 Cisco Packet Tracer 软件完成。</p>
+<p>请大家先了解 VLSM、CIDR、RIP、OSPF、VLAN、STP、NAT 及 DHCP 等概念，以能够进行网络规划和配置。</p>
+<aside class="special"><p>🌏 参考</p>
+<ol type="1" start="1">
+<li><a href="https://www.bilibili.com/video/av33482059/" target="_blank"><paper-button class="colored" raised="">Cisco  Packet Tracer 系列视频</paper-button></a></li>
+<li><a href="https://blog.csdn.net/Al_assad/article/details/70255987" target="_blank"><paper-button class="colored" raised="">Cisco  Packet Tracer 实验教程</paper-button></a></li>
+</ol>
+</aside>
+<h2 is-upgraded="">CPT 软件使用简介</h2>
+<p>请使用上面的参考链接 <code>1</code> ，了解和熟悉 CPT 软件的使用。</p>
+<h2 is-upgraded="">直接连接两台 PC 构建 LAN</h2>
+<p>将两台 PC 直接连接构成一个网络。注意：直接连接需使用交叉线。</p>
+<p>进行两台 PC 的基本网络配置，只需要配置 IP 地址即可，然后相互 <code>ping</code> 通即成功。</p>
+<h2 is-upgraded="">用交换机构建 LAN</h2>
+<p>构建如下拓扑结构的局域网：</p>
+<p class="image-container"><img style="width: 624.00px" src="./计算机网络实验教程-棋歌教学网_files/lan.png"></p>
+<p>各PC的基本网络配置如下表：</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>机器名</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>IP</strong></p>
+</td><td colspan="2" rowspan="1"><p><strong>子网掩码</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC1</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.2</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC2</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.1</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC3</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.2</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+</tbody></table>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<ol type="1" start="1">
+<li>PC0 能否 <code>ping</code> 通 PC1、PC2、PC3 ？</li>
+<li>PC3 能否 <code>ping</code> 通 PC0、PC1、PC2 ？为什么？</li>
+<li>将 4 台 PC 的掩码都改为 <code>255.255.0.0</code> ，它们相互能 <code>ping</code> 通吗？为什么？</li>
+<li>使用二层交换机连接的网络需要配置网关吗？为什么？</li>
+</ol>
+</aside>
+<aside class="special"><p>✎  试一试</p>
+<p>     集线器 Hub 是工作在物理层的多接口设备，它与交换机的区别是什么？请在 CPT 软件中用 Hub 构建网络进行实际验证。</p>
+</aside>
+<h2 is-upgraded="">交换机接口地址列表</h2>
+<p>二层交换机是一种即插即用的多接口设备，它对于收到的帧有 3 种处理方式：广播、转发和丢弃（请弄清楚何时进行何种操作）。那么，要转发成功，则交换机中必须要有接口地址列表即 MAC 表，该表是交换机通过学习自动得到的！</p>
+<p>仍然构建上图的拓扑结构，并配置各计算机的 IP 在同一个一个子网，使用工具栏中的放大镜点击某交换机如左边的 Switch3，选择 <code>MAC Table</code>，可以看到最初交换机的 MAC 表是空的，也即它不知道该怎样转发帧（那么它将如何处理？），用 PC0 访问（<code>ping</code>）PC1 后，再查看该交换机的 MAC 表，现在有相应的记录，请思考如何得来。随着网络通信的增加，各交换机都将生成自己完整的 MAC 表，此时交换机的交换速度就是最快的！</p>
+<aside class="special"><p>📬 秘籍</p>
+<p>     你还可以使用 CPT 的 <code>Simulation</code> 模式即模拟方式进一步看清楚这个过程！</p>
+</aside>
+<h2 is-upgraded="">生成树协议（Spanning Tree Protocol）</h2>
+<p>交换机在目的地址未知或接收到广播帧时是要进行广播的。如果交换机之间存在回路/环路，那么就会产生广播循环风暴，从而严重影响网络性能。</p>
+<p>而交换机中运行的 STP 协议能避免交换机之间发生广播循环风暴。</p>
+<p>只使用交换机，构建如下拓扑：</p>
+<p class="image-container"><img style="width: 324.50px" src="./计算机网络实验教程-棋歌教学网_files/stp-1.png"></p>
+<p>这是初始时的状态。我们可以看到交换机之间有回路，这会造成广播帧循环传送即形成广播风暴，严重影响网络性能。</p>
+<p>随后，交换机将自动通过生成树协议（STP）对多余的线路进行自动阻塞（Blocking），以形成一棵以 Switch4 为根（具体哪个是根交换机有相关的策略）的具有唯一路径树即生成树！</p>
+<p>经过一段时间，随着 STP 协议成功构建了生成树后，Switch5 的两个接口当前物理上是连接的，但逻辑上是不通的，处于Blocking状态（桔色）如下图所示：</p>
+<p class="image-container"><img style="width: 311.50px" src="./计算机网络实验教程-棋歌教学网_files/stp-2.png"></p>
+<p>在网络运行期间，假设某个时候 Switch4 与 Switch5 之间的物理连接出现问题（将 Switch4 与 Switch5 的连线剪掉），则该生成树将自动发生变化。Switch5 上方先前 Blocking 的那个接口现在活动了（绿色），但下方那个接口仍处于 Blocking 状态（桔色）。如下图所示：</p>
+<p class="image-container"><img style="width: 313.50px" src="./计算机网络实验教程-棋歌教学网_files/stp-3.png"></p>
+<aside class="warning"><p>🗣 <strong>注意</strong></p>
+<p>     交换机的 STP 协议即生成树协议始终自动保证交换机之间不会出现回路，从而形成广播风暴。</p>
+</aside>
+<aside class="special"><p>📬 秘籍</p>
+<p>     使用 CPT 的 <code>Simulation</code> 即模拟方式可非常清楚看到这个过程！</p>
+</aside>
+<h2 is-upgraded="">路由器配置初步</h2>
+<p>我们模拟重庆交通大学和重庆大学两个学校的连接，构建如下拓扑：</p>
+<p class="image-container"><img style="width: 624.00px" src="./计算机网络实验教程-棋歌教学网_files/router.png"></p>
+<h3 is-upgraded="">说明一</h3>
+<p>交通大学与重庆大学显然是两个不同的子网。在不同子网间通信需通过路由器。</p>
+<p>路由器的每个接口下至少是一个子网，图中我们简单的规划了 3 个子网：</p>
+<ol type="1" start="1">
+<li>左边路由器是交通大学的，其下使用交换机连接交通大学的网络，分配网络号 <code>192.168.1.0/24</code>，该路由器接口也是交通大学网络的网关，分配 IP 为 <code>192.168.1.1</code></li>
+<li>右边路由器是重庆大学的，其下使用交换机连接重庆大学的网络，分配网络号 <code>192.168.3.0/24</code>，该路由器接口也是重庆大学网络的网关，分配 IP 为 <code>192.168.3.1</code></li>
+<li>两个路由器之间使用广域网接口相连，也是一个子网，分配网络号 <code>192.168.2.0/24</code></li>
+</ol>
+<h3 is-upgraded="">说明二</h3>
+<p>现实中，交通大学和重庆大学的连接是远程的。该连接要么通过路由器的光纤接口，要么通过广域网接口即所谓的 <code>serial</code> 口（如拓扑图所示）进行，一般不会通过双绞线连接（为什么？）。</p>
+<p>下面我们以通过路由器的广域网口连接为例来进行相关配置。请注意：我们选用的路由器默认没有广域网模块（名称为 <code>WIC-1T</code> 等），需要关闭路由器后添加，然后再开机启动。</p>
+<h3 is-upgraded="">说明三</h3>
+<p>在模拟的广域网连接中需注意 DCE 和 DTE 端（连线时线路上有提示，带一个时钟标志的是 DCE 端。有关 DCE 和 DTE 的概念请查阅相关资料。），在 DCE 端需配置时钟频率 <code>64000</code></p>
+<h3 is-upgraded="">说明四</h3>
+<p>路由器有多种命令行配置模式，每种模式对应不同的提示符及相应的权限。</p>
+<p>请留意在正确的模式下输入配置相关的命令。</p>
+<ul>
+<li>User mode：用户模式</li>
+<li>Privileged mode：特权模式</li>
+<li>Global configuration mode：全局配置模式 </li>
+<li>Interface mode：接口配置模式</li>
+<li>Subinterface mode：子接口配置模式</li>
+</ul>
+<h3 is-upgraded="">说明五</h3>
+<p>在现实中，对新的路由器，显然不能远程进行配置，我们必须在现场通过笔记本的串口与路由器的 console 接口连接并进行初次的配置（注意设置比特率为9600）后，才能通过网络远程进行配置。这也是上图左上画出笔记本连接的用意。</p>
+<h3 is-upgraded="">说明六</h3>
+<p>在路由器的 <code>CLI</code> 界面中，可看到路由器刚启动成功后，因为无任何配置，将会提示是否进行对话配置（Would you like to enter the initial configuration dialog?），因其步骤繁多，请选择 NO</p>
+<p>比如交通大学路由器的初步配置可以如下：</p>
+<aside class="warning"><p>🗣 <strong>注意</strong></p>
+<p>     在我们的实验中可不进行如下的配置，但在现实中为了安全，以下的登录及特权密码等配置是必须的，否则每个人都可操作你的路由器或交换机！</p>
+</aside>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#interface FastEthernet0/0
+Router(config-if)#ip address 192.168.1.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#line vty 0 4 //可支持0-4共5个终端同时登录
+Router(config-line)#password dswybs // 远程登录密码
+Router(config-line)#login
+Router(config-line)#exit
+Router(config)#enable password dswybs // 特权模式密码
+Router(config)#^Z  // 退出</pre>
+<p>拓扑图中路由器各接口配置数据如下：</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>接口名</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>IP</strong></p>
+</td><td colspan="2" rowspan="1"><p><strong>子网掩码</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>交通大学 Router2 以太网口</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>交通大学 Router2 广域网口</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.1</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>重庆大学 Router3 以太网口</p>
+</td><td colspan="1" rowspan="1"><p>192.168.3.1</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>重庆大学 Router3 广域网口</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.2</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+</tbody></table>
+<p>拓扑图中各 PC 配置数据如下：</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>节点名</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>IP</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>子网掩码</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>网关</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>交通大学 PC0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.2</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>交通大学 PC1</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.3</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>重庆大学 PC2</p>
+</td><td colspan="1" rowspan="1"><p>192.168.3.2</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.3.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>重庆大学 PC3</p>
+</td><td colspan="1" rowspan="1"><p>192.168.3.3</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.3.1</p>
+</td></tr>
+</tbody></table>
+<h3 is-upgraded="">交通大学路由器基本配置如下：</h3>
+<p>以太网口：</p>
+<pre>Router&gt;enable   // 从普通模式进入特权模式
+Router#configure terminal   // 进入全局配置模式
+Router(config)#interface f0/0   // 进入配置以太网口模式
+Router(config-if)#ip address 192.168.1.1 255.255.255.0   // 配置该接口的 IP
+Router(config-if)#no shutdown   // 激活接口
+Router(config-if)#^z   // 直接退到特权模式
+Router#</pre>
+<p>广域网口：</p>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#int s0/0   // 进入配置广域网口模式
+Router(config-if)#ip address 192.168.2.1 255.255.255.0   //配置该接口的 IP
+Router(config-if)#clock rate 64000    // 其为 DCE 端，配置时钟频率
+Router(config-if)#no shutdown   // 激活接口
+Router(config-if)#^z   // 直接退到特权模式
+Router#</pre>
+<h3 is-upgraded="">重庆大学路由器基本配置如下：</h3>
+<p>以太网口：</p>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#int f0/0   // 进入配置以太网口模式
+Router(config-if)#ip address 192.168.3.1 255.255.255.0   // 配置该接口的 IP
+Router(config-if)#no shutdown   // 激活接口
+Router(config-if)#^z   // 直接退到特权模式
+Router#</pre>
+<p>广域网口：</p>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#int s0/0   // 进入配置广域网口模式
+Router(config-if)#ip address 192.168.2.2 255.255.255.0   //配置该接口的 IP
+Router(config-if)#no shutdown   // 激活接口
+Router(config-if)#^z   // 直接退到特权模式
+Router#</pre>
+<p>至此，路由器基本的配置完成。请按照上面 PC 配置表继续配置各个 PC 。</p>
+<aside class="warning"><p>✎ <strong>问题</strong></p>
+<p>    现在交通大学内的各 PC 及网关相互能 <code>ping</code> 通，重庆大学也类似。但不能从交大的 PC  <code>ping</code> 通重大的 PC，反之亦然，也即不能跨子网。为什么？</p>
+</aside>
+<h2 is-upgraded="">静态路由</h2>
+<p>静态路由是非自适应性路由协议，是由网络管理人员手动配置的，不能够根据网络拓扑的变化而改变。 因此，静态路由简单高效，适用于结构非常简单的网络。</p>
+<p>在当前这个简单的拓扑结构中我们可以使用静态路由，即直接告诉路由器到某网络该怎么走即可。</p>
+<p>在前述路由器基本配置成功的情况下使用以下命令进行静态路由协议的配置：</p>
+<h3 is-upgraded="">交通大学路由器静态路由配置：</h3>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#ip route 192.168.3.0 255.255.255.0 192.168.2.2   // 告诉交通大学路由器到 192.168.3.0 这个网络的下一跳是 192.168.2.2
+Router(config)#exit   //退到特权模式
+Router#show ip route    //查看路由表</pre>
+<h3 is-upgraded="">重庆大学路由器静态路由配置：</h3>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#ip route 192.168.1.0 255.255.255.0 192.168.2.1   // 告诉重庆大学路由器到 192.168.1.0 这个网络的下一跳是 192.168.2.1
+Router(config)#exit   //退到特权模式
+Router#show ip route    //查看路由表</pre>
+<p>查看路由表你可看到标记为 <code>S</code> 的一条路由，<code>S</code> 表示 Static 。</p>
+<p>至此，这些 PC 能全部相互 <code>ping</code> 通！</p>
+<aside class="warning"><p>🗣 <strong>注意</strong></p>
+<p>     我们的拓扑只模拟了 3 个网络。在现实中，路由器连接的网络数量非常多，我们还需要配置一条缺省路由，否则其它网络皆不能到达！当然，我们的拓扑可以不考虑。</p>
+<p><code>Router(config)#ip route 0.0.0.0  0.0.0.0  *.*.*.*</code>    // 缺省全部转发给 *.*.*.* 这个IP</p>
+</aside>
+<h2 is-upgraded="">动态路由 RIP</h2>
+<p>动态路由协议采用自适应路由算法，能够根据网络拓扑的变化而重新计算机最佳路由。 </p>
+<p>RIP 的全称是 Routing Information Protocol，是距离矢量路由的代表（目前虽然淘汰，但可作为我们学习的对象）。使用 RIP 协议只需要告诉路由器直接相连有哪些网络即可，然后 RIP 根据算法自动构建出路由表。</p>
+<p>因为我们模拟的网络非常简单，因此不能同时使用静态和动态路由，否则看不出效果，所以我们需要把刚才配置的静态路由先清除掉。</p>
+<h3 is-upgraded="">清除静态路由配置：</h3>
+<ol type="1" start="1">
+<li>直接关闭路由器电源。相当于没有保存任何配置，然后各接口再按照前面基本配置所述重新配置 IP 等参数（推荐此方法，可以再熟悉一下接口的配置命令）；</li>
+<li>使用 <code>no</code> 命令清除静态路由。在全局配置模式下，交通大学路由器使用：<code>no ip route 192.168.3.0 255.255.255.0 192.168.2.2</code>，重庆大学路由器使用：<code>no ip route 192.168.1.0 255.255.255.0 192.168.2.1</code> 。相当于使用 <code>no</code> 命令把刚才配置的静态路由命令给取消。</li>
+</ol>
+<h3 is-upgraded="">交通大学路由器 RIP 路由配置：</h3>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#router rip   // 启用 RIP 路由协议，注意是 router 命令
+Router(config-router)#network 192.168.1.0   // 网络 192.168.1.0 与我直连
+Router(config-router)#network 192.168.2.0   // 网络 192.168.2.0 与我直连
+Router(config-router)#^z   //直接退到特权模式
+Router#show ip route    //查看路由表</pre>
+<h3 is-upgraded="">重庆大学路由器 RIP 路由配置：</h3>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#router rip   // 启用RIP路由协议，注意是 router 命令
+Router(config-router)#network 192.168.3.0   // 网络 192.168.3.0 与我直连
+Router(config-router)#network 192.168.2.0   // 网络 192.168.2.0 与我直连
+Router(config-router)#^z   //直接退到特权模式
+Router#show ip route    //查看路由表</pre>
+<p>查看路由表你可看到标记为 <code>R</code> 的一条路由，<code>R</code> 表示 RIP 。</p>
+<p>至此，这些 PC 也能全部相互 <code>ping</code> 通！</p>
+<aside class="special"><p>📬 秘籍</p>
+<p>     可以在特权模式下使用 <code>debug ip rip</code> 开启 RIP 诊断，此时会看到路由器之间不停发送的距离矢量信息，以判断网络状态是否发生改变从而更新路由表。该命令会不停的显示相关信息，打扰我们的输入，可使用 <code>no debug ip rip</code> 关闭 RIP 诊断</p>
+</aside>
+<h2 is-upgraded="">动态路由 OSPF</h2>
+<p>OSPF（Open Shortest Path First 开放式最短路径优先）是一个内部网关协议（Interior Gateway Protocol，简称 IGP）， 用于在单一自治系统（Autonomous System，AS）内决策路由。OSPF 性能优于 RIP，是当前域内路由广泛使用的路由协议。</p>
+<p>同样的，我们需要把刚才配置的 RIP 路由先清除掉。</p>
+<h3 is-upgraded="">清除 RIP 路由配置：</h3>
+<ol type="1" start="1">
+<li>直接关闭路由器电源。相当于没有保存任何配置，然后各接口再按照前面基本配置所述重新配置 IP 等参数</li>
+<li>使用 <code>no</code> 命令清除 RIP 路由。在全局配置模式下，各路由器都使用：<code>no router rip</code> 命令进行清除</li>
+</ol>
+<h3 is-upgraded="">交通大学路由器 OSPF 路由配置：</h3>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#router ospf 1   // 启用 OSPF 路由协议，进程号为1（可暂不理会进程号概念）
+Router(config-router)#network 192.168.1.0 0.0.0.255 area 0   // 自治域0中的属于 192.168.1.0/24 网络的所有主机（反向掩码）参与 OSPF
+Router(config-router)#network 192.168.2.0 0.0.0.255 area 0   // 自治域0中的属于 192.168.2.0/24 网络的所有主机（反向掩码）参与 OSPF
+Router(config-router)#^z   //直接退到特权模式
+Router#show ip route    //查看路由表</pre>
+<h3 is-upgraded="">重庆大学路由器 OSPF 路由配置：</h3>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#router ospf 1   // 启用 OSPF 路由协议，进程号为1
+Router(config-router)#network 192.168.3.0 0.0.0.255 area 0   // 自治域0中的属于 192.168.3.0/24 网络的所有主机（反向掩码）参与 OSPF
+Router(config-router)#network 192.168.2.0 0.0.0.255 area 0   // 自治域0中的属于 192.168.2.0/24 网络的所有主机（反向掩码）参与 OSPF
+Router(config-router)#^z   //直接退到特权模式
+Router#show ip route    //查看路由表</pre>
+<p>查看路由表你可看到标记为 O 的一条路由，O 表示 OSPF 。</p>
+<p>至此，这些 PC 能全部相互 <code>ping</code> 通！</p>
+<aside class="special"><p>📬 秘籍</p>
+<p>     可以在特权模式下使用 <code>debug ip ospf events</code> 开启 OSPF 诊断（<code>no debug ip ospf events</code> 关闭诊断）， 可看到路由器之间发送的 Hello 信息用以诊断当前的链路是否发生改变以便进行路由调整（事件触发而非定时更新！）。</p>
+</aside>
+<aside class="warning"><p>🗣 <strong>反向掩码</strong></p>
+<p>     我们常见的子网掩码是所谓的正向掩码，用连续的 <code>1</code> 和 <code>0</code> 来表示，其中 <code>1</code> 表示需精确匹配， <code>0</code> 则无需，以此得到网络号。</p>
+<p>     类似的，反向掩码也使用连续的 <code>1</code> 和 <code>0</code> 来表示，但相反，其中 <code>0</code> 表示需精确匹配， <code>1</code> 则无需，以此得到相关的 IP，主要用于 OSPF 中。</p>
+<p>     还有一个通配符掩码，也采用与反向掩码相似的规则，主要用于访问控制列表  ACL 中。</p>
+<p>     请参见：</p>
+<ol type="1" start="1">
+<li><a href="https://zhuanlan.zhihu.com/p/72863128" target="_blank">https://zhuanlan.zhihu.com/p/72863128</a></li>
+<li><a href="https://www.bilibili.com/read/cv311291/" target="_blank">https://www.bilibili.com/read/cv311291/</a></li>
+<li><a href="https://zhidao.baidu.com/question/1801513609594810827.html" target="_blank">https://zhidao.baidu.com/question/1801513609594810827.html</a></li>
+</ol>
+</aside>
+<aside class="warning"><p>✎ <strong>试一试</strong></p>
+<p>    可构造稍微复杂的拓扑（有更多的路由器即更多的路径），查看其路由表的生成，并且故意 down 下某接口以模拟路由器接口出现问题，或者剪掉路由器之间的连线以模拟网络连线出现故障等，从而更直观的看看路由自动的动态改变。</p>
+</aside>
+<h2 is-upgraded="">基于端口的网络地址翻译 PAT</h2>
+<p>网络地址转换（NAT，Network Address Translation）被各个 Internet 服务商即 ISP 广泛应用于它们的网络中，也包括 WiFi 网络。 原因很简单，NAT 不仅完美地解决了 lP 地址不足的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的计算机。</p>
+<p>NAT 的实现方式一般有三种：</p>
+<ul>
+<li>静态转换： Static NAT</li>
+<li>动态转换： Dynamic NAT</li>
+<li>端口多路复用： OverLoad</li>
+</ul>
+<p>端口多路复用使用最多也最灵活。OverLoad 是指不仅改变发向 Internet 数据包的源 IP 地址，同时还改变其源端口，即进行了端口地址转换（PAT，Port Address Translation）。</p>
+<p>采用端口多路复用方式，内部网络的所有主机均可共享一个合法外部 IP 地址实现对 Internet 的访问，从而可以最大限度地节约IP地址资源。 同时，又可隐藏网络内部的所有主机，有效避免来自 Internet 的攻击。因此，目前网络中应用最多的就是端口多路复用方式。</p>
+<p>我们仍然使用重庆交通大学和重庆大学两个学校的拓扑进行 PAT 实验。我们需要保证两个学校的路由已经配置成功，无论使用静态路由还是动态路由，以下我们给出完整的配置过程：设定这两个学校的路由器使用 OSPF 协议，模拟交通大学使用内部 IP 地址（<code>192.168.1.0/24</code>），模拟重庆大学使用外部 IP 地址（<code>8.8.8.0/24</code>），两个路由器之间使用外部 IP 地址（<code>202.202.240.0/24</code>），在交通大学的出口位置即广域网口实施 PAT。</p>
+<p>拓扑图中各 PC 配置数据如下：</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>节点名</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>IP</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>子网掩码</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>网关</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>交通大学 PC0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.2</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>交通大学 PC1</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.3</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>重庆大学 PC2</p>
+</td><td colspan="1" rowspan="1"><p>8.8.8.2</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>8.8.8.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>重庆大学 PC3</p>
+</td><td colspan="1" rowspan="1"><p>8.8.8.3</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>8.8.8.1</p>
+</td></tr>
+</tbody></table>
+<aside class="warning"><p>🗣 请留意重庆大学两个 PC 的网络配置发生改变，我们模拟为外部/公网 IP 地址！</p>
+</aside>
+<p>拓扑图中路由器各接口配置数据如下：</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>接口名</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>IP</strong></p>
+</td><td colspan="2" rowspan="1"><p><strong>子网掩码</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>交通大学 Router2 以太网口</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>交通大学 Router2 广域网口</p>
+</td><td colspan="1" rowspan="1"><p>202.202.240.1</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>重庆大学 Router3 以太网口</p>
+</td><td colspan="1" rowspan="1"><p>8.8.8.1</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>重庆大学 Router3 广域网口</p>
+</td><td colspan="1" rowspan="1"><p>202.202.240.2</p>
+</td><td colspan="2" rowspan="1"><p>255.255.255.0</p>
+</td></tr>
+</tbody></table>
+<aside class="warning"><p>🗣 请留意重庆大学路由器两个接口及交通大学广域网口的网络配置发生改变，然后配置 OSPF 路由，最后在交通大学路由器的广域网口实施 PAT！</p>
+</aside>
+<h3 is-upgraded="">交通大学路由器接口配置如下：</h3>
+<p>以太网口：</p>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#int f0/0   // 进入配置以太网口模式
+Router(config-if)#ip address 192.168.1.1 255.255.255.0   // 配置 IP
+Router(config-if)#no shutdown   // 激活接口</pre>
+<p>广域网口：</p>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#int s0/0   // 进入配置广域网口模式
+Router(config-if)#ip address 202.202.240.1 255.255.255.0   //配置 IP
+Router(config-if)#clock rate 64000    // 其为 DCE 端，配置时钟频率
+Router(config-if)#no shutdown   // 激活接口</pre>
+<h3 is-upgraded="">重庆大学路由器接口配置如下：</h3>
+<p>以太网口：</p>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#int f0/0   // 进入配置以太网口模式
+Router(config-if)#ip address 8.8.8.1 255.255.255.0   // 配置 IP
+Router(config-if)#no shutdown   // 激活接口</pre>
+<p>广域网口：</p>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#int s0/0   // 进入配置广域网口模式
+Router(config-if)#ip address 202.202.240.2 255.255.255.0   // 配置 IP
+Router(config-if)#no shutdown   // 激活接口</pre>
+<h3 is-upgraded="">交通大学路由器 OSPF 路由配置：</h3>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#router ospf 1   // 启用 OSPF 路由协议，进程号为1（可暂不理会进程号概念）
+Router(config-router)#network 192.168.1.0 0.0.0.255 area 0   // 自治域0中的属于192.168.1.0/24网络的所有主机（反向掩码）参与 OSPF
+Router(config-router)#network 202.202.240.0 0.0.0.255 area 0   // 自治域0中的属于202.202.240.0/24网络的所有主机（反向掩码）参与 OSPF</pre>
+<h3 is-upgraded="">重庆大学路由器 OSPF 路由配置：</h3>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#router ospf 1   // 启用 OSPF 路由协议，进程号为1
+Router(config-router)#network 202.202.240.0 0.0.0.255 area 0   // 自治域0中的属于202.202.240.0/24网络的所有主机（反向掩码）参与 OSPF
+Router(config-router)#network 8.8.8.0 0.0.0.255 area 0   // 自治域0中的属于8.8.8.0/24网络的所有主机（反向掩码）参与 OSPF</pre>
+<p>此时，这些 PC 能全部相互 <code>ping</code> 通！如在交通大学内部使用 PC0（<code>192.168.1.2</code>）来 <code>ping</code> 重庆大学的PC2（<code>8.8.8.2</code>）应该成功。</p>
+<p>下面我们将重庆大学的路由器看着 Internet 中的骨干路由器，那么这些路由器将不会转发内部/私有 IP 地址的包（直接丢弃）。我们通过在重庆大学路由器上实施访问控制 ACL ，即丢弃来自交通大学（私有 IP 地址）的包来模拟这个丢包的过程。</p>
+<h3 is-upgraded="">重庆大学路由器丢包的配置：</h3>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#access-list 1 deny 192.168.1.0 0.0.0.255  // 创建 ACL 1，丢弃/不转发来自 192.168.1.0/24 网络的所有包
+Router(config)#access-list 1 permit any  // 添加 ACL 1 的规则，转发其它所有网络的包
+Router(config)#int s0/0   // 配置广域网口
+Router(config-if)#ip access-group 1 in  // 在广域网口上对进来的包实施 ACL 1 中的规则，实际就是广域网口如果收到来自 192.168.1.0/24 IP的包即丢弃</pre>
+<p>此时，再使用交通大学内部的 PC0（<code>192.168.1.2</code>）来 <code>ping</code> 重庆大学的 PC2（<code>8.8.8.2</code>）就不成功了，会显示目的主机不可到达（<code>Destination host unreachable</code>）信息。</p>
+<aside class="special"><p>📬 秘籍</p>
+<p><code>ping</code> 的同时，在 CPT 软件中使用模拟（<code>Simulation</code>）方式会看得非常清楚：重庆大学路由器的广域网口将来自交通大学的包丢弃了！</p>
+</aside>
+<p>下面，我们就开始实施 PAT。即：我们将会在交通大学路由器的出口上将内部/私有 IP 地址转换为外部/公开 IP，从而包的源 IP 发生了改变，就不会被重庆大学路由器丢弃，因此网络连通。</p>
+<h3 is-upgraded="">交通大学路由器 PAT 配置：</h3>
+<pre>Router&gt;en   // 从普通模式进入特权模式
+Router#conf t   // 进入全局配置模式
+Router(config)#access-list 1 permit 192.168.1.0 0.0.0.255  // 创建 ACL 1，允许来自 192.168.1.0/24 网络的所有包
+Router(config)#ip nat inside source list 1 interface s0/0 overload  // 来自于 ACL 中的 IP 将在广域网口实施 PAT
+Router(config)#int f0/0   // 配置以太网口
+Router(config-if)#ip nat inside   // 配置以太网口为 PAT 的内部
+Router(config)#int s0/0   // 配置广域网口
+Router(config-if)#ip nat outside   // 配置广域网口为 PAT 的外部</pre>
+<p>现在，再次使用交通大学内部的 PC0（<code>192.168.1.2</code>）来 <code>ping</code> 重庆大学的PC2（<code>8.8.8.2</code>）则OK。</p>
+<aside class="special"><p>📬 秘籍</p>
+<p><code>ping</code> 成功后，在交通大学路由器特权配置模式下使用 <code>show ip nat translations</code> 可查看这个翻译的过程！</p>
+</aside>
+<h2 is-upgraded="">虚拟局域网 VLAN</h2>
+<p>在实际网络中（如<a href="http://202.202.240.162/plugins/weathermap/view.php" target="_blank">我校的网络</a>），你可看到路由器一般位于网络的边界，而内部几乎全部使用交换机连接。</p>
+<p>前面我们分析过，交换机连接的是同一个子网！ 显然，在这样一个大型规模的子网中进行广播甚至产生广播风暴将严重影响网络性能甚至瘫痪。</p>
+<p>另外我们也已经知道，其实学校是划分了 N 多个子网的，那么这些交换机连接的就绝不是一个子网！这样矛盾的事情该如何解释呢？我们实际上使用了支持 VLAN 的交换机！而前述的交换机只是普通的 2 层交换机（或者我们把它当作 2 层交换机在使用。</p>
+<p>VLAN（Virtual Local Area Network）即虚拟局域网。通过划分 VLAN，我们可以把一个物理网络划分为多个逻辑网段即多个子网。</p>
+<p>划分 VLAN 后可以杜绝网络广播风暴，增强网络的安全性，便于进行统一管理等。</p>
+<p>在 CPT 中构建如下图所示拓扑：</p>
+<p class="image-container"><img style="width: 513.00px" src="./计算机网络实验教程-棋歌教学网_files/pasted image 0.png"></p>
+<p>Cisco 2960 交换机是支持 VLAN 的交换机，共有 24 个 100M 和 2 个 1000M 以太网口。默认所有的接口都在 <code>VLAN 1</code> 中，故此时连接上来的计算机都处于同一 VLAN，可以进行通信。</p>
+<p>下面我们就该交换机的 24 个 100M 接口分为 3 个部分，划分到 3 个不同的 VLAN 中，id 号分别设为 10、20、30，且设置别名（computer、communication、electronic）以利于区分和管理。</p>
+<h3 is-upgraded="">交换机 VLAN 配置：</h3>
+<pre>Switch&gt;en
+Switch#conf t
+Switch(config)#vlan 10    // 创建 id 为 10 的 VLAN（缺省的，交换机所有接口都属于VLAN 1，不能使用）
+Switch(config-vlan)#name computer    // 设置 VLAN 的别名
+Switch(config-vlan)#exit
+Switch(config)#int vlan 10    // 该 VLAN 为一个子网，设置其 IP，作为该子网网关
+Switch(config-if)#ip address 192.168.0.1 255.255.255.0
+Switch(config-if)#exit
+Switch(config)#vlan 20    // 创建 id 为 20 的 VLAN
+Switch(config-vlan)#name communication    //设置别名
+Switch(config-vlan)#exit
+Switch(config)#int vlan 20
+Switch(config-if)#ip addr 192.168.1.1 255.255.255.0
+Switch(config-if)#exit
+Switch(config)#vlan 30    // 创建 id 为 20 的 VLAN
+Switch(config-vlan)#name electronic    // 设置别名
+Switch(config-vlan)#exit
+Switch(config)#int vlan 30
+Switch(config-if)#ip add 192.168.2.1 255.255.255.0
+Switch(config-if)#exit
+Switch(config)#int range f0/1-8    // 成组配置接口（1-8）
+Switch(config-if-range)#switchport mode access    // 设置为存取模式
+Switch(config-if-range)#switchport access vlan 10    // 划归到 VLAN 10 中
+Switch(config-if-range)#exit
+Switch(config)#int range f0/9-16
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 20
+Switch(config-if-range)#exit
+Switch(config)#int range f0/17-24
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 30
+Switch(config-if-range)#^Z
+Switch#show vlan // 查看 VLAN 的划分情况</pre>
+<p>至此，在该交换机上我们就划分了 3 个 VLAN（不包括缺省的 VLAN 1）。</p>
+<p>各 VLAN 下 PC 的网络配置及连接的交换机接口如下表：</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>机器名</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>连接的接口</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>所属VLAN</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>IP</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>子网掩码</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>网关</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC0</p>
+</td><td colspan="1" rowspan="1"><p>F0/1</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 10</p>
+</td><td colspan="1" rowspan="1"><p>192.168.0.2</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.0.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC1</p>
+</td><td colspan="1" rowspan="1"><p>F0/2</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 10</p>
+</td><td colspan="1" rowspan="1"><p>192.168.0.3</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.0.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC2</p>
+</td><td colspan="1" rowspan="1"><p>F0/17</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 30</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.2</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC3</p>
+</td><td colspan="1" rowspan="1"><p>F0/9</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 20</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.2</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC4</p>
+</td><td colspan="1" rowspan="1"><p>F0/10</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 20</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.3</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC5</p>
+</td><td colspan="1" rowspan="1"><p>F0/18</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 30</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.3</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC6</p>
+</td><td colspan="1" rowspan="1"><p>F0/19</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 30</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.4</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.1</p>
+</td></tr>
+</tbody></table>
+<p>此时可以使用 <code>ping</code> 命令进行测试，你会发现只有在同一 VLAN 中的 PC 才能通信，且广播也局限于该 VLAN。</p>
+<aside class="warning"><p>✎ <strong>思考</strong></p>
+<p>    分析一下当前为何不同 VLAN 中的 PC 不能通信？网关在此起什么作用？我们的网关又在何处？如何发起广播测试？</p>
+</aside>
+<h2 is-upgraded="">虚拟局域网管理 VTP</h2>
+<p>前一个实验我们在交换机上进行了 VLAN 的规划和划分。但在实际应用中，我们绝不允许在这些支持VLAN的交换机上进行随意的 VLAN 划分，如此将造成管理混乱！VLAN的划分必须得到统一的规划和管理，这就需要 VTP 协议。</p>
+<p>VTP（VLAN Trunk Protocol）即 VLAN 中继协议。VTP 通过 ISL 帧或 Cisco 私有 DTP 帧（可查阅相关资料了解）保持 VLAN 配置统一性，也被称为虚拟局域网干道协议，它是思科私有协议。 VTP 统一管理、增加、删除、调整VLAN，自动地将信息向网络中其它的交换机广播。</p>
+<p>此外，VTP 减小了那些可能导致安全问题的配置，只要在 VTP Server 做相应设置，VTP Client 会自动学习 VTP Server 上的 VLAN 信息。</p>
+<p>为演示 VTP，重新构建如下拓扑结构：</p>
+<p class="image-container"><img style="width: 624.00px" src="./计算机网络实验教程-棋歌教学网_files/pasted image 0(1).png"></p>
+<aside class="warning"><p>🗣 注意：</p>
+<p>作为干线，两个 2960 交换机和核心的 3560 交换机应该使用 Gbit 口相连。这虽然不是必须，但现实中这样连接性能最好。</p>
+<p>3560 交换机是网络中的核心交换机，我们将其作为 VTP Server，VTP 域及 VLAN 将在其上创建和管理。</p>
+<p>两个 2960 交换机是是局域网中的汇聚层/接入层交换机，将作为 VTP Client，可决定加入的 VTP 域和 VLAN。</p>
+</aside>
+<p>目前该网络都属于 <code>VLAN 1</code>，也即这些 PC 是可以相互通信的。前面说过，无论对于性能、管理还是安全等而言，现实中我们必须进行 VLAN 划分。</p>
+<p>现在我们的要求是：新建两个 VLAN，然后让 PC0 和 PC1 属于 <code>VLAN 2</code>，PC1 和 PC3 属于 <code>VLAN 3</code>。 </p>
+<p>我们将在核心交换机 3560上进行如下工作：</p>
+<ol type="1" start="1">
+<li>设置为 <code>server</code> 模式，VTP 域为 <code>cqjtu</code></li>
+<li>新建 <code>VLAN 2</code>，网络号 <code>192.168.1.0/24</code>，网关 <code>192.168.1.1</code></li>
+<li>新建 <code>VLAN 3</code>，网络号 <code>192.168.2.0/24</code>，网关 <code>192.168.2.1</code></li>
+</ol>
+<h3 is-upgraded="">3560 VTP Server 配置：</h3>
+<pre>Switch&gt;en
+Switch#conf t
+Switch(config)#hostname 3560    // 更改交换机名称（可选）
+3560(config)#vtp domain cqjtu   // 设置 VTP 域名称为 cqjtu
+3560(config)#vtp mode server    // 设置其为 VTP 服务器模式
+3560(config)#vlan 2             // 新建VLAN 2
+3560(config-vlan)#name computer // 设置 VLAN 2 的别名（可选）
+3560(config-vlan)#exit
+3560(config)#vlan 3             // 再建 VLAN 3
+3560(config-vlan)#name communication    //设置 VLAN 2 的别名（可选）
+3560(config-vlan)#exit
+3560(config)#int vlan 2    // 配置接口 VLAN 2，它将是该子网（左边）的网关
+3560(config-if)#ip address 192.168.1.1 255.255.255.0
+3560(config-if)#exit
+3560(config)#int vlan 3    // 配置接口 VLAN 3，它将是该子网（右边）的网关
+3560(config-if)#ip address 192.168.2.1 255.255.255.0</pre>
+<p>我们将在左边交换机 2960A 上进行如下工作：</p>
+<ol type="1" start="1">
+<li>加入名为 <code>cqjtu</code> 的 VTP 域</li>
+<li>配置与核心交换机 3560 连接的千兆接口 <code>g0/1</code> 为 <code>trunk</code> 模式</li>
+<li>将接口 <code>f0/1</code> 划分到 <code>VLAN 2</code> 中</li>
+<li>将接口 <code>f0/2</code> 划分到 <code>VLAN 3</code> 中</li>
+</ol>
+<h3 is-upgraded="">2960A（左边） VTP Client 配置：</h3>
+<pre>Switch&gt;en
+Switch#conf t
+Switch(config)#hostname 2960A    // 更改交换机名称（可选）
+2960A(config)#vtp domain cqjtu   // 加入名为 cqjtu 的 VTP 域
+2960A(config)#vtp mode client    // 设置模式为 VTP 客户
+2960A(config)#int g0/1    // 配置与核心交换机 3560 连接的 g0/1 千兆接口
+2960A(config-if)#switchport mode trunk    // 设置该接口为中继（trunk）模式
+2960A(config-if)#switchport trunk allowed vlan all  // 允许为所有的 VLAN 中继
+2960A(config-if)#exit
+2960A(config)#int f0/1    // 配置接口 1
+2960A(config-if)#switchport mode access    // 设置该接口为正常访问模式
+2960A(config-if)#switchport access vlan 2  // 将接口划分到 VLAN 2
+2960A(config-if)#exit
+2960A(config)#int f0/2    // 配置接口 2
+2960A(config-if)#switchport mode access    // 设置该接口为正常访问模式
+2960A(config-if)#switchport access vlan 3  // 将接口划分到 VLAN 3</pre>
+<p>我们将在右边交换机 2960B 上进行同样的工作：</p>
+<ol type="1" start="1">
+<li>加入名为 <code>cqjtu</code> VTP 域</li>
+<li>配置与核心交换机 3560 连接的千兆接口 <code>g0/1</code> 为 <code>trunk</code> 模式</li>
+<li>将接口 <code>f0/1</code> 划分到 <code>VLAN 2</code> 中</li>
+<li>将接口 <code>f0/2</code> 划分到 <code>VLAN 3</code> 中</li>
+</ol>
+<h3 is-upgraded="">2960B（右边） VTP Client 配置：</h3>
+<pre>Switch&gt;en
+Switch#conf t
+Switch(config)#hostname 2960B    // 更改交换机名称（可选）
+2960B(config)#vtp domain cqjtu   // 加入名为 cqjtu 的 VTP 域
+2960B(config)#vtp mode client    // 设置模式为 VTP 客户
+2960B(config)#int g0/1    // 配置与核心交换机 3560 连接的 g0/1 千兆接口
+2960B(config-if)#switchport mode trunk    // 设置该接口为中继（trunk）模式
+2960B(config-if)#switchport trunk allowed vlan all  // 允许为所有的 VLAN 中继
+2960B(config-if)#exit
+2960B(config)#int f0/1    // 配置接口 1
+2960B(config-if)#switchport mode access    // 设置该接口为正常访问模式
+2960B(config-if)#switchport access vlan 2  // 将接口划分到 VLAN 2
+2960B(config-if)#exit
+2960B(config)#int f0/2    // 配置接口 2
+2960B(config-if)#switchport mode access    // 设置该接口为正常访问模式
+2960B(config-if)#switchport access vlan 3  // 将接口划分到 VLAN 3</pre>
+<p>至此，各交换机配置完毕。</p>
+<aside class="special"><p>📬 秘籍</p>
+<p>     此时在 3 个交换机的特权模式下，都可使用<code>show vtp status</code>命令查看 VTP 状态，使用<code>show vlan</code>命令查看 VLAN 状态</p>
+</aside>
+<p>各 PC 连接的交换机和接口以及网络配置如下：</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>机器名</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>连接的交换机和接口</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>所属VLAN</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>IP</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>子网掩码</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>网关</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC0</p>
+</td><td colspan="1" rowspan="1"><p>2960A-F0/1</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 2</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.2</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC1</p>
+</td><td colspan="1" rowspan="1"><p>2960A-F0/2</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 3</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.2</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC2</p>
+</td><td colspan="1" rowspan="1"><p>2960B-F0/1</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 2</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.3</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.1.1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC3</p>
+</td><td colspan="1" rowspan="1"><p>2960B-F0/2</p>
+</td><td colspan="1" rowspan="1"><p>VLAN 3</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.3</p>
+</td><td colspan="1" rowspan="1"><p>255.255.255.0</p>
+</td><td colspan="1" rowspan="1"><p>192.168.2.1</p>
+</td></tr>
+</tbody></table>
+<p>至此，VTP 配置完成。同 VLAN 可以 <code>ping</code> 通，而不同 VLAN 不行（即使在同一交换机下，如从 PC0 到 PC1），且能够方便的统一规划和管理。</p>
+<aside class="warning"><p>✎ <strong>试一试</strong></p>
+<p>    使用 PC0（<code>192.168.1.2</code>） <code>ping</code> PC1（<code>192.168.2.2</code>） 的结果如何？使用 PC0 <code>ping</code> PC2 的结果如何？想想为什么？</p>
+</aside>
+<h2 is-upgraded="">VLAN 间的通信</h2>
+<p>VTP 只是给我们划分和管理 VLAN 提供了方便，由上面的测试得知，目前我们仍然不能在 VLAN 间通信。</p>
+<p>因为默认的，VLAN 间是不允许进行通信，此时我们需要所谓的独臂路由器在 VLAN 间为其进行转发！</p>
+<p>我们使用的核心交换机 3560 是个 3 层交换机，可工作在网络层，也称路由交换机，即具有路由功能，能进行这种转发操作。</p>
+<h3 is-upgraded="">3560 交换机配置：</h3>
+<pre>3560&gt;en
+3560#conf t
+3560(config)#int g0/1    // 配置连接左边 2960A 交换机的接口
+3560(config-if)#switchport trunk encapsulation dot1q    // 封装 VLAN 协议
+3560(config-if)#switchport mode trunk     // 设置为中继模式
+3560(config-if)#switchport trunk allowed vlan all     // 在所有 VLAN 间转发
+3560(config-if)#exit
+3560(config)#int g0/2    // 配置连接右边 2960B 交换机的接口
+3560(config-if)#switchport trunk encapsulation dot1q    //封装 VLAN 协议
+3560(config-if)#switchport mode trunk     // 设置为中继模式
+3560(config-if)#switchport trunk allowed vlan all     // 在所有 VLAN 间转发
+3560(config-if)#exit
+3560(config)#ip routing    // 启用路由转发功能</pre>
+<p>至此，各 VLAN 中的 PC 可以正常通信。</p>
+<aside class="warning"><p>✎ <strong>试一试</strong></p>
+<p>    现在再使用 PC0（<code>192.168.1.2</code>） <code>ping</code> PC1（<code>192.168.2.2</code>） 的结果如何？使用 PC0 <code>ping</code> PC2 的结果如何？</p>
+</aside>
+<aside class="warning"><p>🗣 <strong>独臂路由的缺陷</strong></p>
+<p>     当使用 CPT 的模拟方式进行上面的测试时（ PC0 <code>ping</code> PC1），你会非常清楚的看到 ICMP 包全部都由 3560 交换机在转发，非常容易形成瓶颈。</p>
+<p>    现实中，我们一般不使用这种方式，而是真正使用其三层转发功能，即"一次路由多次交换"，请查阅相关资料。</p>
+</aside>
+<h2 is-upgraded="">DHCP、DNS及Web服务器简单配置</h2>
+<p>动态主机配置 DHCP、域名解析 DNS 以及 Web 服务在日常应用中作用巨大，我们构建如下简单的拓扑来进行练习。</p>
+<p class="image-container"><img style="width: 552.00px" src="./计算机网络实验教程-棋歌教学网_files/pasted image 0(2).png"></p>
+<p>该拓扑中，服务器及客户机都连在同一交换机上。为简单起见，服务器 Server-PT 同时作为  DHCP、DNS 以及 Web 服务器，各客户机无需配置，将自动获取网络配置。</p>
+<p>点击 CPT 拓扑图中的 Server 图标，设置其静态 IP 地址为 <code>19.89.6.4/24</code>，然后选择 <code>Service</code> 进行如下相关配置：</p>
+<table>
+<tbody><tr><td colspan="1" rowspan="1"><p><strong>机器名</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>配置项目</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>说明</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Server</p>
+</td><td colspan="1" rowspan="1"><p>HTTP</p>
+</td><td colspan="1" rowspan="1"><p>开启即可</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Server</p>
+</td><td colspan="1" rowspan="1"><p>DNS</p>
+</td><td colspan="1" rowspan="1"><p>19.89.6.4：www.google.com、www.baidu.com</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Server</p>
+</td><td colspan="1" rowspan="1"><p>DHCP</p>
+</td><td colspan="1" rowspan="1"><p>地址池开始地址：19.89.6.10/24，并返回DNS地址</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>PC</p>
+</td><td colspan="1" rowspan="1"><p>网络配置</p>
+</td><td colspan="1" rowspan="1"><p>自动获取</p>
+</td></tr>
+</tbody></table>
+<aside class="warning"><p>✎ <strong>试一试</strong></p>
+<ol type="1" start="1">
+<li>先查看各 PC，看看是否获得网络配置</li>
+<li>因为我们在 DNS 服务器中把谷歌和百度的 IP 都设为了 <code>19.89.6.4</code>，即 Server-PT，所以，如果打开 PC0 的浏览器，输入 <code>www.google.com</code> 或者 <code>www.baidu.com</code>，我们都应该看到默认的 Server-PT 这个 Web 服务器的主页（你也可进行编辑）</li>
+</ol>
+</aside>
+<h2 is-upgraded="">WLAN初步配置</h2>
+<p>WLAN 即 WiFi 当前也是广泛的应用在各种场景。</p>
+<p>我们通过构建如下拓扑的一个家庭 WLAN 来练习一下其相关的配置：</p>
+<p class="image-container"><img style="width: 472.00px" src="./计算机网络实验教程-棋歌教学网_files/pasted image 0(3).png"></p>
+<aside class="special"><p>📬 秘籍</p>
+<p>     笔记本及台式机默认只有有线网卡，请先关机，在关机状态下删除有线网卡，添加无线网卡，然后再开机。</p>
+</aside>
+<p>一般地，我们需要配置无线路由器的基本网络配置（IP、掩码、网关、DNS 等，现实中多为自动获取），然后再配置无线路由器的无线访问部分如连接密码及加密类型等，并开启 DHCP 功能等。有关配置请参考相关资料。</p>
+
+
+      </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="https://codelabs-preview.appspot.com/?file_id=1sQvF9ZlDoBDXJwjGe5KPlY2TefPyfiB3J7LRjYfhjp0#" id="previous-step" title="Previous step">Back</a><div class="spacer"></div><a href="https://codelabs-preview.appspot.com/?file_id=1sQvF9ZlDoBDXJwjGe5KPlY2TefPyfiB3J7LRjYfhjp0#" id="next-step" title="Next step" hidden="">Next</a><a href="https://codelabs-preview.appspot.com/" id="done" title="Codelab complete">Done</a></div></div></div></google-codelab>
+
+  <script async="">
+    document.addEventListener("DOMContentLoaded", function() {
+      var pubBtn = document.getElementById('publishButton');
+      var pubForm = document.getElementById('publishForm');
+      var pubStatus = document.getElementById('publishButtonStatus');
+
+      pubForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        pubBtn.disabled = true;
+        pubStatus.textContent = '';
+        pubStatus.classList.remove('success');
+        pubStatus.classList.remove('error');
+
+        var req = new XMLHttpRequest();
+
+        var onError = function() {
+          var msg = 'Request failed';
+          if (req.statusText) {
+            msg += ' with status "' + req.statusText + '"';
+          }
+          if (req.responseText) {
+            msg += ': ' + req.responseText;
+          }
+          pubStatus.classList.add('error');
+          pubStatus.textContent = msg;
+          pubBtn.disabled = false;
+        };
+
+        req.addEventListener('load', function() {
+          if (req.status != 200) {
+            onError();
+            return;
+          }
+          pubStatus.textContent = ('Publication request submitted' +
+            ' (reload preview to re-publish)');
+          pubStatus.classList.add('success');
+        });
+        req.addEventListener('error', onError);
+        req.addEventListener('abort', onError);
+        req.open("post", pubForm.action);
+        req.send(new FormData(pubForm));
+      });
+    });
+  </script>
+
+  <script src="./计算机网络实验教程-棋歌教学网_files/native-shim.js"></script>
+  <script src="./计算机网络实验教程-棋歌教学网_files/custom-elements.min.js"></script>
+  <script src="./计算机网络实验教程-棋歌教学网_files/prettify.js"></script>
+  <script src="./计算机网络实验教程-棋歌教学网_files/codelab-elements.js"></script>
+  <script src="./计算机网络实验教程-棋歌教学网_files/api.js"></script>
+
+
+</body></html>
