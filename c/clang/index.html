@@ -184,8 +184,8 @@ void main() {
 </aside>
 <h2 is-upgraded>常量</h2>
 <p>常量，程序运行过程中即不会发生改变的量。</p>
-<h3 is-upgraded>整型常量</h3>
-<p>如圆周率 π 为<code>3.14</code>，珠峰高度<code>8848</code>米等。 对一些较长的数，<code>C</code>语言还提供了科学计数的表示，如<code>1.989E64</code>表示<code>1.989</code>乘以<code>10</code>的<code>64</code>次方。</p>
+<h3 is-upgraded>数值常量</h3>
+<p>如圆周率 π 为<code>3.14</code>，珠峰高度<code>8848</code>米等小数和整数。 对一些较长的数，<code>C</code>语言还提供了科学计数的表示，如<code>1.989E64</code>表示<code>1.989</code>乘以<code>10</code>的<code>64</code>次方。</p>
 <aside class="special"><p>✍ 字母<code>E</code>大写小写都可以,如 <code>3.14e5</code>，但<code>E</code>或<code>e</code>的前后至少一边有数字，且后边的数字只能是整数。 所以 <code>0.15e3.6</code>，<code>E-8</code>都是错误的。</p>
 </aside>
 <h3 is-upgraded>字符常量</h3>
@@ -277,7 +277,7 @@ void main() {
 }
 </code></pre>
 <p>运行以上程序，你将会发现程序在每个<code>scanf()</code>处都会停下来，等你输入对应类型的数据才继续。</p>
-<aside class="special"><p>✍ 注意一: <code>scanf()</code>函数中的输入字符串内只放占位符，不要放置其它东西，如<code>scanf(&#34;%d&#34;, &amp;age);</code>中就只有一个<code>%d</code>表明要接收一个整数并会放到<code>age</code>变量中。<br>✍ 注意二: <code>scanf()</code>函数中的变量名前需要<code>&amp;</code>符号，否则接收不正确。 原因我们在<code>�</code>�针部分再讲述。</p>
+<aside class="special"><p>✍ 注意一: <code>scanf()</code>函数中的输入字符串内只放占位符，不要放置其它东西，如<code>scanf(&#34;%d&#34;, &amp;age);</code>中就只有一个<code>%d</code>表明要接收一个整数并会放到<code>age</code>变量中。<br>✍ 注意二: <code>scanf()</code>函数中的变量名前需要<code>&amp;</code>符号，否则接收不正确。 原因我们在<code>�</code>�针部分再讲述。</p>
 </aside>
 <aside class="warning"><p>✎ 试一试: <code>scanf(&#34;%d%d%d&#34;, &amp;a,&amp;b,&amp;c);</code>将一次性需要你输入<code>3</code>个整数（用空格或回车分隔这<code>3</code>个整数）。</p>
 </aside>
@@ -843,6 +843,7 @@ void main() {
   }
 }
 </code></pre>
+<p>请参阅<a href="https://m.medsci.cn/scale/show.do?id=5ef72434c6" target="_blank">标准体重计算方式</a>，思考其程序逻辑。</p>
 
 
       </google-codelab-step>
@@ -986,7 +987,8 @@ void main() {
   }
 }
 </code></pre>
-<p>Positive<br>： 🌏 <a href="https://baike.baidu.com/item/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/527" target="_blank">数学建模</a>： 使用数学方法解决实际应用问题。上面即是一种简单的建模。</p>
+<aside class="special"><p>🌏 <a href="https://baike.baidu.com/item/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/527" target="_blank">数学建模</a>： 使用数学方法解决实际应用问题。上面即是一种简单的建模。</p>
+</aside>
 <aside class="warning"><p>✎ 试一试：你可能有不同的称法（算法），如：天平两边各放<code>2</code>个苹果，然后再把轻的那边的两个再称一次即可。试试以这种算法来编写程序（提示：<code>a1 &lt; a2</code>可以表示天平一边放了一个苹果，那么考虑一下如何表示各放两个苹果）。</p>
 </aside>
 <h2 is-upgraded>小测验</h2>
@@ -1247,7 +1249,7 @@ void main() {
 }
 </code></pre>
 <p>运行一下程序，然后仔细分析和理解程序执行的过程。</p>
-<aside class="warning"><p>✎ 试一试：如果在<code>for�</code>�句中设置<code>n = 1;</code>即<code>n</code>从<code>1</code>开始，程序运行将发生什么变化？<br>✎ 试一试：如果去掉<code>n++;</code>这句，程序运行将发生什么变化？原因是什么？（提示：<code>Ctrl+C</code>可终止程序运行)</p>
+<aside class="warning"><p>✎ 试一试：如果在<code>for�</code>�句中设置<code>n = 1;</code>即<code>n</code>从<code>1</code>开始，程序运行将发生什么变化？<br>✎ 试一试：如果去掉<code>n++;</code>这句，程序运行将发生什么变化？原因是什么？（提示：<code>Ctrl+C</code>可终止程序运行)</p>
 </aside>
 <p>如果你已经理解了上面的<code>for</code>循环过程，那么我现在的要求是打印<code>100</code>个<code>*</code>号。</p>
 <p>这不就是小<code>case</code>吗？直接修改<code>for</code>的条件表达式为<code>n &lt; 100</code>即可，你需要打几个，我就修改程序为几个！</p>
@@ -1901,9 +1903,9 @@ void main() {
   puts(str);
 }
 </code></pre>
-<p>Nagetive✎ 思考1：如果输入的字符串为<code>Your  Name�</code>��，输出是什么结果？<br>✎ 思考2：试试输入超过<code>20</code>个字符，看看会发生什么？</p>
+<p>Nagetive✎ 思考1：如果输入的字符串为<code>Your  Name�</code>��，输出是什么结果？<br>✎ 思考2：试试输入超过<code>20</code>个字符，看看会发生什么？</p>
 <h4 is-upgraded>方式三</h4>
-<p>假如我们的输入的确需要包含有空格或制表符如<code>What&#39;s Your name�</code>��这样的字符串，那么就使用<code>gets()</code>函数。该函数只以回车作为字符串输入完成的标志。</p>
+<p>假如我们的输入的确需要包含有空格或制表符如<code>What&#39;s Your name�</code>��这样的字符串，那么就使用<code>gets()</code>函数。该函数只以回车作为字符串输入完成的标志。</p>
 <pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
 void main() {
   char str[20];
