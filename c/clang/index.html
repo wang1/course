@@ -1249,7 +1249,7 @@ void main() {
 }
 </code></pre>
 <p>运行一下程序，然后仔细分析和理解程序执行的过程。</p>
-<aside class="warning"><p>✎ 试一试：如果在<code>for�</code>�句中设置<code>n = 1;</code>即<code>n</code>从<code>1</code>开始，程序运行将发生什么变化？<br>✎ 试一试：如果去掉<code>n++;</code>这句，程序运行将发生什么变化？原因是什么？（提示：<code>Ctrl+C</code>可终止程序运行)</p>
+<aside class="warning"><p>✎ 试一试：如果在<code>for</code>句中设置<code>n = 1;</code>即<code>n</code>从<code>1</code>开始，程序运行将发生什么变化？<br>✎ 试一试：如果去掉<code>n++;</code>这句，程序运行将发生什么变化？原因是什么？（提示：<code>Ctrl+C</code>可终止程序运行)</p>
 </aside>
 <p>如果你已经理解了上面的<code>for</code>循环过程，那么我现在的要求是打印<code>100</code>个<code>*</code>号。</p>
 <p>这不就是小<code>case</code>吗？直接修改<code>for</code>的条件表达式为<code>n &lt; 100</code>即可，你需要打几个，我就修改程序为几个！</p>
@@ -1398,21 +1398,19 @@ C. n=1               D. n=0
 <li>试一试用循环来求<code>10</code>的阶乘(即<code>10!</code>)</li>
 </ol>
 <h2 is-upgraded>课后趣味程序</h2>
-<pre><code>#include &#34;stdio.h&#34;
-#include &#34;unistd.h&#34;
-void main() {
+<pre><code>
 #include &#34;stdio.h&#34;
-#include &#34;unistd.h&#34;
+//#include &#34;unistd.h&#34;
 void main() {
   int i;
   for (i = 10; i &lt;= 100; i+=10) {
     // 进度条模拟
-    // printf(&#34;\b=&gt;&#34;);
+    printf(&#34;\b=&gt;&#34;);
     // 模拟百分比
-    printf(&#34;\rprogress: [%3d%%]&#34;, i);
+    //printf(&#34;\rprogress: [%3d%%]&#34;, i);
     // 需要特别注意的是，终端设备是行缓冲设备，即除非输出换行符 \n 或缓冲区已满，
     // 否则 printf() 不会有任何输出；所以这里需要使用 fflush(stdout) 清除标准输出缓冲区，以立即输出缓冲区内容。
-    fflush(stdout);
+    //fflush(stdout);
     sleep(1); // 休眠1秒
   }
   printf(&#34;\n&#34;);
