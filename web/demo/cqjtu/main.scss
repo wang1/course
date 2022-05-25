@@ -1,36 +1,69 @@
+// 变量
 $small: 576px;
 $medium: 768px;
 $large: 1024px;
 
-@mixin common {
+// 混合器，可进行代码复用
+@mixin heroButton {
+  .hero-btn {
+    display: inline-block; // 行内块
+    text-decoration: none; // 无默认超链接修饰
+    color: antiquewhite;
+    border: 2px solid rgb(244, 67, 54);
+    padding: 0.7rem 2.2rem;
+    border-radius: 2rem;
+    font-size: .8rem;
+    background: transparent; // 透明背景
+    cursor: pointer;
+    transition: 0.5s; // 过渡持续时间
+
+    &:hover {
+      border: 2px solid antiquewhite;
+      background: #f44336;
+    }
+  }
+}
+
+@mixin section {
   width: 80%;
-  margin: 3rem auto;
-  text-align: center;
+  margin: 2rem auto; // section水平居中
+  text-align: center; // section中的文字居中
 
   h1 {
-    font-size: 2.2rem;
-    font-weight: 600;
+    font-size: 2rem;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, .5); // 文本阴影
   }
 
   p {
     color: #777;
     font-size: .9rem;
-    font-weight: 300;
     line-height: 1.5rem;
     padding: 0.7rem;
   }
 }
 
+@mixin row {
+  display: flex;
+  flex-wrap: wrap; // 自动换行
+  margin-top: 3%;
+  justify-content: space-between;
+  // medium以下
+  @media(max-width: $medium) {
+    flex-direction: column;
+  }
+}
+
 * {
-  margin: 0;
+  margin: 0; // 取消浏览器默认的边距
   padding: 0;
-  font-family: 'Noto Serif SC', serif;
+  font-family: 'Noto Serif SC', serif; // 自定义字体
 }
 
 html {
   background-color: antiquewhite;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; // 平滑滚动
 }
+
 // 全屏header，包含导航和居中文本
 .header {
   height: 100vh;
@@ -38,26 +71,19 @@ html {
   background-size: cover;
   background-position: center;
   // header中的textBox需要absolute定位在页面中间（此处也可取消，因为没有则相对于body）。如果采用flex也可取消。
-  position: relative;
+  // position: relative;
+
+  display: flex;
+  flex-direction: column;
+
   // 导航
   nav {
     display: flex;
-    padding: 1% 5%;
     justify-content: space-between;
     align-items: center;
-    // 菜单和关闭按钮中屏以上不显示
-    .fa-solid {
-      display: none;
-      //屏幕查询，该尺寸以下应用
-      @media(max-width: $medium) {
-        display: block;
-        color: antiquewhite;
-        margin: .7rem;
-        font-size: 1.5rem;
-        cursor: pointer;
-        text-align: right;
-      }
-    }
+    // 相对父元素的宽度
+    margin: 1% 5%;
+
     // Logo样式
     h2 {
       color: antiquewhite;
@@ -65,6 +91,7 @@ html {
       span {
         color: #f44336
       }
+
       // 小屏幕居中
       @media(max-width:$medium) {
         margin: auto;
@@ -72,226 +99,219 @@ html {
     }
 
     #navLinks {
-      li {
-        list-style: none;
-        display: inline-block;
-        text-align: center;
-        padding: 0.5rem 0.75rem;
-        // ??? 
-        position: relative;
+      display: flex;
 
-        ::after {
+      a {
+        text-decoration: none;
+        color: antiquewhite;
+        font-size: 1.2rem;
+        padding: .5rem .75rem;
+
+        &::after {
           display: block;
           content: '';
-          width: 0;
           height: 2px;
+          width: 0;
           background-color: #f44336;
-          margin: auto;
-          transition: 0.5s;
+          margin: auto; //可让过渡效果从中间开始
+          transition: .5s;
         }
 
-        // actually, this is a pseudo element, not pseudo clss
-        // This is only working in this order. 
-        // You can not do ::after:hover because you can't detect the hover over a pseudo element. 
-        // That's probably because it's not a real element. It does not exist in the DOM.
-        :hover::after {
+        &:hover::after {
           width: 100%;
         }
 
-        a {
-          color: antiquewhite;
-          text-decoration: none;
-          font-size: 1rem;
+        // 屏幕查询，中屏以下应用。一般原则如下：
+        // 使用max-width查询，则该尺寸及以下屏幕应用
+        // 使用min-width查询，则该尺寸及以上屏幕应用
+        @media(max-width:$medium) {
+          text-align: center;
 
-          @media(max-width:$medium) {
-            display: block;
-            &:hover {
-              color: #f44336;
-            }
-          }
-        }
-
-        @media(max-width: $medium) {
-          display: block;
           &:hover {
+            color: #f44336;
             background-color: antiquewhite;
           }
         }
       }
 
+      // 中屏以下转换为侧边菜单
       @media(max-width: $medium) {
-        position: absolute;
-        background-color: #f44336;
-        height: 100vh;
-        width: 200px;
+        // 单列
+        flex-direction: column;
+        position: fixed;
         top: 0;
-        right: -200px;
-        text-align: left;
-        z-index: 2;
-        transition: 1s;
+        right: -30%;
+        height: 100%;
+        width: 30%;
+        background-color: #f44336;
+        z-index: 1; //z-index默认为auto，只有负值比其小
+        transition: .7s;
+
+      }
+    }
+
+    // 菜单和关闭按钮,默认不显示
+    .fa-bars,
+    .fa-xmark {
+      color: antiquewhite;
+      padding: 0.5rem 0.75rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+
+      @media(max-width: $medium) {
+        display: block;
       }
     }
 
   }
 
-  // TODO change to flex
-  .text-box {    
+  .text-box {
     text-align: center;
     color: antiquewhite;
+    margin: auto;// 父容器使用了flex-column布局，所以此处margin设为auto即可达到垂直居中
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -55%);
-
-    // height: 100%;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
-    
+    // 也使用绝对定位然后用transform变换进行水平垂直居中
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
 
     h1 {
-      font-size: 4rem;
-
-      @media(max-width: $medium) {
-        font-size: 1.6rem;
-      }
+      // 夹断函数，动态调整字体大小：期望以5vw显示，但只能在2～5rem之间
+      font-size: clamp(2rem, 5vw, 5rem); 
+      // 脉冲动画  
+      .pulser {
+        display: inline-block;
+        color:#f44336;
+        border-radius: 50%;      
+        animation: pulse 3s infinite;
+        @keyframes pulse {
+          0% {
+            box-shadow: 0 0 0 0px rgba(255, 255, 255,0.5);
+          }
+          100% {
+            box-shadow: 0 0 20px 20px rgba(0,0,0,0);
+          }
+        }
+      }     
     }
 
     p {
       margin: .7rem 0 2.5rem;
-      font-size: large;
+      font-size: clamp(1rem, 1.5vw, 1.5rem);
     }
+
+    @include heroButton();
   }
 }
 
-.hero-btn {
-  display: inline-block;
-  text-decoration: none;
-  color: antiquewhite;
-  border: 2px solid #f44336;
-  padding: 0.7rem 2.2rem;
-  border-radius: 2rem;
-  font-size: .8rem;
-  background: transparent;
-  position: relative;
-  cursor: pointer;
-  transition: 0.5s;
 
-  // For concatenating selectors together when nesting, you need to use the parent selector &
-  &:hover {
-    border: 2px solid antiquewhite;
-    background: #f44336;
-  }
-}
-
-.course {
-  @include common();
+#courses {
+  @include section();
 
   .row {
-    display: flex;
-    margin-top: 5%;
-    justify-content: space-between;
+    @include row();
 
     .col {
+      // 指定item宽度，否则将由flex根据内容自动调整
       flex-basis: 31%;
-      background-color: rgb(248, 212, 167);
-      border-radius: 0.7rem;
-      margin-bottom: 5%;
-      padding: 1.2rem 0.8rem;
-      box-sizing: border-box;
+      background-color: rgba(233, 102, 66, 0.1);
+      border-radius: 0.8rem;
+      margin-bottom: 2rem;
       transition: 0.5s;
+      // 本身也为flex容器
+      display: flex;
+      flex-direction: column;
+
+      // large以下2列
+      @media(max-width:$large) {
+        flex-basis: 45%;
+      }
 
       &:hover {
         box-shadow: 0 0 30px rgba(0, 0, 0, .2);
       }
 
       h3 {
-        // text-align: center;
-        // font-weight: 600;
-        margin: .8rem 0;
+        margin: 0;
+        padding: 0.5rem;
+        color: antiquewhite;
+        background-color: #f44336;
+        // 因为父元素设置了圆角，所以在父元素设置overflow:hidden也可
+        border-top-left-radius: .8rem;
+        border-top-right-radius: .8rem;
       }
-    }
 
-    @media(max-width: $medium) {
-      flex-direction: column;
-    }
+      p {
+        padding: 1rem;
+      }
+    }    
   }
 }
 
-.campus {
-  @include common();
+#campus {
+  @include section();
 
   .row {
-    display: flex;
-    margin-top: 5%;
-    justify-content: space-between;
+    @include row();
 
     .col {
       flex-basis: 31%;
       border-radius: 0.8rem;
       margin-bottom: 2rem;
+      // 作为遮罩层的父元素，需要设置positon，否则其子元素不能以其进行定位
       position: relative;
-
-      // ???
+      // 此处需要hidden，否则圆角将被图片遮盖(否则图片和遮罩都需要设置圆角)
       overflow: hidden;
 
       img {
         width: 100%;
-        //important,the image's bottom corner is not round!!!
+        //需要，否则图片底部圆角不出现
         display: block;
-        // border-radius: .8rem;
       }
 
+      // 遮罩层
       .layer {
-        background: transparent;
-        height: 100%;
-        width: 100%;
+        // 与父元素完全重合
         position: absolute;
         top: 0;
         left: 0;
+        height: 100%;
+        width: 100%;
+        background: transparent;
         transition: .5s;
 
-        &:hover {
-          background: rgba(181, 58, 58, 0.5);
-
-          h3 {
-            bottom: 49%;
-            opacity: 1;
-            font-size: 4rem;
-          }
-        }
-
         h3 {
-          margin: .8rem 0;
-          width: 100%;
-          font-weight: 500;
-          color: rgb(254, 254, 254);
-          font-size: 1.5rem;
+          // 位于底部，不可见(不透明度为0)
           position: absolute;
-          left: 50%;
           bottom: 0;
-          transform: translateX(-50%);
           opacity: 0;
+          width: 100%;
+          color: #fff;
+          font-size: 1.5rem;
           transition: .5s;
         }
-      }
-    }
 
-    @media(max-width:$medium) {
-      flex-direction: column;
+        &:hover {
+          background: rgba(244, 67, 54, 0.5);
+
+          h3 {
+            bottom: 50%;
+            opacity: 1;
+            font-size: 3.5rem;
+          }
+        }
+      }
     }
   }
 }
 
-.facilities {
-  @include common();
+#facilities {
+  @include section();
 
   .row {
-    display: flex;
-    margin-top: 5%;
-    justify-content: space-between;
+    @include row();
 
     .col {
       flex-basis: 31%;
@@ -302,10 +322,11 @@ html {
       img {
         width: 100%;
         border-radius: .8rem;
-        box-shadow: 0 0 50px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, .4);
         cursor: pointer;
       }
 
+      // 每个section都设置了 p 默认的padding，此处覆盖
       p {
         padding: 0;
       }
@@ -314,20 +335,88 @@ html {
         margin-block: 1rem;
       }
     }
-
-    @media(max-width:$medium) {
-      flex-direction: column;
-    }
   }
 }
 
-.testimonials {
-  @include common();
+// 图片全屏预览样式
+#popup {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  // 默认不显示，click事件后显示
+  display: none;
+
+  // 使用flex水平垂直定位
+  justify-content: center;
+  align-items: center;
+
+  // transition对display无效，因为display:none是表示不存在该元素。可以使用visibility，但该元素要占据空间
+  // 所以此处使用animation, 但放在js中显示时才调用，否则会重复
+  // animation: fadein 0.5s;
+  // 关键帧。逐渐显示
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeout {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  img {
+    border-radius: 1rem;
+    height: 90%;
+    animation: zoomin 0.5s;
+
+    // 逐渐变大
+    @keyframes zoomin {
+      0% {
+        height: 0%;
+      }
+
+      100% {
+        height: 90%;
+      }
+    }
+
+    // 传统方式水平垂直定位     
+    // position: absolute;
+    // margin: auto;//必须设置
+    // top: 0;
+    // left: 0;
+    // bottom: 0;
+    // right: 0;
+
+    //transform方式水平垂直定位
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%,-50%);
+
+  }
+}
+
+
+#testimonials {
+  @include section();
 
   .row {
-    display: flex;
-    margin-top: 5%;
-    justify-content: space-between;
+    @include row();
 
     .col {
       flex-basis: 40%;
@@ -338,10 +427,10 @@ html {
       padding: 1.5rem;
       cursor: pointer;
       box-shadow: 0 0 30px rgba(0, 0, 0, .2);
-      overflow: hidden;
-      // ???
+
       display: flex;
       align-items: center;
+
       transition: .2s;
 
       &:hover {
@@ -352,6 +441,7 @@ html {
         width: 2.5rem;
         margin-left: .4rem;
         margin-right: 1.9rem;
+        // 圆形图片
         border-radius: 50%;
 
         @media(max-width:$medium) {
@@ -373,17 +463,13 @@ html {
         color: #f44336
       }
     }
-
-    @media(max-width:$medium) {
-      flex-direction: column;
-    }
   }
 }
 
-.cta {
+#contact {
   margin: 3rem auto;
   width: 80%;
-  background-image: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(images/bg2.webp);
+  background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(images/contactus.webp);
   background-position: center;
   background-size: cover;
   border-radius: .8rem;
@@ -398,6 +484,8 @@ html {
       font-size: 1rem;
     }
   }
+
+  @include heroButton();
 }
 
 .footer {
@@ -408,42 +496,19 @@ html {
 
   h4 {
     margin-block: 1.5rem;
-    font-weight: 600;
+  }
+
+  p {
+    margin: auto;
+    width: 80%;
   }
 
   .fa-brands,
   .fa-regular {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #f44336;
     margin-inline: 1rem;
     cursor: pointer;
     padding: 1.2rem 0;
-  }
-}
-
-// 图片全屏预览样式
-#popup {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  text-align: center;
-  display: none;
-  // JS中使用flex水平垂直定位时
-  // justify-content: center;
-  // align-items: center;
-
-  img {
-    height: 90%;
-    border-radius: 1rem;
-    // 常规水平垂直定位 
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
   }
 }
