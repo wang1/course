@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>MDB4.12模板</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <style>
+    /* Required for full background image */
+    html,
+    body,
+    header,
+    .view {
+      height: 100%;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .view {
+        height: 100vh;
+      }
+    }
+
+    .top-nav-collapse {
+      background-color: #563e91 !important;
+    }
+
+    .navbar:not(.top-nav-collapse) {
+      background: transparent !important;
+    }
+
+    @media (max-width: 991px) {
+      .navbar:not(.top-nav-collapse) {
+        background: #563e91 !important;
+      }
+    }
+
+    .rgba-gradient {
+      background: -moz-linear-gradient(45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+      background: -webkit-linear-gradient(45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+      background: linear-gradient(to 45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+      /* background: linear-gradient(to right, rgba(204, 83, 51, 0.6), rgba(35, 7, 77, 0.6)); */
+    }
+
+    .streak.streak-photo {
+      background-attachment: fixed;
+    }
+
+    .top-nav-collapse,
+    .page-footer {
+      background-color: #563e91 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Main navigation -->
+  <header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto smooth-scroll">
+            <li class="nav-item">
+              <a class="nav-link" href="#intro">Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about" data-offset="90">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects" data-offset="90">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery" data-offset="90">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonials" data-offset="30">Testimonials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#articles" data-offset="90">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact" data-offset="90">Contact</a>
+            </li>
+          </ul>
+          <!-- Social Icon  -->
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="fab fa-facebook-f light-green-text-2"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="fab fa-twitter light-green-text-2"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="fab fa-instagram light-green-text-2"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+    <!-- Full Page Intro -->
+    <div class="view">
+      <video class="video-intro" poster="https://mdbootstrap.com/img/Photos/Others/background.jpg" playsinline autoplay
+        muted loop>
+        <source src="https://mdbootstrap.com/img/video/animation.mp4" type="video/mp4">
+      </video>
+      <!-- Mask & flexbox options-->
+      <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+        <!-- Content -->
+        <div class="container px-md-3 px-sm-0">
+          <!--Grid row-->
+          <div class="row wow fadeIn">
+            <!--Grid column-->
+            <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
+              <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">Creative Agency</h3>
+              <hr class="hr-light my-4 w-75">
+              <h4 class="subtext-header mt-2 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit deleniti
+                consequuntur nihil.</h4>
+              <a href="#!" class="btn btn-rounded btn-outline-white">
+                <i class="fas fa-home "></i> Visit us
+              </a>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </div>
+        <!-- Content -->
+      </div>
+      <!-- Mask & flexbox options-->
+    </div>
+    <!-- Full Page Intro -->
+  </header>
+  <!--Main layout-->
+  <main>
+
+    <!--Section: about-->
+    <section id="about" class="py-5">
+
+      <!-- Container -->
+      <div class="container">
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold text-center mb-5">Why is it so great?</h2>
+        <!-- Section description -->
+        <p class="lead grey-text text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+          adminim veniam.
+        </p>
+        <!-- Grid row -->
+        <div class="row">
+
+          <!-- Grid column -->
+          <div class="col-lg-5 text-center text-lg-left">
+            <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/screens-section.jpg"
+              alt="Sample image">
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-lg-7">
+
+            <!-- Grid row -->
+            <div class="row mb-3">
+
+              <!-- Grid column -->
+              <div class="col-1">
+                <i class="fas fa-share fa-lg purple-text"></i>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-xl-10 col-md-11 col-10">
+                <h5 class="font-weight-bold mb-3">Safety</h5>
+                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam,
+                  quis
+                  nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+              </div>
+              <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+            <!-- Grid row -->
+            <div class="row mb-3">
+
+              <!-- Grid column -->
+              <div class="col-1">
+                <i class="fas fa-share fa-lg purple-text"></i>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-xl-10 col-md-11 col-10">
+                <h5 class="font-weight-bold mb-3">Technology</h5>
+                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam,
+                  quis
+                  nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+              </div>
+              <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+            <!--Grid row-->
+            <div class="row">
+
+              <!-- Grid column -->
+              <div class="col-1">
+                <i class="fas fa-share fa-lg purple-text"></i>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-xl-10 col-md-11 col-10">
+                <h5 class="font-weight-bold mb-3">Finance</h5>
+                <p class="grey-text mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima
+                  veniam,
+                  quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+              </div>
+              <!-- Grid column -->
+
+            </div>
+            <!--Grid row-->
+
+          </div>
+          <!--Grid column-->
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+      <!-- Container -->
+
+    </section>
+    <!--Section: about-->
+    <!--Section: projects-->
+    <section id="projects" class="text-center py-5" style="background-color: #eee;">
+
+      <!-- Container -->
+      <div class="container">
+
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold mb-5">Our best projects</h2>
+        <!-- Section description -->
+        <p class="grey-text w-responsive mx-auto mb-5">Duis aute irure dolor in reprehenderit in
+          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit est laborum.</p>
+
+        <!-- Grid row -->
+        <div class="row text-center">
+
+          <!-- Grid column -->
+          <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+            <!--Featured image-->
+            <div class="view overlay rounded z-depth-1">
+              <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid"
+                alt="Sample project image">
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+              <!--Excerpt-->
+              <div class="card-body pb-2">
+                <h4 class="font-weight-bold my-3">Title of the news</h4>
+                <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum
+                  necessitatibus saepe eveniet ut et voluptates repudiandae.
+                </p>
+                <a class="btn btn-purple btn-sm"><i class="fas fa-clone left"></i> View project</a>
+              </div>
+            </div>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
+            <!--Featured image-->
+            <div class="view overlay rounded z-depth-1">
+              <img src="https://mdbootstrap.com/img/Photos/Others/project4.jpg" class="img-fluid"
+                alt="Sample project image">
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+              <!--Excerpt-->
+              <div class="card-body pb-2">
+                <h4 class="font-weight-bold my-3">Title of the news</h4>
+                <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum
+                  necessitatibus saepe eveniet ut et voluptates repudiandae.
+                </p>
+                <a class="btn btn-purple btn-sm"><i class="fas fa-clone left"></i> View project</a>
+              </div>
+            </div>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-lg-4 col-md-6">
+            <!--Featured image-->
+            <div class="view overlay rounded z-depth-1">
+              <img src="https://mdbootstrap.com/img/Photos/Others/images/88.jpg" class="img-fluid"
+                alt="Sample project image">
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+              <!--Excerpt-->
+              <div class="card-body pb-2">
+                <h4 class="font-weight-bold my-3">Title of the news</h4>
+                <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum
+                  necessitatibus saepe eveniet ut et voluptates repudiandae.
+                </p>
+                <a class="btn btn-purple btn-sm"><i class="fas fa-clone left"></i> View project</a>
+              </div>
+            </div>
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+      <!-- Container -->
+
+    </section>
+    <!--Section: projects-->
+
+    <!--Section: gallery-->
+    <section id="gallery" class="text-center py-5">
+
+      <!-- Container -->
+      <div class="container">
+
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold mb-5">LightBox Gallery</h2>
+        <!-- Section description -->
+        <p class="grey-text w-responsive mx-auto mb-5">Duis aute irure dolor in reprehenderit in
+          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit est laborum.</p>
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <div id="mdb-lightbox-ui"></div>
+
+            <div class="mdb-lightbox">
+
+              <figure class="col-md-4">
+                <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg" data-size="1600x1067">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(145).jpg"
+                    class="img-fluid z-depth-1-half">
+                </a>
+              </figure>
+
+              <figure class="col-md-4">
+                <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(150).jpg" data-size="1600x1067">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(150).jpg"
+                    class="img-fluid z-depth-1-half" />
+                </a>
+              </figure>
+
+              <figure class="col-md-4">
+                <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(152).jpg" data-size="1600x1067">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(152).jpg"
+                    class="img-fluid z-depth-1-half" />
+                </a>
+              </figure>
+
+              <figure class="col-md-4">
+                <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(42).jpg" data-size="1600x1067">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(42).jpg"
+                    class="img-fluid z-depth-1-half" />
+                </a>
+              </figure>
+
+              <figure class="col-md-4">
+                <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(151).jpg" data-size="1600x1067">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(151).jpg"
+                    class="img-fluid z-depth-1-half" />
+                </a>
+              </figure>
+
+              <figure class="col-md-4">
+                <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg" data-size="1600x1067">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(40).jpg"
+                    class="img-fluid z-depth-1-half" />
+                </a>
+              </figure>
+
+              <figure class="col-md-4">
+                <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(148).jpg" data-size="1600x1067">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(148).jpg"
+                    class="img-fluid z-depth-1-half" />
+                </a>
+              </figure>
+
+              <figure class="col-md-4">
+                <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg" data-size="1600x1067">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg"
+                    class="img-fluid z-depth-1-half" />
+                </a>
+              </figure>
+
+              <figure class="col-md-4">
+                <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg" data-size="1600x1067">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(149).jpg"
+                    class="img-fluid z-depth-1-half" />
+                </a>
+              </figure>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- Container -->
+
+    </section>
+    <!--Section: gallery-->
+    <!-- Section: Testimonials v.4 -->
+    <section id="testimonials" class="text-center py-5" style="background-color: #eee;">
+
+      <!-- Section heading -->
+      <h2 class="h1-responsive font-weight-bold my-5">Testimonials v.4</h2>
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!--Carousel Wrapper-->
+        <div id="multi-item-example" class="carousel testimonial-carousel slide carousel-multi-item mb-5"
+          data-ride="carousel">
+
+          <!--Controls-->
+          <div class="controls-top">
+            <a class="btn-floating light-blue darken-4" href="#multi-item-example" data-slide="prev"><i
+                class="fas fa-chevron-left"></i></a>
+            <a class="btn-floating light-blue darken-4" href="#multi-item-example" data-slide="next"><i
+                class="fas fa-chevron-right"></i></a>
+          </div>
+          <!--Controls-->
+
+          <!--Indicators-->
+          <ol class="carousel-indicators">
+            <li data-target="#multi-item-example" data-slide-to="0" class="active light-blue darken-4"></li>
+            <li data-target="#multi-item-example" data-slide-to="1" class="light-blue darken-4"></li>
+            <li data-target="#multi-item-example" data-slide-to="2" class="light-blue darken-4"></li>
+          </ol>
+          <!--Indicators-->
+
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox">
+
+            <!--First slide-->
+            <div class="carousel-item active">
+
+              <!--Grid column-->
+              <div class="col-md-4">
+                <div class="testimonial">
+                  <!--Avatar-->
+                  <div class="avatar mx-auto">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(26).jpg"
+                      class="rounded-circle img-fluid">
+                  </div>
+                  <!--Content-->
+                  <h4 class="font-weight-bold mt-4">Anna Deynah</h4>
+                  <h6 class="blue-text font-weight-bold my-3">Web Designer</h6>
+                  <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p>
+                  <!--Review-->
+                  <div class="grey-text">
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star-half-alt"> </i>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="testimonial">
+                  <!--Avatar-->
+                  <div class="avatar mx-auto">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
+                      class="rounded-circle img-fluid">
+                  </div>
+                  <!--Content-->
+                  <h4 class="font-weight-bold mt-4">John Doe</h4>
+                  <h6 class="blue-text font-weight-bold my-3">Web Developer</h6>
+                  <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>Ut enim ad minima veniam,
+                    quis
+                    nostrum exercitationem ullam corporis laboriosam.</p>
+                  <!--Review-->
+                  <div class="grey-text">
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="testimonial">
+                  <!--Avatar-->
+                  <div class="avatar mx-auto">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+                      class="rounded-circle img-fluid">
+                  </div>
+                  <!--Content-->
+                  <h4 class="font-weight-bold mt-4">Abbey Clark</h4>
+                  <h6 class="blue-text font-weight-bold my-3">Photographer</h6>
+                  <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>Quis autem vel eum iure
+                    reprehenderit qui in ea voluptate velit esse quam nihil molestiae.</p>
+                  <!--Review-->
+                  <div class="grey-text">
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="far fa-star"> </i>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+
+            </div>
+            <!--First slide-->
+
+            <!--Second slide-->
+            <div class="carousel-item">
+
+              <!--Grid column-->
+              <div class="col-md-4">
+                <div class="testimonial">
+                  <!--Avatar-->
+                  <div class="avatar mx-auto">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(4).jpg"
+                      class="rounded-circle img-fluid">
+                  </div>
+                  <!--Content-->
+                  <h4 class="font-weight-bold mt-4">Blake Dabney</h4>
+                  <h6 class="blue-text font-weight-bold my-3">Web Designer</h6>
+                  <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>Ut enim ad minima veniam,
+                    quis
+                    nostrum exercitationem ullam corporis laboriosam.</p>
+                  <!--Review-->
+                  <div class="grey-text">
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star-half-alt"> </i>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="testimonial">
+                  <!--Avatar-->
+                  <div class="avatar mx-auto">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(6).jpg"
+                      class="rounded-circle img-fluid">
+                  </div>
+                  <!--Content-->
+                  <h4 class="font-weight-bold mt-4">Andrea Clay</h4>
+                  <h6 class="blue-text font-weight-bold my-3">Front-end developer</h6>
+                  <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit. Quod eos id officiis hic tenetur quae.</p>
+                  <!--Review-->
+                  <div class="grey-text">
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="testimonial">
+                  <!--Avatar-->
+                  <div class="avatar mx-auto">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(7).jpg"
+                      class="rounded-circle img-fluid">
+                  </div>
+                  <!--Content-->
+                  <h4 class="font-weight-bold mt-4">Cami Gosse</h4>
+                  <h6 class="blue-text font-weight-bold my-3">Phtographer</h6>
+                  <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>At vero eos et accusamus et
+                    iusto odio dignissimos ducimus qui blanditiis praesentium.</p>
+                  <!--Review-->
+                  <div class="grey-text">
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="far fa-star"> </i>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+
+            </div>
+            <!--Second slide-->
+
+            <!--Third slide-->
+            <div class="carousel-item">
+
+              <!--Grid column-->
+              <div class="col-md-4">
+                <div class="testimonial">
+                  <!--Avatar-->
+                  <div class="avatar mx-auto">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg"
+                      class="rounded-circle img-fluid">
+                  </div>
+                  <!--Content-->
+                  <h4 class="font-weight-bold mt-4">Bobby Haley</h4>
+                  <h6 class="blue-text font-weight-bold my-3">Web Developer</h6>
+                  <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit. Quod eos id officiis hic tenetur quae.</p>
+                  <!--Review-->
+                  <div class="grey-text">
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="testimonial">
+                  <!--Avatar-->
+                  <div class="avatar mx-auto">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg"
+                      class="rounded-circle img-fluid">
+                  </div>
+                  <!--Content-->
+                  <h4 class="font-weight-bold mt-4">Elisa Janson</h4>
+                  <h6 class="blue-text font-weight-bold my-3">Marketer</h6>
+                  <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>At vero eos et accusamus et
+                    iusto odio dignissimos ducimus qui blanditiis praesentium.</p>
+                  <!--Review-->
+                  <div class="grey-text">
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star-half-alt"> </i>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="testimonial">
+                  <!--Avatar-->
+                  <div class="avatar mx-auto">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg"
+                      class="rounded-circle img-fluid">
+                  </div>
+                  <!--Content-->
+                  <h4 class="font-weight-bold mt-4">Rob Jacobs</h4>
+                  <h6 class="blue-text font-weight-bold my-3">Front-end developer</h6>
+                  <p class="font-weight-normal"><i class="fas fa-quote-left pr-2"></i>Ut enim ad minima veniam,
+                    quis
+                    nostrum exercitationem ullam corporis laboriosam.</p>
+                  <!--Review-->
+                  <div class="grey-text">
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="fas fa-star"> </i>
+                    <i class="far fa-star"> </i>
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+
+            </div>
+            <!--Third slide-->
+
+          </div>
+          <!--Slides-->
+
+        </div>
+        <!--Carousel Wrapper-->
+
+      </div>
+      <!-- Grid row -->
+
+    </section>
+    <!-- Section: Testimonials v.4 -->
+    <!--Section: call to action-->
+    <div class="streak streak-md streak-photo"
+      style="background-image:url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img(115).jpg')">
+      <div class="flex-center white-text rgba-black-light pattern-1">
+        <ul class="mb-0 list-unstyled">
+          <li>
+            <h2 class="h2-responsive"><i class="fas fa-quote-left" aria-hidden="true"></i> The people who
+              are
+              crazy enough to think they can change the world are the ones who do. <i class="fas fa-quote-right"
+                aria-hidden="true"></i></h2>
+          </li>
+          <li class="mb-0">
+            <h5 class="text-center font-italic mb-0">~ Steve Jobs</h5>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!--Section: call to action-->
+    <!--Section: articles-->
+    <section id="articles" class="text-center py-5">
+
+      <!-- Container -->
+      <div class="container">
+
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold mb-5">Articles</h2>
+
+        <!--Grid row-->
+        <div class="row">
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-12 mb-4">
+
+            <!-- Card Narrower -->
+            <div class="card card-cascade narrower">
+
+              <!-- Card image -->
+              <div class="view view-cascade overlay">
+                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg"
+                  alt="Card image cap">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+
+              <!-- Card content -->
+              <div class="card-body card-body-cascade">
+
+                <!-- Label -->
+                <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Culinary</h5>
+                <!-- Title -->
+                <h4 class="font-weight-bold card-title">Cheat day inspirations</h4>
+                <!-- Text -->
+                <p class="card-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                  corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
+                <!-- Button -->
+                <a class="btn btn-unique">Button</a>
+
+              </div>
+
+            </div>
+            <!-- Card Narrower -->
+
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4">
+
+            <!-- Card Narrower -->
+            <div class="card card-cascade narrower">
+
+              <!-- Card image -->
+              <div class="view view-cascade overlay">
+                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg"
+                  alt="Card image cap">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+
+              <!-- Card content -->
+              <div class="card-body card-body-cascade">
+
+                <!-- Label -->
+                <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Culinary</h5>
+                <!-- Title -->
+                <h4 class="font-weight-bold card-title">Cheat day inspirations</h4>
+                <!-- Text -->
+                <p class="card-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                  corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
+                <!-- Button -->
+                <a class="btn btn-unique">Button</a>
+
+              </div>
+
+            </div>
+            <!-- Card Narrower -->
+
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4">
+
+            <!-- Card Narrower -->
+            <div class="card card-cascade narrower">
+
+              <!-- Card image -->
+              <div class="view view-cascade overlay">
+                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg"
+                  alt="Card image cap">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+
+              <!-- Card content -->
+              <div class="card-body card-body-cascade">
+
+                <!-- Label -->
+                <h5 class="pink-text pb-2 pt-1"><i class="fas fa-utensils"></i> Culinary</h5>
+                <!-- Title -->
+                <h4 class="font-weight-bold card-title">Cheat day inspirations</h4>
+                <!-- Text -->
+                <p class="card-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                  corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
+                <!-- Button -->
+                <a class="btn btn-unique">Button</a>
+
+              </div>
+
+            </div>
+            <!-- Card Narrower -->
+
+          </div>
+          <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+      </div>
+      <!-- Container -->
+
+    </section>
+    <!--Section: articles-->
+    <!--Section: contact-->
+    <section id="contact" class="py-5" style="background-color: #eee;">
+
+      <div class="container">
+
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold text-center mb-5">Contact us</h2>
+        <!-- Section description -->
+        <p class="text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum
+          porro a pariatur veniam.</p>
+
+        <!-- Grid row -->
+        <div class="row">
+
+          <!-- Grid column -->
+          <div class="col-md-9 mb-md-0 mb-5">
+
+            <form>
+
+              <!-- Grid row -->
+              <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-6">
+                  <div class="md-form mb-0">
+                    <input type="text" id="contact-name" class="form-control">
+                    <label for="contact-name" class="">Your name</label>
+                  </div>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-6">
+                  <div class="md-form mb-0">
+                    <input type="text" id="contact-email" class="form-control">
+                    <label for="contact-email" class="">Your email</label>
+                  </div>
+                </div>
+                <!-- Grid column -->
+
+              </div>
+              <!-- Grid row -->
+
+              <!-- Grid row -->
+              <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-12">
+                  <div class="md-form mb-0">
+                    <input type="text" id="contact-Subject" class="form-control">
+                    <label for="contact-Subject" class="">Subject</label>
+                  </div>
+                </div>
+                <!-- Grid column -->
+
+              </div>
+              <!-- Grid row -->
+
+              <!-- Grid row -->
+              <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-12">
+                  <div class="md-form">
+                    <textarea type="text" id="contact-message" class="form-control md-textarea" rows="3"></textarea>
+                    <label for="contact-message">Your message</label>
+                  </div>
+                </div>
+                <!-- Grid column -->
+
+              </div>
+              <!-- Grid row -->
+
+            </form>
+
+            <div class="text-center text-md-left">
+              <a class="btn btn-purple btn-md">Send</a>
+            </div>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+              <li>
+                <i class="fas fa-map-marker-alt fa-2x purple-text"></i>
+                <p>San Francisco, CA 94126, USA</p>
+              </li>
+              <li>
+                <i class="fas fa-phone fa-2x mt-4 purple-text"></i>
+                <p>+ 01 234 567 89</p>
+              </li>
+              <li>
+                <i class="fas fa-envelope fa-2x mt-4 purple-text"></i>
+                <p class="mb-0">contact@example.com</p>
+              </li>
+            </ul>
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+
+    </section>
+    <!--Section: contact-->
+
+  </main>
+  <!-- Footer -->
+  <footer class="page-footer font-small pt-4">
+
+    <!-- Footer Elements -->
+    <div class="container">
+
+      <!-- Social buttons -->
+      <ul class="list-unstyled list-inline text-center">
+        <li class="list-inline-item">
+          <a class="btn-floating btn-fb mx-1">
+            <i class="fab fa-facebook-f"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-tw mx-1">
+            <i class="fab fa-twitter"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-gplus mx-1">
+            <i class="fab fa-google-plus-g"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-li mx-1">
+            <i class="fab fa-linkedin-in"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-dribbble mx-1">
+            <i class="fab fa-dribbble"> </i>
+          </a>
+        </li>
+      </ul>
+      <!-- Social buttons -->
+
+    </div>
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+  <!-- jQuery -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript">
+    // MDB Lightbox Init
+    $(function () {
+      $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+    });
+    // Adding animations to the sections, 使用的是淡入, 你也可以试试zoomIn等动画
+    $("section").addClass("wow fadeIn");
+    // Animations Init, 注意必须放在ready方法中以防WOW对象没能加载成功
+    $(document).ready(function () {
+      new WOW().init();
+    });
+  </script>
+
+</body>
+
+</html>
