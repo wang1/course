@@ -188,7 +188,7 @@ void main() {
 <p>常量，程序运行过程中即不会发生改变的量。</p>
 <h3 is-upgraded>数值常量</h3>
 <p>如圆周率 π 为<code>3.14</code>，珠峰高度<code>8848</code>米等小数和整数。 对一些较长的数，<code>C</code>语言还提供了科学计数的表示，如<code>1.989E64</code>表示<code>1.989</code>乘以<code>10</code>的<code>64</code>次方。</p>
-<aside class="special"><p>✍ 字母<code>E</code>大写小写都可以,如 <code>3.14e5</code>，但<code>E</code>或<code>e</code>的前后至少一边有数字，且后边的数字只能是整数。 所以 <code>0.15e3.6</code>，<code>E-8</code>都是错误的。</p>
+<aside class="special"><p>✍ 字母<code>E</code>大写小写都可以,如 <code>3.14e5</code>，但<code>E</code>或<code>e</code>的前后都需要数字常数，且后边的数字只能是整数。 所以 <code>0.15e3.6</code>，<code>E-8</code>都是错误的。</p>
 </aside>
 <h3 is-upgraded>字符常量</h3>
 <p>字符常量就是单个的字符，如 <code>U</code>，<code>$</code>，<code>@</code>等，但<code>C</code>语言规定：字符常量需用单引号包裹起来，即: <code>&#39;U&#39;</code>，<code>&#39;$&#39;</code>，<code>&#39;@&#39;</code>。</p>
@@ -214,7 +214,7 @@ void main() {
 <p><code>C</code>语言用<code>int</code>，<code>float</code> 和 <code>char</code>分别来定义整数，实数（也称浮点数）和字符型变量。</p>
 <p>变量的名称就是标识符（你还记得第一讲有关标识符的规定吧?），一般我们希望这个名称能说明该变量用来存放什么，如: <code>age</code>，<code>powerOfBoss</code>等。</p>
 <p>下面是一些定义变量的例子:</p>
-<pre><code>int age, heigh, width;  // 定义了三个整型变量，如果有多个用逗号进行分隔
+<pre><code>int age, height, width;  // 定义了三个整型变量，如果有多个用逗号进行分隔
 float income = 19896.4; // 定义了一个浮点型变量，并给定了一个值（初始化）
 char sex, isOver;       // 定义了两个字符型变量
 </code></pre>
@@ -252,7 +252,7 @@ void main() {
   printf(&#34;How old are you: %d\n&#34;, age);
   printf(&#34;How old are you: %5d\n&#34;, age);  // 注意是 %5d，表明这个整数至少占 5 个字符宽度
   printf(&#34;What&#39;s your income: %f\n&#34;, income);
-  printf(&#34;What&#39;s your income: %.2f\n&#34;, income); // 注意 %.2f，表明小数点后只需 2 位
+  printf(&#34;What&#39;s your income: %8.2f\n&#34;, income); // 注意 %8.2f，表明包括小数点在内总共占10位，小数点后 2 位
   printf(&#34;Is this game over: %c\n&#34;, isOver);  // 输出指定的字符
   printf(&#34;Age:%5d, Income:%10.2f, Over:%c\n&#34;, age, income, isOver); // 放在一块也可以的
 }
@@ -451,7 +451,7 @@ C. 0        D. 0.5
 
 二、判断题
 
-1.若有定义：int i = 2;，则语句 a += a *= a; 执行结束之后，变量 a 的值是 6 。（）
+1.若有定义：int a = 2;，则语句 a += a *= a; 执行结束之后，变量 a 的值是 6 。（）
 
 2.若有定义：int num;，则语句 num = 3.561; 执行结束之后，变量 num 的值是 4 。（）
 
