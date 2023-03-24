@@ -505,7 +505,7 @@ void main() {
   int isPass, isAdult, isFemale;
   isPass = score &gt;= 60; //根据上面的分数 58，结果为假，故 isPass 将被赋值为 0
   isAdult = age &gt;= 18;  //根据上面的年龄 20，结果为真，故 isAdult 将被赋值为 1
-  isFemale = sex == 0;  //根据上面的性别 0，结果为真，故 isFemale 将被赋值为 0
+  isFemale = sex == 0;  //根据上面的性别 0，结果为真，故 isFemale 将被赋值为 1
   printf(&#34;Pass: %d\n&#34;, isPass);     //Pass: 0
   printf(&#34;Adult: %d\n&#34;, isAdult);   //Adult: 1
   printf(&#34;Female: %d\n&#34;, isFemale); //Female: 1
@@ -537,8 +537,9 @@ c = 3;
 // 先算 b * b，得 25（中间结果）,
 // 再算 4 * a 得 4，再用这个结果 4 * c，得 12,
 // 再用早先的 25 - 12，得 13,
-// 最后结果 13 赋值给变量 p
-p = b * b - 4 * a * c;
+// 再比较是否 13 &gt; 0 ,
+// 最后结果 1 赋值给变量 p
+p = b * b - 4 * a * c &gt; 0;
 </code></pre>
 <aside class="special"><p>✍  当然，圆括号的优先级最高。 建议多以圆括号来保证你运算需要的优先级!</p>
 </aside>
@@ -581,7 +582,7 @@ isPKU &amp;&amp; isGuanghua &amp;&amp; isHandsome &amp;&amp; isMale
 <h3 is-upgraded>示例</h3>
 <aside class="warning"><p>✎ 注意: <code>C</code>语言中，输出关系或逻辑表达式的结果时要么是 <code>1</code>，要么是 <code>0</code>。 但在判断时，采用的 <code>0</code> 为假，非<code>0</code>的都为真。 请一定留意!</p>
 </aside>
-<aside class="special"><p>✍ 短路运算: 当 <code>&amp;</code>&amp; 运算符左边已经为假，则右边不需要计算了，整个表达式结果为假; 同理，当 <code>||</code> 运算符左边已经为真，则右边不需要计算了，整个表达式结果为真。 这就称为短路!</p>
+<aside class="special"><p>✍ 短路运算: 当 <code>&amp;&amp;</code> 运算符左边已经为假，则右边不需要计算了，整个表达式结果为假; 同理，当 <code>||</code> 运算符左边已经为真，则右边不需要计算了，整个表达式结果为真。 这就称为短路!</p>
 </aside>
 <p>查看以下程序片段，仔细分析输出的结果:</p>
 <pre><code>#include &#34;stdio.h&#34;
