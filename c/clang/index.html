@@ -1877,7 +1877,7 @@ void main() {
   printf(&#34;%s\n&#34;, str);
 }
 </code></pre>
-<aside class="warning"><p>✎ 思考：如果字符串改为&#34;I ha\0te C Language&#34;将会有什么结果？</p>
+<aside class="warning"><p>✎ 思考：如果字符串改为<code> I ha\0te C Language </code>将会有什么结果？</p>
 </aside>
 <h4 is-upgraded>方式三</h4>
 <p>使用<code>puts()</code>函数，更简单方便！</p>
@@ -1913,9 +1913,9 @@ void main() {
   puts(str);
 }
 </code></pre>
-<p>Nagetive✎ 思考1：如果输入的字符串为<code>Your  Name�</code>��，输出是什么结果？<br>✎ 思考2：试试输入超过<code>20</code>个字符，看看会发生什么？</p>
+<aside class="warning"><p>✎ 思考1：如果输入的字符串为<code>What&#39;s Your name:</code>，输出是什么结果？<br>✎ 思考2：试试输入超过<code>20</code>个字符，看看会发生什么？</p></aside>
 <h4 is-upgraded>方式三</h4>
-<p>假如我们的输入的确需要包含有空格或制表符如<code>What&#39;s Your name�</code>��这样的字符串，那么就使用<code>gets()</code>函数。该函数只以回车作为字符串输入完成的标志。</p>
+<p>假如我们的输入的确需要包含有空格或制表符如<code>What&#39;s Your name:</code>这样的字符串，那么就使用<code>gets()</code>函数。该函数只以回车作为字符串输入完成的标志。</p>
 <pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
 void main() {
   char str[20];
