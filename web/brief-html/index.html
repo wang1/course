@@ -19,6 +19,27 @@
     .error {
       color: red;
     }
+    pre {
+      position: relative;
+    }
+
+    pre .btn {
+      -webkit-transition: opacity 0.3s ease-in-out;
+      -o-transition: opacity 0.3s ease-in-out;
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+      right: 15px;
+      /*padding: 0 10px;*/
+      position: absolute;
+      top: 16px;
+    }
+
+    pre:hover .btn {
+      opacity: 1;
+    }
+    #drawer .metadata {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -27,7 +48,7 @@
                   id="brief-html"
                   title="HTML简介"
                   environment="web"
-                  feedback-link="mailto: gridwang@gmail.com">
+                  >
     
       <google-codelab-step label="何为HTML" duration="5">
         <p><strong>HTML</strong>是超文本标记语言（HyperText Markup Language）的缩写。我们用 HTML 来构建 Web 页面即所谓的网页。</p>
@@ -55,7 +76,7 @@
 <p>接下来在该文件夹下新建一个 <strong>后缀名为html</strong> 的文件，如下图所示：</p>
 <p class="image-container"><img alt="new-file" src="img/f0f2f4fda1403798.png"></p>
 <p>在该文件中输入如下内容：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
+<pre><button class="btn" data-clipboard-target="#dm01">Copy</button><code id="dm01">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;meta charset=&#34;utf-8&#34;&gt;
@@ -149,7 +170,7 @@
     
       <google-codelab-step label="标题（heading）" duration="3">
         <p>HTML 提供了从大到小6级标题，分别是：<code>&lt;h1&gt; ~ &lt;h6&gt;</code>，如下所示：</p>
-<pre><code>&lt;h1&gt;This is heading 1&lt;/h1&gt;
+<pre><button class="btn" data-clipboard-target="#dm02">Copy</button><code id="dm02">&lt;h1&gt;This is heading 1&lt;/h1&gt;
 &lt;p&gt;This is some text.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;This is heading 2&lt;/h2&gt;
@@ -173,7 +194,7 @@
         <aside class="warning"><p><strong>注意：</strong> 除本节介绍的这些标签可用于文本的格式外，其它标签都不建议用来进行格式的设置，如：<code>&lt;font&gt;&lt;big&gt;&lt;center&gt;</code>等标签皆为不推荐使用的。HTML 是用来表现页面内容而不是对页面进行修饰的，专门的页面美化需要使用后面将要学习的 CSS 。</p>
 </aside>
 <p>我们需要知道的文本格式标签如下：</p>
-<pre><code>&lt;p&gt;You can use the mark tag to &lt;mark&gt;highlight&lt;/mark&gt; text.&lt;/p&gt;
+<pre><button class="btn" data-clipboard-target="#dm03">Copy</button><code id="dm03">&lt;p&gt;You can use the mark tag to &lt;mark&gt;highlight&lt;/mark&gt; text.&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;This line of text is meant to be treated as deleted text.&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;&lt;s&gt;This line of text is meant to be treated as no longer accurate.&lt;/s&gt;&lt;/p&gt;
 &lt;p&gt;&lt;ins&gt;This line of text is meant to be treated as an addition to the document.&lt;/ins&gt;&lt;/p&gt;
@@ -200,7 +221,7 @@
 <h2 is-upgraded>锚点</h2>
 <p>锚点，也称为书签，用于标记页面的某个元素或位置。通过锚点，我们可以轻易的在长页面内实现跳转。</p>
 <p>先使用<code>id</code>属性生成某元素的锚点，然后再使用超链接指向该锚点即可。</p>
-<pre><code>&lt;!-- 文档其余部分 --&gt;
+<pre><button class="btn" data-clipboard-target="#dm04">Copy</button><code id="dm04">&lt;!-- 文档其余部分 --&gt;
 &lt;h2 id=&#34;C4&#34;&gt;第四章 论零号病人的重要性&lt;/h2&gt;
 &lt;!-- 文档其余部分 --&gt;
 &lt;a href=&#34;#C4&#34;&gt;跳到第四章&lt;/a&gt;
@@ -222,7 +243,7 @@
       <google-codelab-step label="图片及文件路径 img" duration="8">
         <h2 is-upgraded>图片</h2>
 <p>在页面插入一张图片如下：</p>
-<pre><code>&lt;img src=&#34;https://mdbootstrap.com/img/logo/mdb192x192.jpg&#34; alt=&#34;MDB Logo&#34; width=&#34;200&#34; height=&#34;200&#34;&gt;
+<pre><button class="btn" data-clipboard-target="#dm05">Copy</button><code id="dm05">&lt;img src=&#34;https://mdbootstrap.com/img/logo/mdb192x192.jpg&#34; alt=&#34;MDB Logo&#34; width=&#34;200&#34; height=&#34;200&#34;&gt;
 </code></pre>
 <p>说明：</p>
 <ol type="1">
@@ -262,7 +283,7 @@
     
       <google-codelab-step label="表格 Table" duration="3">
         <p>有时，页面的内容需要用表格来进行呈现。我们使用<code>&lt;table&gt;</code>等标签即可：</p>
-<pre><code>  &lt;table&gt;
+<pre><button class="btn" data-clipboard-target="#dm06">Copy</button><code id="dm06">  &lt;table&gt;
     &lt;tr&gt;
       &lt;th&gt;Firstname&lt;/th&gt;
       &lt;th&gt;Lastname&lt;/th&gt;
@@ -324,7 +345,7 @@
       <google-codelab-step label="表单 Form" duration="10">
         <p>当网站需要获取我们的一些信息如：用户名、密码、选择买什么、买多少、提出意见等等时，我们就需要使用表单（form）来让用户填写或选择。</p>
 <p>请输入如下代码进行学习：</p>
-<pre><code>&lt;form&gt;
+<pre><button class="btn" data-clipboard-target="#dm07">Copy</button><code id="dm07">&lt;form&gt;
   &lt;!-- 文本框，注意有 placeholder 提示符 --&gt;
   用户名：&lt;br&gt;
   &lt;input type=&#34;text&#34; name=&#34;name&#34; placeholder=&#34;请输入用户名&#34;&gt;&lt;br&gt;
@@ -378,14 +399,14 @@
         <p>HTML 的元素可以以称为<strong>区块</strong> 或 <strong>内联</strong>的方式进行显示。</p>
 <h2 is-upgraded>区块元素</h2>
 <p>区块元素在浏览器显示时，通常会以<strong>新行</strong>来开始（和结束）。如：<code>&lt;h1&gt;, &lt;pre&gt;, &lt;ul&gt;, &lt;table&gt;，&lt;</code>div&gt; 等。</p>
-<pre><code>&lt;h2&gt;区块元素&lt;/h2&gt;
+<pre><button class="btn" data-clipboard-target="#dm08">Copy</button><code id="dm08">&lt;h2&gt;区块元素&lt;/h2&gt;
 &lt;div&gt;Hello&lt;/div&gt;
 &lt;div&gt;World&lt;/div&gt;
 &lt;p&gt;单独一行&lt;/p&gt;
 </code></pre>
 <h2 is-upgraded>内联元素</h2>
 <p>内联元素相反，他们总是一个接一个进行显示，不会新起一行。如： <code>&lt;span&gt;, &lt;input&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;</code>等。</p>
-<pre><code>&lt;h3&gt;下面的元素将在一行中显示&lt;/h3&gt;
+<pre><button class="btn" data-clipboard-target="#dm09">Copy</button><code id="dm09">&lt;h3&gt;下面的元素将在一行中显示&lt;/h3&gt;
 &lt;span&gt;姓名：&lt;/span&gt;
 &lt;input name=&#34;username&#34;&gt;
 &lt;span&gt;哈哈哈&lt;/span&gt;
@@ -394,7 +415,7 @@
 </code></pre>
 <h2 is-upgraded>预设格式</h2>
 <p>如果你想在网页中展示一首诗或一些特别格式的文本，那么请使用<code>pre</code>标签。</p>
-<pre><code>&lt;!-- pre标签中的内容将保持格式不变 --&gt;
+<pre><button class="btn" data-clipboard-target="#dm10">Copy</button><code id="dm10">&lt;!-- pre标签中的内容将保持格式不变 --&gt;
 &lt;pre&gt;
               我如果爱你——
               绝不象攀援的凌霄花，
@@ -447,17 +468,17 @@
 </code></pre>
 <h2 is-upgraded>特殊字符</h2>
 <p>考虑下面的代码将显示成什么？</p>
-<pre><code>&lt;p&gt;有多          远，滚                         多远！&lt;/p&gt;
+<pre><button class="btn" data-clipboard-target="#dm11">Copy</button><code id="dm11">&lt;p&gt;有多          远，滚                         多远！&lt;/p&gt;
 </code></pre>
 <p>或者你希望在页面显示一段 HTML 的源代码，你打算用标签<code>&lt;pre&gt;</code>:</p>
-<pre><code>&lt;pre&gt;
+<pre><button class="btn" data-clipboard-target="#dm12">Copy</button><code id="dm12">&lt;pre&gt;
   &lt;h1&gt;这是个一级标题&lt;/h1&gt;
   &lt;p&gt;这是一个段落&lt;p&gt;
   &lt;a href=&#34;https://twitter.com/&#34;&gt;眼见何事，情系何处，身处何方，心思何人&lt;/a&gt;
 &lt;pre&gt;
 </code></pre>
 <p>以上代码将得不到你想要的结果。<br>原因是：在 HTML 中，某些字符是预留的。<br>在 HTML 中不能使用小于号（&lt;）和大于号（&gt;），这是因为浏览器会误认为它们是标签。<br>如果希望正确地显示预留字符，我们必须在 HTML 源代码中使用字符实体（character entities）</p>
-<pre><code>&lt;p&gt;有多&amp;nbsp;&amp;nbsp;&amp;nbsp;远，滚&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;多远！&lt;/p&gt;
+<pre><button class="btn" data-clipboard-target="#dm13">Copy</button><code id="dm13">&lt;p&gt;有多&amp;nbsp;&amp;nbsp;&amp;nbsp;远，滚&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;多远！&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;test.html&lt;/h2&gt;
 &lt;pre&gt;
@@ -494,6 +515,10 @@
   <script src="/assets/forGoogle/custom-elements.min.js"></script>
   <script src="/assets/forGoogle/prettify.js"></script>
   <script src="/assets/forGoogle/codelab-elements.js"></script>
+  <script src="/docs-assets/js/clipboard.min.js"></script>
+    <script>
+      new Clipboard('.btn');
+    </script>
 
 </body>
 </html>
