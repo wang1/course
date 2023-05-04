@@ -66,7 +66,7 @@
     
       <google-codelab-step label="HTML文档结构" duration="5">
         <h2 is-upgraded>新建工作目录</h2>
-<p>前面我们已经安装了开发软件 <strong>code</strong> 及其相关的插件（<a href="https://aka.ms/win32-x64-user-stable" target="_blank">code下载</a>）。运行该软件，打开/新建一个文件夹，如下图所示：</p>
+<p>前面我们已经安装了开发软件 <strong>VSCode</strong> 及其相关的插件（<a href="https://aka.ms/win32-x64-user-stable" target="_blank">code下载</a>）。运行该软件，打开/新建一个文件夹，如下图所示：</p>
 <p class="image-container"><img alt="new-directory" src="img/67005cb1533a3f66.png"></p>
 <aside class="warning"><p><strong>注意：</strong> 该文件夹是我们的工作目录，一般不建在C盘</p>
 </aside>
@@ -85,13 +85,13 @@
 &lt;/head&gt;
 &lt;body&gt;
   &lt;h1&gt;我的第一个Web页&lt;/h1&gt;
-  &lt;p&gt;当前有点丑：)&lt;/p&gt;
+  &lt;p&gt;当前有点丑 :) &lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
 <h2 is-upgraded>看看结果</h2>
 <p>Web 浏览器如 Chrome、 Firefox、Edge、Safari 等用来读取 HTML 文件并呈现出来。（<strong>再次推荐使用 Chrome 或 Firefox</strong>）</p>
-<p>在开发工具 code 中我们已经安装了<code>open in browser</code>插件，因此在 code 的<strong>编辑区点击鼠标右键</strong>即可看到快捷方式将该文件在浏览器中打开。如下图所示：</p>
+<p>在开发工具 VSCode 中我们已经安装了<del>open in browser</del><code>Live Server</code>插件，因此在 VSCode 的<strong>编辑区点击鼠标右键</strong>即可看到快捷方式将该文件在浏览器中打开。如下图所示：</p>
 <p class="image-container"><img alt="code-open-in-browser" src="img/72d7ff447d0af4de.png"></p>
 <aside class="warning"><p><strong>思考：</strong> 假设上述方式没能成功在浏览器打开，我们还有什么方法看到结果？</p>
 </aside>
@@ -101,7 +101,7 @@
     
       <google-codelab-step label="HTML 文档结构分析" duration="5">
         <h2 is-upgraded>HTML元素（elements）</h2>
-<p>HTML 使用&#34;标记&#34;（markup）来注明文本、图片和其他内容，以便于在浏览器中显示。HTML 标记包含一些规定的&#34;元素&#34;如 <code>&lt;head&gt;，&lt;title&gt;，&lt;body&gt;，&lt;header&gt;，&lt;footer&gt;，&lt;article&gt;，&lt;section&gt;，&lt;p&gt;，&lt;div&gt;，&lt;span&gt;，&lt;img&gt;，&lt;aside&gt;，&lt;audio&gt;，&lt;canvas&gt;，&lt;d</code>atalist&gt;，&lt;details&gt;，&lt;embed&gt;，&lt;nav&gt;，&lt;output&gt;，&lt;progress&gt;，&lt;video&gt; 等等。</p>
+<p>HTML 使用&#34;标记&#34;（markup）来注明文本、图片和其他内容，以便于在浏览器中显示。HTML 标记包含一些规定的&#34;元素&#34;如 <code>&lt;head&gt;，&lt;title&gt;，&lt;body&gt;，&lt;header&gt;，&lt;footer&gt;，&lt;article&gt;，&lt;section&gt;，&lt;p&gt;，&lt;div&gt;，&lt;span&gt;，&lt;img&gt;，&lt;aside&gt;，&lt;audio&gt;，&lt;canvas&gt;，&lt;datalist&gt;，&lt;details&gt;，&lt;embed&gt;，&lt;nav&gt;，&lt;output&gt;，&lt;progress&gt;，&lt;video&gt;</code> 等等。</p>
 <p>检查我们刚创建的 HTML 文档你会发现，整个 HTML 就由一个个元素组成（可以嵌套），而元素则一般由一对标签（tag）构成。</p>
 <h2 is-upgraded>剖析一个 HTML 元素</h2>
 <p>如下所示的一个用于展示段落的元素：</p>
@@ -140,8 +140,8 @@
 <aside class="special"><p><strong>注意：</strong> HTML 不区分标签的大小写，但建议全部使用小写！</p>
 </aside>
 <h2 is-upgraded>空元素</h2>
-<p>一般来说，元素都拥有<strong>开始标签，内容，结束标签</strong>。但有一些元素只有一个开始标签，通常用来在此元素所在位置插入/嵌入一些东西，如<code>&lt;br&gt;, &lt;hr&gt;, &lt;input&gt;, &lt;img&gt;, &lt;a&gt;</code>等等。我们称其为空元素，如下：</p>
-<pre><code>&lt;!-- 换行 --&gt;
+<p>一般来说，元素都拥有<strong>开始标签，内容，结束标签</strong>。但有一些元素只有一个开始标签，通常用来在此元素所在位置插入/嵌入一些东西，如<code>&lt;br&gt;, &lt;hr&gt;, &lt;input&gt;, &lt;img&gt;</code>等等。我们称其为空元素，如下：</p>
+<pre><button class="btn" data-clipboard-target="#dm00">Copy</button><code id="dm01">&lt;!-- 换行 --&gt;
 &lt;p&gt;我可以&lt;br&gt;换行&lt;/p&gt; 
 &lt;!-- 水平分割线 --&gt;
 &lt;hr&gt;
@@ -152,7 +152,7 @@
 </aside>
 <h2 is-upgraded>元素的属性</h2>
 <p>元素是可以有相关属性的。属性包含元素的额外信息，这些信息不会在浏览器中显示出来。</p>
-<pre><code>&lt;!-- 带属性的段落输入框 --&gt;
+<pre><button class="btn" data-clipboard-target="#dm-1">Copy</button><code id="dm-1">&lt;!-- 带属性的段落输入框 --&gt;
 &lt;p title=&#34;这是个title属性&#34;&gt;鼠标移上来试试！&lt;/p&gt;
 &lt;!-- 带属性的输入框 --&gt;
 &lt;input type=&#34;text&#34;&gt;
@@ -214,7 +214,7 @@
 </code></pre>
 <p>说明：</p>
 <ol type="1">
-<li><code>href</code>即为要跳转去的地址 URL（Uniform Resorce Locator)</li>
+<li><code>href</code>为 Hypertext Reference 的缩写，表示要跳转去的地址 URL(Uniform Resorce Locator)</li>
 <li><code>target</code>属性为<code>_blank</code>表示在新的页面打开超链接（默认是在当前页面打开即<code>_self</code>）</li>
 <li>超链接标签包含的内容（当前为文字&#34;百度一下&#34;）即为显示在页面上供用户点击的</li>
 </ol>
@@ -269,6 +269,9 @@
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p><code>&lt;img src=&#34;../picture.jpg&#34;&gt;</code></p>
 </td><td colspan="1" rowspan="1"><p>该图片文件在上一级目录中</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>&lt;img src=&#34;/picture.jpg&#34;&gt;</code></p>
+</td><td colspan="1" rowspan="1"><p>该图片文件在网站 根目录 中</p>
 </td></tr>
 </table>
 <aside class="warning"><p><strong>思考：</strong> 上表中，<code>.</code>表示当前目录，<code>..</code>表示上一级目录，那么<code>../../imgs</code>是什么意思？</p>
@@ -348,10 +351,10 @@
 <pre><button class="btn" data-clipboard-target="#dm07">Copy</button><code id="dm07">&lt;form&gt;
   &lt;!-- 文本框，注意有 placeholder 提示符 --&gt;
   用户名：&lt;br&gt;
-  &lt;input type=&#34;text&#34; name=&#34;name&#34; placeholder=&#34;请输入用户名&#34;&gt;&lt;br&gt;
+  &lt;input type=&#34;text&#34; name=&#34;name&#34; placeholder=&#34;请输入用户名&#34; required&gt;&lt;br&gt;
   &lt;!-- 密码框 --&gt;
   密码：&lt;br&gt;
-  &lt;input type=&#34;password&#34; name=&#34;ps&#34; placeholder=&#34;请输入密码&#34;&gt;&lt;br&gt;
+  &lt;input type=&#34;password&#34; name=&#34;ps&#34; placeholder=&#34;请输入密码&#34; required&gt;&lt;br&gt;
   年龄：&lt;br&gt;
   &lt;!-- 数字输入框，注意 min 和 value 属性--&gt;
   &lt;input type=&#34;number&#34; name=&#34;age&#34; min=&#34;18&#34; value=&#34;18&#34;&gt;&lt;br&gt;
@@ -391,12 +394,12 @@
 </code></pre>
 <aside class="special"><p><strong>提示：</strong> 当提交时，表单中没有<code>name</code>属性的元素将不会提交，比如上面工作日期的选择器。有<code>name</code>属性的元素其<code>value</code>的值将提交给服务器。</p>
 </aside>
-
+img
 
       </google-codelab-step>
     
       <google-codelab-step label="其它" duration="5">
-        <p>HTML 的元素可以以称为<strong>区块</strong> 或 <strong>内联</strong>的方式进行显示。</p>
+        <p>HTML 的元素可以以称为<strong>区块 Division</strong> 或 <strong>内联 Inline </strong>的方式进行显示。</p>
 <h2 is-upgraded>区块元素</h2>
 <p>区块元素在浏览器显示时，通常会以<strong>新行</strong>来开始（和结束）。如：<code>&lt;h1&gt;, &lt;pre&gt;, &lt;ul&gt;, &lt;table&gt;，&lt;</code>div&gt; 等。</p>
 <pre><button class="btn" data-clipboard-target="#dm08">Copy</button><code id="dm08">&lt;h2&gt;区块元素&lt;/h2&gt;
