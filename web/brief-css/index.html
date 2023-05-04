@@ -19,6 +19,27 @@
     .error {
       color: red;
     }
+    pre {
+      position: relative;
+    }
+
+    pre .btn {
+      -webkit-transition: opacity 0.3s ease-in-out;
+      -o-transition: opacity 0.3s ease-in-out;
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+      right: 15px;
+      /*padding: 0 10px;*/
+      position: absolute;
+      top: 16px;
+    }
+
+    pre:hover .btn {
+      opacity: 1;
+    }
+    #drawer .metadata {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -51,7 +72,7 @@
 <li>属性（property）是您希望设置的样式属性（style attribute）。每个属性有一个值。属性和值被冒号分开。</li>
 </ul>
 <p>再如下例所示：</p>
-<pre><code>/* 这是CSS的注释 */
+<pre><button class="btn" data-clipboard-target="#dm01">Copy</button><code id="dm01">/* 这是CSS的注释 */
 /* 建议每条申明占一行 */
 p{
   color:red;
@@ -61,19 +82,19 @@ p{
 <h2 is-upgraded>选择器</h2>
 <p>一个页面上的元素众多，选择器就用于在页面中找到/选择需要应用这个样式的对象。<br>除我们前示的元素选择器外，还有<code>id</code>和<code>class</code>选择器。其中<code>class</code>选择器使用非常普遍。</p>
 <p><strong>id 选择器</strong></p>
-<pre><code>/* 注意：id选择器前有 # 号。 */
+<pre><button class="btn" data-clipboard-target="#dm02">Copy</button><code id="dm02">/* 注意：id选择器前有 # 号。 */
 #sky{
   color: blue;
 }
 </code></pre>
 <p>这条规则表明，找到页面上<code>id</code>为<code>sky</code>的那个元素让它呈现蓝色，如下所示的页面，<strong>蓝色的天空</strong>这几个字就将会是蓝色的。</p>
-<pre><code>&lt;p id=&#34;sky&#34;&gt;蓝色的天空&lt;/p&gt;
+<pre><button class="btn" data-clipboard-target="#dm03">Copy</button><code id="dm03">&lt;p id=&#34;sky&#34;&gt;蓝色的天空&lt;/p&gt;
 &lt;p id=&#34;forest&#34;&gt;绿色的森林&lt;/p&gt;
 </code></pre>
 <aside class="special"><p><strong>提示：</strong> 你还记得HTML中，元素的id值必须唯一吗？ 所以，id 选择器适用范围只有一个元素。</p>
 </aside>
 <p><strong>class 选择器</strong></p>
-<pre><code>/* 注意：class选择器前有 . 号。 */
+<pre><button class="btn" data-clipboard-target="#dm04">Copy</button><code id="dm04">/* 注意：class选择器前有 . 号。 */
 .center{
   text-align: center;
 }
@@ -85,7 +106,7 @@ p{
 }
 </code></pre>
 <p>以上代码定义了三条规则，分别应用于页面上对应的元素，如只要页面上某元素的<code>class</code>为<code>red</code>，那么就让它呈现红色。<br>如下所示的页面：</p>
-<pre><code>&lt;p class=&#34;center&#34;&gt;我会居中显示的&lt;/p&gt;
+<pre><button class="btn" data-clipboard-target="#dm05">Copy</button><code id="dm05">&lt;p class=&#34;center&#34;&gt;我会居中显示的&lt;/p&gt;
 &lt;p class=&#34;red&#34;&gt;我是红色的&lt;/p&gt;
 &lt;p class=&#34;center large red&#34;&gt;我又红又大还居中&lt;/p&gt;
 &lt;p class=&#34;red&#34;&gt;我也可以是红的&lt;/p&gt;
@@ -100,7 +121,7 @@ p{
         <p>上节我们学习了如何定义 CSS样式，那么如何让这些规则对页面生效？<br>我们一般有三种方法：外部样式表，内部样式表，内联样式</p>
 <h2 is-upgraded>外部样式表</h2>
 <p>新建如下内容的一个 HTML文件（后缀为.html)：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
+<pre><button class="btn" data-clipboard-target="#dm06">Copy</button><code id="dm06">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;meta charset=&#34;utf-8&#34;&gt;
@@ -116,7 +137,7 @@ p{
 &lt;/html&gt;
 </code></pre>
 <p>在同一目录新建一个样式表文件mycss.css（注意后缀名为css）如下：</p>
-<pre><code>body {
+<pre><button class="btn" data-clipboard-target="#dm07">Copy</button><code id="dm07">body {
   background-color: linen;
   text-align: center;
 }
@@ -136,7 +157,7 @@ h1 {
 </aside>
 <h2 is-upgraded>内部样式表</h2>
 <p>我们也可以将样式放在 HTML 文件中，这称为内部样式表。如：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
+<pre><button class="btn" data-clipboard-target="#dm08">Copy</button><code id="dm08">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;meta charset=&#34;utf-8&#34;&gt;
@@ -192,7 +213,7 @@ h1 {
       <google-codelab-step label="颜色, 尺寸, 对齐" duration="6">
         <h2 is-upgraded>颜色</h2>
 <p>颜色在网页中的重要性不言而喻。<br>我们可以采用颜色名称也可以使用颜色RGB16进制值，来设定前景或背景的颜色。如：</p>
-<pre><code>&lt;!-- 颜色名称 --&gt;
+<pre><button class="btn" data-clipboard-target="#dm09">Copy</button><code id="dm09">&lt;!-- 颜色名称 --&gt;
 &lt;h3 style=&#34;background-color:Tomato;&#34;&gt;Tomato&lt;/h3&gt;
 &lt;h3 style=&#34;background-color:Orange;&#34;&gt;Orange&lt;/h3&gt;
 &lt;h3 style=&#34;background-color:DodgerBlue;&#34;&gt;DodgerBlue&lt;/h3&gt;
@@ -222,7 +243,7 @@ h1 {
 </aside>
 <h2 is-upgraded>尺寸</h2>
 <p>我们可以用 <code>height</code> 和 <code>width</code> 设定元素内容占据的尺寸。常见的尺寸单位有：像数 <code>px</code>，百分比 <code>%</code>等。<br>新建如下 HTML 文件：</p>
-<pre><code>&lt;html&gt;
+<pre><button class="btn" data-clipboard-target="#dm10">Copy</button><code id="dm10">&lt;html&gt;
   &lt;head&gt;
     &lt;link rel=&#34;stylesheet&#34; href=&#34;./mycss.css&#34;&gt;
   &lt;/head&gt;
@@ -237,7 +258,7 @@ h1 {
 &lt;/html&gt;
 </code></pre>
 <p>再建对应的 CSS 文件如下：</p>
-<pre><code>.example-1 {
+<pre><button class="btn" data-clipboard-target="#dm11">Copy</button><code id="dm11">.example-1 {
   width: 100%;
   height: 200px;
   background-color: powderblue;
@@ -267,7 +288,7 @@ h1 {
 <li>Margin  外边距，边框以外与其它元素的区域</li>
 </ul>
 <p>新建如下 HTML 文件：</p>
-<pre><code>&lt;html&gt;
+<pre><button class="btn" data-clipboard-target="#dm12">Copy</button><code id="dm12">&lt;html&gt;
   &lt;head&gt;
     &lt;link rel=&#34;stylesheet&#34; href=&#34;./mycss.css&#34;&gt;
   &lt;/head&gt;
@@ -278,7 +299,7 @@ h1 {
 &lt;/html&gt;
 </code></pre>
 <p>再建对应的 CSS 文件如下：</p>
-<pre><code>.box1 {
+<pre><button class="btn" data-clipboard-target="#dm13">Copy</button><code id="dm13">.box1 {
   height: 200px;
   width: 200px;
   background-color:#615200;
@@ -314,12 +335,12 @@ h1 {
 </aside>
 <h2 is-upgraded>边框</h2>
 <p>试一试如下的代码：</p>
-<pre><code>&lt;p class=&#34;example-1&#34;&gt;I have black borders on all sides.&lt;/p&gt;
+<pre><button class="btn" data-clipboard-target="#dm14">Copy</button><code id="dm14">&lt;p class=&#34;example-1&#34;&gt;I have black borders on all sides.&lt;/p&gt;
 &lt;p class=&#34;example-2&#34;&gt;I have a blue bottom border.&lt;/p&gt;
 &lt;p class=&#34;example-3&#34;&gt;I have rounded grey borders.&lt;/p&gt;
 &lt;p class=&#34;example-4&#34;&gt;I have a purple left border.&lt;/p&gt;
 </code></pre>
-<pre><code>.example-1 {
+<pre><button class="btn" data-clipboard-target="#dm15">Copy</button><code id="dm15">.example-1 {
   border: 1px dotted black; /* 上下左右都相同 */
 }
 .example-2 {
@@ -335,7 +356,7 @@ h1 {
 </code></pre>
 <h2 is-upgraded>边距</h2>
 <p>下面样式说明了内边距的设置：</p>
-<pre><code>padding: 20px; /* 上下左右都相同 */
+<pre><button class="btn" data-clipboard-target="#dm16">Copy</button><code id="dm16">padding: 20px; /* 上下左右都相同 */
 padding-top: 20px;
 padding-bottom: 100px;
 padding-right: 50px;
@@ -363,7 +384,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
 <p>设置为静态定位<code>position: static;</code>，这是元素的默认定位方式，也即你设置与否，元素都将按正常的页面布局进行。<br>即：按照元素在 HTML出现的先后顺序从上到下，从左到右进行元素的安排。</p>
 <h2 is-upgraded>relative</h2>
 <p>设置为相对定位<code>position: relative;</code>，这将把元素相对于他的静态（正常）位置进行偏移<br>试试如下的代码：</p>
-<pre><code>&lt;!-- HTML --&gt;
+<pre><button class="btn" data-clipboard-target="#dm17">Copy</button><code id="dm17">&lt;!-- HTML --&gt;
 &lt;div class=&#34;example-relative&#34;&gt;我偏移了正常显示的位置。去掉我的样式对比看看？&lt;/div&gt;
 &lt;!-- CSS --&gt;
 .example-relative {
@@ -375,7 +396,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
 </code></pre>
 <h2 is-upgraded>fixed</h2>
 <p>设置为固定定位<code>position: fixed;</code>，这将使得元素固定不动（即使你上下左右拖动浏览器的滚动条）。<br>此时元素固定的位置仍由<code>top, bottom, left, right</code>属性确定，但相对的是视口（viewport，就是浏览器的屏幕可见区域）<br>如下的代码将会在浏览器右下角固定放置一个按钮元素：</p>
-<pre><code>&lt;!-- HTML --&gt;
+<pre><button class="btn" data-clipboard-target="#dm18">Copy</button><code id="dm18">&lt;!-- HTML --&gt;
 &lt;div class=&#34;broad&#34;&gt;占位区域。请将浏览器窗口改变大小，看看右下角的按钮发生了什么？&lt;/div&gt;
 &lt;div class=&#34;example-fixed&#34;&gt;这个按钮是固定的&lt;/div&gt;
 &lt;!-- CSS --&gt;
@@ -402,7 +423,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
 <aside class="warning"><p><strong>注意：</strong> 绝对定位此处可能有些混淆，请留意其是仍是相对的，不过是相对<strong>最近的父元素</strong></p>
 </aside>
 <p>试试如下的代码：</p>
-<pre><code>&lt;!-- HTML --&gt;
+<pre><button class="btn" data-clipboard-target="#dm19">Copy</button><code id="dm19"></code>&lt;!-- HTML --&gt;
 &lt;div class=&#34;example-relative&#34;&gt;这是父元素，有 relative 定位属性
   &lt;div class=&#34;example-absolute&#34;&gt;
     这是子元素，有 absolute 定位属性
@@ -437,7 +458,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
 <li>auto    裁剪溢出部分，视情况提供滚动条</li>
 </ul>
 <p>以上内容较好理解，请自行进行验证。<br>关于滚动，我们还可以单独对上下或左右方向进行，如下代码所示：</p>
-<pre><code>&lt;!-- HTML --&gt;
+<pre><button class="btn" data-clipboard-target="#dm20">Copy</button><code id="dm20">&lt;!-- HTML --&gt;
 &lt;div class=&#34;example-overflow-scroll-y&#34;&gt;You can use the overflow property when you want to have better control of the
     layout. The overflow property specifies what happens if content overflows an element&#39;s box.
 &lt;/div&gt;
@@ -457,7 +478,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
         <p>在一个区域或容器内，我们可以设置<code>float</code>属性让某元素水平方向上向左或右进行移动，其周围的元素也会重新排列。<br>我们常用这种样式来使图像和文本进行合理布局，如我们希望有以下的效果：</p>
 <p class="image-container"><img alt="float1" src="img/827b45ec5fec3e35.jpg"></p>
 <p>让图片向右浮动即可，代码如下：</p>
-<pre><code>&lt;html&gt;
+<pre><button class="btn" data-clipboard-target="#dm21">Copy</button><code id="dm21">&lt;html&gt;
 &lt;head&gt;
   &lt;style&gt;
     .example-float-right {
@@ -486,7 +507,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
         <p>我们可以用<code>opacity</code>对任何元素（不过常用于图片）设置不透明度。<br>值在<code>[0.0～</code>1.0]之间，值越低，透明度越高，如下图所示：</p>
 <p class="image-container"><img alt="opacity" src="img/4922d14e36a0f88a.jpg"></p>
 <p>试试如下代码：</p>
-<pre><code>&lt;html&gt;
+<pre><button class="btn" data-clipboard-target="#dm22">Copy</button><code id="dm22">&lt;html&gt;
 &lt;head&gt;
   &lt;style&gt;
     img {
@@ -521,7 +542,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
         <p>前面我们学习了 CSS有三种选择器：元素、id 和 class 。但我们也可以进行组合，以得到简洁精确的选择。<br>下面我们介绍两种组合选择器。</p>
 <h2 is-upgraded>后代选择器</h2>
 <p>以空格作为分隔，如：<code>.haha p</code> 代表在<code>div</code>元素内有<code>.haha</code>这种类的所有元素。<br>参见如下代码：</p>
-<pre><code>&lt;html&gt;
+<pre><button class="btn" data-clipboard-target="#dm23">Copy</button><code id="dm23">&lt;html&gt;
 &lt;head&gt;
   &lt;style&gt;
     .haha p {
@@ -545,7 +566,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
 <p>段落1、2、3都将有黄色的背景，而段落4、5没有。</p>
 <h2 is-upgraded>子选择器</h2>
 <p>也称为直接后代选择器，以<code>&gt;</code>作为分隔，如：<code>.haha &gt; p</code> 代表在有<code>.haha</code>类的元素内的直接<code>&lt;p&gt;</code>元素。<br>参见如下代码：</p>
-<pre><code>&lt;html&gt;
+<pre><button class="btn" data-clipboard-target="#dm24">Copy</button><code id="dm24">&lt;html&gt;
 &lt;head&gt;
   &lt;style&gt;
     .haha &gt; p {
@@ -628,5 +649,9 @@ h1:after { content:url(smiley.gif); } /* 在每个一级标题后插入该图片
   <script src="/assets/forGoogle/custom-elements.min.js"></script>
   <script src="/assets/forGoogle/prettify.js"></script>
   <script src="/assets/forGoogle/codelab-elements.js"></script>
+  <script src="/docs-assets/js/clipboard.min.js"></script>
+    <script>
+      new Clipboard('.btn');
+    </script>
 </body>
 </html>
