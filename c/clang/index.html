@@ -28,6 +28,24 @@
     #drawer .metadata {
       display: none;
     }
+    pre {
+      position: relative;
+    }
+
+    pre .btn {
+      -webkit-transition: opacity 0.3s ease-in-out;
+      -o-transition: opacity 0.3s ease-in-out;
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+      right: 15px;
+      /*padding: 0 10px;*/
+      position: absolute;
+      top: 16px;
+    }
+
+    pre:hover .btn {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -223,7 +241,7 @@ void main() {
 <p><code>C</code>语言用<code>int</code>，<code>float</code> 和 <code>char</code>分别来定义整数，实数（也称浮点数）和字符型变量。</p>
 <p>变量的名称就是标识符（你还记得第一讲有关标识符的规定吧?），一般我们希望这个名称能说明该变量用来存放什么，如: <code>age</code>，<code>powerOfBoss</code>等。</p>
 <p>下面是一些定义变量的例子:</p>
-<pre><code>int age, height, width;  // 定义了三个整型变量，如果有多个用逗号进行分隔
+<pre><button class="btn" data-clipboard-target="#dm00">Copy</button><code id="dm00">int age, height, width;  // 定义了三个整型变量，如果有多个用逗号进行分隔
 float income = 19896.4; // 定义了一个浮点型变量，并给定了一个值（初始化）
 char sex, isOver;       // 定义了两个字符型变量
 </code></pre>
@@ -234,7 +252,7 @@ char sex, isOver;       // 定义了两个字符型变量
 <h3 is-upgraded>输出</h3>
 <p>我们使用在<code>stdio.h</code>头文件中已经定义好的<code>printf()</code>函数进行数据的输出。</p>
 <p>如下程序将输出你的年龄:</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm01">Copy</button><code id="dm01">#include &#34;stdio.h&#34;
 void main() {
   int age;  // 定义了一个整型变量 age
   age = 20; // 把 20 放到 age 变量中
@@ -253,7 +271,7 @@ void main() {
 <aside class="warning"><p>✎ 试一试: 注释掉<code>int age;</code>这句看能否运行? 为什么?<br>✎ 试一试: <code>%d</code>如果没有对应的变量<code>age</code>，即改为<code>printf(&#34;You are %d years old!\n&#34;);</code>会如何?</p>
 </aside>
 <p>除了<code>%d</code>是整数的占位符外，<code>%f</code>对应小数，<code>%c</code>代表一个字符。 如:</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm02">Copy</button><code id="dm02">#include &#34;stdio.h&#34;
 void main() {
   int age = 20;  // 定义了一个整型变量 age 并初始化为 20
   float income = 1989.64; // 定义了一个浮点型变量 income 并初始化
@@ -273,7 +291,7 @@ void main() {
 <p>那么我们可否在程序运行时，用户才提供呢? 显然这样的程序更灵活、更有通用性。</p>
 <p>现实编程中，我们需要使用输入函数<code>scanf()</code>在程序运行时来接收用户提供的数据。</p>
 <p><code>scanf()</code>函数也使用<code>%d</code>,<code>%f</code>,<code>%c</code>来分别接收整数、小数和单个的字符放到对应的变量中。 如:</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm03">Copy</button><code id="dm03">#include &#34;stdio.h&#34;
 void main() {
   int age;  // 定义了一个整型变量 age
   float income; // 定义了一个浮点型变量 income
@@ -294,7 +312,7 @@ void main() {
 </aside>
 <h2 is-upgraded>字符数据的输入输出</h2>
 <p>针对字符，<code>C</code>语言还额外提供了两个函数来进行输入和输出: <code>putchar()</code>和<code>getchar()</code>。 如:</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm04">Copy</button><code id="dm04">#include &#34;stdio.h&#34;
 void main() {
   char gender;  // 定义了 gender 字符变量用于保存性别
   printf(&#34;What is your gender(F-Female, M-Male):&#34;);
@@ -307,7 +325,7 @@ void main() {
 </code></pre>
 <aside class="warning"><p>✎ 试一试下面的代码，你会发现不能正确接收用户的输入，将中间那句<code>getchar()</code>前的注释去掉再试试:</p>
 </aside>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm05">Copy</button><code id="dm05">#include &#34;stdio.h&#34;
 void main() {
   char gender, degree;  // 定义了 gender 用于保存性别，degree 保存等级（ABC）
   printf(&#34;What is your gender(F-Female, M-Male):&#34;);
@@ -336,7 +354,7 @@ void main() {
 </ul>
 <h2 is-upgraded>赋值运算</h2>
 <p><code>C</code>语言将赋值也作为一种运算，使用<code>=</code>进行，即: 将<code>=</code>右边的值赋予左边的变量。 如:</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm06">Copy</button><code id="dm06">#include &#34;stdio.h&#34;
 void main() {
   int a, b, c;  // 定义了 3 个整型变量 a、b、c
   a = 1;    // 将 1 赋给 a 变量
@@ -362,7 +380,7 @@ void main() {
 <h2 is-upgraded>复合运算</h2>
 <h3 is-upgraded>自增 ++ 和自减 – 运算</h3>
 <p><code>++</code>或<code>--</code>称为自增或自减，它只能用于变量，即将自己增加<code>1</code>或减少<code>1</code>。 如:</p>
-<pre><code>int i = 6, j = 4;
+<pre><button class="btn" data-clipboard-target="#dm07">Copy</button><code id="dm07">int i = 6, j = 4;
 i++;  // 等价于 i = i + 1
 j--;  // 等价于 j = j - 1
 printf(&#34;%d,%d&#34;, i, j);  // 结果为 7,3
@@ -370,7 +388,7 @@ printf(&#34;%d,%d&#34;, i, j);  // 结果为 7,3
 <aside class="special"><p>✍ 为什么<code>64++</code>不合法?</p>
 </aside>
 <p>此外，<code>++</code>或<code>--</code>有前后位置之分。 我们以<code>++</code>为例:</p>
-<pre><code>int i = 1, j, k;
+<pre><button class="btn" data-clipboard-target="#dm08">Copy</button><code id="dm08">int i = 1, j, k;
 j = i++;  // 称为后加，即先将 i 的值赋给 j，然后 i 再自增。 所以 j 的值为1
 k = ++i;  // 称为前加，即先自增，然后将 i 的值赋给k。 所以 k 的值是3（请思考为什么）
 </code></pre>
@@ -384,7 +402,7 @@ printf(&#34;%d&#34;, a);   // 请问结果是什么?
 <h2 is-upgraded>类型转换</h2>
 <p>前面我们知道数据有不同的数据类型如整型实型等。 在运算过程中为了不损失精度，都会向高精度的类型进行暂时的转换。</p>
 <p>有一种取值范围和精度都更高的类型是<code>double</code>，我们称为双精度，我们前面学的<code>float</code>就是单精度。 如:</p>
-<pre><code>int a = 1, sum;
+<pre><button class="btn" data-clipboard-target="#dm09">Copy</button><code id="dm09">int a = 1, sum;
 float b = 8.9;
 double c = 6.4;
 // 先计算a+b，因为b是float型，先将a暂时转换为float型，结果是float型;
@@ -401,7 +419,7 @@ sum = a + b + c;
 </aside>
 <p>下面我们看看顺序结构的程序。</p>
 <h3 is-upgraded>程序一</h3>
-<pre><code>// 求两个数的和差积商
+<pre><button class="btn" data-clipboard-target="#dm10">Copy</button><code id="dm10">// 求两个数的和差积商
 #include &#34;stdio.h&#34;
 void main() {
   float a, b;
@@ -419,7 +437,7 @@ void main() {
 }
 </code></pre>
 <h3 is-upgraded>程序二</h3>
-<pre><code>// 交换两个变量的值并输出
+<pre><button class="btn" data-clipboard-target="#dm11">Copy</button><code id="dm11">// 交换两个变量的值并输出
 // 我们引入了一个临时的中间变量 temp
 #include &#34;stdio.h&#34;
 void main() {
@@ -508,7 +526,7 @@ sex == 1                // 是否男性（以 1 表示男性）
 <aside class="special"><p>✍  在<code>C</code>语言中，我们用<code>1</code>表示真，用<code>0</code>表示假。</p>
 </aside>
 <p>请输入如下程序进行理解:</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm12">Copy</button><code id="dm12">#include &#34;stdio.h&#34;
 void main() {
   int score = 58, age = 20, sex = 0;
   int isPass, isAdult, isFemale;
@@ -540,7 +558,7 @@ void main() {
 <ul>
 <li>算术运算高于关系运算，关系运算又高于赋值运算。 如:</li>
 </ul>
-<pre><code>a = 1;
+<pre><button class="btn" data-clipboard-target="#dm13">Copy</button><code id="dm13">a = 1;
 b = 5;
 c = 3;
 // 先算 b * b，得 25（中间结果）,
@@ -594,7 +612,7 @@ isPKU &amp;&amp; isGuanghua &amp;&amp; isHandsome &amp;&amp; isMale
 <aside class="special"><p>✍ 短路运算: 当 <code>&amp;&amp;</code> 运算符左边已经为假，则右边不需要计算了，整个表达式结果为假; 同理，当 <code>||</code> 运算符左边已经为真，则右边不需要计算了，整个表达式结果为真。 这就称为短路!</p>
 </aside>
 <p>查看以下程序片段，仔细分析输出的结果:</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm14">Copy</button><code id="dm14">#include &#34;stdio.h&#34;
 void main() {
   int a = 3, b = 1, x = 2, y = 0;
   int result1, result2, result3;
@@ -653,7 +671,7 @@ C. 1          D. 假
 <aside class="special"><p>✍ 三个表达式分别用 <code>?</code> 和 <code>:</code> 分割开了，意思是: 如果判断表达式的结果为真，则整个表达式的结果就是&#34;结果表达式1&#34;的结果；否则就是&#34;结果表达式2&#34;的结果。 如 <code>89 &gt; 64 ? 999 : 888</code> 的结果就应该是<code>999</code>。</p>
 </aside>
 <p>阅读以下程序，分析其如何求出某个数的绝对值:</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm15">Copy</button><code id="dm15">#include &#34;stdio.h&#34;
 void main() {
   int x;
   printf(&#34;Please input a integer number:&#34;);
@@ -676,7 +694,7 @@ if (条件表达式) {
 }
 </code></pre>
 <p>分析如下程序:</p>
-<pre><code>/* 题目: 求两个数哪个大
+<pre><button class="btn" data-clipboard-target="#dm16">Copy</button><code id="dm16">/* 题目: 求两个数哪个大
  * 思路: 假设第一个数就是大的,然后进行验证,
  *      如果第二个数还大,就修正
  *      经过判断，保证 max 中一定保存的是大的那个数
@@ -704,7 +722,7 @@ if (条件表达式) {
 }
 </code></pre>
 <p>我们用双分支结构来完成上面的问题:</p>
-<pre><code>/* 题目: 求两个数哪个大
+<pre><button class="btn" data-clipboard-target="#dm17">Copy</button><code id="dm17">/* 题目: 求两个数哪个大
  * 思路: 使用双分支选择结构直接比较即可
  *       max 保存大的那个数
  */
@@ -746,7 +764,7 @@ if (条件表达式1) {
 <li><code>else</code>块可以没有</li>
 </ul>
 <p>仔细阅读分析下面的程序:</p>
-<pre><code>/* 题目: 根据成绩（分数）输出对应的（优/良/中/及格/不及格）等级
+<pre><button class="btn" data-clipboard-target="#dm18">Copy</button><code id="dm18">/* 题目: 根据成绩（分数）输出对应的（优/良/中/及格/不及格）等级
  * 思路: 使用多分支选择结构直接比较即可
  */
 #include &#34;stdio.h&#34;
@@ -833,7 +851,7 @@ C. 0.500000       D. 1.000000
 <h2 is-upgraded>课后练习</h2>
 <p>请理解且熟悉本讲所列的示例程序，尽力完成所有的思考和试一试。</p>
 <p>阅读并理解如下程序:</p>
-<pre><code>/* 题目: 判断输入的字符是那种类型，如大写、数字等等
+<pre><button class="btn" data-clipboard-target="#dm19">Copy</button><code id="dm19">/* 题目: 判断输入的字符是那种类型，如大写、数字等等
  * 思路: 使用多分支选择结构，判断该字符的 ASCII 码值即可
  * 注意: ASCII 码值小于 32 的是一些控制字符，如 回车、方向键、tab键等等
  */
@@ -884,7 +902,7 @@ void main() {
 <li>注意每个<code>case</code>后面的<code>break</code>，如果没有它，程序将把所有<code>case</code>的语句都执行</li>
 </ul>
 <p>阅读理解如下程序：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm20">Copy</button><code id="dm20">/**
  * 根据用户的输入值输出对应星期几
  * 如用户输入2,则输出Tue
 **/
@@ -908,7 +926,7 @@ void main() {
 <aside class="warning"><p>✎ 运行上面的程序，如输入<code>3</code>，你会得到什么结果？如何修正？<br>✎ 如果我希望输入了<code>8</code>则输出<code>Monday</code>，输入<code>9</code>则输出<code>Tuesday</code>，依次类推，而不是输出<code>error</code>，你有什么想法？（提示：考虑取余运算<code>%</code>）</p>
 </aside>
 <p>再看看一个用<code>switch</code>编制的简单计算器程序：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm21">Copy</button><code id="dm21">/**
  * 根据用户的输入的运算式给出结果
  * 如用户输入 6+4,则输出 10
  * 程序目前只支持 加减乘除 四种运算
@@ -944,7 +962,7 @@ void main() {
 <p>此时我们就会用到嵌套的判断即嵌套的<code>if</code>语句。</p>
 <h3 is-upgraded>找最大的数</h3>
 <p>请看如下程序：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm22">Copy</button><code id="dm22">/**
  * 对于用户任意给定的 3 个整数，输出最大的那个
  * 如用户输入 19 89 64,则输出 89
 **/
@@ -972,7 +990,7 @@ void main() {
 <p>以上程序使用了两层<code>if</code>嵌套。运行试试。</p>
 <h3 is-upgraded>找轻的苹果</h3>
 <p>还记得我们以前提到的那个找苹果问题吗？我们如何用<code>C</code>语言来让计算机给我们找出来呢？</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm23">Copy</button><code id="dm23">/**
  * 有四个外观大小都一模一样的苹果，现其中三个重量相同，另外一个比这三个轻。
  * 请用一个没有砝码的天平，最多称两次，找出这个轻的苹果。
  * 我们以 a1、a2、a3、a4 代表这四个苹果的重量，为简单起见我们用整数
@@ -1060,7 +1078,7 @@ switch (grade) {
 </ul>
 <h2 is-upgraded>引例</h2>
 <p>在某些问题的解决中，可能会重复的做某个动作很多次。如：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm24">Copy</button><code id="dm24">/**
  * 此程序将输出 10 个 * 号
 **/
 #include &#34;stdio.h&#34;
@@ -1108,7 +1126,7 @@ void main() {
 </ol>
 <h3 is-upgraded>使用 while 循环输出 10 个 * 号</h3>
 <p>程序如下：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm25">Copy</button><code id="dm25">/**
  * 使用while循环输出10个*号
 **/
 #include &#34;stdio.h&#34;
@@ -1127,7 +1145,7 @@ void main() {
 <p>如果你已经理解了上面的<code>while</code>循环过程，那么我现在的要求是打印<code>100</code>个<code>*</code>号。<br>这不就是小<code>case</code>吗？直接修改<code>while</code>的条件表达式为<code>n &lt; 100</code>即可，你需要打几个，我就修改程序为几个！</p>
 <p>不错，但一般而言，我们不希望修改程序（你以为程序员真的应该 <a href="https://996.icu/#/zh_CN" target="_blank">🌏 Work by '996', sick in ICU</a> 吗？）</p>
 <p>我们的程序应该更通用、更健壮一些：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm26">Copy</button><code id="dm26">/**
  * 使用while循环输出指定个数的*号
 **/
 #include &#34;stdio.h&#34;
@@ -1147,7 +1165,7 @@ void main() {
 </aside>
 <p>下面我们再看一个使用<code>while</code>循环的程序：请依序输出<code>1 2 ... 9 10</code>这<code>10</code>个数。</p>
 <h3 is-upgraded>使用 while 循环输出 1 到 10</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm27">Copy</button><code id="dm27">/**
  * 使用 while 循环输出 1到10
 **/
 #include &#34;stdio.h&#34;
@@ -1166,7 +1184,7 @@ void main() {
 <h3 is-upgraded>使用 while 循环统计字符的个数</h3>
 <aside class="warning"><p>✘ 提示：本程序如果你没弄明白可暂时放弃，随着以后的学习会明白的</p>
 </aside>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm28">Copy</button><code id="dm28">/**
  * 使用 while 循环统计输入一行的字符个数
 **/
 #include &#34;stdio.h&#34;
@@ -1210,7 +1228,7 @@ void main() {
 </ol>
 <h3 is-upgraded>使用 do while 循环模拟游戏是否还要继续</h3>
 <p>程序如下：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm29">Copy</button><code id="dm29">/**
  * 使用do while循环模拟游戏是否还要继续
 **/
 #include &#34;stdio.h&#34;
@@ -1248,7 +1266,7 @@ void main() {
 </ol>
 <h3 is-upgraded>使用 for 循环输出 10 个*号</h3>
 <p>程序如下：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm30">Copy</button><code id="dm30">/**
  * 使用for循环输出10个*号
 **/
 #include &#34;stdio.h&#34;
@@ -1266,7 +1284,7 @@ void main() {
 <p>如果你已经理解了上面的<code>for</code>循环过程，那么我现在的要求是打印<code>100</code>个<code>*</code>号。</p>
 <p>这不就是小<code>case</code>吗？直接修改<code>for</code>的条件表达式为<code>n &lt; 100</code>即可，你需要打几个，我就修改程序为几个！</p>
 <p>同前一样，我们的程序还可以更通用、更健壮一些：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm31">Copy</button><code id="dm31">/**
  * 使用 for 循环输出指定个数的 * 号
 **/
 #include &#34;stdio.h&#34;
@@ -1285,7 +1303,7 @@ void main() {
 </aside>
 <p>下面我们再看一个使用<code>for</code>循环的程序：请依序输出<code>1 2 ... 9 10</code>这<code>10</code>个数。</p>
 <h3 is-upgraded>使用 for 循环输出 1 到 10</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm32">Copy</button><code id="dm32">/**
  * 使用 for 循环输出 1 到 10
 **/
 #include &#34;stdio.h&#34;
@@ -1303,7 +1321,7 @@ void main() {
 <h3 is-upgraded>使用 for 循环求 1+2+3+...+99+100</h3>
 <aside class="special"><p>✍ 记得最早接触这个问题是因为大数学家高斯，据说他率先得出<code>5050</code>的答案而傲视其他同学，因为他使用了简便算法<code>(1+99)+(2+98)+...+(48+52)+(49+51)+50+100=5050</code>。不过无论如何，高斯都会被下面的计算机程序胜出 :）</p>
 </aside>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm33">Copy</button><code id="dm33">/**
  * 使用 for 循环求 1+2+3+...+99+100
 **/
 #include &#34;stdio.h&#34;
@@ -1412,7 +1430,7 @@ C. n=1               D. n=0
 <li>试一试用循环来求<code>10</code>的阶乘(即<code>10!</code>)</li>
 </ol>
 <h2 is-upgraded>课后趣味程序</h2>
-<pre><code>
+<pre><button class="btn" data-clipboard-target="#dm35">Copy</button><code id="dm35">
 #include &#34;stdio.h&#34;
 //#include &#34;unistd.h&#34;
 void main() {
@@ -1447,7 +1465,7 @@ void main() {
 <h3 is-upgraded>判断是否为素数</h3>
 <p>素数的定义是只能被<code>1</code>和它自身整除的数。现假设这个数是<code>89</code>，我们的思路是从<code>2</code>开始除这个数，直到<code>88</code>，如果没有任何一个数被整除，则这个数即<code>89</code>就是素数，否则就不是。</p>
 <p>请看下面的程序：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm36">Copy</button><code id="dm36">/**
  * 使用循环和选择结构来判断是否为素数
 **/
 #include &#34;stdio.h&#34;
@@ -1474,7 +1492,7 @@ void main() {
 </aside>
 <h2 is-upgraded>求 Fibonacci 数列的前 20  项</h2>
 <p><code>Fibonacci</code>数列的数学定义是：该数列前<code>2</code>项为<code>1</code>，从第<code>3</code>项开始的每一项都为其前两项之和。即：<code>1 1 2 3 5 8 13 21 ...</code></p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm37">Copy</button><code id="dm37">/**
  * 使用循环和选择结构输出 Fibonacci（1，1，2，3，5，8，13，21...）数列的前 20 项
 **/
 #include &lt;stdio.h&gt;
@@ -1502,7 +1520,7 @@ void main() {
 <h2 is-upgraded>循环终止</h2>
 <p>除正常结束循环外，我们可以使用<code>break</code>来强行退出循环（还记得前面我们在什么地方用过<code>break</code>么？），即循环不是正常退出而是提前退出的。</p>
 <h3 is-upgraded>用break改写判断素数程序</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm38">Copy</button><code id="dm38">/**
  * 使用循环和选择结构来判断是否为素数，当判断到不是后，使用break退出循环
 **/
 #include &#34;stdio.h&#34;
@@ -1524,7 +1542,7 @@ void main() {
 </code></pre>
 <p>运行这个程序，你会发现与以前相同。</p>
 <h3 is-upgraded>在 [10,100] 内找前 5 个能被 3 整除的数</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm39">Copy</button><code id="dm39">/**
  * 使用循环和选择结构在 [10,100] 内找前 5 个能被 3 整除的数，找满后使用 break 退出循环
 **/
 #include &lt;stdio.h&gt;
@@ -1551,7 +1569,7 @@ void main() {
 }
 </code></pre>
 <p>那么，我们把上面的代码放在另一个循环中，假设这个将循环<code>5</code>次，那么你应该能想到它将输出 <code>5*10</code>共<code>50</code>个<code>*</code>号。</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm40">Copy</button><code id="dm40">#include &#34;stdio.h&#34;
 void main() {
   int i, j;  
   for (i = 1; i &lt;= 5; i++) {    // 外循环
@@ -1563,7 +1581,7 @@ void main() {
 </code></pre>
 <p>你马上会想到，打印<code>50</code>个<code>*</code>不需要这样做，用单层循环即可解决！</p>
 <p>对的。不过我的要求是打印<code>5</code>行，每行<code>10</code>个：</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm41">Copy</button><code id="dm41">#include &#34;stdio.h&#34;
 void main() {
   int i, j;  
   for (i = 1; i &lt;= 5; i++) {     // 外循环控制行，此处将输出 5 行
@@ -1592,7 +1610,7 @@ void main() {
 </ol>
 <h2 is-upgraded>课后趣味程序</h2>
 <h3 is-upgraded>猜数字</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm42">Copy</button><code id="dm42">/**
  * 使用循环和选择结构来编写的猜数字游戏
 **/
 #include &#34;stdio.h&#34;
@@ -1622,7 +1640,7 @@ void main() {
 <aside class="warning"><p>✎ 试一试：你可否不使用<code>bingo</code>作为猜中了的标准变量，而是使用无限循环，当猜中了后直接跳出循环来实现？</p>
 </aside>
 <h3 is-upgraded>看看你的机器运行有多快</h3>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm43">Copy</button><code id="dm43">#include &#34;stdio.h&#34;
 void main() {
   int i, j, k;  
   for (i = 1; i &lt;= 100; i++) {
@@ -1654,7 +1672,7 @@ void main() {
 <p>所谓穷举或枚举，即利用计算机进行全部可能的运算，最后从中找出满足条件的情况。</p>
 <p><a href="../../c/c-experiment.html#1-p" target="_blank">棋歌教学网实验一中的第 8 题兑换硬币</a>即为穷举/枚举。<br>其它的如百钱买百鸡（有<code>100</code>块钱，小鸡<code>1</code>块，母鸡<code>3</code>块，公鸡<code>5</code>块，有多少买法），请自行编程验证。</p>
 <h3 is-upgraded>无重复数字的三位数有哪些</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm44">Copy</button><code id="dm44">/**
  * 穷举：无重复数字的三位数有哪些
 **/
 #include &lt;stdio.h&gt;
@@ -1737,7 +1755,7 @@ int score[5]
 <aside class="special"><p>✍ 请注意：通常，我们通过循环来处理数组的各个元素！</p>
 </aside>
 <h3 is-upgraded>初步使用</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm45">Copy</button><code id="dm45">/**
  * 输出数组中的数据
  * 对数组的处理一般都与循环相关
 **/
@@ -1754,7 +1772,7 @@ void main() {
 </aside>
 <p>还是回到我们处理<code>C</code>语言成绩那个问题。以下为简单起见，我们假设只有<code>5</code>个同学且成绩是整数。</p>
 <h3 is-upgraded>输入 5 个同学的成绩并打印出来</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm46">Copy</button><code id="dm46">/**
  * 利用数组输入成绩并打印出来
  * 对数组的处理一般都与循环相关
 **/
@@ -1773,7 +1791,7 @@ void main() {
 </code></pre>
 <p>以上程序接收用户输入的成绩并打印出来。显然，我们还有进一步的需求。</p>
 <h3 is-upgraded>求平均成绩</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm47">Copy</button><code id="dm47">/**
  * 求平均成绩
  * 对数组的处理一般都与循环相关
 **/
@@ -1859,7 +1877,7 @@ char password[] = &#34;DaSiWoYeBuShuo&#34;;
 <h4 is-upgraded>方式一</h4>
 <p>在<code>printf()</code>函数中使用 <code>%c</code> 格式符，在辅以循环一个一个将数组中的字符输出到屏幕。</p>
 <p>这种方式不灵活，一般我们比较少用。</p>
-<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+<pre><button class="btn" data-clipboard-target="#dm48">Copy</button><code id="dm48">#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
 void main() {
   int i;
   char str[] = &#34;I hate C Language&#34;;
@@ -1874,7 +1892,7 @@ void main() {
 <p>在<code>printf()</code>函数中使用 <code>%s</code> 格式符，将数组中的字符整体（字符串）输出到屏幕。</p>
 <aside class="special"><p>✍ 注意：字符串以<code>&#39;\0&#39;</code>作为结束标志，且输出时使用数组名即可！</p>
 </aside>
-<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+<pre><button class="btn" data-clipboard-target="#dm49">Copy</button><code id="dm49">#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
 void main() {
   char str[] = &#34;I Hate C Language&#34;;
   printf(&#34;%s\n&#34;, str);
@@ -1884,7 +1902,7 @@ void main() {
 </aside>
 <h4 is-upgraded>方式三</h4>
 <p>使用<code>puts()</code>函数，更简单方便！</p>
-<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+<pre><button class="btn" data-clipboard-target="#dm50">Copy</button><code id="dm50">#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
 void main() {
   char str[] = &#34;I hate C Language&#34;;
   puts(str);
@@ -1895,12 +1913,12 @@ void main() {
 <p>在<code>scanf()</code>函数中使用 <code>%c</code> 格式符，在辅以循环一个一个接收从键盘输入的字符。</p>
 <aside class="special"><p>✍ 这种方式不灵活，一般我们比较少用。</p>
 </aside>
-<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+<pre><button class="btn" data-clipboard-target="#dm51">Copy</button><code id="dm51">#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
 void main() {
   int i;
   char str[20];
   for (i = 0; i &lt; 20; i++) {    //必须要输入指定的个数
-    scanf(&#34;%c&#34;, str[i]);
+    scanf(&#34;%c&#34;, &str[i]);
   }
   puts(str);
 }
@@ -1909,7 +1927,7 @@ void main() {
 <p>在<code>scanf()</code>函数中使用 <code>%s</code> 格式符，将键盘输入的字符作为整体（字符串）存放到数组中。</p>
 <aside class="special"><p>✍ 1. 输入时使用数组名即可（没有使用我们前面强调的<code>&amp;</code>符号，原因在指针章节再讲述）<br>✍ 2. 输入时以空格、制表符（<code>tab</code>）或回车作为输入结束的标志<br>✍ 3. 结束标志<code>&#39;\0&#39;</code>系统将自动添加到末尾<br>✍ 4. 输入的字符个数不能超出数组的长度，否则会发生不可知问题</p>
 </aside>
-<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+<pre><button class="btn" data-clipboard-target="#dm52">Copy</button><code id="dm52">#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
 void main() {
   char str[20];
   scanf(&#34;%s&#34;, str);
@@ -1919,7 +1937,7 @@ void main() {
 <aside class="warning"><p>✎ 思考1：如果输入的字符串为<code>What&#39;s Your name:</code>，输出是什么结果？<br>✎ 思考2：试试输入超过<code>20</code>个字符，看看会发生什么？</p></aside>
 <h4 is-upgraded>方式三</h4>
 <p>假如我们的输入的确需要包含有空格或制表符如<code>What&#39;s Your name:</code>这样的字符串，那么就使用<code>gets()</code>函数。该函数只以回车作为字符串输入完成的标志。</p>
-<pre><code>#include &#34;stdio.h&#34;  //引入标准输入输出头文件
+<pre><button class="btn" data-clipboard-target="#dm53">Copy</button><code id="dm53">#include &#34;stdio.h&#34;  //引入标准输入输出头文件
 void main() {
   char str[20];
   gets(&#34;%s&#34;, str);
@@ -1933,7 +1951,7 @@ void main() {
 </code></pre>
 <h3 is-upgraded>字符串长度函数 strlen()</h3>
 <p>统计字符串的长度（<code>length</code>），以<code>&#39;\0&#39;</code>为结束标志。</p>
-<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+<pre><button class="btn" data-clipboard-target="#dm54">Copy</button><code id="dm54">#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
 #include &#34;string.h&#34; // 引入字符串头文件
 void main() {
   char name[] = &#34;CoronaVirus&#34;;
@@ -1946,7 +1964,7 @@ void main() {
 </aside>
 <h3 is-upgraded>字符串复制函数 strcpy()</h3>
 <p>将后一个字符串复制（<code>copy</code>）到前一个中。请注意，字符串复制不能使用赋值运算（<code>=</code>）进行！</p>
-<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+<pre><button class="btn" data-clipboard-target="#dm55">Copy</button><code id="dm55">#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
 #include &#34;string.h&#34; // 引入字符串头文件
 void main() {
   char firstName[] = &#34;Corona&#34;;
@@ -1971,7 +1989,7 @@ void main() {
 </aside>
 <h3 is-upgraded>字符串连接函数 strcat()</h3>
 <p>去掉前一个字符串的结束标志<code>\0</code>，然后将后一个字符串连接（<code>catenate</code>）到前一个字符串后。</p>
-<pre><code>#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
+<pre><button class="btn" data-clipboard-target="#dm56">Copy</button><code id="dm56">#include &#34;stdio.h&#34;  // 引入标准输入输出头文件
 #include &#34;string.h&#34; // 引入字符串头文件
 void main() {
   char firstName[50] = &#34;Corona&#34;;
@@ -2035,7 +2053,7 @@ D、以上都不对
 <p>现假设正确口令是<code>DaSiWoYeBuShuo</code>，我们可以使用相关的字符串处理函数，模拟提示用户输入口令，</p>
 <p>然后进行比较，如果正确则输出<code>Yes</code>，否则输出<code>No</code>。</p>
 <p>请进行程序填空满足以上要求：</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm57">Copy</button><code id="dm57">#include &#34;stdio.h&#34;
 #include &#34;string.h&#34;
 void main() {
   char correctPassword[] = &#34;DaSiWoYeBuShuo&#34;;
@@ -2055,7 +2073,7 @@ void main() {
 <p>请理解本讲所列程序。</p>
 <p>请掌握<a href="../../c/c-experiment.html#4" target="_blank">棋歌教学网实验四</a>第 7、8、10 题程序</p>
 <p>请阅读如下的凯撒加密程序：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm58">Copy</button><code id="dm58">/**
  * 凯撒加密，即将字符变为其后方固定位置的字符，以致看不明白意思
 **/
 #include &#34;stdio.h&#34;
@@ -2122,7 +2140,7 @@ void main() {
 <h3 is-upgraded>无返回值函数</h3>
 <p>即该函数执行后不会返回任何值给调用方，需要在函数名前使用 <code>void</code>关键字（还记得<code>main</code>函数前面的<code>void</code>吗？）</p>
 <p>如我们需要在屏幕上打印两只猫：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm59">Copy</button><code id="dm59">/**
  * 利用函数打印两只猫
 **/
 #include &#34;stdio.h&#34;
@@ -2146,7 +2164,7 @@ void main() {
 </aside>
 <h3 is-upgraded>有返回值函数</h3>
 <p>即该函数执行后会返回一个值给调用方，需要在函数名前表明返回值的类型如 <code>int</code>或 <code>float</code>等。<br>还记得大数学家高斯小时候是如何计算<code>1+2+3+...+99+100</code>那个问题吗，下面我们编写一个高斯求和函数来给我们使用：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm60">Copy</button><code id="dm60">/**
  * 利用高斯求和函数
 **/
 #include &#34;stdio.h&#34;
@@ -2168,7 +2186,7 @@ void main() {
 <p>前面介绍的两个自定义函数都是没有参数的示例，即函数后面的圆括号<code>()</code>是空的。</p>
 <p>有时候，我们需要给函数提供一些初始的数据，那么就需要传递参数给函数，就需要在圆括号<code>()</code>进行说明有几个参数、是什么类型的。</p>
 <h3 is-upgraded>打印指定个数的猫</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm61">Copy</button><code id="dm61">/**
  * 打印指定个数的猫
 **/
 #include &#34;stdio.h&#34;
@@ -2192,7 +2210,7 @@ void main() {
 <aside class="warning"><p>✎ 试一试：你能否在<code>main</code>中让用户任意输入打印猫的个数？</p>
 </aside>
 <h3 is-upgraded>求两个数中的最大数</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm62">Copy</button><code id="dm62">/**
  * 使用函数求两个数中的最大数
 **/
 #include &#34;stdio.h&#34;
@@ -2217,7 +2235,7 @@ void main() {
 <aside class="warning"><p>✎ 试一试：你能否修改为在三个数中求最大值？你能否修改为求最小值？</p>
 </aside>
 <h3 is-upgraded>使用函数判断是否为闰年</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm63">Copy</button><code id="dm63">/**
  * 使用函数判断是否为闰年
  * 满足闰年的条件是：
  * 能被4整除但不能被 100 整除(普通闰年）；或者能被 400 整除（世纪闰年）
@@ -2311,7 +2329,7 @@ void main() {
 <p>以字节为单位/单元的内存空间是非常多的，类似一栋大楼有很多的房间我们需要对这些房间进行编号一样，为方便管理/存取，我们也需要对这些内存单元进行编号，这些编号就称为内存地址。</p>
 <p>我们以前的程序中定义了不少的变量来存放不同类型的数据。程序运行时，这些变量就是一个个的由系统分配给我们的内存空间。</p>
 <p>如下程序：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm64">Copy</button><code id="dm64">/**
  * 输出变量的地址
 **/
 #include &#34;stdio.h&#34;
@@ -2328,7 +2346,7 @@ void main() {
 <p>程序中出现了<code>&amp;</code>运算符，放在变量的前面就可以得到变量的地址。</p>
 <p>现在你再想想以前我们在什么地方用过该操作符？</p>
 <p>看如下的程序片段你应该有进一步的认识了：</p>
-<pre><code>int age;
+<pre><button class="btn" data-clipboard-target="#dm65">Copy</button><code id="dm65">int age;
 printf(&#34;Please input your age:&#34;);
 scanf(&#34;%d&#34;, &amp;age);  // 从键盘接收一个整数，将它放入 age 这个变量中。实际上我们提供的是 age 这个变量的地址！
 </code></pre>
@@ -2356,7 +2374,7 @@ float *p2; // 定义了浮点型指针变量 p2（注意 * 作为标志，以与
 <aside class="special"><p>✍ 注意： 定义变量时，变量名前的<code>*</code>号表明其为一个指针变量，该变量只能存放地址！</p>
 </aside>
 <p>运行并分析如下程序：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm66">Copy</button><code id="dm66">/**
  * 使用指针来输出变量
 **/
 #include &#34;stdio.h&#34;
@@ -2373,7 +2391,7 @@ void main() {
 <aside class="special"><p>✍ 注意： 如果不是在定义变量，那么一个变量名前使用 * 号就表明是取值操作，即获取该指针变量即它指向单元的内容。</p>
 </aside>
 <p>下面我们再来看看输入：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm67">Copy</button><code id="dm67">/**
  * 使用指针来输入输出变量
 **/
 #include &#34;stdio.h&#34;
@@ -2392,7 +2410,7 @@ void main() {
 <h2 is-upgraded>指针的使用</h2>
 <p>下面我们通过两个简单的程序来了解指针的使用。</p>
 <h3 is-upgraded>程序一</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm68">Copy</button><code id="dm68">/**
  * 使用指针来进行加减运算
 **/
 #include &#34;stdio.h&#34;
@@ -2409,7 +2427,7 @@ void main() {
 </code></pre>
 <p>可前往<a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>直观的查看！</p>
 <h3 is-upgraded>程序二</h3>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm69">Copy</button><code id="dm69">/**
  * 使用指针来进行求最大值
 **/
 #include &#34;stdio.h&#34;
@@ -2428,7 +2446,7 @@ void main() {
 <aside class="special"><p>✍ 注意：不要使用未赋值的指针即空指针，或者强行赋予非法的地址即非法指针！</p>
 </aside>
 <p>如下程序将会运行时出错：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm70">Copy</button><code id="dm70">/**
  * 使用空指针/非法指针
 **/
 #include &#34;stdio.h&#34;
@@ -2492,7 +2510,7 @@ void main() {
 <aside class="special"><p>✍ 注意：<code>C</code>语言规定，数组名也是数组的首地址/指针，即与数组的首元素的地址等价！</p>
 </aside>
 <p>我们用下面的程序为例帮助大家进行理解：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm71">Copy</button><code id="dm71">/**
  * 使用数组作为参数传递给函数，找出数组中的最大值。
  * 各函数都共享该数组
 **/
@@ -2537,7 +2555,7 @@ void main() {
 <p>是的，我们必须在满足某种条件的情况下才继续调用（传递），否则应该返回了（回归）。</p>
 <p>有些问题天然就是递归的，如求阶乘。阶乘的数学定义是：当 <code>n = 0</code>时，结果是 <code>1</code>，否则结果为<code>n*(n-1)!</code>，对于<code>(n-1)!</code>又重复刚才的过程。</p>
 <p>请看以下程序：</p>
-<pre><code>/**
+<pre><button class="btn" data-clipboard-target="#dm72">Copy</button><code id="dm72">/**
  * 在 main 函数中输入一个正整数，要求在 1～20 之间，否则重新输入
  * 由 fact 函数使用递归的方式求出该正整数的阶乘
  * 在 main 函数中输出结果。
@@ -2578,7 +2596,7 @@ void main() {
 <h2 is-upgraded>变量的作用域</h2>
 <p>所谓变量的作用域，是指我们定义的变量在哪个范围是有效的。</p>
 <p>这是什么意思呢？比如如下代码：</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm73">Copy</button><code id="dm73">#include &#34;stdio.h&#34;
 void fun() {  
   printf(&#34;%d %d\n&#34; , x, y);
 }
@@ -2594,7 +2612,7 @@ void main() {
 <h3 is-upgraded>局部变量</h3>
 <p>我们以前都是在某函数中定义变量的，这些变量的作用范围仅限于该函数内部，这就是局部变量。</p>
 <p>将上面程序修改如下：</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm74">Copy</button><code id="dm74">#include &#34;stdio.h&#34;
 void fun() {
   int x = 6, y = 4;   // 与 main 中的 x 和 y 变量相互独立，互不影响
   printf(&#34;%d %d\n&#34; , x, y);
@@ -2608,7 +2626,7 @@ void main() {
 <h3 is-upgraded>全局变量</h3>
 <p>如果在函数外部定义变量，那么这些变量就全局可见，即为全局变量。</p>
 <p>我们修改上面的代码如下：</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm75">Copy</button><code id="dm75">#include &#34;stdio.h&#34;
 int x = 6, y = 4;   // 定义在函数外部，是全局变量
 void fun() {
   printf(&#34;%d %d\n&#34; , x, y);
@@ -2624,7 +2642,7 @@ void main() {
 <h3 is-upgraded>作用域屏蔽</h3>
 <p>如果一个变量既是全局的，又是局部的，那么全局变量将会被屏蔽，以局部变量为准。</p>
 <p>如下所示：</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm76">Copy</button><code id="dm76">#include &#34;stdio.h&#34;
 int x = 6, y = 4;   // 定义在函数外部，是全局变量
 void fun() {
   int x = 1;  // fun 函数中也定义了 x 变量，且为局部变量，因此，fun 函数就会使用这个变量
@@ -2641,7 +2659,7 @@ void main() {
 <h2 is-upgraded>变量的存储类别</h2>
 <p>对于变量的存储类型，是指变量的生命期，当前我们不需要深入的了解，明白如下两个程序之间的差异即可。</p>
 <h3 is-upgraded>自动存储类型变量</h3>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm77">Copy</button><code id="dm77">#include &#34;stdio.h&#34;
 void func() {
     int x = 64;   // x是自动存储类型，进入 func 函数时分配空间，该函数执行完毕时 x 消失
     printf(&#34;%d\n&#34;, x);
@@ -2656,7 +2674,7 @@ void main() {
 <p>运行该程序，结果将会打印<code>3</code>次<code>64</code>，请前往<a href="http://www.pythontutor.com/c.html#mode=edit" target="_blank">可视化运行网站</a>探究程序的执行。</p>
 <p>但是下面的程序的结果就不相同了。</p>
 <h3 is-upgraded>静态存储类型变量</h3>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm78">Copy</button><code id="dm78">#include &#34;stdio.h&#34;
 void func() {
     static int x = 64;   // x 是静态存储类型，它在整个程序运行过程中都存在，且只初始化一次。该函数即使执行完毕 x 也不会消失
     printf(&#34;%d\n&#34;, x);
@@ -2689,7 +2707,7 @@ void main() {
 <h2 is-upgraded>宏定义</h2>
 <p>所谓的宏定义，一般就是使用一个大写的标识符来表示一个字符串的过程。</p>
 <p>如下程序：</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm79">Copy</button><code id="dm79">#include &#34;stdio.h&#34;
 #define PI 3.1415926  //  定义宏 PI，程序中任何地方出现 PI 都会被替换
 void main() {
   int r;
@@ -2700,7 +2718,7 @@ void main() {
 }
 </code></pre>
 <p>上面程序是不带参数的宏。下面我们看看带参数的宏：</p>
-<pre><code>#include &#34;stdio.h&#34;
+<pre><button class="btn" data-clipboard-target="#dm80">Copy</button><code id="dm80">#include &#34;stdio.h&#34;
 #define PF(x) x*x  // 带参数的宏，希望求 x 的平方
 void main() {
     int a, pf;
@@ -2728,5 +2746,9 @@ void main() {
   <script src="/assets/forGoogle/custom-elements.min.js"></script>
   <script src="/assets/forGoogle/prettify.js"></script>
   <script src="/assets/forGoogle/codelab-elements.js"></script>
+  <script src="/docs-assets/js/clipboard.min.js"></script>
+  <script>
+    new Clipboard('.btn');
+  </script>
 </body>
 </html>
