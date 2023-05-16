@@ -423,7 +423,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
 <aside class="warning"><p><strong>注意：</strong> 绝对定位此处可能有些混淆，请留意其是仍是相对的，不过是相对<strong>最近的父元素</strong></p>
 </aside>
 <p>试试如下的代码：</p>
-<pre><button class="btn" data-clipboard-target="#dm19">Copy</button><code id="dm19"></code>&lt;!-- HTML --&gt;
+<pre><button class="btn" data-clipboard-target="#dm19">Copy</button><code id="dm19">&lt;!-- HTML --&gt;
 &lt;div class=&#34;example-relative&#34;&gt;这是父元素，有 relative 定位属性
   &lt;div class=&#34;example-absolute&#34;&gt;
     这是子元素，有 absolute 定位属性
@@ -431,7 +431,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
 &lt;/div&gt;
 &lt;!-- CSS --&gt;
 .example-relative {
-  position: relative;
+  position: relative;  
   width: 400px;
   height: 200px;
   border: 3px solid rgb(87, 33, 173);
@@ -495,7 +495,7 @@ padding: 25px 10px; /* 简写形式，上下为25px，左右为10px */
 &lt;/html&gt;
 </code></pre>
 <p>一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。<br>浮动元素之后的元素将围绕它。</p>
-<aside class="warning"><p><strong>试一试：</strong> 有如下4张图片，如果没加样式的话，这几张图片将会从上到下依次显示。考虑使用左浮动，让它们水平依次显示。</p>
+<aside class="warning"><p><strong>试一试：</strong> 有如下4张图片，如果每张图片直接以<code>img</code>标签包含的话，因为<code>img</code>是内联元素，所以他们将并列显示。但假设我们以<code>div</code>包裹每张图片（如需要在图片下加文字说明等情形），此时这几张图片将会从上到下依次显示。使用左浮动则可让它们水平依次显示。</p>
 </aside>
 <p class="image-container"><img alt="float2" src="img/ad0c8b6ab2441f5.jpg"></p>
 <p>一个元素浮动后，其后的元素将尽可能包围它，或者说出现在这个浮动元素的左或右方。<br>如果希望浮动元素后面的元素在其下方显示，可使用<code>clear: both</code>样式来进行清除。</p>
