@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <title>Responsive sushi website - Bedimcode</title>
+
+    <style>
+        /*=============== GOOGLE FONTS ===============*/
+        @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lora:wght@500;600&family=Poppins:wght@400;500&display=swap");
+
+        /*=============== VARIABLES CSS ===============*/
+        :root {
+            --header-height: 3.5rem;
+
+            /*========== Colors ==========*/
+            /*Color mode HSL(hue, saturation, lightness)*/
+            --first-color: hsl(19, 64%, 54%);
+            --first-color-alt: hsl(19, 64%, 52%);
+            --title-color: hsl(19, 16%, 15%);
+            --text-color: hsl(19, 16%, 35%);
+            --text-color-light: hsl(19, 8%, 55%);
+            --body-color: hsl(19, 100%, 96%);
+            --container-color: hsl(19, 100%, 97%);
+
+            /*========== Font and typography ==========*/
+            /*.5rem = 8px | 1rem = 16px ...*/
+            --body-font: "Poppins", sans-serif;
+            --title-font: "Lora", serif;
+            --subtitle-font: "Dancing Script", cursive;
+            --biggest-font-size: 2.25rem;
+            --h1-font-size: 1.5rem;
+            --h2-font-size: 1.25rem;
+            --h3-font-size: 1rem;
+            --normal-font-size: .938rem;
+            --small-font-size: .813rem;
+            --smaller-font-size: .75rem;
+
+            /*========== Font weight ==========*/
+            --font-medium: 500;
+            --font-semi-bold: 600;
+
+            /*========== z index ==========*/
+            --z-tooltip: 10;    /* for scrollup button */
+            --z-fixed: 100;     /* for header */
+        }
+
+        @media screen and (min-width: 1024px) {
+            :root {
+                --biggest-font-size: 4rem;
+                --h1-font-size: 2.25rem;
+                --h2-font-size: 1.5rem;
+                --h3-font-size: 1.25rem;
+                --normal-font-size: 1rem;
+                --small-font-size: .875rem;
+                --smaller-font-size: .813rem;
+            }
+        }
+
+        /*=============== BASE ===============*/
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            background-color: var(--body-color);
+            color: var(--text-color);
+            transition: background 0.4s; /* for dark mode animation */
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--title-color);
+            font-weight: var(--font-medium);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /*=============== THEME ===============*/
+        .nav__buttons {
+            display: flex;
+            align-items: center;
+            column-gap: 1rem;
+        }
+
+        .change-theme {
+            font-size: 1.25rem;
+            color: var(--title-color);
+            cursor: pointer;
+            transition: color .3s;
+        }        
+
+        /*========== Variables Dark theme ==========*/
+        body.dark-theme {
+            --first-color: hsl(19, 64%, 58%);
+            --first-color-alt: hsl(19, 64%, 54%);
+            --title-color: hsl(19, 16%, 85%);
+            --text-color: hsl(19, 16%, 65%);
+            --body-color: hsl(19, 12%, 8%);
+            --container-color: hsl(19, 10%, 10%);
+        }
+
+        /*========== Color changes in some parts of  the website, in dark theme ==========*/
+        .dark-theme .bg-header,        
+        .dark-theme .scrollup{
+            box-shadow: 0 2px 8px hsla(19, 64%, 4%, .5);
+        }
+
+        .dark-theme .popular__card{
+            box-shadow: 0 8px 20px hsla(19, 64%, 4%, .2);
+        }
+        .dark-theme .newsletter__content{
+            background-color: var(--container-color);
+        }
+        .dark-theme .newsletter__form,
+        .dark-theme .newsletter__input{
+            background-color: var(--body-color);
+        }
+        .dark-theme::-webkit-scrollbar{
+            background-color: hsl(19, 8%, 15%);
+        }
+        .dark-theme::-webkit-scrollbar-thumb{
+            background-color: hsl(19, 8%, 25%);
+        }
+        .dark-theme::-webkit-scrollbar-thumb:hover{
+            background-color: hsl(19, 8%, 35%);
+        }
+        /*=============== REUSABLE CSS CLASSES ===============*/
+        .container {
+            max-width: 1024px;
+            margin-inline: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .section {
+            padding-block: 5rem 1rem;
+        }
+
+        .section__title {
+            font-size: var(--h1-font-size);
+            font-family: var(--title-font);
+            margin-bottom: 1.5rem;
+        }
+
+        .section__subtitle {
+            display: block;
+            font-size: var(--h2-font-size);
+            font-family: var(--subtitle-font);
+            color: var(--first-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section__title,
+        .section__subtitle {
+            text-align: center;
+        }
+
+        .main {
+            /* For animation ScrollReveal, but likely to not be required */
+            overflow: hidden; 
+        }
+
+        /*=============== HEADER & NAV ===============*/
+        .header {
+            position: fixed;
+            width: 100%;
+            background-color: var(--body-color);
+            top: 0;
+            left: 0;
+            z-index: var(--z-fixed);
+            transition: box-shadow .3s, background .4s;
+        }
+
+        .nav {
+            /* relative for img */
+            position: relative;
+            height: var(--header-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo,
+        .nav__toggle,
+        .nav__close {
+            display: flex;
+            color: var(--title-color);
+        }
+
+        .nav__logo {
+            align-items: center;
+            column-gap: .5rem;
+            font-family: var(--title-font);
+            font-size: var(--h3-font-size);
+            font-weight: var(--font-semi-bold);
+            transition: color .3s;
+        }
+
+        .nav__logo img {
+            width: 25px;
+        }
+
+        .nav__logo:hover {
+            color: var(--first-color);
+        }
+
+        .nav__toggle {
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+        /* don't show menu on small screen */
+        @media (max-width: 767px) {
+            .nav__menu {
+                position: fixed;
+                top: -100%;
+                left: 0;
+                background-color: var(--body-color);
+                width: 100%;
+                box-shadow: 0 8px 20px hsla(19, 64%, 24%, .1);
+                padding-block: 3.5rem;
+                transition: top .4s;
+            }
+        }
+
+        .nav__list {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            row-gap: 2rem;
+        }
+
+        .nav__link {
+            color: var(--title-color);
+            font-weight: var(--font-medium);
+            transition: color .4s;
+        }
+
+        .nav__link:hover {
+            color: var(--first-color);
+        }
+
+        .nav__close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav__img-1,
+        .nav__img-2 {
+            position: absolute;
+            opacity: .2;
+        }
+
+        .nav__img-1 {
+            width: 100px;
+            top: 0.75rem;
+            left: -2rem;
+            transform: rotate(165deg);
+        }
+
+        .nav__img-2 {
+            width: 50px;
+            right: -1rem;
+            bottom: 0;
+            transform: rotate(-30deg);
+        }
+
+        /* Show menu */
+        .show-menu {
+            top: 0;
+        }
+
+        /* Change background header */
+        .bg-header {
+            box-shadow: 0 2px 8px hsla(19, 64%, 24%, .1);
+        }
+
+        /* Active link */
+        .active-link {
+            color: var(--first-color);
+        }
+
+        /*=============== HOME ===============*/
+        .home {
+            position: relative;
+        }
+
+        .home__container {
+            row-gap: 3rem;
+            padding-top: 2rem;
+        }
+
+        .home__img {
+            width: 300px;
+            justify-self: center;
+        }
+
+        .home__data {
+            text-align: center;
+        }
+
+        .home__title {
+            font-size: var(--biggest-font-size);
+            font-family: var(--title-font);
+            margin-bottom: 1rem;
+        }
+
+        .home__title img {
+            width: 40px;
+        }
+
+        .home__title div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: .5rem;
+        }
+
+        .home__description {
+            padding: 0 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .home__leaf-1,
+        .home__leaf-2 {
+            position: absolute;
+            opacity: .2;
+        }
+
+        .home__leaf-1 {
+            width: 80px;
+            top: 8rem;
+            left: -1rem;
+            transform: rotate(90deg);
+        }
+
+        .home__leaf-2 {
+            width: 100px;
+            right: -2rem;
+            bottom: 1rem;
+            transform: rotate(-15deg);
+        }
+
+        /*=============== BUTTON ===============*/
+        .button {
+            display: inline-flex;
+            align-items: center;
+            column-gap: .5rem;
+            background-color: var(--first-color);
+            padding: 1rem 1.5rem;
+            border-radius: 4rem;
+            color: white;
+            font-weight: var(--font-medium);
+            transition: background .3s;
+        }
+
+        .button i {
+            font-size: 1.5rem;
+            transition: transform .3s;
+        }
+
+        .button:hover {
+            background-color: var(--first-color-alt);
+        }
+
+        .button:hover i {
+            transform: translateX(.25rem);
+        }
+
+        /*=============== ABOUT ===============*/
+        .about {
+            position: relative;
+        }
+
+        .about__container {
+            row-gap: 3rem;
+        }
+
+        .about__data {
+            text-align: center;
+        }
+
+        .about__title img {
+            width: 30px;
+        }
+
+        .about__title div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: .5rem;
+        }
+
+        .about__img {
+            width: 300px;
+            justify-self: center;
+        }
+
+        .about__leaf {
+            width: 100px;
+            opacity: 0.2;
+            position: absolute;
+            right: -1.5rem;
+            bottom: 11rem;
+            transform: rotate(-15deg);
+        }
+
+        /*=============== POPULAR ===============*/
+        .popular__container {
+            padding-top: 4rem;
+            grid-template-columns: 250px;
+            justify-content: center;
+            row-gap: 5.5rem;
+        }
+
+        .popular__card {
+            position: relative;
+            background-color: var(--container-color);
+            padding: 7rem 2rem 1.5rem;
+            box-shadow: 0 8px 20px hsla(19, 64%, 48%, .08);
+            border-radius: 1rem;
+            text-align: center;
+            transition: background 0.4s; /* for dark mode animation */
+        }
+
+        .popular__img {
+            width: 220px;
+            position: absolute;
+            /* Todo: The inset CSS property is a shorthand that corresponds to the top, right, bottom, and/or left 
+                     properties. It has the same multi-value syntax of the margin shorthand. */
+            inset: 0;
+            
+            top: -2.5rem;
+            margin: 0 auto;
+            transition: transform .4s;
+        }
+
+        .popular__name {
+            font-size: var(--h3-font-size);
+            font-family: var(--title-font);
+            margin-bottom: .25rem;
+        }
+
+        .popular__description {
+            display: block;
+            font-size: var(--font-medium);
+            color: var(--first-color);
+        }
+
+        .popular__button {
+            display: flex;
+            background-color: var(--first-color);
+            padding: 6px;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 20px hsla(19, 64%, 20%, .2);
+            position: absolute;
+            bottom: 1.25rem;
+            right: 1.25rem;
+            cursor: pointer;
+            transition: background .3s;
+        }
+
+        .popular__button:hover {
+            background-color: var(--first-color-alt);
+        }
+
+        .popular__card:hover .popular__img {
+            transform: translateY(-.25rem);
+        }
+
+        /*=============== RECENTLY ===============*/
+        .recently {
+            position: relative;
+        }
+
+        .recently__container {
+            row-gap: 4rem;
+        }
+
+        .recently__data {
+            position: relative;
+            text-align: center;
+        }
+
+        .recently__description {
+            margin-bottom: 2rem;
+        }
+
+        .recently__data-img {
+            width: 25px;
+            position: absolute;
+            top: 3.5rem;
+            right: 1.5rem;
+            transform: rotate(30deg);
+        }
+
+        .recently__img {
+            width: 300px;
+            justify-self: center;
+        }
+
+        .recently__leaf-1,
+        .recently__leaf-2 {
+            position: absolute;
+            opacity: .2;
+        }
+
+        .recently__leaf-1 {
+            width: 80px;
+            top: 17rem;
+            left: -1rem;
+            transform: rotate(15deg);
+        }
+
+        .recently__leaf-2 {
+            width: 40px;
+            right: -1rem;
+            bottom: 12rem;
+            transform: rotate(-30deg);
+        }
+
+        /*=============== NEWSLETTER ===============*/
+        .newsletter__container {
+            position: relative;
+        }
+
+        .newsletter__content {
+            position: relative;
+            background-color: hsl(19, 24%, 15%);
+            border-radius: 2.5rem;
+            padding: 5rem 1rem 3rem;
+            text-align: center;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter__img {
+            width: 250px;
+            position: absolute;
+            top: -4.5rem;
+            left: -8rem;
+        }
+
+        .newsletter__data .section__title {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter__form {
+            background-color: white;
+            padding: 5px 5px 5px 16px;
+            border-radius: 4rem;
+            display: flex;
+            columns: .5rem;
+        }
+
+        .newsletter__input,
+        .newsletter__button {
+            font-family: var(--body-font);
+            border: none;
+            outline: none;
+        }
+
+        .newsletter__input {
+            /* Todo: flex:1*/
+            width: 90%;
+            color: var(--text-color);
+        }
+
+        .newsletter__button {
+            cursor: pointer;
+        }
+
+        .newsletter__spinach {
+            width: 30px;
+            position: absolute;
+            right: 2rem;
+            bottom: -2rem;
+            transform: rotate(45deg);
+        }
+
+        .newsletter__container,
+        .newsletter__form,
+        .newsletter__input{
+            transition: background 0.4s; /* for dark mode animation */
+        }
+
+        /*=============== FOOTER ===============*/
+        .footer {
+            position: relative;
+            padding-block: 3rem 2rem;
+            overflow: hidden;
+        }
+
+        .footer__container {
+            row-gap: 3rem;
+        }
+
+        .footer__logo {
+            display: inline-flex;
+            align-items: center;
+            column-gap: .5rem;
+            color: var(--title-color);
+            font-family: var(--title-font);
+            font-size: var(--h3-font-size);
+            font-weight: var(--font-semi-bold);
+            margin-bottom: 1rem;
+            transition: color .3s;
+        }
+
+        .footer__logo img {
+            width: 25px;
+        }
+
+        .footer__logo:hover {
+            color: var(--first-color);
+        }
+
+        .footer__description,
+        .footer__link,
+        .footer__information {
+            font-size: var(--small-font-size);
+        }
+
+        .footer__content,
+        .footer__links {
+            display: grid;
+        }
+
+        .footer__content {
+            grid-template-columns: repeat(2, max-content);
+            gap: 2.5rem;
+        }
+
+        .footer__tile {
+            font-size: var(--h3-font-size);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer__links {
+            row-gap: .5rem;
+        }
+
+        .footer__link {
+            color: var(--text-color);
+            transition: color .3s;
+        }
+
+        .footer__link:hover {
+            color: var(--first-color);
+        }
+
+        .footer__social {
+            display: flex;
+            column-gap: 1.25rem;
+        }
+
+        .footer__social-link {
+            color: var(--first-color);
+            font-size: 1.25rem;
+            transition: color .3s, transform .3s;
+        }
+
+        .footer__social-link:hover {
+            color: var(--first-color);
+            transform: translateY(-2px);
+        }
+
+        .footer__onion,
+        .footer__spinach {
+            width: 30px;
+            position: absolute;
+        }
+
+        .footer__onion {
+            top: 7.5rem;
+            right: 5rem;
+            transform: rotate(-45deg)
+        }
+
+        .footer__spinach {
+            bottom: 8rem;
+            left: 3rem;
+            transform: rotate(30deg);
+        }
+
+        .footer__leaf {
+            width: 100px;
+            opacity: 0.2;
+            position: absolute;
+            bottom: 6rem;
+            right: -2rem;
+            transform: rotate(-15deg);
+        }
+
+        .footer__info,
+        .footer__card {
+            display: flex;
+        }
+
+        .footer__info {
+            margin-top: 6.5rem;
+            flex-direction: column;
+            row-gap: 1.5rem;
+        }
+
+        .footer__card {
+            column-gap: 1rem;
+            justify-content: center;
+        }
+
+        .footer__card img {
+            width: 35px;
+        }
+
+        .footer__copy {
+            text-align: center;
+            font-size: var(--smaller-font-size);
+            color: var(--text-color-light);
+        }
+
+        /*=============== SCROLL BAR ===============*/
+        ::-webkit-scrollbar {
+            width: 0.6rem;
+            border-radius: .5rem;
+            background-color: hsl(19, 8%, 75%);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: .5rem;
+            background-color: hsl(19, 8%, 65%);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: hsl(19, 8%, 55%);
+        }
+
+        /*=============== SCROLL UP ===============*/
+        .scrollup {
+            position: fixed;
+            right: 1rem;
+            bottom: -50%;
+            background-color: var(--container-color);
+            box-shadow: 0 4px 12px hsla(19, 64%, 24%, .1);
+            display: inline-flex;
+            padding: 0.35rem;
+            border-radius: .25rem;
+            font-size: 1.1rem;
+            color: var(--first-color);
+            z-index: var(--z-tooltip);
+            transition: bottom .3s, transform .3s, background .4s;
+        }
+
+        .scrollup:hover {
+            transform: translateY(-.25rem);
+        }
+
+        /* Show Scroll Up*/
+        .show-scroll {
+            bottom: 3rem;
+        }
+
+        /*=============== BREAKPOINTS ===============*/
+        /* For small devices */
+        @media (max-width: 340px) {
+            .container{
+                margin-inline: 1rem;
+            }
+            .section{
+                padding-block: 4rem 1rem;
+            }
+            .home__title{
+                font-size: 2rem;
+            }
+            .home__leaf-1{
+                top:5rem;
+            }
+            .home__leaf-2{
+                bottom: 0;
+            }
+            .about__leaf{
+                bottom: 8rem;
+            }
+            .recently__data-img{
+                right: .5rem;
+            }
+            .newsletter__content{
+                padding: 6rem 1rem 2rem;
+            }
+            .newsletter__form{
+                flex-direction: column;
+                background: none;
+                row-gap: 1rem;
+            }
+            .newsletter__input{
+                width: initial;
+                padding: 1rem;
+                border-radius: 4rem;
+            }
+            .newsletter__button{
+                justify-content: center;
+            }
+            .footer__content{
+                gap: 1.5rem;
+            }
+        }
+
+        /* For medium devices */
+        @media (min-width: 576px){
+            .home__container,
+            .about__container,
+            .recently__container,
+            .newsletter__content{
+                grid-template-columns: .7fr;
+                justify-content: center;
+            }
+            .footer__content{
+                grid-template-columns: repeat(3, max-content);
+            }
+        }
+        @media (min-width: 767px){
+            .nav{
+                column-gap: 3rem;
+            }
+            .nav__toggle,
+            .nav__close,
+            .nav__img-1,
+            .nav__img-2{
+                display: none;
+            }
+            .nav__list{
+                flex-direction: row;
+                column-gap: 3rem;
+            }
+            .nav__menu{
+                margin-left: auto;
+            }
+            /* Todo: no need */
+            .dark-theme .nav__menu{
+                /* box-shadow: none; */
+            }
+            .popular__container{
+                grid-template-columns: repeat(2, 250px);
+            }
+            .footer__content{
+                grid-template-columns: repeat(4, max-content);
+            }
+        }
+
+        /* For large devices */
+
+        @media (min-width: 1024px){
+            .section{
+                padding-block: 7rem 1.5rem;
+            }
+            .section__subtitle{
+                margin-bottom: .75rem;
+            }
+            .nav{
+                height: calc(var(--header-height) + 1.5rem);
+            }
+            .home__container{
+                position: relative;
+                grid-template-columns: 480px 500px;
+                padding-block: 7rem 3rem;
+            }
+            .home__data{
+                text-align: initial;
+            }
+            .home__title img{
+                width: 60px;
+            }
+            .home__title div{
+                justify-content: initial;
+                column-gap: 1rem;
+            }
+            .home__description{
+                padding-inline: 0 10rem;
+            }
+            .home__img{
+                width: 600px;
+                position: absolute;
+                top: 5rem;
+                right: -2rem;
+            }
+            .about__container{
+                grid-template-columns: 450px 360px;
+                align-items: center;
+                column-gap: 7rem;
+            }
+            .about__data{
+                order: 1;
+            }
+            .about__data,
+            .about .section__subtitle,
+            .about .section__title{
+                text-align: initial;
+            }
+            .about__title div{
+                column-gap: 1rem;
+                justify-content: initial;
+            }
+            .about__img{
+                width: 450px;
+            }
+            .popular__container{
+                grid-template-columns: repeat(3, 262px);
+                column-gap: 3.5rem;
+                padding-block: 6rem 4rem;
+            }
+            .popular__card{
+                padding: 7.5rem 2rem 2rem;
+            }
+            .popular__img{
+                width: 230px;
+            }
+            .popular__button{
+                bottom: 2rem;
+            }
+            .recently__container{
+                grid-template-columns: 350px 480px;
+                align-items: center;
+                column-gap: 7rem;
+                padding-bottom: 2rem;
+            }
+            .recently__data,
+            .recently .section__subtitle,
+            .recently .section__title{
+                text-align: initial;
+            }
+            .recently__data-img{
+                width: 30px;
+                top: 5.5rem;
+                right: 2.5rem;
+            }
+            .recently__img{
+                width: 480px;
+            }
+            .newsletter__content{
+                grid-template-columns: 350px 360px;
+                align-items: center;
+                column-gap: 6rem;
+                padding: 2.5rem 0;
+                border-radius: 4.5rem;
+            }
+            .newsletter__img{
+                position: initial;
+                width: 350px;
+            }
+            .newsletter .section__subtitle,
+            .newsletter .section__title{
+                text-align: initial;
+            }
+            .newsletter .section__title{
+                margin-bottom: 2.5rem;
+            }
+            .newsletter__form{
+                padding: 8px 8px 8px 24px;
+            }
+            .newsletter__button{
+                font-size: var(--normal-font-size);
+            }
+            .newsletter__spinach{
+                width: 40px;
+                right: 5rem;
+                bottom: -2.5rem;
+            }
+            .footer{
+                padding-block: 8rem 3rem;
+            }
+            .footer__container{
+                position: relative;
+                grid-template-columns: repeat(2, max-content);
+                justify-content: space-between;
+            }
+            .footer__content{
+                column-gap: 4rem;
+            }
+            .footer__tile,
+            .footer__description,
+            .footer__link,
+            .footer__information{
+                font-size: var(--normal-font-size);
+            }
+            .footer__social-link{
+                font-size: 1.5rem;
+            }
+            .footer__info{
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 8.5rem;
+            }
+            .footer__copy{
+                order:-1;
+            }
+            .footer__spinach{
+                bottom: -3rem;
+                left: 6rem;
+            }
+            .footer__onion{
+                right: 1rem;
+            }
+            .scrollup{
+                right: 3rem;
+            }
+        }
+
+        @media (min-width: 1064px){
+            .container{
+                margin-inline: auto;
+            }
+        }
+
+        @media (min-width: 1280px){
+            .home__leaf-1{
+                width: 150px;
+                top: 5rem;
+            }
+            .home__leaf-2{
+                width: 180px;
+                right: -4rem;
+            }
+            .about__leaf{
+                width: 200px;
+                bottom: 3rem;
+            }
+            .recently__leaf-1{
+                width: 150px;
+                top: 19rem;
+            }
+            .recently__leaf-2{
+                width: 100px;
+                bottom: 15rem;
+            }
+            .footer__leaf{
+                /* Todo:  */
+                right: 0;
+                left: 0;
+                bottom: -15rem;
+                margin: 0 auto;
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="" class="nav__logo">
+                <img src="assets/img/logo.png" alt="logo image">
+                Sushi
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About Us</a></li>
+                    <li class="nav__item"><a href="#popular" class="nav__link">Popular</a></li>
+                    <li class="nav__item"><a href="#recently" class="nav__link">Recently</a></li>
+                </ul>
+                <!-- Close button -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+                <img src="assets/img/leaf-branch-4.png" alt="nav image" class="nav__img-1">
+                <img src="assets/img/leaf-branch-3.png" alt="nav image" class="nav__img-2">
+            </div>
+            <div class="nav__buttons">
+                <!-- Theme change button -->
+                <i class="ri-moon-line change-theme" id="theme-button"></i>
+                <!-- Toggle button -->
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-apps-2-line"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <img src="assets/img/home-sushi-rolls.png" alt="home image" class="home__img">
+                <div class="home__data">
+                    <h1 class="home__title">
+                        Enjoy Delicious
+                        <div>
+                            <img src="assets/img/home-sushi-title.png" alt="home image">
+                            Sushi Food
+                        </div>
+                    </h1>
+                    <p class="home__description">
+                        Enjoy a good dinner with the best dishes in the restaurant and improve your day.
+                    </p>
+                    <a href="#" class="button">
+                        Order Now <i class="ri-arrow-right-line"></i>
+                    </a>
+                </div>
+            </div>
+            <img src="assets/img/leaf-branch-2.png" alt="home image" class="home__leaf-1">
+            <img src="assets/img/leaf-branch-4.png" alt="home image" class="home__leaf-2">
+        </section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <span class="section__subtitle">About Us</span>
+                    <h2 class="section__title about__title">
+                        <div>
+                            We Provide
+                            <img src="assets/img/about-sushi-title.png" alt="about image">
+                        </div>
+                        Healthy Food
+                    </h2>
+                    <p class="about__description">
+                        Food comes to us from our relatives, whether they
+                        have wings or roots. This is how we consider food,
+                        it also has a culture. It has a history that passes
+                        from generation to generation.
+                    </p>
+                </div>
+                <img src="assets/img/about-sushi.png" alt="about image" class="about__img">
+            </div>
+            <img src="assets/img/leaf-branch-1.png" alt="" class="about__leaf">
+        </section>
+
+        <!--==================== POPULAR ====================-->
+        <section class="popular section" id="popular">
+            <span class="section__subtitle">The Best Food</span>
+            <h2 class="section__title">Popular Dishes</h2>
+
+            <div class="popular__container container grid">
+                <article class="popular__card">
+                    <img src="assets/img/popular-onigiri.png" alt="popular image" class="popular__img">
+                    <h3 class="popular__name">Onigiri</h3>
+                    <span class="popular__description">Japanese Dish</span>
+                    <span class="popular__price">$10.99</span>
+                    <button class="popular__button">
+                        <i class="ri-shopping-bag-line"></i>
+                    </button>
+                </article>
+                <article class="popular__card">
+                    <img src="assets/img/popular-spring-rolls.png" alt="popular image" class="popular__img">
+                    <h3 class="popular__name">Spring Rolls</h3>
+                    <span class="popular__description">Japanese Dish</span>
+                    <span class="popular__price">$15.99</span>
+                    <button class="popular__button">
+                        <i class="ri-shopping-bag-line"></i>
+                    </button>
+                </article>
+                <article class="popular__card">
+                    <img src="assets/img/popular-sushi-rolls.png" alt="popular image" class="popular__img">
+                    <h3 class="popular__name">Sushi Rolls</h3>
+                    <span class="popular__description">Japanese Dish</span>
+                    <span class="popular__price">$19.99</span>
+                    <button class="popular__button">
+                        <i class="ri-shopping-bag-line"></i>
+                    </button>
+                </article>
+            </div>
+        </section>
+
+        <!--==================== RECENTLY ====================-->
+        <section class="recently section" id="recently">
+            <div class="recently__container container grid">
+                <div class="recently__data">
+                    <span class="section__subtitle">Recently Added</span>
+                    <h2 class="section__title">
+                        Sushi Samurai<br>
+                        Salmon Cheesse
+                    </h2>
+                    <p class="recently__description">
+                        Take a look at what's new. And do not deprive yourself of a good meal, enjoy and be happy.
+                    </p>
+                    <a href="#" class="button">Order Now <i class="ri-arrow-right-line"></i></a>
+                    <img src="assets/img/spinach-leaf.png" alt="recently image" class="recently__data-img">
+                </div>
+                <img src="assets/img/recently-salmon-sushi.png" alt="recently image" class="recently__img">
+            </div>
+            <img src="assets/img/leaf-branch-2.png" alt="recently image" class="recently__leaf-1">
+            <img src="assets/img/leaf-branch-3.png" alt="recently image" class="recently__leaf-2">
+        </section>
+
+        <!--==================== NEWSLETTER ====================-->
+        <section class="newsletter section">
+            <div class="newsletter__container container">
+                <div class="newsletter__content grid">
+                    <img src="assets/img/newsletter-sushi.png" alt="newsletter image" class="newsletter__img">
+                    <div class="newsletter__data">
+                        <span class="section__subtitle">Newsletter</span>
+                        <h2 class="section__title">
+                            Subscribe For<br>
+                            Updates
+                        </h2>
+                        <form action="" class="newsletter__form">
+                            <input type="email" placeholder="Enter email" class="newsletter__input">
+                            <button class="button newsletter__button">
+                                Subscribe <i class="ri-send-plane-line"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <img src="assets/img/spinach-leaf.png" alt="newsletter image" class="newsletter__spinach">
+            </div>
+        </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__container container grid">
+            <div>
+                <a href="#" class="footer__logo">
+                    <img src="assets/img/logo.png" alt="logo image">
+                    Sushi
+                </a>
+                <p class="footer__description">
+                    Food for the body is not <br>
+                    enough. There must be food <br>
+                    for the soul.
+                </p>
+            </div>
+            <div class="footer__content">
+                <div>
+                    <h3 class="footer__title">Main Menu</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="" class="footer__link">About</a>
+                        </li>
+                        <li>
+                            <a href="" class="footer__link">Menus</a>
+                        </li>
+                        <li>
+                            <a href="" class="footer__link">Offer</a>
+                        </li>
+                        <li>
+                            <a href="" class="footer__link">Events</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer__title">Information</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="" class="footer__link">Contact</a>
+                        </li>
+                        <li>
+                            <a href="" class="footer__link">Order & Returns</a>
+                        </li>
+                        <li>
+                            <a href="" class="footer__link">Videos</a>
+                        </li>
+                        <li>
+                            <a href="" class="footer__link">Reservation</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer__title">Address</h3>
+                    <ul class="footer__links">
+                        <li class="footer__information">
+                            Av. Hacienda 1234 <br>
+                            Lima 4321, Perú
+                        </li>
+                        <li class="footer__information">
+                            9AM - 11PM
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer__title">Social Media</h3>
+                    <ul class="footer__social">
+                        <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                            <i class="ri-facebook-circle-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <img src="assets/img/spring-onion.png" alt="footer image" class="footer__onion">
+            <img src="assets/img/spinach-leaf.png" alt="footer image" class="footer__spinach">
+            <img src="assets/img/leaf-branch-4.png" alt="footer image" class="footer__leaf">
+        </div>
+        <div class="footer__info container">
+            <div class="footer__card">
+                <img src="assets/img/footer-card-1.png" alt="footer image">
+                <img src="assets/img/footer-card-2.png" alt="footer image">
+                <img src="assets/img/footer-card-3.png" alt="footer image">
+                <img src="assets/img/footer-card-4.png" alt="footer image">
+            </div>
+            <span class="footer__copy">
+                &#169; Copyright Bedimcode. All rights reserved
+            </span>
+        </div>
+    </footer>
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script>
+        /*=============== SHOW MENU ===============*/
+        const navMenu = document.getElementById('nav-menu'),
+            navToggle = document.getElementById('nav-toggle'),
+             navClose = document.getElementById('nav-close')
+
+        /*===== MENU SHOW =====*/
+        /* Validate if constant exists */
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu')
+            })
+        }
+
+        /*===== MENU HIDDEN =====*/
+        /* Validate if constant exists */
+        if (navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu')
+            })
+        }
+
+
+        /*=============== REMOVE MENU MOBILE ===============*/
+
+        const navLink = document.querySelectorAll('.nav__link')
+
+        const linkAction = () => {
+            const navMenu = document.getElementById('nav-menu')
+            // When we click on each nav__link, we remove the show-menu class
+            navMenu.classList.remove('show-menu')
+        }
+        navLink.forEach(n => n.addEventListener('click', linkAction))
+
+        /*=============== CHANGE BACKGROUND HEADER ===============*/
+        const scrollHeader = () => {
+            const header = document.getElementById('header')
+            // When the scroll is greater than 50px, add the bg-header class to the header tag
+            this.scrollY >= 50 ? header.classList.add('bg-header')
+                : header.classList.remove('bg-header')
+        }
+        window.addEventListener('scroll', scrollHeader)
+
+        /*=============== SHOW SCROLL UP ===============*/
+        const scrollUp = () => {
+            const scrollUp = document.getElementById('scroll-up')
+            // When the scroll is higher than 350px, add the show-scroll class to the a tag with the scrollup class
+            this.scrollY >= 350 ? scrollUp.classList.add('show-scroll')
+                : scrollUp.classList.remove('show-scroll')
+        }
+        window.addEventListener('scroll', scrollUp)
+
+        /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+        const sections = document.querySelectorAll('section[id]')
+
+        const scrollActive = () => {
+            const scrollY = window.pageYOffset
+
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight,
+                    sectionTop = current.offsetTop - 58,
+                    sectionId = current.getAttribute('id'),
+                    sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    sectionsClass.classList.add('active-link')
+                } else {
+                    sectionsClass.classList.remove('active-link')
+                }
+            })
+        }
+        window.addEventListener('scroll', scrollActive)
+
+        /*=============== DARK LIGHT THEME ===============*/
+        const themeButton = document.getElementById('theme-button')
+        const darkTheme = 'dark-theme'
+        const iconTheme = 'ri-sun-line'
+
+        // Previously selected topic (if user selected)
+        const selectedTheme = localStorage.getItem('selected-theme')
+        const selectedIcon = localStorage.getItem('selected-icon')
+
+        // We obtain the current theme that the interface has by validating the dark-theme class
+        const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+        const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line'
+
+        // We validate if the user previously chose a topic
+        if (selectedTheme) {
+            // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+            document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+            themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme)
+        }
+
+        // Activate / deactivate the theme manually with the button
+        themeButton.addEventListener('click', () => {
+            // Add or remove the dark / icon theme
+            document.body.classList.toggle(darkTheme)
+            themeButton.classList.toggle(iconTheme)
+            // We save the theme and the current icon that the user chose
+            localStorage.setItem('selected-theme', getCurrentTheme())
+            localStorage.setItem('selected-icon', getCurrentIcon())
+        })
+
+        /*=============== SCROLL REVEAL ANIMATION ===============*/
+        const sr = ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 1500,
+            delay: 200,
+            // reset: true, // Animations repeat
+        })
+
+        sr.reveal(`.home__img, .newsletter__container, .footer__container, .footer__info`)
+        sr.reveal(`.home__data`, {origin: 'bottom'})
+        sr.reveal(`.about__data, .recently__data`, {origin: 'left'})
+        sr.reveal(`.about__img, .recently__img`, {origin: 'right'})
+        sr.reveal(`.popular__card`, {interval: 100})
+
+    </script>
+</body>
+
+</html>
