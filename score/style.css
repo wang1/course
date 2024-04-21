@@ -1,0 +1,81 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(bg.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.wrapper{
+  width: 30vw;
+  min-width: 440px;
+  background:transparent;
+  color:white;
+  border-radius: 16px;
+  padding: 30px 40px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, .8);
+  backdrop-filter: blur(10px);
+}
+.wrapper h1{
+  font-size: 2rem;
+  text-align: center;
+}
+.wrapper .input-box{
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  margin:1.8rem 0;
+}
+.wrapper .input-box input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  color: white;
+  padding: 20px 45px 20px 20px;
+}
+.wrapper .input-box input::placeholder{
+  color: rgb(182, 174, 174);
+}
+.wrapper .input-box svg{
+  position: absolute;
+  right: 1rem;
+  top: 30%;
+  transform: translate(-50%);
+  font-size: 1.5rem;
+}
+.wrapper .sub{
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper .sub .btn{
+  padding-inline: 3rem;
+  height: 3rem;
+  background:transparent;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  box-shadow: 0 0 10px rgba(255, 255, 255, .4);
+  cursor: pointer;
+  color: white;
+  font-weight: 300;
+  transition: .3s;
+  position: relative;
+}
+.wrapper .sub .btn:hover{
+  background: rgb(180, 37, 37);
+}
+.wrapper .sub .btn svg{
+  position: relative;
+  top:.2rem;
+}
