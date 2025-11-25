@@ -14,13 +14,20 @@ body{
 }
 .wrapper{
   width: 30vw;
-  min-width: 440px;
+  min-width: 563px;
   background:transparent;
   color:white;
-  border-radius: 16px;
-  padding: 30px 40px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, .8);
-  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1.5rem 2.5rem;
+  box-shadow: 0 0 .6rem rgba(255, 255, 255, .8);
+  backdrop-filter: blur(.6rem);
+  -webkit-backdrop-filter: blur(.6rem);
+}
+@media (max-width: 600px){
+  .wrapper{
+    min-width: 90%;
+    padding: .5rem 1rem;
+  }
 }
 .wrapper h1{
   font-size: 2rem;
@@ -55,10 +62,10 @@ body{
 }
 .wrapper .sub{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .wrapper .sub .btn{
-  padding-inline: 3rem;
+  padding-inline: 1.6rem;
   height: 3rem;
   background:transparent;
   font-size: 1.5rem;

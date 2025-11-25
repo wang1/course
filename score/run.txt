@@ -1,0 +1,6 @@
+0. only left volumns number, id, name, coursename and socre in file score.xls
+1. cd project/score
+2. conda activate score
+3. uvicorn --host '0.0.0.0' --port 8964 main:app --reload 
+
+then open 10.1.74.238/score 

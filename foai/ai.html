@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI基础</title>
+  <style>
+    :root {
+      --bg: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      --accent: #00ffd5;
+      --accent2: #00b4ff;
+      --glow: 0 0 8px rgba(0, 255, 213, .8);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", sans-serif;
+      background: var(--bg);
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 2rem 1rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: var(--glow);
+      margin: 0;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 1rem;
+      position: relative;
+    }
+
+    #videoArea {
+      flex: 1;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    select {
+      width: 90%;
+      max-width: 400px;
+      margin: 1rem 0;
+      padding: .6rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background: #1c1f26;
+      color: var(--accent);
+      box-shadow: 0 0 10px rgba(0, 255, 213, .3);
+      outline: none;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 255, 213, .2);
+      background: #000;
+    }
+
+    #desc {
+      margin-top: 1.2rem;
+      width: 90%;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    #desc h2 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin: .6rem 0;
+    }
+
+    #desc a {
+      color: var(--accent);
+      font-size: 1rem;
+      margin: .6rem 0;
+      text-decoration: none;
+    }
+
+    #chapters {
+      width: 260px;
+      align-self: flex-start;
+      margin-top: 1.2rem;
+      margin-left: 2rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 213, 0.15);
+      padding: 1rem;
+      max-height: 80vh;
+      overflow-y: auto;
+      transition: width 0.3s ease, max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    #chapters.collapsed {
+      width: 60px;
+      padding: 0.5rem;
+    }
+
+    #chapters.collapsed #chapterList {
+      display: none;
+    }
+
+    #chapterHeader {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+
+    #chapters h3 {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .chapter-item {
+      padding: .5rem .8rem;
+      border-left: 3px solid transparent;
+      transition: all .2s ease;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .chapter-item:hover {
+      background-color: rgba(0, 255, 213, 0.1);
+      border-left-color: var(--accent);
+    }
+
+    .chapter-time {
+      color: var(--accent);
+      font-weight: 600;
+      margin-right: .4rem;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    footer a {
+      color: rgba(0, 255, 213, .8);
+      text-decoration: none;
+    }
+
+    @media(max-width:900px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #chapters {
+        width: 90%;
+        margin-left: 0;
+        margin-top: 1rem;
+        position: static;
+        max-height: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>AI 基础</h1>
+  </header>
+
+  <main>
+    <section id="videoArea">
+      <select id="videoSelect"></select>
+      <video id="player" controls preload="metadata"></video>
+      <div id="desc"></div>
+    </section>
+    <aside id="chapters" class="expanded">
+      <div id="chapterHeader" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="18" height="18" rx="2" fill="#00ffd5" />
+          <line x1="7" y1="7" x2="17" y2="7" stroke="#000" stroke-width="2" />
+          <line x1="7" y1="11" x2="17" y2="11" stroke="#000" stroke-width="2" />
+          <line x1="7" y1="15" x2="17" y2="15" stroke="#000" stroke-width="2" />
+        </svg>
+        <!-- 箭头 -->
+        <svg id="toggleArrow" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 15L12 9L18 15" stroke="#00ffd5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div id="chapterList" style="margin-top:0.5rem;">加载中...</div>
+    </aside>
+
+  </main>
+
+  <footer>© <span id="year"></span> AI通识教育课程(<a href="https://www.bilibili.com/video/BV1BzNLzzExg/?spm_id_from=333.337" target="_blank">视频来源</a>)</footer>
+  <script>
+    async function loadVideos() {
+      const res = await fetch('videos.json');
+      const videos = await res.json();
+
+      const select = document.getElementById('videoSelect');
+      const player = document.getElementById('player');
+      const descDiv = document.getElementById('desc');
+      const chapterList = document.getElementById('chapterList');
+
+      videos.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v.file;
+        opt.textContent = v.title;
+        select.appendChild(opt);
+      });
+
+      let chapterElements = [];
+
+      function loadVideo(idx) {
+        const v = videos[idx];
+        player.src = 'videos/' + v.file;
+        player.setAttribute('preload', 'auto');
+        descDiv.innerHTML = `<p>${v.desc || ''}</p>`;
+        renderChapters(v);
+        select.selectedIndex = idx;
+      }
+
+      function renderChapters(v) {
+        if (!v.notes || v.notes.length === 0) {
+          chapterList.innerHTML = "<p style='color:#777;text-align:center'>暂无章节</p>";
+          chapterElements = [];
+          return;
+        }
+        chapterList.innerHTML = v.notes.map(n => `
+      <div class="chapter-item" data-time="${n.time}" style="padding:.5rem .8rem; border-left:3px solid transparent; border-radius:6px; cursor:pointer;">
+        <span class="chapter-time" style="color:#00ffd5; font-weight:600; margin-right:.4rem;">${n.time}</span>${n.text}
+      </div>
+    `).join('');
+        chapterElements = Array.from(chapterList.querySelectorAll('.chapter-item')).map(item => {
+          const parts = item.dataset.time.split(':').map(Number);
+          let seconds = 0;
+          if (parts.length === 3) { // hh:mm:ss
+            seconds = parts[0] * 3600 + parts[1] * 60 + parts[2];
+          } else if (parts.length === 2) { // mm:ss
+            seconds = parts[0] * 60 + parts[1];
+          } else { // ss
+            seconds = parts[0];
+          }
+          item.dataset.seconds = seconds;
+          return item;
+        });
+      }
+
+      select.addEventListener('change', () => loadVideo(select.selectedIndex));
+
+      chapterList.addEventListener('click', e => {
+        const item = e.target.closest('.chapter-item');
+        if (item) {
+          player.currentTime = parseFloat(item.dataset.seconds);
+          player.play();
+        }
+      });
+
+      // 自动高亮章节
+      player.addEventListener('timeupdate', () => {
+        if (chapterElements.length === 0) return;
+        let current = null;
+        for (let i = 0; i < chapterElements.length; i++) {
+          if (player.currentTime >= parseFloat(chapterElements[i].dataset.seconds)) {
+            current = i;
+          } else {
+            break;
+          }
+        }
+        chapterElements.forEach((el, i) => {
+          if (i === current) {
+            el.style.backgroundColor = 'rgba(0,255,213,0.2)';
+            el.style.borderLeftColor = '#00ffd5';
+          } else {
+            el.style.backgroundColor = 'transparent';
+            el.style.borderLeftColor = 'transparent';
+          }
+        });
+      });
+
+      // 折叠/展开章节导航
+      const chapters = document.getElementById('chapters');
+      const header = document.getElementById('chapterHeader');
+      const arrow = document.getElementById('toggleArrow');
+
+      header.addEventListener('click', () => {
+        chapters.classList.toggle('collapsed');
+        if (chapters.classList.contains('collapsed')) {
+          toggleArrow.style.transform = 'rotate(180deg)';
+        } else {
+          toggleArrow.style.transform = 'rotate(0deg)';
+        }
+      });
+
+
+      // 前进/后退 10 秒
+      const SEEK_STEP = 10; // 秒
+
+      document.addEventListener('keydown', e => {
+        if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+        // 避免在输入框内按键触发
+
+        switch (e.key) {
+          case 'ArrowRight': // 右箭头前进 10 秒
+            player.currentTime = Math.min(player.duration, player.currentTime + SEEK_STEP);
+            break;
+          case 'ArrowLeft': // 左箭头后退 10 秒
+            player.currentTime = Math.max(0, player.currentTime - SEEK_STEP);
+            break;
+          case ' ': // 空格键播放/暂停
+            e.preventDefault();
+            togglePlayPause();
+            break;
+        }
+      });
+
+      // 鼠标点击视频也切换播放/暂停
+      player.addEventListener('mousedown', togglePlayPause);
+
+      function togglePlayPause() {
+        if (player.paused) player.play();
+        else player.pause();
+      }
+      // 初始加载第一个视频
+      loadVideo(0);
+    }
+    loadVideos();
+    // 自动更新年份
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+
+</body>
+
+</html>
