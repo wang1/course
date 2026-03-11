@@ -67,7 +67,7 @@
 </ul>
 <h2 is-upgraded>程序的基本概念</h2>
 <h3 is-upgraded>算法</h3>
-<p>我们给出如下问题：有四个外观大小都一模一样的苹果，现其中三个重量相同，另外一个比这三个轻。请用一个没有砝码的天平，最大称两次，找出这个轻的苹果。</p>
+<p>我们给出如下问题：有四个外观大小都一模一样的苹果，现其中三个重量相同，另外一个比这三个轻。请用一个没有砝码的天平，最多称两次，找出这个轻的苹果。</p>
 <p>问题一经提出，你的大脑（<code>CPU</code>）就会飞快的运行，就会找到解决这个问题的方法。（我不怀疑你马上就找到了方法，且方法可能还不止一个）</p>
 <p>那么，我们就说</p>
 <aside class="special"><p>✍ 解决某问题的步骤和方法就是算法。</p>
@@ -234,7 +234,7 @@ void main() {
 <h3 is-upgraded>概念</h3>
 <p>编程中，我们不仅需要使用常量，更需要使用其值可改变的量。</p>
 <p>比如某些游戏用血量来表示角色是否活着。</p>
-<p>开始满血可认为是<code>100</code>，随着搏斗，血量将减少，如果减为<code>0</code>，此次游戏则终止。</p>
+<p>开始满血可认为是<code>100</code>，随着搏斗，血量将减少，如果减为<code>0</code>，此次游戏则终止。当然得到魔力满血复活也是可以的。</p>
 <p>显然，血量就是一个可以改变的量，这就是变量。</p>
 <h3 is-upgraded>变量的定义</h3>
 <p><code>C</code>语言规定，要使用变量，首先必须定义，即需要说明其该变量是什么数据类型,叫什么名称。</p>
@@ -270,7 +270,7 @@ void main() {
 <p>我们把<code>%d</code>称为输出占位符，它表示此处要输出一个整数，其值与字符串后面的变量或值一一对应。 现在明白为何输出<code>20</code>或<code>21</code>了吧。</p>
 <aside class="warning"><p>✎ 试一试: 注释掉<code>int age;</code>这句看能否运行? 为什么?<br>✎ 试一试: <code>%d</code>如果没有对应的变量<code>age</code>，即改为<code>printf(&#34;You are %d years old!\n&#34;);</code>会如何?</p>
 </aside>
-<p>除了<code>%d</code>是整数的占位符外，<code>%f</code>对应小数，<code>%c</code>代表一个字符。 如:</p>
+<p>除了<code>%d</code>是整数（decimal）的占位符外，<code>%f</code>对应小数（float），<code>%c</code>代表一个字符（character）。 如:</p>
 <pre><button class="btn" data-clipboard-target="#dm02">Copy</button><code id="dm02">#include &#34;stdio.h&#34;
 void main() {
   int age = 20;  // 定义了一个整型变量 age 并初始化为 20
