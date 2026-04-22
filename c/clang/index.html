@@ -519,7 +519,8 @@ C. 0        D. 0.5
 <pre><code>score &lt; 60              // 是否及格
 b * b - 4 * a * c &lt; 0   // 是否有实根（求根判别式）
 age &gt;= 18               // 是否成年
-sex == 1                // 是否男性（以 1 表示男性）
+gender == 'F'             // 性别是否女性（以字符表示性别）
+sex == 1                // 性别是否男性（以整数 1 表示男性）
 </code></pre>
 <h3 is-upgraded>运算结果</h3>
 <p>你应该直觉的感知，关系运算的结果要么为&#34;真&#34;，要么为&#34;假&#34;。</p>
@@ -673,11 +674,11 @@ C. 1          D. 假
 <p>阅读以下程序，分析其如何求出某个数的绝对值:</p>
 <pre><button class="btn" data-clipboard-target="#dm15">Copy</button><code id="dm15">#include &#34;stdio.h&#34;
 void main() {
-  int x;
+  int x, absx;
   printf(&#34;Please input a integer number:&#34;);
   scanf(&#34;%d&#34;, &amp;x);
-  x = x &gt; 0 ? x : -x;
-  printf(&#34;|x|=%d\n&#34;, x);
+  absx = x &gt; 0 ? x : -x;
+  printf(&#34;|x|=%d\n&#34;, x, absx);
 }
 </code></pre>
 <h2 is-upgraded>选择结构</h2>
@@ -1064,7 +1065,7 @@ switch (grade) {
 </aside>
 <h2 is-upgraded>课后练习</h2>
 <p>请理解本讲所列程序。</p>
-<p>需能独立编写<a href="https://qige.io/c/c-experiment.html" target="_blank">棋歌教学网实验一</a>的第 <code>1</code>、<code>2</code>、<code>3</code>个实验，可参考课后实验部分的第<code>5</code>个实验（称<code>12</code>个苹果）</p>
+<p>需能独立编写<a href="/c/c-experiment.html" target="_blank">棋歌教学网实验一</a>的第 <code>1</code>、<code>2</code>、<code>3</code>个实验，可参考课后实验部分的第<code>5</code>个实验（称<code>12</code>个苹果）</p>
 
 
       </google-codelab-step>
@@ -1533,7 +1534,7 @@ void main() {
       break;     // 使用 break 直接退出循环，执行循环后的语句
     }
   }
-  if ( flag == 1) {
+  if ( flag == 1) {  // 建议直接使用 flag
     printf(&#34;%d is a prime number!\n&#34;, n);
   } else {
     printf(&#34;%d is not a prime number!\n&#34;, n);
@@ -1552,10 +1553,10 @@ void main() {
     if (i % 3 == 0) {
       n++;
       printf(&#34;No%d: %d\n&#34;, n, i);
-    }
-    if (n == 5) {
-      break;
-    }
+      if (n == 5) {
+        break;
+      }
+    }    
   }
 }
 </code></pre>
@@ -1610,17 +1611,18 @@ void main() {
 </ol>
 <h2 is-upgraded>课后趣味程序</h2>
 <h3 is-upgraded>猜数字</h3>
-<pre><button class="btn" data-clipboard-target="#dm42">Copy</button><code id="dm42">/**
+<pre><button class="btn" data-clipboard-target="#dm42">Copy</button><code id="dm42">
+/**
  * 使用循环和选择结构来编写的猜数字游戏
 **/
 #include &#34;stdio.h&#34;
-#include &lt;time.h&gt;
-#include &lt;stdlib.h&gt;
+//#include &lt;time.h&gt;
+//#include &lt;stdlib.h&gt;
 void main() {
   char bingo = &#39;n&#39;;  // bingo 变量用于表明是否猜中，默认为没有
   int randomNumber, yourGuess, times = 0;
   srand( (unsigned)time( NULL ) );  // 每次不一样的种子
-  randomNumber = rand()%100+1;      // 生成 [1,100] 之间的随机整数
+  randomNumber = rand()%100+1;      // 生成 [1,100] 之间的整数（rand函数将生成一个随机的正整数）
   //printf(&#34;%d\n&#34;,randomNumber);
   printf(&#34;Please guess a number(1~100):&#34;);
   while (bingo == &#39;n&#39;) {
@@ -1637,7 +1639,9 @@ void main() {
   }  
 }
 </code></pre>
-<aside class="warning"><p>✎ 试一试：你可否不使用<code>bingo</code>作为猜中了的标准变量，而是使用无限循环，当猜中了后直接跳出循环来实现？</p>
+<aside class="warning">
+  <p>✎ 试一试：你可否不使用<code>bingo</code>作为猜中了的标准变量，而是使用无限循环，当猜中了后直接跳出循环来实现？</p>
+  <p>✎ 试一试：你可否让用户即使猜中了也可再玩，直到用户说退出才结束？</p>
 </aside>
 <h3 is-upgraded>看看你的机器运行有多快</h3>
 <pre><button class="btn" data-clipboard-target="#dm43">Copy</button><code id="dm43">#include &#34;stdio.h&#34;
