@@ -2737,24 +2737,26 @@ void main() {
 <p>所谓的宏定义，一般就是使用一个大写的标识符来表示一个字符串的过程。</p>
 <p>如下程序：</p>
 <pre><button class="btn" data-clipboard-target="#dm79">Copy</button><code id="dm79">#include &#34;stdio.h&#34;
-#define PI 3.1415926  //  定义宏 PI，程序中任何地方出现 PI 都会被替换
+#define PI 3.1415926  //  定义宏 PI，程序中任何地方(除字符串中)出现 PI 都会被替换
 void main() {
   int r;
   float s;
   r = 2;
   s = PI * r * r;  // 此处的 PI 将会在编译前被替换为上面的定义即 3.1415926
-  printf(&#34;Area is %f\n&#34;, s);
+  printf(&#34;PI PI PI！！！ Area is %f\n&#34;, s);
 }
 </code></pre>
 <p>上面程序是不带参数的宏。下面我们看看带参数的宏：</p>
 <pre><button class="btn" data-clipboard-target="#dm80">Copy</button><code id="dm80">#include &#34;stdio.h&#34;
 #define PF(x) x*x  // 带参数的宏，希望求 x 的平方
 void main() {
-    int a, pf;
+    int a, pf1, pf2;
     printf(&#34;Please input a integer number:&#34;);
     scanf(&#34;%d&#34;, &amp;a);
-    pf = PF(a+1);  // 编译前将被替换为 a+1*a+1
-    printf(&#34;PF(a+1)=%d\n&#34;, pf);
+    pf1 = PF(a);  // 编译前将被替换为 a*a
+    printf(&#34;PF(a)=%d\n&#34;, pf1);
+    pf2 = PF(a+1);  // 编译前将被替换为 a+1*a+1
+    printf(&#34;PF(a+1)=%d\n&#34;, pf2);
 }
 </code></pre>
 <p>运行该程序，理解带参数的宏定义。</p>
