@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小学数学 - 3D正方体堆叠与三视图观察器</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #f0f3f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        header {
+            background: #2b5cff;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+        header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        header .stats {
+            font-size: 14px;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .main-container {
+            flex: 1;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        #canvas-container {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            background: radial-gradient(circle at center, #ffffff 0%, #e2e8f0 100%);
+        }
+        /* 控制工具栏 */
+        .toolbar {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 5;
+            width: 200px;
+        }
+        .tool-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .tool-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+        .btn-row {
+            display: flex;
+            gap: 6px;
+        }
+        button {
+            flex: 1;
+            padding: 8px 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background: #ffffff;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        button:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+        }
+        button.active {
+            background: #2b5cff;
+            color: #fff;
+            border-color: #2b5cff;
+        }
+        button.danger:hover {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #dc2626;
+        }
+        /* 右侧三视图面板 */
+        .views-panel {
+            width: 280px;
+            background: #ffffff;
+            border-left: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            gap: 15px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.03);
+            z-index: 5;
+            overflow-y: auto;
+        }
+        .views-panel h2 {
+            font-size: 15px;
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        .view-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .view-card-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .view-card-title span.tag {
+            font-size: 11px;
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #64748b;
+        }
+        .grid-2d {
+            display: grid;
+            grid-template-columns: repeat(4, 28px);
+            grid-template-rows: repeat(4, 28px);
+            gap: 2px;
+            background: #cbd5e1;
+            padding: 2px;
+            border-radius: 4px;
+        }
+        .cell-2d {
+            width: 28px;
+            height: 28px;
+            background: #ffffff;
+            border-radius: 2px;
+            transition: background 0.15s;
+        }
+        .cell-2d.filled {
+            background: #3b82f6;
+            box-shadow: inset 0 0 0 1px #1d4ed8;
+        }
+        /* 视角提示标签 */
+        .view-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(15, 23, 42, 0.75);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            pointer-events: none;
+        }
+        .instructions {
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.5;
+            background: #f8fafc;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px dashed #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>� 五年级数学空间观察 - 3D积木搭建与三视图</h1>
+        <div class="stats">当前正方体数量: <strong id="cube-count">4</strong> 个</div>
+    </header>
+
+    <div class="main-container">
+        <!-- 3D 渲染区域 -->
+        <div id="canvas-container">
+            <div class="toolbar">
+                <div class="tool-group">
+                    <div class="tool-title">操作模式</div>
+                    <div class="btn-row">
+                        <button id="btn-mode-add" class="active" onclick="setMode('add')">➕ 放置</button>
+                        <button id="btn-mode-delete" onclick="setMode('delete')">�️ 敲除</button>
+                    </div>
+                </div>
+
+                <div class="tool-group">
+                    <div class="tool-title">视角切换</div>
+                    <div class="btn-row">
+                        <button onclick="setView('orbit')">� 3D旋转</button>
+                        <button onclick="setView('front')">从前面看</button>
+                    </div>
+                    <div class="btn-row">
+                        <button onclick="setView('top')">从上面看</button>
+                        <button onclick="setView('left')">从左面看</button>
+                    </div>
+                </div>
+
+                <div class="tool-group">
+                    <div class="tool-title">快捷预设</div>
+                    <div class="btn-row">
+                        <button onclick="loadSample()">� 经典例题</button>
+                        <button class="danger" onclick="clearAll()">� 清空</button>
+                    </div>
+                </div>
+
+                <div class="instructions">
+                    � <b>操作提示：</b><br>
+                    • <b>鼠标左键</b>：放置/敲除积木<br>
+                    • <b>按住右键/拖拽</b>：360°旋转立体图<br>
+                    • <b>滚轮</b>：缩放大小
+                </div>
+            </div>
+
+            <div class="view-indicator" id="view-indicator">当前视角：3D 自由观察</div>
+        </div>
+
+        <!-- 右侧三视图联动面板 -->
+        <div class="views-panel">
+            <h2>� 实时三视图投影 (4×4)</h2>
+            
+            <div class="view-card">
+                <div class="view-card-title">
+                    <span>从前面看（主视图/正视图）</span>
+                    <span class="tag">正面</span>
+                </div>
+                <div id="grid-front" class="grid-2d"></div>
+            </div>
+
+            <div class="view-card">
+                <div class="view-card-title">
+                    <span>从上面看（俯视图）</span>
+                    <span class="tag">上面</span>
+                </div>
+                <div id="grid-top" class="grid-2d"></div>
+            </div>
+
+            <div class="view-card">
+                <div class="view-card-title">
+                    <span>从左面看（左视图）</span>
+                    <span class="tag">左面</span>
+                </div>
+                <div id="grid-left" class="grid-2d"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 常量与状态
+        const GRID_SIZE = 4;
+        let mode = 'add'; // 'add' | 'delete'
+        const cubesMap = new Map(); // key: 'x,y,z' -> mesh
+
+        // Three.js 核心对象
+        let scene, camera, renderer, controls, raycaster, mouse;
+        let groundPlane;
+        let cubeGeometry, cubeMaterial, cubeEdgesGeometry, edgeMaterial;
+        let hoverMesh;
+
+        // 初始化
+        function init() {
+            const container = document.getElementById('canvas-container');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            // 1. 场景
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf1f5f9);
+
+            // 2. 相机
+            camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+            camera.position.set(6, 7, 9);
+
+            // 3. 渲染器
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            container.appendChild(renderer.domElement);
+
+            // 4. 控制器
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.target.set(0, 0.5, 0);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.maxPolarAngle = Math.PI / 2 + 0.05; // 防止翻到地面以下
+
+            // 5. 光照
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            scene.add(ambientLight);
+
+            const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+            dirLight.position.set(10, 20, 10);
+            dirLight.castShadow = true;
+            dirLight.shadow.mapSize.width = 1024;
+            dirLight.shadow.mapSize.height = 1024;
+            scene.add(dirLight);
+
+            // 6. 地面网格 (4x4)
+            const gridHelper = new THREE.GridHelper(GRID_SIZE, GRID_SIZE, 0x3b82f6, 0x94a3b8);
+            gridHelper.position.set(0, 0, 0);
+            scene.add(gridHelper);
+
+            // 隐形地面碰撞板（用于点击地面放置）
+            const planeGeo = new THREE.PlaneGeometry(GRID_SIZE, GRID_SIZE);
+            planeGeo.rotateX(-Math.PI / 2);
+            const planeMat = new THREE.MeshBasicMaterial({ visible: false });
+            groundPlane = new THREE.Mesh(planeGeo, planeMat);
+            groundPlane.position.y = 0;
+            scene.add(groundPlane);
+
+            // 地面方向指示文字（用轴线/简单标记）
+            addDirectionLabels();
+
+            // 7. 几何体与材质复用
+            cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+            cubeMaterial = new THREE.MeshLambertMaterial({ color: 0x3b82f6 });
+            cubeEdgesGeometry = new THREE.EdgesGeometry(cubeGeometry);
+            edgeMaterial = new THREE.LineBasicMaterial({ color: 0x1e3a8a, linewidth: 2 });
+
+            // 鼠标悬停预览框
+            const hoverGeo = new THREE.BoxGeometry(1.02, 1.02, 1.02);
+            const hoverMat = new THREE.MeshBasicMaterial({
+                color: 0x10b981,
+                transparent: true,
+                opacity: 0.35,
+                wireframe: false
+            });
+            hoverMesh = new THREE.Mesh(hoverGeo, hoverMat);
+            hoverMesh.visible = false;
+            scene.add(hoverMesh);
+
+            // 8. 射线交互
+            raycaster = new THREE.Raycaster();
+            mouse = new THREE.Vector2();
+
+            // 事件监听
+            window.addEventListener('resize', onWindowResize);
+            container.addEventListener('pointermove', onPointerMove);
+            container.addEventListener('pointerdown', onPointerDown);
+
+            // 初始化 2D 视图网格
+            init2DGrids();
+
+            // 加载默认经典图形
+            loadSample();
+
+            animate();
+        }
+
+        // 视角指示文字
+        function addDirectionLabels() {
+            // 前方标识（Z轴正方向）
+            const frontDiv = createLabel('前面 (Front)', 0, 0, GRID_SIZE / 2 + 0.6);
+            const leftDiv = createLabel('左面 (Left)', -GRID_SIZE / 2 - 0.6, 0, 0);
+        }
+
+        function createLabel(text, x, y, z) {
+            // 使用简易 canvas 画布生成纹理板
+            const canvas = document.createElement('canvas');
+            canvas.width = 256;
+            canvas.height = 64;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#64748b';
+            ctx.font = 'bold 28px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(text, 128, 42);
+
+            const texture = new THREE.CanvasTexture(canvas);
+            const mat = new THREE.MeshBasicMaterial({ map: texture, transparent: true, side: THREE.DoubleSide });
+            const geo = new THREE.PlaneGeometry(1.8, 0.45);
+            geo.rotateX(-Math.PI / 2);
+            const mesh = new THREE.Mesh(geo, mat);
+            mesh.position.set(x, 0.01, z);
+            if (x !== 0) mesh.rotation.y = Math.PI / 2;
+            scene.add(mesh);
+        }
+
+        // 初始化 2D 网格 DOM
+        function init2DGrids() {
+            ['front', 'top', 'left'].forEach(view => {
+                const container = document.getElementById(`grid-${view}`);
+                container.innerHTML = '';
+                for (let r = 0; r < GRID_SIZE; r++) {
+                    for (let c = 0; c < GRID_SIZE; c++) {
+                        const cell = document.createElement('div');
+                        cell.className = 'cell-2d';
+                        cell.id = `${view}-${r}-${c}`;
+                        container.appendChild(cell);
+                    }
+                }
+            });
+        }
+
+        // 设置模式
+        function setMode(m) {
+            mode = m;
+            document.getElementById('btn-mode-add').classList.toggle('active', m === 'add');
+            document.getElementById('btn-mode-delete').classList.toggle('active', m === 'delete');
+            if (m === 'delete') {
+                hoverMesh.material.color.setHex(0xef4444);
+            } else {
+                hoverMesh.material.color.setHex(0x10b981);
+            }
+        }
+
+        // 添加一个方块到坐标 (x, y, z) - 这里的坐标为网格整数索引 [0, 3]
+        function addCube(x, y, z) {
+            if (x < 0 || x >= GRID_SIZE || y < 0 || y >= GRID_SIZE || z < 0 || z >= GRID_SIZE) return;
+            const key = `${x},${y},${z}`;
+            if (cubesMap.has(key)) return;
+
+            // 转换网格索引为 3D 世界坐标
+            // 网格中心偏移: 4x4 的网格，索引 0..3 映射到 -1.5, -0.5, 0.5, 1.5
+            const worldX = x - 1.5;
+            const worldY = y + 0.5;
+            const worldZ = z - 1.5;
+
+            const mesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            mesh.position.set(worldX, worldY, worldZ);
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+
+            const edge = new THREE.LineSegments(cubeEdgesGeometry, edgeMaterial);
+            mesh.add(edge);
+
+            mesh.userData = { gridX: x, gridY: y, gridZ: z };
+
+            scene.add(mesh);
+            cubesMap.set(key, mesh);
+
+            updateStatsAndViews();
+        }
+
+        // 移除方块
+        function removeCube(key) {
+            if (!cubesMap.has(key)) return;
+            const mesh = cubesMap.get(key);
+            scene.remove(mesh);
+            cubesMap.delete(key);
+            updateStatsAndViews();
+        }
+
+        // 清空全部
+        function clearAll() {
+            cubesMap.forEach((mesh) => {
+                scene.remove(mesh);
+            });
+            cubesMap.clear();
+            hoverMesh.visible = false;
+            updateStatsAndViews();
+        }
+
+        // 加载经典五年级例题堆叠形状 (L型及前后错落)
+        function loadSample() {
+            clearAll();
+            // 底层 3 个 (左前、中前、右前)，中间层 1 个
+            addCube(1, 0, 2);
+            addCube(2, 0, 2);
+            addCube(2, 0, 1);
+            addCube(1, 1, 2);
+        }
+
+        // 射线碰撞检测获取悬停目标
+        function getIntersect() {
+            const meshes = Array.from(cubesMap.values());
+            meshes.push(groundPlane);
+            const intersects = raycaster.intersectObjects(meshes, false);
+            return intersects.length > 0 ? intersects[0] : null;
+        }
+
+        let isPointerDragging = false;
+        let pointerDownPos = { x: 0, y: 0 };
+
+        function onPointerMove(event) {
+            const rect = renderer.domElement.getBoundingClientRect();
+            mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+            const hit = getIntersect();
+
+            if (hit) {
+                if (mode === 'add') {
+                    // 在目标法线方向放置
+                    let targetX, targetY, targetZ;
+                    if (hit.object === groundPlane) {
+                        // 地面：根据碰撞点坐标换算
+                        targetX = Math.floor(hit.point.x + 2);
+                        targetY = 0;
+                        targetZ = Math.floor(hit.point.z + 2);
+                    } else {
+                        const source = hit.object.userData;
+                        const normal = hit.face.normal;
+                        targetX = source.gridX + normal.x;
+                        targetY = source.gridY + normal.y;
+                        targetZ = source.gridZ + normal.z;
+                    }
+
+                    if (targetX >= 0 && targetX < GRID_SIZE &&
+                        targetY >= 0 && targetY < GRID_SIZE &&
+                        targetZ >= 0 && targetZ < GRID_SIZE) {
+                        hoverMesh.position.set(targetX - 1.5, targetY + 0.5, targetZ - 1.5);
+                        hoverMesh.visible = true;
+                        hoverMesh.userData = { targetX, targetY, targetZ };
+                    } else {
+                        hoverMesh.visible = false;
+                    }
+                } else if (mode === 'delete') {
+                    if (hit.object !== groundPlane) {
+                        hoverMesh.position.copy(hit.object.position);
+                        hoverMesh.visible = true;
+                        hoverMesh.userData = { deleteKey: `${hit.object.userData.gridX},${hit.object.userData.gridY},${hit.object.userData.gridZ}` };
+                    } else {
+                        hoverMesh.visible = false;
+                    }
+                }
+            } else {
+                hoverMesh.visible = false;
+            }
+        }
+
+        function onPointerDown(event) {
+            pointerDownPos = { x: event.clientX, y: event.clientY };
+            const onPointerUp = (e) => {
+                window.removeEventListener('pointerup', onPointerUp);
+                // 判断是否是点击而不是旋转拖拽
+                const dist = Math.hypot(e.clientX - pointerDownPos.x, e.clientY - pointerDownPos.y);
+                if (dist < 5 && e.button === 0) { // 鼠标左键点击
+                    if (hoverMesh.visible) {
+                        if (mode === 'add' && hoverMesh.userData.targetX !== undefined) {
+                            addCube(hoverMesh.userData.targetX, hoverMesh.userData.targetY, hoverMesh.userData.targetZ);
+                        } else if (mode === 'delete' && hoverMesh.userData.deleteKey) {
+                            removeCube(hoverMesh.userData.deleteKey);
+                            hoverMesh.visible = false;
+                        }
+                    }
+                }
+            };
+            window.addEventListener('pointerup', onPointerUp);
+        }
+
+        // 切换观察视角
+        function setView(viewType) {
+            const indicator = document.getElementById('view-indicator');
+            const distance = 10;
+            switch(viewType) {
+                case 'orbit':
+                    animateCameraTo(6, 7, 9, 0, 0.5, 0);
+                    indicator.innerText = '当前视角：3D 自由观察';
+                    break;
+                case 'front': // 前面看：Z轴正方向看过去 (从 +Z 朝 -Z)
+                    animateCameraTo(0, 0.5, distance, 0, 0.5, 0);
+                    indicator.innerText = '当前视角：从前面看（主视图/正视图）';
+                    break;
+                case 'top': // 上面看：Y轴正方向朝下看 (从 +Y 朝 -Y)
+                    animateCameraTo(0, distance, 0.001, 0, 0.5, 0);
+                    indicator.innerText = '当前视角：从上面看（俯视图）';
+                    break;
+                case 'left': // 左面看：X轴负方向朝右看 (从 -X 朝 +X)
+                    animateCameraTo(-distance, 0.5, 0, 0, 0.5, 0);
+                    indicator.innerText = '当前视角：从左面看（左视图）';
+                    break;
+            }
+        }
+
+        // 平滑相机过渡
+        function animateCameraTo(tx, ty, tz, lx, ly, lz) {
+            const startPos = camera.position.clone();
+            const endPos = new THREE.Vector3(tx, ty, tz);
+            const startLook = controls.target.clone();
+            const endLook = new THREE.Vector3(lx, ly, lz);
+            let progress = 0;
+
+            function step() {
+                progress += 0.08;
+                if (progress <= 1) {
+                    camera.position.lerpVectors(startPos, endPos, progress);
+                    controls.target.lerpVectors(startLook, endLook, progress);
+                    controls.update();
+                    requestAnimationFrame(step);
+                } else {
+                    camera.position.copy(endPos);
+                    controls.target.copy(endLook);
+                    controls.update();
+                }
+            }
+            step();
+        }
+
+        // 计算并更新实时三视图
+        function updateStatsAndViews() {
+            document.getElementById('cube-count').innerText = cubesMap.size;
+
+            // 4x4 网格矩阵初始化 (0: 空, 1: 有方块)
+            const frontGrid = Array.from({ length: 4 }, () => Array(4).fill(0));
+            const topGrid = Array.from({ length: 4 }, () => Array(4).fill(0));
+            const leftGrid = Array.from({ length: 4 }, () => Array(4).fill(0));
+
+            // 遍历所有正方体计算投影
+            cubesMap.forEach((_, key) => {
+                const [x, y, z] = key.split(',').map(Number);
+
+                // 1. 从前面看 (Front View):
+                // 水平列对应 x (0~3 左到右), 垂直行对应 y (3-y 从上到下显示)
+                frontGrid[3 - y][x] = 1;
+
+                // 2. 从上面看 (Top View):
+                // 水平列对应 x (0~3 左到右), 垂直行对应 z (z为0是最里面/最上，z为3是最前面/最下)
+                topGrid[z][x] = 1;
+
+                // 3. 从左面看 (Left View):
+                // 从左边(-X)看过去，观察者的左侧是立体图形的后侧(z=0)，右侧是立体图形的前侧(z=3)
+                // 因此水平列对应 z (0~3 左到右), 垂直行对应 y (3-y 从上到下显示)
+                leftGrid[3 - y][z] = 1;
+            });
+
+            // 渲染到 2D DOM
+            render2DGrid('front', frontGrid);
+            render2DGrid('top', topGrid);
+            render2DGrid('left', leftGrid);
+        }
+
+        function render2DGrid(view, gridData) {
+            for (let r = 0; r < GRID_SIZE; r++) {
+                for (let c = 0; c < GRID_SIZE; c++) {
+                    const el = document.getElementById(`${view}-${r}-${c}`);
+                    if (gridData[r][c] === 1) {
+                        el.classList.add('filled');
+                    } else {
+                        el.classList.remove('filled');
+                    }
+                }
+            }
+        }
+
+        function onWindowResize() {
+            const container = document.getElementById('canvas-container');
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
